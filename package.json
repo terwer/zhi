@@ -1,7 +1,7 @@
 {
   "name": "zhi",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "watch:css": "stylus -w theme.styl -o theme.css",
