@@ -1,6 +1,6 @@
 {
   "name": "zhi",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A siyuan-note theme with plugin and blog bundled",
   "scripts": {
     "dependency": "python scripts/dependency.py",
