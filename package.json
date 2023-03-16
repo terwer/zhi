@@ -30,6 +30,6 @@
   "author": "terwer",
   "license": "GPL",
   "dependencies": {
-    "zhi-sdk": "1.0.8"
+    "zhi-sdk": "1.0.11"
   }
 }
