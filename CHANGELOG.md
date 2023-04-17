@@ -6,7 +6,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
-## [0.1.0](https://github.com/terwer/zhi/releases/tag/v1.0.0-alpha0.1.0) - 2023-04-17
+## [v1.0.0-alpha.1](https://github.com/terwer/zhi/releases/tag/v1.0.0-alpha.1) - 2023-04-17
+
+<small>[Compare with v1.0.0-alpha](https://github.com/terwer/zhi/compare/v1.0.0-alpha...HEAD)</small>
+
+### Features
+
+- add dist recover command ([fd4aef9](https://github.com/terwer/zhi/commit/fd4aef9af9ae06876889dd488afb92ddf3991cc4) by terwer).
+- add dist commands ([7029151](https://github.com/terwer/zhi/commit/7029151d4492b1d470b46bee45a4029bca3c2fdc) by terwer).
+- reset dist ([b55e446](https://github.com/terwer/zhi/commit/b55e4466aa3756efb4cbd323a35fb88da70df49f) by terwer).
+
+<!-- insertion marker -->
+## [v1.0.0-alpha](https://github.com/terwer/zhi/releases/tag/v1.0.0-alpha) - 2023-04-17
 
 <small>[Compare with first commit](https://github.com/terwer/zhi/compare/1ceafc110e63a163974efc2d4838b16d68d234da...v1.0.0-alpha)</small>
 
@@ -191,4 +202,100 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Code Refactoring
 
 - New zhi-common lib ([809c53f](https://github.com/terwer/zhi/commit/809c53ff8a17d49e5df489910356757cff302e9c) by terwer).
+
+### Chore
+
+- update esbuild to 0.17.17 ([49a3b1b](https://github.com/terwer/zhi/commit/49a3b1b9fc3af8d8167f3dc6995480d6ae4ef437) by terwer).
+- check runtime ([971ad3c](https://github.com/terwer/zhi/commit/971ad3c85c3982e35e89e11382809964f6f24c30) by terwer).
+- bump esbuild from 0.16.17 to 0.17.17 ([5112042](https://github.com/terwer/zhi/commit/5112042e7ba4d49d36ee828b7bd5e7f6f27b81a4) by dependabot[bot]).
+- allow js dynamic import ([1b9d4b0](https://github.com/terwer/zhi/commit/1b9d4b013055dc2c310fb14c65d72083eddc203d) by terwer).
+- add release-please ([637120b](https://github.com/terwer/zhi/commit/637120bdad51895504811a56c66cb1882300df76) by terwer).
+- fit log color ([e8fab6d](https://github.com/terwer/zhi/commit/e8fab6deb4b81f5e43ed29d804b48301a2273b5f) by terwer).
+- add json error message ([95adf00](https://github.com/terwer/zhi/commit/95adf0045acbdfe00301d08f67009666b9127388) by terwer).
+- basic load process ([ecaab56](https://github.com/terwer/zhi/commit/ecaab56d2823cfaf824f263f8a8141ea9250c36c) by terwer).
+- read version from package.json ([ef014f8](https://github.com/terwer/zhi/commit/ef014f809a8fdd0de1540897f096741acd4e115f) by terwer).
+- add json schema validate ([1cf0f82](https://github.com/terwer/zhi/commit/1cf0f82f0e7a7cff57468af387b02fcab6b271f2) by terwer).
+- support common logger ([fe76924](https://github.com/terwer/zhi/commit/fe7692461c16cc15f6c96af7d5d0eaadaf641949) by terwer).
+- add cmd text color to cli result ([da6f17f](https://github.com/terwer/zhi/commit/da6f17f3111ca48c8b14ba23170ef048e716036d) by terwer).
+- export crossChalk from zhi-log ([3042e2f](https://github.com/terwer/zhi/commit/3042e2f625605e084d0c49078cd84e940f19ca79) by terwer).
+- change default template list ([b8b2eea](https://github.com/terwer/zhi/commit/b8b2eeade142984d50b245bcefb0ccf69761314f) by terwer).
+- release zhi-log 1.3.0 ([44d5741](https://github.com/terwer/zhi/commit/44d5741c5809199e71d0fccb8b2fa8d1e805e3b0) by terwer).
+- release zhi-log 1.9.1 ([568570a](https://github.com/terwer/zhi/commit/568570a6036eb15bcc40ac04ed6940246ceb2c12) by terwer).
+- release zhi-log 1.9.0 ([d869cec](https://github.com/terwer/zhi/commit/d869cec1ea2af76a6c69cf9aeb3dc53f091a68a2) by terwer).
+- release zhi-device-detection 0.1.0 ([c06ea73](https://github.com/terwer/zhi/commit/c06ea73300e7f978f98353e503cb9c1425d2638f) by terwer).
+- release zhi-env 1.13.3 ([f64b6b1](https://github.com/terwer/zhi/commit/f64b6b1313f86afde0103057f44d199618e373d9) by terwer).
+- release zhi-env 1.13.2 ([c28606e](https://github.com/terwer/zhi/commit/c28606edb136225c16276ed2a5e9d9f00ece05a8) by terwer).
+- update esbuild to 0.17.16 ([7709d9b](https://github.com/terwer/zhi/commit/7709d9b48af996a6498048fccff03f1e1811a297) by terwer).
+- bump typescript in /packages/eslint-config-custom ([2b45c92](https://github.com/terwer/zhi/commit/2b45c92164431626cb7a627c37dd701eb2a1b0e3) by dependabot[bot]).
+- bump typescript from 4.9.5 to 5.0.4 ([b5aaf3c](https://github.com/terwer/zhi/commit/b5aaf3c8354ef60a4e45e180e63eabec640e314e) by dependabot[bot]).
+- bump typescript in /packages/jest-config-custom ([bbf3b75](https://github.com/terwer/zhi/commit/bbf3b7573f1a8bacc977ed140e256d138b62d498) by dependabot[bot]).
+- bump esbuild from 0.16.17 to 0.17.16 ([69a82d6](https://github.com/terwer/zhi/commit/69a82d679a846bde551716fbb3473250e66c2707) by dependabot[bot]).
+- bump esbuild in /packages/esbuild-config-custom ([6a828b2](https://github.com/terwer/zhi/commit/6a828b2b9deed366e615ae09d7cadc5c1905d12a) by dependabot[bot]).
+- bump eslint in /packages/eslint-config-custom ([7c9541c](https://github.com/terwer/zhi/commit/7c9541cf7a5907e479a01765d39bed0675ad7776) by dependabot[bot]).
+- bump eslint from 7.32.0 to 8.38.0 ([0068c99](https://github.com/terwer/zhi/commit/0068c9972ee7ed6fbd5aa7eb98f885455da08640) by dependabot[bot]).
+- release zhi-log 1.9.0 ([021f566](https://github.com/terwer/zhi/commit/021f5665c71d73c12b14f67f79b029809cd40a5d) by terwer).
+- release zhi-env 1.13.0 ([6c6af96](https://github.com/terwer/zhi/commit/6c6af96b1da17b93072d4908a37f491d09e541e7) by terwer).
+- update turbo to 1.9.1 ([858fddb](https://github.com/terwer/zhi/commit/858fddbeb4526da81143ac5dacda81702f3e2415) by terwer).
+- switch to pnpm workspace ([5e692ef](https://github.com/terwer/zhi/commit/5e692ef37934d26973fa68f540a0c7e518e4b97a) by terwer).
+- release zhi-siyuan-api 1.0.0 ([7155c7d](https://github.com/terwer/zhi/commit/7155c7d863fd90a788dec42efae8f78c7eb1a276) by terwer).
+- release zhi-blog-api 1.0.1 ([9ba31c4](https://github.com/terwer/zhi/commit/9ba31c432e91f14e4bdb0269fbedcceb216a55d9) by terwer).
+- release zhi-common 1.4.0 ([4f6836b](https://github.com/terwer/zhi/commit/4f6836b90ca5996ebccf6d4793fd02bb7354cece) by terwer).
+- release zhi-log 1.8.0 ([92be8e2](https://github.com/terwer/zhi/commit/92be8e2116d1b2c954fcaacd761eb1dfac45ecbb) by terwer).
+- release zhi-env 1.12.0 ([b0f7886](https://github.com/terwer/zhi/commit/b0f7886545ddb279f812239095e47631dd105f7f) by terwer).
+- update deps ([72506fa](https://github.com/terwer/zhi/commit/72506fada68a0af482e1d9f15962eb2d481138e6) by terwer).
+- bump @nrwl/linter from 15.8.9 to 15.9.2 ([479fdb9](https://github.com/terwer/zhi/commit/479fdb93cf4e3a99c654c75f0b0d8ec606850934) by dependabot[bot]).
+- bump vite-plugin-dts from 1.7.3 to 2.2.0 ([07823b3](https://github.com/terwer/zhi/commit/07823b37958f71d0ba83eb22bc196e6f3aa8adea) by dependabot[bot]).
+- temp disable modules ([c7a8f9b](https://github.com/terwer/zhi/commit/c7a8f9b34848ca163e76c1f6e609e5373be6c3ea) by terwer).
+- bump @vitest/coverage-c8 from 0.25.8 to 0.29.8 ([8f1e1c7](https://github.com/terwer/zhi/commit/8f1e1c7511a753bade1414e1b0cc798f56c2af9e) by dependabot[bot]).
+- bump @nrwl/vite from 15.8.9 to 15.9.2 ([614ee0f](https://github.com/terwer/zhi/commit/614ee0fb5b2d351d30f91999cf53c0e4d542f3ef) by dependabot[bot]).
+- bump @docusaurus/module-type-aliases ([b339088](https://github.com/terwer/zhi/commit/b3390885b8580a929fcaa7b82a21e8873d4561de) by dependabot[bot]).
+- bump @nrwl/js from 15.8.9 to 15.9.2 ([aec52b9](https://github.com/terwer/zhi/commit/aec52b9c7fcab0457742c8d6a3049b27ecc4f7df) by dependabot[bot]).
+- bump jsdom from 20.0.3 to 21.1.1 ([8357ef1](https://github.com/terwer/zhi/commit/8357ef1e9f4a61bb881301af322defe93dfa0da0) by dependabot[bot]).
+- Separate zhi-core module ([93700e2](https://github.com/terwer/zhi/commit/93700e211df34471d4b7240a50c00b5c86d68287) by terwer).
+- prettier code ([139a42f](https://github.com/terwer/zhi/commit/139a42f8a7d3e256703111f3bf4652ff61a41f8a) by terwer).
+- Redesign architecture ([c42e055](https://github.com/terwer/zhi/commit/c42e05543ae931c209b615d8459edf963aa38e8d) by terwer).
+- Remove necessary projects ([42f82c3](https://github.com/terwer/zhi/commit/42f82c3a13b09f7cc46a922f20f2007129aba885) by terwer).
+- change ci ([31b60dc](https://github.com/terwer/zhi/commit/31b60dccb2baa7f5f719dedb39cbe23949ff1d68) by terwer).
+- fix typo ([f3c82c9](https://github.com/terwer/zhi/commit/f3c82c969d2cac08c67a20a80315f9095e6703d6) by terwer).
+- fix vercel ([5e9c276](https://github.com/terwer/zhi/commit/5e9c276c6e1ed891810c0d0391cb348ed825aacf) by terwer).
+- disable vercel ci ([ffbe1ce](https://github.com/terwer/zhi/commit/ffbe1ce8b73e857f60043d48ae7399378b8b0ded) by terwer).
+- remove ci ([7fa54c3](https://github.com/terwer/zhi/commit/7fa54c39a8a97aefe247fbefc7e7e8ed441425ba) by terwer).
+- Keep docusaurus docs folder ([4817b0b](https://github.com/terwer/zhi/commit/4817b0b871ce02643f0a86eb2ccd4adc88107a47) by terwer).
+- Update docs ([37d5679](https://github.com/terwer/zhi/commit/37d5679e15d513979c818d04b62b417d5bbb09f7) by terwer).
+- Migrate zhi theme style ([5e60cf0](https://github.com/terwer/zhi/commit/5e60cf0606983948fd99743bda2b7a58fe6c0afd) by terwer).
+- fix typo, add style files ([ed27535](https://github.com/terwer/zhi/commit/ed275350efa48eaa4fc8d852ac036b257e4af325) by terwer).
+- release zhi-cli 1.2.2 ([7e28659](https://github.com/terwer/zhi/commit/7e286595a041ef38d7128bf1bb0ddb5fdb7ba68e) by terwer).
+- release zhi-log 1.7.0 ([8462f46](https://github.com/terwer/zhi/commit/8462f4627c03ab000bed8819401d03b4913d8ea1) by terwer).
+- release zhi-env 1.11.3 ([54151c6](https://github.com/terwer/zhi/commit/54151c66eb8b42992edf2bc08793d5e3965732c8) by terwer).
+- 修改构建错误 ([0447f9f](https://github.com/terwer/zhi/commit/0447f9f1b8f43b2cfaaabd740668594d5e96e35e) by terwer).
+- 重构项目结构-重构主题CSS结构 ([0e53451](https://github.com/terwer/zhi/commit/0e534513774fcd90c82cab348f8b7e2886781bb3) by terwer).
+- 重构项目结构-集成Stylus和Stylelint ([a9db188](https://github.com/terwer/zhi/commit/a9db188f852427ddca854e63f131ec9dc3110fb2) by terwer).
+- 重构项目结构-适配Github Actions ([76c6fa7](https://github.com/terwer/zhi/commit/76c6fa705888e8930ba7d3e5cf1a9a9c42e8a74f) by terwer).
+- 重构项目结构-修改项目说明 ([2bf90eb](https://github.com/terwer/zhi/commit/2bf90eb4378f99b8be830132d2f586bee0c616a1) by terwer).
+- 重构项目结构-新增css入口 ([8e69038](https://github.com/terwer/zhi/commit/8e69038616405e467ee3e77ba2ac13aa488f8e8a) by terwer).
+- 重构项目结构-项目结构说明 ([cde8aea](https://github.com/terwer/zhi/commit/cde8aea2571676b0630dfff730a609799c6a33a4) by terwer).
+- 重构项目结构-主题全程使用TypeScript ([1b675e4](https://github.com/terwer/zhi/commit/1b675e4b79cb30b37c5813bc4961d49fbd160e66) by terwer).
+- 重构项目结构 ([899eaef](https://github.com/terwer/zhi/commit/899eaeff2652f47a6eb632d642dd85381213ecc6) by terwer).
+- 支持一体化构建主题、插件系统、插件 ([5110c9d](https://github.com/terwer/zhi/commit/5110c9dd0bcd441a4b38bedb82ab38c5de9d733a) by terwer).
+- 使用 zhi-cli 重构项目 ([7b367e4](https://github.com/terwer/zhi/commit/7b367e4b3203d005e2208ffa09e6a05b48fd1efb) by terwer).
+- 使用 zhi-cli 重新项目 ([93fef72](https://github.com/terwer/zhi/commit/93fef72cc54344e68320ac7616ded76d5234756e) by terwer).
+- fix require ([f763d53](https://github.com/terwer/zhi/commit/f763d5364bd39a20143e84c6dfc582017b36a179) by terwer).
+- update doc ([9855d08](https://github.com/terwer/zhi/commit/9855d086a8aab48c2d753721a50e6aeecc0282c4) by terwer).
+- bump vitest from 0.28.5 to 0.29.2 ([24778d6](https://github.com/terwer/zhi/commit/24778d623c0ce0ec991d025ad204a96842094a2b) by dependabot[bot]).
+- 集成release-please ([990ebd4](https://github.com/terwer/zhi/commit/990ebd44df215a49888b6aff9a909dad0ea8722f) by terwer).
+- 隐藏中间css，只保留sass ([bef5370](https://github.com/terwer/zhi/commit/bef5370465c0f4c5173fcce80a39fcc65ca574c3) by terwer).
+- 修正拼写错误，移除未使用的依赖 ([da1c055](https://github.com/terwer/zhi/commit/da1c05574e51c3fea0969617adc27b279ffef592) by terwer).
+
+### Docs
+
+- Add astro docs ([82b2363](https://github.com/terwer/zhi/commit/82b23637a51f63b5635ccf95c722c1ccfea55419) by terwer).
+- ignore vercel files ([f35faa0](https://github.com/terwer/zhi/commit/f35faa09633056a72d4c103788f993b8f4bef231) by terwer).
+- fix typo ([7c7c204](https://github.com/terwer/zhi/commit/7c7c2048a8fa34be3a667a97235ca151d118bef5) by terwer).
+- Fix docs path ([17f1d56](https://github.com/terwer/zhi/commit/17f1d562e82f81bf05d15e49e1371516c96d7ef6) by terwer).
+- Update docs ([59a1c67](https://github.com/terwer/zhi/commit/59a1c673d45b701025f5a2614e159cb92d605b47) by terwer).
+- Change doc path ([77c5ba7](https://github.com/terwer/zhi/commit/77c5ba735c6b094e83ff4d70667ee0aa79711c91) by terwer).
+- Add zhi docs ([9cafe62](https://github.com/terwer/zhi/commit/9cafe620f13e71ae5e13916b0c5c29da5f2c29d6) by terwer).
+- Add docs ([243ece3](https://github.com/terwer/zhi/commit/243ece3447c1d2647cf21551ba58b3e2267117d5) by terwer).
+- Fix docs ([79b9f20](https://github.com/terwer/zhi/commit/79b9f20074f225925f3943ed2fc42c7febc650a2) by terwer).
+- Add project notes ([7edc1e5](https://github.com/terwer/zhi/commit/7edc1e50bf18572a73d3ff857e44dbf750bf3ae9) by terwer).
 
