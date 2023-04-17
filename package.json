@@ -1,0 +1,24 @@
+{
+  "name": "zhi-dist",
+  "version": "1.0.0-alpha.2",
+  "description": "dist for zhi",
+  "keywords": [
+    "zhi",
+    "dist"
+  ],
+  "author": "terwer",
+  "license": "GPL",
+  "scripts": {
+    "backup": "git archive --format=zip --output=/Users/terwer/Downloads/zhi-dist.zip HEAD",
+    "reset": "git pull origin main --force && git rm .",
+    "recover": "unzip /Users/terwer/Downloads/zhi-dist.zip -d /Users/terwer/Documents/mydocs/zhi-dist && git add -A",
+    "log": "git-changelog -c angular --sections feat,fix,refactor,chore,docs -t angular -T -o CHANGELOG.md",
+    "tag": "git push --tags"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^10.0.3",
+    "semantic-release": "^21.0.1"
+  }
+}
