@@ -1,17 +1,10 @@
-# JetBrains
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+# IDE
 .idea
 
-# Mac
-.DS_Store
-
-# Vercel
+# doc
+reports
 .vercel
-
-# Backup
-backup
-
-# Node
-node_modules
-
-# Styles
-styles/**/*.css
