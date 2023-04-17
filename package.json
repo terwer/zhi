@@ -8,6 +8,9 @@
   ],
   "author": "terwer",
   "license": "GPL",
+  "scripts": {
+    "log": "git-changelog -c conventional -o CHANGELOG.md"
+  },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",

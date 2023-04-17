@@ -4,7 +4,11 @@
 node_modules
 # IDE
 .idea
+*.iml
 
 # doc
 reports
 .vercel
+
+# Mac
+.DS_Store
