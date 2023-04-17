@@ -1,27 +1,17 @@
 {
-  "name": "zhi",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
+  "name": "zhi-dist",
+  "version": "0.0.0",
+  "description": "dist for zhi",
+  "keywords": [
+    "zhi",
+    "dist"
   ],
-  "scripts": {
-    "lint": "turbo run lint",
-    "dev": "turbo run dev",
-    "build": "turbo run build",
-    "preview": "turbo run preview",
-    "doc": "turbo run doc",
-    "md": "turbo run md",
-    "apidev": "pnpm build && pnpm doc && pnpm md && turbo run apidev --filter zhi-docs",
-    "apibuild": "pnpm build && pnpm doc && pnpm md && turbo run apibuild --filter zhi-docs"
-  },
+  "author": "terwer",
+  "license": "GPL",
   "devDependencies": {
-    "turbo": "^1.9.1"
-  },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "packageManager": "pnpm@8.1.1"
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^10.0.3",
+    "semantic-release": "^21.0.1"
+  }
 }
