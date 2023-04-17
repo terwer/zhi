@@ -8,15 +8,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [v1.0.0-alpha.1](https://github.com/terwer/zhi/releases/tag/v1.0.0-alpha.1) - 2023-04-17
 
-<small>[Compare with v1.0.0-alpha](https://github.com/terwer/zhi/compare/v1.0.0-alpha...HEAD)</small>
+<small>[Compare with v1.0.0-alpha](https://github.com/terwer/zhi/compare/v1.0.0-alpha...v1.0.0-alpha.1)</small>
 
 ### Features
 
+- add changelog command ([aadf6ee](https://github.com/terwer/zhi/commit/aadf6ee8e22ef07eec1974a6e921f61d685f14e4) by terwer).
 - add dist recover command ([fd4aef9](https://github.com/terwer/zhi/commit/fd4aef9af9ae06876889dd488afb92ddf3991cc4) by terwer).
 - add dist commands ([7029151](https://github.com/terwer/zhi/commit/7029151d4492b1d470b46bee45a4029bca3c2fdc) by terwer).
 - reset dist ([b55e446](https://github.com/terwer/zhi/commit/b55e4466aa3756efb4cbd323a35fb88da70df49f) by terwer).
 
-<!-- insertion marker -->
 ## [v1.0.0-alpha](https://github.com/terwer/zhi/releases/tag/v1.0.0-alpha) - 2023-04-17
 
 <small>[Compare with first commit](https://github.com/terwer/zhi/compare/1ceafc110e63a163974efc2d4838b16d68d234da...v1.0.0-alpha)</small>
