@@ -4,8 +4,13 @@
 
 ### Features
 
-- **zhi-dist:** support angular like CHANGELOG ([9aa6270](https://github.com/terwer/zhi/commit/9aa6270260d0d7d6fd8479794231a9ba2a38aca0))
+- **zhi-dist:** support angular like CHANGELOG ([78aac74](https://github.com/terwer/zhi/commit/78aac7423269b56f05fa175ca8474bfb44852343))
 - add changelog command ([de33c36](https://github.com/terwer/zhi/commit/de33c368d9cbbeb5992cb8a0745202bac28bd7c1))
+
+### Chore
+
+- **zhi-dist:** reset dist ([68cbb64](https://github.com/terwer/zhi/commit/68cbb64bff70d23f1671a7870d7563b3a66a0d80))
+- **zhi-core:** #163 move dependency definition to zhi.json ([6afe064](https://github.com/terwer/zhi/commit/6afe0647992a45fd685d6b1ae5cdbfb7a67367e3))
 
 ### Docs
 
