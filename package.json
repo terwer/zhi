@@ -19,6 +19,11 @@
     "cz": "git-cz",
     "commit": "commit"
   },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-angular": "^17.6.1",
