@@ -15,11 +15,11 @@
     "log": "git-changelog -c angular --sections feat,fix,refactor,chore,docs -t angular -T -o CHANGELOG.md",
     "tag": "git push --tags",
     "prepare": "husky install",
-    "test": "echo hello"
+    "commit": "commit"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.1",
-    "@commitlint/config-conventional": "^17.6.1",
+    "@commitlint/config-angular": "^17.6.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^10.0.3",

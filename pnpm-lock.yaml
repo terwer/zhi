@@ -4,9 +4,9 @@ devDependencies:
   '@commitlint/cli':
     specifier: ^17.6.1
     version: registry.npmjs.org/@commitlint/cli@17.6.1
-  '@commitlint/config-conventional':
+  '@commitlint/config-angular':
     specifier: ^17.6.1
-    version: registry.npmjs.org/@commitlint/config-conventional@17.6.1
+    version: registry.npmjs.org/@commitlint/config-angular@17.6.1
   '@semantic-release/changelog':
     specifier: ^6.0.3
     version: registry.npmjs.org/@semantic-release/changelog@6.0.3(semantic-release@21.0.1)
@@ -83,13 +83,20 @@ packages:
       - '@swc/wasm'
     dev: true
 
-  registry.npmjs.org/@commitlint/config-conventional@17.6.1:
-    resolution: {integrity: sha512-ng/ybaSLuTCH9F+7uavSOnEQ9EFMl7lHEjfAEgRh1hwmEe8SpLKpQeMo2aT1IWvHaGMuTb+gjfbzoRf2IR23NQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@commitlint/config-conventional/-/config-conventional-17.6.1.tgz}
-    name: '@commitlint/config-conventional'
+  registry.npmjs.org/@commitlint/config-angular-type-enum@17.4.0:
+    resolution: {integrity: sha512-qbmfOfVqQHMKfc6CxS0A9b7+EFsOyEBoh4+i8Qa05uk8YhT/zY1CeIXK5V3wwemMDcHUegyL/ZnwCvWD7g8GxA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@commitlint/config-angular-type-enum/-/config-angular-type-enum-17.4.0.tgz}
+    name: '@commitlint/config-angular-type-enum'
+    version: 17.4.0
+    engines: {node: '>=v14'}
+    dev: true
+
+  registry.npmjs.org/@commitlint/config-angular@17.6.1:
+    resolution: {integrity: sha512-6dOFX0AwdP+rrMGFe/X2u9n4GeM7oWf7WbbNohbwJeDkKStFG7RxA3RV9bUldovoS1qTS0f8NP3vjQbxSsOHJw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@commitlint/config-angular/-/config-angular-17.6.1.tgz}
+    name: '@commitlint/config-angular'
     version: 17.6.1
     engines: {node: '>=v14'}
     dependencies:
-      conventional-changelog-conventionalcommits: registry.npmjs.org/conventional-changelog-conventionalcommits@5.0.0
+      '@commitlint/config-angular-type-enum': registry.npmjs.org/@commitlint/config-angular-type-enum@17.4.0
     dev: true
 
   registry.npmjs.org/@commitlint/config-validator@17.4.4:
@@ -1013,17 +1020,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       compare-func: registry.npmjs.org/compare-func@2.0.0
-      q: registry.npmjs.org/q@1.5.1
-    dev: true
-
-  registry.npmjs.org/conventional-changelog-conventionalcommits@5.0.0:
-    resolution: {integrity: sha512-lCDbA+ZqVFQGUj7h9QBKoIpLhl8iihkO0nCTyRNzuXtcd7ubODpYB04IFy31JloiJgG0Uovu8ot8oxRzn7Nwtw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/conventional-changelog-conventionalcommits/-/conventional-changelog-conventionalcommits-5.0.0.tgz}
-    name: conventional-changelog-conventionalcommits
-    version: 5.0.0
-    engines: {node: '>=10'}
-    dependencies:
-      compare-func: registry.npmjs.org/compare-func@2.0.0
-      lodash: registry.npmjs.org/lodash@4.17.21
       q: registry.npmjs.org/q@1.5.1
     dev: true
 
