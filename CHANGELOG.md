@@ -4,12 +4,15 @@
 
 ### Features
 
+- **zhi-dist:** add custom prompt message ([f9ea97f](https://github.com/terwer/zhi/commit/f9ea97ff359b61c8a070ea938968e59a5ac3bdfd))
+- **zhi-dist:** add commitlint prompt ([1d0c4ff](https://github.com/terwer/zhi/commit/1d0c4fff785dda8f3e58e52ec40648bbf78079c7))
+- **zhi-dist:** add husky ([7eec462](https://github.com/terwer/zhi/commit/7eec4620dc27dfc17a8d74cff097e69d67c5af45))
 - **zhi-dist:** support angular like CHANGELOG ([78aac74](https://github.com/terwer/zhi/commit/78aac7423269b56f05fa175ca8474bfb44852343))
 - add changelog command ([de33c36](https://github.com/terwer/zhi/commit/de33c368d9cbbeb5992cb8a0745202bac28bd7c1))
 
 ### Chore
 
-- **zhi-dist:** reset dist ([68cbb64](https://github.com/terwer/zhi/commit/68cbb64bff70d23f1671a7870d7563b3a66a0d80))
+- **zhi-dist:** reset dist ([c3af589](https://github.com/terwer/zhi/commit/c3af5899091bda0469c627163520a46d430bcbae))
 - **zhi-core:** #163 move dependency definition to zhi.json ([6afe064](https://github.com/terwer/zhi/commit/6afe0647992a45fd685d6b1ae5cdbfb7a67367e3))
 
 ### Docs
