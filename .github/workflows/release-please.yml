@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - dist
+
 name: release-please
 jobs:
   release-please:
@@ -10,5 +11,7 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         id: release
         with:
+          branch: dist
           release-type: node
           package-name: release-please-action
+          type: all
