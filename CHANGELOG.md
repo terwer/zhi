@@ -9,6 +9,20 @@
 <!-- insertion marker -->
 <a name="v1.0.0-alpha.1"></a>
 
+## [1.0.1-alpha.1](https://github.com/terwer/zhi/compare/v1.0.0-alpha.1...v1.0.1-alpha.1) (2023-04-17)
+
+
+### Code Refactoring
+
+* **zhi-dist:** add command to git cz ([39a656d](https://github.com/terwer/zhi/commit/39a656dd31217e667919576b9ee695cb94e65b45)), closes [#171](https://github.com/terwer/zhi/issues/171)
+* **zhi-dist:** add commit cz ([2ef8da2](https://github.com/terwer/zhi/commit/2ef8da296f82e92e2960e21367c681355b5b80bd))
+
+
+### Miscellaneous
+
+* **zhi-dist:** allow new change types ([46e3636](https://github.com/terwer/zhi/commit/46e36367b199d58926b9d119dc58dba4a1712fc3))
+* **zhi-dist:** update CHANGELOG.md ([8976bf0](https://github.com/terwer/zhi/commit/8976bf080451aa23c18c36d8b4f6858a115c58a6))
+
 ## [v1.0.0-alpha.1](https://github.com/terwer/zhi/compare/1ceafc110e63a163974efc2d4838b16d68d234da...v1.0.0-alpha.1) (2023-04-17)
 
 ### Features
@@ -306,4 +320,3 @@
 - Add docs ([243ece3](https://github.com/terwer/zhi/commit/243ece3447c1d2647cf21551ba58b3e2267117d5))
 - Fix docs ([79b9f20](https://github.com/terwer/zhi/commit/79b9f20074f225925f3943ed2fc42c7febc650a2))
 - Add project notes ([7edc1e5](https://github.com/terwer/zhi/commit/7edc1e50bf18572a73d3ff857e44dbf750bf3ae9))
-
