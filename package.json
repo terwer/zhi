@@ -13,12 +13,17 @@
     "reset": "git pull origin main --force && git rm .",
     "recover": "unzip /Users/terwer/Downloads/zhi-dist.zip -d /Users/terwer/Documents/mydocs/zhi-dist && git add -A",
     "log": "git-changelog -c angular --sections feat,fix,refactor,chore,docs -t angular -T -o CHANGELOG.md",
-    "tag": "git push --tags"
+    "tag": "git push --tags",
+    "prepare": "husky install",
+    "test": "echo hello"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^10.0.3",
+    "husky": "^8.0.3",
     "semantic-release": "^21.0.1"
   }
 }
