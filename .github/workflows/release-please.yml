@@ -11,7 +11,8 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         id: release
         with:
-          branch: dist
           release-type: node
           package-name: release-please-action
-          type: all
+          default-branch: dist
+          pull-request-header: ':robot: A new release will be created'
+          changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}]'
