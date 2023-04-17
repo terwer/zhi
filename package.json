@@ -15,11 +15,16 @@
     "showlog": "git-changelog -c angular --sections feat,fix,refactor,chore,docs -t angular -T",
     "tag": "git push --tags",
     "prepare": "husky install",
+    "commitinit": "npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'",
+    "cz": "git-cz",
     "commit": "commit"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-angular": "^17.6.1",
-    "husky": "^8.0.3"
+    "@commitlint/cz-commitlint": "^17.5.0",
+    "commitizen": "^4.3.0",
+    "husky": "^8.0.3",
+    "inquirer": "8"
   }
 }
