@@ -10,8 +10,8 @@
   "license": "GPL",
   "scripts": {
     "backup": "git archive --format=zip --output=/Users/terwer/Downloads/zhi-dist.zip HEAD",
-    "reset": "git pull origin main --force && git rm -r .",
-    "recover": "unzip /Users/terwer/Downloads/zhi-dist.zip -d /Users/terwer/Documents/mydocs/zhi-dist",
+    "reset": "git pull origin main --force && git rm .",
+    "recover": "unzip /Users/terwer/Downloads/zhi-dist.zip -d /Users/terwer/Documents/mydocs/zhi-dist && git add -A",
     "log": "git-changelog -c conventional -o CHANGELOG.md"
   },
   "devDependencies": {
