@@ -4,6 +4,7 @@
 
 ### Features
 
+- **zhi-dist:** support angular like CHANGELOG ([9aa6270](https://github.com/terwer/zhi/commit/9aa6270260d0d7d6fd8479794231a9ba2a38aca0))
 - add changelog command ([de33c36](https://github.com/terwer/zhi/commit/de33c368d9cbbeb5992cb8a0745202bac28bd7c1))
 
 ### Docs
