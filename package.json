@@ -9,6 +9,8 @@
   "author": "terwer",
   "license": "GPL",
   "scripts": {
+    "backup": "git archive --format=zip --output=/Users/terwer/Downloads/zhi-dist.zip HEAD",
+    "reset": "git pull origin main --force && git rm .",
     "log": "git-changelog -c conventional -o CHANGELOG.md"
   },
   "devDependencies": {
