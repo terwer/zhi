@@ -1,7 +1,15 @@
 <!-- insertion marker -->
-<a name="1.0.0-alpha.1"></a>
+<a name="Unreleased"></a>
+## Unreleased ([compare](https://github.com/terwer/zhi/compare/v1.0.0-alpha.1...HEAD)) (2023-04-17)
 
-## [1.0.0-alpha.1](https://github.com/terwer/zhi/compare/v1.0.0-alpha.1...1.0.0-alpha.1) (2023-04-17)
+### Docs
+
+- **zhi-dist:** update description ([ea8edd3](https://github.com/terwer/zhi/commit/ea8edd3c5b9f71141e682046ff811abe66b52468))
+
+<!-- insertion marker -->
+<a name="v1.0.0-alpha.1"></a>
+
+## [v1.0.0-alpha.1](https://github.com/terwer/zhi/compare/1ceafc110e63a163974efc2d4838b16d68d234da...v1.0.0-alpha.1) (2023-04-17)
 
 ### Features
 
@@ -14,40 +22,9 @@
 - **zhi-dist:** add husky ([7eec462](https://github.com/terwer/zhi/commit/7eec4620dc27dfc17a8d74cff097e69d67c5af45))
 - **zhi-dist:** support angular like CHANGELOG ([78aac74](https://github.com/terwer/zhi/commit/78aac7423269b56f05fa175ca8474bfb44852343))
 - add changelog command ([de33c36](https://github.com/terwer/zhi/commit/de33c368d9cbbeb5992cb8a0745202bac28bd7c1))
-
-### Bug Fixes
-
-- **zhi-dist:** change rule to angular ([a19bbfd](https://github.com/terwer/zhi/commit/a19bbfdd6056e0920d46866d995e8e682cc62382))
-
-### Chore
-
-- **zhi-dist:** reset version ([fdf5e7d](https://github.com/terwer/zhi/commit/fdf5e7d0c5d8232fb76b462358545977e549ad3e))
-- **zhi-dist:** reset dist ([c3af589](https://github.com/terwer/zhi/commit/c3af5899091bda0469c627163520a46d430bcbae))
-- **zhi-core:** #163 move dependency definition to zhi.json ([6afe064](https://github.com/terwer/zhi/commit/6afe0647992a45fd685d6b1ae5cdbfb7a67367e3))
-
-### Docs
-
-- **zhi-dist:** README.md is special use for users, so add tech.md for developers ([41c346c](https://github.com/terwer/zhi/commit/41c346c864830ba1287cdad305035a6513e41e79))
-- **zhi-dist:** update docs ([ce8b852](https://github.com/terwer/zhi/commit/ce8b8527476abbf511a86db4ad03aeba6eaae05e))
-
-<a name="v1.0.0-alpha.1"></a>
-
-## [v1.0.0-alpha.1](https://github.com/terwer/zhi/compare/v1.0.0-alpha...v1.0.0-alpha.1) (2023-04-17)
-
-### Features
-
-- add changelog command ([aadf6ee](https://github.com/terwer/zhi/commit/aadf6ee8e22ef07eec1974a6e921f61d685f14e4))
 - add dist recover command ([fd4aef9](https://github.com/terwer/zhi/commit/fd4aef9af9ae06876889dd488afb92ddf3991cc4))
 - add dist commands ([7029151](https://github.com/terwer/zhi/commit/7029151d4492b1d470b46bee45a4029bca3c2fdc))
 - reset dist ([b55e446](https://github.com/terwer/zhi/commit/b55e4466aa3756efb4cbd323a35fb88da70df49f))
-
-<a name="v1.0.0-alpha"></a>
-
-## [v1.0.0-alpha](https://github.com/terwer/zhi/compare/1ceafc110e63a163974efc2d4838b16d68d234da...v1.0.0-alpha) (2023-04-17)
-
-### Features
-
-- reset dist ([88d33f8](https://github.com/terwer/zhi/commit/88d33f8193e10e5d46eb7bce49d8b2a13f53b16a))
 - add semantic-release ([d1211fb](https://github.com/terwer/zhi/commit/d1211fb79690f49f462d000629a4f5795ab511c2))
 - init dist ([90d171e](https://github.com/terwer/zhi/commit/90d171eaca8f2f4d988f38bc1b4a33d0b19e1e55))
 - zhi-log add color support ([829ea42](https://github.com/terwer/zhi/commit/829ea429e993de15bfc5fd7ef09b17d8b0455476))
@@ -205,6 +182,7 @@
 
 ### Bug Fixes
 
+- **zhi-dist:** change rule to angular ([a19bbfd](https://github.com/terwer/zhi/commit/a19bbfdd6056e0920d46866d995e8e682cc62382))
 - fix auto doc ([3c23ed0](https://github.com/terwer/zhi/commit/3c23ed0c36c6811e62269a16cde4305724a54cb6))
 - fix docs path ([e66ae1f](https://github.com/terwer/zhi/commit/e66ae1f834d1e75e1c4277d184219144650dc2b8))
 - ci ([6e1dd6c](https://github.com/terwer/zhi/commit/6e1dd6ca47ff07a9c4b15e45cb477f3a464ca8ff))
@@ -229,6 +207,10 @@
 
 ### Chore
 
+- **zhi-dist:** release 1.0.0-alpha.1 ([dd0be77](https://github.com/terwer/zhi/commit/dd0be777bc55aeb41aff5a3c09ca8a5f34836a61))
+- **zhi-dist:** reset version ([fdf5e7d](https://github.com/terwer/zhi/commit/fdf5e7d0c5d8232fb76b462358545977e549ad3e))
+- **zhi-dist:** reset dist ([c3af589](https://github.com/terwer/zhi/commit/c3af5899091bda0469c627163520a46d430bcbae))
+- **zhi-core:** #163 move dependency definition to zhi.json ([6afe064](https://github.com/terwer/zhi/commit/6afe0647992a45fd685d6b1ae5cdbfb7a67367e3))
 - **zhi:** update esbuild to 0.17.17 ([49a3b1b](https://github.com/terwer/zhi/commit/49a3b1b9fc3af8d8167f3dc6995480d6ae4ef437))
 - **zhi-core:** check runtime ([971ad3c](https://github.com/terwer/zhi/commit/971ad3c85c3982e35e89e11382809964f6f24c30))
 - **deps-dev:** bump esbuild from 0.16.17 to 0.17.17 ([5112042](https://github.com/terwer/zhi/commit/5112042e7ba4d49d36ee828b7bd5e7f6f27b81a4))
@@ -312,6 +294,8 @@
 
 ### Docs
 
+- **zhi-dist:** README.md is special use for users, so add tech.md for developers ([41c346c](https://github.com/terwer/zhi/commit/41c346c864830ba1287cdad305035a6513e41e79))
+- **zhi-dist:** update docs ([ce8b852](https://github.com/terwer/zhi/commit/ce8b8527476abbf511a86db4ad03aeba6eaae05e))
 - Add astro docs ([82b2363](https://github.com/terwer/zhi/commit/82b23637a51f63b5635ccf95c722c1ccfea55419))
 - ignore vercel files ([f35faa0](https://github.com/terwer/zhi/commit/f35faa09633056a72d4c103788f993b8f4bef231))
 - fix typo ([7c7c204](https://github.com/terwer/zhi/commit/7c7c2048a8fa34be3a667a97235ca151d118bef5))
