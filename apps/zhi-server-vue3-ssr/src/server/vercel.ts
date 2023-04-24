@@ -23,23 +23,9 @@
  * questions.
  */
 
-import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
-import { createExpressServer } from "~/src/server/index"
+import ServerMiddleware from "~/src/server/index"
 
-const logger = ZhiServerVue3SsrUtil.zhiLog("vercel-middleware")
-
-const server = createExpressServer()
-
-/**
- * CORS 在 vercel.json 配置，这里无需配置
- */
-server.use(function (req, res, next) {
-  if (req.method === "OPTIONS") {
-    logger.debug("precheck request received")
-    res.send(200)
-  } else {
-    next()
-  }
-})
+const serverMiddleware = new ServerMiddleware()
+const server = serverMiddleware.createExpressServer()
 
 export default server

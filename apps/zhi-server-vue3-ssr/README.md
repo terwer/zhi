@@ -34,8 +34,8 @@ pnpm localBuild -F zhi-server-vue3-ssr
 2 run
 
 ```ts
-const server = await zhiImport("/dynamic/blog/server.mjs")
-server()
+const  server  = zhiRequire("/dynamic/blog/index.cjs")
+server.default()
 ```
 
 ### Docker
@@ -55,5 +55,16 @@ pnpm dockerBuild -F zhi-server-vue3-ssr
 ### Vercel
 
 ```bash
+pnpm install -F zhi-server-vue3-ssr
+## dist
+## apps/zhi-server-vue3-ssr/dist
 pnpm vercelBuild -F zhi-server-vue3-ssr
 ````
+
+note:
+
+1 `vercel.json` should be in the project ROOT
+
+2 `api/` file will treat as serverless api. You can change `api/index.js` to register different server entry.
+
+3 You can also define a sun folder inside `api/` and add a `index.js`, it will be automatically registered as a serverless api

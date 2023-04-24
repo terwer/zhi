@@ -39,7 +39,7 @@ const outDir = args.outDir || args.o
 // for outer custom output for dev
 // for outer custom output for dev
 const baseDir = outDir ?? "./"
-const distDir = outDir ? baseDir : path.join(baseDir, "vercel",)
+const distDir = outDir ? baseDir : path.join(baseDir, "adaptors", "vercel")
 
 const defineEnv = {
   NODE_ENV: isProduction ? "production" : "development",
@@ -79,7 +79,7 @@ export default {
     isServe: true,
     onZhiBuildSuccess: function () {
       if (isProduction) {
-        console.log("server build success.do some cleanup.removing server.css ...")
+        console.log("vercel build success.do some cleanup.removing index.css ...")
         rimraf.sync(path.join(distDir, "/index.css"))
       }
     },

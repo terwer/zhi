@@ -22,15 +22,30 @@
  * or visit www.terwer.space if you need additional information or have any
  * questions.
  */
-/* eslint-disable */
 
-// 1 构建
-// pnpm localBuild -F zhi-server-vue3-ssr
+import ServerMiddleware from "~/src/server/index"
+import express, { Express } from "express"
+import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
+import path from "path"
 
-// 思源控制台运行
-// siyuan console
-const server = await zhiImport("/dynamic/blog/server.js")
-server()
+/**
+ * Node 服务器
+ */
+class NodeSsrServer extends ServerMiddleware {
+  public startServer(server: Express, p?: number) {
+    super.startServer(server, p)
+  }
+}
 
-// static only
-// http://127.0.0.1:3232/index.html
+const logger = ZhiServerVue3SsrUtil.zhiLog("node-server")
+
+const nodeServer = new NodeSsrServer()
+const server = nodeServer.createExpressServer()
+
+// 指定静态文件目录
+const staticPath = process.env.DIST_PATH ?? "./dist"
+const absStaticPath = path.resolve(staticPath)
+logger.info("absStaticPath=>", absStaticPath)
+server.use(express.static(absStaticPath))
+
+nodeServer.startServer(server, 3333)

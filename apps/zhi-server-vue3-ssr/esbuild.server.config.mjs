@@ -25,7 +25,6 @@
 
 import path from "path"
 import minimist from "minimist"
-import { copy } from "esbuild-plugin-copy"
 import stylePlugin from "esbuild-style-plugin"
 import vuePlugin from "@terwer/esbuild-plugin-vue3"
 import aliasPlugin from "@chialab/esbuild-plugin-alias"
@@ -39,7 +38,7 @@ const outDir = args.outDir || args.o
 
 // for outer custom output for dev
 const baseDir = outDir ?? "./"
-const distDir = outDir ? baseDir : path.join(baseDir, "dist")
+const distDir = outDir ? baseDir : path.join(baseDir, "adaptors", "siyuan")
 
 const defineEnv = {
   NODE_ENV: isProduction ? "production" : "development",
@@ -55,9 +54,9 @@ const coreDefine = {
  */
 export default {
   esbuildConfig: {
-    entryPoints: ["src/server/index.ts"],
-    outfile: path.join(distDir, "server.mjs"),
-    format: "esm",
+    entryPoints: ["src/server/siyuan.ts"],
+    outfile: path.join(distDir, "index.cjs"),
+    format: "cjs",
     platform: "node",
     define: { ...coreDefine },
     external: ["*.woff", "*.woff2", "*.ttf"],
@@ -65,19 +64,6 @@ export default {
       vuePlugin(),
       aliasPlugin({
         vue: "vue/dist/vue.esm-bundler.js",
-      }),
-      copy({
-        // this is equal to process.cwd(), which means we use cwd path as base path to resolve `to` path
-        // if not specified, this plugin uses ESBuild.build outdir/outfile options as base path.
-        resolveFrom: "cwd",
-        assets: [
-          // copy one file
-          {
-            from: ["./public/start.js"],
-            to: [path.join(distDir, "/start.js")],
-          },
-        ],
-        watch: true,
       }),
       inlineImage({
         limit: 5000,
