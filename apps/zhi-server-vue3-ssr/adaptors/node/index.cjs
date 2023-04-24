@@ -92005,7 +92005,7 @@ var require_lodash = __commonJS({
           var strLength = length ? stringSize(string) : 0;
           return length && strLength < length ? createPadding(length - strLength, chars) + string : string;
         }
-        function parseInt2(string, radix, guard) {
+        function parseInt3(string, radix, guard) {
           if (guard || radix == null) {
             radix = 0;
           } else if (radix) {
@@ -92665,7 +92665,7 @@ var require_lodash = __commonJS({
         lodash.pad = pad;
         lodash.padEnd = padEnd;
         lodash.padStart = padStart;
-        lodash.parseInt = parseInt2;
+        lodash.parseInt = parseInt3;
         lodash.random = random;
         lodash.reduce = reduce;
         lodash.reduceRight = reduceRight;
@@ -99418,16 +99418,18 @@ var ServerMiddleware = class {
         serveUrl = `${address}:${port}`;
       }
       logger.info(`Server is listening on ${serveUrl}`);
+      logger.info("Note that if you running in docker, this port is a inner port");
     });
   }
 };
 var server_default = ServerMiddleware;
 
 // src/server/node.ts
+var import_lodash2 = __toESM(require_lodash());
 var serverMiddleware = new server_default();
 var staticPath = process.env.DIST_PATH ?? "./dist";
 var server = serverMiddleware.createExpressServer(staticPath);
-serverMiddleware.startServer(server, 3333);
+serverMiddleware.startServer(server, (0, import_lodash2.parseInt)(process.env.PORT ?? "3333"));
 /*! Bundled license information:
 
 uri-js/dist/es5/uri.all.js:

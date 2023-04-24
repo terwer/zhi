@@ -24,6 +24,7 @@
  */
 
 import ServerMiddleware from "~/src/server/index"
+import { parseInt } from "lodash"
 
 /**
  * Node 服务器
@@ -35,4 +36,4 @@ const staticPath = process.env.DIST_PATH ?? "./dist"
 // 创建 express 实例
 const server = serverMiddleware.createExpressServer(staticPath)
 
-serverMiddleware.startServer(server, 3333)
+serverMiddleware.startServer(server, parseInt(process.env.PORT ?? "3333"))

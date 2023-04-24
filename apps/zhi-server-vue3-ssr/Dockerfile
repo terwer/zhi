@@ -5,24 +5,21 @@
 FROM docker.io/node:lts-alpine
 
 ENV HOST=0.0.0.0
-ENV PORT=3000
+ENV PORT=3333
+ENV DIST_PATH /app
 
 WORKDIR /app
-ENV BASE_PATH /app
 
 RUN addgroup --system vue3-ssr && \
     adduser --system -G vue3-ssr vue3-ssr
 
-RUN npm init --yes
-RUN npm install crosss-fetch
-RUN chown -R vue3-ssr:vue3-ssr node_modules
-
 USER vue3-ssr
 
 COPY dist/ .
+COPY adaptors/node/ .
 
 # You can remove this install step if you build with `--bundle` option.
 # The bundled output will include external dependencies.
 # RUN npm --prefix vue3-ssr --omit=dev -f install
 
-CMD [ "node", "node-start.mjs" ]
+CMD [ "node", "index.cjs" ]

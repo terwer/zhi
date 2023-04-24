@@ -176,6 +176,7 @@ class ServerMiddleware {
         serveUrl = `${address}:${port}`
       }
       logger.info(`Server is listening on ${serveUrl}`)
+      logger.info("Note that if you running in docker, this port is a inner port")
     })
   }
 }
