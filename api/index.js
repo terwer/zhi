@@ -26,5 +26,5 @@
 // https://vercel.com/guides/using-express-with-vercel
 // 在这里切换vercel的serverless路由
 // 支持 test/index.js 这种子目录模式
-const app = require("../apps/zhi-server-vue3-ssr/vercel/index.cjs")
+const app = require("../apps/zhi-server-vue3-ssr/adaptors/vercel/index.cjs")
 module.exports = app

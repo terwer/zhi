@@ -23,59 +23,27 @@
  * questions.
  */
 
-import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
-import { createExpressServer } from "~/src/server/index"
 import { SiyuanDevice } from "zhi-device"
-import express from "express"
+import ServerMiddleware from "~/src/server/index"
 
 /**
- * HTTP 服务
- *
- * @author terwer
- * @version 1.0.0
- * @since 1.0.0
- */
-class ZhiVue3SsrServer {
-  private readonly logger
-
-  constructor() {
-    this.logger = ZhiServerVue3SsrUtil.zhiLog("ssr-server")
-  }
-
-  init(base?: string, p?: number) {
-    const server = createExpressServer()
-
-    // 指定静态文件目录
-    const basePath = SiyuanDevice.joinPath(SiyuanDevice.zhiThemePath(), "/dynamic/blog")
-    const staticPath = process.env.BASE_PATH ?? basePath
-    this.logger.info("staticPath=>", staticPath)
-    server.use(express.static(staticPath))
-
-    // 监听端口
-    const listener = server.listen(p ?? 3333, () => {
-      let serveUrl
-      const addr = listener.address() ?? "unknown host"
-      if (typeof addr == "string") {
-        serveUrl = addr
-      } else {
-        const { port, address } = addr
-        serveUrl = `${address}:${port}`
-      }
-      this.logger.info(`Server is listening on ${serveUrl}`)
-    })
-
-    return "ok"
-  }
-}
-
-/**
- * 服务入口
+ * HTTP 服务入口
  *
  * @param basePath - 基本路径，默认是 zhi 主题路径，需要传递绝对路径
  * @param port - 端口
  */
-const init = (basePath?: string, port?: number) => {
-  return new ZhiVue3SsrServer().init(basePath, port)
+function init(basePath?: string, port?: number) {
+  const serverMiddleware = new ServerMiddleware()
+
+  // 指定静态文件目录
+  const staticPath = process.env.DIST_PATH ?? SiyuanDevice.joinPath(SiyuanDevice.zhiThemePath(), "/dynamic/blog")
+  // 创建 express 实例
+  const server = serverMiddleware.createExpressServer(staticPath)
+
+  // 启动 express
+  serverMiddleware.startServer(server, port)
+
+  return "ok"
 }
 
 export default init

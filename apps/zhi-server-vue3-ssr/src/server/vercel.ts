@@ -23,23 +23,13 @@
  * questions.
  */
 
-import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
-import { createExpressServer } from "~/src/server/index"
-
-const logger = ZhiServerVue3SsrUtil.zhiLog("vercel-middleware")
-
-const server = createExpressServer()
+import ServerMiddleware from "~/src/server/index"
 
 /**
- * CORS 在 vercel.json 配置，这里无需配置
+ * Vercel 适配
  */
-server.use(function (req, res, next) {
-  if (req.method === "OPTIONS") {
-    logger.debug("precheck request received")
-    res.send(200)
-  } else {
-    next()
-  }
-})
+const serverMiddleware = new ServerMiddleware()
+// 在 vercel 的 dashboard 设置静态资源路径为 apps/zhi-server-vue3-ssr/dist
+const server = serverMiddleware.createExpressServer()
 
 export default server

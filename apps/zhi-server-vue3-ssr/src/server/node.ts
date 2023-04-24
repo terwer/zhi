@@ -22,15 +22,18 @@
  * or visit www.terwer.space if you need additional information or have any
  * questions.
  */
-/* eslint-disable */
 
-// 1 构建
-// pnpm localBuild -F zhi-server-vue3-ssr
+import ServerMiddleware from "~/src/server/index"
+import { parseInt } from "lodash"
 
-// 思源控制台运行
-// siyuan console
-const server = await zhiImport("/dynamic/blog/server.js")
-server()
+/**
+ * Node 服务器
+ */
+const serverMiddleware = new ServerMiddleware()
 
-// static only
-// http://127.0.0.1:3232/index.html
+// 指定静态文件目录
+const staticPath = process.env.DIST_PATH ?? "./dist"
+// 创建 express 实例
+const server = serverMiddleware.createExpressServer(staticPath)
+
+serverMiddleware.startServer(server, parseInt(process.env.PORT ?? "3333"))

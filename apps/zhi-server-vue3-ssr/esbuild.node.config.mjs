@@ -39,7 +39,7 @@ const outDir = args.outDir || args.o
 
 // for outer custom output for dev
 const baseDir = outDir ?? "./"
-const distDir = outDir ? baseDir : path.join(baseDir, "dist")
+const distDir = outDir ? baseDir : path.join(baseDir, "adaptors", "node")
 
 const defineEnv = {
   NODE_ENV: isProduction ? "production" : "development",
@@ -55,40 +55,16 @@ const coreDefine = {
  */
 export default {
   esbuildConfig: {
-    entryPoints: ["src/server/index.ts"],
-    outfile: path.join(distDir, "server.mjs"),
-    format: "esm",
+    entryPoints: ["src/server/node.ts"],
+    outfile: path.join(distDir, "index.cjs"),
+    format: "cjs",
     platform: "node",
     define: { ...coreDefine },
-    banner: {
-      js: `
-        import path from "path";
-        import { fileURLToPath } from 'url';
-        import { createRequire as topLevelCreateRequire } from 'module';
-        
-        const require = topLevelCreateRequire(import.meta.url);
-        const __filename = fileURLToPath(import.meta.url);
-        const __dirname = path.dirname(__filename);
-        `,
-    },
     external: ["*.woff", "*.woff2", "*.ttf"],
     plugins: [
       vuePlugin(),
       aliasPlugin({
         vue: "vue/dist/vue.esm-bundler.js",
-      }),
-      copy({
-        // this is equal to process.cwd(), which means we use cwd path as base path to resolve `to` path
-        // if not specified, this plugin uses ESBuild.build outdir/outfile options as base path.
-        resolveFrom: "cwd",
-        assets: [
-          // copy one file
-          {
-            from: ["./public/node-start.mjs"],
-            to: [path.join(distDir, "/node-start.mjs")],
-          },
-        ],
-        watch: true,
       }),
       inlineImage({
         limit: 5000,
@@ -103,8 +79,8 @@ export default {
     isServe: true,
     onZhiBuildSuccess: function () {
       if (isProduction) {
-        console.log("node build success.do some cleanup.removing server.css ...")
-        rimraf.sync(path.join(distDir, "/server.css"))
+        console.log("node build success.do some cleanup.removing index.css ...")
+        rimraf.sync(path.join(distDir, "/index.css"))
       }
     },
   },

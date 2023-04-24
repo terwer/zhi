@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "dev": "pnpm clientDev",
-    "nodeDev": "nodemon ./dist/node-start.mjs",
+    "nodeDev": "nodemon ./adaptors/node/index.cjs",
     "clientDev": "zhi-build -c esbuild.client.config.mjs --watch --outDir=/Users/terwer/Documents/mydocs/SiYuanWorkspace/public/conf/appearance/themes/zhi/dynamic/blog",
     "build": "pnpm clientBuild && pnpm serverBuild",
     "localBuild": "pnpm localClientBuild && pnpm localServerBuild",
@@ -46,7 +46,6 @@
     "vitest-config-custom": "workspace:*"
   },
   "dependencies": {
-    "cross-fetch": "^3.1.5",
     "express": "^4.18.2",
     "good-storage": "^1.1.1",
     "lodash": "^4.17.21",

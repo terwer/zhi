@@ -23,10 +23,11 @@
  * questions.
  */
 
-import express from "express"
+import express, { Express } from "express"
 import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
 import createVueApp from "~/src/app"
 import { renderToString } from "vue/server-renderer"
+import * as path from "path"
 
 /**
  * 通用的 express 实例
@@ -35,62 +36,95 @@ import { renderToString } from "vue/server-renderer"
  * @version 1.0.0
  * @since 1.0.0
  */
-export function createExpressServer() {
-  const logger = ZhiServerVue3SsrUtil.zhiLog("server-middleware")
-  const server = express()
+class ServerMiddleware {
+  protected logger
 
-  // api 接口
-  server.get("/api", (req, res) => {
-    res.send("Hello World!")
-  })
+  constructor() {
+    this.logger = ZhiServerVue3SsrUtil.zhiLog("server-middleware")
+  }
 
-  server.get("/api/user/:id", (req, res) => {
-    const userId = req.params.id // 获取URL参数id
-    const user = {
-      id: userId,
-      name: "Emily",
-      age: 28,
-      email: "emily@gmail.com",
+  /**
+   * 创建一个 express 实例，并添加通用路由
+   *
+   * @protected
+   * @param staticPath - 静态资源路径，不传递则不设置
+   */
+  public createExpressServer(staticPath?: string) {
+    const logger = ZhiServerVue3SsrUtil.zhiLog("server-middleware")
+    const server = express()
+
+    /**
+     * CORS 在 vercel.json 配置，这里只处理 OPTIONS 预检请求
+     */
+    server.use(function (req, res, next) {
+      if (req.method === "OPTIONS") {
+        logger.debug("precheck request received")
+        res.send(200)
+      } else {
+        next()
+      }
+    })
+
+    // 静态资源路径
+    if (staticPath) {
+      // 指定静态文件目录
+      const absStaticPath = path.resolve(staticPath)
+      logger.info("absStaticPath=>", absStaticPath)
+      server.use(express.static(absStaticPath))
     }
-    res.json(user)
-  })
 
-  // 服务器端路由匹配
-  server.get("*", (req, res) => {
-    const context = {
-      url: req.url,
-    }
+    // api 接口
+    server.get("/api", (req, res) => {
+      res.send("Hello World!")
+    })
 
-    const { app, router } = createVueApp()
+    server.get("/api/user/:id", (req, res) => {
+      const userId = req.params.id // 获取URL参数id
+      const user = {
+        id: userId,
+        name: "Emily",
+        age: 28,
+        email: "emily@gmail.com",
+      }
+      res.json(user)
+    })
 
-    logger.debug("ssr context=>", context)
-    router
-      .push(context.url)
-      .then(() => {
-        logger.info("route pushed to=>", context.url)
+    // 服务器端路由匹配
+    server.get("*", (req, res) => {
+      const context = {
+        url: req.url,
+      }
 
-        router.isReady().then(() => {
-          logger.debug("router.isReady")
-          const matchedComponents = router.currentRoute.value.matched
-          logger.trace("matchedComponents=>", matchedComponents)
-          if (!matchedComponents.length) {
-            return res.status(404).end("Page Not Found")
-          }
-          Promise.all(
-            matchedComponents.map((component: any) => {
-              if (component.asyncData) {
-                return component.asyncData({
-                  route: router.currentRoute.value,
-                })
-              }
-            })
-          )
-            .then(() => {
-              logger.trace("start renderToString...")
-              const staticV = "202304220051"
-              renderToString(app, context).then((appHtml) => {
-                logger.trace("appHtml=>", appHtml)
-                res.send(`
+      const { app, router } = createVueApp()
+
+      logger.debug("ssr context=>", context)
+      router
+        .push(context.url)
+        .then(() => {
+          logger.info("route pushed to=>", context.url)
+
+          router.isReady().then(() => {
+            logger.debug("router.isReady")
+            const matchedComponents = router.currentRoute.value.matched
+            logger.trace("matchedComponents=>", matchedComponents)
+            if (!matchedComponents.length) {
+              return res.status(404).end("Page Not Found")
+            }
+            Promise.all(
+              matchedComponents.map((component: any) => {
+                if (component.asyncData) {
+                  return component.asyncData({
+                    route: router.currentRoute.value,
+                  })
+                }
+              })
+            )
+              .then(() => {
+                logger.trace("start renderToString...")
+                const staticV = "202304220051"
+                renderToString(app, context).then((appHtml) => {
+                  logger.trace("appHtml=>", appHtml)
+                  res.send(`
                   <!DOCTYPE html>
                   <html lang="zh">
                     <head>
@@ -106,18 +140,45 @@ export function createExpressServer() {
                     </body>
                   </html>
               `)
-                res.end()
+                  res.end()
+                })
               })
-            })
-            .catch((reason) => {
-              res.end("error, reason is:" + reason)
-            })
+              .catch((reason) => {
+                res.end("error, reason is:" + reason)
+              })
+          })
         })
-      })
-      .catch((reason) => {
-        logger.error("route push failed", reason)
-      })
-  })
+        .catch((reason) => {
+          logger.error("route push failed", reason)
+        })
+    })
 
-  return server
+    return server
+  }
+
+  /**
+   * 启动 express 服务器
+   *
+   * @param server express 实例
+   * @param p 端口，默认3333
+   */
+  public startServer(server: Express, p?: number) {
+    const logger = ZhiServerVue3SsrUtil.zhiLog("server-middleware")
+
+    // 监听端口
+    const listener = server.listen(p ?? 3333, () => {
+      let serveUrl
+      const addr = listener.address() ?? "unknown host"
+      if (typeof addr == "string") {
+        serveUrl = addr
+      } else {
+        const { port, address } = addr
+        serveUrl = `${address}:${port}`
+      }
+      logger.info(`Server is listening on ${serveUrl}`)
+      logger.info("Note that if you running in docker, this port is a inner port")
+    })
+  }
 }
+
+export default ServerMiddleware

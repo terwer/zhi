@@ -3,4 +3,4 @@ services:
   app:
     image: terwer/vue3-ssr:latest
     ports:
-      - "3000:3000"
+      - "3333:3333"
