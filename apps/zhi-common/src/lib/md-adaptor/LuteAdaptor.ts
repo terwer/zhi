@@ -1,3 +1,5 @@
+// noinspection TypeScriptUnresolvedReference
+
 /*
  * Copyright (c) 2023, Terwer . All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
@@ -25,7 +27,6 @@
 
 import MarkdownAdaptor from "./MarkdownAdaptor"
 import ZhiCommonUtil from "../ZhiCommonUtil"
-import { SiyuanDevice } from "zhi-device"
 
 /**
  * Lute 适配器
@@ -73,9 +74,9 @@ class LuteAdaptor implements MarkdownAdaptor {
   constructor() {
     this.logger = ZhiCommonUtil.zhiLog("lute-adaptor")
 
-    const syWin = SiyuanDevice.siyuanWindow()
-    this.logger.debug("syWin=>", syWin)
-    if (syWin.Lute) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    if (Lute) {
       this.logger.debug("Detected Lute is bundled, will use!")
     } else {
       this.logger.debug("Lute is not available!")
@@ -83,8 +84,9 @@ class LuteAdaptor implements MarkdownAdaptor {
   }
 
   isAvailable(): boolean {
-    const syWin = SiyuanDevice.siyuanWindow()
-    return typeof syWin.Lute !== "undefined"
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return typeof Lute !== "undefined"
   }
 
   /**
@@ -109,8 +111,9 @@ class LuteAdaptor implements MarkdownAdaptor {
       return md
     }
 
-    const syWin = SiyuanDevice.siyuanWindow()
-    const luteObj = syWin.Lute
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const luteObj = Lute
     const lute = luteObj.New()
 
     const renderers = {

@@ -23,7 +23,7 @@
  * questions.
  */
 
-import { createMemoryHistory, createRouter, createWebHistory } from "vue-router"
+import { createMemoryHistory, createRouter, createWebHashHistory, createWebHistory } from "vue-router"
 import Home from "~/pages/home.vue"
 import Post from "~/pages/post.vue"
 import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
@@ -31,7 +31,12 @@ import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
 function createPageRouter() {
   const logger = ZhiServerVue3SsrUtil.zhiLog("vue-router")
 
-  const historyMode = import.meta.env.SSR ? createMemoryHistory() : createWebHistory()
+  // const historyMode = import.meta.env.SSR ? createMemoryHistory() : createWebHistory()
+  const historyMode = import.meta.env.SSR
+    ? createMemoryHistory()
+    : import.meta.env.STATIC
+    ? createWebHashHistory()
+    : createWebHistory()
   logger.info("isSSR=>", import.meta.env.SSR)
   logger.debug("using historyMode=>", historyMode)
 
@@ -45,7 +50,7 @@ function createPageRouter() {
         component: Home,
       },
       {
-        path: "/post",
+        path: "/post/:id",
         component: Post,
       },
     ],

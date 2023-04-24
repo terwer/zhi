@@ -2,7 +2,7 @@
   <aside class="sidebar">
     <!-- 作者信息 -->
     <div v-if="computes.blogger" class="blogger">
-      <img :src="datas.appBase + computes.blogger.value.avatar" />
+      <img :src="computes.blogger.value.avatar" />
       <div class="blogger-info">
         <h3>{{ computes.blogger.value.name }}</h3>
 
@@ -56,9 +56,7 @@ const props = defineProps({
 })
 
 // datas
-const datas = reactive({
-  appBase: env.getStringEnv("VITE_APP_BASE"),
-})
+const datas = reactive({})
 
 // computes
 const computes = {
@@ -68,9 +66,7 @@ const computes = {
 }
 
 // lifecycle
-onBeforeMount(async () => {
-  datas.appBase = window.location.origin + env.getStringEnv("VITE_APP_BASE")
-})
+onBeforeMount(async () => {})
 </script>
 
 <style lang="stylus">

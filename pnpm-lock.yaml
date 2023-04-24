@@ -434,6 +434,9 @@ importers:
 
   apps/zhi-server-vue3-ssr:
     dependencies:
+      cross-fetch:
+        specifier: ^3.1.5
+        version: registry.npmjs.org/cross-fetch@3.1.5
       express:
         specifier: ^4.18.2
         version: registry.npmjs.org/express@4.18.2
@@ -8548,7 +8551,6 @@ packages:
       node-fetch: registry.npmjs.org/node-fetch@2.6.7
     transitivePeerDependencies:
       - encoding
-    dev: true
 
   registry.npmjs.org/cross-spawn@6.0.5:
     resolution: {integrity: sha512-eTVLrBSt7fjbDygz805pMnstIs2VTBNkRm0qxZd+M7A5XDdxVRWO5MxGBXZhjY4cqLYLdtrGqRf8mBPmzwSpWQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/cross-spawn/-/cross-spawn-6.0.5.tgz}
@@ -15091,7 +15093,6 @@ packages:
         optional: true
     dependencies:
       whatwg-url: registry.npmjs.org/whatwg-url@5.0.0
-    dev: true
 
   registry.npmjs.org/node-fetch@2.6.9:
     resolution: {integrity: sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.9.tgz}
