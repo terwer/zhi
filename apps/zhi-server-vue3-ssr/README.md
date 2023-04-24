@@ -34,7 +34,7 @@ pnpm localBuild -F zhi-server-vue3-ssr
 2 run
 
 ```ts
-const  server  = zhiRequire("/dynamic/blog/index.cjs")
+const server  = zhiRequire("/dynamic/blog/index.cjs")
 server.default()
 ```
 
@@ -58,6 +58,7 @@ pnpm dockerBuild -F zhi-server-vue3-ssr
 pnpm install -F zhi-server-vue3-ssr
 ## dist
 ## apps/zhi-server-vue3-ssr/dist
+## set the static resource path to apps/zhi-server-vue3-ssr/dist on vercel's dashboard
 pnpm vercelBuild -F zhi-server-vue3-ssr
 ````
 

@@ -5014,11 +5014,11 @@ var require_raw_body = __commonJS({
       if (done) {
         return readStream(stream, encoding, length, limit, wrap(done));
       }
-      return new Promise(function executor(resolve2, reject) {
+      return new Promise(function executor(resolve3, reject) {
         readStream(stream, encoding, length, limit, function onRead(err, buf) {
           if (err)
             return reject(err);
-          resolve2(buf);
+          resolve3(buf);
         });
       });
     }
@@ -17803,7 +17803,7 @@ var require_view = __commonJS({
     var basename2 = path3.basename;
     var extname2 = path3.extname;
     var join2 = path3.join;
-    var resolve2 = path3.resolve;
+    var resolve3 = path3.resolve;
     module2.exports = View;
     function View(name, options) {
       var opts = options || {};
@@ -17837,7 +17837,7 @@ var require_view = __commonJS({
       debug('lookup "%s"', name);
       for (var i = 0; i < roots.length && !path4; i++) {
         var root = roots[i];
-        var loc = resolve2(root, name);
+        var loc = resolve3(root, name);
         var dir = dirname2(loc);
         var file = basename2(loc);
         path4 = this.resolve(dir, file);
@@ -17848,7 +17848,7 @@ var require_view = __commonJS({
       debug('render "%s"', this.path);
       this.engine(this.path, options, callback);
     };
-    View.prototype.resolve = function resolve3(dir, file) {
+    View.prototype.resolve = function resolve4(dir, file) {
       var ext = this.ext;
       var path4 = join2(dir, file);
       var stat = tryStat(path4);
@@ -18498,7 +18498,7 @@ var require_send = __commonJS({
     var extname2 = path3.extname;
     var join2 = path3.join;
     var normalize2 = path3.normalize;
-    var resolve2 = path3.resolve;
+    var resolve3 = path3.resolve;
     var sep2 = path3.sep;
     var BYTES_RANGE_REGEXP = /^ *bytes=/;
     var MAX_MAXAGE = 60 * 60 * 24 * 365 * 1e3;
@@ -18535,7 +18535,7 @@ var require_send = __commonJS({
       this._maxage = opts.maxAge || opts.maxage;
       this._maxage = typeof this._maxage === "string" ? ms(this._maxage) : Number(this._maxage);
       this._maxage = !isNaN(this._maxage) ? Math.min(Math.max(0, this._maxage), MAX_MAXAGE) : 0;
-      this._root = opts.root ? resolve2(opts.root) : null;
+      this._root = opts.root ? resolve3(opts.root) : null;
       if (!this._root && opts.from) {
         this.from(opts.from);
       }
@@ -18559,7 +18559,7 @@ var require_send = __commonJS({
       return this;
     }, "send.index: pass index as option");
     SendStream.prototype.root = function root(path4) {
-      this._root = resolve2(String(path4));
+      this._root = resolve3(String(path4));
       debug("root %s", this._root);
       return this;
     };
@@ -18723,7 +18723,7 @@ var require_send = __commonJS({
           return res;
         }
         parts = normalize2(path4).split(sep2);
-        path4 = resolve2(path4);
+        path4 = resolve3(path4);
       }
       if (containsDotFile(parts)) {
         var access = this._dotfiles;
@@ -20023,7 +20023,7 @@ var require_application = __commonJS({
     var deprecate = require_depd()("express");
     var flatten = require_array_flatten();
     var merge = require_utils_merge();
-    var resolve2 = require("path").resolve;
+    var resolve3 = require("path").resolve;
     var setPrototypeOf = require_setprototypeof();
     var hasOwnProperty = Object.prototype.hasOwnProperty;
     var slice = Array.prototype.slice;
@@ -20062,7 +20062,7 @@ var require_application = __commonJS({
       this.mountpath = "/";
       this.locals.settings = this.settings;
       this.set("view", View);
-      this.set("views", resolve2("views"));
+      this.set("views", resolve3("views"));
       this.set("jsonp callback name", "callback");
       if (env === "production") {
         this.enable("view cache");
@@ -21313,7 +21313,7 @@ var require_response = __commonJS({
     var send = require_send();
     var extname2 = path3.extname;
     var mime = send.mime;
-    var resolve2 = path3.resolve;
+    var resolve3 = path3.resolve;
     var vary = require_vary();
     var res = Object.create(http.ServerResponse.prototype);
     module2.exports = res;
@@ -21577,7 +21577,7 @@ var require_response = __commonJS({
       }
       opts = Object.create(opts);
       opts.headers = headers;
-      var fullPath = !opts.root ? resolve2(path4) : path4;
+      var fullPath = !opts.root ? resolve3(path4) : path4;
       return this.sendFile(fullPath, opts, done);
     };
     res.contentType = res.type = function contentType(type) {
@@ -21842,7 +21842,7 @@ var require_serve_static = __commonJS({
     var encodeUrl = require_encodeurl();
     var escapeHtml = require_escape_html();
     var parseUrl = require_parseurl();
-    var resolve2 = require("path").resolve;
+    var resolve3 = require("path").resolve;
     var send = require_send();
     var url = require("url");
     module2.exports = serveStatic;
@@ -21862,7 +21862,7 @@ var require_serve_static = __commonJS({
         throw new TypeError("option setHeaders must be function");
       }
       opts.maxage = opts.maxage || opts.maxAge || 0;
-      opts.root = resolve2(root);
+      opts.root = resolve3(root);
       var onDirectory = redirect ? createRedirectDirectoryListener() : createNotFoundDirectoryListener();
       return function serveStatic2(req, res, next) {
         if (req.method !== "GET" && req.method !== "HEAD") {
@@ -25036,7 +25036,7 @@ var init_dist = __esm({
           const schOrFunc = root.refs[ref3];
           if (schOrFunc)
             return schOrFunc;
-          let _sch = resolve2.call(this, root, ref3);
+          let _sch = resolve3.call(this, root, ref3);
           if (_sch === void 0) {
             const schema = (_a = root.localRefs) === null || _a === void 0 ? void 0 : _a[ref3];
             const { schemaId } = this.opts;
@@ -25063,7 +25063,7 @@ var init_dist = __esm({
         function sameSchemaEnv(s1, s2) {
           return s1.schema === s2.schema && s1.root === s2.root && s1.baseId === s2.baseId;
         }
-        function resolve2(root, ref3) {
+        function resolve3(root, ref3) {
           let sch;
           while (typeof (sch = this.refs[ref3]) == "string")
             ref3 = sch;
@@ -25909,7 +25909,7 @@ var init_dist = __esm({
             target.fragment = relative2.fragment;
             return target;
           }
-          function resolve2(baseURI, relativeURI, options) {
+          function resolve3(baseURI, relativeURI, options) {
             var schemelessOptions = assign2({ scheme: "null" }, options);
             return serialize(resolveComponents(parse2(baseURI, schemelessOptions), parse2(relativeURI, schemelessOptions), schemelessOptions, true), schemelessOptions);
           }
@@ -26177,7 +26177,7 @@ var init_dist = __esm({
           exports2.removeDotSegments = removeDotSegments;
           exports2.serialize = serialize;
           exports2.resolveComponents = resolveComponents;
-          exports2.resolve = resolve2;
+          exports2.resolve = resolve3;
           exports2.normalize = normalize2;
           exports2.equal = equal;
           exports2.escapeComponent = escapeComponent;
@@ -26726,13 +26726,13 @@ var init_dist = __esm({
         }, warn() {
         }, error() {
         } };
-        function getLogger(logger2) {
-          if (logger2 === false)
+        function getLogger(logger) {
+          if (logger === false)
             return noLogs;
-          if (logger2 === void 0)
+          if (logger === void 0)
             return console;
-          if (logger2.log && logger2.warn && logger2.error)
-            return logger2;
+          if (logger.log && logger.warn && logger.error)
+            return logger;
           throw new Error("logger must implement log, warn and error methods");
         }
         var KEYWORD_NAME = /^[a-z_$][a-z0-9_$:-]*$/i;
@@ -33023,15 +33023,15 @@ var init_dist = __esm({
             if (typeof name !== "symbol" && typeof name !== "string" || name === "") {
               throw new TypeError("You must supply a name when creating a logger.");
             }
-            var logger2 = _loggersByName[name];
-            if (!logger2) {
-              logger2 = _loggersByName[name] = new Logger2(
+            var logger = _loggersByName[name];
+            if (!logger) {
+              logger = _loggersByName[name] = new Logger2(
                 name,
                 defaultLogger.getLevel(),
                 defaultLogger.methodFactory
               );
             }
-            return logger2;
+            return logger;
           };
           var _log = typeof window !== undefinedType ? window.log : void 0;
           defaultLogger.noConflict = function() {
@@ -33094,12 +33094,12 @@ var init_dist = __esm({
             }
             loglevel2 = rootLogger;
           };
-          var apply = function(logger2, config) {
-            if (!logger2 || !logger2.setLevel) {
+          var apply = function(logger, config) {
+            if (!logger || !logger.setLevel) {
               throw new TypeError("Argument is not a logger");
             }
-            var originalFactory = logger2.methodFactory;
-            var name = logger2.name || "";
+            var originalFactory = logger.methodFactory;
+            var name = logger.name || "";
             var parent2 = configs[name] || configs[""] || defaults;
             function methodFactory(methodName, logLevel, loggerName) {
               var originalMethod = originalFactory(methodName, logLevel, loggerName);
@@ -33141,19 +33141,19 @@ var init_dist = __esm({
               };
             }
             if (!configs[name]) {
-              logger2.methodFactory = methodFactory;
+              logger.methodFactory = methodFactory;
             }
             config = config || {};
             if (config.template)
               config.format = void 0;
             configs[name] = merge({}, parent2, config);
-            logger2.setLevel(logger2.getLevel());
+            logger.setLevel(logger.getLevel());
             if (!loglevel2) {
-              logger2.warn(
+              logger.warn(
                 "It is necessary to call the function reg() of loglevel-plugin-prefix before calling apply. From the next release, it will throw an error. See more: https://github.com/kutuluk/loglevel-plugin-prefix/blob/master/README.md"
               );
             }
-            return logger2;
+            return logger;
           };
           var api = {
             reg,
@@ -34174,10 +34174,10 @@ var init_dist = __esm({
           return this.loggerMap[loggerName];
         }
         const env = this.env;
-        const logger2 = src_default2.customSignLogFactory(sign, env).getLogger(loggerName);
-        this.loggerMap[loggerName] = logger2;
-        logger2.debug("Zhi-log add new logger");
-        return logger2;
+        const logger = src_default2.customSignLogFactory(sign, env).getLogger(loggerName);
+        this.loggerMap[loggerName] = logger;
+        logger.debug("Zhi-log add new logger");
+        return logger;
       }
       /**
        * 获取 zhi-log 实例
@@ -39884,8 +39884,8 @@ var require_runtime_core_cjs_prod = __commonJS({
         return pendingRequest || (thisRequest = pendingRequest = loader().catch((err) => {
           err = err instanceof Error ? err : new Error(String(err));
           if (userOnError) {
-            return new Promise((resolve3, reject) => {
-              const userRetry = () => resolve3(retry());
+            return new Promise((resolve4, reject) => {
+              const userRetry = () => resolve4(retry());
               const userFail = () => reject(err);
               userOnError(err, userRetry, userFail, retries + 1);
             });
@@ -40350,8 +40350,8 @@ var require_runtime_core_cjs_prod = __commonJS({
         const res = (
           // local registration
           // check instance[type] first which is resolved for options API
-          resolve2(instance[type] || Component[type], name) || // global registration
-          resolve2(instance.appContext[type], name)
+          resolve3(instance[type] || Component[type], name) || // global registration
+          resolve3(instance.appContext[type], name)
         );
         if (!res && maybeSelfReference) {
           return Component;
@@ -40359,7 +40359,7 @@ var require_runtime_core_cjs_prod = __commonJS({
         return res;
       }
     }
-    function resolve2(registry, name) {
+    function resolve3(registry, name) {
       return registry && (registry[name] || registry[shared.camelize(name)] || registry[shared.capitalize(shared.camelize(name))]);
     }
     function renderList(source, renderItem, cache, index) {
@@ -45634,8 +45634,8 @@ var require_runtime_core_cjs = __commonJS({
         return pendingRequest || (thisRequest = pendingRequest = loader().catch((err) => {
           err = err instanceof Error ? err : new Error(String(err));
           if (userOnError) {
-            return new Promise((resolve3, reject) => {
-              const userRetry = () => resolve3(retry());
+            return new Promise((resolve4, reject) => {
+              const userRetry = () => resolve4(retry());
               const userFail = () => reject(err);
               userOnError(err, userRetry, userFail, retries + 1);
             });
@@ -46127,8 +46127,8 @@ var require_runtime_core_cjs = __commonJS({
         const res = (
           // local registration
           // check instance[type] first which is resolved for options API
-          resolve2(instance[type] || Component[type], name) || // global registration
-          resolve2(instance.appContext[type], name)
+          resolve3(instance[type] || Component[type], name) || // global registration
+          resolve3(instance.appContext[type], name)
         );
         if (!res && maybeSelfReference) {
           return Component;
@@ -46143,7 +46143,7 @@ If this is a native custom element, make sure to exclude it from component resol
         warn3(`resolve${shared.capitalize(type.slice(0, -1))} can only be used in render() or setup().`);
       }
     }
-    function resolve2(registry, name) {
+    function resolve3(registry, name) {
       return registry && (registry[name] || registry[shared.camelize(name)] || registry[shared.capitalize(shared.camelize(name))]);
     }
     function renderList(source, renderItem, cache, index) {
@@ -50674,7 +50674,7 @@ var require_runtime_dom_cjs_prod = __commonJS({
             this._setAttr(m.attributeName);
           }
         }).observe(this, { attributes: true });
-        const resolve2 = (def, isAsync = false) => {
+        const resolve3 = (def, isAsync = false) => {
           const { props, styles } = def;
           let numberProps;
           if (props && !shared.isArray(props)) {
@@ -50697,9 +50697,9 @@ var require_runtime_dom_cjs_prod = __commonJS({
         };
         const asyncDef = this._def.__asyncLoader;
         if (asyncDef) {
-          asyncDef().then((def) => resolve2(def, true));
+          asyncDef().then((def) => resolve3(def, true));
         } else {
-          resolve2(this._def);
+          resolve3(this._def);
         }
       }
       _resolveProps(def) {
@@ -50880,13 +50880,13 @@ var require_runtime_dom_cjs_prod = __commonJS({
       const makeEnterHook = (isAppear) => {
         return (el, done) => {
           const hook = isAppear ? onAppear : onEnter;
-          const resolve2 = () => finishEnter(el, isAppear, done);
-          callHook(hook, [el, resolve2]);
+          const resolve3 = () => finishEnter(el, isAppear, done);
+          callHook(hook, [el, resolve3]);
           nextFrame(() => {
             removeTransitionClass(el, isAppear ? appearFromClass : enterFromClass);
             addTransitionClass(el, isAppear ? appearToClass : enterToClass);
             if (!hasExplicitCallback(hook)) {
-              whenTransitionEnds(el, type, enterDuration, resolve2);
+              whenTransitionEnds(el, type, enterDuration, resolve3);
             }
           });
         };
@@ -50906,7 +50906,7 @@ var require_runtime_dom_cjs_prod = __commonJS({
         onAppear: makeEnterHook(true),
         onLeave(el, done) {
           el._isLeaving = true;
-          const resolve2 = () => finishLeave(el, done);
+          const resolve3 = () => finishLeave(el, done);
           addTransitionClass(el, leaveFromClass);
           forceReflow();
           addTransitionClass(el, leaveActiveClass);
@@ -50917,10 +50917,10 @@ var require_runtime_dom_cjs_prod = __commonJS({
             removeTransitionClass(el, leaveFromClass);
             addTransitionClass(el, leaveToClass);
             if (!hasExplicitCallback(onLeave)) {
-              whenTransitionEnds(el, type, leaveDuration, resolve2);
+              whenTransitionEnds(el, type, leaveDuration, resolve3);
             }
           });
-          callHook(onLeave, [el, resolve2]);
+          callHook(onLeave, [el, resolve3]);
         },
         onEnterCancelled(el) {
           finishEnter(el, false);
@@ -50970,11 +50970,11 @@ var require_runtime_dom_cjs_prod = __commonJS({
       });
     }
     var endId = 0;
-    function whenTransitionEnds(el, expectedType, explicitTimeout, resolve2) {
+    function whenTransitionEnds(el, expectedType, explicitTimeout, resolve3) {
       const id = el._endId = ++endId;
       const resolveIfNotStale = () => {
         if (id === el._endId) {
-          resolve2();
+          resolve3();
         }
       };
       if (explicitTimeout) {
@@ -50982,7 +50982,7 @@ var require_runtime_dom_cjs_prod = __commonJS({
       }
       const { type, timeout, propCount } = getTransitionInfo(el, expectedType);
       if (!type) {
-        return resolve2();
+        return resolve3();
       }
       const endEvent = type + "end";
       let ended = 0;
@@ -51998,7 +51998,7 @@ var require_runtime_dom_cjs = __commonJS({
             this._setAttr(m.attributeName);
           }
         }).observe(this, { attributes: true });
-        const resolve2 = (def, isAsync = false) => {
+        const resolve3 = (def, isAsync = false) => {
           const { props, styles } = def;
           let numberProps;
           if (props && !shared.isArray(props)) {
@@ -52021,9 +52021,9 @@ var require_runtime_dom_cjs = __commonJS({
         };
         const asyncDef = this._def.__asyncLoader;
         if (asyncDef) {
-          asyncDef().then((def) => resolve2(def, true));
+          asyncDef().then((def) => resolve3(def, true));
         } else {
-          resolve2(this._def);
+          resolve3(this._def);
         }
       }
       _resolveProps(def) {
@@ -52221,13 +52221,13 @@ var require_runtime_dom_cjs = __commonJS({
       const makeEnterHook = (isAppear) => {
         return (el, done) => {
           const hook = isAppear ? onAppear : onEnter;
-          const resolve2 = () => finishEnter(el, isAppear, done);
-          callHook(hook, [el, resolve2]);
+          const resolve3 = () => finishEnter(el, isAppear, done);
+          callHook(hook, [el, resolve3]);
           nextFrame(() => {
             removeTransitionClass(el, isAppear ? appearFromClass : enterFromClass);
             addTransitionClass(el, isAppear ? appearToClass : enterToClass);
             if (!hasExplicitCallback(hook)) {
-              whenTransitionEnds(el, type, enterDuration, resolve2);
+              whenTransitionEnds(el, type, enterDuration, resolve3);
             }
           });
         };
@@ -52247,7 +52247,7 @@ var require_runtime_dom_cjs = __commonJS({
         onAppear: makeEnterHook(true),
         onLeave(el, done) {
           el._isLeaving = true;
-          const resolve2 = () => finishLeave(el, done);
+          const resolve3 = () => finishLeave(el, done);
           addTransitionClass(el, leaveFromClass);
           forceReflow();
           addTransitionClass(el, leaveActiveClass);
@@ -52258,10 +52258,10 @@ var require_runtime_dom_cjs = __commonJS({
             removeTransitionClass(el, leaveFromClass);
             addTransitionClass(el, leaveToClass);
             if (!hasExplicitCallback(onLeave)) {
-              whenTransitionEnds(el, type, leaveDuration, resolve2);
+              whenTransitionEnds(el, type, leaveDuration, resolve3);
             }
           });
-          callHook(onLeave, [el, resolve2]);
+          callHook(onLeave, [el, resolve3]);
         },
         onEnterCancelled(el) {
           finishEnter(el, false);
@@ -52314,11 +52314,11 @@ var require_runtime_dom_cjs = __commonJS({
       });
     }
     var endId = 0;
-    function whenTransitionEnds(el, expectedType, explicitTimeout, resolve2) {
+    function whenTransitionEnds(el, expectedType, explicitTimeout, resolve3) {
       const id = el._endId = ++endId;
       const resolveIfNotStale = () => {
         if (id === el._endId) {
-          resolve2();
+          resolve3();
         }
       };
       if (explicitTimeout) {
@@ -52326,7 +52326,7 @@ var require_runtime_dom_cjs = __commonJS({
       }
       const { type, timeout, propCount } = getTransitionInfo(el, expectedType);
       if (!type) {
-        return resolve2();
+        return resolve3();
       }
       const endEvent = type + "end";
       let ended = 0;
@@ -86027,11 +86027,11 @@ var require_proxy = __commonJS({
               };
             } else {
               return (...args) => {
-                return new Promise((resolve2) => {
+                return new Promise((resolve3) => {
                   this.targetQueue.push({
                     method: prop,
                     args,
-                    resolve: resolve2
+                    resolve: resolve3
                   });
                 });
               };
@@ -93399,7 +93399,7 @@ var init_vdoing = __esm({
       emits: ["toggle-sidebar"],
       setup(__props, { expose, emit }) {
         expose();
-        const logger2 = ZhiServerVue3SsrUtil_default.zhiLog("vdoing-layout");
+        const logger = ZhiServerVue3SsrUtil_default.zhiLog("vdoing-layout");
         const appConfig2 = useAppConfig();
         const datas = (0, vue_esm_bundler_exports.reactive)({
           hideNavbar: false,
@@ -93443,7 +93443,7 @@ var init_vdoing = __esm({
           toggleSidebar: (to) => {
             datas.isSidebarOpen = typeof to === "boolean" ? to : !datas.isSidebarOpen;
             emit("toggle-sidebar", datas.isSidebarOpen);
-            logger2.debug("toggleSidebar triggered=>", datas.isSidebarOpen);
+            logger.debug("toggleSidebar triggered=>", datas.isSidebarOpen);
           },
           _autoMode: () => {
             if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -93510,7 +93510,7 @@ var init_vdoing = __esm({
             methods.setBodyClass();
           }
         );
-        const __returned__ = { logger: logger2, appConfig: appConfig2, datas, computes, emit, methods, Navbar: import_Navbar.default, Footer: import_Footer.default, Buttons: import_Buttons.default, BodyBgImg: import_BodyBgImg.default, Sidebar: import_Sidebar.default };
+        const __returned__ = { logger, appConfig: appConfig2, datas, computes, emit, methods, Navbar: import_Navbar.default, Footer: import_Footer.default, Buttons: import_Buttons.default, BodyBgImg: import_BodyBgImg.default, Sidebar: import_Sidebar.default };
         Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
         return __returned__;
       }
@@ -97465,7 +97465,7 @@ function createRouterMatcher(routes, globalOptions) {
     if (matcher.record.name && !isAliasRecord(matcher))
       matcherMap.set(matcher.record.name, matcher);
   }
-  function resolve2(location2, currentLocation) {
+  function resolve3(location2, currentLocation) {
     let matcher;
     let params = {};
     let path3;
@@ -97532,7 +97532,7 @@ function createRouterMatcher(routes, globalOptions) {
     };
   }
   routes.forEach((route) => addRoute(route));
-  return { addRoute, resolve: resolve2, removeRoute, getRoutes, getRecordMatcher };
+  return { addRoute, resolve: resolve3, removeRoute, getRoutes, getRecordMatcher };
 }
 function paramsFromLocation(params, keys) {
   const newParams = {};
@@ -97737,7 +97737,7 @@ function useCallbacks() {
 function guardToPromiseFn(guard, to, from, record, name) {
   const enterCallbackArray = record && // name is defined if record is because of the function overload
   (record.enterCallbacks[name] = record.enterCallbacks[name] || []);
-  return () => new Promise((resolve2, reject) => {
+  return () => new Promise((resolve3, reject) => {
     const next = (valid) => {
       if (valid === false) {
         reject(createRouterError(4, {
@@ -97756,7 +97756,7 @@ function guardToPromiseFn(guard, to, from, record, name) {
         record.enterCallbacks[name] === enterCallbackArray && typeof valid === "function") {
           enterCallbackArray.push(valid);
         }
-        resolve2();
+        resolve3();
       }
     };
     const guardReturn = guard.call(record && record.instances[name], to, from, process.env.NODE_ENV !== "production" ? canOnlyBeCalledOnce(next, to, from) : next);
@@ -98529,7 +98529,7 @@ function createRouter(options) {
   function hasRoute(name) {
     return !!matcher.getRecordMatcher(name);
   }
-  function resolve2(rawLocation, currentLocation) {
+  function resolve3(rawLocation, currentLocation) {
     currentLocation = assign({}, currentLocation || currentRoute.value);
     if (typeof rawLocation === "string") {
       const locationNormalized = parseURL(parseQuery$1, rawLocation, currentLocation.path);
@@ -98651,7 +98651,7 @@ ${JSON.stringify(newTargetLocation, null, 2)}
     }
   }
   function pushWithRedirect(to, redirectedFrom) {
-    const targetLocation = pendingLocation = resolve2(to);
+    const targetLocation = pendingLocation = resolve3(to);
     const from = currentRoute.value;
     const data = to.state;
     const force = to.force;
@@ -98701,7 +98701,7 @@ ${JSON.stringify(newTargetLocation, null, 2)}
           /* ErrorTypes.NAVIGATION_GUARD_REDIRECT */
         )) {
           if (process.env.NODE_ENV !== "production" && // we are redirecting to the same location we were already at
-          isSameRouteLocation(stringifyQuery$1, resolve2(failure2.to), toLocation) && // and we have done it a couple of times
+          isSameRouteLocation(stringifyQuery$1, resolve3(failure2.to), toLocation) && // and we have done it a couple of times
           redirectedFrom && // @ts-expect-error: added only in dev
           (redirectedFrom._count = redirectedFrom._count ? (
             // @ts-expect-error
@@ -98822,7 +98822,7 @@ ${JSON.stringify(newTargetLocation, null, 2)}
     removeHistoryListener = routerHistory.listen((to, _from, info) => {
       if (!router.listening)
         return;
-      const toLocation = resolve2(to);
+      const toLocation = resolve3(to);
       const shouldRedirect = handleRedirectRecord(toLocation);
       if (shouldRedirect) {
         pushWithRedirect(assign(shouldRedirect, { replace: true }), toLocation).catch(noop);
@@ -98912,15 +98912,15 @@ ${JSON.stringify(newTargetLocation, null, 2)}
   function isReady() {
     if (ready && currentRoute.value !== START_LOCATION_NORMALIZED)
       return Promise.resolve();
-    return new Promise((resolve3, reject) => {
-      readyHandlers.add([resolve3, reject]);
+    return new Promise((resolve4, reject) => {
+      readyHandlers.add([resolve4, reject]);
     });
   }
   function markAsReady(err) {
     if (!ready) {
       ready = !err;
       setupListeners();
-      readyHandlers.list().forEach(([resolve3, reject]) => err ? reject(err) : resolve3());
+      readyHandlers.list().forEach(([resolve4, reject]) => err ? reject(err) : resolve4());
       readyHandlers.reset();
     }
     return err;
@@ -98942,7 +98942,7 @@ ${JSON.stringify(newTargetLocation, null, 2)}
     removeRoute,
     hasRoute,
     getRoutes,
-    resolve: resolve2,
+    resolve: resolve3,
     options,
     push,
     replace,
@@ -99031,10 +99031,10 @@ var import_home = __toESM(require_home(), 1);
 var import_post = __toESM(require_post(), 1);
 init_ZhiServerVue3SsrUtil();
 function createPageRouter() {
-  const logger2 = ZhiServerVue3SsrUtil_default.zhiLog("vue-router");
+  const logger = ZhiServerVue3SsrUtil_default.zhiLog("vue-router");
   const historyMode = true ? createMemoryHistory() : createWebHistory();
-  logger2.info("isSSR=>", true);
-  logger2.debug("using historyMode=>", historyMode);
+  logger.info("isSSR=>", true);
+  logger.debug("using historyMode=>", historyMode);
   return createRouter({
     // use appropriate history implementation for server/client
     // import.meta.env.SSR is injected by Vite.
@@ -99304,6 +99304,7 @@ init_define_import_meta_env();
 __reExport(server_renderer_exports, __toESM(require_server_renderer(), 1));
 
 // src/server/index.ts
+var path2 = __toESM(require("path"));
 var ServerMiddleware = class {
   constructor() {
     this.logger = ZhiServerVue3SsrUtil_default.zhiLog("server-middleware");
@@ -99312,18 +99313,24 @@ var ServerMiddleware = class {
    * 创建一个 express 实例，并添加通用路由
    *
    * @protected
+   * @param staticPath - 静态资源路径，不传递则不设置
    */
-  createExpressServer() {
-    const logger2 = ZhiServerVue3SsrUtil_default.zhiLog("server-middleware");
+  createExpressServer(staticPath2) {
+    const logger = ZhiServerVue3SsrUtil_default.zhiLog("server-middleware");
     const server2 = (0, import_express.default)();
     server2.use(function(req, res, next) {
       if (req.method === "OPTIONS") {
-        logger2.debug("precheck request received");
+        logger.debug("precheck request received");
         res.send(200);
       } else {
         next();
       }
     });
+    if (staticPath2) {
+      const absStaticPath = path2.resolve(staticPath2);
+      logger.info("absStaticPath=>", absStaticPath);
+      server2.use(import_express.default.static(absStaticPath));
+    }
     server2.get("/api", (req, res) => {
       res.send("Hello World!");
     });
@@ -99342,13 +99349,13 @@ var ServerMiddleware = class {
         url: req.url
       };
       const { app, router } = app_default();
-      logger2.debug("ssr context=>", context);
+      logger.debug("ssr context=>", context);
       router.push(context.url).then(() => {
-        logger2.info("route pushed to=>", context.url);
+        logger.info("route pushed to=>", context.url);
         router.isReady().then(() => {
-          logger2.debug("router.isReady");
+          logger.debug("router.isReady");
           const matchedComponents = router.currentRoute.value.matched;
-          logger2.trace("matchedComponents=>", matchedComponents);
+          logger.trace("matchedComponents=>", matchedComponents);
           if (!matchedComponents.length) {
             return res.status(404).end("Page Not Found");
           }
@@ -99361,10 +99368,10 @@ var ServerMiddleware = class {
               }
             })
           ).then(() => {
-            logger2.trace("start renderToString...");
+            logger.trace("start renderToString...");
             const staticV = "202304220051";
             (0, server_renderer_exports.renderToString)(app, context).then((appHtml) => {
-              logger2.trace("appHtml=>", appHtml);
+              logger.trace("appHtml=>", appHtml);
               res.send(`
                   <!DOCTYPE html>
                   <html lang="zh">
@@ -99388,7 +99395,7 @@ var ServerMiddleware = class {
           });
         });
       }).catch((reason) => {
-        logger2.error("route push failed", reason);
+        logger.error("route push failed", reason);
       });
     });
     return server2;
@@ -99400,7 +99407,7 @@ var ServerMiddleware = class {
    * @param p 端口，默认3333
    */
   startServer(server2, p) {
-    const logger2 = ZhiServerVue3SsrUtil_default.zhiLog("server-middleware");
+    const logger = ZhiServerVue3SsrUtil_default.zhiLog("server-middleware");
     const listener = server2.listen(p ?? 3333, () => {
       let serveUrl;
       const addr = listener.address() ?? "unknown host";
@@ -99410,29 +99417,17 @@ var ServerMiddleware = class {
         const { port, address } = addr;
         serveUrl = `${address}:${port}`;
       }
-      logger2.info(`Server is listening on ${serveUrl}`);
+      logger.info(`Server is listening on ${serveUrl}`);
     });
   }
 };
 var server_default = ServerMiddleware;
 
 // src/server/node.ts
-var import_express2 = __toESM(require_express2());
-init_ZhiServerVue3SsrUtil();
-var import_path = __toESM(require("path"));
-var NodeSsrServer = class extends server_default {
-  startServer(server2, p) {
-    super.startServer(server2, p);
-  }
-};
-var logger = ZhiServerVue3SsrUtil_default.zhiLog("node-server");
-var nodeServer = new NodeSsrServer();
-var server = nodeServer.createExpressServer();
+var serverMiddleware = new server_default();
 var staticPath = process.env.DIST_PATH ?? "./dist";
-var absStaticPath = import_path.default.resolve(staticPath);
-logger.info("absStaticPath=>", absStaticPath);
-server.use(import_express2.default.static(absStaticPath));
-nodeServer.startServer(server, 3333);
+var server = serverMiddleware.createExpressServer(staticPath);
+serverMiddleware.startServer(server, 3333);
 /*! Bundled license information:
 
 uri-js/dist/es5/uri.all.js:

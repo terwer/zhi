@@ -27,6 +27,7 @@ import express, { Express } from "express"
 import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
 import createVueApp from "~/src/app"
 import { renderToString } from "vue/server-renderer"
+import * as path from "path"
 
 /**
  * 通用的 express 实例
@@ -46,8 +47,9 @@ class ServerMiddleware {
    * 创建一个 express 实例，并添加通用路由
    *
    * @protected
+   * @param staticPath - 静态资源路径，不传递则不设置
    */
-  public createExpressServer() {
+  public createExpressServer(staticPath?: string) {
     const logger = ZhiServerVue3SsrUtil.zhiLog("server-middleware")
     const server = express()
 
@@ -62,6 +64,14 @@ class ServerMiddleware {
         next()
       }
     })
+
+    // 静态资源路径
+    if (staticPath) {
+      // 指定静态文件目录
+      const absStaticPath = path.resolve(staticPath)
+      logger.info("absStaticPath=>", absStaticPath)
+      server.use(express.static(absStaticPath))
+    }
 
     // api 接口
     server.get("/api", (req, res) => {

@@ -24,28 +24,15 @@
  */
 
 import ServerMiddleware from "~/src/server/index"
-import express, { Express } from "express"
-import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
-import path from "path"
 
 /**
  * Node 服务器
  */
-class NodeSsrServer extends ServerMiddleware {
-  public startServer(server: Express, p?: number) {
-    super.startServer(server, p)
-  }
-}
-
-const logger = ZhiServerVue3SsrUtil.zhiLog("node-server")
-
-const nodeServer = new NodeSsrServer()
-const server = nodeServer.createExpressServer()
+const serverMiddleware = new ServerMiddleware()
 
 // 指定静态文件目录
 const staticPath = process.env.DIST_PATH ?? "./dist"
-const absStaticPath = path.resolve(staticPath)
-logger.info("absStaticPath=>", absStaticPath)
-server.use(express.static(absStaticPath))
+// 创建 express 实例
+const server = serverMiddleware.createExpressServer(staticPath)
 
-nodeServer.startServer(server, 3333)
+serverMiddleware.startServer(server, 3333)

@@ -23,9 +23,7 @@
  * questions.
  */
 
-import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
 import { SiyuanDevice } from "zhi-device"
-import express from "express"
 import ServerMiddleware from "~/src/server/index"
 
 /**
@@ -35,16 +33,12 @@ import ServerMiddleware from "~/src/server/index"
  * @param port - 端口
  */
 function init(basePath?: string, port?: number) {
-  const logger = ZhiServerVue3SsrUtil.zhiLog("siyuan-server")
-
   const serverMiddleware = new ServerMiddleware()
-  const server = serverMiddleware.createExpressServer()
 
   // 指定静态文件目录
-  const base = SiyuanDevice.joinPath(SiyuanDevice.zhiThemePath(), "/dynamic/blog")
-  const staticPath = process.env.DIST_PATH ?? base
-  logger.info("staticPath=>", staticPath)
-  server.use(express.static(staticPath))
+  const staticPath = process.env.DIST_PATH ?? SiyuanDevice.joinPath(SiyuanDevice.zhiThemePath(), "/dynamic/blog")
+  // 创建 express 实例
+  const server = serverMiddleware.createExpressServer(staticPath)
 
   // 启动 express
   serverMiddleware.startServer(server, port)
