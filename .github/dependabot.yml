@@ -239,6 +239,27 @@ updates:
       - "astro"
 
   - package-ecosystem: npm
+    directory: "/apps/zhi-server-vue3-ssr"
+    schedule:
+      interval: daily
+      time: "00:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - terwer
+    assignees:
+      - terwer
+    commit-message:
+      prefix: fix
+      prefix-development: chore
+      include: scope
+    labels:
+      - "npm dependencies"
+      - "zhi"
+      - "server-modules"
+      - "vue3"
+      - "ssr"
+
+  - package-ecosystem: npm
     directory: "/apps/zhi-web-blog"
     schedule:
       interval: daily
