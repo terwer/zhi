@@ -24,7 +24,9 @@
  */
 
 import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
-import { createExpressServer } from "~/src/middleware"
+import { createExpressServer } from "~/src/server/index"
+import { SiyuanDevice } from "zhi-device"
+import express from "express"
 
 /**
  * HTTP 服务
@@ -42,6 +44,12 @@ class ZhiVue3SsrServer {
 
   init(base?: string, p?: number) {
     const server = createExpressServer()
+
+    // 指定静态文件目录
+    const basePath = SiyuanDevice.joinPath(SiyuanDevice.zhiThemePath(), "/dynamic/blog")
+    const staticPath = process.env.BASE_PATH ?? basePath
+    this.logger.info("staticPath=>", staticPath)
+    server.use(express.static(staticPath))
 
     // 监听端口
     const listener = server.listen(p ?? 3333, () => {

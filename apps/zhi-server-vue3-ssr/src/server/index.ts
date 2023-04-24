@@ -25,7 +25,6 @@
 
 import express from "express"
 import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
-import { SiyuanDevice } from "zhi-device"
 import createVueApp from "~/src/app"
 import { renderToString } from "vue/server-renderer"
 
@@ -39,11 +38,6 @@ import { renderToString } from "vue/server-renderer"
 export function createExpressServer() {
   const logger = ZhiServerVue3SsrUtil.zhiLog("server-middleware")
   const server = express()
-
-  // 指定静态文件目录
-  const staticPath = process.env.BASE_PATH ?? SiyuanDevice.joinPath(SiyuanDevice.zhiThemePath(), "/dynamic/blog")
-  logger.info("staticPath=>", staticPath)
-  server.use(express.static(staticPath))
 
   // 服务器端路由匹配
   server.get("*", (req, res) => {
