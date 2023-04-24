@@ -1,31 +1,19 @@
 {
-  "name": "zhi",
-  "version": "1.0.0",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
+  "name": "zhi-dist",
+  "version": "1.0.0-alpha.1",
+  "description": "dist for zhi to publish to siyuan-note theme market",
+  "keywords": [
+    "zhi",
+    "dist"
   ],
+  "author": "terwer",
+  "license": "GPL",
   "scripts": {
-    "lint": "turbo run lint",
-    "dev": "turbo run dev",
-    "clientDev": "turbo run clientDev",
-    "serverDev": "turbo run serverDev",
-    "nodeDev": "turbo run nodeDev",
-    "build": "turbo run build",
-    "dockerBuild": "turbo run docker-build",
-    "siyuanBuild": "turbo run siyuanBuild",
-    "clientBuild": "turbo run clientBuild",
-    "serverBuild": "turbo run serverBuild",
-    "localBuild": "turbo run localBuild",
-    "nodeBuild": "turbo run nodeBuild",
-    "vercelBuild": "turbo run vercelBuild",
-    "graph": " turbo run build --graph=dependency-graph.png",
-    "preview": "turbo run preview",
-    "doc": "turbo run doc",
-    "md": "turbo run md",
-    "apidev": "pnpm build && pnpm doc && pnpm md && turbo run apidev --filter zhi-docs",
-    "apibuild": "pnpm build && pnpm doc && pnpm md && turbo run apibuild --filter zhi-docs",
+    "backup": "git archive --format=zip --output=/Users/terwer/Downloads/zhi-dist.zip HEAD",
+    "reset": "git pull origin main --force && git rm .",
+    "recover": "unzip /Users/terwer/Downloads/zhi-dist.zip -d /Users/terwer/Documents/mydocs/zhi-dist && git add -A",
+    "showlog": "git-changelog -c angular --sections feat,fix,refactor,chore,docs -t angular -T",
+    "tag": "git push --tags",
     "prepare": "is-ci || husky install",
     "commitinit": "npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'",
     "cz": "git-cz",
@@ -34,15 +22,15 @@
   "config": {
     "commitizen": {
       "path": "@commitlint/cz-commitlint"
-    },
-    "commitizenEmoji": {}
+    }
   },
   "devDependencies": {
-    "turbo": "^1.9.3",
-    "eslint-config-custom": "workspace:*"
-  },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "packageManager": "pnpm@8.1.1"
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-angular": "^17.6.1",
+    "@commitlint/cz-commitlint": "^17.5.0",
+    "commitizen": "^4.3.0",
+    "husky": "^8.0.3",
+    "inquirer": "8",
+    "is-ci": "^3.0.1"
+  }
 }
