@@ -39,7 +39,7 @@ const outDir = args.outDir || args.o
 
 // for outer custom output for dev
 const baseDir = outDir ?? "./"
-const distDir = outDir ? baseDir : path.join(baseDir, "dist")
+const distDir = outDir ? baseDir : path.join(baseDir, "dist", "client")
 
 const defineEnv = {
   NODE_ENV: isProduction ? "production" : "development",
