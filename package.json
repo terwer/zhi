@@ -14,7 +14,7 @@
     "recover": "unzip /Users/terwer/Downloads/zhi-dist.zip -d /Users/terwer/Documents/mydocs/zhi-dist && git add -A",
     "showlog": "git-changelog -c angular --sections feat,fix,refactor,chore,docs -t angular -T",
     "tag": "git push --tags",
-    "prepare": "husky install",
+    "prepare": "is-ci || husky install",
     "commitinit": "npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'",
     "cz": "git-cz",
     "commit": "commit"
@@ -30,6 +30,7 @@
     "@commitlint/cz-commitlint": "^17.5.0",
     "commitizen": "^4.3.0",
     "husky": "^8.0.3",
-    "inquirer": "8"
+    "inquirer": "8",
+    "is-ci": "^3.0.1"
   }
 }

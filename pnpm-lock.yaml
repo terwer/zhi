@@ -19,6 +19,9 @@ devDependencies:
   inquirer:
     specifier: '8'
     version: registry.npmjs.org/inquirer@8.2.5
+  is-ci:
+    specifier: ^3.0.1
+    version: registry.npmjs.org/is-ci@3.0.1
 
 packages:
 
@@ -562,6 +565,13 @@ packages:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/chardet/-/chardet-0.7.0.tgz}
     name: chardet
     version: 0.7.0
+    dev: true
+
+  registry.npmjs.org/ci-info@3.8.0:
+    resolution: {integrity: sha512-eXTggHWSooYhq49F2opQhuHWgzucfF2YgODK4e1566GQs5BIfP30B0oenwBJHfWxAs2fyPB1s7Mg949zLf61Yw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/ci-info/-/ci-info-3.8.0.tgz}
+    name: ci-info
+    version: 3.8.0
+    engines: {node: '>=8'}
     dev: true
 
   registry.npmjs.org/cli-cursor@3.1.0:
@@ -1240,6 +1250,15 @@ packages:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/is-arrayish/-/is-arrayish-0.2.1.tgz}
     name: is-arrayish
     version: 0.2.1
+    dev: true
+
+  registry.npmjs.org/is-ci@3.0.1:
+    resolution: {integrity: sha512-ZYvCgrefwqoQ6yTyYUbQu64HsITZ3NfKX1lzaEYdkTDcfKzzCI/wthRRYKkdjHKFVgNiXKAKm65Zo1pk2as/QQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/is-ci/-/is-ci-3.0.1.tgz}
+    name: is-ci
+    version: 3.0.1
+    hasBin: true
+    dependencies:
+      ci-info: registry.npmjs.org/ci-info@3.8.0
     dev: true
 
   registry.npmjs.org/is-core-module@2.12.0:
