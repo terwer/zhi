@@ -23,5 +23,7 @@
  * questions.
  */
 
-const app = require("./zhi-server-vue3-ssr/index")
+// 在这里切换vercel的serverless路由
+// 支持 test/index.js 这种子目录模式
+const app = require("../apps/zhi-server-vue3-ssr/vercel")
 module.exports = app
