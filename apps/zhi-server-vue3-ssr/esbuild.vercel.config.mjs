@@ -38,8 +38,8 @@ const outDir = args.outDir || args.o
 
 // for outer custom output for dev
 // for outer custom output for dev
-const baseDir = outDir ?? "./"
-const distDir = outDir ? baseDir : path.join(baseDir, "dist", "server")
+const baseDir = outDir ?? "../../"
+const distDir = outDir ? baseDir : path.join(baseDir, "api", "zhi-server-vue3-ssr")
 
 const defineEnv = {
   NODE_ENV: isProduction ? "production" : "development",
