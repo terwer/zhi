@@ -1,6 +1,13 @@
 import fs from "fs"
 import path from "path"
 
+/**
+ * 解析提交日志并去重
+ *
+ * @author terwer
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 class ChangelogParser {
     public parseChangelog(): void {
         console.log("start parsing changelog...")
