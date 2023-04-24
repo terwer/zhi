@@ -38,8 +38,7 @@ const isProduction = args.production || args.prod
 const outDir = args.outDir || args.o
 
 // for outer custom output for dev
-const baseDir = outDir ?? "./"
-const distDir = outDir ? baseDir : path.join(baseDir, "dist")
+const distDir = outDir ?? "../../api"
 
 const defineEnv = {
   NODE_ENV: isProduction ? "production" : "development",
@@ -93,7 +92,7 @@ export default {
     onZhiBuildSuccess: function () {
       if (isProduction) {
         console.log("server build success.do some cleanup.removing server.css ...")
-        rimraf.sync(path.join(distDir, "/server.css"))
+        rimraf.sync(path.join(distDir, "/index.css"))
         rimraf.sync(path.join(distDir, "/start.js"))
       }
     },
