@@ -25,7 +25,6 @@
 
 import path from "path"
 import minimist from "minimist"
-import { copy } from "esbuild-plugin-copy"
 import stylePlugin from "esbuild-style-plugin"
 import vuePlugin from "@terwer/esbuild-plugin-vue3"
 import aliasPlugin from "@chialab/esbuild-plugin-alias"
@@ -56,7 +55,7 @@ export default {
   esbuildConfig: {
     entryPoints: ["src/server/vercel.ts"],
     outfile: path.join(distDir, "index.js"),
-    format: "esm",
+    format: "cjs",
     platform: "node",
     define: { ...coreDefine },
     external: ["*.woff", "*.woff2", "*.ttf"],
@@ -64,19 +63,6 @@ export default {
       vuePlugin(),
       aliasPlugin({
         vue: "vue/dist/vue.esm-bundler.js",
-      }),
-      copy({
-        // this is equal to process.cwd(), which means we use cwd path as base path to resolve `to` path
-        // if not specified, this plugin uses ESBuild.build outdir/outfile options as base path.
-        resolveFrom: "cwd",
-        assets: [
-          // copy one file
-          {
-            from: ["./public/start.js"],
-            to: [path.join(distDir, "/start.js")],
-          },
-        ],
-        watch: true,
       }),
       inlineImage({
         limit: 5000,
@@ -93,7 +79,6 @@ export default {
       if (isProduction) {
         console.log("server build success.do some cleanup.removing server.css ...")
         rimraf.sync(path.join(distDir, "/index.css"))
-        rimraf.sync(path.join(distDir, "/start.js"))
       }
     },
   },
