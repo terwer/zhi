@@ -26,7 +26,8 @@
       "cache": false
     },
     "vercelBuild": {
-      "cache": false
+      "cache": false,
+      "dependsOn": ["^build"]
     },
     "siyuanBuild": {
       "cache": false
