@@ -1,13 +1,13 @@
 {
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/dist"
+      "source": "/blog/(.*)",
+      "destination": "/apps/zhi-server-vue3-ssr/dist"
     }
   ],
   "headers": [
     {
-      "source": "/api/(.*)",
+      "source": "/blog/(.*)",
       "headers": [
         {
           "key": "Access-Control-Allow-Credentials",
