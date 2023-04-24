@@ -9,6 +9,113 @@
 <!-- insertion marker -->
 <a name="v1.0.0-alpha.1"></a>
 
+## [2.0.0-alpha.1](https://github.com/terwer/zhi/compare/v1.0.0-alpha.1...v2.0.0-alpha.1) (2023-04-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* **esbuild-config-custom:** previews esbuild config need to be a attr value for esbuild property, add a new customConfig property
+
+### Features
+
+* [#163](https://github.com/terwer/zhi/issues/163) ([d9fae8a](https://github.com/terwer/zhi/commit/d9fae8af6f96052a82e62f9aea79505a52fdbb23))
+* **zhi-blog-api:** add common blog api ([c8d8c4e](https://github.com/terwer/zhi/commit/c8d8c4e9c400ce528add72b2a9603910a28823e3)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-core:** move dependency definition to zhi.json ([d9fae8a](https://github.com/terwer/zhi/commit/d9fae8af6f96052a82e62f9aea79505a52fdbb23)), closes [#163](https://github.com/terwer/zhi/issues/163)
+* **zhi-core:** support loading zhi internal plugins ([5cb896d](https://github.com/terwer/zhi/commit/5cb896dafbbd6ec27708dc22d5c8683b70675900)), closes [#178](https://github.com/terwer/zhi/issues/178)
+* **zhi-core:** support loading zhi internal plugins ([202a050](https://github.com/terwer/zhi/commit/202a0502a224d5b20c4676d9bd3b682d4c943f63)), closes [#178](https://github.com/terwer/zhi/issues/178)
+* **zhi-core:** update plugin system to latest, disable auto update ([1afec99](https://github.com/terwer/zhi/commit/1afec99dc6bc298338dbc6a43a06068ac3007769)), closes [#163](https://github.com/terwer/zhi/issues/163)
+* **zhi-server-blog:** add server blog ([cb96b85](https://github.com/terwer/zhi/commit/cb96b85819f4a7f52726b9f9349917f53df5d10b)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-server-cmd:** add cmd ([3eff6f2](https://github.com/terwer/zhi/commit/3eff6f28a3f46d195812d277db6a9fc971f9b72a))
+* **zhi-server-electron:** mount zhiWindow ([f67fffa](https://github.com/terwer/zhi/commit/f67fffadb68086240e70c2806c1cdf701a7e0826))
+* **zhi-server-legacy:** add a legacy ssr blog ([b380b1f](https://github.com/terwer/zhi/commit/b380b1f0f9eb58cff50cdf26eccfbd444ee2275a)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-server-legacy:** add ssr blog ([b712ab6](https://github.com/terwer/zhi/commit/b712ab60096ff9e2c4d6fa3cbde5053e975807a3)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-server-legacy:** add ssr client and server build ([d8a1cda](https://github.com/terwer/zhi/commit/d8a1cdab52eeaed14a9c73de6a2165d887008c20)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-server-legacy:** add ssr route ([df0f2a8](https://github.com/terwer/zhi/commit/df0f2a8460daf21756535a48b2d2dcd7b924975a)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-server-legacy:** allow load blog server with siyuan startup ([890797b](https://github.com/terwer/zhi/commit/890797bd49ee9b265fdd996d31b0eaf2e4e7e930)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-server-legacy:** allow load server with siyuan startup ([ea39fec](https://github.com/terwer/zhi/commit/ea39fec0adc13957731ef9444108cbbd3e174405)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-server-ssr:** add a next.js app ([e28105a](https://github.com/terwer/zhi/commit/e28105a2a9ff67f5e2d457acbab3a075655858ff)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-server-vue3-ssr:** add background image support ([0d653f1](https://github.com/terwer/zhi/commit/0d653f1ffa566b52c2830a3903376fee338dcc70))
+* **zhi-server-vue3-ssr:** add docker support ([bebc61e](https://github.com/terwer/zhi/commit/bebc61e7d7ff6da5f9f5f49ea04a94de5f6219d7))
+* **zhi-server-vue3-ssr:** add sidebar ([3cb29c9](https://github.com/terwer/zhi/commit/3cb29c9b19ea8672609c709be6c49470e8aa13e0))
+* **zhi-server-vue3-ssr:** add vercel support ([b68f5fc](https://github.com/terwer/zhi/commit/b68f5fccc21bdf5447e06d78cb750f93021011c9)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-server-vue3-ssr:** allow ssr for vue3 using esbuild ([a728751](https://github.com/terwer/zhi/commit/a7287513d55807d2d6b579340ed24b97e3426a55))
+* **zhi-server-vue3-ssr:** basic ssr demo for vue3 ([3291179](https://github.com/terwer/zhi/commit/32911798e5219e67cf227544f92ce6cec2b31f47)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-server-vue3-ssr:** handle css and image ([90a208d](https://github.com/terwer/zhi/commit/90a208d9bb660b2aaf9f39ae6ba020a8600a493c)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-server-vue3-ssr:** init vue3 ssr ([d1de4a9](https://github.com/terwer/zhi/commit/d1de4a9192cf1b9439a010b0a14be1b670ce2994)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-server-vue3-ssr:** support app config and env ([4584696](https://github.com/terwer/zhi/commit/4584696e767f44acc1886863d206f113ea0e82de)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-server-vue3-ssr:** support multi platform ([78ce161](https://github.com/terwer/zhi/commit/78ce161d59ba62d815a6a966442e67fe9a8a5a15)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-siyuan-api:** add siyuan api ([864465e](https://github.com/terwer/zhi/commit/864465ef101cc3754aa4ecbad474b5718b8e1379)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-web-blog:** add a simple web blog ([1dad6f1](https://github.com/terwer/zhi/commit/1dad6f18c81fb188956a27a8ac6bb35f2c619e40))
+* **zhi-web-blog:** add zhi-web-blog ([5900f67](https://github.com/terwer/zhi/commit/5900f672962b56a8caf7c6e9de566dd5c03e2034)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-web-blog:** basic web blog ([0e0190f](https://github.com/terwer/zhi/commit/0e0190f3e98d4adbf760699269a55fa0fe9943c6)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-web-blog:** data fetching for web blog ([9f4edc5](https://github.com/terwer/zhi/commit/9f4edc5d506704b58dfafc43795daebdebc7a922)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-web-blog:** deal with blog baseurl ([3b91c0a](https://github.com/terwer/zhi/commit/3b91c0afeea9735514a8c387bf887e95e1378a00)), closes [#188](https://github.com/terwer/zhi/issues/188)
+* **zhi-web-blog:** lute and spa support ([ebab90a](https://github.com/terwer/zhi/commit/ebab90a4897fbfad796bd619352c8e78898e2b80)), closes [#191](https://github.com/terwer/zhi/issues/191)
+* **zhi-web-blog:** spa and hash mode route support ([f196477](https://github.com/terwer/zhi/commit/f1964779b7d8a796420bc06ea2eab504c6d200ad)), closes [#189](https://github.com/terwer/zhi/issues/189)
+
+
+### Bug Fixes
+
+* **deps:** bump @types/node from 18.15.13 to 18.16.0 ([e257066](https://github.com/terwer/zhi/commit/e257066f66735d15ccae8ff2c5fbbb92b2898be0))
+* **deps:** bump next from 13.3.0 to 13.3.1 ([ee70ca5](https://github.com/terwer/zhi/commit/ee70ca5950b58210a3e84bfd278b8297cf5fb5a2))
+* **zhi-core:** add ci to dev ([06e620f](https://github.com/terwer/zhi/commit/06e620f7b842962de161b3c238311af28ad1981f))
+* **zhi-core:** fix ci error ([c22bd26](https://github.com/terwer/zhi/commit/c22bd26820215b975193af0cacd8011338caba98))
+* **zhi-core:** fix ci error ([4327866](https://github.com/terwer/zhi/commit/4327866e7eb80c3778912a8e6c0528e726160b30))
+* **zhi-core:** fix husky with ci ([f3f9b8a](https://github.com/terwer/zhi/commit/f3f9b8a5b2b9a77028988de05d3979b0367c7dc7))
+* **zhi-core:** ignore ci hooks ([03f8292](https://github.com/terwer/zhi/commit/03f8292684a20c42cdcf9918b7093021c04ed122))
+* **zhi-device:** fix import path on windows electron ([c3bff27](https://github.com/terwer/zhi/commit/c3bff271d78d0c64530e0838dd582663f2872503))
+* **zhi-server-vue3-ssr:** fix ssr render ([0a970be](https://github.com/terwer/zhi/commit/0a970be1805fede675dccb1118087737ebf51432))
+
+
+### Code Refactoring
+
+* **esbuild-config-custom:** add custom config support ([e85044f](https://github.com/terwer/zhi/commit/e85044f8d6ccff7efcc94a9c9d1234977b2acab3))
+* **zhi-device:** change zhi-device module ([67b1944](https://github.com/terwer/zhi/commit/67b194460430dd04e2e5fed70efc4a6286327237))
+* **zhi-dist:** add command to git cz ([39a656d](https://github.com/terwer/zhi/commit/39a656dd31217e667919576b9ee695cb94e65b45)), closes [#171](https://github.com/terwer/zhi/issues/171)
+* **zhi-dist:** add commit cz ([2ef8da2](https://github.com/terwer/zhi/commit/2ef8da296f82e92e2960e21367c681355b5b80bd))
+* **zhi-root:** add commintlint ([318dd60](https://github.com/terwer/zhi/commit/318dd6055979b070203093354bc9694c057da980)), closes [#44](https://github.com/terwer/zhi/issues/44)
+* **zhi-root:** add cz command ([bc38458](https://github.com/terwer/zhi/commit/bc384583b5ecf9aae371b7fe2fd1ab6cc5cdec8e)), closes [#171](https://github.com/terwer/zhi/issues/171)
+* **zhi-root:** update turbo to 1.9.3 ([06184b4](https://github.com/terwer/zhi/commit/06184b4751da2c1d4c1304270301ced177063a27))
+* **zhi-server-blog:** add a friendly name for zhi-server-blog ([020ad8a](https://github.com/terwer/zhi/commit/020ad8aaa8340188d840540b43745e3626612505))
+* **zhi-server-custom:** change project to zhi-server-custom ([3f28ddb](https://github.com/terwer/zhi/commit/3f28ddb3cffc955c65083827a70d62b581787629))
+
+
+### Miscellaneous
+
+* **deps-dev:** bump vuepress-theme-hope ([4c0b450](https://github.com/terwer/zhi/commit/4c0b4502f9014691c79ea6688c1a05392b0d6d07))
+* **deps-dev:** bump vuepress-theme-hope ([83ba03b](https://github.com/terwer/zhi/commit/83ba03b2a363393eb53289271032848369759c25))
+* **deps-dev:** bump vuepress-theme-hope in /apps/zhi-docs ([6c2285f](https://github.com/terwer/zhi/commit/6c2285fb3858769a62e656b25b756a3214279e4a))
+* **deps-dev:** bump vuepress-theme-hope in /apps/zhi-docs ([d5fc227](https://github.com/terwer/zhi/commit/d5fc227a36ac32ba5e1590a1a734aad899ed518f))
+* update ci ([899ccb7](https://github.com/terwer/zhi/commit/899ccb75ce9004382fa3c189168d71c7596e9484))
+* update ci ([0aa979c](https://github.com/terwer/zhi/commit/0aa979cb2ed3bd0b2ce065956a1a14f2880ccd5d))
+* update ci ([9f589f1](https://github.com/terwer/zhi/commit/9f589f1c1f03320b180c32243393ad4decbc4c96))
+* update ci ([91f6f16](https://github.com/terwer/zhi/commit/91f6f16f8032421075f660e9a3abed858faa3f50))
+* update ci ([337eb17](https://github.com/terwer/zhi/commit/337eb172c0291fd6f422ca8d7a8938c96515a86b))
+* update ci ([6684f16](https://github.com/terwer/zhi/commit/6684f16e73ac6decc50bc74b88ed81eb7fb2a44e))
+* update ci ([6adace0](https://github.com/terwer/zhi/commit/6adace02c26a90d13d8cab561c7ed9b50c8e72ea))
+* update ci ([4422a57](https://github.com/terwer/zhi/commit/4422a573250f05c1a1579e0fce99f32e8bd85962))
+* update ci ([deba631](https://github.com/terwer/zhi/commit/deba631282c41a7e6cc1d34ab3b33a4e2d7fb204))
+* update ci ([ee9c1bf](https://github.com/terwer/zhi/commit/ee9c1bf7ba78c7181f5d142b784a4b255b5ff20e))
+* update ci ([1b9005e](https://github.com/terwer/zhi/commit/1b9005eab1f70845f57d31532f6d0a8171ba8cfe))
+* update ci ([16ddc12](https://github.com/terwer/zhi/commit/16ddc1230499b1ae677eb30773e2d513f2d6315d))
+* update ci ([64c2ab5](https://github.com/terwer/zhi/commit/64c2ab5249f97210582786b9423d52047a38f7d9))
+* update ci ([19b6c09](https://github.com/terwer/zhi/commit/19b6c09fc5cacba9fae45c2a6afed6f37f65de7b))
+* update ci ([ae0683e](https://github.com/terwer/zhi/commit/ae0683e609bb09e5e0b7da4c2a55db25fdd914f9))
+* update ci ([00fb982](https://github.com/terwer/zhi/commit/00fb982d87dbb5d23f2e8273755e1c1e216da6bf))
+* update ci ([915c9fb](https://github.com/terwer/zhi/commit/915c9fb0517c79092b2acda5839cc11385566765))
+* update ci ([9e24ac0](https://github.com/terwer/zhi/commit/9e24ac0e07b02ecb541a784834da8231e4dde3ba))
+* update ci ([198dabe](https://github.com/terwer/zhi/commit/198dabea40edc2ad64bdff31a5ff51158df1af83))
+* update ci ([25e007a](https://github.com/terwer/zhi/commit/25e007afccf63e92ef45b29376b5d9cecd30cfa3))
+* update ci ([697c52c](https://github.com/terwer/zhi/commit/697c52c7c324853f0422f8b43602833a4d81ddec))
+* **zhi-dist:** allow new change types ([46e3636](https://github.com/terwer/zhi/commit/46e36367b199d58926b9d119dc58dba4a1712fc3))
+* **zhi-dist:** update CHANGELOG.md ([b554c12](https://github.com/terwer/zhi/commit/b554c1207a54cc58d7f7e9ab01f3b16370ec9f23))
+* **zhi-dist:** update CHANGELOG.md ([8976bf0](https://github.com/terwer/zhi/commit/8976bf080451aa23c18c36d8b4f6858a115c58a6))
+* **zhi-root:** fix build error ([0a970d6](https://github.com/terwer/zhi/commit/0a970d6acbff3432acfad7675ea646bdfebc8130))
+* **zhi-root:** update deps ([8c44a57](https://github.com/terwer/zhi/commit/8c44a57bcb41726e4d0176a3f2be4f3a18506f39))
+* **zhi-root:** update graph ([1049055](https://github.com/terwer/zhi/commit/10490554729cc67a4db6e0a8b1b45824935cb7e8))
+* **zhi-server-vue3-ssr:** pretty log ([70e5a89](https://github.com/terwer/zhi/commit/70e5a89dbe4010f284764d99080b5c02780ba1ca))
+* **zhi:** fix build error ([88101e6](https://github.com/terwer/zhi/commit/88101e6abd32688f11ca60cf4f4dea80ec405b14))
+
 ## [v1.0.0-alpha.1](https://github.com/terwer/zhi/compare/1ceafc110e63a163974efc2d4838b16d68d234da...v1.0.0-alpha.1) (2023-04-17)
 
 ### Features
@@ -306,4 +413,3 @@
 - Add docs ([243ece3](https://github.com/terwer/zhi/commit/243ece3447c1d2647cf21551ba58b3e2267117d5))
 - Fix docs ([79b9f20](https://github.com/terwer/zhi/commit/79b9f20074f225925f3943ed2fc42c7febc650a2))
 - Add project notes ([7edc1e5](https://github.com/terwer/zhi/commit/7edc1e50bf18572a73d3ff857e44dbf750bf3ae9))
-
