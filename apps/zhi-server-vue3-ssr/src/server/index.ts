@@ -40,8 +40,8 @@ export function createExpressServer() {
   const server = express()
 
   // api 接口
-  server.get("/api/hello", (req, res) => {
-    res.send("Hello!")
+  server.get("/api", (req, res) => {
+    res.send("Hello World!")
   })
 
   server.get("/api/user/:id", (req, res) => {

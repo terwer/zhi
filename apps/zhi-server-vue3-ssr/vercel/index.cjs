@@ -99313,6 +99313,19 @@ __reExport(server_renderer_exports, __toESM(require_server_renderer(), 1));
 function createExpressServer() {
   const logger2 = ZhiServerVue3SsrUtil_default.zhiLog("server-middleware");
   const server2 = (0, import_express.default)();
+  server2.get("/api", (req, res) => {
+    res.send("Hello World!");
+  });
+  server2.get("/api/user/:id", (req, res) => {
+    const userId = req.params.id;
+    const user = {
+      id: userId,
+      name: "Emily",
+      age: 28,
+      email: "emily@gmail.com"
+    };
+    res.json(user);
+  });
   server2.get("*", (req, res) => {
     const context = {
       url: req.url

@@ -56,7 +56,7 @@ const coreDefine = {
 export default {
   esbuildConfig: {
     entryPoints: ["src/server/vercel.ts"],
-    outfile: path.join(distDir, "index.js"),
+    outfile: path.join(distDir, "index.cjs"),
     format: "cjs",
     platform: "node",
     define: { ...coreDefine },
