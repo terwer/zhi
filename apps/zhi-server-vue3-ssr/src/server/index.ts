@@ -39,6 +39,22 @@ export function createExpressServer() {
   const logger = ZhiServerVue3SsrUtil.zhiLog("server-middleware")
   const server = express()
 
+  // api 接口
+  server.get("/api/hello", (req, res) => {
+    res.send("Hello!")
+  })
+
+  server.get("/api/user/:id", (req, res) => {
+    const userId = req.params.id // 获取URL参数id
+    const user = {
+      id: userId,
+      name: "Emily",
+      age: 28,
+      email: "emily@gmail.com",
+    }
+    res.json(user)
+  })
+
   // 服务器端路由匹配
   server.get("*", (req, res) => {
     const context = {

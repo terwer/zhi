@@ -38,7 +38,8 @@
     "commitizenEmoji": {}
   },
   "devDependencies": {
-    "turbo": "^1.9.3"
+    "turbo": "^1.9.3",
+    "eslint-config-custom": "workspace:*"
   },
   "engines": {
     "node": ">=14.0.0"
