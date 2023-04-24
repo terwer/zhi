@@ -17,7 +17,8 @@
     "prepare": "is-ci || husky install",
     "commitinit": "npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'",
     "cz": "git-cz",
-    "commit": "commit"
+    "commit": "commit",
+    "pretty": "ts-node-esm --experimental-specifier-resolution=node changelogParser.ts"
   },
   "config": {
     "commitizen": {
@@ -28,9 +29,11 @@
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-angular": "^17.6.1",
     "@commitlint/cz-commitlint": "^17.5.0",
+    "@types/node": "^18.16.0",
     "commitizen": "^4.3.0",
     "husky": "^8.0.3",
     "inquirer": "8",
-    "is-ci": "^3.0.1"
+    "is-ci": "^3.0.1",
+    "ts-node": "^10.9.1"
   }
 }
