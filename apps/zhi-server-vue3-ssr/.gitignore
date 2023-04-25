@@ -17,3 +17,4 @@ tsdoc-metadata.json
 .env.development
 .env.production
 .env.test
+.env.docker
