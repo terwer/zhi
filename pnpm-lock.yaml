@@ -446,6 +446,9 @@ importers:
       lodash:
         specifier: ^4.17.21
         version: registry.npmjs.org/lodash@4.17.21
+      pinia:
+        specifier: ^2.0.35
+        version: registry.npmjs.org/pinia@2.0.35(vue@3.2.47)
       vue:
         specifier: ^3.2.47
         version: registry.npmjs.org/vue@3.2.47
@@ -15890,6 +15893,26 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  registry.npmjs.org/pinia@2.0.35(vue@3.2.47):
+    resolution: {integrity: sha512-P1IKKQWhxGXiiZ3atOaNI75bYlFUbRxtJdhPLX059Z7+b9Z04rnTZdSY8Aph1LA+/4QEMAYHsTQ638Wfe+6K5g==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/pinia/-/pinia-2.0.35.tgz}
+    id: registry.npmjs.org/pinia/2.0.35
+    name: pinia
+    version: 2.0.35
+    peerDependencies:
+      '@vue/composition-api': ^1.4.0
+      typescript: '>=4.4.4'
+      vue: ^2.6.14 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': registry.npmjs.org/@vue/devtools-api@6.5.0
+      vue: registry.npmjs.org/vue@3.2.47
+      vue-demi: registry.npmjs.org/vue-demi@0.14.0(vue@3.2.47)
+    dev: false
+
   registry.npmjs.org/pirates@4.0.5:
     resolution: {integrity: sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/pirates/-/pirates-4.0.5.tgz}
     name: pirates
@@ -20319,7 +20342,6 @@ packages:
         optional: true
     dependencies:
       vue: registry.npmjs.org/vue@3.2.47
-    dev: true
 
   registry.npmjs.org/vue-devtools-stub@0.1.0:
     resolution: {integrity: sha512-RutnB7X8c5hjq39NceArgXg28WZtZpGc3+J16ljMiYnFhKvd8hITxSWQSQ5bvldxMDU6gG5mkxl1MTQLXckVSQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/vue-devtools-stub/-/vue-devtools-stub-0.1.0.tgz}
