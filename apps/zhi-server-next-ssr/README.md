@@ -29,6 +29,9 @@ pnpm preview -F zhi-server-ssr
 ## Start
 
 ```js
+const server  = zhiRequire("/dynamic/blog/index.cjs")
+server.default()
+
 const basePath = SiyuanDevice.zhiThemePath()
 const result = await zhiCmd.executeCommand("./node_modules/.bin/next", ["start", "./", "-p", "3000"], {
   cwd: `${basePath}/server/ssr`,
