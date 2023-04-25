@@ -79,7 +79,7 @@ export default {
     onZhiBuildSuccess: function () {
       if (isProduction) {
         console.log("server build success.do some cleanup.removing server.css ...")
-        rimraf.sync(path.join(distDir, "/server.css"))
+        rimraf.sync(path.join(distDir, "/index.css"))
       }
     },
   },

@@ -68,30 +68,26 @@ class ServerMiddleware {
       }
     })
 
-    let luteAbsPath
+    // 这里可以添加一些仅服务端运行的不兼容浏览器的全局依赖
+    require("../../public/lib/lute/lute-1.7.5-20230410.min.cjs")
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    logger.info("required Lute in Server Side Rendering success", Lute.Version)
+
     // 静态资源路径
     if (staticPath) {
       // 指定静态文件目录
       const absStaticPath = path.resolve(staticPath)
-      logger.info("absStaticPath=>", absStaticPath)
       server.use(express.static(absStaticPath))
-
-      luteAbsPath = path.join(absStaticPath, "lib", "lute", "lute-1.7.5-20230410.min.cjs")
-      logger.info("staticPath is set, luteAbsPath=>", luteAbsPath)
+      logger.info("staticPath is set using express=>", absStaticPath)
     } else {
       // 这种情况比较特殊，一般是 serverless 自带 CDN 的时候，例如 vercel
       // vercel 推荐使用 cdn 指定 dist， 而不是用 express.static
       // https://vercel.com/guides/using-express-with-vercel#adding-a-public-directory
-      const cwdArray = import.meta.env.PROCESS_CWD
-      const currentProcessPath = cwdArray.join(path.sep)
-      logger.info("currentProcessPath=>", currentProcessPath)
-      luteAbsPath = path.join(currentProcessPath, "dist", "lib", "lute", "lute-1.7.5-20230410.min.cjs")
-      logger.info("process dir is set, luteAbsPath=>", luteAbsPath)
+      logger.info(
+        "staticPath is undefined, may be you are in serverless env like Vercel etc.see https://vercel.com/guides/using-express-with-vercel#adding-a-public-directory for more details"
+      )
     }
-    require(luteAbsPath)
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    logger.info("required Lute in Server Side Rendering success", Lute)
 
     // api 接口
     server.get("/api", (req, res) => {
