@@ -27,6 +27,7 @@ import { createApp, createSSRApp } from "vue"
 import createPageRouter from "./router"
 import App from "./App.vue"
 import { appConfigPlugin } from "~/plugins/app-config-plugin/appConfigProvider"
+import { createPinia } from "pinia"
 
 /**
  * 创建 Vue 的 App 实例，在服务器和客户端之间共享
@@ -43,7 +44,11 @@ function createVueApp() {
   // app config support
   app.use(appConfigPlugin)
 
-  return { app, router }
+  // pinia
+  const pinia = createPinia()
+  app.use(pinia)
+
+  return { app, router, pinia }
 }
 
 export default createVueApp

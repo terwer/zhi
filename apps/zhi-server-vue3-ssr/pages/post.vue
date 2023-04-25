@@ -31,36 +31,8 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute } from "vue-router"
-import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
-import { onBeforeMount, onServerPrefetch, reactive } from "vue"
-import { Post } from "zhi-blog-api"
-import { SiYuanApiAdaptor } from "zhi-siyuan-api"
-
-// zhi-util
-const env = ZhiServerVue3SsrUtil.zhiEnv()
-const common = ZhiServerVue3SsrUtil.zhiCommon()
+import { usePostStore } from "~/stores/usePostStore"
 
 // use
-const route = useRoute()
-
-// props
-const currentPost = reactive({
-  post: {} as Post,
-})
-
-const fetch_getPost = async () => {
-  const blogApi = new SiYuanApiAdaptor(env)
-  const postid = route.params.id.includes(".html") ? route.params.id.toString().replace(".html", "") : route.params.id
-  currentPost.post = await blogApi.getPost(postid)
-}
-
-onServerPrefetch(async () => {
-  await fetch_getPost()
-})
-onBeforeMount(async () => {
-  if (common.objectUtil.isEmptyObject(currentPost.post)) {
-    await fetch_getPost()
-  }
-})
+const { currentPost } = usePostStore()
 </script>

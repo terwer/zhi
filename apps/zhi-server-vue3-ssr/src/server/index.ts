@@ -23,7 +23,7 @@
  * questions.
  */
 
-import express, { Express } from "express"
+import express, { Express, Response } from "express"
 import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
 import createVueApp from "~/src/app"
 import { renderToString } from "vue/server-renderer"
@@ -78,7 +78,7 @@ class ServerMiddleware {
     if (staticPath) {
       // 指定静态文件目录
       const absStaticPath = path.resolve(staticPath)
-      server.use(express.static(absStaticPath))
+      server.use(express.static(absStaticPath, { maxAge: "1m" }))
       logger.info("staticPath is set using express=>", absStaticPath)
     } else {
       // 这种情况比较特殊，一般是 serverless 自带 CDN 的时候，例如 vercel
@@ -91,10 +91,12 @@ class ServerMiddleware {
 
     // api 接口
     server.get("/api", (req, res) => {
+      this.setApiCache(res)
       res.send("Hello World!")
     })
 
     server.get("/api/user/:id", (req, res) => {
+      this.setApiCache(res)
       const userId = req.params.id // 获取URL参数id
       const user = {
         id: userId,
@@ -107,11 +109,13 @@ class ServerMiddleware {
 
     // 服务器端路由匹配
     server.get("*", (req, res) => {
+      this.setPageCache(res)
+
       const context = {
         url: req.url,
       }
 
-      const { app, router } = createVueApp()
+      const { app, router, pinia } = createVueApp()
 
       logger.debug("ssr context=>", context)
       router
@@ -127,11 +131,12 @@ class ServerMiddleware {
             if (!matchedComponents.length) {
               return res.status(404).end("Page Not Found")
             }
-            Promise.all([
-              (async () => {
-                logger.info("you can do some init before rendering")
-              })(),
-            ])
+
+            Promise.all(
+              matchedComponents.map((component: any) => {
+                logger.debug("do some work for component", component)
+              })
+            )
               .then(() => {
                 logger.trace("start renderToString...")
                 const staticV = "202304220051"
@@ -151,6 +156,7 @@ class ServerMiddleware {
                       <div id="app">${appHtml}</div>
                       <script type="module" src="/app.js?v=${staticV}" async defer></script>
                       <script src="/lib/lute/lute-1.7.5-20230410.min.cjs?v=${staticV}" async defer></script>
+                      <script>window.cache = ${JSON.stringify(pinia.state.value)}</script>
                     </body>
                   </html>
               `)
@@ -168,6 +174,15 @@ class ServerMiddleware {
     })
 
     return server
+  }
+
+  private setApiCache(res: Response) {
+    res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate")
+  }
+
+  private setPageCache(res: Response) {
+    res.setHeader("Content-Type", "text/html")
+    res.setHeader("Cache-Control", "s-max-age=10, stale-while-revalidate")
   }
 
   /**
@@ -190,7 +205,7 @@ class ServerMiddleware {
         serveUrl = `${address}:${port}`
       }
       logger.info(`Server is listening on ${serveUrl}`)
-      logger.info("Note that if you running in docker, this port is a inner port")
+      logger.info("Note that if you running in docker, this port is an inner port")
     })
   }
 }

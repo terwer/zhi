@@ -93,4 +93,5 @@ interface Frontmatter {
   link?: string
 }
 
-export const appConfigSymbol: InjectionKey<AppConfig> = Symbol("appConfig")
+const APP_CONFIG_KEY = "appConfig"
+export const appConfigSymbol: InjectionKey<AppConfig> = Symbol(APP_CONFIG_KEY)

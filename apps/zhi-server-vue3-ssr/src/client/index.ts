@@ -25,16 +25,23 @@
 
 import createVueApp from "../app"
 import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
+import { cachePlugin } from "~/plugins/cache-plugin/cacheProvider"
 
 const logger = ZhiServerVue3SsrUtil.zhiLog("ssr-client")
 const { app, router } = createVueApp()
+
+// pina cache
+// 1 服务端数据在 src/server/index.ts 注入 window.cache
+// 2 接下来在这里可以通过 window.cache 获取，然后在通过 plugins/cache-plugin/cacheProvider 的 provider 注入全局依赖
+// 3 最后，在 composables/useCache.ts 通过 inject 获取
+// 4 在使用的时候，用 const cache = useCache() 即可
+app.use(cachePlugin)
 
 // 如果传递 next 可以拦截路由做跳转
 router.beforeEach(async function (to, from) {
   // 页面刷新时执行该回调函数
   logger.debug(`beforeEach invoked, from:${from}, to:${to}`)
 })
-
 router.isReady().then(function () {
   app.mount("#app")
 })
