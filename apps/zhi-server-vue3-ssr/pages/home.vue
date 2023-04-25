@@ -86,6 +86,7 @@ onServerPrefetch(async () => {
   await fetch_getRecentPosts()
 })
 onBeforeMount(async () => {
+  // 没有数据并且是静态渲染才用客户端获取数据
   if (recentPosts.posts.length == 0) {
     // If data is null on mount, it means the component
     // is dynamically rendered on the client.

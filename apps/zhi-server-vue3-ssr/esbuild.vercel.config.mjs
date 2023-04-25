@@ -48,6 +48,7 @@ const defineEnv = {
 const coreDefine = {
   "import.meta.env": JSON.stringify(defineEnv),
   "import.meta.env.SSR": "true",
+  "import.meta.env.CWD": process.cwd(),
 }
 
 /**
