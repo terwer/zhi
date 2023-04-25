@@ -29,7 +29,6 @@ import createVueApp from "~/src/app"
 import { renderToString } from "vue/server-renderer"
 import path from "path"
 import "cross-fetch/polyfill"
-import * as console from "console"
 
 /**
  * 通用的 express 实例
@@ -39,9 +38,11 @@ import * as console from "console"
  * @since 1.0.0
  */
 class ServerMiddleware {
+  protected env
   protected logger
 
   constructor() {
+    this.env = ZhiServerVue3SsrUtil.zhiEnv()
     this.logger = ZhiServerVue3SsrUtil.zhiLog("server-middleware")
   }
 
@@ -67,9 +68,7 @@ class ServerMiddleware {
       }
     })
 
-    const autoAbsbase = path.resolve("./")
-    logger.info("autoAbsbase=>", autoAbsbase)
-    let luteAbsPath = ""
+    let luteAbsPath: string
     // 静态资源路径
     if (staticPath) {
       // 指定静态文件目录
@@ -80,8 +79,11 @@ class ServerMiddleware {
       luteAbsPath = path.join(absStaticPath, "lib", "lute", "lute-1.7.5-20230410.min.cjs")
       logger.info("staticPath is set, luteAbsPath=>", luteAbsPath)
     } else {
-      luteAbsPath = path.join(autoAbsbase, "dist", "lib", "lute", "lute-1.7.5-20230410.min.cjs")
-      logger.info("autoLuteAbsPath=>", luteAbsPath)
+      // const autoAbsbase = path.resolve("./")
+      const currentProcessPath = this.env.getStringEnv("CWD")
+      logger.info("currentProcessPath=>", currentProcessPath)
+      luteAbsPath = path.join(currentProcessPath, "dist", "lib", "lute", "lute-1.7.5-20230410.min.cjs")
+      logger.info("process dir is set, luteAbsPath=>", luteAbsPath)
     }
     require(luteAbsPath)
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
