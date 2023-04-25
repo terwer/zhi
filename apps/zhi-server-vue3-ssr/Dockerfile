@@ -4,6 +4,7 @@
 # Run the container with `docker run -p 3000:3000 -t vue3-ssr`.
 FROM docker.io/node:lts-alpine
 
+# default env
 ENV HOST=0.0.0.0
 ENV PORT=3333
 ENV DIST_PATH /app

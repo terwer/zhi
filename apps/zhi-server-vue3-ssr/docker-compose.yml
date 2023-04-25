@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3333:3333"
+    env_file:
+      - ./.env.docker
     restart: no
     user: vue3-ssr
     image: terwer/vue3-ssr:latest

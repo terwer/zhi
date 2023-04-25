@@ -32,6 +32,7 @@ import aliasPlugin from "@chialab/esbuild-plugin-alias"
 import inlineImage from "esbuild-plugin-inline-image"
 import getNormalizedEnvDefines from "esbuild-config-custom/utils.cjs"
 import rimraf from "rimraf"
+import ifdef from "esbuild-plugin-ifdef"
 
 const args = minimist(process.argv.slice(2))
 const isProduction = args.production || args.prod
@@ -46,9 +47,13 @@ const defineEnv = {
   NODE_ENV: isProduction ? "production" : "development",
   ...getNormalizedEnvDefines(["NODE", "VITE_"]),
 }
-console.log(defineEnv)
+const importEnv = isStatic
+  ? {
+      "import.meta.env": JSON.stringify(defineEnv),
+    }
+  : {}
 const coreDefine = {
-  "import.meta.env": JSON.stringify(defineEnv),
+  ...importEnv,
   "import.meta.env.SSR": "false",
   "import.meta.env.STATIC": isStatic,
 }
@@ -67,9 +72,12 @@ export default {
     entryPoints: ["src/client/index.ts"],
     outfile: path.join(distDir, "app.js"),
     format: "esm",
-    define: { ...coreDefine },
+    define: coreDefine,
     external: ["*.woff", "*.woff2", "*.ttf"],
     plugins: [
+      // ifdef( {
+      //   "process.env.NODE_BUILD": false,
+      // }),
       stylePlugin(),
       vuePlugin(),
       aliasPlugin({

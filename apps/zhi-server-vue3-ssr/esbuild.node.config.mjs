@@ -25,13 +25,12 @@
 
 import path from "path"
 import minimist from "minimist"
-import { copy } from "esbuild-plugin-copy"
 import stylePlugin from "esbuild-style-plugin"
 import vuePlugin from "@terwer/esbuild-plugin-vue3"
 import aliasPlugin from "@chialab/esbuild-plugin-alias"
 import inlineImage from "esbuild-plugin-inline-image"
-import getNormalizedEnvDefines from "esbuild-config-custom/utils.cjs"
 import rimraf from "rimraf"
+import ifdef from "esbuild-plugin-ifdef"
 
 const args = minimist(process.argv.slice(2))
 const isProduction = args.production || args.prod
@@ -41,12 +40,7 @@ const outDir = args.outDir || args.o
 const baseDir = outDir ?? "./"
 const distDir = outDir ? baseDir : path.join(baseDir, "adaptors", "node")
 
-const defineEnv = {
-  NODE_ENV: isProduction ? "production" : "development",
-  ...getNormalizedEnvDefines(["NODE", "VITE_"]),
-}
 const coreDefine = {
-  "import.meta.env": JSON.stringify(defineEnv),
   "import.meta.env.SSR": "true",
 }
 
@@ -59,9 +53,12 @@ export default {
     outfile: path.join(distDir, "index.cjs"),
     format: "cjs",
     platform: "node",
-    define: { ...coreDefine },
+    define: coreDefine,
     external: ["*.woff", "*.woff2", "*.ttf"],
     plugins: [
+      // ifdef({
+      //   "process.env.NODE_BUILD": false,
+      // }),
       vuePlugin(),
       aliasPlugin({
         vue: "vue/dist/vue.esm-bundler.js",

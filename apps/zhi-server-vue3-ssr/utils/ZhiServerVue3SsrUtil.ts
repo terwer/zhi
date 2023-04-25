@@ -26,7 +26,6 @@
 import { ZhiUtil } from "zhi-common"
 import Env from "zhi-env"
 import { DefaultLogger } from "zhi-log"
-import * as console from "console"
 
 /**
  * 工具类统一入口，每个应用自己实现
@@ -38,7 +37,15 @@ import * as console from "console"
 class ZhiServerVue3SsrUtil extends ZhiUtil {
   public static override zhiEnv(): Env {
     if (!this.env) {
+      //#ifdef !NODE_BUILD
       this.env = new Env(import.meta.env)
+      console.log("using injected import.meta.env")
+      //#endif
+
+      //#ifdef NODE_BUILD
+      // this.env = new Env(process.env)
+      // console.log("using process.env")
+      //#endif
     }
     return this.env
   }
