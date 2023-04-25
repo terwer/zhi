@@ -68,7 +68,7 @@ class ServerMiddleware {
       }
     })
 
-    let luteAbsPath: string
+    let luteAbsPath
     // 静态资源路径
     if (staticPath) {
       // 指定静态文件目录
@@ -79,8 +79,11 @@ class ServerMiddleware {
       luteAbsPath = path.join(absStaticPath, "lib", "lute", "lute-1.7.5-20230410.min.cjs")
       logger.info("staticPath is set, luteAbsPath=>", luteAbsPath)
     } else {
-      // const autoAbsbase = path.resolve("./")
-      const currentProcessPath = this.env.getStringEnv("CWD")
+      // 这种情况比较特殊，一般是 serverless 自带 CDN 的时候，例如 vercel
+      // vercel 推荐使用 cdn 指定 dist， 而不是用 express.static
+      // https://vercel.com/guides/using-express-with-vercel#adding-a-public-directory
+      const cwdArray = import.meta.env.PROCESS_CWD
+      const currentProcessPath = cwdArray.join(path.sep)
       logger.info("currentProcessPath=>", currentProcessPath)
       luteAbsPath = path.join(currentProcessPath, "dist", "lib", "lute", "lute-1.7.5-20230410.min.cjs")
       logger.info("process dir is set, luteAbsPath=>", luteAbsPath)
