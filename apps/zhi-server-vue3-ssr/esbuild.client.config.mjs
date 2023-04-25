@@ -36,6 +36,7 @@ import rimraf from "rimraf"
 const args = minimist(process.argv.slice(2))
 const isProduction = args.production || args.prod
 const outDir = args.outDir || args.o
+const isStatic = args.static || args.s ? "true" : "false"
 
 // for outer custom output for dev
 const baseDir = outDir ?? "./"
@@ -49,6 +50,7 @@ console.log(defineEnv)
 const coreDefine = {
   "import.meta.env": JSON.stringify(defineEnv),
   "import.meta.env.SSR": "false",
+  "import.meta.env.STATIC": isStatic,
 }
 
 // 生产环境先删除
@@ -82,6 +84,10 @@ export default {
           {
             from: "./public/img/*",
             to: [path.join(distDir, "/img")],
+          },
+          {
+            from: "./public/lib/**/*",
+            to: [path.join(distDir, "/lib")],
           },
           // copy one file
           {

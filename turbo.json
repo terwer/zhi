@@ -35,6 +35,9 @@
     "clientBuild": {
       "cache": false
     },
+    "staticBuild": {
+      "cache": false
+    },
     "serverBuild": {
       "cache": false
     },

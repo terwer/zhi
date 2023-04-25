@@ -27,7 +27,9 @@ import express, { Express } from "express"
 import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
 import createVueApp from "~/src/app"
 import { renderToString } from "vue/server-renderer"
-import * as path from "path"
+import path from "path"
+import "cross-fetch/polyfill"
+import * as console from "console"
 
 /**
  * 通用的 express 实例
@@ -65,13 +67,26 @@ class ServerMiddleware {
       }
     })
 
+    const autoAbsbase = path.resolve("./")
+    logger.info("autoAbsbase=>", autoAbsbase)
+    let luteAbsPath = ""
     // 静态资源路径
     if (staticPath) {
       // 指定静态文件目录
       const absStaticPath = path.resolve(staticPath)
       logger.info("absStaticPath=>", absStaticPath)
       server.use(express.static(absStaticPath))
+
+      luteAbsPath = path.join(absStaticPath, "lib", "lute", "lute-1.7.5-20230410.min.cjs")
+      logger.info("staticPath is set, luteAbsPath=>", luteAbsPath)
+    } else {
+      luteAbsPath = path.join(autoAbsbase, "dist", "lib", "lute", "lute-1.7.5-20230410.min.cjs")
+      logger.info("autoLuteAbsPath=>", luteAbsPath)
     }
+    require(luteAbsPath)
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    logger.info("required Lute in Server Side Rendering success", Lute)
 
     // api 接口
     server.get("/api", (req, res) => {
@@ -104,21 +119,18 @@ class ServerMiddleware {
           logger.info("route pushed to=>", context.url)
 
           router.isReady().then(() => {
+            // 匹配组件
             logger.debug("router.isReady")
             const matchedComponents = router.currentRoute.value.matched
             logger.trace("matchedComponents=>", matchedComponents)
             if (!matchedComponents.length) {
               return res.status(404).end("Page Not Found")
             }
-            Promise.all(
-              matchedComponents.map((component: any) => {
-                if (component.asyncData) {
-                  return component.asyncData({
-                    route: router.currentRoute.value,
-                  })
-                }
-              })
-            )
+            Promise.all([
+              (async () => {
+                logger.info("you can do some init before rendering")
+              })(),
+            ])
               .then(() => {
                 logger.trace("start renderToString...")
                 const staticV = "202304220051"
@@ -130,13 +142,14 @@ class ServerMiddleware {
                     <head>
                       <meta charset="UTF-8" />
                       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-                      <link rel="icon" href="./favicon.ico">
-                      <link rel="stylesheet" href="./app.css?v=${staticV}" />
+                      <link rel="icon" href="/favicon.ico">
+                      <link rel="stylesheet" href="/app.css?v=${staticV}" />
                       <title>zhi-blog-ssr-dev</title>
                     </head>
                     <body>
                       <div id="app">${appHtml}</div>
-                      <script type="module" src="./app.js?v=${staticV}" async defer></script>
+                      <script type="module" src="/app.js?v=${staticV}" async defer></script>
+                      <script src="/lib/lute/lute-1.7.5-20230410.min.cjs?v=${staticV}" async defer></script>
                     </body>
                   </html>
               `)

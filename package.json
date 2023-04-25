@@ -16,6 +16,7 @@
     "dockerBuild": "turbo run dockerBuild",
     "siyuanBuild": "turbo run siyuanBuild",
     "clientBuild": "turbo run clientBuild",
+    "staticBuild": "turbo run staticBuild",
     "serverBuild": "turbo run serverBuild",
     "localBuild": "turbo run localBuild",
     "nodeBuild": "turbo run nodeBuild",

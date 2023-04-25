@@ -6,7 +6,7 @@
       <img
         v-if="appConfig.themeConfig.logo"
         class="logo"
-        :src="datas.appBase + appConfig.themeConfig.logo"
+        :src="appConfig.themeConfig.logo"
         :alt="appConfig.siteTitle"
       />
       <div class="site-info">
@@ -43,7 +43,6 @@ const appConfig = useAppConfig()
 
 // datas
 const datas = reactive({
-  appBase: env.getStringEnv("VITE_APP_BASE"),
   isMobile: true,
   linksWrapMaxWidth: null,
 })
@@ -62,7 +61,6 @@ const computes = {
 
 // lifecycle
 onBeforeMount(() => {
-  datas.appBase = window.location.origin + env.getStringEnv("VITE_APP_BASE")
   // const deviceDetector = await import("next-vue-device-detector")
   // const d = deviceDetector.createDeviceDetector()
   // datas.isMobile = d.mobile

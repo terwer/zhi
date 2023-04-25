@@ -26,6 +26,7 @@
 import { ZhiUtil } from "zhi-common"
 import Env from "zhi-env"
 import { DefaultLogger } from "zhi-log"
+import * as console from "console"
 
 /**
  * 工具类统一入口，每个应用自己实现

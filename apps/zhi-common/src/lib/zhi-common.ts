@@ -29,6 +29,8 @@ import StrUtil from "./strUtil"
 import VersionUtil from "./versionUtil"
 import HtmlUtil from "./htmlUtil"
 import MarkdownUtil from "./markdownUtil"
+import ObjectUtil from "./objectUtil"
+
 /**
  * 平台无关的通用工具类
  *
@@ -43,6 +45,7 @@ class ZhiCommon {
   public readonly htmlUtil
   public readonly markdownUtil
   public readonly jsonUtil
+  public readonly objectUtil
 
   constructor() {
     this.dateUtil = new DateUtil()
@@ -51,6 +54,7 @@ class ZhiCommon {
     this.htmlUtil = new HtmlUtil()
     this.markdownUtil = new MarkdownUtil()
     this.jsonUtil = new JsonUtil()
+    this.objectUtil = new ObjectUtil()
   }
 }
 
