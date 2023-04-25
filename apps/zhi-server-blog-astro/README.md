@@ -2,13 +2,19 @@
 
 a performance first, ssr first blog
 
+## Dev
+
+```bash
+pnpm dev -F zhi-server-blog-astro
+```
+
 ## Build
+
+### Siyuan
 
 ```bash
 pnpm siyuanBuild -F zhi-server-blog-astro
 ````
-
-## Start
 
 inside siyuan console
 
@@ -34,18 +40,16 @@ await zhiCmd.executeCommandWithBundledNode("./dist/server/entry.mjs", [], {
 })
 ```
 
-for dev
+### node
 
 ```bash
-cd apps/zhi-server-blog-astro
-node ./dist/server/entry.mjs
-
-## or
-## node ./apps/zhi-server-blog-astro/dist/server/entry.mjs
+pnpm build -F zhi-server-blog-astro
+## node ./apps/zhi-server-blog-astro/dist/node/dist/server/entry.mjs
 ```
 
-## Stop
+### Vercel
 
-```js
-
+```bash
+pnpm vercelBuild -F zhi-server-blog-astro
+## .vercel
 ```

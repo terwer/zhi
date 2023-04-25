@@ -159,7 +159,14 @@ class Zhi {
               }
               this.logger.info(`Inited ${item.libpath} with init function`)
             } else {
-              this.logger.debug(`No init method for ${item.importType} ${item.libpath}`)
+              if (libObj.default) {
+                const res = await libObj.default()
+                if (res) {
+                  this.logger.info(`Detected output from ${item.importType} lib ${item.libpath}=>`, res)
+                }
+                this.logger.info(`Inited ${item.libpath} with default function`)
+              }
+              this.logger.info(`No init method for ${item.importType} ${item.libpath}`)
             }
           }
         } else {

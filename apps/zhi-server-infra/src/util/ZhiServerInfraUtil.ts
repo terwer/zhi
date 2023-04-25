@@ -23,5 +23,23 @@
  * questions.
  */
 
-// 字体定义
-// webfont已经引用 LXGW 和 opensans ，这里还是可以在定义其他字体
+import { ZhiUtil } from "zhi-common"
+import Env from "zhi-env"
+
+/**
+ * 工具类统一入口，每个应用自己实现
+ *
+ * @public
+ * @author terwer
+ * @since 1.0.0
+ */
+class ZhiServerInfraUtil extends ZhiUtil {
+  public static override zhiEnv(): Env {
+    if (!this.env) {
+      this.env = new Env(process.env)
+    }
+    return this.env
+  }
+}
+
+export default ZhiServerInfraUtil

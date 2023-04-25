@@ -108,7 +108,7 @@ class BlogApi implements IBlogApi {
     try {
       return await this.apiAdaptor.getPost(postid, useSlug)
     } catch (e) {
-      this.logger.error("getPost fetch posts failed =>", postid)
+      this.logger.error(`getPost fetch posts failed => ${postid},`, e)
       return Promise.resolve(new Post())
     }
   }

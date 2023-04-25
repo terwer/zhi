@@ -2,6 +2,14 @@
   "dependencies": {
     "core": [
       {
+        "libpath": "server/infra/index.cjs",
+        "baseType": "ZhiTheme",
+        "format": "cjs",
+        "importType": "require",
+        "runAs": ["Siyuan_MainWindow"],
+        "order": 0
+      },
+      {
         "libpath": "core/plugin-system/plugin.js",
         "baseType": "ZhiTheme",
         "format": "esm",

@@ -23,4 +23,6 @@
  * questions.
  */
 
-@require "./font"
+interface ImportMeta {
+  readonly env: ImportMetaEnv
+}

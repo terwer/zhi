@@ -26,7 +26,14 @@
   "dependencies": {
     "@astrojs/node": "^5.1.1",
     "@astrojs/vercel": "^3.2.4",
-    "astro": "^2.2.1"
+    "@astrojs/vue": "^2.1.1",
+    "astro": "^2.2.1",
+    "vue": "^3.2.47",
+    "zhi-blog-api": "workspace:*",
+    "zhi-common": "workspace:*",
+    "zhi-env": "workspace:*",
+    "zhi-log": "workspace:*",
+    "zhi-siyuan-api": "workspace:*"
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*"

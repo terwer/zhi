@@ -1,0 +1,41 @@
+{
+  "name": "zhi-server-infra",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "basic issues for zhi",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "repository": "terwer/zhi",
+  "homepage": "https://github.com/terwer/zhi/tree/main/apps/zhi-server-infra",
+  "author": "terwer",
+  "license": "GPL",
+  "keywords": [
+    "zhi",
+    "server",
+    "infra"
+  ],
+  "scripts": {
+    "dev": "zhi-build --watch --outDir=/Users/terwer/Documents/mydocs/SiYuanWorkspace/public/conf/appearance/themes/zhi/server/infra",
+    "build": "zhi-build --production",
+    "test": "jest --coverage=true --coverageDirectory=../../reports/test/zhi-server-infra",
+    "lint": "eslint 'src/**/*.{ts,js}' --fix",
+    "doc": "../../packages/api-docs/node_modules/.bin/api-extractor run --local --verbose",
+    "md": "../../packages/api-docs/node_modules/.bin/api-documenter markdown -i temp -o ../zhi-docs/src/api/zhi-server-infra && pnpm mdfix",
+    "mdfix": "pnpm mdfmt && rm ../zhi-docs/src/api/zhi-server-infra/index.md",
+    "mdfmt": "echo '---\ntitle: zhi-server-infra\n---' | cat - ../zhi-docs/src/api/zhi-server-infra/index.md > ../zhi-docs/src/api/zhi-server-infra/README.md"
+  },
+  "devDependencies": {
+    "api-docs": "workspace:*",
+    "esbuild-config-custom": "workspace:*",
+    "eslint-config-custom": "workspace:*",
+    "tsconfig": "workspace:*",
+    "vitest-config-custom": "workspace:*"
+  },
+  "dependencies": {
+    "fix-path": "^4.0.0",
+    "zhi-common": "workspace:*",
+    "zhi-device": "workspace:*",
+    "zhi-env": "workspace:*",
+    "zhi-log": "workspace:*"
+  }
+}
