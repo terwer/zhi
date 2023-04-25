@@ -45,10 +45,11 @@ const defineEnv = {
   NODE_ENV: isProduction ? "production" : "development",
   ...getNormalizedEnvDefines(["NODE", "VITE_"]),
 }
+const cwd = process.cwd().split(path.sep)
 const coreDefine = {
   "import.meta.env": JSON.stringify(defineEnv),
   "import.meta.env.SSR": "true",
-  "import.meta.env.CWD": process.cwd(),
+  "import.meta.env.PROCESS_CWD": JSON.stringify(cwd),
 }
 
 /**
