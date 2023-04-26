@@ -1,25 +1,20 @@
 {
+  "plugins": ["@nxtensions/astro"],
+  "targetDefaults": {
+    "lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json", "{workspaceRoot}/.eslintignore"]
+    },
+    "test": {
+      "inputs": ["default", "^default"]
+    }
+  },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "cacheableOperations": ["build", "lint", "test", "e2e", "check"],
         "accessToken": "NWRiNzY2NDMtNjg0My00NmJmLTgwMzAtMTA1YjI1MDBmYTgzfHJlYWQtd3JpdGU="
       }
-    }
-  },
-  "extends": "nx/presets/npm.json",
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "targetDefaults": {
-    "lint": {
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/.eslintignore"
-      ]
-    },
-    "test": {
-      "inputs": ["default", "^default"]
     }
   },
   "generators": {
@@ -34,5 +29,7 @@
       "linter": "eslint",
       "unitTestRunner": "vitest"
     }
-  }
+  },
+  "defaultProject": "zhi-server-blog-astro",
+  "extends": "nx/presets/npm.json"
 }

@@ -8,6 +8,24 @@
 
 Run `nx graph` to see a diagram of the dependencies of the projects.
 
+## Dependency
+
+- zhi-core - 0
+
+
+- zhi-blog-vite - 0
+
+
+- zhi-blog-vite-e2e - 1
+  - zhi-blog-vite
+
+
+- zhi-server-blog-astro - 0
+
+
+- zhi-server-blog-astro-e2e - 1
+  - zhi-server-blog-astro
+
 ## Remote caching
 
 Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and make CI faster.

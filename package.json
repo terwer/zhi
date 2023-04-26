@@ -14,7 +14,8 @@
     "update": "nx uodate <project>",
     "publish": "nx publish <project> [--ver=0.0.1] [--tag=latest]",
     "cz": "git-cz",
-    "commit": "commit"
+    "commit": "commit",
+    "postinstall": "node ./tools/scripts/patch-nx-cli.cjs"
   },
   "private": true,
   "devDependencies": {
@@ -31,11 +32,13 @@
     "@nrwl/nx-cloud": "latest",
     "@nrwl/vite": "15.9.2",
     "@nrwl/web": "15.9.2",
+    "@nxtensions/astro": "^3.5.0",
     "@types/node": "18.7.1",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "@vitest/coverage-c8": "~0.25.8",
     "@vitest/ui": "^0.25.8",
+    "astro": "^2.0.0",
     "commitizen": "^4.3.0",
     "commonjs-extension-resolution-loader": "^0.1.0",
     "cypress": "^12.2.0",
