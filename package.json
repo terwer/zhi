@@ -4,6 +4,15 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
+    "reset": "nx reset",
+    "build": "nx run-many --target=build --exclude=zhi-docs",
+    "test": "nx run-many --target=test --exclude=zhi-docs",
+    "lint": "nx run-many --target=lint --exclude=zhi-docs",
+    "serve": "nx serve <project>",
+    "cli": "nx cli <project>",
+    "clean": "nx clean <project>",
+    "update": "nx uodate <project>",
+    "publish": "nx publish <project> [--ver=0.0.1] [--tag=latest]",
     "cz": "git-cz",
     "commit": "commit"
   },
