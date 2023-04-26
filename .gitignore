@@ -38,8 +38,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Styles
-*.css
-
 # Apps
 .astro

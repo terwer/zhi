@@ -23,8 +23,4 @@
  * questions.
  */
 
-module.exports = {
-  semi: false,
-  singleQuote: false,
-  printWidth: 120,
-}
+export * from "./lib/zhi-core.js"

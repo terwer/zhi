@@ -22,6 +22,12 @@ Run `nx graph` to see a diagram of the dependencies of the projects.
 
 Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and make CI faster.
 
+## Publish to npm
+
+```bash
+nx publish zhi-core --ver=0.1.0 --tag=latest 
+```
+
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev) to learn more.

@@ -4,11 +4,34 @@
   "sourceRoot": "packages/zhi-core/src",
   "projectType": "library",
   "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/zhi-core",
+        "main": "packages/zhi-core/src/index.ts",
+        "tsConfig": "packages/zhi-core/tsconfig.lib.json",
+        "assets": [
+          "packages/zhi-core/*.md",
+          "packages/zhi-core/src/theme.js",
+          "packages/zhi-core/src/theme.json",
+          "packages/zhi-core/src/theme.css",
+          "packages/zhi-core/src/style/common/fonts/webfont.css"
+        ]
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node tools/scripts/publish.mjs zhi-core {args.ver} {args.tag}"
+      },
+      "dependsOn": ["build"]
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["packages/zhi-core/**/*.js"]
+        "lintFilePatterns": ["packages/zhi-core/**/*.ts"]
       }
     },
     "test": {

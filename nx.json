@@ -1,13 +1,4 @@
 {
-  "plugins": ["@nxtensions/astro"],
-  "targetDefaults": {
-    "lint": {
-      "inputs": ["default", "{workspaceRoot}/.eslintrc.json", "{workspaceRoot}/.eslintignore"]
-    },
-    "test": {
-      "inputs": ["default", "^default"]
-    }
-  },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
@@ -15,6 +6,15 @@
         "cacheableOperations": ["build", "lint", "test", "e2e", "check"],
         "accessToken": "NWRiNzY2NDMtNjg0My00NmJmLTgwMzAtMTA1YjI1MDBmYTgzfHJlYWQtd3JpdGU="
       }
+    }
+  },
+  "plugins": ["@nxtensions/astro"],
+  "targetDefaults": {
+    "lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json", "{workspaceRoot}/.eslintignore"]
+    },
+    "test": {
+      "inputs": ["default", "^default"]
     }
   },
   "generators": {

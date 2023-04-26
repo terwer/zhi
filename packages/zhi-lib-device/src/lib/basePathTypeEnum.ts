@@ -24,38 +24,38 @@
  */
 
 /**
- * 主题通用类（由theme.js动态调用，除了单元测试之外请勿主动调用）
+ * 基本路径枚举
  *
  * @public
  * @author terwer
+ * @version 0.1.0
  * @since 0.1.0
  */
-class Zhi {}
+enum BasePathTypeEnum {
+  /**
+   * Appearance
+   */
+  BasePathType_Appearance = "Appearance",
 
-function addStylesheet(id, url) {
-  if (typeof document === "undefined") {
-    console.warn("Not in browser env, ignore add css")
-    return
-  }
+  /**
+   * Data
+   */
+  BasePathType_Data = "Data",
 
-  const head = document.head || document.getElementsByTagName("head")[0]
-  const existingLink = document.querySelector('link[href="' + url + '"]')
-  if (existingLink) {
-    return
-  }
-  const link = document.createElement("link")
-  link.id = id
-  link.rel = "stylesheet"
-  link.href = url
-  head.appendChild(link)
-  console.log(`${id} loaded`)
+  /**
+   * Themes
+   */
+  BasePathType_Themes = "Themes",
+
+  /**
+   * Zhi 主题目录
+   */
+  BasePathType_ZhiTheme = "ZhiTheme",
+
+  /**
+   * 未设置
+   */
+  BasePathType_None = "None",
 }
 
-async function init() {
-  console.log(`zhiCore loaded`)
-}
-
-export const zhiCore = {
-  addStylesheet,
-  init,
-}
+export default BasePathTypeEnum

@@ -23,11 +23,50 @@
  * questions.
  */
 
-import { zhiCore } from "./zhi-core"
-import { describe, expect, it } from "vitest"
+// import { DeviceTypeEnum } from "@siyuan-community/zhi-device"
 
-describe("zhiCore", () => {
-  it("zhiCore should work", () => {
-    expect(zhiCore).toBeTruthy()
-  })
-})
+/**
+ * 主题通用类（由theme.js动态调用，除了单元测试之外请勿主动调用）
+ *
+ * @public
+ * @author terwer
+ * @since 0.1.0
+ */
+class Zhi {
+  /**
+   * 主题初始化
+   *
+   * @param runAs - 运行模式
+   */
+  // constructor(runAs) {
+  // this.runAs = runAs ?? DeviceTypeEnum.DeviceType_Node
+  // }
+}
+
+function addStylesheet(id: string, url: string) {
+  if (typeof document === "undefined") {
+    console.warn("Not in browser env, ignore add css")
+    return
+  }
+
+  const head = document.head || document.getElementsByTagName("head")[0]
+  const existingLink = document.querySelector('link[href="' + url + '"]')
+  if (existingLink) {
+    return
+  }
+  const link = document.createElement("link")
+  link.id = id
+  link.rel = "stylesheet"
+  link.href = url
+  head.appendChild(link)
+  console.log(`${id} loaded`)
+}
+
+async function init() {
+  console.log(`zhiCore loaded`)
+}
+
+export const zhiCore = {
+  addStylesheet,
+  init,
+}

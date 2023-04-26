@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@siyuan-community/zhi-core": ["packages/zhi-core/src/index.ts"],
+      "@siyuan-community/zhi-device": ["packages/zhi-lib-device/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

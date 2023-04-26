@@ -5,7 +5,7 @@ import { copyDir, rmrf } from "../../utils/fileutils.js"
 
 async function main() {
   const projectRoot = path.resolve("../../../")
-  const src = path.join(projectRoot, "packages/zhi-core/src")
+  const src = path.join(projectRoot, "dist/packages/zhi-core/src")
   const dest = "/Users/terwer/Documents/mydocs/SiYuanWorkspace/public/conf/appearance/themes/zhi"
   // const cssPath = path.join(projectRoot, "packages/zhi-core/src", "style", "/**/*.css")
 
