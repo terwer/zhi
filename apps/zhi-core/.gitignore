@@ -6,6 +6,7 @@ dist
 lib
 !src/lib
 node_modules
+!public/npm/node_modules
 
 # api-extractor
 etc

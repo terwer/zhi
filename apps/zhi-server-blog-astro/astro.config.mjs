@@ -18,31 +18,6 @@ if (!isDev) {
   console.log("isVercelBuild=>", isVercelBuild)
 }
 
-// 生产构建需要加上externals，否则无法运行
-const externals = isDev
-  ? []
-  : [
-      "undici",
-      "server-destroy",
-      "vue",
-      "busboy",
-      "html-escaper",
-      "kleur",
-      "slash",
-      "string-width",
-      "path-to-regexp",
-      "streamsearch",
-      "strip-ansi",
-      "eastasianwidth",
-      "ansi-regex",
-      "emoji-regex",
-      "send",
-      "http-errors",
-      "depd",
-      "setprototypeof",
-      "statuses",
-    ]
-
 // https://astro.build/config
 export default defineConfig({
   outDir: distDir,
@@ -53,11 +28,6 @@ export default defineConfig({
   ],
   // 注释掉 output 可以构建成纯静态页面
   output: "server",
-  vite: {
-    ssr: {
-      noExternal: externals,
-    },
-  },
   // https://docs.astro.build/en/guides/integrations-guide/vercel/
   // https://docs.astro.build/en/guides/integrations-guide/node/#standalone
   adapter: isVercelBuild

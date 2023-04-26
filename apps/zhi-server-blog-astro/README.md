@@ -28,15 +28,21 @@ inside siyuan console
 
 // This works, but need system environment for node.js
 const basePath = SiyuanDevice.zhiThemePath()
-await zhiCmd.executeCommand("PORT=3333 node", ["./dist/server/entry.mjs"], {
-  cwd: `${basePath}/server/blog`,
+await zhiCmd.executeCommand("node", ["./entry.mjs"], {
+  cwd: `${basePath}/server/blog/dist/server`,
+  env: {
+    NODE_PATH: `/Users/terwer/Documents/mydocs/zhi/node_modules:apps/zhi-server-blog-astro/node_modules:/usr/lib/node_modules:/usr/local/lib/node_modules:$NODE_PATH`,
+  }
 })
 
 // Cannot find package 'undici'
 const basePath = SiyuanDevice.zhiThemePath()
-await zhiCmd.executeCommandWithBundledNode("./dist/server/entry.mjs", [], {
-  cwd: `${basePath}/server/blog`,
-  silent: true
+await zhiCmd.executeCommandWithBundledNode("./entry.mjs", [], {
+  cwd: `${basePath}/server/blog/dist/server`,
+  silent: true,
+  env: {
+    NODE_PATH: `/Users/terwer/Documents/mydocs/zhi/node_modules:apps/zhi-server-blog-astro/node_modules:/usr/lib/node_modules:/usr/local/lib/node_modules:$NODE_PATH`,
+  }
 })
 ```
 

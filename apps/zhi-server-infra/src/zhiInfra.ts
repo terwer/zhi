@@ -25,6 +25,9 @@
 
 import fixPath from "fix-path"
 import ZhiServerInfraUtil from "./util/ZhiServerInfraUtil"
+import { SiyuanDevice } from "zhi-device"
+import { zhiNodeModulesPath } from "./common"
+import { requireInstall } from "./lib/npmHelper"
 
 /**
  * 基础设施
@@ -47,6 +50,18 @@ class ZhiInfra {
     fixPath()
     console.log("process.env.PATH after fix => ", (process as any).env.PATH)
     this.logger.info("Fixed $PATH in Electron apps as GUI apps on macOS and Linux")
+  }
+
+  public hackRequire() {
+    // 设置依赖路径，hack require保证require能使用自定义路径的node_modules
+    this.logger.info("Init zhi node_modules from => ", zhiNodeModulesPath)
+    SiyuanDevice.siyuanWindow().require.setExternalDeps(zhiNodeModulesPath)
+    this.logger.info("Zhi node_modules inited.")
+  }
+
+  public mountNpmCmd() {
+    SiyuanDevice.siyuanWindow().requireInstall = requireInstall
+    this.logger.info("requireInstall mounted")
   }
 }
 
