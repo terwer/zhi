@@ -23,7 +23,7 @@
  * questions.
  */
 
-import { zhiNpmPath } from "../common"
+import { zhiAppNpmPath } from "../common"
 import { SiyuanDevice } from "zhi-device"
 
 export function shellCmd(target: string, cmd: string, path: string) {
@@ -59,11 +59,11 @@ export function shellCmd(target: string, cmd: string, path: string) {
   })
 }
 
-function npmCmd(cmd: string, path: string) {
+export function npmCmd(cmd: string, path: string) {
   return shellCmd("npm", cmd, path)
 }
 
 export async function requireInstall(moduleName: string) {
-  await npmCmd(`install ${moduleName}`, zhiNpmPath)
+  await npmCmd(`install ${moduleName}`, zhiAppNpmPath)
   return SiyuanDevice.siyuanWindow().require(moduleName)
 }

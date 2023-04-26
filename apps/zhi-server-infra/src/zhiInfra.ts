@@ -26,8 +26,11 @@
 import fixPath from "fix-path"
 import ZhiServerInfraUtil from "./util/ZhiServerInfraUtil"
 import { SiyuanDevice } from "zhi-device"
-import { zhiNodeModulesPath } from "./common"
-import { requireInstall } from "./lib/npmHelper"
+import { zhiAppNodeModulesPath, zhiAppNpmPath, zhiNodeModulesPath, zhiNpmPath } from "./common"
+import { npmCmd, requireInstall, shellCmd } from "./lib/npmHelper"
+import fs from "fs-extra"
+import path from "path"
+import FsHelper from "./lib/fsHelper"
 
 /**
  * 基础设施
@@ -52,16 +55,32 @@ class ZhiInfra {
     this.logger.info("Fixed $PATH in Electron apps as GUI apps on macOS and Linux")
   }
 
-  public hackRequire() {
+  public async hackRequire() {
     // 设置依赖路径，hack require保证require能使用自定义路径的node_modules
-    this.logger.info("Init zhi node_modules from => ", zhiNodeModulesPath)
+    this.logger.info("Init zhi core node_modules from => ", zhiNodeModulesPath)
     SiyuanDevice.siyuanWindow().require.setExternalDeps(zhiNodeModulesPath)
-    this.logger.info("Zhi node_modules inited.")
+
+    this.logger.info("Init zhi app node_modules from => ", zhiAppNodeModulesPath)
+    if (!fs.existsSync(path.join(zhiAppNpmPath, "package.json"))) {
+      await fs.mkdirs(zhiAppNpmPath)
+      await FsHelper.copyFolder(zhiNpmPath, zhiAppNpmPath)
+      this.logger.warn("app package.json not exist, will init")
+      // await npmCmd("init", zhiAppNpmPath)
+    }
+    SiyuanDevice.siyuanWindow().require.setExternalDeps(zhiAppNodeModulesPath)
+    const externalDepPathes = SiyuanDevice.siyuanWindow().ExternalDepPathes
+    externalDepPathes.map((path: string, index: number) => {
+      this.logger.info(`Available zhi node_modules path${index + 1} => ${path}`)
+    })
   }
 
   public mountNpmCmd() {
     SiyuanDevice.siyuanWindow().requireInstall = requireInstall
+    SiyuanDevice.siyuanWindow().npmCmd = npmCmd
+    SiyuanDevice.siyuanWindow().shellCmd = shellCmd
     this.logger.info("requireInstall mounted")
+    this.logger.info("npmCmd mounted")
+    this.logger.info("shellCmd mounted")
   }
 }
 
