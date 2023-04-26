@@ -31,7 +31,7 @@
     "commonjs-extension-resolution-loader": "^0.1.0",
     "cypress": "^12.2.0",
     "eslint": "~8.15.0",
-    "eslint-config-prettier": "8.1.0",
+    "eslint-config-prettier": "8.8.0",
     "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-prettier": "^4.2.1",
     "glob": "^10.2.2",
