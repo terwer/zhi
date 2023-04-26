@@ -27,14 +27,4 @@ module.exports = {
   semi: false,
   singleQuote: false,
   printWidth: 120,
-  pluginSearchDirs: ["."],
-  plugins: [require.resolve("prettier-plugin-astro")],
-  overrides: [
-    {
-      files: "*.astro",
-      options: {
-        parser: "astro",
-      },
-    },
-  ],
 }

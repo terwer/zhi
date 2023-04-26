@@ -1,5 +1,6 @@
+// echo "feat(zhi-core): change project structure" | commitlint
 module.exports = {
-  extends: ["@commitlint/config-angular"],
+  extends: ["@commitlint/config-nx-scopes", "@commitlint/config-angular"],
   rules: {
     "type-enum": [2, "always", ["feat", "fix", "refactor", "perf", "revert", "chore", "docs"]],
   },
