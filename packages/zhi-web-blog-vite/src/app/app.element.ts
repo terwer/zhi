@@ -1,10 +1,10 @@
-import './app.element.styl';
+import "./app.element.styl"
 
 export class AppElement extends HTMLElement {
-  public static observedAttributes = [];
+  public static observedAttributes = []
 
   connectedCallback() {
-    const title = 'zhi-web-blog-vite';
+    const title = "zhi-web-blog-vite"
     this.innerHTML = `
     <div class="wrapper">
       <div class="container">
@@ -367,7 +367,7 @@ nx affected:e2e</pre>
         </p>
       </div>
     </div>
-      `;
+      `
   }
 }
-customElements.define('app-root', AppElement);
+customElements.define("app-root", AppElement)

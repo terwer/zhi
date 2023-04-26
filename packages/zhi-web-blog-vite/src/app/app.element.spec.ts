@@ -1,21 +1,19 @@
-import { AppElement } from './app.element';
+import { AppElement } from "./app.element"
 
-describe('AppElement', () => {
-  let app: AppElement;
+describe("AppElement", () => {
+  let app: AppElement
 
   beforeEach(() => {
-    app = new AppElement();
-  });
+    app = new AppElement()
+  })
 
-  it('should create successfully', () => {
-    expect(app).toBeTruthy();
-  });
+  it("should create successfully", () => {
+    expect(app).toBeTruthy()
+  })
 
-  it('should have a greeting', () => {
-    app.connectedCallback();
+  it("should have a greeting", () => {
+    app.connectedCallback()
 
-    expect(app.querySelector('h1').innerHTML).toContain(
-      'Welcome zhi-web-blog-vite'
-    );
-  });
-});
+    expect(app.querySelector("h1").innerHTML).toContain("Welcome zhi-web-blog-vite")
+  })
+})
