@@ -63,6 +63,31 @@ export function npmCmd(cmd: string, path: string) {
   return shellCmd("npm", cmd, path)
 }
 
+/**
+ * 查看 NPM 版本
+ */
+export async function npmVersion() {
+  return await npmCmd(`-v`, zhiAppNpmPath)
+}
+
+/**
+ * 安装 NPM 依赖
+ *
+ * @param moduleName - 可选模块名，不传默认安装全量
+ */
+export async function npmInstall(moduleName?: string) {
+  if (moduleName) {
+    await npmCmd(`install ${moduleName}`, zhiAppNpmPath)
+  } else {
+    await npmCmd(`install`, zhiAppNpmPath)
+  }
+}
+
+/**
+ * 安装依赖并马上导入
+ *
+ * @param moduleName - 依赖名称
+ */
 export async function requireInstall(moduleName: string) {
   await npmCmd(`install ${moduleName}`, zhiAppNpmPath)
   return SiyuanDevice.siyuanWindow().require(moduleName)

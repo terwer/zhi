@@ -44,6 +44,10 @@ await zhiCmd.executeCommandWithBundledNode("./entry.mjs", [], {
     NODE_PATH: `/Users/terwer/Documents/mydocs/zhi/node_modules:apps/zhi-server-blog-astro/node_modules:/usr/lib/node_modules:/usr/local/lib/node_modules:$NODE_PATH`,
   }
 })
+
+const basePath = SiyuanDevice.zhiThemePath()
+await shellCmd("node","entry.mjs",`${basePath}/server/blog/dist/server`)
+
 ```
 
 ### node

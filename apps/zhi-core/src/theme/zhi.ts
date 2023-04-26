@@ -29,6 +29,7 @@ import ZhiUtil from "./core/util/ZhiCoreUtil"
 import DependencyItem from "./models/DependencyItem"
 import Bootstrap from "./core/Bootstrap"
 import { crossChalk } from "zhi-log"
+import { SiyuanKernelApi } from "zhi-siyuan-api"
 
 /**
  * 主题通用类（由theme.js动态调用，除了单元测试之外请勿主动调用）
@@ -39,9 +40,24 @@ import { crossChalk } from "zhi-log"
  */
 class Zhi {
   private readonly logger
+  private readonly common
+  private readonly kernelApi
+
   private readonly runAs
   private pkgJson = {} as any
   private ZHI_PACKAGE_JSON = "package.json"
+
+  /**
+   * 主题样式最低支持版本
+   * @private
+   */
+  private readonly SUPPORTED_THEME_VERSION = "2.7.6"
+
+  /**
+   * 内核最低支持版本
+   * @private
+   */
+  private readonly SUPPORTED_KERNEL_VERSION = "2.8.1"
 
   /**
    * 主题初始化
@@ -49,7 +65,10 @@ class Zhi {
    * @param runAs - 运行模式
    */
   constructor(runAs: DeviceTypeEnum) {
+    const env = ZhiCoreUtil.zhiEnv()
     this.logger = ZhiCoreUtil.zhiLog("zhi-core")
+    this.common = ZhiCoreUtil.zhiCommon()
+    this.kernelApi = new SiyuanKernelApi(env)
 
     this.runAs = runAs ?? DeviceTypeEnum.DeviceType_Node
   }
@@ -85,6 +104,34 @@ class Zhi {
         this.logger.warn(
           `Zhi Theme can only run as ${DeviceTypeEnum.DeviceType_Siyuan_MainWin} or ${DeviceTypeEnum.DeviceType_Siyuan_Browser}`
         )
+        return
+      }
+
+      // 检测内核版本
+      const kernelVersion = SiyuanDevice.siyuanWindow().siyuan.config.system.kernelVersion
+      if (this.common.versionUtil.lesser(kernelVersion, this.SUPPORTED_THEME_VERSION)) {
+        const errMsg = this.common.strUtil.f(
+          "Your siyuan-note kernel version {0} is not supported by zhi theme, style will look weird, you must install siyuan-note {1}+ to use zhi-theme",
+          kernelVersion,
+          this.SUPPORTED_THEME_VERSION
+        )
+        this.logger.error(errMsg)
+        this.kernelApi.pushErrMsg({
+          msg: errMsg,
+        })
+        return
+      }
+
+      if (this.common.versionUtil.lesser(kernelVersion, this.SUPPORTED_KERNEL_VERSION)) {
+        const warnMsg = this.common.strUtil.f(
+          "Your siyuan-note kernel version {0} is too low, plugin system will not work, you must install siyuan-note {1}+ to use plugin feature",
+          kernelVersion,
+          this.SUPPORTED_KERNEL_VERSION
+        )
+        this.logger.warn(warnMsg)
+        this.kernelApi.pushMsg({
+          msg: warnMsg,
+        })
         return
       }
 

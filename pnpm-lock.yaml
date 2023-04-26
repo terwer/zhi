@@ -130,6 +130,9 @@ importers:
       zhi-log:
         specifier: workspace:*
         version: link:../zhi-log
+      zhi-siyuan-api:
+        specifier: workspace:*
+        version: link:../zhi-siyuan-api
     devDependencies:
       api-docs:
         specifier: workspace:*

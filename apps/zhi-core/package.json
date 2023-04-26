@@ -38,6 +38,7 @@
     "zhi-env": "workspace:*",
     "zhi-log": "workspace:*",
     "zhi-device": "workspace:*",
-    "zhi-common": "workspace:*"
+    "zhi-common": "workspace:*",
+    "zhi-siyuan-api": "workspace:*"
   }
 }

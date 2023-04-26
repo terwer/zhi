@@ -150,6 +150,9 @@ class ZhiBuild {
     if (esbuildConfig.target && esbuildConfig.platform === "node") {
       esbuildConfig.target = undefined
     }
+    if (esbuildConfig.outdir) {
+      esbuildConfig.outfile = undefined
+    }
 
     console.log("building is start, esbuildConfig=>", esbuildConfig)
 

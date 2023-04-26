@@ -29,8 +29,7 @@ import path from "path"
 export function getCrossPlatformAppDataFolder() {
   let configFilePath
   if (process.platform === "darwin") {
-    // configFilePath = path.join(process.env.HOME ?? "/Users/terwer", "/Library/Application Support")
-    configFilePath = path.join(process.env.HOME ?? "/Users/terwer", "Documents/config")
+    configFilePath = path.join(process.env.HOME ?? "/Users/terwer", "/Library/Application Support")
   } else if (process.platform === "win32") {
     // Roaming包含在APPDATA中了
     configFilePath = process.env.APPDATA
@@ -38,9 +37,9 @@ export function getCrossPlatformAppDataFolder() {
     configFilePath = process.env.HOME
   }
 
-  return configFilePath
+  return path.join(configFilePath ?? process.cwd())
 }
 export const zhiNpmPath = SiyuanDevice.joinPath(SiyuanDevice.zhiThemePath(), "npm")
 export const zhiNodeModulesPath = SiyuanDevice.joinPath(zhiNpmPath, "node_modules")
-export const zhiAppNpmPath = SiyuanDevice.joinPath(getCrossPlatformAppDataFolder() ?? zhiNpmPath, "space.terwer.zhi")
+export const zhiAppNpmPath = SiyuanDevice.joinPath(getCrossPlatformAppDataFolder() ?? zhiNpmPath, "siyuancommunity")
 export const zhiAppNodeModulesPath = SiyuanDevice.joinPath(zhiAppNpmPath, "node_modules")
