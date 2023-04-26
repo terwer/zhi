@@ -1,0 +1,38 @@
+{
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "accessToken": "NWRiNzY2NDMtNjg0My00NmJmLTgwMzAtMTA1YjI1MDBmYTgzfHJlYWQtd3JpdGU="
+      }
+    }
+  },
+  "extends": "nx/presets/npm.json",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "lint": {
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/.eslintignore"
+      ]
+    },
+    "test": {
+      "inputs": ["default", "^default"]
+    }
+  },
+  "generators": {
+    "@nrwl/web:application": {
+      "style": "styl",
+      "linter": "eslint",
+      "unitTestRunner": "vitest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/web:library": {
+      "style": "styl",
+      "linter": "eslint",
+      "unitTestRunner": "vitest"
+    }
+  }
+}
