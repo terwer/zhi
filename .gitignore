@@ -41,4 +41,5 @@ Thumbs.db
 # Styles
 *.css
 
+# Apps
 .astro

@@ -16,15 +16,7 @@ Run `nx graph` to see a diagram of the dependencies of the projects.
 - zhi-blog-vite - 0
 
 
-- zhi-blog-vite-e2e - 1
-  - zhi-blog-vite
-
-
 - zhi-server-blog-astro - 0
-
-
-- zhi-server-blog-astro-e2e - 1
-  - zhi-server-blog-astro
 
 ## Remote caching
 

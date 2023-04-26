@@ -14,9 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "zhi-core": ["packages/zhi-core/src/index.js"]
-    }
+    "paths": {}
   },
   "exclude": ["node_modules", "tmp"]
 }
