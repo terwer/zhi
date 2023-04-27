@@ -14,7 +14,6 @@ export const __dirname = path.dirname(__filename)
  */
 export const makeDirs = async (dirpath) => {
   await mkdirp(dirpath)
-  console.log("dirs maked")
 }
 
 /**

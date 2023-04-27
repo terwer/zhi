@@ -23,50 +23,49 @@
  * questions.
  */
 
-// import { DeviceTypeEnum } from "@siyuan-community/zhi-device"
+import { addImportMaps, addScript, addStyles } from "./browser/index.js"
+import { Zhi } from "./zhi.js"
 
 /**
- * 主题通用类（由theme.js动态调用，除了单元测试之外请勿主动调用）
+ * 添加样式到当前页面
  *
- * @public
+ * @param id - 样式ID
+ * @param url - 样式 url
+ */
+const addStylesheet = (id: string, url: string) => {
+  addStyles(id, url)
+}
+
+const addImportMapToHead = (importMap: object, type?: string) => {
+  addImportMaps(importMap, type)
+}
+
+const addScriptToHead = (script: string, type?: string) => {
+  addScript(script, type)
+}
+
+/**
+ * 加载主题
+ */
+const loadTheme = async (): Promise<void> => {
+  const zhi = new Zhi()
+  await zhi.init()
+}
+
+/**
+ * 主题初始化核心入口
+ *
  * @author terwer
+ * @version 0.1.0
  * @since 0.1.0
  */
-class Zhi {
-  /**
-   * 主题初始化
-   *
-   * @param runAs - 运行模式
-   */
-  // constructor(runAs) {
-  // this.runAs = runAs ?? DeviceTypeEnum.DeviceType_Node
-  // }
-}
-
-function addStylesheet(id: string, url: string) {
-  if (typeof document === "undefined") {
-    console.warn("Not in browser env, ignore add css")
-    return
-  }
-
-  const head = document.head || document.getElementsByTagName("head")[0]
-  const existingLink = document.querySelector('link[href="' + url + '"]')
-  if (existingLink) {
-    return
-  }
-  const link = document.createElement("link")
-  link.id = id
-  link.rel = "stylesheet"
-  link.href = url
-  head.appendChild(link)
-  console.log(`${id} loaded`)
-}
-
-async function init() {
-  console.log(`zhiCore loaded`)
+const init = async () => {
+  await loadTheme()
 }
 
 export const zhiCore = {
   addStylesheet,
+  addImportMapToHead,
+  addScriptToHead,
   init,
 }

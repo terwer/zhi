@@ -26,13 +26,50 @@
 /**
  * 主题入口，由思源笔记自动触发
  */
+
 ;(async () => {
+  const { createCoreLogger } = await import("./lib/utils/index.js")
+  const logger = createCoreLogger("theme")
+
   // 1 加载主题核心文件
   const zhiCore = await import("./index.js")
 
   // 2 加载web字体
   zhiCore.zhiCore.addStylesheet("zhiThemeFontStyle", "/appearance/themes/zhi/style/common/fonts/webfont.css")
 
-  // 3 初始化主题
-  await zhiCore.zhiCore.init()
+  // 3 加载 importMap 及模块
+  // 3.1 加载 importMap
+  let customMap = { imports: {} }
+  const { isFileExists } = await import("./lib/utils/index.js")
+  const fileStatus = await isFileExists("/appearance/themes/zhi/customMap.js")
+  if (!fileStatus) {
+    logger.info("No customMap.js found, will load default importmap")
+  } else {
+    const customMapImport = await import("./customMap.js")
+    customMap = customMapImport.default
+  }
+  const defaultImportMap = await import("./map.js")
+  logger.info("defaultImportMap=>", defaultImportMap)
+  const importMap = {
+    imports: {
+      ...defaultImportMap.default.imports,
+      ...customMap.imports,
+    },
+  }
+  logger.info("importmap =>", importMap)
+  zhiCore.zhiCore.addImportMapToHead(importMap, "systemjs-importmap")
+
+  // 3.2 加载 importmap 加载器 js
+  // https://github.com/systemjs/systemjs/pull/2215
+  zhiCore.zhiCore.addScriptToHead("/appearance/themes/zhi/core/npm/node_modules/systemjs/dist/s.js")
+
+  // 3.3 加载主题核心模块 js ，支持 esm
+  logger.info("Systemjs module loading, please wait...")
+  setTimeout(function () {
+    zhiCore.zhiCore.addScriptToHead("/appearance/themes/zhi/main.js", "module")
+  }, 500)
+
+  // 4 初始化主题
+  // 由于 esm 的问题，不推荐在这里直接初始化，而是在上面动态加载 main.js
+  // await zhiCore.zhiCore.init()
 })()

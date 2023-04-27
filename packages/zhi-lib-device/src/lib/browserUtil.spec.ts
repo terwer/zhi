@@ -24,7 +24,7 @@
  */
 
 // Test cases for BrowserUtil class using Jest
-import BrowserUtil from "./browserUtil"
+import BrowserUtil from "./browserUtil.js"
 
 describe("BrowserUtil", () => {
   it("isNode", () => {

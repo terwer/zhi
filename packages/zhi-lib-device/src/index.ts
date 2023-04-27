@@ -1,1 +1,1 @@
-export * from "./lib/zhi-lib-device"
+export * from "./lib/zhi-lib-device.js"

@@ -23,9 +23,9 @@
  * questions.
  */
 
-import BrowserUtil from "./browserUtil"
-import SiyuanDevice from "./siyuanDevice"
-import DeviceTypeEnum from "./deviceTypeEnum"
+import BrowserUtil from "./browserUtil.js"
+import SiyuanDevice from "./siyuanDevice.js"
+import DeviceTypeEnum from "./deviceTypeEnum.js"
 
 /**
  * 设备检测

@@ -1,3 +1,4 @@
 *.css
 !src/theme.css
 !src/style/common/fonts/webfont.css
+!src/core/npm/node_modules

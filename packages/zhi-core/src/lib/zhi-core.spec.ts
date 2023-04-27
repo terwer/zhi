@@ -26,7 +26,8 @@
 import { zhiCore } from "./zhi-core"
 
 describe("zhiCore", () => {
-  it("should work", () => {
-    expect(zhiCore()).toEqual("zhi-core")
+  it("test zhiCore object", () => {
+    expect(zhiCore).toBeTruthy()
+    zhiCore.init()
   })
 })
