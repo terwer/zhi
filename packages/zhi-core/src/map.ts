@@ -25,7 +25,7 @@
 
 export default {
   imports: {
-    // "@siyuan-community/zhi-device": "/appearance/themes/zhi/core/npm/node_modules/@siyuan-community/zhi-device/dist/index.js",
-    "@siyuan-community/zhi-device": "/appearance/themes/zhi/temp/zhi-lib-device/index.js",
+    "@siyuan-community/zhi-device":
+      "/appearance/themes/zhi/core/npm/node_modules/@siyuan-community/zhi-device/src/index.js",
   },
 }
