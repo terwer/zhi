@@ -24,6 +24,11 @@ node_modules
 !.vscode/launch.json
 !.vscode/extensions.json
 
+## Import Map
+!packages/zhi-core/src/core/npm/node_modules
+!packages/zhi-core/src/core/npm/node_modules/systemjs/dist
+!packages/zhi-core/src/core/npm/node_modules/zhi-env/dist
+
 # misc
 /.sass-cache
 /connect.lock
@@ -38,5 +43,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Styles
-*.css
+# Apps
+.astro

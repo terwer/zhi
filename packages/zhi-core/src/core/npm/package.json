@@ -1,0 +1,27 @@
+{
+  "name": "zhi-node-modules",
+  "version": "1.0.0",
+  "description": "npm store for zhi",
+  "scripts": {
+    "test": "node-which node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/terwer/zhi.git"
+  },
+  "keywords": [
+    "zhi",
+    "core",
+    "npm"
+  ],
+  "author": "terwer",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/terwer/zhi/issues"
+  },
+  "homepage": "https://github.com/terwer/zhi#readme",
+  "dependencies": {
+    "execa": "^7.1.1",
+    "systemjs": "^6.14.1"
+  }
+}

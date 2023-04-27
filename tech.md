@@ -8,9 +8,34 @@
 
 Run `nx graph` to see a diagram of the dependencies of the projects.
 
+## Dependency
+
+- zhi-core - [0, 1]
+  - deps - 0
+  - dynamic deps - 1
+    - zhi-lib-device
+
+- zhi-lib-device - [0, 0]
+  - deps - 0
+  - dynamic deps - 0
+
+- zhi-blog-vite - [0, 0]
+  - deps - 0
+  - dynamic deps - 0
+
+- zhi-server-blog-astro - [0, 0]
+  - deps - 0
+  - dynamic deps - 0
+
 ## Remote caching
 
 Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and make CI faster.
+
+## Publish to npm
+
+```bash
+nx publish zhi-core --ver=0.1.0 --tag=latest 
+```
 
 ## Further help
 
