@@ -1,5 +1,17 @@
 {
   "name": "@siyuan-community/zhi-device",
   "version": "0.1.0",
-  "type": "module"
+  "type": "module",
+  "description": "auto check environment whether in browser, browser extension, electron, node and more",
+  "repository": "terwer/zhi",
+  "homepage": "https://github.com/terwer/zhi/tree/main/packages/zhi-lib-device",
+  "author": "terwer",
+  "license": "GPL",
+  "keywords": [
+    "zhi",
+    "device",
+    "browser",
+    "node",
+    "electron"
+  ]
 }

@@ -10,13 +10,22 @@ Run `nx graph` to see a diagram of the dependencies of the projects.
 
 ## Dependency
 
-- zhi-core - 0
+- zhi-core - [0, 1]
+  - deps - 0
+  - dynamic deps - 1
+    - zhi-lib-device
 
+- zhi-lib-device - [0, 0]
+  - deps - 0
+  - dynamic deps - 0
 
-- zhi-blog-vite - 0
+- zhi-blog-vite - [0, 0]
+  - deps - 0
+  - dynamic deps - 0
 
-
-- zhi-server-blog-astro - 0
+- zhi-server-blog-astro - [0, 0]
+  - deps - 0
+  - dynamic deps - 0
 
 ## Remote caching
 

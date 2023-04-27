@@ -23,7 +23,7 @@
  * questions.
  */
 
-import { createCoreLogger, isElectron } from "./utils/index.js"
+import { createCoreLogger, getFile, isElectron, win } from "./utils/index.js"
 import { initRequireHacker, shellCmd } from "./node/index.js"
 
 /**
@@ -57,10 +57,8 @@ export class Zhi {
 
     // 因为后面可能会用到一些依赖，所以这里需要先hack
     if (isElectron()) {
-      const syWin = window as any
-
       await initRequireHacker()
-      syWin.shellCmd = shellCmd
+      win.shellCmd = shellCmd
       this.logger.info("Electron only modules hacked")
     }
 
@@ -75,18 +73,24 @@ export class Zhi {
     // @since 0.1.0
     // =========================================================================
 
-    const syWin = window as any
-    const System = syWin.System
+    const System = win.System
+    if (!System) {
+      this.logger.error("SystemJs not work, zhi-core will stop loading!")
+      return
+    }
     this.zhiDeviceModule = await System.import("@siyuan-community/zhi-device")
     this.logger.info("zhiDeviceModule=>", this.zhiDeviceModule)
 
     const deviceDetection = this.zhiDeviceModule.DeviceDetection
+    // const siyuanDevice = this.zhiDeviceModule.SiyuanDevice
+
     this.runAs = deviceDetection.getDevice()
-    this.logger.info(`Hello, this is zhi theme  You are from ${this.runAs}`)
-    // this.logger.info(
-    //    `Hello, this is zhi theme v${this.pkgJson.version}, ${this.pkgJson.description} by ${crossChalk.green(
-    //      this.pkgJson.author
-    //    )}! You are from ${from}`
-    //  )
+    // this.logger.info(`Hello, this is zhi theme  You are from ${this.runAs}`)
+
+    const pkgJson = JSON.parse(await getFile("/data/storage/zhi/package.json", "text")) as any
+    // this.logger.info("pkgJson=>", pkgJson)
+    this.logger.info(
+      `Hello, this is zhi theme v${pkgJson.version}, ${pkgJson.description} by ${pkgJson.author}! You are from ${this.runAs}`
+    )
   }
 }
