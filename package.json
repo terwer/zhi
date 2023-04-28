@@ -33,7 +33,7 @@
     "@commitlint/config-nx-scopes": "^17.4.3",
     "@commitlint/cz-commitlint": "^17.5.0",
     "@commitlint/prompt-cli": "^17.6.1",
-    "@nrwl/cypress": "15.9.2",
+    "@nrwl/cypress": "16.0.0",
     "@nrwl/eslint-plugin-nx": "15.9.2",
     "@nrwl/js": "15.9.2",
     "@nrwl/linter": "15.9.2",
