@@ -8,7 +8,7 @@
       }
     }
   },
-  "plugins": ["@nxtensions/astro"],
+  "plugins": [],
   "targetDefaults": {
     "lint": {
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json", "{workspaceRoot}/.eslintignore"]
@@ -30,6 +30,6 @@
       "unitTestRunner": "vitest"
     }
   },
-  "defaultProject": "zhi-server-blog-astro",
+  "defaultProject": "zhi-core",
   "extends": "nx/presets/npm.json"
 }
