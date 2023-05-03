@@ -26,8 +26,7 @@
 import { zhiCore } from "./zhi-core"
 
 describe("zhiCore", () => {
-  it("test zhiCore object", () => {
-    expect(zhiCore).toBeTruthy()
-    zhiCore.init()
+  it("test zhiCore object", async () => {
+    await zhiCore.init()
   })
 })

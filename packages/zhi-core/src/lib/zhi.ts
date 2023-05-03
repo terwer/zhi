@@ -23,8 +23,10 @@
  * questions.
  */
 
-import { createCoreLogger, getFile, isElectron, win } from "./utils/index.js"
+import { createCoreLogger, getFile, isElectron, SystemImport, win } from "./utils/index.js"
 import { initRequireHacker, shellCmd } from "./node/index.js"
+import DependencyItem from "./common/models/DependencyItem.js"
+import Bootstrap from "./core/Bootstrap.js"
 
 /**
  * 主题通用类（由theme.js动态调用，除了单元测试之外请勿主动调用）
@@ -34,7 +36,7 @@ import { initRequireHacker, shellCmd } from "./node/index.js"
  * @since 0.1.0
  */
 export class Zhi {
-  private zhiDeviceModule: any
+  private zhiDevice: any
   private readonly logger
   private runAs
 
@@ -50,16 +52,36 @@ export class Zhi {
   }
 
   /**
-   * 主流程加载
+   * 初始化
    */
   public async init(): Promise<void> {
-    this.logger.info("zhi initiating...")
+    this.zhiDevice = await SystemImport("@siyuan-community/zhi-device")
+    this.logger.info("zhiDevice=>", this.zhiDevice)
+  }
 
-    // 因为后面可能会用到一些依赖，所以这里需要先hack
+  /**
+   * 生命周期入口
+   *
+   * @param args - 参数
+   * @private
+   */
+  private async main(args: string[]): Promise<DependencyItem[]> {
+    this.logger.info("Parsing args...", args)
+    return await Bootstrap.start()
+  }
+
+  /**
+   * 主流程加载
+   */
+  public async start(): Promise<void> {
+    this.logger.info("Zhi initiating...")
+
     if (isElectron()) {
+      // require方式已使用时，为了加载自定义目录的类库，需要先hack
       await initRequireHacker()
+      // 挂载命令行
       win.shellCmd = shellCmd
-      this.logger.info("Electron only modules hacked")
+      this.logger.info("Electron only core modules hacked")
     }
 
     // =========================================================================
@@ -73,24 +95,26 @@ export class Zhi {
     // @since 0.1.0
     // =========================================================================
 
-    const System = win.System
-    if (!System) {
-      this.logger.error("SystemJs not work, zhi-core will stop loading!")
-      return
-    }
-    this.zhiDeviceModule = await System.import("@siyuan-community/zhi-device")
-    this.logger.info("zhiDeviceModule=>", this.zhiDeviceModule)
-
-    const deviceDetection = this.zhiDeviceModule.DeviceDetection
-    // const siyuanDevice = this.zhiDeviceModule.SiyuanDevice
-
+    const deviceDetection = this.zhiDevice.DeviceDetection
     this.runAs = deviceDetection.getDevice()
-    // this.logger.info(`Hello, this is zhi theme You are from ${this.runAs}`)
 
     const pkgJson = JSON.parse(await getFile("/data/storage/zhi/package.json", "text")) as any
     // this.logger.info("pkgJson=>", pkgJson)
     this.logger.info(
       `Hello, this is zhi theme v${pkgJson.version}, ${pkgJson.description} by ${pkgJson.author}! You are from ${this.runAs}`
     )
+
+    // 初始化第三方依赖
+    // import
+    //   browser     esm path: "/[libpath]"
+    //   electron    esm path: "/[libpath]"
+    //   custom-path X
+    //
+    // require
+    //   browser     X
+    //   electron    cjs path: "[abspath][libpath]"
+    //   custom-path require-hacker
+    const dynamicImports = await this.main([])
+    console.log("dynamicImports=>", dynamicImports)
   }
 }

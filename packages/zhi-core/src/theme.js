@@ -48,7 +48,7 @@
     const customMapImport = await import("./customMap.js")
     customMap = customMapImport.default
   }
-  const defaultImportMap = await import("./map.js")
+  const defaultImportMap = await import("./config/map.js")
   logger.info("defaultImportMap=>", defaultImportMap)
   const importMap = {
     imports: {
@@ -70,6 +70,7 @@
   }, 500)
 
   // 4 初始化主题
-  // 由于 esm 的问题，不推荐在这里直接初始化，而是在上面动态加载 main.js
+  // 由于 esm 在浏览器端的限制，需要再上面用 systemjs-import 的方式，使用动态 importmap ，动态加载 main.js
+  // 实际执行的逻辑类似
   // await zhiCore.zhiCore.init()
 })()

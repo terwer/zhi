@@ -23,50 +23,25 @@
  * questions.
  */
 
-import { addImportMaps, addScript, addStyles } from "./browser/index.js"
-import { Zhi } from "./zhi.js"
+import Lifecycle from "./lifecycle.js"
+import DependencyItem from "../common/models/DependencyItem.js"
 
 /**
- * 添加样式到当前页面
- *
- * @param id - 样式ID
- * @param url - 样式 url
- */
-const addStylesheet = (id: string, url: string) => {
-  addStyles(id, url)
-}
-
-const addImportMapToHead = (importMap: object, type?: string) => {
-  addImportMaps(importMap, type)
-}
-
-const addScriptToHead = (script: string, type?: string) => {
-  addScript(script, type)
-}
-
-/**
- * 加载主题
- */
-const loadTheme = async (): Promise<void> => {
-  const zhi = new Zhi()
-  await zhi.init()
-  await zhi.start()
-}
-
-/**
- * 主题初始化核心入口
+ * zhi主题唯一激活入口
  *
  * @author terwer
- * @version 0.1.0
  * @since 0.1.0
  */
-const init = async () => {
-  await loadTheme()
+class Bootstrap {
+  private static lifecycle = new Lifecycle()
+
+  /**
+   * 主题激活
+   */
+  public static async start(): Promise<DependencyItem[]> {
+    await this.lifecycle.init()
+    return await this.lifecycle.load()
+  }
 }
 
-export const zhiCore = {
-  addStylesheet,
-  addImportMapToHead,
-  addScriptToHead,
-  init,
-}
+export default Bootstrap
