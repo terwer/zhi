@@ -105,9 +105,6 @@ importers:
       inquirer:
         specifier: '8'
         version: registry.npmjs.org/inquirer@8.0.0
-      is-ci:
-        specifier: ^3.0.1
-        version: registry.npmjs.org/is-ci@3.0.1
 
   packages/eslint-config-custom:
     dependencies:
@@ -2458,13 +2455,6 @@ packages:
     version: 0.7.0
     dev: true
 
-  registry.npmjs.org/ci-info@3.8.0:
-    resolution: {integrity: sha512-eXTggHWSooYhq49F2opQhuHWgzucfF2YgODK4e1566GQs5BIfP30B0oenwBJHfWxAs2fyPB1s7Mg949zLf61Yw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/ci-info/-/ci-info-3.8.0.tgz}
-    name: ci-info
-    version: 3.8.0
-    engines: {node: '>=8'}
-    dev: true
-
   registry.npmjs.org/cli-cursor@2.1.0:
     resolution: {integrity: sha512-8lgKz8LmCRYZZQDpRyT2m5rKJ08TnU4tR9FFFW2rxpxR1FzWi4PQ/NfyODchAatHaUgnSPVcx/R5w6NuTBzFiw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/cli-cursor/-/cli-cursor-2.1.0.tgz}
     name: cli-cursor
@@ -4002,15 +3992,6 @@ packages:
     version: 1.2.7
     engines: {node: '>= 0.4'}
     dev: false
-
-  registry.npmjs.org/is-ci@3.0.1:
-    resolution: {integrity: sha512-ZYvCgrefwqoQ6yTyYUbQu64HsITZ3NfKX1lzaEYdkTDcfKzzCI/wthRRYKkdjHKFVgNiXKAKm65Zo1pk2as/QQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/is-ci/-/is-ci-3.0.1.tgz}
-    name: is-ci
-    version: 3.0.1
-    hasBin: true
-    dependencies:
-      ci-info: registry.npmjs.org/ci-info@3.8.0
-    dev: true
 
   registry.npmjs.org/is-core-module@2.11.0:
     resolution: {integrity: sha512-RRjxlvLDkD1YJwDbroBHMb+cukurkDWNyHx7D3oNB5x9rb5ogcksMC5wHCadcXoo67gVr/+3GFySh3134zi6rw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/is-core-module/-/is-core-module-2.11.0.tgz}
