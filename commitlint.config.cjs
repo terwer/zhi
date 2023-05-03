@@ -1,4 +1,3 @@
-// echo "feat(zhi-core): change project structure" | commitlint
 module.exports = {
   extends: ["@commitlint/config-angular"],
   rules: {

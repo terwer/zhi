@@ -1,74 +1,81 @@
-# Zhi
+# Turborepo starter
 
-🛍️ A siyuan-note theme with plugin and blog bundled
+This is an official starter Turborepo.
 
-[中文版](README_zh_CN.md)
+## Using this example
 
-[![](https://img.shields.io/badge/api-docs-green)](https://zhi.terwer.space)
-[![dev checks](https://img.shields.io/github/checks-status/terwer/zhi/dev?label=build)](https://github.com/terwer/zhi/tree/dev)
-![version](https://img.shields.io/github/release/terwer/zhi.svg?style=flat-square)
-![license](https://img.shields.io/badge/license-GPL-blue.svg?style=popout-square)
+Run the following command:
 
-[![](https://img.shields.io/badge/build-assets-green)](https://github.com/terwer/zhi)
-[![](https://img.shields.io/badge/theme-source-red)](https://github.com/terwer/zhi/tree/dev/packages/zhi-mini)
-[![](https://img.shields.io/badge/dynamic-blog-blue)](https://github.com/terwer/zhi/tree/dev/packages/zhi-blog)
-[![](https://img.shields.io/badge/static-blog-purple)](https://github.com/terwer/zhi/tree/dev/packages/zhi-blog-astro)
+```sh
+npx create-turbo@latest
+```
 
-> ⚠️ WARNING 1: Attention: The `zhi` theme only supports the `2.7.6+` version of [siyuan-note](https://github.com/siyuan-note/siyuan) , and the plugin system only supports `2.8.1+`. Otherwise, you need to upgrade [siyuan-note](https://github.com/siyuan-note/siyuan) to a new version.
+## What's inside?
 
-> ⚠️ WARNING 2: `1.0.0` is an available version in the early stage, and the function is not comprehensive yet. It is only used for testing and welcomes valuable opinions through issuing. Please refer to [core features](#core-features) for this version's characteristics.
+This Turborepo includes the following packages/apps:
 
-> ⚠️ WARNING 3: The plugin system is set to `security mode` by default, and you need to click on the settings menu in the upper right corner to turn off the security mode before you can activate the plugin system.
+### Apps and Packages
 
-> ⚠️ WARNING 4: Except for the theme's core plugins, all plugins are disabled by default and need to be enabled in the plugin list before the first use.
+- `docs`: a [Next.js](https://nextjs.org/) app
+- `web`: another [Next.js](https://nextjs.org/) app
+- `ui`: a stub React component library shared by both `web` and `docs` applications
+- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
-## Key benefits
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-- Integrated blog feature based on the Siyuan API
+### Utilities
 
-- No publishing, no configuration, ready to use out of the box
+This Turborepo has some additional tools already setup for you:
 
-- Plugin system bundled, by design
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
 
-## Quick start
+### Build
 
-You can download the `zhi` theme directly in the Market of siyuan-note, and then select the `zhi` theme
-in `Settings` - `Appearance` - `Theme` to change the appearance of the notebook.
+To build all apps and packages, run the following command:
 
-Note: `zhi` theme only supports siyuan-note `2.7.6+`, or you must upgrade siyuan-note first.
+```
+cd my-turborepo
+pnpm build
+```
 
-## Design Philosophy
+### Develop
 
--   The theme core should be kept lightweight and compact as much as possible.
--   Plugins should be used as much as possible to implement functions.
--   Plugin functions should be single-purpose to avoid brainless accumulation of functions.
--   Components should be kept as reusable as possible.
+To develop all apps and packages, run the following command:
 
-## Core Features
+```
+cd my-turborepo
+pnpm dev
+```
 
-The theme is inspired by `Zhihu` but not limited to its style. The appearance optimization includes but is not limited
-to:
+### Remote Caching
 
--   Font style beautification, using `Open Sans` for English and `LXGW WenKai` for Chinese
--   Background color optimization, overall layout and spacing optimization
--   Code block beautification, similar to the Mac window style
--   It natively supports the plugin system and comes with many built-in plugins. The plugin system is supported by
-    community developers.
-    -   Siyuan-note publishing tool plugin
-    -   Document image background automatic transparency plugin
-    -   Blog plugin
--   It can handle both the theme and the preview. Installing the zhi theme is equivalent to installing an additional
-    plugin system and an online blog.
-    -   SPA blog homepage( `enabled and bundled by default` ): http://127.0.0.1:6806/appearance/themes/zhi/web/blog/ <sup>simple</sup>
-    -   SSR blog homepage( `⚠️ need to enabled manually` ): http://127.0.0.1:6806/appearance/themes/zhi/server/blog/ <sup>seo friendly</sup>
+Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
-> Note: 🌹 The plugin system is provided by enthusiastic community developers. Please understand the relevant mechanisms in
-> detail before using.
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
-## Technical Roadmap
+```
+cd my-turborepo
+npx turbo login
+```
 
-[tech](tech.md)
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-## Acknowledgments
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
 
-Thanks to [zuoez02](https://github.com/zuoez02/siyuan-plugin-system) for providing the plugin system.
+```
+npx turbo link
+```
+
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)

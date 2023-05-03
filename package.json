@@ -1,84 +1,25 @@
 {
   "name": "zhi",
-  "version": "0.1.0",
-  "type": "module",
-  "description": "A siyuan-note theme with plugin and blog bundled",
-  "homepage": "https://github.com/terwer/zhi",
-  "author": "terwer",
-  "license": "GPL",
-  "keywords": [
-    "zhi",
-    "siyuan-note",
-    "theme",
-    "blog"
-  ],
+  "private": true,
   "scripts": {
-    "reset": "nx reset",
-    "build": "nx run-many --target=build --exclude=zhi-docs",
-    "test": "nx run-many --target=test --exclude=zhi-docs",
-    "lint": "nx run-many --target=lint --exclude=zhi-docs",
-    "serve": "nx serve <project>",
-    "cli": "nx cli <project>",
-    "clean": "nx clean <project>",
-    "update": "nx uodate <project>",
-    "publish": "nx publish <project> [--ver=0.0.1] [--tag=latest]",
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "cz": "git-cz",
     "commit": "commit"
   },
-  "private": true,
   "devDependencies": {
-    "@commitlint/cli": "^17.6.1",
-    "@commitlint/config-angular": "^17.6.1",
-    "@commitlint/cz-commitlint": "^17.5.0",
-    "@commitlint/prompt-cli": "^17.6.1",
-    "@nrwl/eslint-plugin-nx": "16.0.3",
-    "@nrwl/js": "16.0.3",
-    "@nrwl/linter": "16.0.3",
-    "@nrwl/node": "16.0.3",
-    "@nrwl/nx-cloud": "latest",
-    "@nrwl/vite": "16.0.3",
-    "@nrwl/web": "16.0.3",
-    "@types/node": "18.16.3",
-    "@types/showdown": "^2.0.1",
-    "@typescript-eslint/eslint-plugin": "^5.36.1",
-    "@typescript-eslint/parser": "^5.36.1",
-    "@vitest/coverage-c8": "~0.30.1",
-    "@vitest/ui": "^0.30.1",
-    "astro": "^2.3.4",
-    "commitizen": "^4.3.0",
-    "cypress": "^12.11.0",
-    "eslint": "~8.15.0",
-    "eslint-config-prettier": "8.1.0",
-    "eslint-plugin-cypress": "^2.10.3",
-    "eslint-plugin-prettier": "^4.2.1",
-    "glob": "^10.2.2",
-    "inquirer": "^8.2.5",
-    "jsdom": "~20.0.3",
-    "mkdirp": "^3.0.1",
-    "nx": "16.0.3",
-    "prettier": "^2.6.2",
-    "recursive-copy": "^2.0.14",
-    "rimraf": "^5.0.0",
-    "typescript": "~4.9.5",
-    "vite": "^4.3.3",
-    "vite-plugin-eslint": "^1.8.1",
-    "vite-tsconfig-paths": "^4.0.2",
-    "vitest": "^0.30.1"
-  },
-  "workspaces": [
-    "packages/*"
-  ],
-  "dependencies": {
-    "ajv": "^8.12.0",
-    "compare-versions": "^5.0.3",
-    "core-js": "^3.6.5",
-    "regenerator-runtime": "0.13.7",
-    "showdown": "^2.1.0",
-    "tslib": "^2.3.0"
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "workspace:*",
+    "prettier": "^2.5.1",
+    "turbo": "latest"
   },
   "config": {
     "commitizen": {
       "path": "@commitlint/cz-commitlint"
-    }
-  }
+    },
+    "commitizenEmoji": {}
+  },
+  "packageManager": "pnpm@8.1.1"
 }
