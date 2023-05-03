@@ -23,7 +23,7 @@
  * questions.
  */
 
-import MarkdownAdaptor from "./MarkdownAdaptor"
+import MarkdownAdaptor from "./MarkdownAdaptor.js"
 import showdown from "showdown"
 import { createCommonLogger } from "../utils/zhi-common-util.js"
 

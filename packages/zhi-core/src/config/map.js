@@ -33,6 +33,7 @@ export default {
     "uri-js": "https://ga.system.jspm.io/npm:uri-js@4.4.1/dist/es5/uri.all.js",
     "@siyuan-community/zhi-device":
       "/appearance/themes/zhi/core/npm/node_modules/@siyuan-community/zhi-device/src/index.js",
-    "@siyuan-community/zhi-common": "https://ga.system.jspm.io/npm:@siyuan-community/zhi-common@1.5.5/src/index.js",
+    "@siyuan-community/zhi-common":
+      "/appearance/themes/zhi/core/npm/node_modules/@siyuan-community/zhi-common/src/index.js",
   },
 }

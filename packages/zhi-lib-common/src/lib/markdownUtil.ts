@@ -23,9 +23,9 @@
  * questions.
  */
 
-import LuteAdaptor from "./md-adaptor/LuteAdaptor"
-import ShowdownAdaptor from "./md-adaptor/ShowdownAdaptor"
-import MarkdownAdaptor from "./md-adaptor/MarkdownAdaptor"
+import LuteAdaptor from "./md-adaptor/LuteAdaptor.js"
+import ShowdownAdaptor from "./md-adaptor/ShowdownAdaptor.js"
+import MarkdownAdaptor from "./md-adaptor/MarkdownAdaptor.js"
 import { createCommonLogger } from "./utils/zhi-common-util.js"
 
 /**

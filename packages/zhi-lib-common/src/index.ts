@@ -1,1 +1,1 @@
-export * from "./lib/zhi-lib-common"
+export * from "./lib/zhi-lib-common.js"
