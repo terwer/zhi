@@ -85,7 +85,7 @@ export class Zhi {
     // const siyuanDevice = this.zhiDeviceModule.SiyuanDevice
 
     this.runAs = deviceDetection.getDevice()
-    // this.logger.info(`Hello, this is zhi theme  You are from ${this.runAs}`)
+    // this.logger.info(`Hello, this is zhi theme You are from ${this.runAs}`)
 
     const pkgJson = JSON.parse(await getFile("/data/storage/zhi/package.json", "text")) as any
     // this.logger.info("pkgJson=>", pkgJson)
