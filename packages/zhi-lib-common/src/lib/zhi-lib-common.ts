@@ -33,5 +33,5 @@ class ZhiCommon {
   }
 }
 
-export default ZhiCommon
+export { ZhiCommon }
 export { DateUtil, StrUtil, VersionUtil, HtmlUtil, MarkdownUtil, JsonUtil, ObjectUtil }

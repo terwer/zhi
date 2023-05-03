@@ -36,9 +36,25 @@ import Bootstrap from "./core/Bootstrap.js"
  * @since 0.1.0
  */
 export class Zhi {
-  private zhiDevice: any
   private readonly logger
+
+  private deviceDetection: any
+  private siyuanDevice: any
+  private common: any
+
   private runAs
+
+  /**
+   * 主题样式最低支持版本
+   * @private
+   */
+  private readonly SUPPORTED_THEME_VERSION = "2.7.6"
+
+  /**
+   * 内核最低支持版本
+   * @private
+   */
+  private readonly SUPPORTED_KERNEL_VERSION = "2.8.1"
 
   /**
    * 主题初始化
@@ -55,8 +71,15 @@ export class Zhi {
    * 初始化
    */
   public async init(): Promise<void> {
-    this.zhiDevice = await SystemImport("@siyuan-community/zhi-device")
-    this.logger.info("zhiDevice=>", this.zhiDevice)
+    const deviceModule = await SystemImport("@siyuan-community/zhi-device")
+    const commonModule = await SystemImport("@siyuan-community/zhi-common")
+
+    this.deviceDetection = deviceModule.DeviceDetection
+    this.siyuanDevice = deviceModule.SiyuanDevice
+    this.common = new commonModule.ZhiCommon()
+
+    this.logger.info("deviceModule=>", deviceModule)
+    this.logger.info("commonModule=>", commonModule)
   }
 
   /**
@@ -94,15 +117,48 @@ export class Zhi {
     // @version 0.1.0
     // @since 0.1.0
     // =========================================================================
-
-    const deviceDetection = this.zhiDevice.DeviceDetection
-    this.runAs = deviceDetection.getDevice()
-
+    // 版本信息
+    this.runAs = this.deviceDetection.getDevice()
     const pkgJson = JSON.parse(await getFile("/data/storage/zhi/package.json", "text")) as any
     // this.logger.info("pkgJson=>", pkgJson)
     this.logger.info(
       `Hello, this is zhi theme v${pkgJson.version}, ${pkgJson.description} by ${pkgJson.author}! You are from ${this.runAs}`
     )
+
+    // 平台检测
+    if (this.runAs !== "Siyuan_MainWindow" && this.runAs !== "Siyuan_Browser") {
+      this.logger.error(`Zhi Theme can only run as Siyuan_MainWindow or Siyuan_Browser`)
+      return
+    }
+
+    // 检测内核版本
+    const kernelVersion = this.siyuanDevice.siyuanWindow().siyuan.config.system.kernelVersion
+    if (this.common.versionUtil.lesser(kernelVersion, this.SUPPORTED_THEME_VERSION)) {
+      const errMsg = this.common.strUtil.f(
+        "Your siyuan-note kernel version {0} is not supported by zhi theme, style will look weird, you must install siyuan-note {1}+ to use zhi-theme",
+        kernelVersion,
+        this.SUPPORTED_THEME_VERSION
+      )
+      this.logger.error(errMsg)
+      // this.kernelApi.pushErrMsg({
+      //   msg: errMsg,
+      // })
+      alert(errMsg)
+      return
+    }
+
+    if (this.common.versionUtil.lesser(kernelVersion, this.SUPPORTED_KERNEL_VERSION)) {
+      const warnMsg = this.common.strUtil.f(
+        "Your siyuan-note kernel version {0} is too low, plugin system will not work, you must install siyuan-note {1}+ to use plugin feature",
+        kernelVersion,
+        this.SUPPORTED_KERNEL_VERSION
+      )
+      this.logger.error(warnMsg)
+      // this.kernelApi.pushMsg({
+      //   msg: warnMsg,
+      // })
+      return
+    }
 
     // 初始化第三方依赖
     // import

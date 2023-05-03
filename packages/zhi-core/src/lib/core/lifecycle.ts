@@ -34,9 +34,10 @@ import { createCoreLogger, SystemImport } from "../utils/index.js"
  * @since 0.1.0
  */
 class Lifecycle {
-  private zhiDevice: any
   private readonly logger
+
   private siyuanDevice: any
+
   private ZHI_JSON_SCHEMA = "config/zhi-schema.js"
   private ZHI_JSON = "config/zhi.js"
 
@@ -45,9 +46,9 @@ class Lifecycle {
   }
 
   async init() {
-    this.zhiDevice = await SystemImport("@siyuan-community/zhi-device")
+    const deviceModule = await SystemImport("@siyuan-community/zhi-device")
 
-    this.siyuanDevice = this.zhiDevice.SiyuanDevice
+    this.siyuanDevice = deviceModule.SiyuanDevice
   }
 
   /**

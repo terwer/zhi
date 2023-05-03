@@ -25,7 +25,14 @@
 
 export default {
   imports: {
+    "compare-versions": "/appearance/themes/zhi/core/npm/jspm_cache/compare-versions/5.0.3/index.js",
+    ajv: "https://ga.system.jspm.io/npm:ajv@8.12.0/dist/ajv.js",
+    "fast-deep-equal": "https://ga.system.jspm.io/npm:fast-deep-equal@3.1.3/index.js",
+    "json-schema-traverse": "https://ga.system.jspm.io/npm:json-schema-traverse@1.0.0/index.js",
+    showdown: "https://ga.system.jspm.io/npm:showdown@2.1.0/dist/showdown.js",
+    "uri-js": "https://ga.system.jspm.io/npm:uri-js@4.4.1/dist/es5/uri.all.js",
     "@siyuan-community/zhi-device":
       "/appearance/themes/zhi/core/npm/node_modules/@siyuan-community/zhi-device/src/index.js",
+    "@siyuan-community/zhi-common": "https://ga.system.jspm.io/npm:@siyuan-community/zhi-common@1.5.5/src/index.js",
   },
 }
