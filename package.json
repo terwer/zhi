@@ -23,8 +23,7 @@
     "update": "nx uodate <project>",
     "publish": "nx publish <project> [--ver=0.0.1] [--tag=latest]",
     "cz": "git-cz",
-    "commit": "commit",
-    "postinstall": "node ./tools/scripts/patch-nx-cli.cjs"
+    "commit": "commit"
   },
   "private": true,
   "devDependencies": {
