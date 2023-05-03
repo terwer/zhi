@@ -35,7 +35,7 @@
     "@commitlint/prompt-cli": "^17.6.1",
     "@nrwl/cypress": "15.9.2",
     "@nrwl/eslint-plugin-nx": "16.0.3",
-    "@nrwl/js": "15.9.2",
+    "@nrwl/js": "16.0.3",
     "@nrwl/linter": "15.9.2",
     "@nrwl/node": "^15.9.2",
     "@nrwl/nx-cloud": "latest",
