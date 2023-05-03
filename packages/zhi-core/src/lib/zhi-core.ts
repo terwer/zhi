@@ -50,6 +50,7 @@ const addScriptToHead = (script: string, type?: string) => {
 const loadTheme = async (): Promise<void> => {
   const zhi = new Zhi()
   await zhi.init()
+  await zhi.start()
 }
 
 /**

@@ -199,7 +199,7 @@ class SiyuanDevice {
    * @param jsPath - js相对路径全路径
    * @param type - 类型
    */
-  public static async importJs(jsPath: string, type: BasePathTypeEnum) {
+  public static getImportJsPath(jsPath: string, type: BasePathTypeEnum) {
     let fullJsonPath = jsPath
     switch (type) {
       case BasePathTypeEnum.BasePathType_Appearance:
@@ -218,82 +218,16 @@ class SiyuanDevice {
         throw new Error("type must be provided")
     }
 
-    const { default: data } = await import(/* @vite-ignore */ fullJsonPath)
-    return data
+    return fullJsonPath
   }
-
-  /**
-   * 引入json
-   *
-   * @param jsonPath - json相对路径全路径
-   * @param type - 类型
-   */
-  // public static async importJson(jsonPath: string, type: BasePathTypeEnum) {
-  //   let fullJsonPath = jsonPath
-  //   switch (type) {
-  //     case BasePathTypeEnum.BasePathType_Appearance:
-  //       fullJsonPath = this.browserJoinPath(this.siyuanAppearanceRelativePath(), jsonPath)
-  //       break
-  //     case BasePathTypeEnum.BasePathType_Data:
-  //       fullJsonPath = this.browserJoinPath(this.siyuanDataRelativePath(), jsonPath)
-  //       break
-  //     case BasePathTypeEnum.BasePathType_Themes:
-  //       fullJsonPath = this.browserJoinPath(this.siyuanThemeRelativePath(), jsonPath)
-  //       break
-  //     case BasePathTypeEnum.BasePathType_ZhiTheme:
-  //       fullJsonPath = this.browserJoinPath(this.zhiThemeRelativePath(), jsonPath)
-  //       break
-  //     default:
-  //       throw new Error("type must be provided")
-  //   }
-  //
-  //   const { default: data } = await import(/* @vite-ignore */ fullJsonPath, { assert: { type: "json" } })
-  //   return data
-  // }
-
-  /**
-   * 引入 json - 以 data 为基本路径
-   *
-   * @param jsonPath - 相对于 data 的相对路径
-   */
-  // public static async importDataJson(jsonPath: string) {
-  //   return await this.importJson(jsonPath, BasePathTypeEnum.BasePathType_Data)
-  // }
-
-  /**
-   * 引入 json - 以 appearance 为基本路径
-   *
-   * @param jsonPath - 相对于 appearance 的相对路径
-   */
-  // public static async importAppearanceJson(jsonPath: string) {
-  //   return await this.importJson(jsonPath, BasePathTypeEnum.BasePathType_Appearance)
-  // }
-
-  /**
-   * 引入 json - 以 themes 为基本路径
-   *
-   * @param jsonPath - 相对于 themes 的相对路径
-   */
-  // public static async importThemesJson(jsonPath: string) {
-  //   return await this.importJson(jsonPath, BasePathTypeEnum.BasePathType_Themes)
-  // }
-
-  /**
-   * 引入 zhi 主题的 json - 以 zhi 主题 的根路径为基本路径
-   *
-   * @param jsonPath - 相对于 zhi 主题根路径的相对路径
-   */
-  // public static async importZhiThemeJson(jsonPath: string) {
-  //   return await this.importJson(jsonPath, BasePathTypeEnum.BasePathType_ZhiTheme)
-  // }
 
   /**
    * 引入 zhi 主题的 js - 以 zhi 主题 的根路径为基本路径
    *
    * @param jsPath - 相对于 zhi 主题根路径的相对路径
    */
-  public static async importZhiThemeJs(jsPath: string) {
-    return await this.importJs(jsPath, BasePathTypeEnum.BasePathType_ZhiTheme)
+  public static getZhiThemeImportJsPath(jsPath: string) {
+    return this.getImportJsPath(jsPath, BasePathTypeEnum.BasePathType_ZhiTheme)
   }
 
   // =========================

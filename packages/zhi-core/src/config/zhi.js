@@ -24,8 +24,33 @@
  */
 
 export default {
-  imports: {
-    "@siyuan-community/zhi-device":
-      "/appearance/themes/zhi/core/npm/node_modules/@siyuan-community/zhi-device/src/index.js",
+  dependencies: {
+    core: [
+      {
+        libpath: "core/plugin-system/plugin.js",
+        baseType: "ZhiTheme",
+        format: "esm",
+        importType: "import",
+        runAs: ["Siyuan_MainWindow", "Siyuan_Browser"],
+        order: 0,
+      },
+      {
+        libpath: "core/plugin-system/zhi-plugin-loader.js",
+        baseType: "ZhiTheme",
+        format: "esm",
+        importType: "import",
+        runAs: ["Siyuan_MainWindow", "Siyuan_Browser"],
+        order: 1,
+      },
+    ],
+    server: [],
+    web: [],
+    vendor: [],
+    plugin: [],
+  },
+  blog: {
+    server: {
+      post: "3333",
+    },
   },
 }

@@ -4,12 +4,12 @@ auto check environment whether in browser, browser extension, electron, node and
 
 ## Usage
 
-```ts
-import { DeviceDetection, BrowserUtil, DeviceTypeEnum } from "@siyuan-community/zhi-device"
+```js
+import { DeviceDetection, BrowserUtil } from "@siyuan-community/zhi-device"
 
 console.log("isInBrowser=>", BrowserUtil.isInBrowser)
 
-const deviceType: DeviceTypeEnum = DeviceDetection.getDevice()
+const deviceType = DeviceDetection.getDevice()
 console.log("deviceType=>", deviceType)
 
 // supported platforms
@@ -42,7 +42,7 @@ nx build zhi-lib-device
 
 ## Test
 
-Execute the unit tests via [jest](https://jestjs.io/docs/getting-started#via-ts-jest)
+Execute the unit tests via [vitest](https://vitest.dev)
 
 ```bash
 nx test zhi-lib-device
@@ -51,5 +51,7 @@ nx test zhi-lib-device
 ## Publish
 
 ```bash
-nx publish zhi-lib-device --ver=0.1.0 --tag=latest
+## systemjs tag is systemjs, latest tag is esm
+nx publish zhi-lib-device --ver=0.1.0 --tag=systemjs
+nx publish zhi-lib-device --ver=0.1.1 --tag=latest
 ```

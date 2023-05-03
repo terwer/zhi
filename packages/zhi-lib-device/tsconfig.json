@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "esnext",
-    "module": "system",
+    "module": "esnext",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,

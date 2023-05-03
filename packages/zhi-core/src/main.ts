@@ -23,12 +23,15 @@
  * questions.
  */
 
-import { Zhi } from "./lib/zhi.js"
+import { zhiCore } from "./lib/zhi-core.js"
 
 /**
  * 主题的真实入口，由 systemjs 动态加载，支持 esm
  */
 ;(async () => {
-  const zhi = new Zhi()
-  await zhi.init()
+  try {
+    await zhiCore.init()
+  } catch (e) {
+    console.error("Fetal error occurred, some feature will not work")
+  }
 })()

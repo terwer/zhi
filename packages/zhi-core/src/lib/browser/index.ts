@@ -25,7 +25,7 @@
 
 import { createCoreLogger } from "../utils/index.js"
 
-const logger = createCoreLogger("cmd")
+const logger = createCoreLogger("browser")
 
 /**
  * 将 css 以动态引入方式加入当前页面

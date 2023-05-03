@@ -22,12 +22,11 @@
         "assets": [
           "packages/zhi-core/*.md",
           "packages/zhi-core/src/core/**",
+          "packages/zhi-core/src/config/**",
           "packages/zhi-core/src/theme.js",
           "packages/zhi-core/src/theme.json",
           "packages/zhi-core/src/theme.css",
-          "packages/zhi-core/src/style/common/fonts/webfont.css",
-          "packages/zhi-core/src/hello.js",
-          "packages/zhi-core/src/index.html"
+          "packages/zhi-core/src/style/common/fonts/webfont.css"
         ]
       }
     },

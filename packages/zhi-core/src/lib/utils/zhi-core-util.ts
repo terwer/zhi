@@ -27,6 +27,7 @@
  * 简单的日志接口
  */
 interface ILogger {
+  debug: (msg: string, obj?: any) => void
   info: (msg: string, obj?: any) => void
   error: (msg: string | Error, obj?: any) => void
 }
@@ -62,6 +63,7 @@ export const createCoreLogger = (name: string): ILogger => {
   }
 
   return {
+    debug: (msg: string, obj?: any) => log("DEBUG", msg, obj),
     info: (msg: string, obj?: any) => log("INFO", msg, obj),
     error: (msg: string | Error, obj?: any) => {
       if (typeof msg == "string") {
@@ -103,4 +105,18 @@ export const isFileExists = async (p: string, type: string) => {
   } catch {
     return false
   }
+}
+
+/**
+ * 动态加载 SystemJs 模块
+ *
+ * @param moduleName - 模块名称
+ */
+export const SystemImport = async (moduleName: string) => {
+  const System = win.System
+  if (!System) {
+    throw new Error("SystemJs not work, zhi-core will stop loading!")
+  }
+
+  return await System.import(moduleName)
 }
