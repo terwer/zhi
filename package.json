@@ -40,7 +40,7 @@
     "@nrwl/node": "^15.9.2",
     "@nrwl/nx-cloud": "latest",
     "@nrwl/vite": "16.0.3",
-    "@nrwl/web": "15.9.2",
+    "@nrwl/web": "16.0.3",
     "@nxtensions/astro": "^3.5.0",
     "@types/node": "18.16.3",
     "@types/showdown": "^2.0.1",
