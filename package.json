@@ -48,7 +48,7 @@
     "@typescript-eslint/parser": "^5.36.1",
     "@vitest/coverage-c8": "~0.30.1",
     "@vitest/ui": "^0.30.1",
-    "astro": "^2.0.0",
+    "astro": "^2.3.4",
     "commitizen": "^4.3.0",
     "cypress": "^12.11.0",
     "eslint": "~8.15.0",
