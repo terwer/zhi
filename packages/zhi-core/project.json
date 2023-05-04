@@ -5,20 +5,32 @@
   "projectType": "library",
   "targets": {
     "dev": {
-      "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "executor": "nx:run-commands",
       "options": {
-        "outputPath": "/Users/terwer/Documents/mydocs/SiYuanWorkspace/public/conf/appearance/themes/zhi",
-        "emptyOutDir": false,
-        "watch": true
-      }
+        "commands": ["cp -r dist/packages/zhi/core/**/* /Users/terwer/Documents/mydocs/SiYuanWorkspace/public/conf/appearance/themes/zhi/core"],
+        "parallel": false
+      },
+      "dependsOn": [{ "projects": "self", "target": "build" }]
     },
     "build": {
-      "executor": "@nx/vite:build",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/zhi",
-        "emptyOutDir": false
+        "outputPath": "dist/packages/zhi/core",
+        "main": "packages/zhi-core/src/index.ts",
+        "tsConfig": "packages/zhi-core/tsconfig.lib.json",
+        "assets": ["packages/zhi-core/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs zhi-core {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/zhi-core/**/*.ts"]
       }
     },
     "test": {
@@ -27,13 +39,6 @@
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/packages/zhi-core"
-      }
-    },
-    "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["packages/zhi-core/**/*.ts"]
       }
     }
   },

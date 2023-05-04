@@ -23,4 +23,19 @@
  * questions.
  */
 
-export * from "./lib/zhi-core.js"
+/**
+ * @packageDocumentation
+ * zhi-loader 主题引导器
+ */
+
+import { zhiLoader } from "./lib/zhi-loader"
+
+// 主题样式注入入口
+import "./style/theme.styl"
+
+/**
+ * 主题入口，由思源笔记自动触发，请勿主动调用
+ */
+;(async () => {
+  await zhiLoader()
+})()

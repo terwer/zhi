@@ -23,4 +23,10 @@
  * questions.
  */
 
-export * from "./lib/zhi-core.js"
+import { zhiLoader } from "./zhi-loader"
+
+describe("zhiLoader", () => {
+  it("zhiLoader should work", () => {
+    console.log("hello")
+  })
+})

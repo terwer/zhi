@@ -23,8 +23,17 @@
  * questions.
  */
 
+import Zhi from "./core/zhi.js"
+
+/**
+ * 主题实际上的最终执行入口
+ *
+ * @author terwer
+ * @version 0.1.0
+ * @since 0.1.0
+ */
 export async function zhiCore(): Promise<void> {
-  // const zhi = new Zhi(DeviceDetection.getDevice())
-  // await zhi.init()
-  console.log("hello, zhi theme5")
+  const zhi = new Zhi()
+  await zhi.init()
+  await zhi.start()
 }

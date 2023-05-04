@@ -23,7 +23,7 @@
  * questions.
  */
 
-import { zhiCore } from "./zhi-core"
+import { zhiCore } from "./zhi-core.js"
 
 describe("zhiCore", () => {
   it("zhiCore should work", () => {

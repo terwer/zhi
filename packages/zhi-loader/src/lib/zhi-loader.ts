@@ -23,4 +23,7 @@
  * questions.
  */
 
-export * from "./lib/zhi-core.js"
+export async function zhiLoader(): Promise<void> {
+  const zhiCore =  await import("/appearance/themes/zhi/core/index.js" as any)
+  await zhiCore.zhiCore()
+}

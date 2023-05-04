@@ -23,4 +23,37 @@
  * questions.
  */
 
-export * from "./lib/zhi-core.js"
+// @ts-ignore
+import { importWithMap } from "https://esm.sh/dynamic-importmap"
+// @ts-ignore
+// import ZhiUtil from "https://esm.sh/@siyuan-community/zhi-common@1.5.5"
+// @ts-ignore
+import Env from "https://esm.sh/zhi-env"
+// @ts-ignore
+import ZhiLog from "https://esm.sh/zhi-log"
+
+console.log("Env=>", Env)
+console.log("ZhiLog=>", ZhiLog)
+
+/**
+ * 工具类统一入口，每个应用自己实现
+ *
+ * @public
+ * @author terwer
+ * @since 1.0.0
+ */
+class ZhiCoreUtil{
+  // extends ZhiUtil {
+//   // @ts-ignore
+//   public static override zhiEnv(): Env {
+//     // @ts-ignore
+//     if (!this.env) {
+//       // @ts-ignore
+//       this.env = new Env(import.meta.env)
+//     }
+//     // @ts-ignore
+//     return this.env
+//   }
+}
+
+export default ZhiCoreUtil

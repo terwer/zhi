@@ -70,6 +70,9 @@ devDependencies:
   stylus:
     specifier: ^0.59.0
     version: 0.59.0
+  tslib:
+    specifier: ^2.5.0
+    version: 2.5.0
   typescript:
     specifier: ~5.0.4
     version: 5.0.4
