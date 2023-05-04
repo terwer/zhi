@@ -15,3 +15,39 @@ Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and 
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev) to learn more.
+
+## Components
+
+### commitlint
+
+1 
+
+https://www.npmjs.com/package/@commitlint/cz-commitlint
+
+```bash
+npm install --save-dev @commitlint/config-angular @commitlint/cz-commitlint commitizen inquirer@8
+## commitlint.config.js
+```
+
+2 package.json
+
+or
+
+```
+{
+  "scripts": {
+    "commit": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  }
+}
+```
+
+3 
+```bash
+git add -A
+npm run commit
+```
