@@ -24,18 +24,12 @@
  */
 
 /**
- * @packageDocumentation
- * zhi-core 主题核心模块
+ * 主题通用类（由theme.js动态调用，除了单元测试之外请勿主动调用）
+ *
+ * @public
+ * @author terwer
+ * @since 0.1.0
  */
+class Zhi {
 
-import { zhiCore } from "./lib/zhi-core"
-
-// 主题样式注入入口
-import "./style/theme.styl"
-
-/**
- * 主题入口，由思源笔记自动触发，请勿主动调用
- */
-;(async () => {
-  await zhiCore()
-})()
+}

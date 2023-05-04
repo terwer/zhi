@@ -25,19 +25,20 @@ export default defineConfig({
   // Configuration for building your library.
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
+    cssCodeSplit: true,
+
     lib: {
-      entry: ["src/index.ts", "src/style/theme.styl"],
+      entry: ["src/index.ts"],
       formats: ["es"],
     },
+
     rollupOptions: {
       plugins: [isWatch && livereload(devOutDir)],
       // External packages that should not be bundled into your library.
       external: [],
       output: {
         entryFileNames: "theme.js",
-        assetFileNames: (assetInfo) => {
-          return assetInfo.name ?? ""
-        },
+        assetFileNames: "theme.css",
       },
     },
   },
