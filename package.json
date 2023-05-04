@@ -44,6 +44,6 @@
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-lib-inject-css": "^1.2.0",
     "vite-tsconfig-paths": "^4.0.2",
-    "vitest": "^0.25.8"
+    "vitest": "^0.31.0"
   }
 }
