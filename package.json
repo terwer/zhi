@@ -1,24 +1,46 @@
 {
   "name": "zhi",
-  "private": true,
-  "type": "module",
+  "version": "0.1.0",
+  "license": "MIT",
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "test": "turbo run test",
-    "cz": "git-cz",
-    "commit": "commit"
-  },
-  "devDependencies": {
-    "eslint-config-custom": "workspace:*",
-    "turbo": "latest"
+    "commit": "git-cz"
   },
   "config": {
     "commitizen": {
       "path": "@commitlint/cz-commitlint"
-    },
-    "commitizenEmoji": {}
+    }
   },
-  "packageManager": "pnpm@8.1.1"
+  "private": true,
+  "devDependencies": {
+    "@commitlint/config-angular": "^17.6.3",
+    "@commitlint/cz-commitlint": "^17.5.0",
+    "@nx/eslint-plugin": "16.0.3",
+    "@nx/js": "16.0.3",
+    "@nx/linter": "16.0.3",
+    "@nx/vite": "16.0.3",
+    "@nx/workspace": "16.0.3",
+    "@types/minimist": "^1.2.2",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
+    "@typescript-eslint/parser": "^5.58.0",
+    "@vitest/coverage-c8": "~0.25.8",
+    "@vitest/ui": "^0.25.8",
+    "commitizen": "^4.3.0",
+    "eslint": "~8.15.0",
+    "eslint-config-prettier": "8.1.0",
+    "inquirer": "^8.2.5",
+    "jsdom": "~20.0.3",
+    "minimist": "^1.2.8",
+    "nx": "16.0.3",
+    "nx-cloud": "latest",
+    "prettier": "^2.6.2",
+    "rollup-plugin-livereload": "^2.0.5",
+    "stylus": "^0.59.0",
+    "typescript": "~4.9.5",
+    "vite": "^4.0.1",
+    "vite-plugin-dts": "~1.7.1",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-lib-inject-css": "^1.2.0",
+    "vite-tsconfig-paths": "^4.0.2",
+    "vitest": "^0.25.8"
+  }
 }

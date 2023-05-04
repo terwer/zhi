@@ -58,14 +58,14 @@ to:
 -   It can handle both the theme and the preview. Installing the zhi theme is equivalent to installing an additional
     plugin system and an online blog.
     -   SPA blog homepage( `enabled and bundled by default` ): http://127.0.0.1:6806/appearance/themes/zhi/web/blog/ <sup>simple</sup>
-    -   SSR blog homepage( `⚠️ need to enabled manually` ): http://127.0.0.1:6806/appearance/themes/zhi/server/blog/ <sup>seo friendly</sup>
+    -   SSR blog homepage( `⚠️ need to be enabled manually` ): http://127.0.0.1:6806/appearance/themes/zhi/server/blog/ <sup>seo friendly</sup>
 
 > Note: 🌹 The plugin system is provided by enthusiastic community developers. Please understand the relevant mechanisms in
 > detail before using.
 
 ## Technical Roadmap
 
-[tech](tech.md)
+[development](DEVELOPMENT.md)
 
 ## Acknowledgments
 
