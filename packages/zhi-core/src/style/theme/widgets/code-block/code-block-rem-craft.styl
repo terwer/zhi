@@ -23,10 +23,15 @@
  * questions.
  */
 
-import { zhiCore } from "./zhi-core"
+// -------------------------------------------------代码块-Rem Craft适配---------------------------------------------------
+html[data-light-theme="Rem Craft"]
+  .b3-typography .code-block, .protyle-wysiwyg .code-block
+    background var(--zhi-code-tab-bg)
 
-describe("zhiCore", () => {
-  it("should work", () => {
-    expect(zhiCore()).toEqual("zhi-core")
-  })
-})
+  .b3-typography .code-block .protyle-action .protyle-action__language
+  .protyle-wysiwyg .code-block .protyle-action .protyle-action__language
+    right 5rem
+    top -0.1rem
+
+  .protyle-linenumber__rows
+    margin-top 8px !important

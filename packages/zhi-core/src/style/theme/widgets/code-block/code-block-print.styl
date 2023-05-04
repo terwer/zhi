@@ -23,10 +23,13 @@
  * questions.
  */
 
-import { zhiCore } from "./zhi-core"
+// -------------------------------------------------代码块-打印模式---------------------------------------------------
+#preview
+  .protyle-action__language
+    right 0.2rem !important
 
-describe("zhiCore", () => {
-  it("should work", () => {
-    expect(zhiCore()).toEqual("zhi-core")
-  })
-})
+  .protyle-action__language::after
+    display none !important
+
+  .protyle-action__copy
+    display none !important

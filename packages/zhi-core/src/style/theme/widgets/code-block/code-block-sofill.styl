@@ -23,10 +23,13 @@
  * questions.
  */
 
-import { zhiCore } from "./zhi-core"
+// -------------------------------------------------代码块-Sofill-适配---------------------------------------------------
+html[data-light-theme="Sofill-"]
+  .code-block::after
+    top 0.7rem !important
 
-describe("zhiCore", () => {
-  it("should work", () => {
-    expect(zhiCore()).toEqual("zhi-core")
-  })
-})
+  .b3-typography .code-block .protyle-action .protyle-action__language
+  .protyle-wysiwyg .code-block .protyle-action .protyle-action__language
+    top -0.1rem
+    left unset !important
+    right 0.2rem

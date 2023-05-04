@@ -23,10 +23,12 @@
  * questions.
  */
 
-import { zhiCore } from "./zhi-core"
+@require "basic-light"
+@require "basic-dark"
+@require "basic-green"
 
-describe("zhiCore", () => {
-  it("should work", () => {
-    expect(zhiCore()).toEqual("zhi-core")
-  })
-})
+// 基础样式
+:root
+  --zhi-font-family _font-family-mono
+  --zhi-font-family-code _font-family-mono
+  --zhi-border-radius-round _border-radius-round

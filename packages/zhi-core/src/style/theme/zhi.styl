@@ -23,10 +23,26 @@
  * questions.
  */
 
-import { zhiCore } from "./zhi-core"
+// 基本变量
+// vars-zhi = vars-common + 自定义变量
+@require "../common/vars/vars-zhi"
 
-describe("zhiCore", () => {
-  it("should work", () => {
-    expect(zhiCore()).toEqual("zhi-core")
-  })
-})
+// web字体
+// fonts = lxgw + opensans
+@require "../common/fonts"
+
+// 基本样式
+// global = basic + 全局样式
+@require "../common/global"
+
+// 编辑器
+@require "./widgets/editor"
+
+// 代码块
+@require "./widgets/code-block"
+
+// 闪卡
+@require "./widgets/deck"
+
+// 移动端
+@require "./widgets/mobile"

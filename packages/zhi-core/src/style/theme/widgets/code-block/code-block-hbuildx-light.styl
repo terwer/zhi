@@ -23,10 +23,20 @@
  * questions.
  */
 
-import { zhiCore } from "./zhi-core"
+// -------------------------------------------------代码块-HBuilderX-Light适配---------------------------------------------------
+html[data-light-theme="HBuilderX-Light"]
+  .code-block
+    overflow auto
 
-describe("zhiCore", () => {
-  it("should work", () => {
-    expect(zhiCore()).toEqual("zhi-core")
-  })
-})
+  overflow: auto;
+  .protyle-wysiwyg [data-node-id].code-block > .protyle-action
+    height 28px
+
+  .b3-typography .code-block .protyle-action .protyle-action__language
+  .protyle-wysiwyg .code-block .protyle-action .protyle-action__language
+    top 0.5rem
+    right 3rem
+
+  .protyle-wysiwyg .code-block .protyle-action .protyle-action__copy
+  .protyle-wysiwyg .code-block .protyle-action .protyle-action__menu
+    margin-top 0.2rem

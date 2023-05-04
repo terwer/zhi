@@ -1,0 +1,7 @@
+{
+  "name": "zhi",
+  "author": "terwer",
+  "url": "https://github.com/terwer/zhi",
+  "version": "0.1.0",
+  "modes": ["dark", "light", "green"]
+}
