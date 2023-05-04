@@ -7,9 +7,11 @@ import { argv } from "process"
 
 // 处理参数
 const devOutDir = "/Users/terwer/Documents/mydocs/SiYuanWorkspace/public/conf/appearance/themes/zhi"
-const args: any = JSON.parse(argv[2])
-const isWatch = args.targetDescription.target === "dev" ?? false
+const args: any = argv[2].startsWith("{") ? JSON.parse(argv[2]) : undefined
+const isWatch = args?.targetDescription?.target === "dev" ?? false
 const isProduction = !isWatch
+const isTest = process.env["npm_command"] === "test"
+console.log("isTest=>", isTest)
 console.log("isWatch=>", isWatch)
 console.log("isProduction=>", isProduction)
 
@@ -17,23 +19,22 @@ export default defineConfig({
   cacheDir: "../../node_modules/.vite/zhi-core",
 
   plugins: [
-    viteTsConfigPaths({
-      root: "../../",
-    }),
+    !isTest &&
+      viteTsConfigPaths({
+        root: "../../",
+      }),
   ],
 
   // Configuration for building your library.
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
-    cssCodeSplit: true,
-
     lib: {
       entry: ["src/index.ts"],
       formats: ["es"],
     },
 
     rollupOptions: {
-      plugins: [isWatch && livereload(devOutDir)],
+      plugins: [...(isWatch ? [livereload(devOutDir)] : [])] as Plugin[],
       // External packages that should not be bundled into your library.
       external: [],
       output: {
