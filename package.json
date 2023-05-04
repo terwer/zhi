@@ -31,7 +31,7 @@
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
     "inquirer": "^8.2.5",
-    "jsdom": "~20.0.3",
+    "jsdom": "~22.0.0",
     "minimist": "^1.2.8",
     "nx": "16.0.3",
     "nx-cloud": "latest",
