@@ -1,19 +1,17 @@
 {
   "name": "zhi",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "turbo run test",
     "cz": "git-cz",
     "commit": "commit"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
     "eslint-config-custom": "workspace:*",
-    "prettier": "^2.5.1",
     "turbo": "latest"
   },
   "config": {
