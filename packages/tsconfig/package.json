@@ -1,9 +1,13 @@
 {
   "name": "tsconfig",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
+  "files": [
+    "base.json",
+    "nextjs.json",
+    "react-library.json"
+  ],
+  "devDependencies": {
+    "@types/node": "^18.15.11"
   }
 }

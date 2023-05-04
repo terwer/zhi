@@ -3,8 +3,12 @@ import commonjs from "@rollup/plugin-commonjs"
 import terser from "@rollup/plugin-terser"
 import copy from "rollup-plugin-copy"
 import serve from "rollup-plugin-serve"
+import livereload from "rollup-plugin-livereload"
+import minimist from "minimist"
 
-const isProduction = !process.env.ROLLUP_WATCH
+const args = minimist(process.argv.slice(2))
+const isWatch = args.watch ?? false
+const isProduction = !isWatch
 
 export default {
   input: "src/main.js",
@@ -20,6 +24,7 @@ export default {
     copy({
       targets: [{ src: ["public/index.html", "public/favicon.ico"], dest: "dist" }],
     }),
-    serve("dist"),
+    isWatch && serve("dist"),
+    isWatch && livereload(),
   ],
 }

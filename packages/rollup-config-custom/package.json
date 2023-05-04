@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "type": "module",
   "description": "rollup custom config",
+  "bin": {
+    "zhi-build": "./build.cjs"
+  },
   "main": "index.cjs",
   "keywords": [
     "rollup",
@@ -17,6 +20,7 @@
     "@rollup/plugin-terser": "^0.4.1",
     "rollup": "^3.21.4",
     "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-serve": "^2.0.2"
   }
 }

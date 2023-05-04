@@ -14,8 +14,8 @@
     "theme"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w"
+    "dev": "zhi-build --watch",
+    "build": "zhi-build"
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",
