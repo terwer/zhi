@@ -26,5 +26,5 @@
 export async function zhiCore(): Promise<void> {
   // const zhi = new Zhi(DeviceDetection.getDevice())
   // await zhi.init()
-  console.log("hello, zhi")
+  console.log("hello, zhi theme")
 }
