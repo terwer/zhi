@@ -1,0 +1,24 @@
+{
+  "name": "zhi-core",
+  "version": "0.1.0",
+  "description": "a pluggable siyuan-note theme",
+  "type": "module",
+  "repository": "terwer/zhi",
+  "homepage": "https://github.com/terwer/zhi/tree/main/apps/zhi-core",
+  "author": "terwer",
+  "license": "GPL",
+  "keywords": [
+    "zhi",
+    "zhi-core",
+    "siyuan-note",
+    "theme"
+  ],
+  "scripts": {
+    "dev": "zhi-build --watch",
+    "build": "zhi-build"
+  },
+  "devDependencies": {
+    "eslint-config-custom": "workspace:*",
+    "rollup-config-custom": "workspace:*"
+  }
+}
