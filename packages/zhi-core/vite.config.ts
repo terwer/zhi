@@ -3,13 +3,17 @@ import { defineConfig } from "vite"
 
 import viteTsConfigPaths from "vite-tsconfig-paths"
 
+const isTest = process.env["npm_command"] === "test"
+console.log("isTest=>", isTest)
+
 export default defineConfig({
   cacheDir: "../../node_modules/.vite/zhi-core",
 
   plugins: [
-    viteTsConfigPaths({
-      root: "../../",
-    }),
+    !isTest &&
+      viteTsConfigPaths({
+        root: "../../",
+      }),
   ],
 
   // Uncomment this if you are using workers.
