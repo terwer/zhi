@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@siyuan-community/zhi-common": ["packages/zhi-lib-common/src/index.ts"],
       "@siyuan-community/zhi-device": ["packages/zhi-lib-device/src/index.ts"],
       "@siyuan-community/zhi-env": ["packages/zhi-lib-env/src/index.ts"],
       "@siyuan-community/zhi-log": ["packages/zhi-lib-log/src/index.ts"],

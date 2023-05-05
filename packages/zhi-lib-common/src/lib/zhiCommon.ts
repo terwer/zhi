@@ -23,7 +23,39 @@
  * questions.
  */
 
-export async function zhiLoader(): Promise<void> {
-  const zhiCore =  await import("/appearance/themes/zhi/core/packages/zhi-core/src/index.js" as any)
-  await zhiCore.zhiCore()
+import JsonUtil from "./jsonUtil"
+import DateUtil from "./dateUtil"
+import StrUtil from "./strUtil"
+import VersionUtil from "./versionUtil"
+import HtmlUtil from "./htmlUtil"
+import MarkdownUtil from "./markdownUtil"
+import ObjectUtil from "./objectUtil"
+
+/**
+ * 平台无关的通用工具类
+ *
+ * @author terwer
+ * @version 1.4.0
+ * @since 1.3.0
+ */
+class ZhiCommon {
+  public readonly dateUtil
+  public readonly strUtil
+  public readonly versionUtil
+  public readonly htmlUtil
+  public readonly markdownUtil
+  public readonly jsonUtil
+  public readonly objectUtil
+
+  constructor() {
+    this.dateUtil = new DateUtil()
+    this.strUtil = new StrUtil()
+    this.versionUtil = new VersionUtil()
+    this.htmlUtil = new HtmlUtil()
+    this.markdownUtil = new MarkdownUtil()
+    this.jsonUtil = new JsonUtil()
+    this.objectUtil = new ObjectUtil()
+  }
 }
+
+export default ZhiCommon

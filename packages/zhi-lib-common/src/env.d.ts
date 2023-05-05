@@ -23,7 +23,6 @@
  * questions.
  */
 
-export async function zhiLoader(): Promise<void> {
-  const zhiCore =  await import("/appearance/themes/zhi/core/packages/zhi-core/src/index.js" as any)
-  await zhiCore.zhiCore()
+interface ImportMeta {
+  readonly env: ImportMetaEnv
 }

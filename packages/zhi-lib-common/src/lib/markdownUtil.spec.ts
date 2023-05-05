@@ -23,7 +23,14 @@
  * questions.
  */
 
-export async function zhiLoader(): Promise<void> {
-  const zhiCore =  await import("/appearance/themes/zhi/core/packages/zhi-core/src/index.js" as any)
-  await zhiCore.zhiCore()
-}
+import MarkdownUtil from "./markdownUtil"
+import { describe, it, expect } from "vitest"
+
+describe("markdownUtil", () => {
+  it("test renderHTML", async () => {
+    // const markdownUtil = new MarkdownUtil()
+    // const result = await markdownUtil.renderHTML("# hello")
+    // console.log(result)
+    // expect(result).toBe("<h1>hello</h1>\n")
+  })
+})

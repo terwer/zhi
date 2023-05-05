@@ -49,10 +49,13 @@
     "vitest": "^0.31.0"
   },
   "dependencies": {
+    "ajv": "^8.12.0",
     "ansi-colors": "^4.1.3",
     "callsites": "^4.0.0",
+    "compare-versions": "5.0.3",
     "kleur": "^4.1.5",
     "loglevel": "^1.8.1",
-    "loglevel-plugin-prefix": "^0.8.4"
+    "loglevel-plugin-prefix": "^0.8.4",
+    "showdown": "^2.1.0"
   }
 }

@@ -23,7 +23,23 @@
  * questions.
  */
 
-export async function zhiLoader(): Promise<void> {
-  const zhiCore =  await import("/appearance/themes/zhi/core/packages/zhi-core/src/index.js" as any)
-  await zhiCore.zhiCore()
+import { Env } from "@siyuan-community/zhi-env"
+import ZhiUtil from "./ZhiUtil"
+
+/**
+ * Common 模块工具类
+ *
+ * @author terwer
+ * @version 1.4.0
+ * @since 1.4.0
+ */
+class ZhiCommonUtil extends ZhiUtil {
+  public static override zhiEnv(): Env {
+    if (!this.env) {
+      this.env = new Env(import.meta.env)
+    }
+    return this.env
+  }
 }
+
+export default ZhiCommonUtil
