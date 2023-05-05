@@ -23,7 +23,25 @@
  * questions.
  */
 
-export async function zhiLoader(): Promise<void> {
-  const zhiCore =  await import("/appearance/themes/zhi/core/packages/zhi-core/src/index.js" as any)
-  await zhiCore.zhiCore()
+/**
+ * Markdown适配器接口
+ *
+ * @author terwer
+ * @version 1.0.0
+ * @since 1.0.0
+ */
+interface MarkdownAdaptor {
+  /**
+   * 是否可用
+   */
+  isAvailable(): boolean
+
+  /**
+   * 渲染MD
+   *
+   * @param md - Markdown
+   */
+  renderMarkdownStr(md: string): Promise<string>
 }
+
+export default MarkdownAdaptor

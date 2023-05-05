@@ -23,49 +23,53 @@
  * questions.
  */
 
-import { DeviceTypeEnum } from "@siyuan-community/zhi-device"
-import ZhiCoreUtil from "./util/ZhiCoreUtil"
+import LuteAdaptor from "./md-adaptor/LuteAdaptor"
+import ShowdownAdaptor from "./md-adaptor/ShowdownAdaptor"
+import ZhiCommonUtil from "./ZhiCommonUtil"
+import MarkdownAdaptor from "./md-adaptor/MarkdownAdaptor"
 
-class Zhi {
+/**
+ * Markdown 处理工具类
+ *
+ * @author terwer
+ * @version 1.0.0
+ * @since 1.0.0
+ */
+class MarkdownUtil {
   private readonly logger
+  private mdAdaptor: MarkdownAdaptor = new ShowdownAdaptor()
 
-  private readonly runAs
-
-  /**
-   * 主题样式最低支持版本
-   * @private
-   */
-  private readonly SUPPORTED_THEME_VERSION = "2.7.6"
-
-  /**
-   * 内核最低支持版本
-   * @private
-   */
-  private readonly SUPPORTED_KERNEL_VERSION = "2.8.1"
-
-  /**
-   * 主题初始化
-   *
-   * @param runAs - 运行模式
-   */
-  constructor(runAs: DeviceTypeEnum) {
-    this.logger = ZhiCoreUtil.zhiLog("zhi-core")
-
-    this.runAs = runAs ?? DeviceTypeEnum.DeviceType_Node
+  constructor() {
+    this.logger = ZhiCommonUtil.zhiLog("markdown-util")
   }
 
   /**
-   * 主流程加载
+   * 获取当前 MD 解析器名称
    */
-  public async init(): Promise<void> {
-    try {
-      this.logger.info(`Zhi Theme runAs ${this.runAs}`)
-
-      this.logger.info("Zhi Theme inited")
-    } catch (e) {
-      this.logger.error("Zhi Theme load error=>", e)
+  private getCurrentAdaptorName() {
+    if (this.mdAdaptor instanceof LuteAdaptor) {
+      return "Lute"
+    } else if (this.mdAdaptor instanceof ShowdownAdaptor) {
+      return "Showdown"
     }
+    return "None"
+  }
+
+  /**
+   * 渲染Markdown
+   *
+   * @param md - Markdown文本
+   */
+  public async renderHTML(md: string): Promise<string> {
+    const luteNew = new LuteAdaptor()
+    this.logger.debug("Lute status =>", luteNew.isAvailable())
+    if (luteNew.isAvailable()) {
+      this.mdAdaptor = luteNew
+    }
+
+    this.logger.info(`Using ${this.getCurrentAdaptorName()} as markdown renderer`)
+    return await this.mdAdaptor.renderMarkdownStr(md)
   }
 }
 
-export default Zhi
+export default MarkdownUtil

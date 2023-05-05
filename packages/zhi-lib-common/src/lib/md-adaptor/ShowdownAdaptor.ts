@@ -23,7 +23,39 @@
  * questions.
  */
 
-export async function zhiLoader(): Promise<void> {
-  const zhiCore =  await import("/appearance/themes/zhi/core/packages/zhi-core/src/index.js" as any)
-  await zhiCore.zhiCore()
+import MarkdownAdaptor from "./MarkdownAdaptor"
+import showdown from "showdown"
+import ZhiCommonUtil from "../ZhiCommonUtil"
+
+/**
+ * showdown 适配器
+ *
+ * @author terwer
+ * @version 1.0.0
+ * @since 1.0.0
+ */
+class ShowdownAdaptor implements MarkdownAdaptor {
+  private readonly logger
+  private readonly converter
+
+  constructor() {
+    this.logger = ZhiCommonUtil.zhiLog("showdown-adaptor")
+
+    this.converter = new showdown.Converter()
+  }
+
+  isAvailable(): boolean {
+    return typeof showdown !== "undefined"
+  }
+
+  renderMarkdownStr(md: string): Promise<string> {
+    if (!this.isAvailable()) {
+      throw new Error("Showdown is not available")
+    }
+
+    this.logger.info("Showdown is rendering md to HTML...")
+    return Promise.resolve(this.converter.makeHtml(md))
+  }
 }
+
+export default ShowdownAdaptor

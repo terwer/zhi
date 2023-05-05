@@ -22,8 +22,44 @@
  * or visit www.terwer.space if you need additional information or have any
  * questions.
  */
+import DateUtil from "./dateUtil"
 
-export async function zhiLoader(): Promise<void> {
-  const zhiCore =  await import("/appearance/themes/zhi/core/packages/zhi-core/src/index.js" as any)
-  await zhiCore.zhiCore()
-}
+describe("DateUtil", () => {
+  const dateUtil = new DateUtil()
+
+  it("formatIsoToZh", () => {
+    const isoDate = "2022-07-18T06:25:48.000Z"
+    const result = dateUtil.formatIsoToZh(isoDate)
+    const expectedZhDate = "2022-07-18 06:25:48"
+    expect(result).toEqual(expectedZhDate)
+  })
+
+  it("formatIsoToZhDate", () => {
+    const isoDate = "2022-07-18T06:25:48.000Z"
+    const result = dateUtil.formatIsoToZhDate(isoDate)
+    const expectedZhDate = "2022-07-18"
+    expect(result).toEqual(expectedZhDate)
+  })
+
+  it("formatIsoToZhTime", () => {
+    const isoDate = "2022-07-18T06:25:48.000Z"
+    const result = dateUtil.formatIsoToZhTime(isoDate)
+    const expectedZhDate = "06:25:48"
+    expect(result).toEqual(expectedZhDate)
+  })
+
+  it("nowZh", () => {
+    const result = dateUtil.nowZh()
+    console.log(result)
+  })
+
+  it("nowDateZh", () => {
+    const result = dateUtil.nowDateZh()
+    console.log(result)
+  })
+
+  it("nowTimeZh", () => {
+    const result = dateUtil.nowTimeZh()
+    console.log(result)
+  })
+})

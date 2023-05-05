@@ -36,7 +36,7 @@ export default defineConfig({
     rollupOptions: {
       plugins: [...(isWatch ? [livereload(devOutDir)] : [])] as Plugin[],
       // External packages that should not be bundled into your library.
-      external: ["/appearance/themes/zhi/core/zhi-core/src/index.js"],
+      external: ["/appearance/themes/zhi/core/packages/zhi-core/src/index.js"],
       output: {
         entryFileNames: "theme.js",
         assetFileNames: "theme.css",

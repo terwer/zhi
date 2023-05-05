@@ -23,7 +23,29 @@
  * questions.
  */
 
-export async function zhiLoader(): Promise<void> {
-  const zhiCore =  await import("/appearance/themes/zhi/core/packages/zhi-core/src/index.js" as any)
-  await zhiCore.zhiCore()
+/**
+ * Object 工具类
+ *
+ * @author terwer
+ * @version 1.0.0
+ * @since 1.0.0
+ */
+class ObjectUtil {
+  /**
+   * 检测是否是空对象
+   *
+   * @param obj - 对象
+   */
+  public isEmptyObject(obj: any): boolean {
+    if (!obj) {
+      return true
+    }
+    return (
+      Object.getPrototypeOf(obj) === Object.prototype &&
+      Object.getOwnPropertyNames(obj).length === 0 &&
+      Object.getOwnPropertySymbols(obj).length === 0
+    )
+  }
 }
+
+export default ObjectUtil

@@ -23,7 +23,39 @@
  * questions.
  */
 
-export async function zhiLoader(): Promise<void> {
-  const zhiCore =  await import("/appearance/themes/zhi/core/packages/zhi-core/src/index.js" as any)
-  await zhiCore.zhiCore()
+import Ajv, { JSONSchemaType } from "ajv"
+
+/**
+ * 校验 JSON schema
+ *
+ * @author terwer
+ * @version 1.5.0
+ * @since 1.5.0
+ */
+class JsonUtil {
+  private ajv: Ajv
+
+  constructor() {
+    this.ajv = new Ajv()
+  }
+
+  public validateJson<T>(schema: JSONSchemaType<T>, data: T): { valid: boolean; error?: string } {
+    const valid = this.ajv.validate(schema, data)
+    if (valid) {
+      return { valid }
+    } else {
+      return { valid, error: this.ajv.errorsText() }
+    }
+  }
+
+  public validateObjectSchema(schemaObject: object, dataObject: object): { valid: boolean; error?: string } {
+    const valid = this.ajv.validate(schemaObject, dataObject)
+    if (valid) {
+      return { valid }
+    } else {
+      return { valid, error: this.ajv.errorsText() }
+    }
+  }
 }
+
+export default JsonUtil

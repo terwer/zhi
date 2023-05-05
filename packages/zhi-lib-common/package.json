@@ -1,0 +1,17 @@
+{
+  "name": "@siyuan-community/zhi-common",
+  "version": "1.6.1",
+  "type": "module",
+  "description": "the library base for zhi related projects",
+  "main": "./packages/zhi-lib-common/src/index.js",
+  "typings": "./index.d.ts",
+  "repository": "terwer/zhi",
+  "homepage": "https://github.com/terwer/zhi/tree/main/packages/zhi-lib-common",
+  "author": "terwer",
+  "license": "GPL",
+  "keywords": [
+    "zhi",
+    "common",
+    "libiary"
+  ]
+}
