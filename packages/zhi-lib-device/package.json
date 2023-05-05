@@ -6,7 +6,7 @@
   "main": "./index.js",
   "typings": "./index.d.ts",
   "repository": "terwer/zhi",
-  "homepage": "https://github.com/terwer/zhi/tree/main/apps/zhi-device",
+  "homepage": "https://github.com/terwer/zhi/tree/main/packages/zhi-lib-device",
   "author": "terwer",
   "license": "GPL",
   "keywords": [
