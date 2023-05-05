@@ -24,4 +24,15 @@
  */
 
 import BlogApi from "./blogApi"
+import CategoryInfo from "./models/categoryInfo"
+import type { IBlogApi } from "./IBlogApi"
+import MediaObject from "./models/mediaObject"
+import Post from "./models/post"
+import PostStatusEnum from "./enums/postStatusEnum"
+import UserBlog from "./models/userBlog"
+import BlogConfig, { PasswordType } from "./blogConfig"
+import BlogPlaceholder from "./blogPlaceholder"
+
 export { BlogApi }
+export { CategoryInfo, IBlogApi, MediaObject, Post, PostStatusEnum, UserBlog }
+export { BlogConfig, PasswordType, BlogPlaceholder }

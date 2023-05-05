@@ -1,0 +1,18 @@
+{
+  "name": "@siyuan-community/zhi-siyuan-api",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "a siyuan-note api including both kernel and client",
+  "main": "./dist/index.js",
+  "typings": "./index.d.ts",
+  "repository": "terwer/zhi",
+  "homepage": "https://github.com/terwer/zhi/tree/main/packages/zhi-lib-siyuan-api",
+  "author": "terwer",
+  "license": "GPL",
+  "keywords": [
+    "zhi",
+    "siyuan",
+    "blog",
+    "api"
+  ]
+}

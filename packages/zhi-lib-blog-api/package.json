@@ -1,10 +1,10 @@
 {
   "name": "@siyuan-community/zhi-blog-api",
-  "version": "0.1.0",
+  "version": "1.1.1",
   "type": "module",
   "description": "a common blog interface",
-  "main": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
+  "main": "./packages/zhi-lib-blog-api/src/index.js",
+  "typings": "./index.d.ts",
   "repository": "terwer/zhi",
   "homepage": "https://github.com/terwer/zhi/tree/main/packages/zhi-lib-blog-api",
   "author": "terwer",

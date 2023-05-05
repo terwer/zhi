@@ -24,32 +24,36 @@
  */
 
 import { Env } from "@siyuan-community/zhi-env"
-import { ZhiUtil } from "@siyuan-community/zhi-common"
-import { SiyuanKernelApi } from "@siyuan-community/zhi-siyuan-api"
+import SiyuanConfig from "./siyuanConfig"
+import SiyuanKernelApi from "./siyuanKernelApi"
+import SiyuanClientApi from "./siyuanClientApi"
 
 /**
- * 工具类统一入口，每个应用自己实现
+ * 思源笔记API
  *
- * @public
  * @author terwer
  * @since 1.0.0
  */
-class ZhiCoreUtil extends ZhiUtil {
-  private static kApi: SiyuanKernelApi | undefined
+class SiyuanApi {
+  /**
+   * 思源笔记内核API
+   */
+  public readonly kernelApi
 
-  public static override zhiEnv(): Env {
-    if (!this.env) {
-      this.env = new Env(import.meta.env)
-    }
-    return this.env
-  }
+  /**
+   * 思源笔记客户端API
+   */
+  public readonly clientApi
 
-  public static kernelApi() {
-    if (!this.kApi) {
-      this.kApi = new SiyuanKernelApi(this.zhiEnv())
-    }
-    return this.kApi
+  /**
+   * 构造思源 API对象
+   *
+   * @param cfg - 环境变量 或者 配置项
+   */
+  constructor(cfg: Env | SiyuanConfig) {
+    this.kernelApi = new SiyuanKernelApi(cfg)
+    this.clientApi = new SiyuanClientApi()
   }
 }
 
-export default ZhiCoreUtil
+export default SiyuanApi

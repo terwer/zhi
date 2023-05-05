@@ -53,7 +53,7 @@ class BlogApi implements IBlogApi {
    */
   constructor(apiAdaptor: IBlogApi) {
     this.logger = ZhiBlogApiUtil.zhiLog("zhi-blog-api")
-    this.VERSION = "1.0.0"
+    this.VERSION = "1.1.1"
     this.apiAdaptor = apiAdaptor
   }
 
