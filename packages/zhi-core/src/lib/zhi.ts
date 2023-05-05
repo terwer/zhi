@@ -23,7 +23,44 @@
  * questions.
  */
 
-export async function zhiLoader(): Promise<void> {
-  const zhiCore =  await import("/appearance/themes/zhi/core/zhi-core/src/index.js" as any)
-  await zhiCore.zhiCore()
+import { DeviceTypeEnum } from "@siyuan-community/zhi-device"
+
+class Zhi {
+  private readonly runAs
+
+  /**
+   * 主题样式最低支持版本
+   * @private
+   */
+  private readonly SUPPORTED_THEME_VERSION = "2.7.6"
+
+  /**
+   * 内核最低支持版本
+   * @private
+   */
+  private readonly SUPPORTED_KERNEL_VERSION = "2.8.1"
+
+  /**
+   * 主题初始化
+   *
+   * @param runAs - 运行模式
+   */
+  constructor(runAs: DeviceTypeEnum) {
+    this.runAs = runAs ?? DeviceTypeEnum.DeviceType_Node
+  }
+
+  /**
+   * 主流程加载
+   */
+  public async init(): Promise<void> {
+    try {
+      console.info(`Zhi Theme runAs ${this.runAs}`)
+
+      console.log("Zhi Theme inited")
+    } catch (e) {
+      console.error("Zhi Theme load error=>", e)
+    }
+  }
 }
+
+export default Zhi
