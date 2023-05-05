@@ -1,42 +1,43 @@
-# Nuxt 3 Minimal Starter
+# zhi-blog-nuxt
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+a blog based on siyuan-note api
 
-## Setup
+## Quick start
 
-Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`
+### Use docker-compose for deploy <sup>recommended</sup>
 
 ```bash
-npm run dev
+docker compose up --build
 ```
 
-## Production
+### Development
+
+Start the development server on http://localhost:3000
+
+```bash
+# Make sure you have `shamefully-hoist=true` in `.npmrc` before running pnpm install
+nx dev zhi-blog-nuxt
+```
+
+### Production
 
 Build the application for production:
 
 ```bash
-npm run build
+nx build zhi-blog-nuxt
+nx preview zhi-blog-nuxt
 ```
 
-Locally preview production build:
+for vercel
 
 ```bash
-npm run preview
+nx vercelBuild zhi-blog-nuxt
+```
+
+for siyuan
+
+```bash
+nx siyuanBuild zhi-blog-nuxt
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
