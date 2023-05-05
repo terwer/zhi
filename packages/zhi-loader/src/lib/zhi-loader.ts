@@ -23,8 +23,7 @@
  * questions.
  */
 
-export async function zhiCore(): Promise<void> {
-  // const zhi = new Zhi(DeviceDetection.getDevice())
-  // await zhi.init()
-  console.log("hello, zhi theme5")
+export async function zhiLoader(): Promise<void> {
+  const zhiCore =  await import("/appearance/themes/zhi/core/index.js" as any)
+  await zhiCore.zhiCore()
 }

@@ -38,11 +38,13 @@
     "prettier": "^2.6.2",
     "rollup-plugin-livereload": "^2.0.5",
     "stylus": "^0.59.0",
+    "tslib": "^2.5.0",
     "typescript": "~5.0.4",
     "vite": "^4.0.1",
     "vite-plugin-dts": "~2.3.0",
     "vite-plugin-eslint": "^1.8.1",
-    "vite-plugin-lib-inject-css": "^1.2.0",
+    "vite-plugin-no-bundle": "^2.0.2",
+    "vite-plugin-static-copy": "^0.14.0",
     "vite-tsconfig-paths": "^4.0.2",
     "vitest": "^0.31.0"
   }

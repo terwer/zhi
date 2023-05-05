@@ -23,10 +23,39 @@
  * questions.
  */
 
-import { zhiCore } from "./zhi-core"
+/**
+ * 基本路径枚举
+ *
+ * @public
+ * @author terwer
+ * @version 0.1.0
+ * @since 0.1.0
+ */
+enum BasePathTypeEnum {
+  /**
+   * Appearance
+   */
+  BasePathType_Appearance = "Appearance",
 
-describe("zhiCore", () => {
-  it("zhiCore should work", () => {
-    console.log("hello")
-  })
-})
+  /**
+   * Data
+   */
+  BasePathType_Data = "Data",
+
+  /**
+   * Themes
+   */
+  BasePathType_Themes = "Themes",
+
+  /**
+   * Zhi 主题目录
+   */
+  BasePathType_ZhiTheme = "ZhiTheme",
+
+  /**
+   * 未设置
+   */
+  BasePathType_None = "None",
+}
+
+export default BasePathTypeEnum

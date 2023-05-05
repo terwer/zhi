@@ -1,7 +1,7 @@
 {
-  "name": "zhi-core",
+  "name": "zhi-loader",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/zhi-core/src",
+  "sourceRoot": "packages/zhi-loader/src",
   "projectType": "library",
   "targets": {
     "dev": {
@@ -23,17 +23,17 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/packages/zhi-core"],
+      "outputs": ["coverage/packages/zhi-loader"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/packages/zhi-core"
+        "reportsDirectory": "../../coverage/packages/zhi-loader"
       }
     },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["packages/zhi-core/**/*.ts"]
+        "lintFilePatterns": ["packages/zhi-loader/**/*.ts"]
       }
     }
   },
