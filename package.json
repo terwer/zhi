@@ -20,7 +20,7 @@
     "@nx/eslint-plugin": "16.1.0",
     "@nx/js": "16.1.0",
     "@nx/linter": "16.1.0",
-    "@nx/vite": "16.0.3",
+    "@nx/vite": "16.1.0",
     "@nx/workspace": "16.1.0",
     "@types/minimist": "^1.2.2",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
