@@ -8,8 +8,7 @@
       "executor": "@nx/vite:build",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/zhi-lib-device",
-        "assets": ["packages/zhi-core/*.md"]
+        "outputPath": "dist/packages/zhi-lib-device"
       }
     },
     "publish": {
