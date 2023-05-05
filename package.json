@@ -18,7 +18,7 @@
     "@commitlint/config-angular": "^17.6.3",
     "@commitlint/cz-commitlint": "^17.5.0",
     "@nx/eslint-plugin": "16.0.3",
-    "@nx/js": "16.0.3",
+    "@nx/js": "16.1.0",
     "@nx/linter": "16.0.3",
     "@nx/vite": "16.0.3",
     "@nx/workspace": "16.0.3",
