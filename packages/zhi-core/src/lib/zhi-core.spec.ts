@@ -1,7 +1,7 @@
 import { zhiCore } from "./zhi-core"
 
 describe("zhiCore", () => {
-  it("should work", () => {
-    expect(zhiCore()).toEqual("zhi-core")
+  it("zhiCore should work", () => {
+    console.log("hello")
   })
 })

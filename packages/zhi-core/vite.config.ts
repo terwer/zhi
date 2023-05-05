@@ -12,9 +12,10 @@ export default defineConfig({
   cacheDir: "../../node_modules/.vite/zhi-core",
 
   plugins: [
-    viteTsConfigPaths({
-      root: "../../",
-    }),
+    !isTest &&
+      viteTsConfigPaths({
+        root: "../../",
+      }),
 
     !isTest && noBundlePlugin(),
   ],
