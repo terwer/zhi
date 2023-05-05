@@ -21,8 +21,10 @@
     "@nx/js": "16.1.0",
     "@nx/linter": "16.1.0",
     "@nx/vite": "16.1.0",
+    "@nx/web": "16.1.0",
     "@nx/workspace": "16.1.0",
     "@types/minimist": "^1.2.2",
+    "@types/node": "18.7.1",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "@typescript-eslint/parser": "^5.58.0",
     "@vitest/coverage-c8": "~0.31.0",
@@ -53,9 +55,11 @@
     "ansi-colors": "^4.1.3",
     "callsites": "^4.0.0",
     "compare-versions": "5.0.3",
+    "core-js": "^3.6.5",
     "kleur": "^4.1.5",
     "loglevel": "^1.8.1",
     "loglevel-plugin-prefix": "^0.8.4",
+    "regenerator-runtime": "0.13.7",
     "showdown": "^2.1.0"
   }
 }
