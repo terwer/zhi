@@ -19,7 +19,7 @@
     "@commitlint/cz-commitlint": "^17.5.0",
     "@nx/eslint-plugin": "16.1.0",
     "@nx/js": "16.1.0",
-    "@nx/linter": "16.0.3",
+    "@nx/linter": "16.1.0",
     "@nx/vite": "16.0.3",
     "@nx/workspace": "16.1.0",
     "@types/minimist": "^1.2.2",
