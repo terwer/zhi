@@ -31,6 +31,7 @@ import Bootstrap from "./core/Bootstrap"
 class Zhi {
   private readonly logger
   private readonly common
+  private readonly kernelApi
 
   private readonly runAs
 
@@ -54,6 +55,7 @@ class Zhi {
   constructor(runAs: DeviceTypeEnum) {
     this.logger = ZhiCoreUtil.zhiLog("zhi-core")
     this.common = ZhiCoreUtil.zhiCommon()
+    this.kernelApi = ZhiCoreUtil.kernelApi()
 
     this.runAs = runAs ?? DeviceTypeEnum.DeviceType_Node
   }
@@ -90,9 +92,9 @@ class Zhi {
           this.SUPPORTED_THEME_VERSION
         )
         this.logger.error(errMsg)
-        // this.kernelApi.pushErrMsg({
-        //   msg: errMsg,
-        // })
+        this.kernelApi.pushErrMsg({
+          msg: errMsg,
+        })
         return
       }
 
@@ -103,9 +105,9 @@ class Zhi {
           this.SUPPORTED_KERNEL_VERSION
         )
         this.logger.warn(warnMsg)
-        // this.kernelApi.pushMsg({
-        //   msg: warnMsg,
-        // })
+        this.kernelApi.pushMsg({
+          msg: warnMsg,
+        })
         return
       }
 

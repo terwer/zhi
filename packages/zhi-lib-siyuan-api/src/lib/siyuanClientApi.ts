@@ -23,33 +23,6 @@
  * questions.
  */
 
-import { Env } from "@siyuan-community/zhi-env"
-import { ZhiUtil } from "@siyuan-community/zhi-common"
-import { SiyuanKernelApi } from "@siyuan-community/zhi-siyuan-api"
+class SiyuanClientApi {}
 
-/**
- * 工具类统一入口，每个应用自己实现
- *
- * @public
- * @author terwer
- * @since 1.0.0
- */
-class ZhiCoreUtil extends ZhiUtil {
-  private static kApi: SiyuanKernelApi | undefined
-
-  public static override zhiEnv(): Env {
-    if (!this.env) {
-      this.env = new Env(import.meta.env)
-    }
-    return this.env
-  }
-
-  public static kernelApi() {
-    if (!this.kApi) {
-      this.kApi = new SiyuanKernelApi(this.zhiEnv())
-    }
-    return this.kApi
-  }
-}
-
-export default ZhiCoreUtil
+export default SiyuanClientApi

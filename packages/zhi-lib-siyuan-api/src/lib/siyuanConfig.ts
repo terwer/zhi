@@ -22,34 +22,48 @@
  * or visit www.terwer.space if you need additional information or have any
  * questions.
  */
-
-import { Env } from "@siyuan-community/zhi-env"
-import { ZhiUtil } from "@siyuan-community/zhi-common"
-import { SiyuanKernelApi } from "@siyuan-community/zhi-siyuan-api"
+import { BlogConfig, PasswordType } from "@siyuan-community/zhi-blog-api"
+import SiyuanPlaceholder from "./siyuanPlaceholder"
 
 /**
- * 工具类统一入口，每个应用自己实现
+ * 思源笔记配置
  *
- * @public
  * @author terwer
  * @since 1.0.0
  */
-class ZhiCoreUtil extends ZhiUtil {
-  private static kApi: SiyuanKernelApi | undefined
+class SiyuanConfig extends BlogConfig {
+  /**
+   * 思源笔记伺服地址
+   */
+  public override apiUrl: string
 
-  public static override zhiEnv(): Env {
-    if (!this.env) {
-      this.env = new Env(import.meta.env)
-    }
-    return this.env
-  }
+  /**
+   * 思源笔记 API token
+   */
+  public override password: string
 
-  public static kernelApi() {
-    if (!this.kApi) {
-      this.kApi = new SiyuanKernelApi(this.zhiEnv())
-    }
-    return this.kApi
+  /**
+   * 思源笔记操作提示
+   *
+   * @protected
+   */
+  public override placeholder: SiyuanPlaceholder
+
+  /**
+   * 是否修复标题
+   *
+   * @protected
+   */
+  public override fixTitle: boolean
+
+  constructor(apiUrl?: string, password?: string) {
+    super()
+    this.apiUrl = apiUrl ?? "http://127.0.0.1:6806"
+    this.passwordType = PasswordType.PasswordType_Token
+    this.password = password ?? ""
+    this.placeholder = new SiyuanPlaceholder()
+    this.fixTitle = true
   }
 }
 
-export default ZhiCoreUtil
+export default SiyuanConfig
