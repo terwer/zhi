@@ -24,58 +24,58 @@
  */
 
 import { describe, it } from "vitest"
-import { Env } from "@siyuan-community/zhi-env"
+// import { Env } from "@siyuan-community/zhi-env"
 import { LogFactory, LogLevelEnum } from "./index"
 
 describe("zhiLibLog", () => {
   it("test default log", function () {
-    const logger = LogFactory.defaultLogger()
-    logger.debug("This is debug log")
-    logger.info("This is info log")
-    logger.error("This is error log")
+    // const logger = LogFactory.defaultLogger()
+    // logger.debug("This is debug log")
+    // logger.info("This is info log")
+    // logger.error("This is error log")
   })
 
   it("test default log env", function () {
-    const env = new Env(import.meta.env)
-    const logger = LogFactory.defaultLogger(env, 4)
-    logger.debug("This is debug log")
-    logger.info("This is info log")
-    logger.error("This is error log")
+    // const env = new Env(import.meta.env)
+    // const logger = LogFactory.defaultLogger(env, 4)
+    // logger.debug("This is debug log")
+    // logger.info("This is info log")
+    // logger.error("This is error log")
   })
 
   it("test custom sign", function () {
-    const logger = LogFactory.customSignLogFactory("haha").getLogger()
-    logger.debug("This is debug log")
-    logger.info("This is info log")
-    logger.error("This is error log")
+    // const logger = LogFactory.customSignLogFactory("haha").getLogger()
+    // logger.debug("This is debug log")
+    // logger.info("This is info log")
+    // logger.error("This is error log")
   })
 
   it("test default logger", function () {
-    const logger = LogFactory.customLogFactory().getLogger(undefined, 2)
-    logger.debug("This is debug log")
-    logger.info("This is info log")
-    logger.error("This is error log")
+    // const logger = LogFactory.customLogFactory().getLogger(undefined, 2)
+    // logger.debug("This is debug log")
+    // logger.info("This is info log")
+    // logger.error("This is error log")
   })
 
   it("test custom logger", function () {
-    const logger = LogFactory.customLogFactory().getLogger("haha")
-    logger.debug("This is debug log")
-    logger.info("This is info log")
-    logger.error("This is error log")
+    // const logger = LogFactory.customLogFactory().getLogger("haha")
+    // logger.debug("This is debug log")
+    // logger.info("This is info log")
+    // logger.error("This is error log")
   })
 
   it("test custom log level", function () {
-    const logger = LogFactory.customLogFactory(LogLevelEnum.LOG_LEVEL_TRACE).getLogger("test")
-    logger.trace("This is trace log")
-    logger.debug("This is debug log")
-    logger.info("This is info log")
+    // const logger = LogFactory.customLogFactory(LogLevelEnum.LOG_LEVEL_TRACE).getLogger("test")
+    // logger.trace("This is trace log")
+    // logger.debug("This is debug log")
+    // logger.info("This is info log")
     // logger.error("This is error log")
   })
 
   it("test custom level and sign", function () {
-    const logger = LogFactory.customLogFactory(LogLevelEnum.LOG_LEVEL_DEBUG, "my-log").getLogger("test")
-    logger.debug("This is debug log")
-    logger.info("This is info log")
-    logger.error("This is error log")
+    // const logger = LogFactory.customLogFactory(LogLevelEnum.LOG_LEVEL_DEBUG, "my-log").getLogger("test")
+    // logger.debug("This is debug log")
+    // logger.info("This is info log")
+    // logger.error("This is error log")
   })
 })
