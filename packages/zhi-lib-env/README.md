@@ -129,7 +129,7 @@ nx build zhi-lib-env
 
 ## Test
 
-Execute the unit tests via [jest](https://jestjs.io/docs/getting-started#via-ts-jest)
+Execute the unit tests via [vitest](https://vitest.dev)
 
 ```bash
 nx test zhi-lib-env
