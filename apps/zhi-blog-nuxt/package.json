@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "zhi-blog-nuxt",
   "private": true,
   "scripts": {
     "build": "nuxt build",
