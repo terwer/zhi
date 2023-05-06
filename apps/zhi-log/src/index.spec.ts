@@ -24,8 +24,8 @@
  */
 
 import { describe, it } from "vitest"
-import Env from "zhi-env"
-import LogFactory, { LogLevelEnum } from "./index"
+import { Env } from "zhi-env"
+import { LogFactory, LogLevelEnum } from "./index"
 
 describe("zhiLog", () => {
   it("test default log", function () {

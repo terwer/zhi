@@ -47,7 +47,7 @@ pnpm md -F zhi-log
 
 ## Test
 
-Execute the unit tests via [jest](https://jestjs.io/docs/getting-started#via-ts-jest)
+Execute the unit tests via [vitest](https://vitest.dev)
 
 ```bash
 pnpm test -F zhi-log

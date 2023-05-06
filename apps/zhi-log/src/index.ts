@@ -3,7 +3,7 @@
  * zhi-log 多平台日志模块
  */
 
-import Env from "zhi-env"
+import { Env } from "zhi-env"
 import LogLevelEnum, { LogConstants } from "./lib/logConstants"
 import AbstractLogFactory from "./lib/factory/abstractLogFactory"
 import CustomLogFactory from "./lib/factory/customLogFactory"
@@ -50,8 +50,7 @@ class LogFactory {
     return new CustomLogFactory(undefined, sign, env)
   }
 }
-export default LogFactory
-
+export { LogFactory }
 export { LogLevelEnum, AbstractLogFactory, CustomLogFactory }
 export { LogConstants, EnvHelper }
 export { crossChalk }
