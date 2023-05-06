@@ -1,6 +1,6 @@
 {
   "name": "@siyuan-community/zhi-device",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "type": "module",
   "description": "auto check environment whether in browser, browser extension, electron, node and more",
   "main": "./index.js",

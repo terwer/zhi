@@ -7,6 +7,7 @@ import { join } from "path"
 import noBundlePlugin from "vite-plugin-no-bundle"
 import { viteStaticCopy } from "vite-plugin-static-copy"
 
+const isBundle = false
 const isTest = process.env["npm_command"] === "test"
 console.log("isTest=>", isTest)
 
@@ -25,7 +26,7 @@ export default defineConfig({
         root: "../../",
       }),
 
-    !isTest && noBundlePlugin(),
+    !isTest && !isBundle && noBundlePlugin(),
 
     viteStaticCopy({
       targets: [
