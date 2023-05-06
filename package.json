@@ -1,17 +1,49 @@
 {
+  "name": "zhi",
+  "version": "1.0.0",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "dev": "turbo run dev",
+    "clientDev": "turbo run clientDev",
+    "serverDev": "turbo run serverDev",
+    "nodeDev": "turbo run nodeDev",
+    "build": "turbo run build",
+    "dockerBuild": "turbo run dockerBuild",
+    "siyuanBuild": "turbo run siyuanBuild",
+    "clientBuild": "turbo run clientBuild",
+    "staticBuild": "turbo run staticBuild",
+    "serverBuild": "turbo run serverBuild",
+    "localBuild": "turbo run localBuild",
+    "nodeBuild": "turbo run nodeBuild",
+    "vercelBuild": "turbo run vercelBuild",
+    "graph": " turbo run build --graph=dependency-graph.png",
+    "preview": "turbo run preview",
+    "doc": "turbo run doc",
+    "md": "turbo run md",
+    "apidev": "pnpm build && pnpm doc && pnpm md && turbo run apidev --filter zhi-docs",
+    "apibuild": "pnpm build && pnpm doc && pnpm md && turbo run apibuild --filter zhi-docs",
+    "prepare": "is-ci || husky install",
+    "commitinit": "npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'",
+    "cz": "git-cz",
+    "commit": "commit"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    },
+    "commitizenEmoji": {}
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
-    "prettier": "^2.5.1",
-    "turbo": "^1.9.3"
+    "turbo": "^1.9.3",
+    "eslint-config-custom": "workspace:*"
   },
-  "packageManager": "pnpm@7.15.0",
-  "name": "zhi"
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "packageManager": "pnpm@8.1.1"
 }
