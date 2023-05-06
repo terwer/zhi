@@ -9,33 +9,6 @@
       "options": {
         "commands": ["cd apps/zhi-widget-blog && pnpm dev"]
       }
-    },
-    "build": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": ["cd apps/zhi-widget-blog && pnpm build && cd ../../"]
-      }
-    },
-    "generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": ["cd apps/zhi-widget-blog && pnpm generate && cd ../../"]
-      }
-    },
-    "test": {
-      "executor": "@nx/vite:test",
-      "outputs": ["coverage/apps/zhi-widget-blog"],
-      "options": {
-        "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/apps/zhi-widget-blog"
-      }
-    },
-    "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/zhi-widget-blog/**/*.ts"]
-      }
     }
   },
   "tags": []
