@@ -9,7 +9,17 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@types/good-storage": "^1.1.0",
     "@types/node": "^18",
-    "nuxt": "^3.4.3"
+    "nuxt": "^3.4.3",
+    "nuxt-meilisearch": "^0.1.7"
+  },
+  "dependencies": {
+    "@siyuan-community/zhi-common": "*",
+    "@siyuan-community/zhi-env": "*",
+    "@types/lodash": "^4.14.194",
+    "good-storage": "^1.1.1",
+    "lodash": "^4.17.21",
+    "vue-instantsearch": "4.8.7"
   }
 }

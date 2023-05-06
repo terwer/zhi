@@ -1,4 +1,67 @@
 {
   // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json"
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "~": [
+        "."
+      ],
+      "~/*": [
+        "./*"
+      ],
+      "@": [
+        "."
+      ],
+      "@/*": [
+        "./*"
+      ],
+      "~~": [
+        "."
+      ],
+      "~~/*": [
+        "./*"
+      ],
+      "@@": [
+        "."
+      ],
+      "@@/*": [
+        "./*"
+      ],
+      "assets": [
+        "assets"
+      ],
+      "assets/*": [
+        "assets/*"
+      ],
+      "public": [
+        "public"
+      ],
+      "public/*": [
+        "public/*"
+      ],
+      "#app": [
+        "node_modules/.pnpm/nuxt@3.4.3_@types+node@18.0.0_typescript@5.0.4/node_modules/nuxt/dist/app"
+      ],
+      "#app/*": [
+        "node_modules/.pnpm/nuxt@3.4.3_@types+node@18.0.0_typescript@5.0.4/node_modules/nuxt/dist/app/*"
+      ],
+      "vue-demi": [
+        "node_modules/.pnpm/nuxt@3.4.3_@types+node@18.0.0_typescript@5.0.4/node_modules/nuxt/dist/app/compat/vue-demi"
+      ],
+      "#imports": [
+        ".nuxt/imports"
+      ],
+      "#build": [
+        ".nuxt"
+      ],
+      "#build/*": [
+        ".nuxt/*"
+      ],
+      "#components": [
+        ".nuxt/components"
+      ],
+      "@siyuan-community/zhi-common": ["../../src/index.ts"],
+      "@siyuan-community/zhi-env": ["../../src/index.ts"]
+    }
+  }
 }
