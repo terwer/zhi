@@ -1,7 +1,7 @@
 {
   "name": "zhi-widget-blog",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/zhi-blog-nuxt",
+  "sourceRoot": "apps/zhi-widget-blog",
   "projectType": "library",
   "targets": {
     "dev": {
@@ -19,22 +19,22 @@
     "generate": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["pnpm generate"]
+        "commands": ["cd apps/zhi-widget-blog && pnpm generate"]
       }
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/apps/zhi-blog-nuxt"],
+      "outputs": ["coverage/apps/zhi-widget-blog"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/apps/zhi-blog-nuxt"
+        "reportsDirectory": "../../coverage/apps/zhi-widget-blog"
       }
     },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/zhi-blog-nuxt/**/*.ts"]
+        "lintFilePatterns": ["apps/zhi-widget-blog/**/*.ts"]
       }
     }
   },
