@@ -40,7 +40,7 @@ export const initCommand = () => {
   const command = new Command("init")
 
   command
-    .description("init a zhi project")
+    .description("init project bases on zhi framework")
     .argument("<name>", "the name for your new project")
     .argument("[branch]", "the branch for template repo, current support ts-cli")
     .option("--verbose", "output debug logs", false)
