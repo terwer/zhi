@@ -5,7 +5,7 @@ auto check environment whether in browser, browser extension, electron, node and
 ## Usage
 
 ```ts
-import DeviceDetection, { BrowserUtil, DeviceTypeEnum } from "zhi-device"
+import { DeviceDetection, BrowserUtil, DeviceTypeEnum } from "zhi-device"
 
 console.log("isInBrowser=>", BrowserUtil.isInBrowser)
 
@@ -49,7 +49,7 @@ pnpm md -F zhi-device
 
 ## Test
 
-Execute the unit tests via [jest](https://jestjs.io/docs/getting-started#via-ts-jest)
+Execute the unit tests via [vitest](https://vitest.dev)
 
 ```bash
 pnpm test -F zhi-device
@@ -57,6 +57,6 @@ pnpm test -F zhi-device
 
 ## Publish
 
-```
+```bash
 pnpm publish -F zhi-device --tag=latest
 ```
