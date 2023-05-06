@@ -1,6 +1,6 @@
 {
   "name": "@siyuan-community/zhi-common",
-  "version": "1.6.1",
+  "version": "1.6.4",
   "type": "module",
   "description": "the library base for zhi related projects",
   "main": "./packages/zhi-lib-common/src/index.js",
