@@ -1,0 +1,6 @@
+version: '3'
+services:
+  blog-dev:
+    image: terwer/vue3-ssr:latest
+    ports:
+      - "3333:3333"
