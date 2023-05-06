@@ -1,4 +1,4 @@
-name: sync zhi-server-vue3-ssr
+name: sync zhi-widget-blog
 
 on:
   push:
