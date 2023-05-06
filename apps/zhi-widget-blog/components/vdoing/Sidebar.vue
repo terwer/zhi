@@ -20,7 +20,7 @@
     </div>
 
     <!-- 移动端Nav -->
-<!--    <NavLinks sign="mobile"/>-->
+    <NavLinks sign="mobile"/>
 
     <!--
     <slot name="top" />

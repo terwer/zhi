@@ -1,7 +1,7 @@
 <template>
-  <nav v-if="computes.userLinks.value.length || computes.repoLink.value" class="nav-links">
+  <nav v-if="datas.userLinks.length > 0" class="nav-links">
     <!-- user links -->
-    <div v-for="item in computes.userLinks.value" :key="item.link + props.sign" class="nav-item">
+    <div v-for="item in datas.userLinks" :key="item.link + props.sign" class="nav-item">
       <DropdownLink v-if="item.type === 'links'" :item="item" />
       <NavLink v-else :item="item" />
     </div>
@@ -35,10 +35,27 @@ const logger = ZhiBlogNuxtUtil.zhiLog("nav-links")
 
 const appConfig = useAppConfig()
 
+// datas
+const datas = {
+  userLinks: [],
+}
+
 // props
 const props = defineProps({
   sign: String,
 })
+
+// methods
+const methods = {
+  getUserLinks: () => {
+    const navs = computes.nav.value as []
+    return (navs || []).map((link: any) => {
+      return Object.assign(VdoingUtil.resolveNavLinkItem(link), {
+        items: (link.items || []).map(VdoingUtil.resolveNavLinkItem),
+      })
+    })
+  },
+}
 
 const computes = {
   nav: computed(() => {
@@ -74,15 +91,6 @@ const computes = {
     return appConfig.themeConfig.nav
   }),
 
-  userLinks: computed(() => {
-    const navs = computes.nav.value as []
-    return (navs || []).map((link: any) => {
-      return Object.assign(VdoingUtil.resolveNavLinkItem(link), {
-        items: (link.items || []).map(VdoingUtil.resolveNavLinkItem),
-      })
-    })
-  }),
-
   repoLink: computed(() => {
     const repo = appConfig.themeConfig.repo
     // logger.debug("repo=>", repo)
@@ -110,6 +118,9 @@ const computes = {
     return "Source"
   }),
 }
+
+// init
+datas.userLinks = methods.getUserLinks()
 </script>
 
 <style lang="stylus" scoped>

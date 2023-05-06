@@ -156,7 +156,7 @@ export default defineAppConfig({
 
     // 博主信息 (显示在首页侧边栏)
     blogger: {
-      avatar: "/img/photo.jpg",
+      avatar: "img/photo.jpg",
       name: "Terwer",
       slogan: "一个后端老菜鸟",
       social: <any>undefined,

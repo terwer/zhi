@@ -6,26 +6,28 @@
     @touchend="methods.onTouchEnd"
   >
     <!-- 页眉 -->
-    <Navbar v-if="computes.shouldShowNavbar" @toggle-sidebar="methods.toggleSidebar" />
-
-    <div class="sidebar-mask" @click="methods.toggleSidebar(false)" />
-
-    <div v-if="appConfig?.themeConfig?.sidebarHoverTriggerOpen !== false" class="sidebar-hover-trigger" />
-
-    <Sidebar v-show="datas.showSidebar" :items="computes.sidebarItems" @toggle-sidebar="methods.toggleSidebar">
-      <!--
-      <template #top v-if="sidebarSlotTop">
-        <div class="sidebar-slot sidebar-slot-top" v-html="sidebarSlotTop"></div>
-      </template>
-      <template #bottom v-if="sidebarSlotBottom">
-        <div class="sidebar-slot sidebar-slot-bottom" v-html="sidebarSlotBottom"></div>
-      </template>
-      -->
-      <!--
-      <slot name="sidebar-top" #top />
-      <slot name="sidebar-bottom" #bottom />
-      -->
-    </Sidebar>
+    <header>
+      <!-- 顶部导航栏 -->
+      <Navbar v-if="computes.shouldShowNavbar" @toggle-sidebar="methods.toggleSidebar" />
+      <div class="head-placeholder"></div>
+      <!-- 侧边栏 -->
+      <div class="sidebar-mask" @click="methods.toggleSidebar(false)" />
+      <!-- 滑动展开 -->
+      <div v-if="appConfig?.themeConfig?.sidebarHoverTriggerOpen !== false" class="sidebar-hover-trigger" />
+      <!-- 侧边栏内容 -->
+      <Sidebar v-show="datas.showSidebar" :items="computes.sidebarItems" @toggle-sidebar="methods.toggleSidebar">
+        <!--
+        <template #top v-if="sidebarSlotTop">
+          <div class="sidebar-slot sidebar-slot-top" v-html="sidebarSlotTop"></div>
+        </template>
+        <template #bottom v-if="sidebarSlotBottom">
+          <div class="sidebar-slot sidebar-slot-bottom" v-html="sidebarSlotBottom"></div>
+        </template>
+        <slot name="sidebar-top" #top />
+        <slot name="sidebar-bottom" #bottom />
+        -->
+      </Sidebar>
+    </header>
 
     <!-- 正文 -->
     <div class="content-main">
@@ -281,8 +283,8 @@ watch(
 <style lang="stylus">
 @require "../assets/vdoing/styles/index"
 
-.content-main
-  margin-top 80px
+.head-placeholder
+  height 60px
 
 .custom-html-window
   position fixed
