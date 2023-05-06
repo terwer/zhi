@@ -61,7 +61,7 @@ export const initCommand = () => {
       logger.info("start init zhi project:", name)
       logger.info("using template:", branch)
 
-      const description = "please input project description"
+      const description = "Please input project description"
       const author = "please input author"
       const projectOptions = await prompt([
         {
@@ -75,8 +75,6 @@ export const initCommand = () => {
           message: author,
         },
       ])
-
-      logger.info("projectOptions=>", projectOptions)
 
       try {
         const downloadPath = `./${name}`

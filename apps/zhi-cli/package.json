@@ -23,7 +23,7 @@
   "scripts": {
     "dev": "zhi-build --watch",
     "build": "zhi-build --production",
-    "test": "zhi-cli",
+    "test": "npm link && zhi-cli",
     "lint": "eslint 'src/**/*.{ts,js}' --fix",
     "doc": "../../packages/api-docs/node_modules/.bin/api-extractor run --local --verbose",
     "md": "../../packages/api-docs/node_modules/.bin/api-documenter markdown -i temp -o ../zhi-docs/src/api/zhi-cli && pnpm mdfix",
