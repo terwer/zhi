@@ -13,13 +13,13 @@
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["cd apps/zhi-widget-blog && pnpm build"]
+        "commands": ["cd apps/zhi-widget-blog && pnpm build && cd ../../"]
       }
     },
     "generate": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["cd apps/zhi-widget-blog && pnpm generate"]
+        "commands": ["cd apps/zhi-widget-blog && pnpm generate && cd ../../"]
       }
     },
     "test": {
