@@ -7,9 +7,7 @@ import { join } from "path"
 import noBundlePlugin from "vite-plugin-no-bundle"
 import { viteStaticCopy } from "vite-plugin-static-copy"
 
-const isBundle = false
-const isTest = process.env["npm_command"] === "test"
-console.log("isTest=>", isTest)
+const isBundle = true
 
 export default defineConfig({
   cacheDir: "../../node_modules/.vite/zhi-lib-device",
@@ -21,21 +19,20 @@ export default defineConfig({
       skipDiagnostics: true,
     }),
 
-    !isTest &&
-      viteTsConfigPaths({
-        root: "../../",
-      }),
+    viteTsConfigPaths({
+      root: "../../",
+    }),
 
-    !isTest && !isBundle && noBundlePlugin(),
+    !isBundle && noBundlePlugin(),
 
     viteStaticCopy({
       targets: [
         {
-          src: 'README.md',
-          dest: '.'
-        }
-      ]
-    })
+          src: "README.md",
+          dest: ".",
+        },
+      ],
+    }),
   ],
 
   // Configuration for building your library.

@@ -7,8 +7,6 @@ import { join } from "path"
 import noBundlePlugin from "vite-plugin-no-bundle"
 import { viteStaticCopy } from "vite-plugin-static-copy"
 
-const isTest = process.env["npm_command"] === "test"
-console.log("isTest=>", isTest)
 export default defineConfig({
   cacheDir: "../../node_modules/.vite/zhi-lib-siyuan-api",
 
@@ -19,12 +17,11 @@ export default defineConfig({
       skipDiagnostics: true,
     }),
 
-    !isTest &&
-      viteTsConfigPaths({
-        root: "../../",
-      }),
+    viteTsConfigPaths({
+      root: "../../",
+    }),
 
-    !isTest && noBundlePlugin(),
+    noBundlePlugin(),
 
     viteStaticCopy({
       targets: [

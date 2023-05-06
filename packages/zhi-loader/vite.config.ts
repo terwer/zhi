@@ -10,8 +10,6 @@ const devOutDir = "/Users/terwer/Documents/mydocs/SiYuanWorkspace/public/conf/ap
 const args: any = argv[2].startsWith("{") ? JSON.parse(argv[2]) : undefined
 const isWatch = args?.targetDescription?.target === "dev" ?? false
 const isProduction = !isWatch
-const isTest = process.env["npm_command"] === "test"
-console.log("isTest=>", isTest)
 console.log("isWatch=>", isWatch)
 console.log("isProduction=>", isProduction)
 
@@ -19,10 +17,9 @@ export default defineConfig({
   cacheDir: "../../node_modules/.vite/zhi-loader",
 
   plugins: [
-    !isTest &&
-      viteTsConfigPaths({
-        root: "../../",
-      }),
+    viteTsConfigPaths({
+      root: "../../",
+    }),
   ],
 
   // Configuration for building your library.
