@@ -26,7 +26,7 @@
 <template>
   <div>
 <!--    <div v-for="post in testPosts.posts">-->
-      <h1>1111
+      <h1>222222222
 <!--        <NuxtLink :to="'/post/' + post.postid"> {{ post.title }} </NuxtLink>-->
       </h1>
 <!--    </div>-->
