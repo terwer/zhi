@@ -5,7 +5,7 @@ a simple logger for Node and Browser
 ## Usage
 
 ```ts
-import LogFactory from "zhi-log"
+import { LogFactory } from "zhi-log"
 
 const env = new Env(import.meta.env)
 const logger = LogFactory.defaultLogger(env)
@@ -17,11 +17,11 @@ logger.error("error msg")
 ## Deps
 
 ```
+├── zhi-device
 ├── zhi-env
 ├── loglevel
 ├── callsites
 ├── loglevel-plugin-prefix
-├── zhi-device
 ├── ansi-colors
 ├── kleur
 ```
