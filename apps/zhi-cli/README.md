@@ -11,8 +11,6 @@ a tool for generating zhi framework related projects
 ## Usage
 
 ```bash
-npm set registry https://registry.npmmirror.com
-pnpm set registry https://registry.npmmirror.com
 npm i -g zhi-cli
 ```
 
@@ -82,6 +80,6 @@ pnpm test -F zhi-cli
 
 ## Publish
 
-```
+```bash
 pnpm publish -F zhi-cli --tag=latest
 ```
