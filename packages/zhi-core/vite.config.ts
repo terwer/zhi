@@ -5,19 +5,15 @@ import viteTsConfigPaths from "vite-tsconfig-paths"
 import { join } from "path"
 import noBundlePlugin from "vite-plugin-no-bundle"
 
-const isTest = process.env["npm_command"] === "test"
-console.log("isTest=>", isTest)
-
 export default defineConfig({
   cacheDir: "../../node_modules/.vite/zhi-core",
 
   plugins: [
-    !isTest &&
-      viteTsConfigPaths({
-        root: "../../",
-      }),
+    viteTsConfigPaths({
+      root: "../../",
+    }),
 
-    !isTest && noBundlePlugin(),
+    noBundlePlugin(),
   ],
 
   // Uncomment this if you are using workers.

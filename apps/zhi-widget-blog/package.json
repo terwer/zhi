@@ -1,0 +1,27 @@
+{
+  "name": "zhi-widget-blog",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@types/good-storage": "^1.1.0",
+    "@types/node": "^18",
+    "@nuxt/content": "^2.5.2",
+    "consola": "^3.0.1",
+    "nuxt": "^3.4.3",
+    "nuxt-meilisearch": "^0.1.7"
+  },
+  "dependencies": {
+    "@siyuan-community/zhi-common": "1.6.3",
+    "@siyuan-community/zhi-env": "1.14.1",
+    "@types/lodash": "^4.14.194",
+    "good-storage": "^1.1.1",
+    "lodash": "^4.17.21",
+    "vue-instantsearch": "4.8.7"
+  }
+}

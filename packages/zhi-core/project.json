@@ -7,7 +7,7 @@
     "dev": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["cp -r dist/packages/zhi/core/* /Users/terwer/Documents/mydocs/SiYuanWorkspace/public/conf/appearance/themes/zhi/core"],
+        "commands": ["cp -r dist/packages/zhi/core/* /Users/terwer/Documents/mydocs/SiYuanWorkspace/public/conf/appearance/themes/zhi-framework/core"],
         "parallel": false
       },
       "dependsOn": [{ "projects": "self", "target": "build" }]
