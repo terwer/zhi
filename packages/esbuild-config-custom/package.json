@@ -24,6 +24,6 @@
     "esbuild-plugin-inline-image": "^0.0.9",
     "esbuild-plugin-vue3": "0.3.2",
     "minimist": "^1.2.8",
-    "rimraf": "^4.4.1"
+    "rimraf": "^5.0.0"
   }
 }
