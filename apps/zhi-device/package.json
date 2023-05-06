@@ -1,6 +1,6 @@
 {
   "name": "zhi-device",
-  "version": "1.0.0",
+  "version": "0.3.0",
   "type": "module",
   "description": "auto check environment whether in browser, browser extension, electron, node and more",
   "main": "./dist/index.js",
