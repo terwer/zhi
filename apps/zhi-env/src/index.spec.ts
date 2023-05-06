@@ -24,7 +24,7 @@
  */
 
 import { describe, expect, it } from "vitest"
-import Env, { EnvConstants } from "./index"
+import { Env, EnvConstants } from "./index"
 
 describe("zhiEnv", () => {
   const NOT_EXIST_KEY = "NOT_EXIST_KEY"

@@ -6,8 +6,8 @@ a cross-platform env config lib
 
 For simple use
 
-```ts
-import Env from "zhi-env"
+```js
+import { Env } from "zhi-env"
 
 const env = new Env({
   "some-key": "some-value",
@@ -18,8 +18,8 @@ console.log("val=>", val)
 
 For `vite`
 
-```ts
-import Env from "zhi-env"
+```js
+import { Env } from "zhi-env"
 
 const env = new Env(import.meta.env)
 const val = env.getEnv("some-key")
@@ -29,7 +29,7 @@ console.log("val=>", val)
 For `Nuxt` framework
 
 ```ts
-import Env from "zhi-env"
+import { Env } from "zhi-env"
 
 const nuxtEnv = useRuntimeConfig()
 const env = new Env(nuxtEnv)
@@ -43,7 +43,7 @@ console.log("val=>", val)
 For Astro framework or other libs
 
 ```ts
-import Env from "zhi-env"
+import { Env } from "zhi-env"
 
 // https://github.com/vitejs/vite/issues/9539#issuecomment-1206301266
 // 1 add "module": "esnext" to tsconfig.json
@@ -136,7 +136,7 @@ pnpm md -F zhi-env
 
 ## Test
 
-Execute the unit tests via [jest](https://jestjs.io/docs/getting-started#via-ts-jest)
+Execute the unit tests via [vitest](https://vitest.dev)
 
 ```bash
 pnpm test -F zhi-env
