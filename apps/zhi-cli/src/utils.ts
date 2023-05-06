@@ -23,7 +23,7 @@
  * questions.
  */
 
-import LogFactory, { LogLevelEnum } from "zhi-log"
+import { LogFactory, LogLevelEnum } from "zhi-log"
 
 const logger = LogFactory.customLogFactory(LogLevelEnum.LOG_LEVEL_INFO, "zhi-cli").getLogger("utils")
 

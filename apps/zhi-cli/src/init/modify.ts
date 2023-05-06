@@ -26,7 +26,7 @@
 import fs from "fs-extra"
 import path from "path"
 import handlebars from "handlebars"
-import LogFactory, { LogLevelEnum } from "zhi-log"
+import { LogFactory, LogLevelEnum } from "zhi-log"
 
 const logger = LogFactory.customLogFactory(LogLevelEnum.LOG_LEVEL_INFO, "zhi-cli").getLogger("init:modify")
 

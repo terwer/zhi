@@ -24,7 +24,7 @@
  */
 
 import LogLevelEnum, { LogConstants } from "./logConstants"
-import Env from "zhi-env"
+import { Env } from "zhi-env"
 
 /**
  * 解析日志级别为枚举

@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "dev": "zhi-build --watch",
-    "build": "zhi-build --production && npm link",
+    "build": "zhi-build --production",
     "test": "zhi-cli",
     "lint": "eslint 'src/**/*.{ts,js}' --fix",
     "doc": "../../packages/api-docs/node_modules/.bin/api-extractor run --local --verbose",

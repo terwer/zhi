@@ -28,7 +28,7 @@ import prefix from "loglevel-plugin-prefix"
 import LogLevelEnum from "./logConstants"
 import callsites, { CallSite } from "callsites"
 import EnvHelper from "./envHelper"
-import Env from "zhi-env"
+import { Env } from "zhi-env"
 import DefaultLogger from "./defaultLogger"
 import crossChalk from "./crossChalk"
 

@@ -25,7 +25,7 @@
 
 import AbstractLogFactory from "./abstractLogFactory"
 import LogLevelEnum from "../logConstants"
-import Env from "zhi-env"
+import { Env } from "zhi-env"
 import DefaultLogger from "../defaultLogger"
 
 /**

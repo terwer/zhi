@@ -25,7 +25,7 @@
 
 import { Command } from "commander"
 import { printVerboseHook } from "../utils"
-import LogFactory, { crossChalk, LogLevelEnum } from "zhi-log"
+import { LogFactory, crossChalk, LogLevelEnum } from "zhi-log"
 import fs from "fs-extra"
 import path from "path"
 import { downloadTemplate } from "./download"
