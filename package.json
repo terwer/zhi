@@ -1,65 +1,49 @@
 {
   "name": "zhi",
   "version": "0.1.0",
-  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "build": "nx run-many --target=build",
-    "test": "nx run-many --target=test",
-    "lint": "nx run-many --target=lint",
-    "cz": "git-cz"
+    "lint": "turbo run lint",
+    "dev": "turbo run dev",
+    "clientDev": "turbo run clientDev",
+    "serverDev": "turbo run serverDev",
+    "nodeDev": "turbo run nodeDev",
+    "build": "turbo run build",
+    "dockerBuild": "turbo run dockerBuild",
+    "siyuanBuild": "turbo run siyuanBuild",
+    "clientBuild": "turbo run clientBuild",
+    "staticBuild": "turbo run staticBuild",
+    "serverBuild": "turbo run serverBuild",
+    "localBuild": "turbo run localBuild",
+    "nodeBuild": "turbo run nodeBuild",
+    "vercelBuild": "turbo run vercelBuild",
+    "graph": " turbo run build --graph=dependency-graph.png",
+    "preview": "turbo run preview",
+    "doc": "turbo run doc",
+    "md": "turbo run md",
+    "apidev": "pnpm build && pnpm doc && pnpm md && turbo run apidev --filter zhi-docs",
+    "apibuild": "pnpm build && pnpm doc && pnpm md && turbo run apibuild --filter zhi-docs",
+    "prepare": "is-ci || husky install",
+    "commitinit": "npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'",
+    "cz": "git-cz",
+    "commit": "commit"
   },
   "config": {
     "commitizen": {
       "path": "@commitlint/cz-commitlint"
-    }
+    },
+    "commitizenEmoji": {}
   },
-  "private": true,
   "devDependencies": {
-    "@commitlint/config-angular": "^17.6.3",
-    "@commitlint/cz-commitlint": "^17.5.0",
-    "@nx/eslint-plugin": "16.1.0",
-    "@nx/js": "16.1.0",
-    "@nx/linter": "16.1.0",
-    "@nx/vite": "16.1.0",
-    "@nx/web": "16.1.0",
-    "@nx/workspace": "16.1.0",
-    "@types/minimist": "^1.2.2",
-    "@types/node": "18.7.1",
-    "@typescript-eslint/eslint-plugin": "^5.58.0",
-    "@typescript-eslint/parser": "^5.58.0",
-    "@vitest/coverage-c8": "~0.31.0",
-    "@vitest/ui": "^0.31.0",
-    "commitizen": "^4.3.0",
-    "eslint": "~8.39.0",
-    "eslint-config-prettier": "8.8.0",
-    "inquirer": "^8.2.5",
-    "jsdom": "~22.0.0",
-    "minimist": "^1.2.8",
-    "nx": "16.1.0",
-    "nx-cloud": "latest",
-    "prettier": "^2.6.2",
-    "rollup-plugin-livereload": "^2.0.5",
-    "stylus": "^0.59.0",
-    "tslib": "^2.5.0",
-    "typescript": "~5.0.4",
-    "vite": "^4.3.4",
-    "vite-plugin-dts": "~2.3.0",
-    "vite-plugin-eslint": "^1.8.1",
-    "vite-plugin-no-bundle": "^2.0.2",
-    "vite-plugin-static-copy": "^0.14.0",
-    "vite-tsconfig-paths": "^4.0.2",
-    "vitest": "^0.31.0"
+    "turbo": "^1.9.3",
+    "eslint-config-custom": "workspace:*"
   },
-  "dependencies": {
-    "ajv": "^8.12.0",
-    "ansi-colors": "^4.1.3",
-    "callsites": "^4.0.0",
-    "compare-versions": "5.0.3",
-    "core-js": "^3.6.5",
-    "kleur": "^4.1.5",
-    "loglevel": "^1.8.1",
-    "loglevel-plugin-prefix": "^0.8.4",
-    "regenerator-runtime": "0.13.7",
-    "showdown": "^2.1.0"
-  }
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "packageManager": "pnpm@8.1.1"
 }

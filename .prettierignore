@@ -1,3 +1,11 @@
-# Add files here to ignore them from prettier formatting
-/dist
-/coverage
+# platform
+
+# Ignore artifacts:
+dist
+node_modules
+
+# Ignore all dts files:
+*.d.ts
+
+# lib
+/pnpm-lock.yaml
