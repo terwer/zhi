@@ -20,10 +20,11 @@
     </div>
 
     <!-- 移动端Nav -->
-    <client-only v-if="datas.isMobile">
-      <NavLinks />
-    </client-only>
+<!--    <NavLinks sign="mobile"/>-->
+
+    <!--
     <slot name="top" />
+    -->
 
     <!--
     <SidebarLinks :depth="0" :items="props.items" />
@@ -55,7 +56,7 @@ const props = defineProps({
 
 // datas
 const datas = reactive({
-  appBase: window.location.origin + env.getStringEnv("VITE_APP_BASE"),
+  appBase: env.getStringEnv("VITE_APP_BASE"),
   isMobile: false,
 })
 
@@ -68,6 +69,8 @@ const computes = {
 
 // lifecycle
 onBeforeMount(async () => {
+  datas.appBase = window.location.origin + env.getStringEnv("VITE_APP_BASE")
+
   // const deviceDetector = await import("next-vue-device-detector")
   // const d = deviceDetector.createDeviceDetector()
   // datas.isMobile = d.mobile

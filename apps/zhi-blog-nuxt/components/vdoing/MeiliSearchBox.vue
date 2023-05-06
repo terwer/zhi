@@ -30,6 +30,10 @@
 import { AisInstantSearch, AisHits, AisSearchBox } from "vue-instantsearch/vue3/es"
 
 const client = useMeilisearchClient()
+
+// lifecycle
+onBeforeMount(() => {
+})
 </script>
 
 <style lang="stylus" scoped>

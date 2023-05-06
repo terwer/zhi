@@ -18,7 +18,7 @@ ZhiBlogNuxtUtil.initEnv(env)
 
 // datas
 const datas = reactive({
-  appBase: window.location.origin + env.getStringEnv("VITE_APP_BASE"),
+  appBase: env.getStringEnv("VITE_APP_BASE"),
   bgImg: "",
   opacity: 0.5,
 })
@@ -39,6 +39,9 @@ const methods = {
 }
 
 // lifecycle
+onBeforeMount(() => {
+  datas.appBase = window.location.origin + env.getStringEnv("VITE_APP_BASE")
+})
 onMounted(() => {
   const { bodyBgImg, bodyBgImgOpacity, bodyBgImgInterval = 15 } = appConfig.themeConfig
 

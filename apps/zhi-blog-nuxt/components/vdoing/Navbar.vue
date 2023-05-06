@@ -21,9 +21,7 @@
 
     <div class="links" :style="datas.linksWrapMaxWidth ? { 'max-width': datas.linksWrapMaxWidth + 'px' } : {}">
       <MeiliSearchBox v-if="computes.isMeilisearch" />
-      <client-only v-if="!datas.isMobile">
-        <NavLinks class="can-hide" />
-      </client-only>
+      <NavLinks class="can-hide" sign="pc"/>
     </div>
   </header>
 </template>
@@ -42,7 +40,7 @@ ZhiBlogNuxtUtil.initEnv(env)
 
 // datas
 const datas = reactive({
-  appBase: window.location.origin + env.getStringEnv("VITE_APP_BASE"),
+  appBase: env.getStringEnv("VITE_APP_BASE"),
   isMobile: true,
   linksWrapMaxWidth: null,
 })
@@ -61,6 +59,7 @@ const computes = {
 
 // lifecycle
 onBeforeMount(async () => {
+  datas.appBase = window.location.origin + env.getStringEnv("VITE_APP_BASE")
   // const deviceDetector = await import("next-vue-device-detector")
   // const d = deviceDetector.createDeviceDetector()
   // datas.isMobile = d.mobile

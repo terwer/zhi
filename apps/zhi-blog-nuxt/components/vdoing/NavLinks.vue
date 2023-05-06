@@ -1,7 +1,7 @@
 <template>
   <nav v-if="computes.userLinks.value.length || computes.repoLink.value" class="nav-links">
     <!-- user links -->
-    <div v-for="item in computes.userLinks.value" :key="item.link" class="nav-item">
+    <div v-for="item in computes.userLinks.value" :key="item.link + props.sign" class="nav-item">
       <DropdownLink v-if="item.type === 'links'" :item="item" />
       <NavLink v-else :item="item" />
     </div>
@@ -34,6 +34,11 @@ ZhiBlogNuxtUtil.initEnv(env)
 const logger = ZhiBlogNuxtUtil.zhiLog("nav-links")
 
 const appConfig = useAppConfig()
+
+// props
+const props = defineProps({
+  sign: String,
+})
 
 const computes = {
   nav: computed(() => {
