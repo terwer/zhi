@@ -3,13 +3,4 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/zhi-widget-blog",
   "projectType": "library",
-  "targets": {
-    "dev": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": ["cd apps/zhi-widget-blog && pnpm dev"]
-      }
-    }
-  },
-  "tags": []
 }

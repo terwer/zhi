@@ -1,5 +1,5 @@
 {
-  "name": "zhi-blog-nuxt",
+  "name": "zhi-widget-blog",
   "private": true,
   "scripts": {
     "build": "nuxt build",
