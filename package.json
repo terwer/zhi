@@ -7,7 +7,6 @@
     "packages/*"
   ],
   "scripts": {
-    "lint": "turbo run lint",
     "dev": "turbo run dev",
     "build": "turbo run build",
     "localBuild": "turbo run localBuild",
@@ -16,12 +15,10 @@
     "siyuanBuild": "turbo run siyuanBuild",
     "nodeBuild": "turbo run nodeBuild",
     "vercelBuild": "turbo run vercelBuild",
-    "graph": " turbo run build --graph=dependency-graph.png",
-    "preview": "turbo run preview",
+    "start": "turbo run preview",
     "doc": "turbo run doc",
-    "md": "turbo run md",
-    "apidev": "pnpm build && pnpm doc && pnpm md && turbo run apidev --F zhi-docs",
-    "apibuild": "pnpm build && pnpm doc && pnpm md && turbo run apibuild --F zhi-docs",
+    "lint": "turbo run lint",
+    "graph": " turbo run build --graph=dependency-graph.png",
     "prepare": "is-ci || husky install",
     "cz": "git-cz"
   },
