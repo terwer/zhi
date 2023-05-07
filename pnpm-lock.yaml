@@ -11,6 +11,43 @@ importers:
         specifier: ^1.9.3
         version: registry.npmjs.org/turbo@1.9.3
 
+  apps/zhi-cli:
+    dependencies:
+      commander:
+        specifier: ^10.0.0
+        version: registry.npmjs.org/commander@10.0.0
+      enquirer:
+        specifier: ^2.3.6
+        version: registry.npmjs.org/enquirer@2.3.6
+      fs-extra:
+        specifier: ^11.1.1
+        version: registry.npmjs.org/fs-extra@11.1.1
+      git-clone:
+        specifier: ^0.2.0
+        version: registry.npmjs.org/git-clone@0.2.0
+      handlebars:
+        specifier: ^4.7.7
+        version: registry.npmjs.org/handlebars@4.7.7
+      zhi-log:
+        specifier: workspace:*
+        version: link:../../libs/zhi-log
+    devDependencies:
+      '@terwer/esbuild-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/esbuild-config-custom
+      '@terwer/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config-custom
+      '@terwer/tsconfig':
+        specifier: workspace:*
+        version: link:../../tools/tsconfig
+      '@types/fs-extra':
+        specifier: ^11.0.1
+        version: registry.npmjs.org/@types/fs-extra@11.0.1
+      '@types/git-clone':
+        specifier: ^0.2.0
+        version: registry.npmjs.org/@types/git-clone@0.2.0
+
   apps/zhi-docs:
     dependencies:
       '@docusaurus/core':
@@ -56,43 +93,6 @@ importers:
       typescript:
         specifier: ^5.0.4
         version: registry.npmjs.org/typescript@5.0.4
-
-  libs/zhi-cli:
-    dependencies:
-      commander:
-        specifier: ^10.0.0
-        version: registry.npmjs.org/commander@10.0.0
-      enquirer:
-        specifier: ^2.3.6
-        version: registry.npmjs.org/enquirer@2.3.6
-      fs-extra:
-        specifier: ^11.1.1
-        version: registry.npmjs.org/fs-extra@11.1.1
-      git-clone:
-        specifier: ^0.2.0
-        version: registry.npmjs.org/git-clone@0.2.0
-      handlebars:
-        specifier: ^4.7.7
-        version: registry.npmjs.org/handlebars@4.7.7
-      zhi-log:
-        specifier: workspace:*
-        version: link:../zhi-log
-    devDependencies:
-      '@terwer/esbuild-config-custom':
-        specifier: workspace:*
-        version: link:../../tools/esbuild-config-custom
-      '@terwer/eslint-config-custom':
-        specifier: workspace:*
-        version: link:../../tools/eslint-config-custom
-      '@terwer/tsconfig':
-        specifier: workspace:*
-        version: link:../../tools/tsconfig
-      '@types/fs-extra':
-        specifier: ^11.0.1
-        version: registry.npmjs.org/@types/fs-extra@11.0.1
-      '@types/git-clone':
-        specifier: ^0.2.0
-        version: registry.npmjs.org/@types/git-clone@0.2.0
 
   libs/zhi-device:
     devDependencies:

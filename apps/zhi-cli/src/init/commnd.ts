@@ -52,7 +52,7 @@ export const initCommand = () => {
         const templatePrompt = new Select({
           name: "template",
           message: "What template you want to use?",
-          choices: ["ts-esbuild-lib", "ts-vite-lib"],
+          choices: ["turbo-workspace-simple", "ts-vite-lib", "ts-esbuild-lib"],
         })
         branch = await templatePrompt.run()
       }
