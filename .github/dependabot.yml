@@ -20,24 +20,6 @@ updates:
       - "zhi-root"
 
   - package-ecosystem: npm
-    directory: "/tools/api-docs"
-    schedule:
-      interval: daily
-      time: "00:00"
-    open-pull-requests-limit: 10
-    reviewers:
-      - terwer
-    assignees:
-      - terwer
-    commit-message:
-      prefix: fix
-      prefix-development: chore
-      include: scope
-    labels:
-      - "npm dependencies"
-      - "api-docs"
-
-  - package-ecosystem: npm
     directory: "/apps/zhi-docs"
     schedule:
       interval: daily

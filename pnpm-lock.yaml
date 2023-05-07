@@ -66,15 +66,6 @@ importers:
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
 
-  tools/api-docs:
-    devDependencies:
-      '@microsoft/api-documenter':
-        specifier: ^7.21.7
-        version: registry.npmjs.org/@microsoft/api-documenter@7.21.7
-      '@microsoft/api-extractor':
-        specifier: ^7.34.4
-        version: registry.npmjs.org/@microsoft/api-extractor@7.34.4
-
   tools/commit-config-custom:
     devDependencies:
       '@commitlint/cli':
@@ -3874,23 +3865,6 @@ packages:
     name: '@mdx-js/util'
     version: 1.6.22
     dev: false
-
-  registry.npmjs.org/@microsoft/api-documenter@7.21.7:
-    resolution: {integrity: sha512-qlCJ9dSefL6Rmuv1FKtxg7i6N7Bv6LUPrA5Bb0dR/9Ffac2xQuXtuSXOJ09seM7G0WkpQOzta2Kc1CPixzDaIw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@microsoft/api-documenter/-/api-documenter-7.21.7.tgz}
-    name: '@microsoft/api-documenter'
-    version: 7.21.7
-    hasBin: true
-    dependencies:
-      '@microsoft/api-extractor-model': registry.npmjs.org/@microsoft/api-extractor-model@7.26.4
-      '@microsoft/tsdoc': registry.npmjs.org/@microsoft/tsdoc@0.14.2
-      '@rushstack/node-core-library': registry.npmjs.org/@rushstack/node-core-library@3.55.2
-      '@rushstack/ts-command-line': registry.npmjs.org/@rushstack/ts-command-line@4.13.2
-      colors: registry.npmjs.org/colors@1.2.5
-      js-yaml: registry.npmjs.org/js-yaml@3.13.1
-      resolve: registry.npmjs.org/resolve@1.22.2
-    transitivePeerDependencies:
-      - '@types/node'
-    dev: true
 
   registry.npmjs.org/@microsoft/api-extractor-model@7.26.4:
     resolution: {integrity: sha512-PDCgCzXDo+SLY5bsfl4bS7hxaeEtnXj7XtuzEE+BtALp7B5mK/NrS2kHWU69pohgsRmEALycQdaQPXoyT2i5MQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@microsoft/api-extractor-model/-/api-extractor-model-7.26.4.tgz}
@@ -11099,16 +11073,6 @@ packages:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz}
     name: js-tokens
     version: 4.0.0
-
-  registry.npmjs.org/js-yaml@3.13.1:
-    resolution: {integrity: sha512-YfbcO7jXDdyj0DGxYVSlSeQNHbD7XPWvrVWeVUujrQEoZzWJIRrCPoyk6kL6IAjAG2IolMK4T0hNUe0HOUs5Jw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/js-yaml/-/js-yaml-3.13.1.tgz}
-    name: js-yaml
-    version: 3.13.1
-    hasBin: true
-    dependencies:
-      argparse: registry.npmjs.org/argparse@1.0.10
-      esprima: registry.npmjs.org/esprima@4.0.1
-    dev: true
 
   registry.npmjs.org/js-yaml@3.14.1:
     resolution: {integrity: sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/js-yaml/-/js-yaml-3.14.1.tgz}
