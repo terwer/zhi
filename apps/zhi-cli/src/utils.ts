@@ -23,13 +23,14 @@
  * questions.
  */
 
-/**
- * @packageDocumentation
- * zhi-env 通用环境变量模块
- */
+import { LogFactory, LogLevelEnum } from "zhi-log"
 
-import EnvConstants from "./lib/EnvConstants"
-import Env from "./lib/zhi-env"
+const logger = LogFactory.customLogFactory(LogLevelEnum.LOG_LEVEL_INFO, "zhi-cli").getLogger("utils")
 
-export { Env }
-export { EnvConstants }
+export const printVerboseHook = (thisCommand: any) => {
+  const options = thisCommand.opts()
+
+  if (options.verbose) {
+    logger.info(`CLI arguments`, options)
+  }
+}

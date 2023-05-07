@@ -1,5 +1,5 @@
 {
-  "name": "vite-config-custom",
+  "name": "@terwer/vite-config-custom",
   "version": "0.1.0",
   "description": "custom config for vite",
   "keywords": [

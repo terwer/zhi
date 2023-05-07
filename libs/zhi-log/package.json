@@ -1,12 +1,12 @@
 {
-  "name": "zhi-env",
-  "version": "1.17.0",
+  "name": "zhi-log",
+  "version": "1.13.0",
   "type": "module",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
-  "description": "a cross-platform env config lib",
+  "description": "a simple logger for Node and Browser",
   "repository": "terwer/zhi",
-  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-env",
+  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-log",
   "author": "terwer",
   "license": "GPL",
   "files": [
@@ -14,9 +14,9 @@
     "README.md"
   ],
   "keywords": [
-    "zhi-env",
+    "zhi-log",
     "zhi",
-    "env"
+    "log"
   ],
   "scripts": {
     "dev": "vite",
@@ -28,5 +28,14 @@
     "@terwer/eslint-config-custom": "workspace:*",
     "@terwer/tsconfig": "workspace:*",
     "@terwer/vite-config-custom": "workspace:*"
+  },
+  "dependencies": {
+    "ansi-colors": "^4.1.3",
+    "callsites": "^4.0.0",
+    "kleur": "^4.1.5",
+    "loglevel": "^1.8.1",
+    "loglevel-plugin-prefix": "^0.8.4",
+    "zhi-device": "workspace:*",
+    "zhi-env": "workspace:*"
   }
 }

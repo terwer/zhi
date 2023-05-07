@@ -23,13 +23,15 @@
  * questions.
  */
 
+import DeviceDetection from "./deviceDetection"
+import DeviceTypeEnum from "./lib/deviceTypeEnum"
+import BasePathTypeEnum from "./lib/basePathTypeEnum"
+import BrowserUtil from "./lib/browserUtil"
+import SiyuanDevice from "./lib/siyuanDevice"
+
 /**
- * @packageDocumentation
- * zhi-env 通用环境变量模块
+ * zhi-device 入口
  */
-
-import EnvConstants from "./lib/EnvConstants"
-import Env from "./lib/zhi-env"
-
-export { Env }
-export { EnvConstants }
+export { DeviceDetection }
+export { BrowserUtil, SiyuanDevice }
+export { DeviceTypeEnum, BasePathTypeEnum }

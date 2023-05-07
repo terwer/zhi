@@ -23,13 +23,32 @@
  * questions.
  */
 
+import AbstractLogFactory from "./abstractLogFactory"
+import LogLevelEnum from "../logConstants"
+import { Env } from "zhi-env"
+import DefaultLogger from "../defaultLogger"
+
 /**
- * @packageDocumentation
- * zhi-env 通用环境变量模块
+ * 自定义日志工厂
+ *
+ * @public
+ * @author terwer
+ * @since 1.0.7
  */
+class CustomLogFactory extends AbstractLogFactory {
+  constructor(level?: LogLevelEnum, sign?: string, env?: Env) {
+    super(level, sign, env)
+  }
 
-import EnvConstants from "./lib/EnvConstants"
-import Env from "./lib/zhi-env"
+  /**
+   * 获取默认的日志记录器
+   *
+   * @param loggerName - 日志记录器名称
+   * @param stackSize - 打印栈的深度
+   */
+  override getLogger(loggerName?: string, stackSize?: number): DefaultLogger {
+    return super.getLogger(loggerName, stackSize)
+  }
+}
 
-export { Env }
-export { EnvConstants }
+export default CustomLogFactory

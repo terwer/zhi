@@ -1,12 +1,11 @@
 {
-  "name": "esbuild-config-custom",
+  "name": "@terwer/esbuild-config-custom",
   "version": "1.0.0",
   "type": "module",
   "description": "esbuild custom config",
   "bin": {
     "zhi-build": "./build.cjs"
   },
-  "main": "index.ts",
   "keywords": [
     "esbuild",
     "config",

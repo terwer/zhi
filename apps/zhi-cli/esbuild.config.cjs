@@ -23,13 +23,21 @@
  * questions.
  */
 
+const { dtsPlugin } = require("esbuild-plugin-d.ts")
+
 /**
- * @packageDocumentation
- * zhi-env 通用环境变量模块
+ * 构建配置
  */
-
-import EnvConstants from "./lib/EnvConstants"
-import Env from "./lib/zhi-env"
-
-export { Env }
-export { EnvConstants }
+module.exports = {
+  esbuildConfig: {
+    entryPoints: ["src/index.ts"],
+    outfile: "dist/index.cjs",
+    bundle: true,
+    format: "cjs",
+    platform: "node",
+    banner: {
+      js: "#!/usr/bin/env node",
+    },
+    plugins: [dtsPlugin()],
+  },
+}
