@@ -16,6 +16,10 @@
   - zhi-env
   - zhi-log
   - zhi-cli
+  - zhi-device
+  - zhi-common
+  - zhi-blog-api
+  - zhi-siyuan-api
 - zhi-theme - Style-based theme <sup> in progress </sup>
 - zhi-widget-publisher (sy-post-publisher) - Siyuan note publishing tool <sup> has been put on the shelf official pendant market </sup>
 - zhi-plugin-bridge-publisher - Siyuan note release tool plugin bridge version <sup> has been put on the third-party plug-in market </sup>

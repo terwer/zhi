@@ -16,6 +16,10 @@
   - zhi-env
   - zhi-log
   - zhi-cli
+  - zhi-device
+  - zhi-common
+  - zhi-blog-api
+  - zhi-siyuan-api
 - zhi-theme - 基于样式的主题 <sup>进行中</sup>
 - zhi-widget-publisher (sy-post-publisher) - 思源笔记发布工具 <sup>已上架官方挂件集市</sup>
 - zhi-plugin-bridge-publisher - 思源笔记发布工具插件桥接版 <sup>已上架第三方插件市场</sup>

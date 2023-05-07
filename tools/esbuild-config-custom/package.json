@@ -1,0 +1,30 @@
+{
+  "name": "esbuild-config-custom",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "esbuild custom config",
+  "bin": {
+    "zhi-build": "./build.cjs"
+  },
+  "main": "index.ts",
+  "keywords": [
+    "esbuild",
+    "config",
+    "build"
+  ],
+  "author": "terwer",
+  "license": "GPL",
+  "devDependencies": {
+    "@types/minimist": "^1.2.2",
+    "dotenv": "^16.0.3",
+    "esbuild": "^0.17.17",
+    "esbuild-plugin-copy": "^2.1.1",
+    "esbuild-plugin-d.ts": "^1.1.0",
+    "esbuild-plugin-ifdef": "^1.0.1",
+    "esbuild-plugin-inline-image": "^0.0.9",
+    "esbuild-plugin-vue3": "0.3.2",
+    "esbuild-style-plugin": "^1.6.2",
+    "minimist": "^1.2.8",
+    "rimraf": "^4.4.1"
+  }
+}
