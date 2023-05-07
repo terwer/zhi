@@ -22,7 +22,7 @@
     "siyuanBuild": "turbo run siyuanBuild",
     "test": "turbo run test",
     "start": "turbo run start",
-    "doc": "turbo run doc",
+    "predoc": "pnpm build -F zhi-device && pnpm build -F zhi-env && pnpm build -F zhi-log && pnpm build -F zhi-common && pnpm build -F zhi-blog-api && pnpm build -F zhi-siyuan-api",
     "lint": "turbo run lint",
     "graph": " turbo run build --graph=dependency-graph.png",
     "prepare": "is-ci || husky install",
