@@ -4,7 +4,7 @@ importers:
 
   .:
     devDependencies:
-      eslint-config-custom:
+      '@terwer/eslint-config-custom':
         specifier: workspace:*
         version: link:tools/eslint-config-custom
       turbo:
@@ -59,19 +59,19 @@ importers:
 
   libs/zhi-device:
     devDependencies:
-      tsconfig:
+      '@terwer/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
-      vite-config-custom:
+      '@terwer/vite-config-custom':
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
 
   libs/zhi-env:
     devDependencies:
-      tsconfig:
+      '@terwer/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
-      vite-config-custom:
+      '@terwer/vite-config-custom':
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
 
@@ -99,10 +99,10 @@ importers:
         specifier: workspace:*
         version: link:../zhi-env
     devDependencies:
-      tsconfig:
+      '@terwer/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
-      vite-config-custom:
+      '@terwer/vite-config-custom':
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
 

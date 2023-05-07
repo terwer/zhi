@@ -2,11 +2,17 @@
   "name": "zhi-device",
   "version": "0.4.0",
   "type": "module",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "description": "auto check environment whether in browser, browser extension, electron, node and more",
   "repository": "terwer/zhi",
   "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-device",
   "author": "terwer",
   "license": "GPL",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "keywords": [
     "zhi",
     "device",
@@ -21,7 +27,7 @@
     "test": "vitest --watch"
   },
   "devDependencies": {
-    "tsconfig": "workspace:*",
-    "vite-config-custom": "workspace:*"
+    "@terwer/tsconfig": "workspace:*",
+    "@terwer/vite-config-custom": "workspace:*"
   }
 }

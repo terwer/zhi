@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "turbo": "^1.9.3",
-    "eslint-config-custom": "workspace:*"
+    "@terwer/eslint-config-custom": "workspace:*"
   },
   "engines": {
     "node": ">=16.0.0"

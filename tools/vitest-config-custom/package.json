@@ -1,5 +1,5 @@
 {
-  "name": "vitest-config-custom",
+  "name": "@terwer/vitest-config-custom",
   "version": "1.0.0",
   "description": "custom config for vitest",
   "keywords": [

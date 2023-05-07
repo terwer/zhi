@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-custom",
+  "name": "@terwer/eslint-config-custom",
   "version": "1.0.0",
   "description": "custom config for eslint",
   "main": "index.cjs",
