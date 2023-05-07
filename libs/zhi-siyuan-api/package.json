@@ -15,7 +15,10 @@
   ],
   "keywords": [
     "zhi",
-    "lib"
+    "lib",
+    "siyuan",
+    "note",
+    "api"
   ],
   "scripts": {
     "dev": "vite",
