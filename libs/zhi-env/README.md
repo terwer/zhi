@@ -118,20 +118,20 @@ describe("zhiEnv", () => {
 ## Dev
 
 ```bash
-pnpm dev -F zhi-lib-env
+pnpm dev -F zhi-env
 ```
 
 ## Build
 
 ```bash
-pnpm build -F zhi-lib-env
+pnpm build -F zhi-env
 ```
 
 ## Api
 
 ```bash
-pnpm doc -F zhi-lib-env
-pnpm md -F zhi-lib-env
+pnpm doc -F zhi-env
+pnpm md -F zhi-env
 ```
 
 ## Test
@@ -139,11 +139,11 @@ pnpm md -F zhi-lib-env
 Execute the unit tests via [vitest](https://vitest.dev)
 
 ```bash
-pnpm test -F zhi-lib-env
+pnpm test -F zhi-env
 ```
 
 ## Publish
 
 ```bash
-pnpm publish -F zhi-lib-env --tag latest
+pnpm publish -F zhi-env --tag latest
 ```
