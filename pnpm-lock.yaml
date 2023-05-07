@@ -41,9 +41,30 @@ importers:
       '@tsconfig/docusaurus':
         specifier: ^1.0.5
         version: registry.npmjs.org/@tsconfig/docusaurus@1.0.5
+      docusaurus-plugin-typedoc:
+        specifier: ^0.19.2
+        version: registry.npmjs.org/docusaurus-plugin-typedoc@0.19.2(typedoc-plugin-markdown@3.15.3)(typedoc@0.24.6)
+      typedoc:
+        specifier: ^0.24.6
+        version: registry.npmjs.org/typedoc@0.24.6(typescript@4.8.4)
+      typedoc-plugin-markdown:
+        specifier: ^3.15.3
+        version: registry.npmjs.org/typedoc-plugin-markdown@3.15.3(typedoc@0.24.6)
+      typedoc-plugin-rename-defaults:
+        specifier: ^0.6.5
+        version: registry.npmjs.org/typedoc-plugin-rename-defaults@0.6.5(typedoc@0.24.6)
       typescript:
         specifier: ^4.7.4
         version: registry.npmjs.org/typescript@4.8.4
+
+  libs/zhi-env:
+    devDependencies:
+      tsconfig:
+        specifier: workspace:*
+        version: link:../../tools/tsconfig
+      vite-config-custom:
+        specifier: workspace:*
+        version: link:../../tools/vite-config-custom
 
   tools/api-docs:
     devDependencies:
@@ -182,6 +203,33 @@ importers:
       '@types/node':
         specifier: ^18.15.11
         version: registry.npmjs.org/@types/node@18.15.11
+
+  tools/vite-config-custom:
+    devDependencies:
+      jsdom:
+        specifier: ^21.1.1
+        version: registry.npmjs.org/jsdom@21.1.1
+      typescript:
+        specifier: ^5.0.4
+        version: registry.npmjs.org/typescript@5.0.4
+      vite:
+        specifier: ^4.2.2
+        version: registry.npmjs.org/vite@4.2.2(@types/node@18.15.11)
+      vite-plugin-css-injected-by-js:
+        specifier: ^3.1.0
+        version: registry.npmjs.org/vite-plugin-css-injected-by-js@3.1.0(vite@4.2.2)
+      vite-plugin-dts:
+        specifier: ^2.3.0
+        version: registry.npmjs.org/vite-plugin-dts@2.3.0(vite@4.2.2)
+      vite-plugin-static-copy:
+        specifier: ^0.14.0
+        version: registry.npmjs.org/vite-plugin-static-copy@0.14.0(vite@4.2.2)
+      vite-tsconfig-paths:
+        specifier: ^4.2.0
+        version: registry.npmjs.org/vite-tsconfig-paths@4.2.0(typescript@5.0.4)(vite@4.2.2)
+      vitest:
+        specifier: ^0.30.1
+        version: registry.npmjs.org/vitest@0.30.1(jsdom@21.1.1)
 
   tools/vitest-config-custom:
     devDependencies:
@@ -3966,6 +4014,22 @@ packages:
     version: 1.0.0-next.21
     dev: false
 
+  registry.npmjs.org/@rollup/pluginutils@5.0.2:
+    resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@rollup/pluginutils/-/pluginutils-5.0.2.tgz}
+    name: '@rollup/pluginutils'
+    version: 5.0.2
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      '@types/estree': registry.npmjs.org/@types/estree@1.0.1
+      estree-walker: registry.npmjs.org/estree-walker@2.0.2
+      picomatch: registry.npmjs.org/picomatch@2.3.1
+    dev: true
+
   registry.npmjs.org/@rushstack/eslint-patch@1.2.0:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.2.0.tgz}
     name: '@rushstack/eslint-patch'
@@ -4281,6 +4345,17 @@ packages:
     version: 0.2.0
     engines: {node: '>=10.13.0'}
     dev: false
+
+  registry.npmjs.org/@ts-morph/common@0.19.0:
+    resolution: {integrity: sha512-Unz/WHmd4pGax91rdIKWi51wnVUW11QttMEPpBiBgIewnc9UQIX7UDLxr5vRlqeByXCwhkF6VabSsI0raWcyAQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@ts-morph/common/-/common-0.19.0.tgz}
+    name: '@ts-morph/common'
+    version: 0.19.0
+    dependencies:
+      fast-glob: registry.npmjs.org/fast-glob@3.2.12
+      minimatch: registry.npmjs.org/minimatch@7.4.6
+      mkdirp: registry.npmjs.org/mkdirp@2.1.6
+      path-browserify: registry.npmjs.org/path-browserify@1.0.1
+    dev: true
 
   registry.npmjs.org/@tsconfig/docusaurus@1.0.5:
     resolution: {integrity: sha512-KM/TuJa9fugo67dTGx+ktIqf3fVc077J6jwHu845Hex4EQf7LABlNonP/mohDKT0cmncdtlYVHHF74xR/YpThg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@tsconfig/docusaurus/-/docusaurus-1.0.5.tgz}
@@ -5595,6 +5670,12 @@ packages:
     version: 6.0.1
     engines: {node: '>=12'}
 
+  registry.npmjs.org/ansi-sequence-parser@1.1.0:
+    resolution: {integrity: sha512-lEm8mt52to2fT8GhciPCGeCXACSz2UwIN4X2e2LJSnZ5uAbn2/dsYdOmUXq0AtWS5cpAupysIneExOgH0Vd2TQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/ansi-sequence-parser/-/ansi-sequence-parser-1.1.0.tgz}
+    name: ansi-sequence-parser
+    version: 1.1.0
+    dev: true
+
   registry.npmjs.org/ansi-styles@3.2.1:
     resolution: {integrity: sha512-VT0ZI6kZRdTh8YyJw3SMbYm/u+NqfsAxEpWO0Pf9sq8/e94WxxOpPKx9FR1FlyCtOVDNOQ+8ntlqFxiRc+r5qA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/ansi-styles/-/ansi-styles-3.2.1.tgz}
     name: ansi-styles
@@ -6601,6 +6682,12 @@ packages:
     name: co
     version: 4.6.0
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
+    dev: true
+
+  registry.npmjs.org/code-block-writer@12.0.0:
+    resolution: {integrity: sha512-q4dMFMlXtKR3XNBHyMHt/3pwYNA69EDk00lloMOaaUMKPUXBw6lpXtbu3MMVG6/uOihGnRDOlkyqsONEUj60+w==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/code-block-writer/-/code-block-writer-12.0.0.tgz}
+    name: code-block-writer
+    version: 12.0.0
     dev: true
 
   registry.npmjs.org/collapse-white-space@1.0.6:
@@ -7637,6 +7724,19 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       esutils: registry.npmjs.org/esutils@2.0.3
+    dev: true
+
+  registry.npmjs.org/docusaurus-plugin-typedoc@0.19.2(typedoc-plugin-markdown@3.15.3)(typedoc@0.24.6):
+    resolution: {integrity: sha512-N4B2MOaXIyu+FloFn6zVbGgSqszeFQE/7ZIgFakpkVg5F0rfysiDGac2PHbPf4o8DWdyyviJOAuhXk6U7Febeg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/docusaurus-plugin-typedoc/-/docusaurus-plugin-typedoc-0.19.2.tgz}
+    id: registry.npmjs.org/docusaurus-plugin-typedoc/0.19.2
+    name: docusaurus-plugin-typedoc
+    version: 0.19.2
+    peerDependencies:
+      typedoc: '>=0.24.0'
+      typedoc-plugin-markdown: '>=3.15.0'
+    dependencies:
+      typedoc: registry.npmjs.org/typedoc@0.24.6(typescript@4.8.4)
+      typedoc-plugin-markdown: registry.npmjs.org/typedoc-plugin-markdown@3.15.3(typedoc@0.24.6)
     dev: true
 
   registry.npmjs.org/dom-converter@0.2.0:
@@ -9349,6 +9449,12 @@ packages:
       slash: registry.npmjs.org/slash@4.0.0
     dev: false
 
+  registry.npmjs.org/globrex@0.1.2:
+    resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/globrex/-/globrex-0.1.2.tgz}
+    name: globrex
+    version: 0.1.2
+    dev: true
+
   registry.npmjs.org/got@9.6.0:
     resolution: {integrity: sha512-R7eWptXuGYxwijs0eV+v3o6+XH1IqVK8dJOEecQfTmkncw9AV4dcw/Dhxi8MdlqPthxxpZyizMzyg8RTmEsG+Q==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/got/-/got-9.6.0.tgz}
     name: got
@@ -9407,6 +9513,21 @@ packages:
     name: handle-thing
     version: 2.0.1
     dev: false
+
+  registry.npmjs.org/handlebars@4.7.7:
+    resolution: {integrity: sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/handlebars/-/handlebars-4.7.7.tgz}
+    name: handlebars
+    version: 4.7.7
+    engines: {node: '>=0.4.7'}
+    hasBin: true
+    dependencies:
+      minimist: registry.npmjs.org/minimist@1.2.8
+      neo-async: registry.npmjs.org/neo-async@2.6.2
+      source-map: registry.npmjs.org/source-map@0.6.1
+      wordwrap: registry.npmjs.org/wordwrap@1.0.0
+    optionalDependencies:
+      uglify-js: registry.npmjs.org/uglify-js@3.17.4
+    dev: true
 
   registry.npmjs.org/hard-rejection@2.1.0:
     resolution: {integrity: sha512-VIZB+ibDhx7ObhAe7OVtoEbuP4h/MuOTHJ+J8h/eBXotJYl0fBgR72xDFCKgIh22OJZIOVNxBMWuhAr10r8HdA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/hard-rejection/-/hard-rejection-2.1.0.tgz}
@@ -11153,6 +11274,12 @@ packages:
     engines: {node: '>= 8'}
     dev: false
 
+  registry.npmjs.org/kolorist@1.8.0:
+    resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/kolorist/-/kolorist-1.8.0.tgz}
+    name: kolorist
+    version: 1.8.0
+    dev: true
+
   registry.npmjs.org/latest-version@5.1.0:
     resolution: {integrity: sha512-weT+r0kTkRQdCdYCNtkMwWXQTMEswKrFBkm4ckQOMVhhqhIMI1UT2hMj+1iigIhgSZm5gTmrRXBNoGUgaTY1xA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/latest-version/-/latest-version-5.1.0.tgz}
     name: latest-version
@@ -11459,12 +11586,27 @@ packages:
     engines: {node: 14 || >=16.14}
     dev: true
 
+  registry.npmjs.org/lunr@2.3.9:
+    resolution: {integrity: sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/lunr/-/lunr-2.3.9.tgz}
+    name: lunr
+    version: 2.3.9
+    dev: true
+
   registry.npmjs.org/magic-string@0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/magic-string/-/magic-string-0.25.9.tgz}
     name: magic-string
     version: 0.25.9
     dependencies:
       sourcemap-codec: registry.npmjs.org/sourcemap-codec@1.4.8
+    dev: true
+
+  registry.npmjs.org/magic-string@0.29.0:
+    resolution: {integrity: sha512-WcfidHrDjMY+eLjlU+8OvwREqHwpgCeKVBUpQ3OhYYuvfaYCUgcbuBzappNzZvg/v8onU3oQj+BYpkOJe9Iw4Q==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/magic-string/-/magic-string-0.29.0.tgz}
+    name: magic-string
+    version: 0.29.0
+    engines: {node: '>=12'}
+    dependencies:
+      '@jridgewell/sourcemap-codec': registry.npmjs.org/@jridgewell/sourcemap-codec@1.4.15
     dev: true
 
   registry.npmjs.org/magic-string@0.30.0:
@@ -11517,6 +11659,14 @@ packages:
     name: markdown-escapes
     version: 1.0.4
     dev: false
+
+  registry.npmjs.org/marked@4.3.0:
+    resolution: {integrity: sha512-PRsaiG84bK+AMvxziE/lCFss8juXjNaWzVbN5tXAm4XjeaS9NAHhop+PjQxz2A9h8Q4M/xGmzP8vqNwy6JeK0A==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/marked/-/marked-4.3.0.tgz}
+    name: marked
+    version: 4.3.0
+    engines: {node: '>= 12'}
+    hasBin: true
+    dev: true
 
   registry.npmjs.org/md5-hex@3.0.1:
     resolution: {integrity: sha512-BUiRtTtV39LIJwinWBjqVsU9xhdnz7/i889V859IBFpuqGAj6LuOvHv5XLbgZ2R7ptJoJaEcxkv88/h25T7Ciw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/md5-hex/-/md5-hex-3.0.1.tgz}
@@ -11748,6 +11898,15 @@ packages:
     dependencies:
       brace-expansion: registry.npmjs.org/brace-expansion@1.1.11
 
+  registry.npmjs.org/minimatch@7.4.6:
+    resolution: {integrity: sha512-sBz8G/YjVniEz6lKPNpKxXwazJe4c19fEfV2GDMX6AjFz+MX9uDWIZW8XreVhkFW3fkIdTv/gxWr/Kks5FFAVw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/minimatch/-/minimatch-7.4.6.tgz}
+    name: minimatch
+    version: 7.4.6
+    engines: {node: '>=10'}
+    dependencies:
+      brace-expansion: registry.npmjs.org/brace-expansion@2.0.1
+    dev: true
+
   registry.npmjs.org/minimatch@8.0.4:
     resolution: {integrity: sha512-W0Wvr9HyFXZRGIDgCicunpQ299OKXs9RgZfaukz4qAW/pJhcpUfupc9c+OObPOFueNy8VSrZgEmDtk6Kh4WzDA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/minimatch/-/minimatch-8.0.4.tgz}
     name: minimatch
@@ -11800,6 +11959,14 @@ packages:
     name: minipass
     version: 5.0.0
     engines: {node: '>=8'}
+    dev: true
+
+  registry.npmjs.org/mkdirp@2.1.6:
+    resolution: {integrity: sha512-+hEnITedc8LAtIP9u3HJDFIdcLV2vXP33sqLLIzkv1Db1zO/1OxbvYf0Y1OC/S/Qo5dxHXepofhmxL02PsKe+A==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/mkdirp/-/mkdirp-2.1.6.tgz}
+    name: mkdirp
+    version: 2.1.6
+    engines: {node: '>=10'}
+    hasBin: true
     dev: true
 
   registry.npmjs.org/mlly@1.2.0:
@@ -12388,6 +12555,12 @@ packages:
       no-case: registry.npmjs.org/no-case@3.0.4
       tslib: registry.npmjs.org/tslib@2.5.0
     dev: false
+
+  registry.npmjs.org/path-browserify@1.0.1:
+    resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/path-browserify/-/path-browserify-1.0.1.tgz}
+    name: path-browserify
+    version: 1.0.1
+    dev: true
 
   registry.npmjs.org/path-exists@3.0.0:
     resolution: {integrity: sha512-bpC7GYwiDYQ4wYLe+FA8lhRjhQCMcQGuSgGGqDkg/QerRWw9CmGRT0iSOVRSZJ29NMLZgIzqaljJ63oaL4NIJQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/path-exists/-/path-exists-3.0.0.tgz}
@@ -14376,6 +14549,17 @@ packages:
       rechoir: registry.npmjs.org/rechoir@0.6.2
     dev: false
 
+  registry.npmjs.org/shiki@0.14.2:
+    resolution: {integrity: sha512-ltSZlSLOuSY0M0Y75KA+ieRaZ0Trf5Wl3gutE7jzLuIcWxLp5i/uEnLoQWNvgKXQ5OMpGkJnVMRLAuzjc0LJ2A==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/shiki/-/shiki-0.14.2.tgz}
+    name: shiki
+    version: 0.14.2
+    dependencies:
+      ansi-sequence-parser: registry.npmjs.org/ansi-sequence-parser@1.1.0
+      jsonc-parser: registry.npmjs.org/jsonc-parser@3.2.0
+      vscode-oniguruma: registry.npmjs.org/vscode-oniguruma@1.7.0
+      vscode-textmate: registry.npmjs.org/vscode-textmate@8.0.0
+    dev: true
+
   registry.npmjs.org/side-channel@1.0.4:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/side-channel/-/side-channel-1.0.4.tgz}
     name: side-channel
@@ -15207,6 +15391,15 @@ packages:
     version: 0.1.13
     dev: true
 
+  registry.npmjs.org/ts-morph@18.0.0:
+    resolution: {integrity: sha512-Kg5u0mk19PIIe4islUI/HWRvm9bC1lHejK4S0oh1zaZ77TMZAEmQC0sHQYiu2RgCQFZKXz1fMVi/7nOOeirznA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/ts-morph/-/ts-morph-18.0.0.tgz}
+    name: ts-morph
+    version: 18.0.0
+    dependencies:
+      '@ts-morph/common': registry.npmjs.org/@ts-morph/common@0.19.0
+      code-block-writer: registry.npmjs.org/code-block-writer@12.0.0
+    dev: true
+
   registry.npmjs.org/ts-node@10.9.1(@types/node@18.15.11)(typescript@5.0.4):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/ts-node/-/ts-node-10.9.1.tgz}
     id: registry.npmjs.org/ts-node/10.9.1
@@ -15239,6 +15432,22 @@ packages:
       typescript: registry.npmjs.org/typescript@5.0.4
       v8-compile-cache-lib: registry.npmjs.org/v8-compile-cache-lib@3.0.1
       yn: registry.npmjs.org/yn@3.1.1
+    dev: true
+
+  registry.npmjs.org/tsconfck@2.1.1(typescript@5.0.4):
+    resolution: {integrity: sha512-ZPCkJBKASZBmBUNqGHmRhdhM8pJYDdOXp4nRgj/O0JwUwsMq50lCDRQP/M5GBNAA0elPrq4gAeu4dkaVCuKWww==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/tsconfck/-/tsconfck-2.1.1.tgz}
+    id: registry.npmjs.org/tsconfck/2.1.1
+    name: tsconfck
+    version: 2.1.1
+    engines: {node: ^14.13.1 || ^16 || >=18}
+    hasBin: true
+    peerDependencies:
+      typescript: ^4.3.5 || ^5.0.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: registry.npmjs.org/typescript@5.0.4
     dev: true
 
   registry.npmjs.org/tslib@1.14.1:
@@ -15476,6 +15685,46 @@ packages:
       is-typedarray: registry.npmjs.org/is-typedarray@1.0.0
     dev: false
 
+  registry.npmjs.org/typedoc-plugin-markdown@3.15.3(typedoc@0.24.6):
+    resolution: {integrity: sha512-idntFYu3vfaY3eaD+w9DeRd0PmNGqGuNLKihPU9poxFGnATJYGn9dPtEhn2QrTdishFMg7jPXAhos+2T6YCWRQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/typedoc-plugin-markdown/-/typedoc-plugin-markdown-3.15.3.tgz}
+    id: registry.npmjs.org/typedoc-plugin-markdown/3.15.3
+    name: typedoc-plugin-markdown
+    version: 3.15.3
+    peerDependencies:
+      typedoc: '>=0.24.0'
+    dependencies:
+      handlebars: registry.npmjs.org/handlebars@4.7.7
+      typedoc: registry.npmjs.org/typedoc@0.24.6(typescript@4.8.4)
+    dev: true
+
+  registry.npmjs.org/typedoc-plugin-rename-defaults@0.6.5(typedoc@0.24.6):
+    resolution: {integrity: sha512-DwkgwRMxgu3UrDR3VUAdnF9jYzM6p7rw6UcVIh4MD7yjEmFDR8WWyOlk6oYgELmRYHxTDx0f0GK6iSgoxSh/Qw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/typedoc-plugin-rename-defaults/-/typedoc-plugin-rename-defaults-0.6.5.tgz}
+    id: registry.npmjs.org/typedoc-plugin-rename-defaults/0.6.5
+    name: typedoc-plugin-rename-defaults
+    version: 0.6.5
+    peerDependencies:
+      typedoc: 0.22.x || 0.23.x || 0.24.x
+    dependencies:
+      typedoc: registry.npmjs.org/typedoc@0.24.6(typescript@4.8.4)
+    dev: true
+
+  registry.npmjs.org/typedoc@0.24.6(typescript@4.8.4):
+    resolution: {integrity: sha512-c3y3h45xJv3qYwKDAwU6Cl+26CjT0ZvblHzfHJ+SjQDM4p1mZxtgHky4lhmG0+nNarRht8kADfZlbspJWdZarQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/typedoc/-/typedoc-0.24.6.tgz}
+    id: registry.npmjs.org/typedoc/0.24.6
+    name: typedoc
+    version: 0.24.6
+    engines: {node: '>= 14.14'}
+    hasBin: true
+    peerDependencies:
+      typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x
+    dependencies:
+      lunr: registry.npmjs.org/lunr@2.3.9
+      marked: registry.npmjs.org/marked@4.3.0
+      minimatch: registry.npmjs.org/minimatch@9.0.0
+      shiki: registry.npmjs.org/shiki@0.14.2
+      typescript: registry.npmjs.org/typescript@4.8.4
+    dev: true
+
   registry.npmjs.org/typescript@4.8.4:
     resolution: {integrity: sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/typescript/-/typescript-4.8.4.tgz}
     name: typescript
@@ -15510,6 +15759,16 @@ packages:
     name: ufo
     version: 1.1.2
     dev: true
+
+  registry.npmjs.org/uglify-js@3.17.4:
+    resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/uglify-js/-/uglify-js-3.17.4.tgz}
+    name: uglify-js
+    version: 3.17.4
+    engines: {node: '>=0.8.0'}
+    hasBin: true
+    requiresBuild: true
+    dev: true
+    optional: true
 
   registry.npmjs.org/unherit@1.1.3:
     resolution: {integrity: sha512-Ft16BJcnapDKp0+J/rqFC3Rrk6Y/Ng4nzsC028k2jdDII/rdZ7Wd3pPT/6+vIIxRagwRc9K0IUX0Ra4fKvw+WQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/unherit/-/unherit-1.1.3.tgz}
@@ -15945,6 +16204,79 @@ packages:
       - terser
     dev: true
 
+  registry.npmjs.org/vite-plugin-css-injected-by-js@3.1.0(vite@4.2.2):
+    resolution: {integrity: sha512-qogCmpocZfcbSAYZQjS88ieIY0PzLUm7RkLFWFgAxkXdz3N6roZbSTNTxeIOj5IxFbZWACUPuVBBoo6qCuXDcw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/vite-plugin-css-injected-by-js/-/vite-plugin-css-injected-by-js-3.1.0.tgz}
+    id: registry.npmjs.org/vite-plugin-css-injected-by-js/3.1.0
+    name: vite-plugin-css-injected-by-js
+    version: 3.1.0
+    peerDependencies:
+      vite: '>2.0.0-0'
+    dependencies:
+      vite: registry.npmjs.org/vite@4.2.2(@types/node@18.15.11)
+    dev: true
+
+  registry.npmjs.org/vite-plugin-dts@2.3.0(vite@4.2.2):
+    resolution: {integrity: sha512-WbJgGtsStgQhdm3EosYmIdTGbag5YQpZ3HXWUAPCDyoXI5qN6EY0V7NXq0lAmnv9hVQsvh0htbYcg0Or5Db9JQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/vite-plugin-dts/-/vite-plugin-dts-2.3.0.tgz}
+    id: registry.npmjs.org/vite-plugin-dts/2.3.0
+    name: vite-plugin-dts
+    version: 2.3.0
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      vite: '>=2.9.0'
+    dependencies:
+      '@babel/parser': registry.npmjs.org/@babel/parser@7.21.8
+      '@microsoft/api-extractor': registry.npmjs.org/@microsoft/api-extractor@7.34.4
+      '@rollup/pluginutils': registry.npmjs.org/@rollup/pluginutils@5.0.2
+      '@rushstack/node-core-library': registry.npmjs.org/@rushstack/node-core-library@3.55.2
+      debug: registry.npmjs.org/debug@4.3.4
+      fast-glob: registry.npmjs.org/fast-glob@3.2.12
+      fs-extra: registry.npmjs.org/fs-extra@10.1.0
+      kolorist: registry.npmjs.org/kolorist@1.8.0
+      magic-string: registry.npmjs.org/magic-string@0.29.0
+      ts-morph: registry.npmjs.org/ts-morph@18.0.0
+      vite: registry.npmjs.org/vite@4.2.2(@types/node@18.15.11)
+    transitivePeerDependencies:
+      - '@types/node'
+      - rollup
+      - supports-color
+    dev: true
+
+  registry.npmjs.org/vite-plugin-static-copy@0.14.0(vite@4.2.2):
+    resolution: {integrity: sha512-RMFmb4czomcrsbQBiUZs9HcDGN3kxGvF+OrtkfTVocp12CuoUCuJQhcY26RK35A6KS4WasGzEwcYZqHMjkAvVw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/vite-plugin-static-copy/-/vite-plugin-static-copy-0.14.0.tgz}
+    id: registry.npmjs.org/vite-plugin-static-copy/0.14.0
+    name: vite-plugin-static-copy
+    version: 0.14.0
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      vite: ^3.0.0 || ^4.0.0
+    dependencies:
+      chokidar: registry.npmjs.org/chokidar@3.5.3
+      fast-glob: registry.npmjs.org/fast-glob@3.2.12
+      fs-extra: registry.npmjs.org/fs-extra@11.1.1
+      picocolors: registry.npmjs.org/picocolors@1.0.0
+      vite: registry.npmjs.org/vite@4.2.2(@types/node@18.15.11)
+    dev: true
+
+  registry.npmjs.org/vite-tsconfig-paths@4.2.0(typescript@5.0.4)(vite@4.2.2):
+    resolution: {integrity: sha512-jGpus0eUy5qbbMVGiTxCL1iB9ZGN6Bd37VGLJU39kTDD6ZfULTTb1bcc5IeTWqWJKiWV5YihCaibeASPiGi8kw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/vite-tsconfig-paths/-/vite-tsconfig-paths-4.2.0.tgz}
+    id: registry.npmjs.org/vite-tsconfig-paths/4.2.0
+    name: vite-tsconfig-paths
+    version: 4.2.0
+    peerDependencies:
+      vite: '*'
+    peerDependenciesMeta:
+      vite:
+        optional: true
+    dependencies:
+      debug: registry.npmjs.org/debug@4.3.4
+      globrex: registry.npmjs.org/globrex@0.1.2
+      tsconfck: registry.npmjs.org/tsconfck@2.1.1(typescript@5.0.4)
+      vite: registry.npmjs.org/vite@4.2.2(@types/node@18.15.11)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+    dev: true
+
   registry.npmjs.org/vite@4.2.2(@types/node@18.15.11):
     resolution: {integrity: sha512-PcNtT5HeDxb3QaSqFYkEum8f5sCVe0R3WK20qxgIvNBZPXU/Obxs/+ubBMeE7nLWeCo2LDzv+8hRYSlcaSehig==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/vite/-/vite-4.2.2.tgz}
     id: registry.npmjs.org/vite/4.2.2
@@ -16050,6 +16382,18 @@ packages:
       - sugarss
       - supports-color
       - terser
+    dev: true
+
+  registry.npmjs.org/vscode-oniguruma@1.7.0:
+    resolution: {integrity: sha512-L9WMGRfrjOhgHSdOYgCt/yRMsXzLDJSL7BPrOZt73gU0iWO4mpqzqQzOz5srxqTvMBaR0XZTSrVWo4j55Rc6cA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/vscode-oniguruma/-/vscode-oniguruma-1.7.0.tgz}
+    name: vscode-oniguruma
+    version: 1.7.0
+    dev: true
+
+  registry.npmjs.org/vscode-textmate@8.0.0:
+    resolution: {integrity: sha512-AFbieoL7a5LMqcnOF04ji+rpXadgOXnZsxQr//r83kLPr7biP7am3g9zbaZIaBGwBRWeSvoMD4mgPdX3e4NWBg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/vscode-textmate/-/vscode-textmate-8.0.0.tgz}
+    name: vscode-textmate
+    version: 8.0.0
     dev: true
 
   registry.npmjs.org/vue-eslint-parser@9.2.1(eslint@8.38.0):
@@ -16447,6 +16791,12 @@ packages:
     name: word-wrap
     version: 1.2.3
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  registry.npmjs.org/wordwrap@1.0.0:
+    resolution: {integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/wordwrap/-/wordwrap-1.0.0.tgz}
+    name: wordwrap
+    version: 1.0.0
     dev: true
 
   registry.npmjs.org/wrap-ansi@7.0.0:

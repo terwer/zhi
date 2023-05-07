@@ -23,4 +23,38 @@
  * questions.
  */
 
-module.exports = {}
+/**
+ * 预定义的环境变量
+ *
+ * @public
+ * @author terwer
+ * @since 1.0.0
+ */
+class EnvConstants {
+  /**
+   * Node环境
+   */
+  public static NODE_ENV_KEY = "NODE_ENV"
+
+  /**
+   * 开发环境
+   */
+  public static NODE_ENV_DEVELOPMENT = "development"
+
+  /**
+   * 生产环境
+   */
+  public static NODE_ENV_PRODUCTION = "production"
+
+  /**
+   * 测试环境
+   */
+  public static NODE_ENV_TEST = "test"
+
+  /**
+   * 是否处于调试模式
+   */
+  public static VITE_DEBUG_MODE_KEY = "VITE_DEBUG_MODE"
+}
+
+export default EnvConstants

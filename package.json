@@ -3,19 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "workspaces": [
+    "tools/*",
+    "libs/*",
     "apps/*",
-    "packages/*"
+    "themes/*",
+    "widgets/*",
+    "plugins/*"
   ],
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
     "localBuild": "turbo run localBuild",
     "staticBuild": "turbo run staticBuild",
-    "dockerBuild": "turbo run dockerBuild",
-    "siyuanBuild": "turbo run siyuanBuild",
     "nodeBuild": "turbo run nodeBuild",
+    "dockerBuild": "turbo run dockerBuild",
     "vercelBuild": "turbo run vercelBuild",
-    "start": "turbo run preview",
+    "siyuanBuild": "turbo run siyuanBuild",
+    "test": "turbo run test",
+    "start": "turbo run start",
     "doc": "turbo run doc",
     "lint": "turbo run lint",
     "graph": " turbo run build --graph=dependency-graph.png",
@@ -33,7 +38,7 @@
     "eslint-config-custom": "workspace:*"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.0.0"
   },
   "packageManager": "pnpm@8.1.1"
 }

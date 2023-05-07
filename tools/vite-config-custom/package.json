@@ -1,0 +1,22 @@
+{
+  "name": "vite-config-custom",
+  "version": "0.1.0",
+  "description": "custom config for vite",
+  "keywords": [
+    "vite",
+    "vitest",
+    "typescript"
+  ],
+  "author": "terwer",
+  "license": "GPL",
+  "devDependencies": {
+    "jsdom": "^21.1.1",
+    "typescript": "^5.0.4",
+    "vite": "^4.2.2",
+    "vite-plugin-css-injected-by-js": "^3.1.0",
+    "vite-plugin-dts": "^2.3.0",
+    "vite-plugin-static-copy": "^0.14.0",
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^0.30.1"
+  }
+}
