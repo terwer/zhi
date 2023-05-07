@@ -1,6 +1,7 @@
 {
   "name": "zhi",
   "version": "0.1.0",
+  "description": "The ultimate framework for building blog and theme",
   "private": true,
   "workspaces": [
     "tools/*",
@@ -40,5 +41,8 @@
   "engines": {
     "node": ">=16.0.0"
   },
-  "packageManager": "pnpm@8.1.1"
+  "packageManager": "pnpm@8.1.1",
+  "repository": "terwer/zhi",
+  "homepage": "https://terwer.space",
+  "author": "terwer"
 }

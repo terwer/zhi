@@ -29,6 +29,8 @@ console.log("val=>", val)
 For `Nuxt` framework
 
 ```ts
+// https://github.com/vitejs/vite/issues/9539#issuecomment-1206301266
+
 import { Env } from "zhi-env"
 
 const nuxtEnv = useRuntimeConfig()
@@ -45,7 +47,6 @@ For Astro framework or other libs
 ```ts
 import { Env } from "zhi-env"
 
-// https://github.com/vitejs/vite/issues/9539#issuecomment-1206301266
 // 1 add "module": "esnext" to tsconfig.json
 //   add "target": "esnext" to tsconfig.json
 // 2 add env.d.ts
@@ -54,7 +55,7 @@ import { Env } from "zhi-env"
 //    readonly env: ImportMetaEnv
 //  }
 //  ```
-// 3 add define to esbuild, vite etc.
+// 3 (optional) if you are using esbuild, add define to esbuild.
 //    ```
 //    const defineEnv = {
 //      NODE_ENV: isProduction ? "production" : "development",
