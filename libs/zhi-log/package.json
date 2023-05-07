@@ -25,6 +25,7 @@
     "test": "vitest --watch"
   },
   "devDependencies": {
+    "@terwer/eslint-config-custom": "workspace:*",
     "@terwer/tsconfig": "workspace:*",
     "@terwer/vite-config-custom": "workspace:*"
   },
