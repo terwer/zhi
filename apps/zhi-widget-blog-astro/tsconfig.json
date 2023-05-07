@@ -1,0 +1,17 @@
+{
+  "extends": "astro/tsconfigs/strictest",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "isolatedModules": false,
+    "esModuleInterop": true,
+    "outDir": "./lib",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@astroBlog/*": ["./*"]
+    }
+  },
+  "include": ["./**/*.vue", "./**/*.ts", "./**/*.spec.ts"]
+}

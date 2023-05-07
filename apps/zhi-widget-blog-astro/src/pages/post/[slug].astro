@@ -1,0 +1,20 @@
+---
+import Layout from "@astroBlog/src/layouts/vdoing/Layout.astro"
+import ZhiBlogAstroUtil from "../../utils/zhiBlogAstroUtil"
+
+const blogApi = ZhiBlogAstroUtil.blogApi()
+const env = ZhiBlogAstroUtil.zhiEnv()
+// await ZhiBlogAstroUtil.importLute(env.getStringEnv("VITE_APP_BASE"), env.getStringEnv("VITE_STATIC_VERSION"))
+await import("@astroBlog/src/assets/lib/lute/lute-1.7.5-20230410.min.cjs?v=202304191333")
+
+const { slug } = Astro.params
+const postid = slug.replace(/\.html$/, "")
+const post = await blogApi.getPost(postid)
+---
+
+<Layout title="This is detail page.">
+  <article>
+    <h1 set:html={post.title} />
+    <Fragment set:html={post.description} />
+  </article>
+</Layout>
