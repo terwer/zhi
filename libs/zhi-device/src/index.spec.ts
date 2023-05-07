@@ -23,13 +23,12 @@
  * questions.
  */
 
-/**
- * @packageDocumentation
- * zhi-env 通用环境变量模块
- */
+import { describe, expect, it } from "vitest"
+import { DeviceDetection } from "./index"
 
-import EnvConstants from "./lib/EnvConstants"
-import Env from "./lib/zhi-env"
-
-export { Env }
-export { EnvConstants }
+describe("zhi-device", () => {
+  it("index", () => {
+    // https://github.com/vitest-dev/vitest/issues/1610
+    expect(DeviceDetection).toBeTruthy()
+  })
+})

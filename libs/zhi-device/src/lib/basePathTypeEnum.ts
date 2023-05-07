@@ -24,12 +24,34 @@
  */
 
 /**
- * @packageDocumentation
- * zhi-env 通用环境变量模块
+ * 基本路径枚举
+ *
+ * @public
+ * @author terwer
+ * @version 0.1.0
+ * @since 0.1.0
  */
+enum BasePathTypeEnum {
+  /**
+   * Appearance
+   */
+  BasePathType_Appearance = "Appearance",
+  /**
+   * Data
+   */
+  BasePathType_Data = "Data",
+  /**
+   * Themes
+   */
+  BasePathType_Themes = "Themes",
+  /**
+   * Zhi 主题目录
+   */
+  BasePathType_ZhiTheme = "ZhiTheme",
+  /**
+   * 未设置
+   */
+  BasePathType_None = "None",
+}
 
-import EnvConstants from "./lib/EnvConstants"
-import Env from "./lib/zhi-env"
-
-export { Env }
-export { EnvConstants }
+export default BasePathTypeEnum

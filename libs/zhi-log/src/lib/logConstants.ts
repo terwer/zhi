@@ -24,12 +24,46 @@
  */
 
 /**
- * @packageDocumentation
- * zhi-env 通用环境变量模块
+ * 日志常量
+ *
+ * @public
+ * @author terwer
+ * @since 1.4.0
  */
+class LogConstants {
+  public static readonly LOG_LEVEL_KEY = "VITE_LOG_LEVEL"
+  public static readonly LOG_PREFIX_KEY = "VITE_LOG_PREFIX"
+}
 
-import EnvConstants from "./lib/EnvConstants"
-import Env from "./lib/zhi-env"
+/**
+ * 日志级别
+ *
+ * @author terwer
+ * @since 1.0.7
+ * @public
+ */
+enum LogLevelEnum {
+  /**
+   * TRACE
+   */
+  LOG_LEVEL_TRACE = "TRACE",
+  /**
+   * DEBUG
+   */
+  LOG_LEVEL_DEBUG = "DEBUG",
+  /**
+   * INFO
+   */
+  LOG_LEVEL_INFO = "INFO",
+  /**
+   * WARN
+   */
+  LOG_LEVEL_WARN = "WARN",
+  /**
+   * ERROR
+   */
+  LOG_LEVEL_ERROR = "ERROR",
+}
 
-export { Env }
-export { EnvConstants }
+export default LogLevelEnum
+export { LogConstants }
