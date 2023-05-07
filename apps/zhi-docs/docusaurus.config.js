@@ -3,6 +3,7 @@
 
 const lightCodeTheme = require("prism-react-renderer/themes/github")
 const darkCodeTheme = require("prism-react-renderer/themes/dracula")
+const docsConfig = require("./docs.config")
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -17,21 +18,7 @@ const config = {
   projectName: "zhi", // Usually your repo name.
 
   // https://github.com/tgreyuk/typedoc-plugin-markdown/tree/master/packages/docusaurus-plugin-typedoc#readme
-  plugins: [
-    [
-      "docusaurus-plugin-typedoc",
-      {
-        id: "zhi-env",
-        entryPoints: ["../../libs/zhi-env/src/index.ts"],
-        tsconfig: "../../libs/zhi-env/tsconfig.json",
-        plugin: ["typedoc-plugin-rename-defaults"],
-        out: "zhi-env",
-        sidebar: {
-          categoryLabel: "Zhi Env",
-        },
-      },
-    ]
-  ],
+  plugins: docsConfig.plugins,
 
   presets: [
     [

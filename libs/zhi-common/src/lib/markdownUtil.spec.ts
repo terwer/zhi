@@ -23,13 +23,14 @@
  * questions.
  */
 
-import { describe, it } from "vitest"
-import ZhiCommonUtil from "./lib/ZhiCommonUtil"
+import MarkdownUtil from "./markdownUtil"
+import { describe, it, expect } from "vitest"
 
-describe("zhi-common", () => {
-  it("index", () => {
-    const logger = ZhiCommonUtil.zhiLog("zhi-common-test")
-    logger.debug("test common util debug")
-    logger.info("test common util")
+describe("markdownUtil", () => {
+  it("test renderHTML", async () => {
+    const markdownUtil = new MarkdownUtil()
+    const result = await markdownUtil.renderHTML("# hello")
+    console.log(result)
+    expect(result).toBe("<h1>hello</h1>\n")
   })
 })

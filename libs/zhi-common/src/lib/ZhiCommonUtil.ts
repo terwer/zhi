@@ -23,13 +23,23 @@
  * questions.
  */
 
-import { describe, it } from "vitest"
-import ZhiCommonUtil from "./lib/ZhiCommonUtil"
+import { Env } from "zhi-env"
+import ZhiUtil from "./ZhiUtil"
 
-describe("zhi-common", () => {
-  it("index", () => {
-    const logger = ZhiCommonUtil.zhiLog("zhi-common-test")
-    logger.debug("test common util debug")
-    logger.info("test common util")
-  })
-})
+/**
+ * Common 模块工具类
+ *
+ * @author terwer
+ * @version 1.4.0
+ * @since 1.4.0
+ */
+class ZhiCommonUtil extends ZhiUtil {
+  public static override zhiEnv(): Env {
+    if (!this.env) {
+      this.env = new Env(import.meta.env)
+    }
+    return this.env
+  }
+}
+
+export default ZhiCommonUtil

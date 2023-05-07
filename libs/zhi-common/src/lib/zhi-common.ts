@@ -23,13 +23,39 @@
  * questions.
  */
 
-import { describe, it } from "vitest"
-import ZhiCommonUtil from "./lib/ZhiCommonUtil"
+import JsonUtil from "./jsonUtil"
+import DateUtil from "./dateUtil"
+import StrUtil from "./strUtil"
+import VersionUtil from "./versionUtil"
+import HtmlUtil from "./htmlUtil"
+import MarkdownUtil from "./markdownUtil"
+import ObjectUtil from "./objectUtil"
 
-describe("zhi-common", () => {
-  it("index", () => {
-    const logger = ZhiCommonUtil.zhiLog("zhi-common-test")
-    logger.debug("test common util debug")
-    logger.info("test common util")
-  })
-})
+/**
+ * 平台无关的通用工具类
+ *
+ * @author terwer
+ * @version 1.4.0
+ * @since 1.3.0
+ */
+class ZhiCommon {
+  public readonly dateUtil
+  public readonly strUtil
+  public readonly versionUtil
+  public readonly htmlUtil
+  public readonly markdownUtil
+  public readonly jsonUtil
+  public readonly objectUtil
+
+  constructor() {
+    this.dateUtil = new DateUtil()
+    this.strUtil = new StrUtil()
+    this.versionUtil = new VersionUtil()
+    this.htmlUtil = new HtmlUtil()
+    this.markdownUtil = new MarkdownUtil()
+    this.jsonUtil = new JsonUtil()
+    this.objectUtil = new ObjectUtil()
+  }
+}
+
+export default ZhiCommon

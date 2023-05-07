@@ -23,13 +23,25 @@
  * questions.
  */
 
-import { describe, it } from "vitest"
-import ZhiCommonUtil from "./lib/ZhiCommonUtil"
+/**
+ * Markdown适配器接口
+ *
+ * @author terwer
+ * @version 1.0.0
+ * @since 1.0.0
+ */
+interface MarkdownAdaptor {
+  /**
+   * 是否可用
+   */
+  isAvailable(): boolean
 
-describe("zhi-common", () => {
-  it("index", () => {
-    const logger = ZhiCommonUtil.zhiLog("zhi-common-test")
-    logger.debug("test common util debug")
-    logger.info("test common util")
-  })
-})
+  /**
+   * 渲染MD
+   *
+   * @param md - Markdown
+   */
+  renderMarkdownStr(md: string): Promise<string>
+}
+
+export default MarkdownAdaptor

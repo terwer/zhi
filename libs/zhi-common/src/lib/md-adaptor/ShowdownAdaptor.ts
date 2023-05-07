@@ -23,13 +23,39 @@
  * questions.
  */
 
-import { describe, it } from "vitest"
-import ZhiCommonUtil from "./lib/ZhiCommonUtil"
+import MarkdownAdaptor from "./MarkdownAdaptor"
+import showdown from "showdown"
+import ZhiCommonUtil from "../ZhiCommonUtil"
 
-describe("zhi-common", () => {
-  it("index", () => {
-    const logger = ZhiCommonUtil.zhiLog("zhi-common-test")
-    logger.debug("test common util debug")
-    logger.info("test common util")
-  })
-})
+/**
+ * showdown 适配器
+ *
+ * @author terwer
+ * @version 1.0.0
+ * @since 1.0.0
+ */
+class ShowdownAdaptor implements MarkdownAdaptor {
+  private readonly logger
+  private readonly converter
+
+  constructor() {
+    this.logger = ZhiCommonUtil.zhiLog("showdown-adaptor")
+
+    this.converter = new showdown.Converter()
+  }
+
+  isAvailable(): boolean {
+    return typeof showdown !== "undefined"
+  }
+
+  renderMarkdownStr(md: string): Promise<string> {
+    if (!this.isAvailable()) {
+      throw new Error("Showdown is not available")
+    }
+
+    this.logger.info("Showdown is rendering md to HTML...")
+    return Promise.resolve(this.converter.makeHtml(md))
+  }
+}
+
+export default ShowdownAdaptor

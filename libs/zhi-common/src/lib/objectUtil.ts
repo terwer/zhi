@@ -23,13 +23,29 @@
  * questions.
  */
 
-import { describe, it } from "vitest"
-import ZhiCommonUtil from "./lib/ZhiCommonUtil"
+/**
+ * Object 工具类
+ *
+ * @author terwer
+ * @version 1.0.0
+ * @since 1.0.0
+ */
+class ObjectUtil {
+  /**
+   * 检测是否是空对象
+   *
+   * @param obj - 对象
+   */
+  public isEmptyObject(obj: any): boolean {
+    if (!obj) {
+      return true
+    }
+    return (
+      Object.getPrototypeOf(obj) === Object.prototype &&
+      Object.getOwnPropertyNames(obj).length === 0 &&
+      Object.getOwnPropertySymbols(obj).length === 0
+    )
+  }
+}
 
-describe("zhi-common", () => {
-  it("index", () => {
-    const logger = ZhiCommonUtil.zhiLog("zhi-common-test")
-    logger.debug("test common util debug")
-    logger.info("test common util")
-  })
-})
+export default ObjectUtil

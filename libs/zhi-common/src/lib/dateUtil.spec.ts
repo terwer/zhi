@@ -22,14 +22,44 @@
  * or visit www.terwer.space if you need additional information or have any
  * questions.
  */
+import DateUtil from "./dateUtil"
 
-import { describe, it } from "vitest"
-import ZhiCommonUtil from "./lib/ZhiCommonUtil"
+describe("DateUtil", () => {
+  const dateUtil = new DateUtil()
 
-describe("zhi-common", () => {
-  it("index", () => {
-    const logger = ZhiCommonUtil.zhiLog("zhi-common-test")
-    logger.debug("test common util debug")
-    logger.info("test common util")
+  it("formatIsoToZh", () => {
+    const isoDate = "2022-07-18T06:25:48.000Z"
+    const result = dateUtil.formatIsoToZh(isoDate)
+    const expectedZhDate = "2022-07-18 06:25:48"
+    expect(result).toEqual(expectedZhDate)
+  })
+
+  it("formatIsoToZhDate", () => {
+    const isoDate = "2022-07-18T06:25:48.000Z"
+    const result = dateUtil.formatIsoToZhDate(isoDate)
+    const expectedZhDate = "2022-07-18"
+    expect(result).toEqual(expectedZhDate)
+  })
+
+  it("formatIsoToZhTime", () => {
+    const isoDate = "2022-07-18T06:25:48.000Z"
+    const result = dateUtil.formatIsoToZhTime(isoDate)
+    const expectedZhDate = "06:25:48"
+    expect(result).toEqual(expectedZhDate)
+  })
+
+  it("nowZh", () => {
+    const result = dateUtil.nowZh()
+    console.log(result)
+  })
+
+  it("nowDateZh", () => {
+    const result = dateUtil.nowDateZh()
+    console.log(result)
+  })
+
+  it("nowTimeZh", () => {
+    const result = dateUtil.nowTimeZh()
+    console.log(result)
   })
 })

@@ -94,6 +94,37 @@ importers:
         specifier: ^5.0.4
         version: registry.npmjs.org/typescript@5.0.4
 
+  libs/zhi-common:
+    dependencies:
+      ajv:
+        specifier: ^8.12.0
+        version: registry.npmjs.org/ajv@8.12.0
+      compare-versions:
+        specifier: 5.0.3
+        version: registry.npmjs.org/compare-versions@5.0.3
+      showdown:
+        specifier: ^2.1.0
+        version: registry.npmjs.org/showdown@2.1.0
+      zhi-device:
+        specifier: workspace:*
+        version: link:../zhi-device
+      zhi-env:
+        specifier: workspace:*
+        version: link:../zhi-env
+      zhi-log:
+        specifier: workspace:*
+        version: link:../zhi-log
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config-custom
+      '@terwer/tsconfig':
+        specifier: workspace:*
+        version: link:../../tools/tsconfig
+      '@terwer/vite-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/vite-config-custom
+
   libs/zhi-device:
     devDependencies:
       '@terwer/eslint-config-custom':
@@ -6910,8 +6941,6 @@ packages:
     version: 9.5.0
     engines: {node: ^12.20.0 || >=14}
     requiresBuild: true
-    dev: true
-    optional: true
 
   registry.npmjs.org/commitizen@4.3.0:
     resolution: {integrity: sha512-H0iNtClNEhT0fotHvGV3E9tDejDeS04sN1veIebsKYGMuGscFaswRoYJKmT3eW85eIJAs0F28bG2+a/9wCOfPw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/commitizen/-/commitizen-4.3.0.tgz}
@@ -6953,6 +6982,12 @@ packages:
       array-ify: registry.npmjs.org/array-ify@1.0.0
       dot-prop: registry.npmjs.org/dot-prop@5.3.0
     dev: true
+
+  registry.npmjs.org/compare-versions@5.0.3:
+    resolution: {integrity: sha512-4UZlZP8Z99MGEY+Ovg/uJxJuvoXuN4M6B3hKaiackiHrgzQFEe3diJi1mf1PNHbFujM7FvLrK2bpgIaImbtZ1A==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/compare-versions/-/compare-versions-5.0.3.tgz}
+    name: compare-versions
+    version: 5.0.3
+    dev: false
 
   registry.npmjs.org/compressible@2.0.18:
     resolution: {integrity: sha512-AF3r7P5dWxL8MxyITRMlORQNaOA2IkAFaTr4k7BUumjPtRpGDTZpl0Pb1XCO6JeDCBdp126Cgs9sMxqSjgYyRg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/compressible/-/compressible-2.0.18.tgz}
@@ -14686,6 +14721,15 @@ packages:
       vscode-oniguruma: registry.npmjs.org/vscode-oniguruma@1.7.0
       vscode-textmate: registry.npmjs.org/vscode-textmate@8.0.0
     dev: true
+
+  registry.npmjs.org/showdown@2.1.0:
+    resolution: {integrity: sha512-/6NVYu4U819R2pUIk79n67SYgJHWCce0a5xTP979WbNp0FL9MN1I1QK662IDU1b6JzKTvmhgI7T7JYIxBi3kMQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/showdown/-/showdown-2.1.0.tgz}
+    name: showdown
+    version: 2.1.0
+    hasBin: true
+    dependencies:
+      commander: registry.npmjs.org/commander@9.5.0
+    dev: false
 
   registry.npmjs.org/side-channel@1.0.4:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/side-channel/-/side-channel-1.0.4.tgz}
