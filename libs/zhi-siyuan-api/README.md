@@ -16,7 +16,10 @@ console.log("result=>", result)
 ## Deps
 
 ```
-## Congregations! zhi-env need no deps, it is just pure js code 🎉
+├── zhi-env
+├── zhi-log
+├── zhi-common
+├── zhi-blog-api
 ```
 
 ## Dev
