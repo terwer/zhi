@@ -5,7 +5,7 @@ a collection of util tools
 ## Usage
 
 ```ts
-import zhiCommon from "zhi-common"
+import { zhiCommon } from "zhi-common"
 
 const dateUtil = zhiCommon.dateUtil
 const now = dateUtil.nowDateZh()
