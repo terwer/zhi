@@ -29,7 +29,7 @@ import ServerMiddleware from "~/src/server/index"
  * Vercel 适配
  */
 const serverMiddleware = new ServerMiddleware()
-// 在 vercel 的 dashboard 设置静态资源路径为 apps/zhi-server-vue3-ssr/dist
+// 在 vercel 的 dashboard 设置静态资源路径为 apps/zhi-server-blog-vue/dist
 const server = serverMiddleware.createExpressServer()
 
 export default server

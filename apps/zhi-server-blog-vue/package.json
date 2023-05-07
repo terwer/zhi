@@ -1,10 +1,10 @@
 {
-  "name": "zhi-server-vue3-ssr",
+  "name": "zhi-server-blog-vue",
   "version": "0.1.0",
   "type": "module",
   "description": "a ssr blog using vue3 and esbuild",
   "repository": "terwer/zhi",
-  "homepage": "https://github.com/terwer/zhi/tree/main/apps/zhi-server-vue3-ssr",
+  "homepage": "https://github.com/terwer/zhi/tree/main/apps/zhi-server-blog-vue",
   "author": "terwer",
   "license": "GPL",
   "keywords": [
@@ -29,7 +29,7 @@
     "nodeServerBuild": "zhi-build -c esbuild.node.config.mjs --production",
     "vercelServerBuild": "zhi-build -c esbuild.vercel.config.mjs --production",
     "localServerBuild": "zhi-build -c esbuild.server.config.mjs --production --outDir=/Users/terwer/Documents/mydocs/SiYuanWorkspace/public/conf/appearance/themes/zhi/dynamic/blog",
-    "test": "jest --coverage=true --coverageDirectory=../../reports/test/zhi-server-vue3-ssr",
+    "test": "jest --coverage=true --coverageDirectory=../../reports/test/zhi-server-blog-vue",
     "lint": "eslint 'src/**/*.{ts,vue}' --fix"
   },
   "devDependencies": {

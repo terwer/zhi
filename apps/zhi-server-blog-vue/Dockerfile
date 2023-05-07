@@ -1,4 +1,4 @@
-# Build the docker image with `pnpm dockerBuild -F zhi-server-vue3-ssr`.
+# Build the docker image with `pnpm dockerBuild -F zhi-server-blog-vue`.
 # Tip: Modify "dockerBuild" options in project.json to change docker build args.
 #
 # Run the container with `docker run -p 3000:3000 -t vue3-ssr`.

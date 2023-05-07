@@ -1,4 +1,4 @@
-# zhi-server-vue3-ssr
+# zhi-server-blog-vue
 a ssr blog using vue3 and esbuild
 
 ## How to use
@@ -6,7 +6,7 @@ a ssr blog using vue3 and esbuild
 ### Dev
 
 ```bash
-pnpm dev -F zhi-server-vue3-ssr
+pnpm dev -F zhi-server-blog-vue
 ```
 
 ### Node
@@ -14,13 +14,13 @@ pnpm dev -F zhi-server-vue3-ssr
 1 build
 
 ```bash
-pnpm nodeBuild -F zhi-server-vue3-ssr
+pnpm nodeBuild -F zhi-server-blog-vue
 ```
 
 2 run
 
 ```bash
-pnpm nodeDev -F zhi-server-vue3-ssr
+pnpm nodeDev -F zhi-server-blog-vue
 ```
 
 ### Siyuan console
@@ -28,7 +28,7 @@ pnpm nodeDev -F zhi-server-vue3-ssr
 1 build
 
 ```bash
-pnpm localBuild -F zhi-server-vue3-ssr
+pnpm localBuild -F zhi-server-blog-vue
 ```
 
 2 run
@@ -43,23 +43,23 @@ server.default()
 1 build
 
 ```bash
-pnpm nodeBuild -F zhi-server-vue3-ssr
+pnpm nodeBuild -F zhi-server-blog-vue
 ```
 
 2 run
 
 ```bash
-pnpm dockerBuild -F zhi-server-vue3-ssr
+pnpm dockerBuild -F zhi-server-blog-vue
 ```
 
 ### Vercel
 
 ```bash
-pnpm install -F zhi-server-vue3-ssr
+pnpm install -F zhi-server-blog-vue
 ## dist
-## apps/zhi-server-vue3-ssr/dist
-## set the static resource path to apps/zhi-server-vue3-ssr/dist on vercel's dashboard
-pnpm vercelBuild -F zhi-server-vue3-ssr
+## apps/zhi-server-blog-vue/dist
+## set the static resource path to apps/zhi-server-blog-vue/dist on vercel's dashboard
+pnpm vercelBuild -F zhi-server-blog-vue
 ````
 
 note:

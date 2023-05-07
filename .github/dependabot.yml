@@ -239,7 +239,7 @@ updates:
       - "astro"
 
   - package-ecosystem: npm
-    directory: "/apps/zhi-server-vue3-ssr"
+    directory: "/apps/zhi-server-blog-vue"
     schedule:
       interval: daily
       time: "00:00"
