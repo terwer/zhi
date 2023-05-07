@@ -23,6 +23,7 @@
  * questions.
  */
 import DateUtil from "./dateUtil"
+import { describe, expect, it } from "vitest"
 
 describe("DateUtil", () => {
   const dateUtil = new DateUtil()

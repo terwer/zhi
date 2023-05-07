@@ -24,6 +24,7 @@
  */
 
 import StrUtil from "./strUtil"
+import { describe, expect, it } from "vitest"
 
 describe("StrUtil", () => {
   const strUtil = new StrUtil()

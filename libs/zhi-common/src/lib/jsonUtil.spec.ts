@@ -24,15 +24,13 @@
  */
 
 import JsonUtil from "./jsonUtil"
-import { getNormalizedEnvDefines } from "../../../../packages/esbuild-config-custom/esmUtils"
+import { describe, expect, it, beforeEach } from "vitest"
 
 describe("JsonUtil", () => {
   let jsonUtil: JsonUtil
 
   beforeEach(() => {
     jsonUtil = new JsonUtil()
-
-    getNormalizedEnvDefines(["NODE", "VITE_"])
   })
 
   describe("validateJson", () => {

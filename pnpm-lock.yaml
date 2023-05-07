@@ -124,6 +124,9 @@ importers:
       '@terwer/vite-config-custom':
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
+      '@types/showdown':
+        specifier: ^2.0.1
+        version: registry.npmjs.org/@types/showdown@2.0.1
 
   libs/zhi-device:
     devDependencies:
@@ -4897,6 +4900,12 @@ packages:
       '@types/mime': registry.npmjs.org/@types/mime@3.0.1
       '@types/node': registry.npmjs.org/@types/node@18.15.11
     dev: false
+
+  registry.npmjs.org/@types/showdown@2.0.1:
+    resolution: {integrity: sha512-xdnAw2nFqomkaL0QdtEk0t7yz26UkaVPl4v1pYJvtE1T0fmfQEH3JaxErEhGByEAl3zUZrkNBlneuJp0WJGqEA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/showdown/-/showdown-2.0.1.tgz}
+    name: '@types/showdown'
+    version: 2.0.1
+    dev: true
 
   registry.npmjs.org/@types/sockjs@0.3.33:
     resolution: {integrity: sha512-f0KEEe05NvUnat+boPTZ0dgaLZ4SfSouXUgv5noUiefG2ajgKjmETo9ZJyuqsl7dfl2aHlLJUiki6B4ZYldiiw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/sockjs/-/sockjs-0.3.33.tgz}
