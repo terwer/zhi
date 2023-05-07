@@ -25,13 +25,13 @@
 
 import { inject } from "vue"
 import { cacheSymbol } from "~/plugins/cache-plugin/cacheKeys"
-import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
+import ZhiServerBlogVueUtil from "~/utils/ZhiServerBlogVueUtil"
 
 /**
  * 读取当前上下文的缓存，在 client/index.ts 注入
  */
 export function useCache() {
-  const logger = ZhiServerVue3SsrUtil.zhiLog("recent-posts-store")
+  const logger = ZhiServerBlogVueUtil.zhiLog("recent-posts-store")
 
   if (import.meta.env.STATIC) {
     logger.info("you are in SPA mode, cache reset")

@@ -28,7 +28,7 @@ import { onBeforeMount, onServerPrefetch, reactive } from "vue"
 import { Post } from "zhi-blog-api"
 import { defineStore } from "pinia"
 import { useRoute } from "vue-router"
-import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
+import ZhiServerBlogVueUtil from "~/utils/ZhiServerBlogVueUtil"
 import { parseInt } from "lodash"
 import { StoreKeys } from "~/stores/storeKeys"
 import StoreUtil from "~/stores/storeUtil"
@@ -41,7 +41,7 @@ import StoreUtil from "~/stores/storeUtil"
  * @since 1.0.0
  */
 export const useRecentPostsStore = defineStore(StoreKeys.Store_RecentPosts, () => {
-  const env = ZhiServerVue3SsrUtil.zhiEnv()
+  const env = ZhiServerBlogVueUtil.zhiEnv()
   // use
   const route = useRoute()
   // props

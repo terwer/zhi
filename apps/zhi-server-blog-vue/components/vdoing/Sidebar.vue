@@ -40,9 +40,9 @@
 import NavLinks from "~/components/vdoing/NavLinks.vue"
 import { useAppConfig } from "~/composables/useAppConfig"
 import { computed, onBeforeMount, reactive } from "vue"
-import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
+import ZhiServerBlogVueUtil from "~/utils/ZhiServerBlogVueUtil"
 
-const env = ZhiServerVue3SsrUtil.zhiEnv()
+const env = ZhiServerBlogVueUtil.zhiEnv()
 
 // uses
 const appConfig = useAppConfig()

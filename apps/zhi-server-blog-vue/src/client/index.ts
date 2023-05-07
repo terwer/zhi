@@ -24,10 +24,10 @@
  */
 
 import createVueApp from "../app"
-import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
+import ZhiServerBlogVueUtil from "~/utils/ZhiServerBlogVueUtil"
 import { cachePlugin } from "~/plugins/cache-plugin/cacheProvider"
 
-const logger = ZhiServerVue3SsrUtil.zhiLog("ssr-client")
+const logger = ZhiServerBlogVueUtil.zhiLog("ssr-client")
 const { app, router } = createVueApp()
 
 // pina cache

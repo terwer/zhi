@@ -94,7 +94,7 @@ import "../assets/vdoing/styles/index.styl"
 import Navbar from "~/components/vdoing/Navbar.vue"
 import Footer from "~/components/vdoing/Footer.vue"
 import storage from "good-storage"
-import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
+import ZhiServerBlogVueUtil from "~/utils/ZhiServerBlogVueUtil"
 import { useAppConfig } from "~/composables/useAppConfig"
 import { computed, onBeforeMount, onMounted, reactive, watch } from "vue"
 import Buttons from "~/components/vdoing/Buttons.vue"
@@ -102,7 +102,7 @@ import BodyBgImg from "~/components/vdoing/BodyBgImg.vue"
 import Sidebar from "~/components/vdoing/Sidebar.vue"
 
 // zhi-util
-const logger = ZhiServerVue3SsrUtil.zhiLog("vdoing-layout")
+const logger = ZhiServerBlogVueUtil.zhiLog("vdoing-layout")
 
 // uses
 const appConfig = useAppConfig()

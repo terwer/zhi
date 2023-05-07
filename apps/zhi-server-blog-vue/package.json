@@ -41,6 +41,7 @@
     "esbuild-config-custom": "workspace:*",
     "eslint-config-custom": "workspace:*",
     "nodemon": "^2.0.22",
+    "stylus": "^0.59.0",
     "tsconfig": "workspace:*",
     "unplugin-icons": "^0.16.1",
     "vitest-config-custom": "workspace:*"

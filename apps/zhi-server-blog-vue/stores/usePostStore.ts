@@ -24,7 +24,7 @@
  */
 
 import { defineStore } from "pinia"
-import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
+import ZhiServerBlogVueUtil from "~/utils/ZhiServerBlogVueUtil"
 import { useRoute } from "vue-router"
 import { Post } from "zhi-blog-api"
 import { SiYuanApiAdaptor } from "zhi-siyuan-api"
@@ -34,9 +34,9 @@ import { useCache } from "~/composables/useCache"
 import StoreUtil from "~/stores/storeUtil"
 
 export const usePostStore = defineStore(StoreKeys.Store_Post, () => {
-  const env = ZhiServerVue3SsrUtil.zhiEnv()
-  const logger = ZhiServerVue3SsrUtil.zhiLog("post-deatil-store")
-  const common = ZhiServerVue3SsrUtil.zhiCommon()
+  const env = ZhiServerBlogVueUtil.zhiEnv()
+  const logger = ZhiServerBlogVueUtil.zhiLog("post-deatil-store")
+  const common = ZhiServerBlogVueUtil.zhiCommon()
   // use
   const route = useRoute()
   // props

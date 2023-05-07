@@ -33,10 +33,10 @@ import NavLinks from "~/components/vdoing/NavLinks.vue"
 // import MeiliSearchBox from "~/components/vdoing/MeiliSearchBox.vue"
 import { computed, onBeforeMount, onMounted, reactive } from "vue"
 import { useAppConfig } from "~/composables/useAppConfig"
-import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
+import ZhiServerBlogVueUtil from "~/utils/ZhiServerBlogVueUtil"
 import SidebarButton from "~/components/vdoing/SidebarButton.vue"
 
-const env = ZhiServerVue3SsrUtil.zhiEnv()
+const env = ZhiServerBlogVueUtil.zhiEnv()
 
 // uses
 const appConfig = useAppConfig()

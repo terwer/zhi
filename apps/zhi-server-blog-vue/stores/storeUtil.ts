@@ -23,10 +23,10 @@
  * questions.
  */
 import { useCache } from "~/composables/useCache"
-import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
+import ZhiServerBlogVueUtil from "~/utils/ZhiServerBlogVueUtil"
 
 class StoreUtil {
-  private static readonly logger = ZhiServerVue3SsrUtil.zhiLog("store-util")
+  private static readonly logger = ZhiServerBlogVueUtil.zhiLog("store-util")
 
   /**
    * 读取缓存

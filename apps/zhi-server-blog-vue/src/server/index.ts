@@ -24,7 +24,7 @@
  */
 
 import express, { Express, Response } from "express"
-import ZhiServerVue3SsrUtil from "~/utils/ZhiServerVue3SsrUtil"
+import ZhiServerBlogVueUtil from "~/utils/ZhiServerBlogVueUtil"
 import createVueApp from "~/src/app"
 import { renderToString } from "vue/server-renderer"
 import path from "path"
@@ -42,8 +42,8 @@ class ServerMiddleware {
   protected logger
 
   constructor() {
-    this.env = ZhiServerVue3SsrUtil.zhiEnv()
-    this.logger = ZhiServerVue3SsrUtil.zhiLog("server-middleware")
+    this.env = ZhiServerBlogVueUtil.zhiEnv()
+    this.logger = ZhiServerBlogVueUtil.zhiLog("server-middleware")
   }
 
   /**
@@ -53,7 +53,7 @@ class ServerMiddleware {
    * @param staticPath - 静态资源路径，不传递则不设置
    */
   public createExpressServer(staticPath?: string) {
-    const logger = ZhiServerVue3SsrUtil.zhiLog("server-middleware")
+    const logger = ZhiServerBlogVueUtil.zhiLog("server-middleware")
     const server = express()
 
     /**
@@ -192,7 +192,7 @@ class ServerMiddleware {
    * @param p 端口，默认3333
    */
   public startServer(server: Express, p?: number) {
-    const logger = ZhiServerVue3SsrUtil.zhiLog("server-middleware")
+    const logger = ZhiServerBlogVueUtil.zhiLog("server-middleware")
 
     // 监听端口
     const listener = server.listen(p ?? 3333, () => {

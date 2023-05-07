@@ -24,7 +24,7 @@
  */
 
 import { ZhiUtil } from "zhi-common"
-import Env from "zhi-env"
+import { Env } from "zhi-env"
 import { DefaultLogger } from "zhi-log"
 
 /**
@@ -34,7 +34,7 @@ import { DefaultLogger } from "zhi-log"
  * @author terwer
  * @since 1.0.0
  */
-class ZhiServerVue3SsrUtil extends ZhiUtil {
+class ZhiServerBlogVueUtil extends ZhiUtil {
   public static override zhiEnv(): Env {
     if (!this.env) {
       //#ifdef !NODE_BUILD
@@ -58,4 +58,4 @@ class ZhiServerVue3SsrUtil extends ZhiUtil {
   }
 }
 
-export default ZhiServerVue3SsrUtil
+export default ZhiServerBlogVueUtil
