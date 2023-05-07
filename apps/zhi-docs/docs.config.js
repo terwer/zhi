@@ -97,5 +97,18 @@ module.exports = {
         },
       },
     ],
+    [
+      "docusaurus-plugin-typedoc",
+      {
+        id: "zhi-siyuan-api",
+        entryPoints: ["../../libs/zhi-siyuan-api/src/index.ts"],
+        tsconfig: "../../libs/zhi-siyuan-api/tsconfig.json",
+        plugin: ["typedoc-plugin-rename-defaults"],
+        out: "zhi-siyuan-api",
+        sidebar: {
+          categoryLabel: "Zhi Siyuan Api",
+        },
+      },
+    ],
   ],
 }

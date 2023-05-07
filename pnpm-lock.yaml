@@ -208,6 +208,31 @@ importers:
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
 
+  libs/zhi-siyuan-api:
+    dependencies:
+      zhi-blog-api:
+        specifier: workspace:*
+        version: link:../zhi-blog-api
+      zhi-common:
+        specifier: workspace:*
+        version: link:../zhi-common
+      zhi-env:
+        specifier: workspace:*
+        version: link:../zhi-env
+      zhi-log:
+        specifier: workspace:*
+        version: link:../zhi-log
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config-custom
+      '@terwer/tsconfig':
+        specifier: workspace:*
+        version: link:../../tools/tsconfig
+      '@terwer/vite-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/vite-config-custom
+
   tools/commit-config-custom:
     devDependencies:
       '@commitlint/cli':
