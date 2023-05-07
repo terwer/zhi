@@ -84,5 +84,18 @@ module.exports = {
         },
       },
     ],
+    [
+      "docusaurus-plugin-typedoc",
+      {
+        id: "zhi-blog-api",
+        entryPoints: ["../../libs/zhi-blog-api/src/index.ts"],
+        tsconfig: "../../libs/zhi-blog-api/tsconfig.json",
+        plugin: ["typedoc-plugin-rename-defaults"],
+        out: "zhi-blog-api",
+        sidebar: {
+          categoryLabel: "Zhi Blog Api",
+        },
+      },
+    ],
   ],
 }
