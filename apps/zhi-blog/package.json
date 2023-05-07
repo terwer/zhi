@@ -1,0 +1,49 @@
+{
+  "name": "zhi-blog",
+  "type": "module",
+  "version": "1.2.0",
+  "description": "a blog based on siyuan-note api",
+  "repository": "terwer/zhi",
+  "homepage": "https://github.com/terwer/zhi/tree/main/apps/zhi-blog",
+  "author": "terwer",
+  "license": "GPL",
+  "keywords": [
+    "zhi",
+    "zhi-blog",
+    "web",
+    "vue",
+    "nuxt",
+    "blog"
+  ],
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "staticBuild": "nuxt generate",
+    "vercelBuild": "BUILD_TYPE=vercel nuxt build",
+    "siyuanBuild": "BUILD_TYPE=siyuan pnpm generate",
+    "start": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/content": "^2.5.2",
+    "@terwer/eslint-config-custom": "workspace:*",
+    "@types/good-storage": "^1.1.0",
+    "@types/lodash": "^4.14.194",
+    "@types/node": "^18",
+    "consola": "^3.0.1",
+    "mdast-util-to-string": "3.2.0",
+    "nuxt": "^3.4.3",
+    "nuxt-meilisearch": "^0.1.7",
+    "stylus": "^0.59.0"
+  },
+  "dependencies": {
+    "good-storage": "^1.1.1",
+    "lodash": "^4.17.21",
+    "vue-instantsearch": "4.8.7",
+    "zhi-blog-api": "workspace:*",
+    "zhi-common": "workspace:*",
+    "zhi-env": "workspace:*",
+    "zhi-log": "workspace:*",
+    "zhi-siyuan-api": "workspace:*"
+  }
+}
