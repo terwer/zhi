@@ -25,6 +25,7 @@
 
 // Test cases for BrowserUtil class using Jest
 import BrowserUtil from "./browserUtil"
+import { describe, expect, it } from "vitest"
 
 describe("BrowserUtil", () => {
   it("isNode", () => {
