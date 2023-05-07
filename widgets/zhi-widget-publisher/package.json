@@ -1,16 +1,16 @@
 {
   "name": "sy-post-publisher",
   "private": true,
-  "version": "0.8.0",
+  "version": "0.9.0",
   "scripts": {
-    "serve": "python scripts/serve.py",
     "dev": "python scripts/dev.py",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview",
+    "start": "vite preview",
+    "serve": "python scripts/serve.py",
     "test": "vitest --watch",
     "docs": "jsdoc -c jsdoc.json utils/api.ts",
     "prettier": "prettier --write .",
-    "new": "python scripts/version.py 0.8.0",
+    "new": "python scripts/version.py 0.9.0",
     "widget": "python scripts/widget.py",
     "ext": "python scripts/ext.py",
     "package": "pnpm widget && pnpm ext"
