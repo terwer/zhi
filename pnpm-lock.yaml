@@ -162,6 +162,34 @@ importers:
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
 
+  libs/zhi-electron:
+    dependencies:
+      zhi-common:
+        specifier: workspace:*
+        version: link:../zhi-common
+      zhi-device:
+        specifier: workspace:*
+        version: link:../zhi-device
+      zhi-env:
+        specifier: workspace:*
+        version: link:../zhi-env
+      zhi-log:
+        specifier: workspace:*
+        version: link:../zhi-log
+    devDependencies:
+      '@terwer/esbuild-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/esbuild-config-custom
+      '@terwer/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config-custom
+      '@terwer/tsconfig':
+        specifier: workspace:*
+        version: link:../../tools/tsconfig
+      '@terwer/vitest-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/vitest-config-custom
+
   libs/zhi-env:
     devDependencies:
       '@terwer/eslint-config-custom':
