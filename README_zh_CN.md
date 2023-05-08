@@ -27,9 +27,7 @@
 
 ### 挂件
 - [zhi-widget-publisher(sy-post-publisher)](https://github.com/terwer/src-sy-post-publisher) - 思源笔记发布工具 <sup>已上架官方挂件集市</sup>
-- [zhi-widget-blog(siyuan-blog)](https://github.com/terwer/siyuan-blog) - 基于思源笔记API的博客挂件版 <sup>进行中</sup>
 
 ### 插件
-- zhi-plugin-bridge-publisher - 思源笔记发布工具插件桥接版 <sup>已上架第三方插件市场</sup>
-- zhi-plugin-publisher - 思源笔记发布工具插件版 <sup>进行中</sup>
-- zhi-plugin-blog - 基于思源笔记API的博客插件版 <sup>进行中</sup>
+- [zhi-plugin-bridge-publisher(publish-bridge)](https://github.com/terwer/publish-bridge) - 思源笔记发布工具插件桥接版 <sup>已上架第三方插件市场</sup>
+- [zhi-widget-blog(siyuan-blog)](https://github.com/terwer/siyuan-blog) - 基于思源笔记API的博客插件版 <sup>进行中</sup>

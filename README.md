@@ -27,13 +27,7 @@
 
 ### widgets
 - [zhi-widget-publisher(sy-post-publisher)](https://github.com/terwer/src-sy-post-publisher) - Siyuan note publishing tool <sup> has been put on the shelf official pendant market </sup>
-- [zhi-widget-blog(siyuan-blog)](https://github.com/terwer/siyuan-blog) - Blog widget version based on Siyuan Note API <sup> in progress </sup>
 
 ### plugins
-- zhi-plugin-bridge-publisher - Siyuan note release tool plugin bridge version <sup> has been put on the third-party plug-in market </sup>
-- zhi-plugin-publisher - Siyuan Note publishing tool plug-in edition <sup> in progress </sup>
-- zhi-plugin-blog - Blog plug-in version based on Siyuan Note API <sup> in progress </sup>
-
-## Acknowledgments
-
-Thanks to [zuoez02](https://github.com/zuoez02/siyuan-plugin-system) for providing the plugin system.
+- [zhi-plugin-bridge-publisher(publish-bridge)](https://github.com/terwer/publish-bridge) - Siyuan note release tool plugin bridge version <sup> has been put on the third-party plug-in market </sup>
+- [zhi-widget-blog(siyuan-blog)](https://github.com/terwer/siyuan-blog) - Blog widget version based on Siyuan Note API <sup> in progress </sup>
