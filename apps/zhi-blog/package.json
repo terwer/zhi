@@ -16,11 +16,11 @@
     "blog"
   ],
   "scripts": {
-    "dev": "nuxt dev",
-    "build": "nuxt build",
-    "staticBuild": "nuxt generate",
-    "vercelBuild": "BUILD_TYPE=vercel nuxt build",
-    "siyuanBuild": "BUILD_TYPE=siyuan pnpm generate",
+    "dev": "BUILD_TYPE=node nuxt dev",
+    "build": "BUILD_TYPE=node nuxt build",
+    "staticBuild": "BUILD_TYPE=nginx nuxt generate",
+    "vercelBuild": "BUILD_TYPE=vercel nuxt generate",
+    "siyuanBuild": "BUILD_TYPE=siyuan nuxt generate",
     "start": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
