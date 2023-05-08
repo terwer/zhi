@@ -1,6 +1,6 @@
 {
   "name": "@terwer/esbuild-config-custom",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "description": "universal esbuild tool for library",
   "bin": {
@@ -26,7 +26,8 @@
     "esbuild-plugin-vue3": "0.3.2",
     "esbuild-style-plugin": "^1.6.2",
     "minimist": "^1.2.8",
-    "rimraf": "^4.4.1"
+    "rimraf": "^4.4.1",
+    "stylus": "^0.59.0"
   },
   "publishConfig": {
     "access": "public"
