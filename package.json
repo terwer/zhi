@@ -6,10 +6,7 @@
   "workspaces": [
     "tools/*",
     "libs/*",
-    "apps/*",
-    "themes/*",
-    "widgets/*",
-    "plugins/*"
+    "apps/*"
   ],
   "scripts": {
     "dev": "turbo run dev",

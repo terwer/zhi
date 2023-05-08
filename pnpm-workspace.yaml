@@ -2,6 +2,3 @@ packages:
   - "tools/*"    # tools
   - "libs/*"     # libraries
   - "apps/*"     # apps
-  - "themes/*"   # themes
-  - "widgets/*"  # widgets
-  - "plugins/*"  # plugins
