@@ -1,8 +1,8 @@
 {
   "name": "@terwer/esbuild-config-custom",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
-  "description": "esbuild custom config",
+  "description": "universal esbuild tool for library",
   "bin": {
     "zhi-build": "./build.cjs"
   },
@@ -25,5 +25,8 @@
     "esbuild-style-plugin": "^1.6.2",
     "minimist": "^1.2.8",
     "rimraf": "^4.4.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
