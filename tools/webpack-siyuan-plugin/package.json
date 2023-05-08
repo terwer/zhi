@@ -2,10 +2,6 @@
   "name": "@terwer/webpack-siyuan-plugin",
   "version": "0.0.1",
   "description": "This is a sample plugin for Siyuan (https://b3log.org/siyuan)",
-  "scripts": {
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production"
-  },
   "keywords": [
     "webpack",
     "siyuan",
