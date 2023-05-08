@@ -10,7 +10,7 @@
     "dist",
     "README.md"
   ],
-  "repository": "terwer/zhi-cli",
+  "repository": "terwer/zhi",
   "homepage": "https://github.com/terwer/zhi/tree/main/apps/zhi-cli",
   "author": "terwer",
   "license": "GPL",

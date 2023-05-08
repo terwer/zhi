@@ -4,13 +4,13 @@ universal esbuild tool for library
 
 ## Usages
 
-1 
+1 install dependency
 
 ```bash
 pnpm add esbuild-config-custom@latest -D
 ```
 
-2 add esbuild.config.cjs to project root
+2 add `esbuild.config.cjs` to project root
 
 for lib
 
