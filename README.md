@@ -12,6 +12,7 @@
 
 ## Zhi family
 
+### libraries
 - zhi-framework - Core framework (originally unpublished zhi theme, relying on theme.js) <sup> not on the shelf, can explore </sup>
   - [zhi-device](https://github.com/terwer/zhi/tree/main/libs/zhi-device)
   - [zhi-env](https://github.com/terwer/zhi/tree/main/libs/zhi-env)
@@ -20,11 +21,17 @@
   - [zhi-common](https://github.com/terwer/zhi/tree/main/apps/zhi-common)
   - [zhi-blog-api](https://github.com/terwer/zhi/tree/main/apps/zhi-blog-api)
   - [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/apps/zhi-siyuan-api)
+
+### themes
 - [zhi-theme](https://github.com/terwer/zhi-theme) - Style-based theme <sup> in progress </sup>
+
+### widgets
 - [zhi-widget-publisher(sy-post-publisher)](https://github.com/terwer/src-sy-post-publisher) - Siyuan note publishing tool <sup> has been put on the shelf official pendant market </sup>
+- [zhi-widget-blog(siyuan-blog)](https://github.com/terwer/siyuan-blog) - Blog widget version based on Siyuan Note API <sup> in progress </sup>
+
+### plugins
 - zhi-plugin-bridge-publisher - Siyuan note release tool plugin bridge version <sup> has been put on the third-party plug-in market </sup>
 - zhi-plugin-publisher - Siyuan Note publishing tool plug-in edition <sup> in progress </sup>
-- [zhi-widget-blog(siyuan-blog)](https://github.com/terwer/siyuan-blog) - Blog widget version based on Siyuan Note API <sup> in progress </sup>
 - zhi-plugin-blog - Blog plug-in version based on Siyuan Note API <sup> in progress </sup>
 
 ## Acknowledgments
