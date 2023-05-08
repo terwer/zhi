@@ -1,6 +1,6 @@
 # Zhi
 
-🛍️ A series of widgets, plugins and themes based on siyuan-note
+🛍️ A series of libraries, widgets, plugins and themes based on siyuan-note
 
 [中文版](README_zh_CN.md)
 
