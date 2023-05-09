@@ -23,7 +23,7 @@
   - [zhi-electron](https://github.com/terwer/zhi/tree/main/libs/zhi-electron)
 
 ### 主题
-- [zhi-theme](https://github.com/terwer/zhi-theme) - 基于样式的主题 <sup>进行中</sup>
+- [zhihu-theme](https://github.com/terwer/zhihu-theme) - 基于样式的主题 <sup>进行中</sup>
 
 ### 挂件
 - [zhi-widget-publisher(sy-post-publisher)](https://github.com/terwer/src-sy-post-publisher) - 思源笔记发布工具 <sup>已上架官方挂件集市</sup>

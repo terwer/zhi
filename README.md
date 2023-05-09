@@ -23,7 +23,7 @@
   - [zhi-electron](https://github.com/terwer/zhi/tree/main/libs/zhi-electron)
 
 ### themes
-- [zhi-theme](https://github.com/terwer/zhi-theme) - Style-based theme <sup> in progress </sup>
+- [zhihu-theme](https://github.com/terwer/zhihu-theme) - Style-based theme <sup> in progress </sup>
 
 ### widgets
 - [zhi-widget-publisher(sy-post-publisher)](https://github.com/terwer/src-sy-post-publisher) - Siyuan note publishing tool <sup> has been put on the shelf official pendant market </sup>
