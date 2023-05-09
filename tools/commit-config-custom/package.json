@@ -1,9 +1,8 @@
 {
   "name": "@terwer/commit-config-custom",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "type": "module",
   "description": "commitlint custom config",
-  "main": "index.cjs",
   "keywords": [
     "commitlint",
     "commit",
@@ -11,7 +10,7 @@
   ],
   "author": "terwer",
   "license": "GPL",
-  "devDependencies": {
+  "peerDependencies": {
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-angular": "^17.6.1",
     "@commitlint/cz-commitlint": "^17.5.0",
@@ -20,5 +19,8 @@
     "husky": "^8.0.3",
     "inquirer": "8",
     "is-ci": "^3.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

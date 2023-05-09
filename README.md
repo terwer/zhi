@@ -17,10 +17,10 @@
   - [zhi-device](https://github.com/terwer/zhi/tree/main/libs/zhi-device)
   - [zhi-env](https://github.com/terwer/zhi/tree/main/libs/zhi-env)
   - [zhi-log](https://github.com/terwer/zhi/tree/main/libs/zhi-log)
-  - [zhi-cli](https://github.com/terwer/zhi/tree/main/apps/zhi-cli)
-  - [zhi-common](https://github.com/terwer/zhi/tree/main/apps/zhi-common)
-  - [zhi-blog-api](https://github.com/terwer/zhi/tree/main/apps/zhi-blog-api)
-  - [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/apps/zhi-siyuan-api)
+  - [zhi-common](https://github.com/terwer/zhi/tree/main/libs/zhi-common)
+  - [zhi-blog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api)
+  - [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api)
+  - [zhi-electron](https://github.com/terwer/zhi/tree/main/libs/zhi-electron)
 
 ### themes
 - [zhi-theme](https://github.com/terwer/zhi-theme) - Style-based theme <sup> in progress </sup>
