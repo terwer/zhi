@@ -263,6 +263,9 @@ importers:
 
   tools/changelog-parser:
     devDependencies:
+      '@terwer/esbuild-config-custom':
+        specifier: workspace:*
+        version: link:../esbuild-config-custom
       ts-node:
         specifier: ^10.9.1
         version: registry.npmjs.org/ts-node@10.9.1(@types/node@18.15.11)(typescript@5.0.4)

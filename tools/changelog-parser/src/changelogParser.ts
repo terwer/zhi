@@ -61,7 +61,7 @@ class ChangelogParser {
 
     // save new file
     fs.writeFileSync(originalFile, uniqueCommits.join("\n"), "utf-8")
-    console.log(`comment parsed.saved to => ${originalFile}`)
+    console.log(`comment changelog parsed.saved to => ${originalFile}`)
   }
 
   private removeSameCommit(commitList: string[]): string[] {

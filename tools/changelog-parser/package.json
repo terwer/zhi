@@ -1,8 +1,9 @@
 {
   "name": "@terwer/changelog-parser",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
-  "main": "index.ts",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "description": "a changelog parser",
   "keywords": [
     "changelog",
@@ -11,9 +12,11 @@
   "author": "terwer",
   "license": "GPL",
   "scripts": {
-    "dev": "ts-node-esm --experimental-specifier-resolution=node changelogParser.ts"
+    "dev": "zhi-build --watch",
+    "build": "zhi-build --production"
   },
   "devDependencies": {
+    "@terwer/esbuild-config-custom": "workspace:*",
     "ts-node": "^10.9.1"
   },
   "publishConfig": {

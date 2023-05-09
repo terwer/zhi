@@ -6,8 +6,8 @@
     "isolatedModules": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "outDir": "./lib"
+    "outDir": "./dist"
   },
-  "include": ["env.d.ts", "*.ts"],
+  "include": ["env.d.ts", "src/*.ts"],
   "exclude": ["node_modules"]
 }
