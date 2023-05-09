@@ -2,7 +2,8 @@
   "name": "@terwer/changelog-parser",
   "version": "1.0.0",
   "type": "module",
-  "description": "changelog parser",
+  "main": "index.ts",
+  "description": "a changelog parser",
   "keywords": [
     "changelog",
     "commit"

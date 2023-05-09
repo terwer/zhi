@@ -38,13 +38,21 @@ const __dirname = path.dirname(__filename)
  * @since 1.0.0
  */
 class ChangelogParser {
-  public parseChangelog(): void {
+  /**
+   * 指定 CHANGELOG.md 所在的目录
+   *
+   * @param changelogPath
+   * @param isBackup
+   */
+  public parseChangelog(changelogPath?: string, isBackup?: boolean): void {
     console.log("start parsing changelog...")
+    const originalFile = path.join(changelogPath ?? __dirname, "CHANGELOG.md")
 
     // make a backup copy of the original file
-    const originalFile = path.join(__dirname, "CHANGELOG.md")
-    const backupFile = originalFile.replace(".md", "_backup.md")
-    fs.copyFileSync(originalFile, backupFile)
+    if (isBackup !== false) {
+      const backupFile = originalFile.replace(".md", "_backup.md")
+      fs.copyFileSync(originalFile, backupFile)
+    }
 
     // handle repeat lines
     const fileContents = fs.readFileSync(originalFile, "utf-8")
@@ -85,5 +93,7 @@ class ChangelogParser {
   }
 }
 
-const changelogParser = new ChangelogParser()
-changelogParser.parseChangelog()
+// const changelogParser = new ChangelogParser()
+// changelogParser.parseChangelog()
+
+export default ChangelogParser
