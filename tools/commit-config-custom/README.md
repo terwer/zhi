@@ -7,7 +7,7 @@ let you git commit easy
 1 install dependency
 
 ```bash
-pnpm add commit-config-custom@latest -D
+pnpm add @terwer/commit-config-custom@latest -D
 ```
 
 2 修改 package-json

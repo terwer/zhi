@@ -1,0 +1,21 @@
+{
+  "name": "@terwer/changelog-parser",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "changelog parser",
+  "keywords": [
+    "changelog",
+    "commit"
+  ],
+  "author": "terwer",
+  "license": "GPL",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "ts-node-esm --experimental-specifier-resolution=node changelogParser.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
+}
