@@ -20,5 +20,8 @@
     "husky": "^8.0.3",
     "inquirer": "8",
     "is-ci": "^3.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
