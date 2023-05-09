@@ -10,13 +10,13 @@
   ],
   "author": "terwer",
   "license": "GPL",
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "dev": "ts-node-esm --experimental-specifier-resolution=node changelogParser.ts"
   },
   "devDependencies": {
     "ts-node": "^10.9.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
