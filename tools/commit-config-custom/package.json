@@ -1,6 +1,6 @@
 {
   "name": "@terwer/commit-config-custom",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "commitlint custom config",
   "main": "index.cjs",
@@ -11,7 +11,7 @@
   ],
   "author": "terwer",
   "license": "GPL",
-  "devDependencies": {
+  "peerDependencies": {
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-angular": "^17.6.1",
     "@commitlint/cz-commitlint": "^17.5.0",
