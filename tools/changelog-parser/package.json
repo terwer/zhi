@@ -9,6 +9,10 @@
     "changelog",
     "commit"
   ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "author": "terwer",
   "license": "GPL",
   "scripts": {
