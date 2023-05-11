@@ -30,7 +30,13 @@ class ZhiBuild {
     if (existsSync(esbuildConfigFile)) {
       try {
         // 兼容 mjs 和 cjs
-        const pkg = await import(esbuildConfigFile)
+        // const pkg = await import(esbuildConfigFile)
+        const protocol = process.platform === 'win32' ? 'file:///' : 'file://';
+        // 获取文件的绝对路径
+        const esbuildConfigPath = path.resolve(esbuildConfigFile);
+        // 拼接 file:// 协议和路径
+        const esbuildConfigFileUrl = protocol + esbuildConfigPath;
+        const pkg = await import(esbuildConfigFileUrl);
         console.log("pkg=>", pkg)
         let cfg = pkg
         if (pkg.default) {
