@@ -32,8 +32,8 @@
     "commitizenEmoji": {}
   },
   "devDependencies": {
-    "turbo": "^1.9.3",
-    "@terwer/eslint-config-custom": "workspace:*"
+    "@terwer/eslint-config-custom": "workspace:*",
+    "turbo": "^1.9.4"
   },
   "engines": {
     "node": ">=16.0.0"
