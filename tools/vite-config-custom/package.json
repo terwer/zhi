@@ -9,7 +9,7 @@
   ],
   "author": "terwer",
   "license": "GPL",
-  "devDependencies": {
+  "peerDependencies": {
     "jsdom": "^21.1.1",
     "typescript": "^5.0.4",
     "vite": "^4.2.2",
