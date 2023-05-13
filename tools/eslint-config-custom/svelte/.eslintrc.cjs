@@ -24,8 +24,8 @@ module.exports = {
 
   rules: {
     // Note: you must disable the base rule as it can report incorrect errors
-    semi: ['error', 'never'],
-    quotes: ['error', 'double'],
+    semi: "off",
+    quotes: "off",
     "no-undef": "off",
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/no-this-alias": "off",
