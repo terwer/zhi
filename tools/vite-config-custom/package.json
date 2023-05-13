@@ -1,6 +1,6 @@
 {
   "name": "@terwer/vite-config-custom",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "custom config for vite",
   "keywords": [
     "vite",
@@ -11,6 +11,7 @@
   "license": "GPL",
   "peerDependencies": {
     "jsdom": "^22.0.0",
+    "rollup-plugin-livereload": "^2.0.5",
     "typescript": "^5.0.4",
     "vite": "^4.3.5",
     "vite-plugin-css-injected-by-js": "^3.1.1",
