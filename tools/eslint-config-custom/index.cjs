@@ -3,6 +3,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:vue/vue3-recommended",
+    "plugin:svelte/recommended",
     "turbo",
     "prettier",
   ],
@@ -37,6 +38,14 @@ module.exports = {
       files: ["*.astro"],
       parser: "astro-eslint-parser",
       // Parse the script in `.astro` as TypeScript by adding the following configuration.
+      parserOptions: {
+        parser: "@typescript-eslint/parser",
+      },
+    },
+    {
+      files: ["*.svelte"],
+      parser: "svelte-eslint-parser",
+      // Parse the script in `.svelte` as TypeScript by adding the following configuration.
       parserOptions: {
         parser: "@typescript-eslint/parser",
       },
