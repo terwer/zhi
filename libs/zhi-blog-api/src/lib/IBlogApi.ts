@@ -33,6 +33,7 @@ import CategoryInfo from "./models/categoryInfo"
  *
  * @public
  * @author terwer
+ * @outline deep
  * @version 1.0.0
  * @since 1.0.0
  */

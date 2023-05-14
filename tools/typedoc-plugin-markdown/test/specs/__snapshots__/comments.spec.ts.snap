@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comments: should convert comments with fenced block' 1`] = `
+"Some comments with fence blocks
+
+\`\`\`typescript
+someFunction()
+\`\`\`
+
+\`\`\`js
+anotherFunction()
+\`\`\`"
+`;
+
+exports[`Comments: should convert comments with tags' 1`] = `
+"\`Description\`
+
+Tag description on new line
+
+- Tag description on another line
+
+\`Deprecated\`
+
+Another tag description
+
+Gets the application version.
+
+\`Example\`
+
+\`\`\`typescript
+import { getVersion } from '@tauri-apps/api/app';
+const appVersion = await getVersion();
+\`\`\`"
+`;
+
+exports[`Comments: should convert symbols brackets to symbol links' 1`] = `
+"See [\`CommentClass\`](classes/class.CommentClass.md) and CommentClass's [comment](classes/class.CommentClass.md#comment) property.
+Also, check out [Google](https://www.google.com) and
+[GitHub](https://github.com).
+
+Taken from [JsDoc](http://usejsdoc.org/tags-inline-link.html)."
+`;
+
+exports[`Comments: should escape angle brackets inside comments' 1`] = `
+"A \\<tag\\>\\</tag\\> in comments
+
+A \`<tag>\` in backticks
+
+\`\`\`html
+A <tag> in a code block
+\`\`\`"
+`;

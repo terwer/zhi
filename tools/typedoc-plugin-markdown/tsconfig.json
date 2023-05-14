@@ -1,0 +1,7 @@
+{
+  "extends": "../../tools/typedoc-tsconfig/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist"
+  },
+  "exclude": ["./dist", "./test", "./scripts", "**/*.spec.ts"]
+}

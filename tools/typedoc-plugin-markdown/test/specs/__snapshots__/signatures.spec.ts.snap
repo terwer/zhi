@@ -1,0 +1,403 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Signatures: should compile a promise that returns a symbol' 1`] = `
+"> **promiseReturningASymbol**(): [\`Promise\`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )\\<\`any\`\\>
+
+[partial: sources]
+
+## Returns
+
+[\`Promise\`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )\\<\`any\`\\>
+
+"
+`;
+
+exports[`Signatures: should compile a promise that returns an object' 1`] = `
+"> **promiseReturningAnObject**(): [\`Promise\`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )\\<\\{data: \`string\`; id: \`string\`;}\\>
+
+[partial: sources]
+
+## Returns
+
+[\`Promise\`]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise )\\<\\{data: \`string\`; id: \`string\`;}\\>
+
+"
+`;
+
+exports[`Signatures: should compile callable signature' 1`] = `
+"> **CallableSignature**(): \`string\`
+
+[partial: sources]
+
+## Returns
+
+\`string\`
+
+"
+`;
+
+exports[`Signatures: should compile class with constructor' 1`] = `
+"> **new ClassWithConstructor**(x: \`string\`, y: \`string\`): [\`ClassWithConstructor\`](classes/class.ClassWithConstructor.md)
+
+[partial: sources]
+
+## Parameters
+
+
+| Parameter | Type |
+| :------ | :------ |
+| x | \`string\` |
+| y | \`string\` |
+
+
+## Returns
+
+[\`ClassWithConstructor\`](classes/class.ClassWithConstructor.md)
+
+"
+`;
+
+exports[`Signatures: should compile function that returns a function' 1`] = `
+"> **functionReturningAFunction**(): \`Function\`
+
+Comments for function
+
+
+
+[partial: sources]
+
+## Returns
+
+\`Function\`
+
+Return comments
+
+> > \\<T\\>(x: \`string\`): \`boolean\`
+>
+> [partial: sources]
+>
+> ### Type parameters
+>
+>
+> | Parameter |
+> | :------ |
+> | T |
+>
+>
+> ### Parameters
+>
+>
+> | Parameter | Type |
+> | :------ | :------ |
+> | x | \`string\` |
+>
+>
+> ### Returns
+>
+> \`boolean\`
+>
+>
+
+"
+`;
+
+exports[`Signatures: should compile function that returns an object' 1`] = `
+"> **functionReturningAnObject**(): \`object\`
+
+Comments for function
+
+
+
+[partial: sources]
+
+## Returns
+
+\`object\`
+
+Return comments
+
+> **x**: \`number\`  = \`1\`
+
+[partial: sources]
+
+
+> **y**: \`number\`  = \`2\`
+
+[partial: sources]
+
+
+
+"
+`;
+
+exports[`Signatures: should compile function with nested typen params' 1`] = `
+"> **functionWithNestedParams**(params: \`object\`, context: \`any\`): \`boolean\`
+
+Some nested params.
+
+[partial: sources]
+
+## Parameters
+
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| params | \`object\` | The parameters passed to the method. |
+| context | \`any\` | The context of the method call. |
+
+
+## Returns
+
+\`boolean\`
+
+"
+`;
+
+exports[`Signatures: should compile function with reference type' 1`] = `
+"> **functionWithReferenceType**(descriptor: \`TypedPropertyDescriptor\`\\<\`any\`\\>): \`boolean\`
+
+[partial: sources]
+
+## Parameters
+
+
+| Parameter | Type |
+| :------ | :------ |
+| descriptor | \`TypedPropertyDescriptor\`\\<\`any\`\\> |
+
+
+## Returns
+
+\`boolean\`
+
+"
+`;
+
+exports[`Signatures: should compile named parameters with comments' 1`] = `
+"> **functionWithNamedParamsAndComments**(\\_\\_namedParameters: \`object\` = \`{}\`, anotherParam: \`string\`): \`void\`
+
+FOO
+
+[partial: sources]
+
+## Parameters
+
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| \\_\\_namedParameters | \`object\` | various options |
+| anotherParam | \`string\` | Another param comment |
+
+
+## Returns
+
+\`void\`
+
+"
+`;
+
+exports[`Signatures: should compile named parameters' 1`] = `
+"> **functionWithNamedParams**(\\_\\_namedParameters: \`Object\`): \`string\`
+
+[partial: sources]
+
+## Parameters
+
+
+| Parameter | Type |
+| :------ | :------ |
+| \\_\\_namedParameters | \`Object\` |
+
+
+## Returns
+
+\`string\`
+
+"
+`;
+
+exports[`Signatures: should compile pipes in params and comments' 1`] = `
+"> **functionWithPipesInParamsAndComments**(n: \`number\`): \`number\` \\| \`null\`
+
+
+
+[partial: sources]
+
+## Parameters
+
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| n | \`number\` | a\\|b |
+
+
+## Returns
+
+\`number\` \\| \`null\`
+
+"
+`;
+
+exports[`Signatures: should compile signature with @return comments' 1`] = `
+"> **commentsInReturn**(): \`boolean\`
+
+Comments with a return definition
+
+
+
+[partial: sources]
+
+## Returns
+
+\`boolean\`
+
+Return comments
+
+"
+`;
+
+exports[`Signatures: should compile signature with a flag' 1`] = `
+"> \`Private\` **privateFunction**(): \`string\`
+
+
+
+[partial: sources]
+
+## Returns
+
+\`string\`
+
+"
+`;
+
+exports[`Signatures: should compile signature with default values' 1`] = `
+"> **functionWithDefaults**(
+  valueA: \`string\` = \`'defaultValue'\`, 
+  valueB: \`number\` = \`100\`, 
+  valueC: \`number\` = \`Number.NaN\`, 
+  valueD: \`boolean\` = \`true\`, 
+  valueE: \`boolean\` = \`null\`, 
+  valueF: \`string\` = \`'<foo>'\`): \`string\`
+
+This is a function with a parameter that has a default value.
+
+[partial: sources]
+
+## Parameters
+
+
+| Parameter | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| valueA | \`string\` | 'defaultValue' | A parameter with a default string value. |
+| valueB | \`number\` | 100 | A parameter with a default numeric value. |
+| valueC | \`number\` | Number.NaN | A parameter with a default NaN value. |
+| valueD | \`boolean\` | true | A parameter with a default boolean value. |
+| valueE | \`boolean\` | null | A parameter with a default null value. |
+| valueF | \`string\` | '\\<foo\\>' | - |
+
+
+## Returns
+
+\`string\`
+
+"
+`;
+
+exports[`Signatures: should compile signature with optional params' 1`] = `
+"> **functionWithOptionalParam**(
+  firstParamWithDefault: \`boolean\` = \`true\`, 
+  requiredParam: \`string\`, 
+  optionalParam?: \`string\`, 
+  paramWithDefault?: \`number\` = \`0\`): \`void\`
+
+This is a function with a parameter that is optional.
+
+[partial: sources]
+
+## Parameters
+
+
+| Parameter | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| firstParamWithDefault | \`boolean\` | true | - |
+| requiredParam | \`string\` | undefined | A normal parameter. |
+| optionalParam? | \`string\` | undefined | An optional parameter. |
+| paramWithDefault? | \`number\` | 0 | - |
+
+
+## Returns
+
+\`void\`
+
+"
+`;
+
+exports[`Signatures: should compile signature with params' 1`] = `
+"> **functionWithParameters**(
+  paramZ: \`string\`, 
+  paramG: \\{prop: \`string\`;} & \\{prop: \`number\`;}, 
+  paramA: [\`PropInterface\`](interfaces/interface.PropInterface.md)): \`number\`
+
+This is a function with multiple arguments and a return value.
+
+[partial: sources]
+
+## Parameters
+
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| paramZ | \`string\` | This is a string parameter. |
+| paramG | \\{prop: \`string\`;} & \\{prop: \`number\`;} | This is a parameter with intersection type literal. |
+| paramA | [\`PropInterface\`](interfaces/interface.PropInterface.md) | This is a **parameter** pointing to an interface. |
+
+
+## Returns
+
+\`number\`
+
+"
+`;
+
+exports[`Signatures: should compile signature with rest params' 1`] = `
+"> **functionWithRest**(...rest: \`string\`[]): \`string\`
+
+This is a function with rest parameter.
+
+[partial: sources]
+
+## Parameters
+
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| ...rest | \`string\`[] | The rest parameter. |
+
+
+## Returns
+
+\`string\`
+
+"
+`;
+
+exports[`Signatures: should compile signature with union types' 1`] = `
+"> **functionWithUnionTypes**(arg: \`number\` \\| \`boolean\`[], ...args: (\`string\` \\| \`number\`)[]): \`any\`
+
+[partial: sources]
+
+## Parameters
+
+
+| Parameter | Type |
+| :------ | :------ |
+| arg | \`number\` \\| \`boolean\`[] |
+| ...args | (\`string\` \\| \`number\`)[] |
+
+
+## Returns
+
+\`any\`
+
+"
+`;

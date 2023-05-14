@@ -1,24 +1,22 @@
 {
   "name": "zhi-docs-vitepress",
   "version": "1.0.0",
-  "description": "docs via TypeDoc and vitepress",
   "scripts": {
-    "dev": "vitepress dev",
-    "build": "vitepress build",
-    "preview": "vitepress preview"
+    "dev": "pnpm predocs:dev && pnpm docs:dev",
+    "build": "pnpm predocs:dev && pnpm docs:build",
+    "publish-typedoc": "typedoc --options typedoc.json",
+    "predocs:dev": "pnpm publish-typedoc",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
-  "keywords": [
-    "zhi",
-    "docs",
-    "vite",
-    "vitepress"
-  ],
-  "author": "terwer",
+  "author": "Thomas Grey",
   "license": "MIT",
   "devDependencies": {
-    "vitepress": "1.0.0-alpha.75"
-  },
-  "dependencies": {
-    "vue": "^3.3.2"
+    "typedoc": "0.24.7",
+    "typedoc-plugin-frontmatter": "^0.0.2",
+    "typedoc-plugin-markdown": "workspace:*",
+    "typedoc-vitepress-theme": "workspace:*",
+    "vitepress": "^1.0.0-alpha.75"
   }
 }

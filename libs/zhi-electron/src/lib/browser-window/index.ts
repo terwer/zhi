@@ -36,13 +36,11 @@ import { SiyuanDevice } from "zhi-device"
  */
 class ZhiBrowserWindow {
   private readonly logger
-  private readonly common
 
   private readonly windowManager
 
   constructor() {
     this.logger = ZhiServerElectronUtil.zhiLog("zhi-browser-window")
-    this.common = ZhiServerElectronUtil.zhiCommon()
 
     this.windowManager = new WindowManager()
   }

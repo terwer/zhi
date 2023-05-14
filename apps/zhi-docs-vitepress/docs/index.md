@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: "Docs for Zhi Framework"
-  text: "The ultimate framework for building blog and theme"
-  tagline: My great project tagline
+  name: "Zhi Framework"
+  text: ""
+  tagline: The ultimate framework for building blog and theme
   actions:
     - theme: brand
       text: Markdown Examples

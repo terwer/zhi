@@ -1,2 +1,5 @@
+api
 node_modules
-.vitepress/cache
+.temp
+cache
+docs/api

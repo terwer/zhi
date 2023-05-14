@@ -80,28 +80,36 @@ importers:
         version: registry.npmjs.org/@tsconfig/docusaurus@1.0.5
       docusaurus-plugin-typedoc:
         specifier: ^0.19.2
-        version: registry.npmjs.org/docusaurus-plugin-typedoc@0.19.2(typedoc-plugin-markdown@3.15.3)(typedoc@0.24.6)
+        version: registry.npmjs.org/docusaurus-plugin-typedoc@0.19.2(typedoc-plugin-markdown@3.15.3)(typedoc@0.24.7)
       typedoc:
-        specifier: ^0.24.6
-        version: registry.npmjs.org/typedoc@0.24.6(typescript@5.0.4)
+        specifier: ^0.24.7
+        version: registry.npmjs.org/typedoc@0.24.7(typescript@5.0.4)
       typedoc-plugin-markdown:
         specifier: ^3.15.3
-        version: registry.npmjs.org/typedoc-plugin-markdown@3.15.3(typedoc@0.24.6)
+        version: registry.npmjs.org/typedoc-plugin-markdown@3.15.3(typedoc@0.24.7)
       typedoc-plugin-rename-defaults:
         specifier: ^0.6.5
-        version: registry.npmjs.org/typedoc-plugin-rename-defaults@0.6.5(typedoc@0.24.6)
+        version: registry.npmjs.org/typedoc-plugin-rename-defaults@0.6.5(typedoc@0.24.7)
       typescript:
         specifier: ^5.0.4
         version: registry.npmjs.org/typescript@5.0.4
 
   apps/zhi-docs-vitepress:
-    dependencies:
-      vue:
-        specifier: ^3.3.2
-        version: registry.npmjs.org/vue@3.3.2
     devDependencies:
+      typedoc:
+        specifier: 0.24.7
+        version: registry.npmjs.org/typedoc@0.24.7(typescript@5.0.4)
+      typedoc-plugin-frontmatter:
+        specifier: ^0.0.2
+        version: registry.npmjs.org/typedoc-plugin-frontmatter@0.0.2
+      typedoc-plugin-markdown:
+        specifier: workspace:*
+        version: link:../../tools/typedoc-plugin-markdown
+      typedoc-vitepress-theme:
+        specifier: workspace:*
+        version: link:../../tools/typedoc-vitepress-theme
       vitepress:
-        specifier: 1.0.0-alpha.75
+        specifier: ^1.0.0-alpha.75
         version: registry.npmjs.org/vitepress@1.0.0-alpha.75(@algolia/client-search@4.17.0)
 
   libs/zhi-blog-api:
@@ -426,6 +434,21 @@ importers:
       '@types/node':
         specifier: ^18.15.11
         version: registry.npmjs.org/@types/node@18.15.11
+
+  tools/typedoc-plugin-markdown:
+    dependencies:
+      prettier:
+        specifier: '>=1.8.0'
+        version: registry.npmjs.org/prettier@2.8.7
+      typedoc:
+        specifier: '>=0.24.0'
+        version: registry.npmjs.org/typedoc@0.24.7(typescript@5.0.4)
+
+  tools/typedoc-vitepress-theme:
+    dependencies:
+      typedoc-plugin-markdown:
+        specifier: workspace:*
+        version: link:../typedoc-plugin-markdown
 
   tools/vite-config-custom:
     dependencies:
@@ -5810,6 +5833,7 @@ packages:
       '@vue/shared': registry.npmjs.org/@vue/shared@3.3.2
       estree-walker: registry.npmjs.org/estree-walker@2.0.2
       source-map-js: registry.npmjs.org/source-map-js@1.0.2
+    dev: true
 
   registry.npmjs.org/@vue/compiler-dom@3.2.47:
     resolution: {integrity: sha512-dBBnEHEPoftUiS03a4ggEig74J2YBZ2UIeyfpcRM2tavgMWo4bsEfgCGsu+uJIL/vax9S+JztH8NmQerUo7shQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@vue/compiler-dom/-/compiler-dom-3.2.47.tgz}
@@ -5827,6 +5851,7 @@ packages:
     dependencies:
       '@vue/compiler-core': registry.npmjs.org/@vue/compiler-core@3.3.2
       '@vue/shared': registry.npmjs.org/@vue/shared@3.3.2
+    dev: true
 
   registry.npmjs.org/@vue/compiler-sfc@3.2.47:
     resolution: {integrity: sha512-rog05W+2IFfxjMcFw10tM9+f7i/+FFpZJJ5XHX72NP9eC2uRD+42M3pYcQqDXVYoj74kHMSEdQ/WmCjt8JFksQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@vue/compiler-sfc/-/compiler-sfc-3.2.47.tgz}
@@ -5860,6 +5885,7 @@ packages:
       magic-string: registry.npmjs.org/magic-string@0.30.0
       postcss: registry.npmjs.org/postcss@8.4.23
       source-map-js: registry.npmjs.org/source-map-js@1.0.2
+    dev: true
 
   registry.npmjs.org/@vue/compiler-ssr@3.2.47:
     resolution: {integrity: sha512-wVXC+gszhulcMD8wpxMsqSOpvDZ6xKXSVWkf50Guf/S+28hTAXPDYRTbLQ3EDkOP5Xz/+SY37YiwDquKbJOgZw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@vue/compiler-ssr/-/compiler-ssr-3.2.47.tgz}
@@ -5877,6 +5903,7 @@ packages:
     dependencies:
       '@vue/compiler-dom': registry.npmjs.org/@vue/compiler-dom@3.3.2
       '@vue/shared': registry.npmjs.org/@vue/shared@3.3.2
+    dev: true
 
   registry.npmjs.org/@vue/devtools-api@6.5.0:
     resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@vue/devtools-api/-/devtools-api-6.5.0.tgz}
@@ -5906,6 +5933,7 @@ packages:
       '@vue/shared': registry.npmjs.org/@vue/shared@3.3.2
       estree-walker: registry.npmjs.org/estree-walker@2.0.2
       magic-string: registry.npmjs.org/magic-string@0.30.0
+    dev: true
 
   registry.npmjs.org/@vue/reactivity@3.3.2:
     resolution: {integrity: sha512-yX8C4uTgg2Tdj+512EEMnMKbLveoITl7YdQX35AYgx8vBvQGszKiiCN46g4RY6/deeo/5DLbeUUGxCq1qWMf5g==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@vue/reactivity/-/reactivity-3.3.2.tgz}
@@ -5913,6 +5941,7 @@ packages:
     version: 3.3.2
     dependencies:
       '@vue/shared': registry.npmjs.org/@vue/shared@3.3.2
+    dev: true
 
   registry.npmjs.org/@vue/runtime-core@3.3.2:
     resolution: {integrity: sha512-qSl95qj0BvKfcsO+hICqFEoLhJn6++HtsPxmTkkadFbuhe3uQfJ8HmQwvEr7xbxBd2rcJB6XOJg7nWAn/ymC5A==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@vue/runtime-core/-/runtime-core-3.3.2.tgz}
@@ -5921,6 +5950,7 @@ packages:
     dependencies:
       '@vue/reactivity': registry.npmjs.org/@vue/reactivity@3.3.2
       '@vue/shared': registry.npmjs.org/@vue/shared@3.3.2
+    dev: true
 
   registry.npmjs.org/@vue/runtime-dom@3.3.2:
     resolution: {integrity: sha512-+drStsJT+0mtgHdarT7cXZReCcTFfm6ptxMrz0kAW5hms6UNBd8Q1pi4JKlncAhu+Ld/TevsSp7pqAZxBBoGng==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@vue/runtime-dom/-/runtime-dom-3.3.2.tgz}
@@ -5930,6 +5960,7 @@ packages:
       '@vue/runtime-core': registry.npmjs.org/@vue/runtime-core@3.3.2
       '@vue/shared': registry.npmjs.org/@vue/shared@3.3.2
       csstype: registry.npmjs.org/csstype@3.1.2
+    dev: true
 
   registry.npmjs.org/@vue/server-renderer@3.3.2(vue@3.3.2):
     resolution: {integrity: sha512-QCwh6OGwJg6GDLE0fbQhRTR6tnU+XDJ1iCsTYHXBiezCXAhqMygFRij7BiLF4ytvvHcg5kX9joX5R5vP85++wg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@vue/server-renderer/-/server-renderer-3.3.2.tgz}
@@ -5942,6 +5973,7 @@ packages:
       '@vue/compiler-ssr': registry.npmjs.org/@vue/compiler-ssr@3.3.2
       '@vue/shared': registry.npmjs.org/@vue/shared@3.3.2
       vue: registry.npmjs.org/vue@3.3.2
+    dev: true
 
   registry.npmjs.org/@vue/shared@3.2.47:
     resolution: {integrity: sha512-BHGyyGN3Q97EZx0taMQ+OLNuZcW3d37ZEVmEAyeoA9ERdGvm9Irc/0Fua8SNyOtV1w6BS4q25wbMzJujO9HIfQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@vue/shared/-/shared-3.2.47.tgz}
@@ -5953,6 +5985,7 @@ packages:
     resolution: {integrity: sha512-0rFu3h8JbclbnvvKrs7Fe5FNGV9/5X2rPD7KmOzhLSUAiQH5//Hq437Gv0fR5Mev3u/nbtvmLl8XgwCU20/ZfQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@vue/shared/-/shared-3.3.2.tgz}
     name: '@vue/shared'
     version: 3.3.2
+    dev: true
 
   registry.npmjs.org/@vueuse/core@10.1.2(vue@3.3.2):
     resolution: {integrity: sha512-roNn8WuerI56A5uiTyF/TEYX0Y+VKlhZAF94unUfdhbDUI+NfwQMn4FUnUscIRUhv3344qvAghopU4bzLPNFlA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@vueuse/core/-/core-10.1.2.tgz}
@@ -6414,7 +6447,6 @@ packages:
     resolution: {integrity: sha512-lEm8mt52to2fT8GhciPCGeCXACSz2UwIN4X2e2LJSnZ5uAbn2/dsYdOmUXq0AtWS5cpAupysIneExOgH0Vd2TQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/ansi-sequence-parser/-/ansi-sequence-parser-1.1.0.tgz}
     name: ansi-sequence-parser
     version: 1.1.0
-    dev: true
 
   registry.npmjs.org/ansi-styles@3.2.1:
     resolution: {integrity: sha512-VT0ZI6kZRdTh8YyJw3SMbYm/u+NqfsAxEpWO0Pf9sq8/e94WxxOpPKx9FR1FlyCtOVDNOQ+8ntlqFxiRc+r5qA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/ansi-styles/-/ansi-styles-3.2.1.tgz}
@@ -8487,7 +8519,7 @@ packages:
       esutils: registry.npmjs.org/esutils@2.0.3
     dev: false
 
-  registry.npmjs.org/docusaurus-plugin-typedoc@0.19.2(typedoc-plugin-markdown@3.15.3)(typedoc@0.24.6):
+  registry.npmjs.org/docusaurus-plugin-typedoc@0.19.2(typedoc-plugin-markdown@3.15.3)(typedoc@0.24.7):
     resolution: {integrity: sha512-N4B2MOaXIyu+FloFn6zVbGgSqszeFQE/7ZIgFakpkVg5F0rfysiDGac2PHbPf4o8DWdyyviJOAuhXk6U7Febeg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/docusaurus-plugin-typedoc/-/docusaurus-plugin-typedoc-0.19.2.tgz}
     id: registry.npmjs.org/docusaurus-plugin-typedoc/0.19.2
     name: docusaurus-plugin-typedoc
@@ -8496,8 +8528,8 @@ packages:
       typedoc: '>=0.24.0'
       typedoc-plugin-markdown: '>=3.15.0'
     dependencies:
-      typedoc: registry.npmjs.org/typedoc@0.24.6(typescript@5.0.4)
-      typedoc-plugin-markdown: registry.npmjs.org/typedoc-plugin-markdown@3.15.3(typedoc@0.24.6)
+      typedoc: registry.npmjs.org/typedoc@0.24.7(typescript@5.0.4)
+      typedoc-plugin-markdown: registry.npmjs.org/typedoc-plugin-markdown@3.15.3(typedoc@0.24.7)
     dev: true
 
   registry.npmjs.org/dom-converter@0.2.0:
@@ -12561,7 +12593,6 @@ packages:
     resolution: {integrity: sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/lunr/-/lunr-2.3.9.tgz}
     name: lunr
     version: 2.3.9
-    dev: true
 
   registry.npmjs.org/magic-string@0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/magic-string/-/magic-string-0.25.9.tgz}
@@ -12641,7 +12672,6 @@ packages:
     version: 4.3.0
     engines: {node: '>= 12'}
     hasBin: true
-    dev: true
 
   registry.npmjs.org/md5-hex@3.0.1:
     resolution: {integrity: sha512-BUiRtTtV39LIJwinWBjqVsU9xhdnz7/i889V859IBFpuqGAj6LuOvHv5XLbgZ2R7ptJoJaEcxkv88/h25T7Ciw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/md5-hex/-/md5-hex-3.0.1.tgz}
@@ -15636,7 +15666,6 @@ packages:
       jsonc-parser: registry.npmjs.org/jsonc-parser@3.2.0
       vscode-oniguruma: registry.npmjs.org/vscode-oniguruma@1.7.0
       vscode-textmate: registry.npmjs.org/vscode-textmate@8.0.0
-    dev: true
 
   registry.npmjs.org/showdown@2.1.0:
     resolution: {integrity: sha512-/6NVYu4U819R2pUIk79n67SYgJHWCce0a5xTP979WbNp0FL9MN1I1QK662IDU1b6JzKTvmhgI7T7JYIxBi3kMQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/showdown/-/showdown-2.1.0.tgz}
@@ -16853,7 +16882,15 @@ packages:
       is-typedarray: registry.npmjs.org/is-typedarray@1.0.0
     dev: false
 
-  registry.npmjs.org/typedoc-plugin-markdown@3.15.3(typedoc@0.24.6):
+  registry.npmjs.org/typedoc-plugin-frontmatter@0.0.2:
+    resolution: {integrity: sha512-xPw76L4S4/zbd01Tt89CVsJdPiMxztlmkXaA2Wu/l0KEbIrsqSHPv/sGsPI1O+pkZrSpaFr94qLA3ls1MrpKKw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/typedoc-plugin-frontmatter/-/typedoc-plugin-frontmatter-0.0.2.tgz}
+    name: typedoc-plugin-frontmatter
+    version: 0.0.2
+    dependencies:
+      yaml: registry.npmjs.org/yaml@2.2.2
+    dev: true
+
+  registry.npmjs.org/typedoc-plugin-markdown@3.15.3(typedoc@0.24.7):
     resolution: {integrity: sha512-idntFYu3vfaY3eaD+w9DeRd0PmNGqGuNLKihPU9poxFGnATJYGn9dPtEhn2QrTdishFMg7jPXAhos+2T6YCWRQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/typedoc-plugin-markdown/-/typedoc-plugin-markdown-3.15.3.tgz}
     id: registry.npmjs.org/typedoc-plugin-markdown/3.15.3
     name: typedoc-plugin-markdown
@@ -16862,10 +16899,10 @@ packages:
       typedoc: '>=0.24.0'
     dependencies:
       handlebars: registry.npmjs.org/handlebars@4.7.7
-      typedoc: registry.npmjs.org/typedoc@0.24.6(typescript@5.0.4)
+      typedoc: registry.npmjs.org/typedoc@0.24.7(typescript@5.0.4)
     dev: true
 
-  registry.npmjs.org/typedoc-plugin-rename-defaults@0.6.5(typedoc@0.24.6):
+  registry.npmjs.org/typedoc-plugin-rename-defaults@0.6.5(typedoc@0.24.7):
     resolution: {integrity: sha512-DwkgwRMxgu3UrDR3VUAdnF9jYzM6p7rw6UcVIh4MD7yjEmFDR8WWyOlk6oYgELmRYHxTDx0f0GK6iSgoxSh/Qw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/typedoc-plugin-rename-defaults/-/typedoc-plugin-rename-defaults-0.6.5.tgz}
     id: registry.npmjs.org/typedoc-plugin-rename-defaults/0.6.5
     name: typedoc-plugin-rename-defaults
@@ -16873,14 +16910,14 @@ packages:
     peerDependencies:
       typedoc: 0.22.x || 0.23.x || 0.24.x
     dependencies:
-      typedoc: registry.npmjs.org/typedoc@0.24.6(typescript@5.0.4)
+      typedoc: registry.npmjs.org/typedoc@0.24.7(typescript@5.0.4)
     dev: true
 
-  registry.npmjs.org/typedoc@0.24.6(typescript@5.0.4):
-    resolution: {integrity: sha512-c3y3h45xJv3qYwKDAwU6Cl+26CjT0ZvblHzfHJ+SjQDM4p1mZxtgHky4lhmG0+nNarRht8kADfZlbspJWdZarQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/typedoc/-/typedoc-0.24.6.tgz}
-    id: registry.npmjs.org/typedoc/0.24.6
+  registry.npmjs.org/typedoc@0.24.7(typescript@5.0.4):
+    resolution: {integrity: sha512-zzfKDFIZADA+XRIp2rMzLe9xZ6pt12yQOhCr7cD7/PBTjhPmMyMvGrkZ2lPNJitg3Hj1SeiYFNzCsSDrlpxpKw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/typedoc/-/typedoc-0.24.7.tgz}
+    id: registry.npmjs.org/typedoc/0.24.7
     name: typedoc
-    version: 0.24.6
+    version: 0.24.7
     engines: {node: '>= 14.14'}
     hasBin: true
     peerDependencies:
@@ -16891,7 +16928,6 @@ packages:
       minimatch: registry.npmjs.org/minimatch@9.0.0
       shiki: registry.npmjs.org/shiki@0.14.2
       typescript: registry.npmjs.org/typescript@5.0.4
-    dev: true
 
   registry.npmjs.org/typescript@4.7.4:
     resolution: {integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/typescript/-/typescript-4.7.4.tgz}
@@ -17725,13 +17761,11 @@ packages:
     resolution: {integrity: sha512-L9WMGRfrjOhgHSdOYgCt/yRMsXzLDJSL7BPrOZt73gU0iWO4mpqzqQzOz5srxqTvMBaR0XZTSrVWo4j55Rc6cA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/vscode-oniguruma/-/vscode-oniguruma-1.7.0.tgz}
     name: vscode-oniguruma
     version: 1.7.0
-    dev: true
 
   registry.npmjs.org/vscode-textmate@8.0.0:
     resolution: {integrity: sha512-AFbieoL7a5LMqcnOF04ji+rpXadgOXnZsxQr//r83kLPr7biP7am3g9zbaZIaBGwBRWeSvoMD4mgPdX3e4NWBg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/vscode-textmate/-/vscode-textmate-8.0.0.tgz}
     name: vscode-textmate
     version: 8.0.0
-    dev: true
 
   registry.npmjs.org/vue-demi@0.14.1(vue@3.3.2):
     resolution: {integrity: sha512-rt+yuCtXvscYot9SQQj3WKZJVSriPNqVkpVBNEHPzSgBv7QIYzsS410VqVgvx8f9AAPgjg+XPKvmV3vOqqkJQQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/vue-demi/-/vue-demi-0.14.1.tgz}
@@ -17782,6 +17816,7 @@ packages:
       '@vue/runtime-dom': registry.npmjs.org/@vue/runtime-dom@3.3.2
       '@vue/server-renderer': registry.npmjs.org/@vue/server-renderer@3.3.2(vue@3.3.2)
       '@vue/shared': registry.npmjs.org/@vue/shared@3.3.2
+    dev: true
 
   registry.npmjs.org/w3c-xmlserializer@4.0.0:
     resolution: {integrity: sha512-d+BFHzbiCx6zGfz0HyQ6Rg69w9k19nviJspaj4yNscGjrHu94sVP+aRm75yEbCh+r2/yR+7q6hux9LVtbuTGBw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/w3c-xmlserializer/-/w3c-xmlserializer-4.0.0.tgz}
@@ -18335,6 +18370,13 @@ packages:
     version: 1.10.2
     engines: {node: '>= 6'}
     dev: false
+
+  registry.npmjs.org/yaml@2.2.2:
+    resolution: {integrity: sha512-CBKFWExMn46Foo4cldiChEzn7S7SRV+wqiluAb6xmueD/fGyRHIhX8m14vVGgeFWjN540nKCNVj6P21eQjgTuA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/yaml/-/yaml-2.2.2.tgz}
+    name: yaml
+    version: 2.2.2
+    engines: {node: '>= 14'}
+    dev: true
 
   registry.npmjs.org/yargs-parser@20.2.9:
     resolution: {integrity: sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/yargs-parser/-/yargs-parser-20.2.9.tgz}
