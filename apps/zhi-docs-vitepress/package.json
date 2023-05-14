@@ -1,0 +1,24 @@
+{
+  "name": "zhi-docs-vitepress",
+  "version": "1.0.0",
+  "description": "docs via TypeDoc and vitepress",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "keywords": [
+    "zhi",
+    "docs",
+    "vite",
+    "vitepress"
+  ],
+  "author": "terwer",
+  "license": "MIT",
+  "devDependencies": {
+    "vitepress": "1.0.0-alpha.75"
+  },
+  "dependencies": {
+    "vue": "^3.3.2"
+  }
+}
