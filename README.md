@@ -26,8 +26,8 @@
 - [zhihu-theme](https://github.com/terwer/zhihu-theme) - Style-based theme <sup> in progress </sup>
 
 ### widgets
-- [zhi-widget-publisher(sy-post-publisher)](https://github.com/terwer/src-sy-post-publisher) - Siyuan note publishing tool <sup> has been put on the shelf official pendant market </sup>
+- [zhi-widget-publisher(sy-post-publisher)](https://github.com/terwer/sy-post-publisher) - Siyuan note publishing tool <sup> has been put on the shelf official pendant market </sup>
 
 ### plugins
-- [zhi-plugin-bridge-publisher(publish-bridge)](https://github.com/terwer/publish-bridge) - Siyuan note release tool plugin bridge version <sup> has been put on the third-party plug-in market </sup>
-- [zhi-widget-blog(siyuan-blog)](https://github.com/terwer/siyuan-blog) - Blog widget version based on Siyuan Note API <sup> in progress </sup>
+- [zhi-plugin-publisher(siyuan-publish-publisher)](https://github.com/terwer/siyuan-publish-publisher) - Siyuan note release tool plugin bridge version <sup> in progress </sup>
+- [zhi-plugin-blog(siyuan-plugin-blog)](https://github.com/terwer/siyuan-plugin-blog) - Blog widget version based on Siyuan Note API <sup> in progress </sup>

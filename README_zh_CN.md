@@ -26,8 +26,8 @@
 - [zhihu-theme](https://github.com/terwer/zhihu-theme) - 基于样式的主题 <sup>进行中</sup>
 
 ### 挂件
-- [zhi-widget-publisher(sy-post-publisher)](https://github.com/terwer/src-sy-post-publisher) - 思源笔记发布工具 <sup>已上架官方挂件集市</sup>
+- [zhi-widget-publisher(sy-post-publisher)](https://github.com/terwer/sy-post-publisher) - 思源笔记发布工具 <sup>已上架官方挂件集市</sup>
 
 ### 插件
-- [zhi-plugin-bridge-publisher(publish-bridge)](https://github.com/terwer/publish-bridge) - 思源笔记发布工具插件桥接版 <sup>已上架第三方插件市场</sup>
-- [zhi-widget-blog(siyuan-blog)](https://github.com/terwer/siyuan-blog) - 基于思源笔记API的博客插件版 <sup>进行中</sup>
+- [zhi-plugin-publisher(siyuan-publish-publisher)](https://github.com/terwer/siyuan-publish-publisher) - 发布工具插件 <sup>进行中</sup>
+- [zhi-plugin-blog(siyuan-plugin-blog)](https://github.com/terwer/siyuan-plugin-blog) - 基于思源笔记API的博客版 <sup>进行中</sup>
