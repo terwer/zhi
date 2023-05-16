@@ -13,21 +13,22 @@
 ## Zhi 项目家族
 
 ### 类库
-- zhi-framework - 核心框架（ 原未发布的 zhi 主题，依赖 theme.js ） <sup>未上架，可自行探索</sup>
+- zhi-framework - 核心框架（ 原未发布的 `zhi` 主题拆分出来的模块 )
   - [zhi-device](https://github.com/terwer/zhi/tree/main/libs/zhi-device)
   - [zhi-env](https://github.com/terwer/zhi/tree/main/libs/zhi-env)
   - [zhi-log](https://github.com/terwer/zhi/tree/main/libs/zhi-log)
+  - [zhi-electron](https://github.com/terwer/zhi/tree/main/libs/zhi-electron)
   - [zhi-common](https://github.com/terwer/zhi/tree/main/libs/zhi-common)
   - [zhi-blog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api)
   - [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api)
-  - [zhi-electron](https://github.com/terwer/zhi/tree/main/libs/zhi-electron)
+  - [zhi-publisher-sdk](https://github.com/terwer/zhi/tree/main/libs/zhi-publisher-sdk)
 
 ### 主题
-- [zhihu-theme](https://github.com/terwer/zhihu-theme) - 基于样式的主题 <sup>进行中</sup>
+- [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - 基于样式的主题 <sup>进行中</sup>
 
 ### 挂件
-- [zhi-widget-publisher(sy-post-publisher)](https://github.com/terwer/sy-post-publisher) - 思源笔记发布工具 <sup>已上架官方挂件集市</sup>
+- [sy-post-publisher](https://github.com/terwer/sy-post-publisher) - 思源笔记发布工具 <sup>已上架官方挂件集市</sup>
 
 ### 插件
-- [zhi-plugin-publisher(siyuan-plugin-publisher)](https://github.com/terwer/siyuan-plugin-publisher) - 发布工具插件 <sup>进行中</sup>
-- [zhi-plugin-blog(siyuan-plugin-blog)](https://github.com/terwer/siyuan-plugin-blog) - 基于思源笔记API的博客版 <sup>进行中</sup>
+- [siyuan-plugin-publisher](https://github.com/terwer/siyuan-plugin-publisher) - 发布工具插件 <sup>进行中</sup>
+- [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - 基于思源笔记API的博客版 <sup>进行中</sup>
