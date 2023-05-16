@@ -32,3 +32,4 @@
 ### plugins
 - [siyuan-plugin-publisher](https://github.com/terwer/siyuan-plugin-publisher) - Siyuan note release tool plugin bridge version <sup> in progress </sup>
 - [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - Blog widget version based on Siyuan Note API <sup> in progress </sup>
+- [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - Import from epub, docx, pdf, html etc. to siyuan-note <sup> in progress </sup>

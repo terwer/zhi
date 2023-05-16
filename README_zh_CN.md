@@ -32,3 +32,4 @@
 ### 插件
 - [siyuan-plugin-publisher](https://github.com/terwer/siyuan-plugin-publisher) - 发布工具插件 <sup>进行中</sup>
 - [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - 基于思源笔记API的博客版 <sup>进行中</sup>
+- [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - 导入 epub, docx, pdf, html 等格式到思源笔记 <sup>进行中</sup>
