@@ -254,6 +254,19 @@ importers:
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
 
+  libs/zhi-publisher-sdk:
+    dependencies:
+      zhi-siyuan-api:
+        specifier: workspace:*
+        version: link:../zhi-siyuan-api
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config-custom
+      '@terwer/vite-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/vite-config-custom
+
   libs/zhi-siyuan-api:
     dependencies:
       zhi-blog-api:
