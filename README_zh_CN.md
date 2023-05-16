@@ -29,5 +29,5 @@
 - [zhi-widget-publisher(sy-post-publisher)](https://github.com/terwer/sy-post-publisher) - 思源笔记发布工具 <sup>已上架官方挂件集市</sup>
 
 ### 插件
-- [zhi-plugin-publisher(siyuan-publish-publisher)](https://github.com/terwer/siyuan-publish-publisher) - 发布工具插件 <sup>进行中</sup>
+- [zhi-plugin-publisher(siyuan-plugin-publisher)](https://github.com/terwer/siyuan-plugin-publisher) - 发布工具插件 <sup>进行中</sup>
 - [zhi-plugin-blog(siyuan-plugin-blog)](https://github.com/terwer/siyuan-plugin-blog) - 基于思源笔记API的博客版 <sup>进行中</sup>
