@@ -30,6 +30,7 @@ import EnvConstants from "./EnvConstants"
  *
  * @public
  * @author terwer
+ * @description 跨平台环境变量读取
  * @since 0.0.1
  */
 class Env {

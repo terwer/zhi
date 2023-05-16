@@ -13,21 +13,23 @@
 ## Zhi family
 
 ### libraries
-- zhi-framework - Core framework (originally unpublished zhi theme, relying on theme.js) <sup> not on the shelf, can explore </sup>
+- zhi-framework - Core framework (originally unpublished `zhi` theme )
   - [zhi-device](https://github.com/terwer/zhi/tree/main/libs/zhi-device)
   - [zhi-env](https://github.com/terwer/zhi/tree/main/libs/zhi-env)
   - [zhi-log](https://github.com/terwer/zhi/tree/main/libs/zhi-log)
+  - [zhi-electron](https://github.com/terwer/zhi/tree/main/libs/zhi-electron)
   - [zhi-common](https://github.com/terwer/zhi/tree/main/libs/zhi-common)
   - [zhi-blog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api)
   - [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api)
-  - [zhi-electron](https://github.com/terwer/zhi/tree/main/libs/zhi-electron)
+  - [zhi-publisher-sdk](https://github.com/terwer/zhi/tree/main/libs/zhi-publisher-sdk)
 
 ### themes
-- [zhi-theme](https://github.com/terwer/zhi-theme) - Style-based theme <sup> in progress </sup>
+- [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - Style-based theme <sup> in progress </sup>
 
 ### widgets
-- [zhi-widget-publisher(sy-post-publisher)](https://github.com/terwer/src-sy-post-publisher) - Siyuan note publishing tool <sup> has been put on the shelf official pendant market </sup>
+- [sy-post-publisher](https://github.com/terwer/sy-post-publisher) - Siyuan note publishing tool <sup> has been put on the shelf official pendant market </sup>
 
 ### plugins
-- [zhi-plugin-bridge-publisher(publish-bridge)](https://github.com/terwer/publish-bridge) - Siyuan note release tool plugin bridge version <sup> has been put on the third-party plug-in market </sup>
-- [zhi-widget-blog(siyuan-blog)](https://github.com/terwer/siyuan-blog) - Blog widget version based on Siyuan Note API <sup> in progress </sup>
+- [siyuan-plugin-publisher](https://github.com/terwer/siyuan-plugin-publisher) - Siyuan note release tool plugin bridge version <sup> in progress </sup>
+- [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - Blog widget version based on Siyuan Note API <sup> in progress </sup>
+- [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - Import from epub, docx, pdf, html etc. to siyuan-note <sup> in progress </sup>

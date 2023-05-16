@@ -36,13 +36,13 @@ enum BlogTypeEnum {
    */
   BlogTypeEnum_Siyuan = "siyuan",
   /**
-   * WordPress
-   */
-  BlogTypeEnum_Wordpress = "wordpress",
-  /**
    * Metaweblog
    */
   BlogTypeEnum_Metaweblog = "metaweblog",
+  /**
+   * WordPress
+   */
+  BlogTypeEnum_Wordpress = "wordpress",
 }
 
 export default BlogTypeEnum

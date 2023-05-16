@@ -7,7 +7,7 @@ universal esbuild tool for library
 1 install dependency
 
 ```bash
-pnpm add esbuild-config-custom@latest -D
+pnpm add @terwer/esbuild-config-custom@latest -D
 ```
 
 2 add `esbuild.config.cjs` to project root

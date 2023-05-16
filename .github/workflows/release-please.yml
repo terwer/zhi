@@ -8,7 +8,9 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - uses: google-github-actions/release-please-action@v3
+      # Create release
+      - name: Create release
+        uses: google-github-actions/release-please-action@v3
         id: release
         with:
           release-type: node

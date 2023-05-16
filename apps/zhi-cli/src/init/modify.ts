@@ -41,8 +41,7 @@ const modifyTemplate = function (downloadPath: string, file: string, options: an
     fs.writeFileSync(templatePath, result)
     logger.info(`modify ${file} complete`)
   } else {
-    logger.error(`modify ${file} fail`)
-    throw new Error(`no ${file}`)
+    logger.error(`no ${file}, ignore`)
   }
 }
 
