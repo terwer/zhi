@@ -1,6 +1,6 @@
 {
   "name": "zhi",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The ultimate framework for building blog and theme",
   "private": true,
   "workspaces": [
