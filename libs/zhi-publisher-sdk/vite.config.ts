@@ -3,9 +3,10 @@
 import { resolve } from "path"
 import { defineConfig } from "vite"
 import dts from "vite-plugin-dts"
+import noBundlePlugin from "vite-plugin-no-bundle"
 
 export default defineConfig({
-  plugins: [dts()],
+  plugins: [noBundlePlugin(), dts()],
 
   build: {
     lib: {
