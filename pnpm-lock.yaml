@@ -429,6 +429,9 @@ importers:
 
   tools/vite-config-custom:
     dependencies:
+      '@types/minimist':
+        specifier: 1.2.2
+        version: registry.npmjs.org/@types/minimist@1.2.2
       jsdom:
         specifier: ^22.0.0
         version: registry.npmjs.org/jsdom@22.0.0
