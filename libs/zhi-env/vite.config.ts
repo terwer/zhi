@@ -5,13 +5,10 @@ import { join } from "path"
 import { viteStaticCopy } from "vite-plugin-static-copy"
 // import viteTsConfigPaths from "vite-tsconfig-paths"
 import dts from "vite-plugin-dts"
-import noBundlePlugin from "vite-plugin-no-bundle"
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    noBundlePlugin(),
-
     dts({
       entryRoot: "src",
       tsConfigFilePath: join(__dirname, "tsconfig.json"),

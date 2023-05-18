@@ -5,13 +5,10 @@ import { join } from "path"
 import { viteStaticCopy } from "vite-plugin-static-copy"
 // import viteTsConfigPaths from "vite-tsconfig-paths"
 import dts from "vite-plugin-dts"
-import noBundlePlugin from "vite-plugin-no-bundle"
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    noBundlePlugin(),
-
     dts({
       entryRoot: "src",
       tsConfigFilePath: join(__dirname, "tsconfig.json"),
@@ -47,6 +44,7 @@ export default defineConfig({
     lib: {
       // Could also be a dictionary or array of multiple entry points.
       entry: "src/index.ts",
+      name: "zhiDevice",
       fileName: "index",
       // Change this to the formats you want to support.
       // Don't forgot to update your package.json as well.
