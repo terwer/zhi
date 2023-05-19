@@ -32,6 +32,6 @@ import SiyuanDevice from "./lib/siyuanDevice"
 /**
  * zhi-device 入口
  */
-export { DeviceDetection }
+export default DeviceDetection
 export { BrowserUtil, SiyuanDevice }
 export { DeviceTypeEnum, BasePathTypeEnum }
