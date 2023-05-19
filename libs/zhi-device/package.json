@@ -2,7 +2,7 @@
   "name": "zhi-device",
   "version": "0.6.1",
   "type": "module",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "typings": "./dist/index.d.ts",
   "description": "auto check environment whether in browser, browser extension, electron, node and more",
   "repository": "terwer/zhi",
