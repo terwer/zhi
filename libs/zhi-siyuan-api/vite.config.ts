@@ -3,24 +3,27 @@
 import { defineConfig } from "vite"
 import { join } from "path"
 import { viteStaticCopy } from "vite-plugin-static-copy"
-// import viteTsConfigPaths from "vite-tsconfig-paths"
 import dts from "vite-plugin-dts"
-import noBundlePlugin from "vite-plugin-no-bundle"
+import minimist from "minimist"
+import livereload from "rollup-plugin-livereload"
+
+const args = minimist(process.argv.slice(2))
+const isWatch = args.watch || args.w || false
+const devDistDir = "/Users/terwer/Documents/mydocs/siyuan-plugins/siyuan-plugin-publisher/public/libs/zhi-common"
+const distDir = isWatch ? devDistDir : "./dist"
+// const distDir = devDistDir
+
+console.log("isWatch=>", isWatch)
+console.log("distDir=>", distDir)
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    noBundlePlugin(),
-
     dts({
       entryRoot: "src",
       tsConfigFilePath: join(__dirname, "tsconfig.json"),
       skipDiagnostics: true,
     }),
-
-    // viteTsConfigPaths({
-    //   root: "../../",
-    // }),
 
     viteStaticCopy({
       targets: [
@@ -28,18 +31,13 @@ export default defineConfig({
           src: "README.md",
           dest: "./",
         },
+        {
+          src: "package.json",
+          dest: "./",
+        },
       ],
     }),
   ],
-
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [
-  //    viteTsConfigPaths({
-  //      root: '../../',
-  //    }),
-  //  ],
-  // },
 
   // Configuration for building your library.
   // See: https://vitejs.dev/guide/build.html#library-mode
@@ -53,6 +51,7 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
+      plugins: [...(isWatch ? [livereload(devDistDir)] : [])],
       // External packages that should not be bundled into your library.
       external: [],
     },
