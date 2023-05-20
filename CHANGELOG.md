@@ -1,5 +1,71 @@
 # Changelog
 
+## [1.1.0](https://github.com/terwer/zhi/compare/v1.0.0...v1.1.0) (2023-05-20)
+
+
+### Features
+
+* add importer ([5aa433d](https://github.com/terwer/zhi/commit/5aa433d950250270387b480424bd7b3264628fa8))
+* **changelog-parser:** add changelog parser ([ab2fbe5](https://github.com/terwer/zhi/commit/ab2fbe564e095dfb1af4bb5e47b1ba33725f95b2))
+* **changelog-parser:** add changelog parser ([62a977f](https://github.com/terwer/zhi/commit/62a977f2d24ca15ba12277392ff04542cbeb6151))
+* **changelog-parser:** add changelog parser ([0db27b4](https://github.com/terwer/zhi/commit/0db27b47fb0e4b8ac8cd355bcfc24b00d9549b9a))
+* **changelog-parser:** add changelog parser ([58449c9](https://github.com/terwer/zhi/commit/58449c9af0e9b96b0158e757a2cd063704f09162))
+* **changelog-parser:** add changelog parser ([9444470](https://github.com/terwer/zhi/commit/9444470d9c5e0efcdfcd0c41de375e62d67267f8))
+* **changelog-parser:** add changelog parser ([a5a45d2](https://github.com/terwer/zhi/commit/a5a45d275161f8b30cacc545d9ebfad918496a34))
+* **changelog-parser:** add sample changelog template ([6be24d4](https://github.com/terwer/zhi/commit/6be24d48d48f289e9cb4a689e142dc58e4d4ebcd))
+* **changelog-parser:** bundle changelog parser lib ([1397c3c](https://github.com/terwer/zhi/commit/1397c3c9f918dc560c1c16fc778b9c2f735c3891))
+* **commit-config-custom:** add commit config ([5d46384](https://github.com/terwer/zhi/commit/5d4638496757c337e17787f7db15d4b4c3f28371))
+* **commit-config-custom:** add commit config ([47f0d3a](https://github.com/terwer/zhi/commit/47f0d3a3f79557c2a813d08b5e4d8a91fe047de9))
+* **eslint-config-custom:** add svelte support for eslint ([670d2cf](https://github.com/terwer/zhi/commit/670d2cf763d2807f3d431426202b75e673d99d73))
+* **eslint-config-custom:** seperate different platform rules ([cfdeac6](https://github.com/terwer/zhi/commit/cfdeac600469305a7eb024e814ae60c4a0e15895))
+* update deps ([082bce8](https://github.com/terwer/zhi/commit/082bce85b1af7141b5e99ec3b3604e6549982f01))
+* **vite-config-custom:** add minimist ([cda3f3e](https://github.com/terwer/zhi/commit/cda3f3eec25f086e3b1d41796b1f41eb7ca8c306))
+* **zhi-docs-vitepress:** add auto docs using vitepress ([675e945](https://github.com/terwer/zhi/commit/675e9454df71040df89a10fed4cfd8cc7d91f1dc))
+* **zhi-docs-vitepress:** add vitepress docs ([6c6c02a](https://github.com/terwer/zhi/commit/6c6c02a90585f1d928b34e6ca1e45e10a69a058c))
+* **zhi-publisher-sdk:** add publisher sdk ([8a403cd](https://github.com/terwer/zhi/commit/8a403cd4363fbb2aec432567bdeb00b83970f57c))
+* **zhi-root:** no bundle for libs ([d2b8100](https://github.com/terwer/zhi/commit/d2b81005454ce019943d4acf918305638e35a093))
+
+
+### Bug Fixes
+
+* **deps:** bump @docusaurus/core from 2.4.0 to 2.4.1 ([665e07d](https://github.com/terwer/zhi/commit/665e07d88907b2c829a6c8d4eedd4407e892cd6f))
+* **deps:** bump @docusaurus/core from 2.4.0 to 2.4.1 in /apps/zhi-docs ([ab357fa](https://github.com/terwer/zhi/commit/ab357faa32549a25daae318030eb5b194aaaa8ca))
+* **deps:** bump @docusaurus/preset-classic in /apps/zhi-docs ([2f52411](https://github.com/terwer/zhi/commit/2f52411a041e1da934ba2f7542bf862b58951547))
+* **vite-config-custom:** add no bundle plugin ([e2a9482](https://github.com/terwer/zhi/commit/e2a94828ee6f1340919173d421f492a4519419fd))
+* **vite-config-custom:** add no bundle plugin ([4a3f9ce](https://github.com/terwer/zhi/commit/4a3f9ce4514af1f62e335fc1cc1945e244200a12))
+* **vite-config-custom:** add no bundle plugin ([2c4bbc4](https://github.com/terwer/zhi/commit/2c4bbc4a8cba693dd3849311096b92256a57d7ca))
+* **vite-config-custom:** add no bundle plugin ([b0dec63](https://github.com/terwer/zhi/commit/b0dec634461ab7ce55672c231bfbe1d28e5bdec5))
+* **vite-config-custom:** add rollup liveload ([36cf15d](https://github.com/terwer/zhi/commit/36cf15d85c063582cf09831b0d699dbd63ee339f))
+* **vite-config-custom:** add tslib ([e666241](https://github.com/terwer/zhi/commit/e6662416a32f16c3a496eb3741518eaa293499c5))
+* **vite-config-custom:** fix vite deps ([af33871](https://github.com/terwer/zhi/commit/af338713bdee820040258333cc986791118cc4e9))
+* **vite-config-custom:** fix vite deps ([d4cfe51](https://github.com/terwer/zhi/commit/d4cfe5112ee3a5687a77c86c0fcdb8529b914ae4))
+* **vite-config-custom:** update deps ([52155c0](https://github.com/terwer/zhi/commit/52155c02a786c79f96b9688212b08395eb3d10fc))
+* **zhi-cli:** ignore error when template file not exist ([5ae52ac](https://github.com/terwer/zhi/commit/5ae52ac7c558e171fb79b4d26eaa4dfb8c7cdd26))
+
+
+### Miscellaneous
+
+* add minimist types ([bea8923](https://github.com/terwer/zhi/commit/bea89232baf416b2e22847ddeabca0166d597205))
+* add minimist types ([a336c6b](https://github.com/terwer/zhi/commit/a336c6b010370e93fbd46db3d629a72e56882260))
+* **deps-dev:** bump @docusaurus/module-type-aliases ([f62ac27](https://github.com/terwer/zhi/commit/f62ac27a6a22bc25e1676362c9ba0336ecc0f18e))
+* **deps-dev:** bump @docusaurus/module-type-aliases in /apps/zhi-docs ([e375d25](https://github.com/terwer/zhi/commit/e375d25dc5d563554105dd47c4c98c44ddb026e0))
+* fix ci ([6040f32](https://github.com/terwer/zhi/commit/6040f3217fbdbe4bab0c102fc3ca606930dcbc79))
+* update deps ([4c6ad8c](https://github.com/terwer/zhi/commit/4c6ad8cb5ca6a87a817e2871a76bd90f38eef22d))
+* update deps ([98d1303](https://github.com/terwer/zhi/commit/98d1303c7461f18d831193d0fa24fd296bcc362b))
+* update deps ([5a958a9](https://github.com/terwer/zhi/commit/5a958a9fba25ca497fd098225ed4e3c05250c3e0))
+* update deps ([073a9b3](https://github.com/terwer/zhi/commit/073a9b35723e7cc830540cb9c1a6b1a639640b8b))
+* update deps ([b450a36](https://github.com/terwer/zhi/commit/b450a3679af9855e1c9e3e36318648ac19d8c01f))
+* update deps ([e47e8c4](https://github.com/terwer/zhi/commit/e47e8c447eaaaa52009138c82cbb942b4ab422c5))
+* update deps ([a1d5983](https://github.com/terwer/zhi/commit/a1d59831ab1cdc3c290f96fa9ce610466961e045))
+* update deps ([d5a90b9](https://github.com/terwer/zhi/commit/d5a90b9e9d3b2f6e09bd4c95e7fb740713fc8024))
+* update deps ([46fea29](https://github.com/terwer/zhi/commit/46fea29f65770bd37c75c2e8109eaf286b1a8042))
+* update deps ([bda8881](https://github.com/terwer/zhi/commit/bda8881e6d07d0863949dd93e8900be6d526b1f4))
+* update deps ([aad8705](https://github.com/terwer/zhi/commit/aad8705ad9fa4b3e7e967536e9386b474d42aea2))
+* update deps ([a3542f1](https://github.com/terwer/zhi/commit/a3542f1338893b5c1af54d1c17c772e8738536e2))
+* update deps ([42df762](https://github.com/terwer/zhi/commit/42df76290ca9e832e27479f05e75f49f1bdcbf16))
+* update deps ([2b8098c](https://github.com/terwer/zhi/commit/2b8098c1d0b7cc0a081b404b1a6dadedbd7ae8c9))
+* update turbo ([d693872](https://github.com/terwer/zhi/commit/d693872f84946a90435ff6ae3b7b77c87bd52841))
+
 ## 1.0.0 (2023-05-09)
 
 
