@@ -1,6 +1,6 @@
 {
   "name": "zhi-log",
-  "version": "1.13.0",
+  "version": "1.13.1",
   "type": "module",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -19,7 +19,8 @@
     "log"
   ],
   "scripts": {
-    "dev": "vite",
+    "serve": "vite",
+    "dev": "vite build --watch",
     "build": "vite build",
     "start": "vite preview",
     "test": "vitest --watch"

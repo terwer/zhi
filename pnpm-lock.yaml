@@ -429,9 +429,15 @@ importers:
 
   tools/vite-config-custom:
     dependencies:
+      '@types/minimist':
+        specifier: 1.2.2
+        version: registry.npmjs.org/@types/minimist@1.2.2
       jsdom:
         specifier: ^22.0.0
         version: registry.npmjs.org/jsdom@22.0.0
+      minimist:
+        specifier: ^1.2.8
+        version: registry.npmjs.org/minimist@1.2.8
       rollup-plugin-livereload:
         specifier: ^2.0.5
         version: registry.npmjs.org/rollup-plugin-livereload@2.0.5
