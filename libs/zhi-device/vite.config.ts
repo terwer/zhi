@@ -48,7 +48,7 @@ export default defineConfig({
       fileName: "index",
       // Change this to the formats you want to support.
       // Don't forgot to update your package.json as well.
-      formats: ["cjs"],
+      formats: ["es"],
     },
     rollupOptions: {
       // External packages that should not be bundled into your library.
