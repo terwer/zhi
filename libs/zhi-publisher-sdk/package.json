@@ -27,10 +27,5 @@
   "devDependencies": {
     "@terwer/eslint-config-custom": "workspace:*",
     "@terwer/vite-config-custom": "workspace:*"
-  },
-  "dependencies": {
-    "zhi-env": "workspace:*",
-    "zhi-blog-api": "workspace:*",
-    "zhi-siyuan-api": "workspace:*"
   }
 }

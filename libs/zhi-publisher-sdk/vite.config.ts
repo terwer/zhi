@@ -34,6 +34,14 @@ export default defineConfig({
     }),
   ],
 
+  // https://github.com/vitejs/vite/issues/1930
+  // https://vitejs.dev/guide/env-and-mode.html#env-files
+  // https://github.com/vitejs/vite/discussions/3058#discussioncomment-2115319
+  // 在这里自定义变量
+  define: {
+    "process.env.DEV_MODE": `"${isWatch}"`,
+  },
+
   build: {
     // 输出路径
     outDir: distDir,

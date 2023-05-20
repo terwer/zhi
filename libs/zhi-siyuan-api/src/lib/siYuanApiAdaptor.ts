@@ -37,8 +37,8 @@ import ZhiSiyuanApiUtil from "./ZhiSiyuanApiUtil"
  * @since 1.0.0
  */
 class SiYuanApiAdaptor implements IBlogApi {
-  private readonly logger
-  private readonly common
+  private logger: any
+  private common: any
   private readonly siyuanKernelApi
   private readonly cfg
 
@@ -48,11 +48,14 @@ class SiYuanApiAdaptor implements IBlogApi {
    * @param cfg - 环境变量 或者 配置项
    */
   constructor(cfg: Env | SiyuanConfig) {
-    this.logger = ZhiSiyuanApiUtil.zhiLog("siyuan-api-adaptor")
-    this.common = ZhiSiyuanApiUtil.zhiCommon()
-
     this.siyuanKernelApi = new SiyuanKernelApi(cfg)
     this.cfg = this.siyuanKernelApi.siyuanConfig
+  }
+
+  public init(appInstance: any) {
+    this.logger = ZhiSiyuanApiUtil.zhiLog(appInstance, "siyuan-api-adaptor")
+    this.common = ZhiSiyuanApiUtil.zhiCommon(appInstance)
+    this.siyuanKernelApi.init(appInstance)
   }
 
   async deletePost(postid: string): Promise<boolean> {

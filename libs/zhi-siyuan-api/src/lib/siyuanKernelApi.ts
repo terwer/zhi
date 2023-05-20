@@ -26,7 +26,6 @@
 import { Env } from "zhi-env"
 import SiyuanConfig from "./siyuanConfig"
 import { LogFactory, DefaultLogger, EnvHelper, LogLevelEnum } from "zhi-log"
-import { ZhiCommon } from "zhi-common"
 import SiyuanConstants from "./siyuanConstants"
 import ISiyuanKernelApi, { type SiyuanData } from "./ISiyuanKernelApi"
 import ZhiSiyuanApiUtil from "./ZhiSiyuanApiUtil"
@@ -52,9 +51,9 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    */
   public readonly VERSION
 
-  private readonly logger: DefaultLogger
-  private readonly env: Env
-  private readonly common: ZhiCommon
+  private logger: DefaultLogger
+  private env: any
+  private common: any
   public readonly siyuanConfig
 
   /**
@@ -64,8 +63,6 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    */
   constructor(cfg: Env | SiyuanConfig) {
     this.VERSION = "1.0.0"
-    this.env = ZhiSiyuanApiUtil.zhiEnv()
-    this.common = new ZhiCommon()
 
     if (cfg instanceof SiyuanConfig) {
       this.siyuanConfig = cfg
@@ -80,6 +77,11 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
 
       this.logger = LogFactory.customLogFactory(logLevel, "siyuan-kernel-api", env).getLogger(SiyuanKernelApi.name)
     }
+  }
+
+  public init(appInstance: any) {
+    this.env = ZhiSiyuanApiUtil.zhiEnv(appInstance)
+    this.common = ZhiSiyuanApiUtil.zhiCommon(appInstance)
   }
 
   /**
