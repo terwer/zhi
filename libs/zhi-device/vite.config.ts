@@ -11,6 +11,7 @@ const args = minimist(process.argv.slice(2))
 const isWatch = args.watch || args.w || false
 const devDistDir = "/Users/terwer/Documents/mydocs/siyuan-plugins/siyuan-plugin-publisher/public/libs/zhi-device"
 const distDir = isWatch ? devDistDir : "./dist"
+// const distDir = devDistDir
 
 console.log("isWatch=>", isWatch)
 console.log("distDir=>", distDir)
@@ -24,14 +25,14 @@ export default defineConfig({
       skipDiagnostics: true,
     }),
 
-    // viteTsConfigPaths({
-    //   root: "../../",
-    // }),
-
     viteStaticCopy({
       targets: [
         {
           src: "README.md",
+          dest: "./",
+        },
+        {
+          src: "package.json",
           dest: "./",
         },
       ],

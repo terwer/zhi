@@ -3,7 +3,6 @@
 import { defineConfig } from "vite"
 import { join } from "path"
 import { viteStaticCopy } from "vite-plugin-static-copy"
-// import viteTsConfigPaths from "vite-tsconfig-paths"
 import dts from "vite-plugin-dts"
 import minimist from "minimist"
 import livereload from "rollup-plugin-livereload"
@@ -12,6 +11,7 @@ const args = minimist(process.argv.slice(2))
 const isWatch = args.watch || args.w || false
 const devDistDir = "/Users/terwer/Documents/mydocs/siyuan-plugins/siyuan-plugin-publisher/public/libs/zhi-env"
 const distDir = isWatch ? devDistDir : "./dist"
+// const distDir = devDistDir
 
 console.log("isWatch=>", isWatch)
 console.log("distDir=>", distDir)
@@ -25,12 +25,17 @@ export default defineConfig({
       skipDiagnostics: true,
     }),
 
-    // viteTsConfigPaths({
-    //   root: "../../",
-    // }),
-
     viteStaticCopy({
-      targets: [{ src: "README.md", dest: "./" }],
+      targets: [
+        {
+          src: "README.md",
+          dest: "./",
+        },
+        {
+          src: "package.json",
+          dest: "./",
+        },
+      ],
     }),
   ],
 

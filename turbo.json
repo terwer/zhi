@@ -5,6 +5,9 @@
     "dev": {
       "cache": false
     },
+    "localDev": {
+      "cache": false
+    },
     "build": {
       "cache": false,
       "dependsOn": ["^build"],
