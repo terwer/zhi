@@ -23,5 +23,8 @@
  * questions.
  */
 import ChangelogParser from "./changelogParser"
+import * as process from "process"
 
-export { ChangelogParser }
+const changelogParser = new ChangelogParser()
+console.log("当前工作目录=>", process.cwd())
+changelogParser.parseChangelog(process.cwd(), false)

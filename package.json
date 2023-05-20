@@ -23,7 +23,8 @@
     "lint": "turbo run lint",
     "graph": " turbo run build --graph=dependency-graph.png",
     "prepare": "is-ci || husky install",
-    "cz": "git-cz"
+    "cz": "git-cz",
+    "prepareRelease": "zhi-changelog"
   },
   "config": {
     "commitizen": {
@@ -32,6 +33,7 @@
     "commitizenEmoji": {}
   },
   "devDependencies": {
+    "@terwer/changelog-parser": "workspace:*",
     "@terwer/eslint-config-custom": "workspace:*",
     "turbo": "^1.9.4"
   },
