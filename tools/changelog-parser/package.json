@@ -5,6 +5,9 @@
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "description": "a changelog parser",
+  "bin": {
+    "zhi-changelog": "dist/index.js"
+  },
   "keywords": [
     "changelog",
     "commit"
