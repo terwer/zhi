@@ -42,6 +42,13 @@ export default defineConfig({
   // Configuration for building your library.
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
+    // 输出路径
+    outDir: distDir,
+    emptyOutDir: false,
+
+    // 构建后是否生成 source map 文件
+    sourcemap: false,
+
     lib: {
       // Could also be a dictionary or array of multiple entry points.
       entry: "src/index.ts",
