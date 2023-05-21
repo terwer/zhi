@@ -23,6 +23,12 @@
   - [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api)
   - [zhi-publisher-sdk](https://github.com/terwer/zhi/tree/main/libs/zhi-publisher-sdk)
 
+### 工具
+
+- [zhi-publisher-hook](https://github.com/terwer/zhi/tree/main/libs/zhi-publisher-hook)
+- [widget-siyuan-hook](https://github.com/terwer/zhi/tree/main/libs/widget-siyuan-hook)
+- [plugin-publisher-bridge](https://github.com/terwer/zhi/tree/main/libs/zplugin-publisher-bridge)
+
 ### 主题
 - [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - 基于样式的主题 <sup>进行中</sup>
 
