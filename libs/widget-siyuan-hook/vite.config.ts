@@ -8,11 +8,13 @@ const args = minimist(process.argv.slice(2))
 const isWatch = args.watch || args.w
 const devDistDir = "/Users/terwer/Documents/mydocs/siyuan-widgets/sy-post-publisher/public/lib"
 const distDir = isWatch ? devDistDir : "./dist"
+// const distDir = devDistDir
 
 export default defineConfig({
   build: {
     // 输出路径
     outDir: distDir,
+    emptyOutDir: false,
 
     lib: {
       // Could also be a dictionary or array of multiple entry points
