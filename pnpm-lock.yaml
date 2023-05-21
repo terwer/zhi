@@ -97,6 +97,41 @@ importers:
         specifier: ^5.0.4
         version: registry.npmjs.org/typescript@5.0.4
 
+  libs/plugin-publisher-bridge:
+    dependencies:
+      zhi-device:
+        specifier: workspace:*
+        version: link:../zhi-device
+      zhi-env:
+        specifier: workspace:*
+        version: link:../zhi-env
+      zhi-log:
+        specifier: workspace:*
+        version: link:../zhi-log
+      zhi-publisher-hook:
+        specifier: workspace:*
+        version: link:../zhi-publisher-hook
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config-custom
+      '@terwer/vite-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/vite-config-custom
+
+  libs/widget-siyuan-hook:
+    dependencies:
+      zhi-publisher-hook:
+        specifier: workspace:*
+        version: link:../zhi-publisher-hook
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config-custom
+      '@terwer/vite-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/vite-config-custom
+
   libs/zhi-blog-api:
     dependencies:
       zhi-common:
@@ -235,6 +270,25 @@ importers:
       '@terwer/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
+      '@terwer/vite-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/vite-config-custom
+
+  libs/zhi-publisher-hook:
+    dependencies:
+      zhi-device:
+        specifier: workspace:*
+        version: link:../zhi-device
+      zhi-env:
+        specifier: workspace:*
+        version: link:../zhi-env
+      zhi-log:
+        specifier: workspace:*
+        version: link:../zhi-log
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config-custom
       '@terwer/vite-config-custom':
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
