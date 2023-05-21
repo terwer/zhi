@@ -6,7 +6,8 @@ import minimist from "minimist"
 
 const args = minimist(process.argv.slice(2))
 const isWatch = args.watch || args.w
-const devDistDir = "/Users/terwer/Documents/mydocs/siyuan-plugins/siyuan-plugin-publisher/public/libs/publisher-bridge"
+const devDistDir =
+  "/Users/terwer/Documents/mydocs/siyuan-plugins/siyuan-plugin-publisher/public/libs/plugin-publisher-bridge"
 const distDir = isWatch ? devDistDir : "./dist"
 
 export default defineConfig({
