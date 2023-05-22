@@ -23,7 +23,6 @@
  * questions.
  */
 
-import ZhiServerElectronUtil from "../util/ZhiServerElectronUtil"
 import { BrowserUtil, SiyuanDevice } from "zhi-device"
 
 /**
@@ -34,12 +33,12 @@ import { BrowserUtil, SiyuanDevice } from "zhi-device"
  * @since 1.0.0
  */
 class WindowManager {
-  private readonly logger
-  private readonly common
+  private logger: any
+  private common: any
 
-  constructor() {
-    this.logger = ZhiServerElectronUtil.zhiLog("window-manager")
-    this.common = ZhiServerElectronUtil.zhiCommon()
+  init(logger: any, common: any) {
+    this.logger = logger
+    this.common = common
   }
 
   /**

@@ -32,7 +32,9 @@ const args = minimist(process.argv.slice(2))
 const isWatch = args.watch || args.w
 
 // for outer custom output for dev
-const baseDir = "./"
+const baseDir = isWatch
+  ? "/Users/terwer/Documents/mydocs/siyuan-plugins/siyuan-plugin-publisher/public/libs/zhi-electron"
+  : "./"
 const distDir = isWatch ? baseDir : path.join(baseDir, "dist")
 
 /**

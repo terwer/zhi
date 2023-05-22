@@ -23,7 +23,6 @@
  * questions.
  */
 
-import ZhiServerElectronUtil from "../util/ZhiServerElectronUtil"
 import WindowManager from "./WindowManager"
 import { SiyuanDevice } from "zhi-device"
 
@@ -35,14 +34,17 @@ import { SiyuanDevice } from "zhi-device"
  * @since 1.0.0
  */
 class ZhiBrowserWindow {
-  private readonly logger
+  private logger: any
 
   private readonly windowManager
 
   constructor() {
-    this.logger = ZhiServerElectronUtil.zhiLog("zhi-browser-window")
-
     this.windowManager = new WindowManager()
+  }
+
+  init(logger: any, common: any) {
+    this.logger = logger
+    this.windowManager.init(logger, common)
   }
 
   /**
@@ -54,7 +56,6 @@ class ZhiBrowserWindow {
   public initBrowserWindow() {
     SiyuanDevice.siyuanWindow().zhiWindow = this.windowManager
     this.logger.info("zhiWindow mounted")
-    return "ok"
   }
 }
 

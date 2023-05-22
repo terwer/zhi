@@ -202,9 +202,6 @@ importers:
 
   libs/zhi-electron:
     dependencies:
-      zhi-common:
-        specifier: workspace:*
-        version: link:../zhi-common
       zhi-device:
         specifier: workspace:*
         version: link:../zhi-device
