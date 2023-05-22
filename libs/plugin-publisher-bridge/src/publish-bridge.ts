@@ -28,6 +28,9 @@ import { Env } from "zhi-env"
 import { LogFactory, LogLevelEnum, DefaultLogger } from "zhi-log"
 import { SiyuanDevice } from "zhi-device"
 
+// const REPO_HASH_0_8_0 = "06148220cfc6344e18225d82604a193cc173f511"
+const REPO_HASH_0_8_1 = "c6f0e84b0df40a0c5b9de2b5716fc33f93291f1a"
+
 /**
  * 挂件桥接器
  *
@@ -36,7 +39,7 @@ import { SiyuanDevice } from "zhi-device"
  * @since 0.6.8
  */
 class PublishBridge {
-  private readonly REPO_HASH_0_8_0 = "06148220cfc6344e18225d82604a193cc173f511"
+  private readonly repoHash = REPO_HASH_0_8_1
   private logger: DefaultLogger
   private publishHook: PublishHook
   private siyuanDevice
@@ -84,7 +87,7 @@ class PublishBridge {
     const data = {
       repoURL: "https://github.com/terwer/sy-post-publisher",
       packageName: "sy-post-publisher",
-      repoHash: this.REPO_HASH_0_8_0,
+      repoHash: this.repoHash,
       mode: 0,
     }
     const fetchOps = {
