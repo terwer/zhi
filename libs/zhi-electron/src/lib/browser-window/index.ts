@@ -54,8 +54,11 @@ class ZhiBrowserWindow {
    * @since 1.0.0
    */
   public initBrowserWindow() {
-    SiyuanDevice.siyuanWindow().zhiWindow = this.windowManager
-    this.logger.info("zhiWindow mounted")
+    const win = SiyuanDevice.siyuanWindow()
+    win.zhi = win.zhi ?? {}
+    win.zhi.windowManager = this.windowManager
+    this.logger.info("zhiWindow inited")
+    return this.windowManager
   }
 }
 
