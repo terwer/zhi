@@ -9,7 +9,8 @@ import livereload from "rollup-plugin-livereload"
 
 const args = minimist(process.argv.slice(2))
 const isWatch = args.watch || args.w || false
-const devDistDir = "/Users/terwer/Documents/mydocs/siyuan-plugins/siyuan-plugin-publisher/public/libs/zhi-publisher-sdk"
+// const devDistDir = "/Users/terwer/Documents/mydocs/siyuan-plugins/siyuan-plugin-publisher/public/libs/zhi-publisher-sdk"
+const devDistDir = "/Users/terwer/Documents/mydocs/siyuan-widgets/sy-post-publisher/public/libs/zhi-publisher-sdk/"
 const distDir = isWatch ? devDistDir : "./dist"
 // const distDir = devDistDir
 

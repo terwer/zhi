@@ -76,6 +76,8 @@ class PublishSdk {
     if (!this.bApi) {
       let apiAdaptor
       let blogType
+
+      console.log(type instanceof this.Env)
       if (type instanceof this.Env) {
         blogType = type.getEnv(this.BlogConstants.DEFAULT_BLOG_TYPE_KEY)
       }

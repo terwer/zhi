@@ -26,6 +26,8 @@
   },
   "devDependencies": {
     "@terwer/eslint-config-custom": "workspace:*",
-    "@terwer/vite-config-custom": "workspace:*"
+    "@terwer/vite-config-custom": "workspace:*",
+    "@types/path-browserify": "^1.0.0",
+    "path-browserify": "^1.0.1"
   }
 }
