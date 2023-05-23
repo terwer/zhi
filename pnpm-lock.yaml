@@ -301,9 +301,6 @@ importers:
       '@types/path-browserify':
         specifier: ^1.0.0
         version: registry.npmjs.org/@types/path-browserify@1.0.0
-      path-browserify:
-        specifier: ^1.0.1
-        version: registry.npmjs.org/path-browserify@1.0.1
 
   libs/zhi-siyuan-api:
     dependencies:
@@ -13297,6 +13294,7 @@ packages:
     resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/path-browserify/-/path-browserify-1.0.1.tgz}
     name: path-browserify
     version: 1.0.1
+    dev: false
 
   registry.npmjs.org/path-exists@3.0.0:
     resolution: {integrity: sha512-bpC7GYwiDYQ4wYLe+FA8lhRjhQCMcQGuSgGGqDkg/QerRWw9CmGRT0iSOVRSZJ29NMLZgIzqaljJ63oaL4NIJQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/path-exists/-/path-exists-3.0.0.tgz}

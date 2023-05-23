@@ -23,7 +23,7 @@
  * questions.
  */
 
-import { CategoryInfo, IBlogApi, MediaObject, Post, PostStatusEnum, UserBlog } from "zhi-blog-api"
+import { BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, UserBlog } from "zhi-blog-api"
 import SiyuanKernelApi from "./siyuanKernelApi"
 import { Env } from "zhi-env"
 import SiyuanConfig from "./siyuanConfig"
@@ -36,7 +36,7 @@ import ZhiSiyuanApiUtil from "./ZhiSiyuanApiUtil"
  * @version 1.0.0
  * @since 1.0.0
  */
-class SiYuanApiAdaptor implements IBlogApi {
+class SiYuanApiAdaptor extends BlogApi {
   private logger: any
   private common: any
   private readonly siyuanKernelApi
@@ -48,6 +48,7 @@ class SiYuanApiAdaptor implements IBlogApi {
    * @param cfg - 环境变量 或者 配置项
    */
   constructor(cfg: Env | SiyuanConfig) {
+    super()
     this.siyuanKernelApi = new SiyuanKernelApi(cfg)
     this.cfg = this.siyuanKernelApi.siyuanConfig
   }
@@ -58,17 +59,15 @@ class SiYuanApiAdaptor implements IBlogApi {
     this.siyuanKernelApi.init(appInstance)
   }
 
-  async deletePost(postid: string): Promise<boolean> {
-    console.log(postid)
-    return Promise.resolve(false)
+  public async deletePost(postid: string): Promise<boolean> {
+    return await super.deletePost(postid)
   }
 
-  async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {
-    console.log(`${postid} ${post} ${publish}`)
-    return Promise.resolve(false)
+  public async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {
+    return await super.editPost(postid, post, publish)
   }
 
-  async getCategories(): Promise<CategoryInfo[]> {
+  public async getCategories(): Promise<CategoryInfo[]> {
     return Promise.resolve([])
   }
 
@@ -133,9 +132,8 @@ class SiYuanApiAdaptor implements IBlogApi {
     return commonPost
   }
 
-  async getPreviewUrl(postid: string): Promise<string> {
-    console.log(postid)
-    return Promise.resolve("")
+  public async getPreviewUrl(postid: string): Promise<string> {
+    return await super.getPreviewUrl(postid)
   }
 
   public async getRecentPosts(numOfPosts: number, page?: number, keyword?: string): Promise<Array<Post>> {
@@ -197,18 +195,16 @@ class SiYuanApiAdaptor implements IBlogApi {
     return await this.siyuanKernelApi.getRootBlocksCount(keyword ?? "")
   }
 
-  async getUsersBlogs(): Promise<Array<UserBlog>> {
-    return Promise.resolve([])
+  public async getUsersBlogs(): Promise<Array<UserBlog>> {
+    return await super.getUsersBlogs()
   }
 
-  newMediaObject(mediaObject: MediaObject): Promise<MediaObject> {
-    console.log(mediaObject)
-    return Promise.resolve({} as MediaObject)
+  public async newMediaObject(mediaObject: MediaObject): Promise<MediaObject> {
+    return await super.newMediaObject(mediaObject)
   }
 
-  async newPost(post: Post, publish?: boolean): Promise<string> {
-    console.log(`${post} ${publish}`)
-    return Promise.resolve("")
+  public async newPost(post: Post, publish?: boolean): Promise<string> {
+    return await super.newPost(post, publish)
   }
 }
 
