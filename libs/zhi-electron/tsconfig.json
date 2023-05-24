@@ -6,7 +6,7 @@
     "moduleResolution": "node",
     "isolatedModules": false,
     "esModuleInterop": true,
-    "outDir": "./lib"
+    "outDir": "./dist"
   },
   "include": ["env.d.ts", "**/*.ts", "**/*.spec.ts"],
   "exclude": ["node_modules"]

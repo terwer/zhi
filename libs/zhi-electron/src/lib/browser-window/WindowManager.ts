@@ -118,7 +118,7 @@ class WindowManager {
       }
       newWindow.loadURL(url)
     } catch (e) {
-      this.logger.error("Open browser window failed", e)
+      this.logger.error("Open siyuan browser window failed=>", e)
     }
   }
 }
