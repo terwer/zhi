@@ -145,6 +145,13 @@ class DateUtil {
     const now = this.formatIsoToZhDateFormat(new Date().toISOString(), true)
     return now.split(this.TIME_SPLIT)[1]
   }
+
+  /**
+   * 当前年份
+   */
+  public nowYear(): number {
+    return new Date().getFullYear()
+  }
 }
 
 export default DateUtil
