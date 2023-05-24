@@ -1,6 +1,6 @@
 {
   "name": "zhi-common",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "type": "module",
   "description": "a collection of util tools",
   "main": "./dist/index.js",
