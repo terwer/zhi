@@ -1,12 +1,12 @@
 {
-  "name": "zhi-publisher-sdk",
-  "version": "0.2.1",
+  "name": "zhi-lib-base",
+  "version": "0.0.1",
   "type": "module",
-  "description": "a common sdk for publishing post to every platform",
+  "description": "minimization dependencies for class library",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "repository": "terwer/zhi",
-  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-publisher-sdk",
+  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-lib-base",
   "author": "terwer",
   "license": "GPL",
   "files": [
@@ -25,8 +25,7 @@
     "test": "vitest --watch"
   },
   "devDependencies": {
-    "@terwer/eslint-config-custom": "workspace:*",
-    "@terwer/vite-config-custom": "workspace:*",
-    "@types/path-browserify": "^1.0.0"
+    "@terwer/eslint-config-custom": "^1.2.0",
+    "@terwer/vite-config-custom": "^0.5.0"
   }
 }

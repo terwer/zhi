@@ -14,14 +14,17 @@
 
 ### 类库
 - zhi-framework - 核心框架（ 原未发布的 `zhi` 主题拆分出来的模块 )
+  - [zhi-lib-base](https://github.com/terwer/zhi/tree/main/libs/zhi-lib-base)
   - [zhi-device](https://github.com/terwer/zhi/tree/main/libs/zhi-device)
   - [zhi-env](https://github.com/terwer/zhi/tree/main/libs/zhi-env)
   - [zhi-log](https://github.com/terwer/zhi/tree/main/libs/zhi-log)
-  - [zhi-electron](https://github.com/terwer/zhi/tree/main/libs/zhi-electron)
   - [zhi-common](https://github.com/terwer/zhi/tree/main/libs/zhi-common)
   - [zhi-blog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api)
   - [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api)
-  - [zhi-publisher-sdk](https://github.com/terwer/zhi/tree/main/libs/zhi-publisher-sdk)
+  - [zhi-metaweblog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-metaweblog-api)
+  - [zhi-wordpress-api](https://github.com/terwer/zhi/tree/main/libs/zhi-wordpress-api)
+  - [zhi-rest-api](https://github.com/terwer/zhi/tree/main/libs/zhi-rest-api)
+  - [zhi-http-api](https://github.com/terwer/zhi/tree/main/libs/zhi-http-api)
 
 ### 工具
 
