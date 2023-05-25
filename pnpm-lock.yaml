@@ -133,6 +133,10 @@ importers:
         version: link:../../tools/vite-config-custom
 
   libs/zhi-blog-api:
+    dependencies:
+      zhi-lib-base:
+        specifier: workspace:*
+        version: link:../zhi-lib-base
     devDependencies:
       '@terwer/eslint-config-custom':
         specifier: workspace:*
@@ -189,31 +193,6 @@ importers:
       '@terwer/vite-config-custom':
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
-
-  libs/zhi-electron:
-    dependencies:
-      zhi-device:
-        specifier: workspace:*
-        version: link:../zhi-device
-      zhi-env:
-        specifier: workspace:*
-        version: link:../zhi-env
-      zhi-log:
-        specifier: workspace:*
-        version: link:../zhi-log
-    devDependencies:
-      '@terwer/esbuild-config-custom':
-        specifier: workspace:*
-        version: link:../../tools/esbuild-config-custom
-      '@terwer/eslint-config-custom':
-        specifier: workspace:*
-        version: link:../../tools/eslint-config-custom
-      '@terwer/tsconfig':
-        specifier: workspace:*
-        version: link:../../tools/tsconfig
-      '@terwer/vitest-config-custom':
-        specifier: workspace:*
-        version: link:../../tools/vitest-config-custom
 
   libs/zhi-env:
     devDependencies:
@@ -288,18 +267,6 @@ importers:
       '@terwer/vite-config-custom':
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
-
-  libs/zhi-publisher-sdk:
-    devDependencies:
-      '@terwer/eslint-config-custom':
-        specifier: workspace:*
-        version: link:../../tools/eslint-config-custom
-      '@terwer/vite-config-custom':
-        specifier: workspace:*
-        version: link:../../tools/vite-config-custom
-      '@types/path-browserify':
-        specifier: ^1.0.0
-        version: registry.npmjs.org/@types/path-browserify@1.0.0
 
   libs/zhi-siyuan-api:
     dependencies:
@@ -5220,12 +5187,6 @@ packages:
     name: '@types/parse5'
     version: 5.0.3
     dev: false
-
-  registry.npmjs.org/@types/path-browserify@1.0.0:
-    resolution: {integrity: sha512-XMCcyhSvxcch8b7rZAtFAaierBYdeHXVvg2iYnxOV0MCQHmPuRRmGZPFDRzPayxcGiiSL1Te9UIO+f3cuj0tfw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/path-browserify/-/path-browserify-1.0.0.tgz}
-    name: '@types/path-browserify'
-    version: 1.0.0
-    dev: true
 
   registry.npmjs.org/@types/prettier@2.7.2:
     resolution: {integrity: sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/prettier/-/prettier-2.7.2.tgz}

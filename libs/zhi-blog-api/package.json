@@ -30,5 +30,8 @@
     "@terwer/eslint-config-custom": "workspace:*",
     "@terwer/tsconfig": "workspace:*",
     "@terwer/vite-config-custom": "workspace:*"
+  },
+  "dependencies": {
+    "zhi-lib-base": "workspace:*"
   }
 }

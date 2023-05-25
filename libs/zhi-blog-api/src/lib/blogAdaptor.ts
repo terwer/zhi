@@ -27,8 +27,8 @@ import UserBlog from "./models/userBlog"
 import Post from "./models/post"
 import CategoryInfo from "./models/categoryInfo"
 import MediaObject from "./models/mediaObject"
-import ZhiBlogApiUtil from "./utils/ZhiBlogApiUtil"
 import { IBlogApi } from "./IBlogApi"
+import { simpleLogger } from "zhi-lib-base"
 
 /**
  * 博客API
@@ -52,7 +52,7 @@ class BlogAdaptor implements IBlogApi {
    * @param apiAdaptor - 对应博客的适配器，例如：SiYuanApiAdaptor
    */
   constructor(apiAdaptor: IBlogApi) {
-    this.logger = ZhiBlogApiUtil.zhiLog("zhi-blog-api")
+    this.logger = simpleLogger("zhi-blog-api", "zhi", false)
     this.VERSION = "1.0.0"
     this.apiAdaptor = apiAdaptor
   }

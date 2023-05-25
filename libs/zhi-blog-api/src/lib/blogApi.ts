@@ -28,7 +28,7 @@ import Post from "./models/post"
 import CategoryInfo from "./models/categoryInfo"
 import UserBlog from "./models/userBlog"
 import MediaObject from "./models/mediaObject"
-import { NotImplementedException } from "zhi-common"
+import { NotImplementedException } from "zhi-lib-base"
 
 /**
  * 博客基类
