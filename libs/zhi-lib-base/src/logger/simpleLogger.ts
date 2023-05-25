@@ -69,7 +69,14 @@ const simpleLogger = (name: string, customSign?: string, isDev?: boolean): ILogg
         log("DEBUG", msg, obj)
       }
     },
-    info: (msg: string, obj?: any) => log("INFO", msg, obj),
+    info: (msg: string, obj?: any) => {
+      const time = formatDate(new Date())
+      if (obj) {
+        console.info(`[${sign}] [${time}] [INFO] ${msg}`, obj)
+      } else {
+        console.info(`[${sign}] [${time}] [INFO] ${msg}`)
+      }
+    },
     warn: (msg: string, obj?: any) => {
       const time = formatDate(new Date())
       if (obj) {
@@ -79,10 +86,19 @@ const simpleLogger = (name: string, customSign?: string, isDev?: boolean): ILogg
       }
     },
     error: (msg: string | Error, obj?: any) => {
-      if (typeof msg == "string") {
-        log("ERROR", msg, obj)
+      const time = formatDate(new Date())
+      if (obj) {
+        if (typeof msg == "string") {
+          console.error(`[${sign}] [${time}] [ERROR] ${msg}`, obj)
+        } else {
+          console.error(`[${sign}] [${time}] [ERROR] ${msg.toString()}`, obj)
+        }
       } else {
-        console.error(`[${sign}] [${formatDate(new Date())}] [ERROR] [${name}] error occurred`, msg)
+        if (typeof msg == "string") {
+          console.error(`[${sign}] [${time}] [ERROR] ${msg.toString()}`)
+        } else {
+          console.error(`[${sign}] [${time}] [ERROR] an error occurred =>`, msg)
+        }
       }
     },
   }

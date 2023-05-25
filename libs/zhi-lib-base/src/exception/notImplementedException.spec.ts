@@ -23,7 +23,20 @@
  * questions.
  */
 
-import NotImplementedException from "./exception/notImplementedException"
-import simpleLogger from "./logger/simpleLogger"
+import { describe, expect, it } from "vitest"
+import NotImplementedException from "./notImplementedException"
 
-export { NotImplementedException, simpleLogger }
+// 编写测试用例
+describe("NotImplementedException", () => {
+  it("should create an instance with default message", () => {
+    const error = new NotImplementedException()
+    expect(error.message).toBe("Not implemented")
+    expect(error.name).toBe("NotImplementedException")
+  })
+
+  it("should create an instance with custom message", () => {
+    const error = new NotImplementedException("Custom message")
+    expect(error.message).toBe("Custom message")
+    expect(error.name).toBe("NotImplementedException")
+  })
+})
