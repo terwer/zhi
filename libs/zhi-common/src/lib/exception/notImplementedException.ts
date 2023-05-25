@@ -23,9 +23,27 @@
  * questions.
  */
 
-import ZhiCommon from "./lib/zhi-common"
-import ZhiUtil from "./lib/ZhiUtil"
-import NotImplementedException from "./lib/exception/notImplementedException"
+/**
+ * NotImplementedException 表示未实现的异常
+ *
+ * @author terwer
+ * @version 1.6.0
+ * @since 1.6.0
+ */
+class NotImplementedException extends Error {
+  /**
+   * 创建一个 NotImplementedException 对象。
+   *
+   * @param message 异常的描述信息。
+   */
+  constructor(message = "Not implemented") {
+    // 调用父类 Error 的构造函数，设置异常信息。
+    super(message)
+    // 设置异常的名称。
+    this.name = "NotImplementedException"
+    // 设定实例化对象的原型，以便在类继承中能够正确获得方法。
+    Object.setPrototypeOf(this, NotImplementedException.prototype)
+  }
+}
 
-export { ZhiCommon }
-export { ZhiUtil, NotImplementedException }
+export default NotImplementedException

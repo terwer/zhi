@@ -28,49 +28,50 @@ import Post from "./models/post"
 import CategoryInfo from "./models/categoryInfo"
 import UserBlog from "./models/userBlog"
 import MediaObject from "./models/mediaObject"
+import { NotImplementedException } from "zhi-common"
 
 /**
  * 博客基类
  */
 class BlogApi implements IBlogApi {
-  public async deletePost(postid: string): Promise<boolean> {
-    throw new Error("You must implement this method in sub class")
-  }
-
-  public async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {
-    throw new Error("You must implement this method in sub class")
-  }
-
-  public async getCategories(): Promise<CategoryInfo[]> {
-    throw new Error("You must implement this method in sub class")
-  }
-
-  public async getPost(postid: string, useSlug?: boolean): Promise<Post> {
-    throw new Error("You must implement this method in sub class")
-  }
-
-  public async getPreviewUrl(postid: string): Promise<string> {
-    throw new Error("You must implement this method in sub class")
-  }
-
-  public async getRecentPosts(numOfPosts: number, page?: number, keyword?: string): Promise<Array<Post>> {
-    throw new Error("You must implement this method in sub class")
+  public async getUsersBlogs(): Promise<Array<UserBlog>> {
+    throw new NotImplementedException("You must implement this method in sub class")
   }
 
   public async getRecentPostsCount(keyword?: string): Promise<number> {
-    throw new Error("You must implement this method in sub class")
+    throw new NotImplementedException("You must implement this method in sub class")
   }
 
-  public async getUsersBlogs(): Promise<Array<UserBlog>> {
-    throw new Error("You must implement this method in sub class")
-  }
-
-  public async newMediaObject(mediaObject: MediaObject): Promise<MediaObject> {
-    throw new Error("You must implement this method in sub class")
+  public async getRecentPosts(numOfPosts: number, page?: number, keyword?: string): Promise<Array<Post>> {
+    throw new NotImplementedException("You must implement this method in sub class")
   }
 
   public async newPost(post: Post, publish?: boolean): Promise<string> {
-    throw new Error("You must implement this method in sub class")
+    throw new NotImplementedException("You must implement this method in sub class")
+  }
+
+  public async getPost(postid: string, useSlug?: boolean): Promise<Post> {
+    throw new NotImplementedException("You must implement this method in sub class")
+  }
+
+  public async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {
+    throw new NotImplementedException("You must implement this method in sub class")
+  }
+
+  public async deletePost(postid: string): Promise<boolean> {
+    throw new NotImplementedException("You must implement this method in sub class")
+  }
+
+  public async getCategories(): Promise<CategoryInfo[]> {
+    throw new NotImplementedException("You must implement this method in sub class")
+  }
+
+  public async getPreviewUrl(postid: string): Promise<string> {
+    throw new NotImplementedException("You must implement this method in sub class")
+  }
+
+  public async newMediaObject(mediaObject: MediaObject): Promise<MediaObject> {
+    throw new NotImplementedException("You must implement this method in sub class")
   }
 }
 
