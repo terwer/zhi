@@ -23,7 +23,6 @@
  * questions.
  */
 
-import { Env } from "zhi-env"
 import SiyuanConfig from "./siyuanConfig"
 import SiyuanKernelApi from "./siyuanKernelApi"
 import SiyuanClientApi from "./siyuanClientApi"
@@ -48,9 +47,9 @@ class SiyuanApi {
   /**
    * 构造思源 API对象
    *
-   * @param cfg - 环境变量 或者 配置项
+   * @param cfg - 配置项
    */
-  constructor(cfg: Env | SiyuanConfig) {
+  constructor(cfg: SiyuanConfig) {
     this.kernelApi = new SiyuanKernelApi(cfg)
     this.clientApi = new SiyuanClientApi()
   }

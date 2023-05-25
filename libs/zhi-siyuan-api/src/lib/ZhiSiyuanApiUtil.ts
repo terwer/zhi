@@ -31,35 +31,6 @@
  * @since 1.0.0
  */
 class ZhiSiyuanApiUtil {
-  private static env: any
-
-  /**
-   * 通用环境变量
-   *
-   * @param appInstance - 插件实例
-   */
-  public static zhiEnv(appInstance: any) {
-    if (!this.env) {
-      // 环境变量需要在使用的时候显式指定
-      this.env = new appInstance.zhiEnv.Env(import.meta.env)
-    }
-    return this.env
-  }
-
-  /**
-   * 通用日志
-   *
-   * @param appInstance - 应用实例
-   * @param loggerName - 日志名称
-   */
-  public static zhiLog(appInstance: any, loggerName: string) {
-    const env = this.zhiEnv(appInstance)
-    appInstance.zhiCommon.ZhiUtil.initEnv(env)
-
-    // 用 common 里面的，这里面我封装了日志缓存
-    return appInstance.zhiCommon.ZhiUtil.zhiLogWithSign("publisher", loggerName)
-  }
-
   /**
    * 通用工具入口
    *

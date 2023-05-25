@@ -271,14 +271,11 @@ importers:
   libs/zhi-siyuan-api:
     dependencies:
       zhi-blog-api:
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../zhi-blog-api
-      zhi-env:
+      zhi-lib-base:
         specifier: workspace:*
-        version: link:../zhi-env
-      zhi-log:
-        specifier: workspace:*
-        version: link:../zhi-log
+        version: link:../zhi-lib-base
     devDependencies:
       '@terwer/eslint-config-custom':
         specifier: workspace:*

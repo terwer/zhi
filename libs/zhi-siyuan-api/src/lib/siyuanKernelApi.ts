@@ -23,12 +23,10 @@
  * questions.
  */
 
-import { Env } from "zhi-env"
 import SiyuanConfig from "./siyuanConfig"
-import { LogFactory, DefaultLogger, EnvHelper, LogLevelEnum } from "zhi-log"
-import SiyuanConstants from "./siyuanConstants"
 import ISiyuanKernelApi, { type SiyuanData } from "./ISiyuanKernelApi"
 import ZhiSiyuanApiUtil from "./ZhiSiyuanApiUtil"
+import { simpleLogger } from "zhi-lib-base/src"
 
 /**
  * 思源笔记服务端API v2.8.2
@@ -51,8 +49,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    */
   public readonly VERSION
 
-  private logger: DefaultLogger
-  private env: any
+  private logger
   private common: any
   public readonly siyuanConfig
 
@@ -61,26 +58,14 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    *
    * @param cfg - 环境变量 或者 配置项
    */
-  constructor(cfg: Env | SiyuanConfig) {
+  constructor(cfg: SiyuanConfig) {
     this.VERSION = "1.0.0"
 
-    if (cfg instanceof SiyuanConfig) {
-      this.siyuanConfig = cfg
-
-      this.logger = LogFactory.customLogFactory(LogLevelEnum.LOG_LEVEL_DEBUG, "zhi").getLogger("siyuan-kernel-api")
-    } else {
-      const env = cfg
-      const logLevel = EnvHelper.getEnvLevel(env)
-      const siyuanApiUrl = env.getStringEnv(SiyuanConstants.VITE_SIYUAN_API_URL_KEY)
-      const siyuanApiToken = env.getStringEnv(SiyuanConstants.VITE_SIYUAN_AUTH_TOKEN_KEY)
-      this.siyuanConfig = new SiyuanConfig(siyuanApiUrl, siyuanApiToken)
-
-      this.logger = LogFactory.customLogFactory(logLevel, "siyuan-kernel-api", env).getLogger(SiyuanKernelApi.name)
-    }
+    this.siyuanConfig = cfg
+    this.logger = simpleLogger("zhi-siyuan-api", "siyuan-kernel-api", false)
   }
 
   public init(appInstance: any) {
-    this.env = ZhiSiyuanApiUtil.zhiEnv(appInstance)
     this.common = ZhiSiyuanApiUtil.zhiCommon(appInstance)
   }
 
@@ -246,9 +231,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       stmt: sql,
     }
     const url = "/api/query/sql"
-    if (this.env.isDev()) {
-      this.logger.trace("sql=>", sql)
-    }
+    this.logger.debug("sql=>", sql)
     return await this.siyuanRequest(url, sqldata)
   }
 
@@ -273,16 +256,12 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       })
     }
 
-    if (this.env.isDev()) {
-      this.logger.trace("开始向思源请求数据，reqUrl=>", reqUrl)
-      this.logger.trace("开始向思源请求数据，fetchOps=>", fetchOps)
-    }
+    this.logger.debug("开始向思源请求数据，reqUrl=>", reqUrl)
+    this.logger.debug("开始向思源请求数据，fetchOps=>", fetchOps)
 
     const response = await fetch(reqUrl, fetchOps)
     const resJson = await response.json()
-    if (this.env.isDev()) {
-      this.logger.trace("思源请求数据返回，resJson=>", resJson)
-    }
+    this.logger.debug("思源请求数据返回，resJson=>", resJson)
 
     if (resJson.code === -1) {
       throw new Error(resJson.msg)

@@ -35,26 +35,26 @@ class SiyuanConfig extends BlogConfig {
   /**
    * 思源笔记伺服地址
    */
-  public override apiUrl: string
+  public override apiUrl = ""
 
   /**
    * 思源笔记 API token
    */
-  public override password: string
+  public override password = ""
 
   /**
    * 思源笔记操作提示
    *
    * @protected
    */
-  public override placeholder: SiyuanPlaceholder
+  public override placeholder = {} as SiyuanPlaceholder
 
   /**
    * 是否修复标题
    *
    * @protected
    */
-  public override fixTitle: boolean
+  public override fixTitle = true
 
   constructor(apiUrl?: string, password?: string) {
     super()

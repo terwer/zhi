@@ -25,9 +25,9 @@
 
 import { BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, UserBlog } from "zhi-blog-api"
 import SiyuanKernelApi from "./siyuanKernelApi"
-import { Env } from "zhi-env"
 import SiyuanConfig from "./siyuanConfig"
 import ZhiSiyuanApiUtil from "./ZhiSiyuanApiUtil"
+import { simpleLogger } from "zhi-lib-base"
 
 /**
  * 思源笔记API适配器
@@ -45,16 +45,16 @@ class SiYuanApiAdaptor extends BlogApi {
   /**
    * 初始化思源 API 适配器
    *
-   * @param cfg - 环境变量 或者 配置项
+   * @param cfg 配置项
    */
-  constructor(cfg: Env | SiyuanConfig) {
+  constructor(cfg: SiyuanConfig) {
     super()
     this.siyuanKernelApi = new SiyuanKernelApi(cfg)
     this.cfg = this.siyuanKernelApi.siyuanConfig
   }
 
   public init(appInstance: any) {
-    this.logger = ZhiSiyuanApiUtil.zhiLog(appInstance, "siyuan-api-adaptor")
+    this.logger = simpleLogger("zhi-siyuan-api", "siyuan-api-adaptor", false)
     this.common = ZhiSiyuanApiUtil.zhiCommon(appInstance)
     this.siyuanKernelApi.init(appInstance)
   }
