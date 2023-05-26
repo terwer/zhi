@@ -47,7 +47,6 @@ interface SiyuanData {
  * 思源笔记内核接口定义
  *
  * @see {@link https://github.com/siyuan-note/siyuan/blob/master/API_zh_CN.md#%E9%89%B4%E6%9D%83 siyuan-api}
- * @see {@link https://github.com/leolee9086/noob-core/blob/master/frontEnd/noobApi/util/kernelApi.js kernelApi}
  */
 interface ISiyuanKernelApi {
   // /api/notebook/lsNotebooks
@@ -71,6 +70,14 @@ interface ISiyuanKernelApi {
   pushMsg(msgObj: object): Promise<SiyuanData>
   // /api/notification/pushErrMsg
   pushErrMsg(msgObj: object): Promise<SiyuanData>
+
+  // /api/filetree/createDocWithMd
+  createDocWithMd(notebook: string, path: string, md: string): Promise<SiyuanData>
+  // /api/filetree/removeDoc
+  removeDoc(notebook: string, path: string): Promise<SiyuanData>
+
+  // /api/asset/upload
+  uploadAsset(formData: any): Promise<SiyuanData>
 }
 
 export default ISiyuanKernelApi

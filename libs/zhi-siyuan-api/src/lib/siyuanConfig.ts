@@ -33,6 +33,11 @@ import SiyuanPlaceholder from "./siyuanPlaceholder"
  */
 class SiyuanConfig extends BlogConfig {
   /**
+   * 主页
+   */
+  public override home = ""
+
+  /**
    * 思源笔记伺服地址
    */
   public override apiUrl = ""
@@ -56,13 +61,26 @@ class SiyuanConfig extends BlogConfig {
    */
   public override fixTitle = true
 
+  /**
+   * 预览链接
+   */
+  public override previewUrl = ""
+
+  /**
+   * 默认笔记本
+   */
+  public notebook: string
+
   constructor(apiUrl?: string, password?: string) {
     super()
+    this.home = "http://127.0.0.1:6806"
     this.apiUrl = apiUrl ?? "http://127.0.0.1:6806"
     this.passwordType = PasswordType.PasswordType_Token
     this.password = password ?? ""
     this.placeholder = new SiyuanPlaceholder()
     this.fixTitle = true
+    this.previewUrl = "siyuan://blocks/[postid]"
+    this.notebook = ""
   }
 }
 

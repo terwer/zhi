@@ -270,8 +270,11 @@ importers:
 
   libs/zhi-siyuan-api:
     dependencies:
+      cross-fetch:
+        specifier: ^3.1.6
+        version: registry.npmjs.org/cross-fetch@3.1.6
       zhi-blog-api:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../zhi-blog-api
       zhi-lib-base:
         specifier: workspace:*
@@ -7738,12 +7741,12 @@ packages:
     name: create-require
     version: 1.1.1
 
-  registry.npmjs.org/cross-fetch@3.1.5:
-    resolution: {integrity: sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/cross-fetch/-/cross-fetch-3.1.5.tgz}
+  registry.npmjs.org/cross-fetch@3.1.6:
+    resolution: {integrity: sha512-riRvo06crlE8HiqOwIpQhxwdOk4fOeR7FVM/wXoxchFEqMNUjvbs3bfo4OTgMEMHzppd4DxFBDbyySj8Cv781g==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/cross-fetch/-/cross-fetch-3.1.6.tgz}
     name: cross-fetch
-    version: 3.1.5
+    version: 3.1.6
     dependencies:
-      node-fetch: registry.npmjs.org/node-fetch@2.6.7
+      node-fetch: registry.npmjs.org/node-fetch@2.6.11
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -9520,7 +9523,7 @@ packages:
     name: fbjs
     version: 3.0.4
     dependencies:
-      cross-fetch: registry.npmjs.org/cross-fetch@3.1.5
+      cross-fetch: registry.npmjs.org/cross-fetch@3.1.6
       fbjs-css-vars: registry.npmjs.org/fbjs-css-vars@1.0.2
       loose-envify: registry.npmjs.org/loose-envify@1.4.0
       object-assign: registry.npmjs.org/object-assign@4.1.1
@@ -12838,10 +12841,10 @@ packages:
       lodash: registry.npmjs.org/lodash@4.17.21
     dev: false
 
-  registry.npmjs.org/node-fetch@2.6.7:
-    resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.7.tgz}
+  registry.npmjs.org/node-fetch@2.6.11:
+    resolution: {integrity: sha512-4I6pdBY1EthSqDmJkiNk3JIT8cswwR9nfeW/cPdUagJYEQG7R95WRH74wpz7ma8Gh/9dI9FP+OU+0E4FvtA55w==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.11.tgz}
     name: node-fetch
-    version: 2.6.7
+    version: 2.6.11
     engines: {node: 4.x || >=6.0.0}
     peerDependencies:
       encoding: ^0.1.0

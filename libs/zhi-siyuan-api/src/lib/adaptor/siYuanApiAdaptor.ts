@@ -28,6 +28,7 @@ import SiyuanKernelApi from "../siyuanKernelApi"
 import SiyuanConfig from "../siyuanConfig"
 import ZhiSiyuanApiUtil from "../ZhiSiyuanApiUtil"
 import { simpleLogger } from "zhi-lib-base"
+import { Readable } from "stream"
 
 /**
  * 思源笔记API适配器
@@ -59,16 +60,80 @@ class SiYuanApiAdaptor extends BlogApi {
     this.siyuanKernelApi = new SiyuanKernelApi(appInstance, cfg)
   }
 
-  public async deletePost(postid: string): Promise<boolean> {
-    return await super.deletePost(postid)
+  public async getUsersBlogs(): Promise<Array<UserBlog>> {
+    const usersBlogs: UserBlog[] = []
+    const userBlog = new UserBlog()
+
+    userBlog.blogid = "siyuan-note"
+    userBlog.url = window.location.origin
+    userBlog.blogName = "思源笔记"
+
+    usersBlogs.push(userBlog)
+
+    return usersBlogs
   }
 
-  public async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {
-    return await super.editPost(postid, post, publish)
+  public async getRecentPostsCount(keyword?: string): Promise<number> {
+    return await this.siyuanKernelApi.getRootBlocksCount(keyword ?? "")
   }
 
-  public async getCategories(): Promise<CategoryInfo[]> {
-    return Promise.resolve([])
+  public async getRecentPosts(numOfPosts: number, page?: number, keyword?: string): Promise<Array<Post>> {
+    const result: Post[] = []
+
+    let pg = 0
+    if (page) {
+      pg = page
+    }
+    const k = keyword ?? ""
+    const siyuanPosts = await this.siyuanKernelApi.getRootBlocks(pg, numOfPosts, k)
+    // logUtil.logInfo(siyuanPosts)
+
+    this.logger.debug("getRecentPosts from siyuan, get counts =>", siyuanPosts.length)
+    for (let i = 0; i < siyuanPosts.length; i++) {
+      const siyuanPost = siyuanPosts[i]
+
+      // 某些属性详情页控制即可
+      const attrs = await this.siyuanKernelApi.getBlockAttrs(siyuanPost.root_id)
+      const page = await this.getPost(siyuanPost.root_id, false, true)
+
+      // // 发布状态
+      // let isPublished = true
+      // const publishStatus = attrs["custom-publish-status"] || "draft"
+      // if (publishStatus == "secret") {
+      //     isPublished = false;
+      // }
+      //
+      // // 访问密码
+      // const postPassword = attrs["custom-publish-password"] || ""
+
+      // 文章别名
+      const customSlug = attrs["custom-slug"] || ""
+
+      // 标题处理
+      let title = siyuanPost.content ?? ""
+      if (this.cfg.fixTitle) {
+        title = this.common.htmlUtil.removeTitleNumber(title)
+      }
+
+      // 适配公共属性
+      const commonPost = new Post()
+      commonPost.postid = siyuanPost.root_id
+      commonPost.title = title
+      commonPost.permalink =
+        customSlug === ""
+          ? this.common.strUtil.appendStr("/post/", siyuanPost.root_id)
+          : this.common.strUtil.appendStr("/post/", customSlug, ".html")
+      // commonPost.isPublished = isPublished
+      commonPost.mt_keywords = page.mt_keywords
+      commonPost.description = page.description
+      result.push(commonPost)
+    }
+
+    return result
+  }
+
+  public async newPost(post: Post, publish?: boolean): Promise<string> {
+    return await this.siyuanKernelApi.createDocWithMd(this.cfg.notebook, `/${post.title}`, post.description)
   }
 
   public async getPost(postid: string, useSlug?: boolean, skipBody?: boolean): Promise<Post> {
@@ -132,79 +197,70 @@ class SiYuanApiAdaptor extends BlogApi {
     return commonPost
   }
 
+  public async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {
+    return await super.editPost(postid, post, publish)
+  }
+
+  public async deletePost(postid: string): Promise<boolean> {
+    await this.siyuanKernelApi.removeDoc(this.cfg.notebook, `/${postid}.sy`)
+    return true
+  }
+
+  public async getCategories(): Promise<CategoryInfo[]> {
+    const cats = [] as CategoryInfo[]
+
+    let notebooks: any[] = (await this.siyuanKernelApi.lsNotebooks()).notebooks
+    //用户指南不应该作为可以写入的笔记本
+    const hiddenNotebook: Set<string> = new Set(["思源笔记用户指南", "SiYuan User Guide"])
+    notebooks = notebooks.filter((notebook) => !notebook.closed && !hiddenNotebook.has(notebook.name))
+    this.logger.debug("siyuan notebooks=>", notebooks)
+    if (notebooks && notebooks.length > 0) {
+      notebooks.forEach((notebook) => {
+        const cat = new CategoryInfo()
+        cat.categoryId = notebook.id
+        cat.categoryName = notebook.name
+        cat.description = notebook.name
+        cat.categoryDescription = notebook.name
+        cats.push(cat)
+      })
+    }
+
+    return cats
+  }
+
   public async getPreviewUrl(postid: string): Promise<string> {
-    return await super.getPreviewUrl(postid)
-  }
-
-  public async getRecentPosts(numOfPosts: number, page?: number, keyword?: string): Promise<Array<Post>> {
-    const result: Post[] = []
-
-    let pg = 0
-    if (page) {
-      pg = page
-    }
-    const k = keyword ?? ""
-    const siyuanPosts = await this.siyuanKernelApi.getRootBlocks(pg, numOfPosts, k)
-    // logUtil.logInfo(siyuanPosts)
-
-    this.logger.debug("getRecentPosts from siyuan, get counts =>", siyuanPosts.length)
-    for (let i = 0; i < siyuanPosts.length; i++) {
-      const siyuanPost = siyuanPosts[i]
-
-      // 某些属性详情页控制即可
-      const attrs = await this.siyuanKernelApi.getBlockAttrs(siyuanPost.root_id)
-      const page = await this.getPost(siyuanPost.root_id, false, true)
-
-      // // 发布状态
-      // let isPublished = true
-      // const publishStatus = attrs["custom-publish-status"] || "draft"
-      // if (publishStatus == "secret") {
-      //     isPublished = false;
-      // }
-      //
-      // // 访问密码
-      // const postPassword = attrs["custom-publish-password"] || ""
-
-      // 文章别名
-      const customSlug = attrs["custom-slug"] || ""
-
-      // 标题处理
-      let title = siyuanPost.content ?? ""
-      if (this.cfg.fixTitle) {
-        title = this.common.htmlUtil.removeTitleNumber(title)
-      }
-
-      // 适配公共属性
-      const commonPost = new Post()
-      commonPost.postid = siyuanPost.root_id
-      commonPost.title = title
-      commonPost.permalink =
-        customSlug === ""
-          ? this.common.strUtil.appendStr("/post/", siyuanPost.root_id)
-          : this.common.strUtil.appendStr("/post/", customSlug, ".html")
-      // commonPost.isPublished = isPublished
-      commonPost.mt_keywords = page.mt_keywords
-      commonPost.description = page.description
-      result.push(commonPost)
+    // 检查 previewUrl 是否包含 [postid] 参数
+    if (!this.cfg.previewUrl?.includes("[postid]")) {
+      throw new Error("Missing [postid] parameter in preview URL")
     }
 
-    return result
-  }
-
-  public async getRecentPostsCount(keyword?: string): Promise<number> {
-    return await this.siyuanKernelApi.getRootBlocksCount(keyword ?? "")
-  }
-
-  public async getUsersBlogs(): Promise<Array<UserBlog>> {
-    return await super.getUsersBlogs()
+    // 替换文章链接
+    let previewUrl = this.cfg.previewUrl
+    if (previewUrl.includes("[home]")) {
+      previewUrl = previewUrl.replace("[home]", this.cfg.home ?? "")
+    }
+    return previewUrl.replace("[postid]", postid)
   }
 
   public async newMediaObject(mediaObject: MediaObject): Promise<MediaObject> {
-    return await super.newMediaObject(mediaObject)
-  }
+    const FormData = require("form-data")
+    const { Readable } = require("stream")
+    const file = Readable.from(mediaObject.bits)
 
-  public async newPost(post: Post, publish?: boolean): Promise<string> {
-    return await super.newPost(post, publish)
+    const formData = new FormData()
+    formData.append("file[]", file, {
+      filename: mediaObject.name,
+      contentType: mediaObject.type,
+    })
+    formData.append("assetsDirPath", "/assets/")
+
+    const data = await this.siyuanKernelApi.uploadAsset(formData)
+    this.logger.debug("uploadAsset=>", data)
+    if (data.succMap) {
+      mediaObject.name = data.succMap[mediaObject.name]
+    }
+
+    return mediaObject
   }
 }
 

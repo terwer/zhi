@@ -61,11 +61,13 @@ class MediaObject {
   name: string
   type: string
   bits: Buffer
+  overwrite: boolean
 
   constructor(name: string, type: string, bits: Buffer) {
     this.name = name
     this.type = type
     this.bits = bits
+    this.overwrite = true
   }
 }
 

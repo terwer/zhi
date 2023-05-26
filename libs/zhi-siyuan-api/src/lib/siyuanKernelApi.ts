@@ -27,6 +27,7 @@ import SiyuanConfig from "./siyuanConfig"
 import ISiyuanKernelApi, { type SiyuanData } from "./ISiyuanKernelApi"
 import ZhiSiyuanApiUtil from "./ZhiSiyuanApiUtil"
 import { simpleLogger } from "zhi-lib-base/src"
+import fetch from "cross-fetch"
 
 /**
  * 思源笔记服务端API v2.8.2
@@ -267,6 +268,36 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     return resJson.code === 0 ? resJson.data : null
   }
 
+  public async siyuanRequestForm(url: string, formData: any): Promise<SiyuanData> {
+    const reqUrl = `${this.siyuanConfig.apiUrl}${url}`
+
+    const fetchOps = {
+      body: formData,
+      method: "POST",
+      headers: formData.getHeaders(),
+    }
+    if (!this.common.strUtil.isEmptyString(this.siyuanConfig.password)) {
+      Object.assign(fetchOps, {
+        headers: {
+          ...fetchOps.headers,
+          Authorization: `Token ${this.siyuanConfig.password}`,
+        },
+      })
+    }
+
+    this.logger.debug("开始向思源请求数据，reqUrl=>", reqUrl)
+    this.logger.debug("开始向思源请求数据，fetchOps=>", fetchOps)
+
+    const response = await fetch(reqUrl, fetchOps)
+    const resJson = await response.json()
+    this.logger.debug("思源请求数据返回，resJson=>", resJson)
+
+    if (resJson.code === -1) {
+      throw new Error(resJson.msg)
+    }
+    return resJson.code === 0 ? resJson.data : null
+  }
+
   /**
    * 列出笔记本
    */
@@ -455,6 +486,40 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       id: blockId,
       attrs,
     })
+  }
+
+  /**
+   * 通过 Markdown 创建文档
+   *
+   * @param notebook - 笔记本
+   * @param path - 路径
+   * @param md - md
+   */
+  public async createDocWithMd(notebook: string, path: string, md: string): Promise<SiyuanData> {
+    const params = {
+      notebook: notebook,
+      path: path,
+      markdown: md,
+    }
+    return await this.siyuanRequest("/api/filetree/createDocWithMd", params)
+  }
+
+  /**
+   * 删除文档
+   *
+   * @param notebook - 笔记本
+   * @param path - 路径
+   */
+  public async removeDoc(notebook: string, path: string): Promise<SiyuanData> {
+    const params = {
+      notebook: notebook,
+      path: path,
+    }
+    return await this.siyuanRequest("/api/filetree/removeDoc", params)
+  }
+
+  public async uploadAsset(formData: any): Promise<SiyuanData> {
+    return await this.siyuanRequestForm("/api/asset/upload", formData)
   }
 }
 
