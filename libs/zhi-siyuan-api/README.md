@@ -22,7 +22,7 @@ const result = await kernelApi.lsNotebooks()
 console.log("result=>", result)
 ```
 
-动态加载
+dynamic invoke
 
 ```ts
 import { SiyuanKernelApi } from "zhi-siyuan-api"
