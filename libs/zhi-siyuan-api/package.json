@@ -1,6 +1,6 @@
 {
   "name": "zhi-siyuan-api",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "type": "module",
   "description": "a siyuan-note api including both kernel and client",
   "main": "./dist/index.js",
@@ -33,7 +33,7 @@
     "@terwer/vite-config-custom": "workspace:*"
   },
   "dependencies": {
-    "zhi-blog-api": "workspace:^",
+    "zhi-blog-api": "workspace:*",
     "zhi-lib-base": "workspace:*"
   }
 }
