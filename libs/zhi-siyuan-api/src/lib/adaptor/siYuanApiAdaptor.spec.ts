@@ -25,12 +25,24 @@
 
 import { describe, expect, it } from "vitest"
 import SiYuanApiAdaptor from "./siYuanApiAdaptor"
-import SiyuanConfig from "./siyuanConfig"
+import SiyuanConfig from "../siyuanConfig"
+import path from "path"
 
 describe("SiYuanApiAdaptor", () => {
-  it("should work", function () {
+  it("test apiAdaptor", async () => {
+    // appInstance
+    const appInstance: any = {}
+    const moduleBase = path.resolve(__dirname, "../../../../..")
+    console.log("moduleBase=>", moduleBase)
+    const zhiCommon = (await import(path.join(moduleBase, "libs/zhi-common/dist/index.js"))) as any
+    appInstance.zhiCommon = {
+      ZhiUtil: zhiCommon["ZhiUtil"],
+    }
+    console.log(appInstance)
+
+    // apiAdaptor
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
+    const apiAdaptor = new SiYuanApiAdaptor(appInstance, siyuanConfig)
     expect(apiAdaptor).toBeTruthy()
   })
 })

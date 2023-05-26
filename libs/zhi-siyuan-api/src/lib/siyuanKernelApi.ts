@@ -56,16 +56,14 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
   /**
    * 初始化思源服务端 API
    *
-   * @param cfg - 环境变量 或者 配置项
+   * @param appInstance - 应用实例
+   * @param cfg -配置项
    */
-  constructor(cfg: SiyuanConfig) {
+  constructor(appInstance: any, cfg: SiyuanConfig) {
     this.VERSION = "1.0.0"
 
     this.siyuanConfig = cfg
     this.logger = simpleLogger("zhi-siyuan-api", "siyuan-kernel-api", false)
-  }
-
-  public init(appInstance: any) {
     this.common = ZhiSiyuanApiUtil.zhiCommon(appInstance)
   }
 

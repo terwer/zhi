@@ -37,6 +37,9 @@ class ZhiSiyuanApiUtil {
    * @param appInstance - 应用实例
    */
   public static zhiCommon(appInstance: any) {
+    if (!appInstance.zhiCommon) {
+      throw new Error("appInstance must have zhiCommon.ZhiUtil property")
+    }
     return appInstance.zhiCommon.ZhiUtil.zhiCommon()
   }
 }

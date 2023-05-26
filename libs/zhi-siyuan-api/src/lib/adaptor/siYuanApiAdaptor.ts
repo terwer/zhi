@@ -24,9 +24,9 @@
  */
 
 import { BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, UserBlog } from "zhi-blog-api"
-import SiyuanKernelApi from "./siyuanKernelApi"
-import SiyuanConfig from "./siyuanConfig"
-import ZhiSiyuanApiUtil from "./ZhiSiyuanApiUtil"
+import SiyuanKernelApi from "../siyuanKernelApi"
+import SiyuanConfig from "../siyuanConfig"
+import ZhiSiyuanApiUtil from "../ZhiSiyuanApiUtil"
 import { simpleLogger } from "zhi-lib-base"
 
 /**
@@ -45,18 +45,18 @@ class SiYuanApiAdaptor extends BlogApi {
   /**
    * 初始化思源 API 适配器
    *
+   * @param appInstance - 应用实例[必须包含zhiCommon.ZhiUtil]
    * @param cfg 配置项
    */
-  constructor(cfg: SiyuanConfig) {
+  constructor(appInstance: any, cfg: SiyuanConfig) {
     super()
-    this.siyuanKernelApi = new SiyuanKernelApi(cfg)
-    this.cfg = this.siyuanKernelApi.siyuanConfig
-  }
 
-  public init(appInstance: any) {
+    this.cfg = cfg
+
     this.logger = simpleLogger("zhi-siyuan-api", "siyuan-api-adaptor", false)
     this.common = ZhiSiyuanApiUtil.zhiCommon(appInstance)
-    this.siyuanKernelApi.init(appInstance)
+
+    this.siyuanKernelApi = new SiyuanKernelApi(appInstance, cfg)
   }
 
   public async deletePost(postid: string): Promise<boolean> {
