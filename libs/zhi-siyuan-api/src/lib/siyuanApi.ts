@@ -47,10 +47,11 @@ class SiyuanApi {
   /**
    * 构造思源 API对象
    *
+   * @param appInstance - 应用实例
    * @param cfg - 配置项
    */
-  constructor(cfg: SiyuanConfig) {
-    this.kernelApi = new SiyuanKernelApi(cfg)
+  constructor(appInstance: any, cfg: SiyuanConfig) {
+    this.kernelApi = new SiyuanKernelApi(appInstance, cfg)
     this.clientApi = new SiyuanClientApi()
   }
 }

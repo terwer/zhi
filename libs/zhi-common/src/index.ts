@@ -25,7 +25,6 @@
 
 import ZhiCommon from "./lib/zhi-common"
 import ZhiUtil from "./lib/ZhiUtil"
-import NotImplementedException from "./lib/exception/notImplementedException"
 
 export { ZhiCommon }
-export { ZhiUtil, NotImplementedException }
+export { ZhiUtil }
