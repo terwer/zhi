@@ -29,7 +29,7 @@ import SiyuanConfig from "../siyuanConfig"
 import path from "path"
 import { Post } from "zhi-blog-api"
 import { MediaObject } from "zhi-blog-api"
-import * as fs from "fs"
+import fs from "fs"
 
 describe("SiYuanApiAdaptor", async () => {
   // appInstance

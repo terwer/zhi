@@ -28,7 +28,7 @@ import SiyuanKernelApi from "../siyuanKernelApi"
 import SiyuanConfig from "../siyuanConfig"
 import ZhiSiyuanApiUtil from "../ZhiSiyuanApiUtil"
 import { simpleLogger } from "zhi-lib-base"
-import { Readable } from "stream"
+import FormData from "form-data"
 
 /**
  * 思源笔记API适配器
@@ -243,15 +243,8 @@ class SiYuanApiAdaptor extends BlogApi {
   }
 
   public async newMediaObject(mediaObject: MediaObject): Promise<MediaObject> {
-    const FormData = require("form-data")
-    const { Readable } = require("stream")
-    const file = Readable.from(mediaObject.bits)
-
     const formData = new FormData()
-    formData.append("file[]", file, {
-      filename: mediaObject.name,
-      contentType: mediaObject.type,
-    })
+    formData.append("file[]", mediaObject.bits, { filename: mediaObject.name })
     formData.append("assetsDirPath", "/assets/")
 
     const data = await this.siyuanKernelApi.uploadAsset(formData)

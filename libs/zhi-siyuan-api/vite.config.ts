@@ -6,6 +6,7 @@ import { viteStaticCopy } from "vite-plugin-static-copy"
 import dts from "vite-plugin-dts"
 import minimist from "minimist"
 import livereload from "rollup-plugin-livereload"
+import { nodePolyfills } from "vite-plugin-node-polyfills"
 
 const args = minimist(process.argv.slice(2))
 const isWatch = args.watch || args.w || false
@@ -36,6 +37,11 @@ export default defineConfig({
           dest: "./",
         },
       ],
+    }),
+
+    nodePolyfills({
+      exclude: ["fs"],
+      protocolImports: true,
     }),
   ],
 
