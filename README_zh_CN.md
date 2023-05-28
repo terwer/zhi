@@ -1,8 +1,8 @@
+`[English](README.md)`
+
 # Zhi
 
 🛍️ 基于思源笔记的一系列框架、类库、工具、插件、挂件、主题等
-
-[English](README.md)
 
 [![dev checks](https://img.shields.io/github/checks-status/terwer/zhi/dev?label=build)](https://github.com/terwer/zhi/tree/dev)
 ![version](https://img.shields.io/github/release/terwer/zhi.svg?style=flat-square)

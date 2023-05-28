@@ -1,8 +1,8 @@
+[中文](README_zh_CN.md)
+
 # Zhi
 
 🛍️ A series of libraries, widgets, plugins and themes based on siyuan-note
-
-[中文版](README_zh_CN.md)
 
 [![dev checks](https://img.shields.io/github/checks-status/terwer/zhi/dev?label=build)](https://github.com/terwer/zhi/tree/dev)
 ![version](https://img.shields.io/github/release/terwer/zhi.svg?style=flat-square)
