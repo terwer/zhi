@@ -28,6 +28,7 @@ import SiyuanKernelApi from "../siyuanKernelApi"
 import SiyuanConfig from "../siyuanConfig"
 import ZhiSiyuanApiUtil from "../ZhiSiyuanApiUtil"
 import { NotImplementedException, simpleLogger } from "zhi-lib-base"
+import { Attachment } from "zhi-blog-api/src"
 
 /**
  * 思源笔记API适配器
@@ -241,7 +242,7 @@ class SiYuanApiAdaptor extends BlogApi {
     return previewUrl.replace("[postid]", postid)
   }
 
-  public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<MediaObject> {
+  public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<any> {
     if (!customHandler) {
       throw new NotImplementedException("You must implement custom handler for siyuan assets")
     }
@@ -249,11 +250,33 @@ class SiYuanApiAdaptor extends BlogApi {
     this.logger.info("Using custom handler for mediaObject")
     const data = await customHandler(mediaObject)
     this.logger.info("newMediaObject finished, data=>", data)
+    const attachmentInfo = new Attachment({})
     if (data && data.succMap) {
-      mediaObject.name = data.succMap[mediaObject.name]
+      const link = data.succMap[mediaObject.name]
+      attachmentInfo.attachment_id = this.extractFileName(link)
+      attachmentInfo.date_created_gmt = new Date()
+      attachmentInfo.file = mediaObject.name
+      attachmentInfo.id = attachmentInfo.attachment_id
+      attachmentInfo.link = link
+      attachmentInfo.parent = 0
+      attachmentInfo.metadata.file = link
+      attachmentInfo.thumbnail = link
+      attachmentInfo.title = mediaObject.name
+      attachmentInfo.type = mediaObject.type
+      attachmentInfo.url = link
     }
 
-    return mediaObject
+    return attachmentInfo
+  }
+
+  private extractFileName(filePath: string): string {
+    const fileNameWithExt = filePath.split("/").pop()!
+    const fileNameWithoutExt = fileNameWithExt.split(".").slice(0, -1).join(".")
+    if (fileNameWithoutExt.indexOf("-") !== -1) {
+      return fileNameWithoutExt.split("-").slice(-2).join("-")
+    } else {
+      throw new Error(`Failed to extract file name from ${filePath}.`)
+    }
   }
 }
 

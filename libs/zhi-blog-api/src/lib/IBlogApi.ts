@@ -27,6 +27,7 @@ import UserBlog from "./models/userBlog"
 import Post from "./models/post"
 import MediaObject from "./models/mediaObject"
 import CategoryInfo from "./models/categoryInfo"
+import Attachment from "./models/attachmentInfo"
 
 /**
  * 通用博客接口
@@ -170,7 +171,7 @@ interface IBlogApi {
    * @see {@link https://codex.wordpress.org/XML-RPC_MetaWeblog_API#metaWeblog.newMediaObject newMediaObject}
    * @returns {Promise<MediaObject>}
    */
-  newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<MediaObject>
+  newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<Attachment>
 }
 
 export type { IBlogApi }

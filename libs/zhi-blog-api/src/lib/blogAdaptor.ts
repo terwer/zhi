@@ -29,6 +29,7 @@ import CategoryInfo from "./models/categoryInfo"
 import MediaObject from "./models/mediaObject"
 import { IBlogApi } from "./IBlogApi"
 import { simpleLogger } from "zhi-lib-base"
+import Attachment from "./models/attachmentInfo"
 
 /**
  * 博客API
@@ -155,7 +156,7 @@ class BlogAdaptor implements IBlogApi {
    * @param mediaObject - 资源
    * @param customHandler - 自定义处理器
    */
-  public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<MediaObject> {
+  public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<Attachment> {
     return await this.apiAdaptor.newMediaObject(mediaObject, customHandler)
   }
 }

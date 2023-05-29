@@ -10,8 +10,9 @@ import CategoryInfo from "./lib/models/categoryInfo"
 import MediaObject from "./lib/models/mediaObject"
 import BlogConstants from "./lib/blogConstants"
 import BlogTypeEnum from "./lib/enums/blogTypeEnum"
+import Attachment from "./lib/models/attachmentInfo"
 
 export { BlogApi, BlogAdaptor }
 export { BlogConfig, BlogPlaceholder, PasswordType, PageType, PostStatusEnum }
-export { Post, UserBlog, SiteConfig, CategoryInfo, MediaObject }
+export { Post, UserBlog, SiteConfig, CategoryInfo, MediaObject, Attachment }
 export { BlogConstants, BlogTypeEnum }

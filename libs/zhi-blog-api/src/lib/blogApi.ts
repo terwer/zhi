@@ -29,6 +29,7 @@ import CategoryInfo from "./models/categoryInfo"
 import UserBlog from "./models/userBlog"
 import MediaObject from "./models/mediaObject"
 import { NotImplementedException } from "zhi-lib-base"
+import Attachment from "./models/attachmentInfo"
 
 /**
  * 博客基类
@@ -70,7 +71,7 @@ class BlogApi implements IBlogApi {
     throw new NotImplementedException("You must implement this method in sub class")
   }
 
-  public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<MediaObject> {
+  public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<Attachment> {
     throw new NotImplementedException("You must implement this method in sub class")
   }
 }
