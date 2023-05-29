@@ -274,8 +274,6 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       method: "POST",
       body: formData,
     }
-    const response = await fetch(reqUrl)
-
     if (!this.common.strUtil.isEmptyString(this.siyuanConfig.password)) {
       Object.assign(fetchOps, {
         headers: {
@@ -284,9 +282,10 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       })
     }
 
+    const response = await fetch(reqUrl, fetchOps)
+
     if (!response.ok) {
-      const resText = await response.text()
-      throw new Error("资源文件上传失败 => " + resText)
+      throw new Error(`资源文件上传失败 => ${response.status} ${response.statusText}`)
     } else {
       const resJson = await response.json()
       if (resJson.code === -1) {
