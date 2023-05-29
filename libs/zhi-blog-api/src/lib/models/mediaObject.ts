@@ -60,14 +60,20 @@
 class MediaObject {
   name: string
   type: string
-  bits: Buffer
+  bits?: Buffer | null
+  file?: File | null
   overwrite: boolean
 
-  constructor(name: string, type: string, bits: Buffer) {
+  constructor(name: string, type: string, bits: Buffer, file?: File) {
     this.name = name
     this.type = type
     this.bits = bits
+    this.file = file
     this.overwrite = true
+
+    if (!bits && !file) {
+      throw new Error("Bits and file cannot be empty at the same time")
+    }
   }
 }
 
