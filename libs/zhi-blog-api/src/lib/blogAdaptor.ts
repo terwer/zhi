@@ -152,10 +152,11 @@ class BlogAdaptor implements IBlogApi {
   /**
    * 上传附件
    *
-   * @param mediaObject
+   * @param mediaObject - 资源
+   * @param customHandler - 自定义处理器
    */
-  public async newMediaObject(mediaObject: MediaObject): Promise<MediaObject> {
-    return await this.apiAdaptor.newMediaObject(mediaObject)
+  public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<MediaObject> {
+    return await this.apiAdaptor.newMediaObject(mediaObject, customHandler)
   }
 }
 
