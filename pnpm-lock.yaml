@@ -273,9 +273,6 @@ importers:
       cross-fetch:
         specifier: ^3.1.6
         version: registry.npmjs.org/cross-fetch@3.1.6
-      form-data:
-        specifier: ^4.0.0
-        version: registry.npmjs.org/form-data@4.0.0
       zhi-blog-api:
         specifier: workspace:*
         version: link:../zhi-blog-api
