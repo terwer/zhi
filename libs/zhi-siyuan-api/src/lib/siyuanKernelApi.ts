@@ -270,12 +270,23 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
 
   public async siyuanRequestForm(url: string, formData: any): Promise<SiyuanData> {
     const reqUrl = `${this.siyuanConfig.apiUrl}${url}`
-    const response = await fetch(reqUrl, {
+    const fetchOps = {
       method: "POST",
       body: formData,
-    })
+    }
+    const response = await fetch(reqUrl)
+
+    if (!this.common.strUtil.isEmptyString(this.siyuanConfig.password)) {
+      Object.assign(fetchOps, {
+        headers: {
+          Authorization: `Token ${this.siyuanConfig.password}`,
+        },
+      })
+    }
+
     if (!response.ok) {
-      throw new Error("资源文件上传失败")
+      const resText = await response.text()
+      throw new Error("资源文件上传失败 => " + resText)
     } else {
       const resJson = await response.json()
       if (resJson.code === -1) {

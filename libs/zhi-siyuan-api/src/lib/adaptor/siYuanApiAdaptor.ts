@@ -243,7 +243,8 @@ class SiYuanApiAdaptor extends BlogApi {
 
   public async newMediaObject(mediaObject: MediaObject): Promise<MediaObject> {
     const formData = new FormData()
-    formData.append("file[]", mediaObject.file)
+    const blob = new Blob([mediaObject.bits])
+    formData.append("file[]", blob, mediaObject.name)
     formData.append("assetsDirPath", "/assets/")
 
     const data = await this.siyuanKernelApi.uploadAsset(formData)
