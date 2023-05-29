@@ -23,13 +23,13 @@
  * questions.
  */
 
-import { describe, expect, it, beforeEach, afterEach } from "vitest"
+import { afterEach, beforeEach, describe, expect, it } from "vitest"
 import SiYuanApiAdaptor from "./siYuanApiAdaptor"
 import SiyuanConfig from "../siyuanConfig"
 import path from "path"
-import { Post } from "zhi-blog-api"
-import { MediaObject } from "zhi-blog-api"
+import { MediaObject, Post } from "zhi-blog-api"
 import fs from "fs"
+import SiyuanKernelApi from "../siyuanKernelApi"
 
 describe("SiYuanApiAdaptor", async () => {
   // appInstance
@@ -153,11 +153,21 @@ describe("SiYuanApiAdaptor", async () => {
   it("test siyuan newMediaObject", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
     const apiAdaptor = new SiYuanApiAdaptor(appInstance, siyuanConfig)
+    const siyuanKernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
 
     const url = path.join(projectBase, "./testdata/photo.jpg")
     const file = fs.readFileSync(url)
     const mediaObject = new MediaObject("20220616-132401-001.jpg", "image/jpeg", file)
-    const data = await apiAdaptor.newMediaObject(mediaObject)
-    console.log(data)
+    const data = await apiAdaptor.newMediaObject(mediaObject, async () => {
+      const FormData = require("form-data")
+      const formData = new FormData()
+      formData.append("file[]", mediaObject.bits, mediaObject.name)
+      formData.append("assetsDirPath", "/assets/")
+
+      const data = await siyuanKernelApi.uploadAsset(formData)
+      console.log("uploadAsset=>", data)
+      return data
+    })
+    console.log("test newMediaObject finished=>", data)
   })
 })

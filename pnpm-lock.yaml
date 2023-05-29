@@ -289,6 +289,9 @@ importers:
       '@terwer/vite-config-custom':
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
+      form-data:
+        specifier: ^4.0.0
+        version: registry.npmjs.org/form-data@4.0.0
 
   tools/changelog-parser:
     devDependencies:

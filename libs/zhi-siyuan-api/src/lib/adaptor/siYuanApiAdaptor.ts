@@ -27,8 +27,7 @@ import { BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, UserBlog } fr
 import SiyuanKernelApi from "../siyuanKernelApi"
 import SiyuanConfig from "../siyuanConfig"
 import ZhiSiyuanApiUtil from "../ZhiSiyuanApiUtil"
-import { simpleLogger } from "zhi-lib-base"
-import { Blob } from "node:buffer"
+import { NotImplementedException, simpleLogger } from "zhi-lib-base"
 
 /**
  * 思源笔记API适配器
@@ -242,15 +241,15 @@ class SiYuanApiAdaptor extends BlogApi {
     return previewUrl.replace("[postid]", postid)
   }
 
-  public async newMediaObject(mediaObject: MediaObject): Promise<MediaObject> {
-    const formData = new FormData()
-    const blob = new Blob([mediaObject.bits])
-    formData.append("file[]", blob as any, mediaObject.name)
-    formData.append("assetsDirPath", "/assets/")
+  public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<MediaObject> {
+    if (!customHandler) {
+      throw new NotImplementedException("You must implement custom handler for siyuan assets")
+    }
 
-    const data = await this.siyuanKernelApi.uploadAsset(formData)
-    this.logger.debug("uploadAsset=>", data)
-    if (data.succMap) {
+    this.logger.info("Using custom handler for mediaObject")
+    const data = await customHandler(mediaObject)
+    this.logger.info("newMediaObject finished, data=>", data)
+    if (data && data.succMap) {
       mediaObject.name = data.succMap[mediaObject.name]
     }
 

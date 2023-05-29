@@ -165,11 +165,12 @@ interface IBlogApi {
   /**
    * 上传附件
    *
-   * @param mediaObject
+   * @param mediaObject - 资源
+   * @param customHandler - 自定义处理器
    * @see {@link https://codex.wordpress.org/XML-RPC_MetaWeblog_API#metaWeblog.newMediaObject newMediaObject}
    * @returns {Promise<MediaObject>}
    */
-  newMediaObject(mediaObject: MediaObject): Promise<MediaObject>
+  newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<MediaObject>
 }
 
 export type { IBlogApi }

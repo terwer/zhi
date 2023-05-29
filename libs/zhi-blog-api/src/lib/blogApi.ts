@@ -70,7 +70,7 @@ class BlogApi implements IBlogApi {
     throw new NotImplementedException("You must implement this method in sub class")
   }
 
-  public async newMediaObject(mediaObject: MediaObject): Promise<MediaObject> {
+  public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<MediaObject> {
     throw new NotImplementedException("You must implement this method in sub class")
   }
 }
