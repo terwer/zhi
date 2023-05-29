@@ -274,7 +274,11 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     const fetchOps = {
       body: formData,
       method: "POST",
-      headers: formData.getHeaders(),
+      headers: formData.getHeaders
+        ? formData.getHeaders()
+        : {
+            "Content-Type": "multipart/form-data",
+          },
     }
     if (!this.common.strUtil.isEmptyString(this.siyuanConfig.password)) {
       Object.assign(fetchOps, {
