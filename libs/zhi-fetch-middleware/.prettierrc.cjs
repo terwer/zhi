@@ -23,10 +23,8 @@
  * questions.
  */
 
-import { describe, it } from "vitest"
-
-describe("index", () => {
-  it("test index", () => {
-    console.log("hello")
-  })
-})
+module.exports = {
+  semi: false,
+  singleQuote: false,
+  printWidth: 120
+}

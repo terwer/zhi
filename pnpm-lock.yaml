@@ -259,6 +259,13 @@ importers:
         version: link:../../tools/vite-config-custom
 
   libs/zhi-metaweblog-api:
+    dependencies:
+      zhi-blog-api:
+        specifier: workspace:*
+        version: link:../zhi-blog-api
+      zhi-lib-base:
+        specifier: workspace:*
+        version: link:../zhi-lib-base
     devDependencies:
       '@terwer/eslint-config-custom':
         specifier: ^1.2.0

@@ -23,10 +23,8 @@
  * questions.
  */
 
-import { describe, it } from "vitest"
+import { BlogPlaceholder } from "zhi-blog-api"
 
-describe("index", () => {
-  it("test index", () => {
-    console.log("hello")
-  })
-})
+class MetaweblogPlaceholder extends BlogPlaceholder {}
+
+export default MetaweblogPlaceholder

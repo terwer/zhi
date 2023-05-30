@@ -11,8 +11,9 @@ import MediaObject from "./lib/models/mediaObject"
 import BlogConstants from "./lib/blogConstants"
 import BlogTypeEnum from "./lib/enums/blogTypeEnum"
 import Attachment from "./lib/models/attachmentInfo"
+import PageTypeEnum from "./lib/enums/pageTypeEnum"
 
 export { BlogApi, BlogAdaptor }
 export { BlogConfig, BlogPlaceholder, PasswordType, PageType, PostStatusEnum }
 export { Post, UserBlog, SiteConfig, CategoryInfo, MediaObject, Attachment }
-export { BlogConstants, BlogTypeEnum }
+export { BlogConstants, BlogTypeEnum, PageTypeEnum }

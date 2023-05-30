@@ -1,12 +1,12 @@
 {
-  "name": "zhi-metaweblog-api",
+  "name": "zhi-fetch-middleware",
   "version": "0.0.1",
   "type": "module",
-  "description": "an universal metaweblog API",
+  "description": "an intermediate tier prepared for fetch requests",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "repository": "terwer/zhi",
-  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-metaweblog-api",
+  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-fetch-middleware",
   "author": "terwer",
   "license": "GPL",
   "files": [
@@ -27,9 +27,5 @@
   "devDependencies": {
     "@terwer/eslint-config-custom": "^1.2.0",
     "@terwer/vite-config-custom": "^0.5.0"
-  },
-  "dependencies": {
-    "zhi-blog-api": "workspace:*",
-    "zhi-lib-base": "workspace:*"
   }
 }

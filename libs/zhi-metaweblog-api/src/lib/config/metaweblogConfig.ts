@@ -23,10 +23,75 @@
  * questions.
  */
 
-import { describe, it } from "vitest"
+import { PageTypeEnum } from "zhi-blog-api"
+import MetaweblogPlaceholder from "./metaweblogPlaceholder"
 
-describe("index", () => {
-  it("test index", () => {
-    console.log("hello")
-  })
-})
+/**
+ * Metaweblog配置类
+ */
+class MetaweblogConfig {
+  /**
+   * 首页
+   */
+  home: string
+
+  /**
+   * API地址
+   */
+  apiUrl: string
+
+  /**
+   * 用户名
+   */
+  username: string
+
+  /**
+   * 密码
+   */
+  password: string
+
+  /**
+   * 是否发布
+   */
+  apiStatus: boolean
+
+  /**
+   * 博客名（API获取）
+   */
+  blogName: string
+
+  /**
+   * 文章别名key
+   */
+  posidKey: string
+
+  /**
+   * 文章预览链接
+   */
+  previewUrl: string
+
+  /**
+   * 文章类型
+   */
+  pageType: PageTypeEnum
+
+  /**
+   * 操作提示
+   */
+  placeholder: MetaweblogPlaceholder
+
+  constructor(home: string, apiUrl: string, username: string, password: string) {
+    this.home = home
+    this.apiUrl = apiUrl
+    this.username = username
+    this.password = password
+    this.apiStatus = false
+    this.blogName = ""
+    this.posidKey = ""
+    this.previewUrl = ""
+    this.pageType = PageTypeEnum.Markdown
+    this.placeholder = new MetaweblogPlaceholder()
+  }
+}
+
+export default MetaweblogConfig

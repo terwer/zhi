@@ -23,10 +23,17 @@
  * questions.
  */
 
-import { describe, it } from "vitest"
+/**
+ * 页面类型
+ *
+ * @author terwer
+ * @version 0.9.0
+ * @since 0.0.1
+ */
+enum PageTypeEnum {
+  Kramdown = "kramdown",
+  Markdown = "markdown",
+  Html = "html",
+}
 
-describe("index", () => {
-  it("test index", () => {
-    console.log("hello")
-  })
-})
+export default PageTypeEnum

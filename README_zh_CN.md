@@ -20,6 +20,8 @@
   - [zhi-log](https://github.com/terwer/zhi/tree/main/libs/zhi-log)
   - [zhi-common](https://github.com/terwer/zhi/tree/main/libs/zhi-common)
   - [zhi-blog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api)
+  - [zhi-xmlrpc-middleware](https://github.com/terwer/zhi/tree/main/libs/zhi-xmlrpc-middleware)
+  - [zhi-fetch-middleware](https://github.com/terwer/zhi/tree/main/libs/zhi-fetch-middleware)
   - [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api)
   - [zhi-metaweblog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-metaweblog-api)
   - [zhi-wordpress-api](https://github.com/terwer/zhi/tree/main/libs/zhi-wordpress-api)

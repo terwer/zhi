@@ -23,10 +23,8 @@
  * questions.
  */
 
-import { describe, it } from "vitest"
+import { BlogApi } from "zhi-blog-api"
 
-describe("index", () => {
-  it("test index", () => {
-    console.log("hello")
-  })
-})
+class MetaWeblogApiAdaptor extends BlogApi {}
+
+export default MetaWeblogApiAdaptor

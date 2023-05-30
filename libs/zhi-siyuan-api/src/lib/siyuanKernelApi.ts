@@ -42,7 +42,6 @@ import fetch from "cross-fetch"
  * @author terwer
  * @since 1.0.0
  * @see {@link https://github.com/siyuan-note/siyuan/blob/master/API_zh_CN.md#%E9%89%B4%E6%9D%83 siyuan-api}
- * @see {@link https://github.com/leolee9086/noob-core/blob/master/frontEnd/noobApi/util/kernelApi.js kernelApi}
  */
 class SiyuanKernelApi implements ISiyuanKernelApi {
   /**
