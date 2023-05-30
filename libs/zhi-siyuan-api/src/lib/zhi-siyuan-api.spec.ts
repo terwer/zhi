@@ -25,10 +25,8 @@
 
 import SiyuanApi from "./zhi-siyuan-api"
 import { describe, expect, it } from "vitest"
-import ZhiSiyuanApiUtil from "./ZhiSiyuanApiUtil"
 import path from "path"
-import SiyuanConfig from "./siyuanConfig"
-import siyuanApi from "./siyuanApi"
+import SiyuanConfig from "./config/siyuanConfig"
 
 describe("zhiSiyuanApi", async () => {
   // appInstance

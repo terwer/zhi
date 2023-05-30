@@ -23,12 +23,11 @@
  * questions.
  */
 
-import { BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, UserBlog } from "zhi-blog-api"
+import { Attachment, BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, UserBlog } from "zhi-blog-api"
 import SiyuanKernelApi from "../siyuanKernelApi"
-import SiyuanConfig from "../siyuanConfig"
+import SiyuanConfig from "../config/siyuanConfig"
 import ZhiSiyuanApiUtil from "../ZhiSiyuanApiUtil"
 import { NotImplementedException, simpleLogger } from "zhi-lib-base"
-import { Attachment } from "zhi-blog-api/src"
 
 /**
  * 思源笔记API适配器

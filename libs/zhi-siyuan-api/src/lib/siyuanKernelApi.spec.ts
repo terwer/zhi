@@ -23,9 +23,9 @@
  * questions.
  */
 
-import { describe, expect, it } from "vitest"
+import { describe, it } from "vitest"
 import SiyuanKernelApi from "./siyuanKernelApi"
-import SiyuanConfig from "./siyuanConfig"
+import SiyuanConfig from "./config/siyuanConfig"
 import path from "path"
 
 describe("SiyuanKernelApi", async () => {

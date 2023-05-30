@@ -206,6 +206,15 @@ importers:
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
 
+  libs/zhi-http-api:
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: ^1.2.0
+        version: link:../../tools/eslint-config-custom
+      '@terwer/vite-config-custom':
+        specifier: ^0.5.0
+        version: registry.npmjs.org/@terwer/vite-config-custom@0.5.0(jsdom@22.0.0)(minimist@1.2.8)(rollup-plugin-livereload@2.0.5)(tslib@2.5.0)(typescript@5.0.4)(vite-plugin-css-injected-by-js@3.1.1)(vite-plugin-dts@2.3.0)(vite-plugin-no-bundle@2.0.2)(vite-plugin-static-copy@0.15.0)(vite-tsconfig-paths@4.2.0)(vite@4.3.5)(vitest@0.31.1)
+
   libs/zhi-lib-base:
     devDependencies:
       '@terwer/eslint-config-custom':
@@ -249,6 +258,15 @@ importers:
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
 
+  libs/zhi-metaweblog-api:
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: ^1.2.0
+        version: link:../../tools/eslint-config-custom
+      '@terwer/vite-config-custom':
+        specifier: ^0.5.0
+        version: registry.npmjs.org/@terwer/vite-config-custom@0.5.0(jsdom@22.0.0)(minimist@1.2.8)(rollup-plugin-livereload@2.0.5)(tslib@2.5.0)(typescript@5.0.4)(vite-plugin-css-injected-by-js@3.1.1)(vite-plugin-dts@2.3.0)(vite-plugin-no-bundle@2.0.2)(vite-plugin-static-copy@0.15.0)(vite-tsconfig-paths@4.2.0)(vite@4.3.5)(vitest@0.31.1)
+
   libs/zhi-publisher-hook:
     dependencies:
       zhi-device:
@@ -267,6 +285,15 @@ importers:
       '@terwer/vite-config-custom':
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
+
+  libs/zhi-rest-api:
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: ^1.2.0
+        version: link:../../tools/eslint-config-custom
+      '@terwer/vite-config-custom':
+        specifier: ^0.5.0
+        version: registry.npmjs.org/@terwer/vite-config-custom@0.5.0(jsdom@22.0.0)(minimist@1.2.8)(rollup-plugin-livereload@2.0.5)(tslib@2.5.0)(typescript@5.0.4)(vite-plugin-css-injected-by-js@3.1.1)(vite-plugin-dts@2.3.0)(vite-plugin-no-bundle@2.0.2)(vite-plugin-static-copy@0.15.0)(vite-tsconfig-paths@4.2.0)(vite@4.3.5)(vitest@0.31.1)
 
   libs/zhi-siyuan-api:
     dependencies:
@@ -292,6 +319,15 @@ importers:
       form-data:
         specifier: ^4.0.0
         version: registry.npmjs.org/form-data@4.0.0
+
+  libs/zhi-wordpress-api:
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: ^1.2.0
+        version: link:../../tools/eslint-config-custom
+      '@terwer/vite-config-custom':
+        specifier: ^0.5.0
+        version: registry.npmjs.org/@terwer/vite-config-custom@0.5.0(jsdom@22.0.0)(minimist@1.2.8)(rollup-plugin-livereload@2.0.5)(tslib@2.5.0)(typescript@5.0.4)(vite-plugin-css-injected-by-js@3.1.1)(vite-plugin-dts@2.3.0)(vite-plugin-no-bundle@2.0.2)(vite-plugin-static-copy@0.15.0)(vite-tsconfig-paths@4.2.0)(vite@4.3.5)(vitest@0.31.1)
 
   tools/changelog-parser:
     devDependencies:

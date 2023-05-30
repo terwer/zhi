@@ -1,7 +1,7 @@
 import SiyuanApi from "./lib/zhi-siyuan-api"
 import SiyuanKernelApi from "./lib/siyuanKernelApi"
 import type { SiyuanData } from "./lib/ISiyuanKernelApi"
-import SiyuanConfig from "./lib/siyuanConfig"
+import SiyuanConfig from "./lib/config/siyuanConfig"
 import SiYuanApiAdaptor from "./lib/adaptor/siYuanApiAdaptor"
 import SiyuanConstants from "./lib/siyuanConstants"
 

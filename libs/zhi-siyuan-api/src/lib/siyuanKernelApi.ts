@@ -23,7 +23,7 @@
  * questions.
  */
 
-import SiyuanConfig from "./siyuanConfig"
+import SiyuanConfig from "./config/siyuanConfig"
 import ISiyuanKernelApi, { type SiyuanData } from "./ISiyuanKernelApi"
 import ZhiSiyuanApiUtil from "./ZhiSiyuanApiUtil"
 import { simpleLogger } from "zhi-lib-base/src"
