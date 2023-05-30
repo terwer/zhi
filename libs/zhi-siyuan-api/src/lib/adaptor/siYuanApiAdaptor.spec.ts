@@ -25,7 +25,7 @@
 
 import { afterEach, beforeEach, describe, expect, it } from "vitest"
 import SiYuanApiAdaptor from "./siYuanApiAdaptor"
-import SiyuanConfig from "../siyuanConfig"
+import SiyuanConfig from "../config/siyuanConfig"
 import path from "path"
 import { MediaObject, Post } from "zhi-blog-api"
 import fs from "fs"

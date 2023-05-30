@@ -24,9 +24,27 @@
  */
 
 import { describe, it } from "vitest"
+import { fetchNode } from "./nodeXmlrpc"
+import { SimpleXmlRpcClient } from "simple-xmlrpc"
 
-describe("index", () => {
-  it("test index", () => {
-    console.log("hello")
+describe("test nodeXmlrpc", async () => {
+  // appInstance
+  const appInstance: any = {}
+  // const projectBase = path.resolve(__dirname, "../../..")
+  // const moduleBase = path.resolve(__dirname, "../../../../../../..")
+  // const simpleXmlrpc = (await import(path.join(moduleBase, "simple-xmlrpc/dist/index.js"))) as any
+  appInstance.simpleXmlrpc = {
+    SimpleXmlRpcClient: SimpleXmlRpcClient,
+  }
+
+  it("test fetchNode", async () => {
+    console.log(appInstance)
+    console.log(typeof appInstance.simpleXmlrpc.SimpleXmlRpcClient)
+    const result = await fetchNode(appInstance, "http://127.0.0.1:8000/xmlrpc.php", "metaWeblog.getUsersBlogs", [
+      "",
+      "terwer",
+      "123456",
+    ])
+    console.log("test fetchNode result =>", result)
   })
 })

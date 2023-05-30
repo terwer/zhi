@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023, Terwer . All rights reserved.
+ * Copyright (c) 2022-2023, Terwer . All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -23,10 +23,27 @@
  * questions.
  */
 
-import { describe, it } from "vitest"
+import { simpleLogger } from "zhi-lib-base"
 
-describe("index", () => {
-  it("test index", () => {
-    console.log("hello")
-  })
-})
+const logger = simpleLogger("node-xmlrpc")
+
+export const fetchNode = async (
+  appInstance: any,
+  apiUrl: string,
+  reqMethod: string,
+  reqParams: string[]
+): Promise<any> => {
+  try {
+    logger.debug("SimpleXmlRpcClient开始")
+    logger.debug("xmlrpcNodeParams.reqMethod=>", reqMethod)
+    logger.debug("xmlrpcNodeParams.reqParams=>", reqParams)
+
+    const client = new appInstance.simpleXmlrpc.SimpleXmlRpcClient(apiUrl)
+    const ret = await client.methodCall(reqMethod, reqParams)
+    logger.debug("SimpleXmlRpcClient结束，ret=>", ret)
+    return ret
+  } catch (e: any) {
+    logger.error(e)
+    throw new Error("请求处理异常 => " + e.toString())
+  }
+}
