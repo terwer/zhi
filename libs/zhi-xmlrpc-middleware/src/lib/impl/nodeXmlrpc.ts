@@ -38,7 +38,7 @@ export const fetchNode = async (
     logger.debug("xmlrpcNodeParams.reqMethod=>", reqMethod)
     logger.debug("xmlrpcNodeParams.reqParams=>", reqParams)
 
-    const client = new appInstance.simpleXmlrpc.SimpleXmlRpcClient(apiUrl)
+    const client = new appInstance.simpleXmlrpc.SimpleXmlRpcClient(appInstance, apiUrl)
     const ret = await client.methodCall(reqMethod, reqParams)
     logger.debug("SimpleXmlRpcClient结束，ret=>", ret)
     return ret

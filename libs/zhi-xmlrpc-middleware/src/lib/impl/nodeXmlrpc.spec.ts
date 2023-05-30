@@ -25,17 +25,22 @@
 
 import { describe, it } from "vitest"
 import { fetchNode } from "./nodeXmlrpc"
-import { SimpleXmlRpcClient } from "simple-xmlrpc"
+import path from "path"
+import fetch from "cross-fetch"
+import xmlbuilder2 from "xmlbuilder2"
 
 describe("test nodeXmlrpc", async () => {
   // appInstance
   const appInstance: any = {}
   // const projectBase = path.resolve(__dirname, "../../..")
-  // const moduleBase = path.resolve(__dirname, "../../../../../../..")
-  // const simpleXmlrpc = (await import(path.join(moduleBase, "simple-xmlrpc/dist/index.js"))) as any
+  const moduleBase = path.resolve(__dirname, "../../../../../../..")
+  appInstance.fetch = fetch
+  appInstance.xmlbuilder2 = xmlbuilder2
+  const simpleXmlrpc = (await import(path.join(moduleBase, "simple-xmlrpc/dist/index.js"))) as any
   appInstance.simpleXmlrpc = {
-    SimpleXmlRpcClient: SimpleXmlRpcClient,
+    SimpleXmlRpcClient: simpleXmlrpc["SimpleXmlRpcClient"],
   }
+  console.log(xmlbuilder2)
 
   it("test fetchNode", async () => {
     console.log(appInstance)
