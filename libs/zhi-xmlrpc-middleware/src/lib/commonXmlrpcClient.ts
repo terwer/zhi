@@ -23,72 +23,101 @@
  * questions.
  */
 
+import { simpleLogger } from "zhi-lib-base"
+import { DeviceDetection, DeviceTypeEnum } from "zhi-device"
+import { fetchChrome } from "./impl/chromeXmlrpc"
+import { fetchMiddleware } from "./impl/middlewareXmlrpc"
+import { fetchNode } from "./impl/nodeXmlrpc"
+
 /**
  * Xmlrpc客户端封装类
+ *
+ * @author terwer
+ * @version 0.9.0
+ * @since 0.0.1
  */
 class CommonXmlrpcClient {
-  // private readonly appInstance: any
-  //
-  // private readonly logger: Logger
-  // private readonly apiType: string
-  // private readonly apiUrl: string
-  // private readonly username: string
-  // private readonly password: string
-  //
-  // constructor(appInstance: any, apiType: string, apiUrl: string, username: string, password: string) {
-  //   this.appInstance = appInstance
-  //
-  //   if (!appInstance.simpleXmlrpc || !appInstance.simpleXmlrpc.SimpleXmlRpcClient) {
-  //     throw new Error("appInstance must have simpleXmlrpc.SimpleXmlRpcClient property")
-  //   }
-  //
-  //   this.logger = LogFactory.getLogger("utils/platform/metaweblog/xmlrpc.ts")
-  //   this.apiType = apiType
-  //   this.apiUrl = apiUrl
-  //   this.username = username
-  //   this.password = password
-  // }
-  //
-  // /**
-  //  * 同时兼容浏览器和思源宿主环境的xmlrpc API
-  //  * @param apiUrl 端点
-  //  * @param reqMethod 方法
-  //  * @param reqParams 参数数组
-  //  */
-  // private async fetchXmlrpc(apiUrl: string, reqMethod: string, reqParams: string[]): Promise<XmlRpcValue> {
-  //   let result
-  //
-  //   if (isElectron) {
-  //     this.logger.info("当前处于挂件模式，使用electron的fetch获取数据")
-  //     // 不解析了，直接使用Node兼容调用
-  //     result = await fetchNode(this.appInstance, apiUrl, reqMethod, reqParams)
-  //   } else if (isInChromeExtension()) {
-  //     this.logger.info("当前处于Chrome插件中，需要模拟fetch解决CORS跨域问题")
-  //     result = await fetchChrome(this.appInstance, apiUrl, reqMethod, reqParams)
-  //   } else {
-  //     this.logger.info("当前处于服务器伺服模式，已开启请求代理解决CORS跨域问题")
-  //     result = await fetchMiddleware(this.appInstance, apiUrl, reqMethod, reqParams)
-  //   }
-  //
-  //   if (result === "") {
-  //     throw new Error("请求错误或者返回结果为空")
-  //   }
-  //
-  //   this.logger.debug("最终返回给前端的数据=>", result)
-  //
-  //   return result
-  // }
-  //
-  // /**
-  //  * xmlrpc统一调用入口
-  //  * @param reqMethod 方法
-  //  * @param reqParams 参数
-  //  */
-  // public async methodCall(reqMethod: string, reqParams: any[]): Promise<any> {
-  //   const result = await this.fetchXmlrpc(this.apiUrl, reqMethod, reqParams)
-  //   this.logger.debug("请求结果，result=>", result)
-  //   return result
-  // }
+  private readonly appInstance: any
+
+  private readonly logger
+  private readonly apiUrl
+
+  constructor(appInstance: any, apiUrl: string) {
+    this.appInstance = appInstance
+    this.logger = simpleLogger("common-xmlrpc-client")
+    this.apiUrl = apiUrl
+  }
+
+  /**
+   * 同时兼容浏览器和思源宿主环境的xmlrpc API
+   *
+   * @param apiUrl - 端点
+   * @param reqMethod - 方法
+   * @param reqParams - 参数数组
+   * @param middlewareUrl - 可选，当环境不支持时候，必传
+   */
+  private async fetchXmlrpc(
+    apiUrl: string,
+    reqMethod: string,
+    reqParams: string[],
+    middlewareUrl?: string
+  ): Promise<any> {
+    let result
+
+    const deviceType = DeviceDetection.getDevice()
+    switch (deviceType) {
+      case DeviceTypeEnum.DeviceType_Node: {
+        this.logger.info("当前处于Node环境，使用node的fetch获取数据")
+        result = await fetchNode(this.appInstance, apiUrl, reqMethod, reqParams)
+        break
+      }
+      case DeviceTypeEnum.DeviceType_Siyuan_Widget:
+      case DeviceTypeEnum.DeviceType_Siyuan_MainWin:
+      case DeviceTypeEnum.DeviceType_Siyuan_NewWin: {
+        this.logger.info("当前处于思源笔记环境，使用electron的fetch获取数据")
+        result = await fetchNode(this.appInstance, apiUrl, reqMethod, reqParams)
+        break
+      }
+      case DeviceTypeEnum.DeviceType_Chrome_Extension: {
+        this.logger.info("当前处于Chrome插件中，需要模拟fetch解决CORS跨域问题")
+        result = await fetchChrome(this.appInstance, apiUrl, reqMethod, reqParams)
+        break
+      }
+      case DeviceTypeEnum.DeviceType_Siyuan_Browser:
+      case DeviceTypeEnum.DeviceType_Chrome_Browser:
+      case DeviceTypeEnum.DeviceType_Mobile_Device: {
+        this.logger.info("当前处于浏览器或移动设备，已开启请求代理解决CORS跨域问题")
+        result = await fetchMiddleware(this.appInstance, apiUrl, reqMethod, reqParams, middlewareUrl)
+        break
+      }
+      default: {
+        this.logger.info("未知设备类型，已开启请求代理解决CORS跨域问题")
+        result = await fetchMiddleware(this.appInstance, apiUrl, reqMethod, reqParams, middlewareUrl)
+        break
+      }
+    }
+
+    if (result === "") {
+      throw new Error("请求错误或者返回结果为空")
+    }
+
+    this.logger.debug("最终返回给前端的数据=>", result)
+
+    return result
+  }
+
+  /**
+   * xmlrpc统一调用入口
+   *
+   * @param reqMethod - 方法
+   * @param reqParams - 参数
+   * @param middlewareUrl - 可选，当环境不支持时候，必传
+   */
+  public async methodCall(reqMethod: string, reqParams: any[], middlewareUrl?: string): Promise<any> {
+    const result = await this.fetchXmlrpc(this.apiUrl, reqMethod, reqParams, middlewareUrl)
+    this.logger.debug("请求结果，result=>", result)
+    return result
+  }
 }
 
 export default CommonXmlrpcClient

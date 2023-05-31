@@ -32,6 +32,7 @@
     "xmlbuilder2": "^3.1.1"
   },
   "dependencies": {
+    "zhi-common": "workspace:^",
     "zhi-device": "workspace:*",
     "zhi-lib-base": "workspace:*"
   }
