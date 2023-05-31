@@ -40,7 +40,6 @@ describe("test nodeXmlrpc", async () => {
   appInstance.simpleXmlrpc = {
     SimpleXmlRpcClient: simpleXmlrpc["SimpleXmlRpcClient"],
   }
-  console.log(xmlbuilder2)
 
   it("test fetchNode", async () => {
     console.log(appInstance)
