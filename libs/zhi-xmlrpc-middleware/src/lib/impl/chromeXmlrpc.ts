@@ -25,7 +25,7 @@
 
 import { simpleLogger } from "zhi-lib-base"
 
-const logger = simpleLogger("fetch-chrome")
+const logger = simpleLogger("fetch-chrome", "xmlrpc-middleware", true)
 
 /**
  * 向Chrome发送消息
