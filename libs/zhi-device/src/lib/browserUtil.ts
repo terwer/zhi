@@ -50,10 +50,6 @@ class BrowserUtil {
    * 是否是Electron环境
    */
   public static isElectron = () => {
-    if (!BrowserUtil.isInBrowser || !window.navigator || !window.navigator.userAgent) {
-      return false
-    }
-
     return typeof process !== "undefined" && process.versions != null && process.versions.electron != null
   }
 
