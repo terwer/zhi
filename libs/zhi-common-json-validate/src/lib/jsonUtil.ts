@@ -22,43 +22,43 @@
  * or visit www.terwer.space if you need additional information or have any
  * questions.
  */
-import DateUtil from "./dateUtil"
-import { describe, expect, it } from "vitest"
 
-describe("DateUtil", () => {
-  it("formatIsoToZh", () => {
-    const isoDate = "2022-07-18T06:25:48.000Z"
-    const result = DateUtil.formatIsoToZh(isoDate)
-    const expectedZhDate = "2022-07-18 06:25:48"
-    expect(result).toEqual(expectedZhDate)
-  })
+import Ajv, { JSONSchemaType } from "ajv"
+import StrUtil from "./strUtil"
 
-  it("formatIsoToZhDate", () => {
-    const isoDate = "2022-07-18T06:25:48.000Z"
-    const result = DateUtil.formatIsoToZhDate(isoDate)
-    const expectedZhDate = "2022-07-18"
-    expect(result).toEqual(expectedZhDate)
-  })
+/**
+ * 校验 JSON schema
+ *
+ * @author terwer
+ * @version 1.5.0
+ * @since 1.5.0
+ */
+class JsonUtil {
+  private ajv: Ajv
+  private strUtil: StrUtil
 
-  it("formatIsoToZhTime", () => {
-    const isoDate = "2022-07-18T06:25:48.000Z"
-    const result = DateUtil.formatIsoToZhTime(isoDate)
-    const expectedZhDate = "06:25:48"
-    expect(result).toEqual(expectedZhDate)
-  })
+  constructor() {
+    this.ajv = new Ajv()
+    this.strUtil = new StrUtil()
+  }
 
-  it("nowZh", () => {
-    const result = DateUtil.nowZh()
-    console.log(result)
-  })
+  public validateJson<T>(schema: JSONSchemaType<T>, data: T): { valid: boolean; error?: string } {
+    const valid = this.ajv.validate(schema, data)
+    if (valid) {
+      return { valid }
+    } else {
+      return { valid, error: this.ajv.errorsText() }
+    }
+  }
 
-  it("nowDateZh", () => {
-    const result = DateUtil.nowDateZh()
-    console.log(result)
-  })
+  public validateObjectSchema(schemaObject: object, dataObject: object): { valid: boolean; error?: string } {
+    const valid = this.ajv.validate(schemaObject, dataObject)
+    if (valid) {
+      return { valid }
+    } else {
+      return { valid, error: this.ajv.errorsText() }
+    }
+  }
+}
 
-  it("nowTimeZh", () => {
-    const result = DateUtil.nowTimeZh()
-    console.log(result)
-  })
-})
+export default JsonUtil

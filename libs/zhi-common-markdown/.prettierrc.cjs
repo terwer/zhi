@@ -22,43 +22,9 @@
  * or visit www.terwer.space if you need additional information or have any
  * questions.
  */
-import DateUtil from "./dateUtil"
-import { describe, expect, it } from "vitest"
 
-describe("DateUtil", () => {
-  it("formatIsoToZh", () => {
-    const isoDate = "2022-07-18T06:25:48.000Z"
-    const result = DateUtil.formatIsoToZh(isoDate)
-    const expectedZhDate = "2022-07-18 06:25:48"
-    expect(result).toEqual(expectedZhDate)
-  })
-
-  it("formatIsoToZhDate", () => {
-    const isoDate = "2022-07-18T06:25:48.000Z"
-    const result = DateUtil.formatIsoToZhDate(isoDate)
-    const expectedZhDate = "2022-07-18"
-    expect(result).toEqual(expectedZhDate)
-  })
-
-  it("formatIsoToZhTime", () => {
-    const isoDate = "2022-07-18T06:25:48.000Z"
-    const result = DateUtil.formatIsoToZhTime(isoDate)
-    const expectedZhDate = "06:25:48"
-    expect(result).toEqual(expectedZhDate)
-  })
-
-  it("nowZh", () => {
-    const result = DateUtil.nowZh()
-    console.log(result)
-  })
-
-  it("nowDateZh", () => {
-    const result = DateUtil.nowDateZh()
-    console.log(result)
-  })
-
-  it("nowTimeZh", () => {
-    const result = DateUtil.nowTimeZh()
-    console.log(result)
-  })
-})
+module.exports = {
+  semi: false,
+  singleQuote: false,
+  printWidth: 120
+}

@@ -15,13 +15,7 @@ console.log("now=>", now)
 ## Deps
 
 ```
-├── zhi-device
-├── zhi-env
-├── zhi-log
-├── lute
-├── showdown
-├── compare-versions
-├── ajv
+## Congregations! zhi-env need no deps, it is just pure js code 🎉
 ```
 
 ## Dev

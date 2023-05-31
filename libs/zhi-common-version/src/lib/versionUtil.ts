@@ -41,7 +41,7 @@ class VersionUtil {
    * @param v2 - Second version to compare
    * @returns boolean true if v1 is higher than v2
    */
-  public greater(v1: string, v2: string): boolean {
+  public static greater(v1: string, v2: string): boolean {
     return compareVersions(v1, v2) > 0
   }
 
@@ -53,7 +53,7 @@ class VersionUtil {
    * @param v2 - Second version to compare
    * @returns boolean true if v1 is equal to v2
    */
-  public equal(v1: string, v2: string): boolean {
+  public static equal(v1: string, v2: string): boolean {
     return compareVersions(v1, v2) === 0
   }
 
@@ -65,7 +65,7 @@ class VersionUtil {
    * @param v2 - Second version to compare
    * @returns boolean true if v1 is lesser than v2
    */
-  public lesser(v1: string, v2: string): boolean {
+  public static lesser(v1: string, v2: string): boolean {
     return compareVersions(v1, v2) < 0
   }
 }

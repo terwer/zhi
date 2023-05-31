@@ -149,16 +149,19 @@ importers:
         version: link:../../tools/vite-config-custom
 
   libs/zhi-common:
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config-custom
+      '@terwer/tsconfig':
+        specifier: workspace:*
+        version: link:../../tools/tsconfig
+      '@terwer/vite-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/vite-config-custom
+
+  libs/zhi-common-basic:
     dependencies:
-      ajv:
-        specifier: ^8.12.0
-        version: registry.npmjs.org/ajv@8.12.0
-      compare-versions:
-        specifier: 5.0.3
-        version: registry.npmjs.org/compare-versions@5.0.3
-      showdown:
-        specifier: ^2.1.0
-        version: registry.npmjs.org/showdown@2.1.0
       zhi-device:
         specifier: workspace:*
         version: link:../zhi-device
@@ -170,17 +173,53 @@ importers:
         version: link:../zhi-log
     devDependencies:
       '@terwer/eslint-config-custom':
-        specifier: workspace:*
+        specifier: ^1.2.0
         version: link:../../tools/eslint-config-custom
-      '@terwer/tsconfig':
-        specifier: workspace:*
-        version: link:../../tools/tsconfig
       '@terwer/vite-config-custom':
-        specifier: workspace:*
-        version: link:../../tools/vite-config-custom
+        specifier: ^0.5.0
+        version: registry.npmjs.org/@terwer/vite-config-custom@0.5.0(jsdom@22.0.0)(minimist@1.2.8)(rollup-plugin-livereload@2.0.5)(tslib@2.5.0)(typescript@5.0.4)(vite-plugin-css-injected-by-js@3.1.1)(vite-plugin-dts@2.3.0)(vite-plugin-no-bundle@2.0.2)(vite-plugin-static-copy@0.15.0)(vite-tsconfig-paths@4.2.0)(vite@4.3.5)(vitest@0.31.1)
+
+  libs/zhi-common-json-validate:
+    dependencies:
+      ajv:
+        specifier: ^8.12.0
+        version: registry.npmjs.org/ajv@8.12.0
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: ^1.2.0
+        version: link:../../tools/eslint-config-custom
+      '@terwer/vite-config-custom':
+        specifier: ^0.5.0
+        version: registry.npmjs.org/@terwer/vite-config-custom@0.5.0(jsdom@22.0.0)(minimist@1.2.8)(rollup-plugin-livereload@2.0.5)(tslib@2.5.0)(typescript@5.0.4)(vite-plugin-css-injected-by-js@3.1.1)(vite-plugin-dts@2.3.0)(vite-plugin-no-bundle@2.0.2)(vite-plugin-static-copy@0.15.0)(vite-tsconfig-paths@4.2.0)(vite@4.3.5)(vitest@0.31.1)
+
+  libs/zhi-common-markdown:
+    dependencies:
+      showdown:
+        specifier: ^2.1.0
+        version: registry.npmjs.org/showdown@2.1.0
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: ^1.2.0
+        version: link:../../tools/eslint-config-custom
+      '@terwer/vite-config-custom':
+        specifier: ^0.5.0
+        version: registry.npmjs.org/@terwer/vite-config-custom@0.5.0(jsdom@22.0.0)(minimist@1.2.8)(rollup-plugin-livereload@2.0.5)(tslib@2.5.0)(typescript@5.0.4)(vite-plugin-css-injected-by-js@3.1.1)(vite-plugin-dts@2.3.0)(vite-plugin-no-bundle@2.0.2)(vite-plugin-static-copy@0.15.0)(vite-tsconfig-paths@4.2.0)(vite@4.3.5)(vitest@0.31.1)
       '@types/showdown':
         specifier: ^2.0.1
         version: registry.npmjs.org/@types/showdown@2.0.1
+
+  libs/zhi-common-version:
+    dependencies:
+      compare-versions:
+        specifier: 5.0.3
+        version: registry.npmjs.org/compare-versions@5.0.3
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: ^1.2.0
+        version: link:../../tools/eslint-config-custom
+      '@terwer/vite-config-custom':
+        specifier: ^0.5.0
+        version: registry.npmjs.org/@terwer/vite-config-custom@0.5.0(jsdom@22.0.0)(minimist@1.2.8)(rollup-plugin-livereload@2.0.5)(tslib@2.5.0)(typescript@5.0.4)(vite-plugin-css-injected-by-js@3.1.1)(vite-plugin-dts@2.3.0)(vite-plugin-no-bundle@2.0.2)(vite-plugin-static-copy@0.15.0)(vite-tsconfig-paths@4.2.0)(vite@4.3.5)(vitest@0.31.1)
 
   libs/zhi-device:
     devDependencies:

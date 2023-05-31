@@ -39,7 +39,7 @@ class StrUtil {
    * @author terwer
    * @since 0.0.1
    */
-  public f(str: string, ...args: (string | number | boolean | object)[]): string {
+  public static f(str: string, ...args: (string | number | boolean | object)[]): string {
     let ret = str
     for (let i = 0; i < args.length; i++) {
       const arg = args[i]
@@ -57,7 +57,7 @@ class StrUtil {
    *
    * @param str - 字符串数组
    */
-  public appendStr(...str: string[]): string {
+  public static appendStr(...str: string[]): string {
     return str.join("")
   }
 
@@ -67,7 +67,7 @@ class StrUtil {
    * @param str - 字符串
    * @param arr - 字符串数组
    */
-  public includeInArray(str: string, arr: string[]): boolean {
+  public static includeInArray(str: string, arr: string[]): boolean {
     let flag = false
     for (let i = 0; i < arr.length; i++) {
       const item = arr[i]
@@ -86,7 +86,7 @@ class StrUtil {
    * @param length - 长度
    * @param ignore - 不要结尾省略号
    */
-  public getByLength(str: string, length: number, ignore?: boolean): string {
+  public static getByLength(str: string, length: number, ignore?: boolean): string {
     const allText = str
     if (allText.length < length) {
       return allText
@@ -102,7 +102,7 @@ class StrUtil {
    *
    * @param str - 待检测的字符串
    */
-  public isEmptyString(str: any): boolean {
+  public static isEmptyString(str: any): boolean {
     if (!str) {
       return true
     }
@@ -118,7 +118,7 @@ class StrUtil {
    * @param path1 - 路径1
    * @param path2 - 路径2
    */
-  public pathJoin(path1: string, path2: string): string {
+  public static pathJoin(path1: string, path2: string): string {
     let path = path1
     const path1LastIdx = path1.lastIndexOf("/")
     // logUtil.logInfo("path1.length=>", path1.length)
@@ -143,7 +143,7 @@ class StrUtil {
    *
    * @param val - val
    */
-  public parseBoolean(val: any) {
+  public static parseBoolean(val: any) {
     if (!val) {
       val = "false"
     }
