@@ -32,10 +32,21 @@ const logger = simpleLogger("fetch-chrome", "xmlrpc-middleware", true)
  * @param message 消息
  */
 async function sendChromeMessage(message: any) {
-  return await new Promise((resolve) => {
+  return await new Promise((resolve, reject) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    chrome.runtime.sendMessage(message, resolve)
+    // chrome.runtime.sendMessage(message, resolve)
+    chrome.runtime.sendMessage(message, (response) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (chrome.runtime.lastError) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        reject(chrome.runtime.lastError)
+      } else {
+        resolve(response)
+      }
+    })
   })
 }
 
