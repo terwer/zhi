@@ -149,6 +149,10 @@ importers:
         version: link:../../tools/vite-config-custom
 
   libs/zhi-common:
+    dependencies:
+      zhi-lib-base:
+        specifier: workspace:*
+        version: link:../zhi-lib-base
     devDependencies:
       '@terwer/eslint-config-custom':
         specifier: workspace:*

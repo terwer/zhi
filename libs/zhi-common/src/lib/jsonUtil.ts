@@ -24,15 +24,18 @@
  */
 
 import StrUtil from "./strUtil"
+import { simpleLogger } from "zhi-lib-base"
 
 /**
- * 校验 JSON schema
+ * JSON 解析工具类
  *
  * @author terwer
  * @version 1.5.0
  * @since 1.5.0
  */
 class JsonUtil {
+  private static logger = simpleLogger("json-util")
+
   /**
    * 安全的解析json
    *
@@ -48,7 +51,12 @@ class JsonUtil {
     }
 
     // 尝试解析json
-    ret = JSON.parse(str) || def
+    try {
+      ret = JSON.parse(str) || def
+    } catch (e) {
+      ret = def
+      this.logger.error("json parse error", e)
+    }
 
     // 如果json被二次转义，在尝试解析一次
     if (typeof ret === "string") {
