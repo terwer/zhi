@@ -31,7 +31,7 @@ const logger = simpleLogger("fetch-chrome", "xmlrpc-middleware", true)
  * 向Chrome发送消息
  * @param message 消息
  */
-export async function sendChromeMessage(message: any) {
+async function sendChromeMessage(message: any) {
   return await new Promise((resolve) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
@@ -49,9 +49,12 @@ export async function sendChromeMessage(message: any) {
  */
 async function doChromeFetch(appInstance: any, apiUrl: string, reqMethod: string, reqParams: string[]): Promise<any> {
   try {
+    logger.debug("doChromeFetch appInstance=>", appInstance)
+    logger.debug("doChromeFetch apiUrl=>", apiUrl)
     const serializer = new appInstance.simpleXmlrpc.Serializer(appInstance)
     const methodBodyXml = serializer.serializeMethodCall(reqMethod, reqParams, "utf-8")
 
+    logger.debug("doChromeFetch methodBodyXml=>", methodBodyXml)
     const fetchCORSParams = {
       method: "POST",
       headers: {
@@ -60,13 +63,14 @@ async function doChromeFetch(appInstance: any, apiUrl: string, reqMethod: string
       body: methodBodyXml,
     }
 
+    logger.debug("start sendChromeMessage...")
     let resText = (await sendChromeMessage({
       // 里面的值应该可以自定义，用于判断哪个请求之类的
       type: "fetchChromeXmlrpc",
       apiUrl, // 需要请求的url
       fetchCORSParams,
     })) as any
-    logger.debug("fetchChromeXmlrpc开始，resText=>", resText)
+    logger.debug("fetchChromeXmlrpc received message，resText=>", resText)
 
     let data
     if (resText) {
