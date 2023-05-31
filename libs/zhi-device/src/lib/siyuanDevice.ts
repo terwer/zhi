@@ -317,7 +317,7 @@ class SiyuanDevice {
   }
 
   public static browserJoinPath(...paths: string[]): string {
-    return paths.join(BrowserUtil.BrowserSeperator)
+    return paths.join(BrowserUtil.BrowserSeparator)
   }
 
   /**

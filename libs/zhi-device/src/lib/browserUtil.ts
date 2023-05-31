@@ -32,19 +32,19 @@
  */
 class BrowserUtil {
   /**
-   * 是否在浏览器环境
+   * 是否在Node环境
    */
-  public static isNode = typeof process !== "undefined"
+  public static isNode = typeof process !== "undefined" && process.versions != null && process.versions.node != null
 
   /**
    * 是否在浏览器环境
    */
-  public static isInBrowser = typeof window !== "undefined"
+  public static isInBrowser = typeof window !== "undefined" && typeof document !== "undefined"
 
   /**
    * 浏览器路径分隔符
    */
-  public static BrowserSeperator = "/"
+  public static BrowserSeparator = "/"
 
   /**
    * 是否是Electron环境
@@ -54,7 +54,7 @@ class BrowserUtil {
       return false
     }
 
-    return /Electron/.test(window.navigator.userAgent)
+    return typeof process !== "undefined" && process.versions != null && process.versions.electron != null
   }
 
   /**
