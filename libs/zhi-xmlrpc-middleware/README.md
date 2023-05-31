@@ -1,11 +1,18 @@
 # zhi-xmlrpc-middleware
 
-abstract xmlrpc middle layer
+abstract xmlrpc middle layer for all devices
 
 ## Usage
 
-```js
-// usage
+```
+## Node
+https://github.com/terwer/zhi/blob/dev/libs/zhi-xmlrpc-middleware/src/lib/commonXmlrpcClient.spec.ts
+
+## Chrome Extension
+https://github.com/terwer/node-demos/blob/main/xmlrpc-middleware-demo/src/components/ChromeXmlrpcTest.vue
+
+## Browser
+https://github.com/terwer/node-demos/blob/main/xmlrpc-middleware-demo/src/components/MiddlewareXmlrpcTest.vue
 ```
 
 ## Deps
