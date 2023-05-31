@@ -65,6 +65,7 @@ class CommonXmlrpcClient {
     let result
 
     const deviceType = DeviceDetection.getDevice()
+    this.logger.info("deviceType =>", deviceType)
     switch (deviceType) {
       case DeviceTypeEnum.DeviceType_Node: {
         this.logger.info("当前处于Node环境，使用node的fetch获取数据")
@@ -115,7 +116,7 @@ class CommonXmlrpcClient {
    */
   public async methodCall(reqMethod: string, reqParams: any[], middlewareUrl?: string): Promise<any> {
     const result = await this.fetchXmlrpc(this.apiUrl, reqMethod, reqParams, middlewareUrl)
-    this.logger.debug("请求结果，result=>", result)
+    this.logger.info("请求结果，result=>", result)
     return result
   }
 }
