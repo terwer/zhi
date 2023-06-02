@@ -26,10 +26,14 @@
   },
   "devDependencies": {
     "@terwer/eslint-config-custom": "^1.2.0",
-    "@terwer/vite-config-custom": "^0.5.0"
+    "@terwer/vite-config-custom": "^0.5.0",
+    "cross-fetch": "^3.1.6",
+    "simple-xmlrpc": "^1.4.2",
+    "xmlbuilder2": "^3.1.1"
   },
   "dependencies": {
     "zhi-blog-api": "workspace:*",
-    "zhi-lib-base": "workspace:*"
+    "zhi-lib-base": "workspace:*",
+    "zhi-xmlrpc-middleware": "workspace:*"
   }
 }

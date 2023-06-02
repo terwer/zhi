@@ -51,7 +51,7 @@ class BlogApi implements IBlogApi {
     throw new NotImplementedException("You must implement this method in sub class")
   }
 
-  public async getPost(postid: string, useSlug?: boolean): Promise<Post> {
+  public async getPost(postid: string, useSlug?: boolean, skipBody?: boolean): Promise<Post> {
     throw new NotImplementedException("You must implement this method in sub class")
   }
 

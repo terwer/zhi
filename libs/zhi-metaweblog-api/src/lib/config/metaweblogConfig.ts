@@ -33,52 +33,52 @@ class MetaweblogConfig extends BlogConfig {
   /**
    * 首页
    */
-  home: string
+  public override home = ""
 
   /**
    * API地址
    */
-  apiUrl: string
+  public override apiUrl = ""
 
   /**
    * 用户名
    */
-  username: string
+  public override username = ""
 
   /**
    * 密码
    */
-  password: string
+  public override password = ""
 
   /**
    * 是否发布
    */
-  apiStatus: boolean
+  public override apiStatus = false
 
   /**
    * 博客名（API获取）
    */
-  blogName: string
+  public override blogName = ""
 
   /**
    * 文章别名key
    */
-  posidKey: string
+  public override posidKey = ""
 
   /**
    * 文章预览链接
    */
-  previewUrl: string
+  public override previewUrl = ""
 
   /**
    * 文章类型
    */
-  pageType: PageTypeEnum
+  public override pageType: PageTypeEnum = PageTypeEnum.Markdown
 
   /**
    * 操作提示
    */
-  placeholder: MetaweblogPlaceholder
+  public override placeholder = {} as MetaweblogPlaceholder
 
   constructor(home: string, apiUrl: string, username: string, password: string) {
     super()

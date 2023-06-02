@@ -59,7 +59,7 @@ class SiYuanApiAdaptor extends BlogApi {
     this.siyuanKernelApi = new SiyuanKernelApi(appInstance, cfg)
   }
 
-  public async getUsersBlogs(): Promise<Array<UserBlog>> {
+  public override async getUsersBlogs(): Promise<Array<UserBlog>> {
     const usersBlogs: UserBlog[] = []
     const userBlog = new UserBlog()
 
@@ -72,11 +72,11 @@ class SiYuanApiAdaptor extends BlogApi {
     return usersBlogs
   }
 
-  public async getRecentPostsCount(keyword?: string): Promise<number> {
+  public override async getRecentPostsCount(keyword?: string): Promise<number> {
     return await this.siyuanKernelApi.getRootBlocksCount(keyword ?? "")
   }
 
-  public async getRecentPosts(numOfPosts: number, page?: number, keyword?: string): Promise<Array<Post>> {
+  public override async getRecentPosts(numOfPosts: number, page?: number, keyword?: string): Promise<Array<Post>> {
     const result: Post[] = []
 
     let pg = 0
@@ -131,11 +131,11 @@ class SiYuanApiAdaptor extends BlogApi {
     return result
   }
 
-  public async newPost(post: Post, publish?: boolean): Promise<string> {
+  public override async newPost(post: Post, publish?: boolean): Promise<string> {
     return await this.siyuanKernelApi.createDocWithMd(this.cfg.notebook, `/${post.title}`, post.description)
   }
 
-  public async getPost(postid: string, useSlug?: boolean, skipBody?: boolean): Promise<Post> {
+  public override async getPost(postid: string, useSlug?: boolean, skipBody?: boolean): Promise<Post> {
     let pid = postid
     if (useSlug) {
       const pidObj = await this.siyuanKernelApi.getRootBlockBySlug(postid)
@@ -196,16 +196,16 @@ class SiYuanApiAdaptor extends BlogApi {
     return commonPost
   }
 
-  public async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {
+  public override async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {
     return await super.editPost(postid, post, publish)
   }
 
-  public async deletePost(postid: string): Promise<boolean> {
+  public override async deletePost(postid: string): Promise<boolean> {
     await this.siyuanKernelApi.removeDoc(this.cfg.notebook, `/${postid}.sy`)
     return true
   }
 
-  public async getCategories(): Promise<CategoryInfo[]> {
+  public override async getCategories(): Promise<CategoryInfo[]> {
     const cats = [] as CategoryInfo[]
 
     let notebooks: any[] = (await this.siyuanKernelApi.lsNotebooks()).notebooks
@@ -227,7 +227,7 @@ class SiYuanApiAdaptor extends BlogApi {
     return cats
   }
 
-  public async getPreviewUrl(postid: string): Promise<string> {
+  public override async getPreviewUrl(postid: string): Promise<string> {
     // 检查 previewUrl 是否包含 [postid] 参数
     if (!this.cfg.previewUrl?.includes("[postid]")) {
       throw new Error("Missing [postid] parameter in preview URL")
@@ -241,7 +241,7 @@ class SiYuanApiAdaptor extends BlogApi {
     return previewUrl.replace("[postid]", postid)
   }
 
-  public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<any> {
+  public override async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<any> {
     if (!customHandler) {
       throw new NotImplementedException("You must implement custom handler for siyuan assets")
     }

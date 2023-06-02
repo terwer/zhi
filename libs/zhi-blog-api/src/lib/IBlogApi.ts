@@ -98,10 +98,11 @@ interface IBlogApi {
    * 文章详情
    * @param postid - postid
    * @param useSlug - 是否使用的是别名（可选，部分平台不支持）
+   * @param skipBody - 是否忽略正文（可选，部分平台不支持）
    * @see {@link https://codex.wordpress.org/XML-RPC_MetaWeblog_API#metaWeblog.getPost getPost}
    * @returns {Promise<Post>}
    */
-  getPost(postid: string, useSlug?: boolean): Promise<Post>
+  getPost(postid: string, useSlug?: boolean, skipBody?: boolean): Promise<Post>
 
   /**
    * 更新文章

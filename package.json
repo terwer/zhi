@@ -35,7 +35,7 @@
   "devDependencies": {
     "@terwer/changelog-parser": "workspace:*",
     "@terwer/eslint-config-custom": "workspace:*",
-    "turbo": "^1.9.9"
+    "turbo": "^1.10.1"
   },
   "engines": {
     "node": ">=16.0.0"
