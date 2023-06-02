@@ -23,13 +23,13 @@
  * questions.
  */
 
-import { PageTypeEnum } from "zhi-blog-api"
+import { BlogConfig, PageTypeEnum } from "zhi-blog-api"
 import MetaweblogPlaceholder from "./metaweblogPlaceholder"
 
 /**
  * Metaweblog配置类
  */
-class MetaweblogConfig {
+class MetaweblogConfig extends BlogConfig {
   /**
    * 首页
    */
@@ -81,6 +81,7 @@ class MetaweblogConfig {
   placeholder: MetaweblogPlaceholder
 
   constructor(home: string, apiUrl: string, username: string, password: string) {
+    super()
     this.home = home
     this.apiUrl = apiUrl
     this.username = username
