@@ -21,18 +21,28 @@
   - [zhi-common](https://github.com/terwer/zhi/tree/main/libs/zhi-common)
   - [zhi-blog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api)
   - [X] [zhi-xmlrpc-middleware](https://github.com/terwer/zhi/tree/main/libs/zhi-xmlrpc-middleware)
+    - [zhi-metaweblog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-metaweblog-api)
+      - [zhi-wordpress-api](https://github.com/terwer/zhi/tree/main/libs/zhi-wordpress-api)
+      - [zhi-typecho-api](https://github.com/terwer/zhi/tree/main/libs/zhi-typecho-api)
+      - [zhi-cnblogs-api](https://github.com/terwer/zhi/tree/main/libs/zhi-cnblogs-api)
   - [zhi-fetch-middleware](https://github.com/terwer/zhi/tree/main/libs/zhi-fetch-middleware)
-  - [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api)
-  - [zhi-metaweblog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-metaweblog-api)
-  - [zhi-wordpress-api](https://github.com/terwer/zhi/tree/main/libs/zhi-wordpress-api)
-  - [zhi-rest-api](https://github.com/terwer/zhi/tree/main/libs/zhi-rest-api)
-  - [zhi-http-api](https://github.com/terwer/zhi/tree/main/libs/zhi-http-api)
+    - [zhi-rest-api](https://github.com/terwer/zhi/tree/main/libs/zhi-rest-api)
+      - [zhi-github-api](https://github.com/terwer/zhi/tree/main/libs/zhi-github-api)
+      - [zhi-gitlab-api](https://github.com/terwer/zhi/tree/main/libs/zhi-gitlab-api)
+      - [zhi-yuque-api](https://github.com/terwer/zhi/tree/main/libs/zhi-yuque-api)
+      - [zhi-liandi-api](https://github.com/terwer/zhi/tree/main/libs/zhi-liandi-api)
+      - [zhi-kms-api](https://github.com/terwer/zhi/tree/main/libs/zhi-kms-api)
+      - [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api)
+      - [zhi-wechat-api](https://github.com/terwer/zhi/tree/main/libs/zhi-wechat-api)
+    - [zhi-http-api](https://github.com/terwer/zhi/tree/main/libs/zhi-http-api)
+      - [zhi-zhihu-api](https://github.com/terwer/zhi/tree/main/libs/zhi-zhihu-api)
+      - [zhi-csdn-api](https://github.com/terwer/zhi/tree/main/libs/zhi-csdn-api)
 
 ### 工具
 
 - [zhi-publisher-hook](https://github.com/terwer/zhi/tree/main/libs/zhi-publisher-hook)
 - [widget-siyuan-hook](https://github.com/terwer/zhi/tree/main/libs/widget-siyuan-hook)
-- [plugin-publisher-bridge](https://github.com/terwer/zhi/tree/main/libs/zplugin-publisher-bridge)
+- [plugin-publisher-bridge](https://github.com/terwer/zhi/tree/main/libs/plugin-publisher-bridge)
 
 ### 主题
 - [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - 基于样式的主题 <sup>进行中</sup>
