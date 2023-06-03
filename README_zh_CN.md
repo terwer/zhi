@@ -40,17 +40,18 @@
 
 ### 工具
 
-- [zhi-publisher-hook](https://github.com/terwer/zhi/tree/main/libs/zhi-publisher-hook)
-- [widget-siyuan-hook](https://github.com/terwer/zhi/tree/main/libs/widget-siyuan-hook)
-- [plugin-publisher-bridge](https://github.com/terwer/zhi/tree/main/libs/plugin-publisher-bridge)
+- [eslint-config-custom](https://github.com/terwer/zhi/tree/dev/tools/eslint-config-custom)
+- [vite-config-custom](https://github.com/terwer/zhi/tree/dev/tools/vite-config-custom)
+- [changelog-parser](https://github.com/terwer/zhi/tree/dev/tools/changelog-parser)
 
 ### 主题
-- [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - 基于样式的主题 <sup>进行中</sup>
+- [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - 知乎主题 <sup>已上架</sup>
 
 ### 挂件
-- [sy-post-publisher](https://github.com/terwer/sy-post-publisher) - 思源笔记发布工具 <sup>已上架官方挂件集市</sup>
+- [sy-post-publisher](https://github.com/terwer/sy-post-publisher) - 发布工具挂件版 <sup>已上架</sup>
 
 ### 插件
-- [siyuan-plugin-publisher](https://github.com/terwer/siyuan-plugin-publisher) - 发布工具插件 <sup>进行中</sup>
-- [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - 基于思源笔记API的博客版 <sup>进行中</sup>
-- [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - 导入 epub, docx, pdf, html 等格式到思源笔记 <sup>进行中</sup>
+- [siyuan-plugin-publisher](https://github.com/terwer/siyuan-plugin-publisher) - 发布工具 <sup>进行中</sup>
+- [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - 博客插件，博客 & 分享 <sup>进行中</sup>
+- [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - 导入工具，导入 epub, docx, pdf, html 等格式到思源笔记 <sup>已上架</sup>
+- [siyuan-plugin-custom-slug](https://github.com/terwer/siyuan-plugin-custom-slug) - 文档别名，为文档标题新建别名索引，方便快速搜索 <sup>已上架</sup>

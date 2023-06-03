@@ -40,17 +40,18 @@
 
 ### tools
 
-- [zhi-publisher-hook](https://github.com/terwer/zhi/tree/main/libs/zhi-publisher-hook)
-- [widget-siyuan-hook](https://github.com/terwer/zhi/tree/main/libs/widget-siyuan-hook)
-- [plugin-publisher-bridge](https://github.com/terwer/zhi/tree/main/libs/zplugin-publisher-bridge)
+- [eslint-config-custom](https://github.com/terwer/zhi/tree/dev/tools/eslint-config-custom)
+- [vite-config-custom](https://github.com/terwer/zhi/tree/dev/tools/vite-config-custom)
+- [changelog-parser](https://github.com/terwer/zhi/tree/dev/tools/changelog-parser)
 
 ### themes
-- [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - Style-based theme <sup> in progress </sup>
+- [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - Zhihu Theme <sup>is now available</sup>
 
 ### widgets
-- [sy-post-publisher](https://github.com/terwer/sy-post-publisher) - Siyuan note publishing tool <sup> has been put on the shelf official pendant market </sup>
+- [sy-post-publisher](https://github.com/terwer/sy-post-publisher) - The Publishing Tool widget <sup>version is now available</sup>
 
 ### plugins
-- [siyuan-plugin-publisher](https://github.com/terwer/siyuan-plugin-publisher) - Siyuan note release tool plugin bridge version <sup> in progress </sup>
-- [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - Blog widget version based on Siyuan Note API <sup> in progress </sup>
-- [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - Import from epub, docx, pdf, html etc. to siyuan-note <sup> in progress </sup>
+- [siyuan-plugin-publisher](https://github.com/terwer/siyuan-plugin-publisher) - Publishing tools <sup>in progress</sup>
+- [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - Blog plugin, blog & share <sup>in progress</sup>
+- [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - Import tools, import epub, docx, pdf, html and other formats to Siyuan notes <sup>are available</sup>
+- [siyuan-plugin-custom-slug](https://github.com/terwer/siyuan-plugin-custom-slug) - Document alias, a new alias index for document titles, convenient for quick search <sup>Listed</sup>
