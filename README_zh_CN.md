@@ -8,8 +8,6 @@
 ![version](https://img.shields.io/github/release/terwer/zhi.svg?style=flat-square)
 ![license](https://img.shields.io/badge/license-GPL-blue.svg?style=popout-square)
 
-> ⚠️警告：由于 `theme.js` 将被删除，这个主题暂时不发布。稍后我会发布基于样式的主题、插件和小部件等。
-
 ## Zhi 项目家族
 
 ### 类库

@@ -8,8 +8,6 @@
 ![version](https://img.shields.io/github/release/terwer/zhi.svg?style=flat-square)
 ![license](https://img.shields.io/badge/license-GPL-blue.svg?style=popout-square)
 
-> ⚠️ WARNING: Due to `theme.js` will be removed, this theme cannot be published yet.I will publish style-based theme, plugins, widgets later.
-
 ## Zhi family
 
 ### libraries
