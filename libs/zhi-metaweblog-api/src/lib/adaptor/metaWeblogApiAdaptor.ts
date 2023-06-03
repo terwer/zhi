@@ -49,10 +49,11 @@ class MetaWeblogApiAdaptor extends BlogApi {
    */
   constructor(appInstance: any, cfg: MetaweblogConfig) {
     super()
-    this.logger = simpleLogger("zhi-metaweblog-api", "metaweblog-api-adaptor", false)
+    this.logger = simpleLogger("metaweblog-api-adaptor", "zhi-metaweblog-api", false)
 
     this.cfg = cfg
     this.commonXmlrpcClient = new CommonXmlrpcClient(appInstance, cfg.apiUrl)
+    this.logger.info("MetaWeblog API inited")
   }
 
   public async getUsersBlogs(): Promise<Array<UserBlog>> {

@@ -37,7 +37,8 @@ class WordpressApiAdaptor extends MetaWeblogApiAdaptor {
   constructor(appInstance: any, cfg: WordpressConfig) {
     super(appInstance, cfg)
 
-    this.logger = simpleLogger("zhi-wordpress-api", "wordpress-api-adaptor", false)
+    this.logger = simpleLogger("wordpress-api-adaptor", "zhi-wordpress-api", false)
+    this.logger.info("WordPress API inited")
   }
 }
 

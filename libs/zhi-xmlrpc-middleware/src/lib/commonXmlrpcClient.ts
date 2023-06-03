@@ -44,7 +44,7 @@ class CommonXmlrpcClient {
 
   constructor(appInstance: any, apiUrl: string) {
     this.appInstance = appInstance
-    this.logger = simpleLogger("common-xmlrpc-client")
+    this.logger = simpleLogger("common-xmlrpc-client", "zhi-xmlrpc-middleware")
     this.apiUrl = apiUrl
   }
 

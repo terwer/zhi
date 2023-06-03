@@ -63,6 +63,39 @@ const simpleLogger = (name: string, customSign?: string, isDev?: boolean): ILogg
     }
   }
 
+  const infoLog = (msg: any, obj?: any) => {
+    const time = formatDate(new Date())
+    if (obj) {
+      console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`, obj)
+    } else {
+      console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`)
+    }
+  }
+  const warnLog = (msg: any, obj?: any) => {
+    const time = formatDate(new Date())
+    if (obj) {
+      console.warn(`[${sign}] [${time}] [WARN] [${name}] ${msg}`, obj)
+    } else {
+      console.warn(`[${sign}] [${time}] [WARN] [${name}] ${msg}`)
+    }
+  }
+  const errorLog = (msg: string | Error, obj?: any) => {
+    const time = formatDate(new Date())
+    if (obj) {
+      if (typeof msg == "string") {
+        console.error(`[${sign}] [${time}] [ERROR] [${name}] ${msg}`, obj)
+      } else {
+        console.error(`[${sign}] [${time}] [ERROR] [${name}] ${msg.toString()}`, obj)
+      }
+    } else {
+      if (typeof msg == "string") {
+        console.error(`[${sign}] [${time}] [ERROR] [${name}] ${msg.toString()}`)
+      } else {
+        console.error(`[${sign}] [${time}] [ERROR] [${name}] an error occurred =>`, msg)
+      }
+    }
+  }
+
   return {
     debug: (msg: string, obj?: any) => {
       if (isDev) {
@@ -70,36 +103,13 @@ const simpleLogger = (name: string, customSign?: string, isDev?: boolean): ILogg
       }
     },
     info: (msg: string, obj?: any) => {
-      const time = formatDate(new Date())
-      if (obj) {
-        console.info(`[${sign}] [${time}] [INFO] ${msg}`, obj)
-      } else {
-        console.info(`[${sign}] [${time}] [INFO] ${msg}`)
-      }
+      infoLog(msg, obj)
     },
     warn: (msg: string, obj?: any) => {
-      const time = formatDate(new Date())
-      if (obj) {
-        console.warn(`[${sign}] [${time}] [WARN] ${msg}`, obj)
-      } else {
-        console.warn(`[${sign}] [${time}] [WARN] ${msg}`)
-      }
+      warnLog(msg, obj)
     },
     error: (msg: string | Error, obj?: any) => {
-      const time = formatDate(new Date())
-      if (obj) {
-        if (typeof msg == "string") {
-          console.error(`[${sign}] [${time}] [ERROR] ${msg}`, obj)
-        } else {
-          console.error(`[${sign}] [${time}] [ERROR] ${msg.toString()}`, obj)
-        }
-      } else {
-        if (typeof msg == "string") {
-          console.error(`[${sign}] [${time}] [ERROR] ${msg.toString()}`)
-        } else {
-          console.error(`[${sign}] [${time}] [ERROR] an error occurred =>`, msg)
-        }
-      }
+      errorLog(msg, obj)
     },
   }
 }
