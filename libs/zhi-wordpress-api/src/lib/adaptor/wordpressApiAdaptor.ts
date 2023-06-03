@@ -23,8 +23,22 @@
  * questions.
  */
 
-import MetaWeblogApiAdaptor from "./lib/adaptor/metaWeblogApiAdaptor"
-import MetaweblogConfig from "./lib/config/metaweblogConfig"
-import MetaweblogPlaceholder from "./lib/config/metaweblogPlaceholder"
+import { MetaWeblogApiAdaptor } from "zhi-metaweblog-api"
+import WordpressConfig from "../config/wordpressConfig"
+import { simpleLogger } from "zhi-lib-base"
 
-export { MetaWeblogApiAdaptor, MetaweblogConfig, MetaweblogPlaceholder }
+class WordpressApiAdaptor extends MetaWeblogApiAdaptor {
+  /**
+   * 初始化思源 API 适配器
+   *
+   * @param appInstance - 应用实例
+   * @param cfg 配置项
+   */
+  constructor(appInstance: any, cfg: WordpressConfig) {
+    super(appInstance, cfg)
+
+    this.logger = simpleLogger("zhi-wordpress-api", "wordpress-api-adaptor", false)
+  }
+}
+
+export default WordpressApiAdaptor

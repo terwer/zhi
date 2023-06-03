@@ -23,8 +23,11 @@
  * questions.
  */
 
-import MetaWeblogApiAdaptor from "./lib/adaptor/metaWeblogApiAdaptor"
-import MetaweblogConfig from "./lib/config/metaweblogConfig"
-import MetaweblogPlaceholder from "./lib/config/metaweblogPlaceholder"
+/**
+ * Wordpress 常量定义
+ */
+class WordpressConstants {
+  public static WORDPRESS_POSTID_KEY = "custom-wordpress-post-id"
+}
 
-export { MetaWeblogApiAdaptor, MetaweblogConfig, MetaweblogPlaceholder }
+export default WordpressConstants

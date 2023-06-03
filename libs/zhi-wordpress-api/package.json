@@ -27,5 +27,10 @@
   "devDependencies": {
     "@terwer/eslint-config-custom": "^1.2.0",
     "@terwer/vite-config-custom": "^0.5.0"
+  },
+  "dependencies": {
+    "zhi-blog-api": "workspace:*",
+    "zhi-lib-base": "workspace:*",
+    "zhi-metaweblog-api": "workspace:*"
   }
 }

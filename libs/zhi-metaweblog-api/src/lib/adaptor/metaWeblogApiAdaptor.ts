@@ -27,7 +27,7 @@ import { BlogApi, CategoryInfo, MediaObject, Post, UserBlog } from "zhi-blog-api
 import MetaweblogConfig from "../config/metaweblogConfig"
 import { simpleLogger } from "zhi-lib-base"
 import { CommonXmlrpcClient } from "zhi-xmlrpc-middleware"
-import MetaweblogMethodConstants from "../../metaweblogConstants"
+import MetaweblogMethodConstants from "../constants/metaweblogMethodConstants"
 
 /**
  * 通用的 Metaweblog API
@@ -37,8 +37,8 @@ import MetaweblogMethodConstants from "../../metaweblogConstants"
  * @since 0.0.1
  */
 class MetaWeblogApiAdaptor extends BlogApi {
-  private logger: any
-  private readonly cfg
+  protected logger: any
+  protected readonly cfg
   protected readonly commonXmlrpcClient
 
   /**
@@ -49,7 +49,7 @@ class MetaWeblogApiAdaptor extends BlogApi {
    */
   constructor(appInstance: any, cfg: MetaweblogConfig) {
     super()
-    this.logger = simpleLogger("zhi-siyuan-api", "siyuan-api-adaptor", false)
+    this.logger = simpleLogger("zhi-metaweblog-api", "metaweblog-api-adaptor", false)
 
     this.cfg = cfg
     this.commonXmlrpcClient = new CommonXmlrpcClient(appInstance, cfg.apiUrl)

@@ -24,12 +24,12 @@
  */
 
 import { afterEach, beforeEach, describe, expect, it } from "vitest"
-import MetaWeblogApiAdaptor from "./metaWeblogApiAdaptor"
-import MetaweblogConfig from "../config/metaweblogConfig"
 import xmlbuilder2 from "xmlbuilder2"
 import { Deserializer, Serializer, SimpleXmlRpcClient, XmlrpcUtil } from "simple-xmlrpc"
+import WordpressApiAdaptor from "./wordpressApiAdaptor"
+import WordpressConfig from "../config/wordpressConfig"
 
-describe("test MetaWeblogApiAdaptor", async () => {
+describe("test WordpressApiAdaptor", async () => {
   // appInstance
   const appInstance: any = {}
   appInstance.fetch = fetch
@@ -50,15 +50,18 @@ describe("test MetaWeblogApiAdaptor", async () => {
   })
 
   it("test apiAdaptor", async () => {
-    const metaweblogConfig = new MetaweblogConfig("", "http://127.0.0.1:8000/xmlrpc.php", "terwer", "123456")
-    const apiAdaptor = new MetaWeblogApiAdaptor(appInstance, metaweblogConfig)
+    const wordpressConfig = new WordpressConfig("http://127.0.0.1:8000/xmlrpc.php", "terwer", "123456")
+    const apiAdaptor = new WordpressApiAdaptor(appInstance, wordpressConfig)
 
     expect(apiAdaptor).toBeTruthy()
   })
 
   it("test getUsersBlogs", async () => {
-    const metaweblogConfig = new MetaweblogConfig("", "http://127.0.0.1:8000/xmlrpc.php", "terwer", "123456")
-    const apiAdaptor = new MetaWeblogApiAdaptor(appInstance, metaweblogConfig)
+    // const wordpressConfig = new WordpressConfig("http://127.0.0.1:8000/xmlrpc.php", "terwer", "123456")
+    // const wordpressConfig = new WordpressConfig("http://127.0.0.1:8000/", "terwer", "123456")
+    const wordpressConfig = new WordpressConfig("http://127.0.0.1:8000", "terwer", "123456")
+    // console.log(wordpressConfig)
+    const apiAdaptor = new WordpressApiAdaptor(appInstance, wordpressConfig)
 
     const usersBlogs = await apiAdaptor.getUsersBlogs()
     console.log(usersBlogs)

@@ -1,4 +1,8 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 importers:
 
@@ -392,6 +396,16 @@ importers:
         version: registry.npmjs.org/form-data@4.0.0
 
   libs/zhi-wordpress-api:
+    dependencies:
+      zhi-blog-api:
+        specifier: workspace:*
+        version: link:../zhi-blog-api
+      zhi-lib-base:
+        specifier: workspace:*
+        version: link:../zhi-lib-base
+      zhi-metaweblog-api:
+        specifier: workspace:*
+        version: link:../zhi-metaweblog-api
     devDependencies:
       '@terwer/eslint-config-custom':
         specifier: ^1.2.0

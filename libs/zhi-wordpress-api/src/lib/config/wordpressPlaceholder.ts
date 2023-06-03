@@ -23,8 +23,8 @@
  * questions.
  */
 
-import MetaWeblogApiAdaptor from "./lib/adaptor/metaWeblogApiAdaptor"
-import MetaweblogConfig from "./lib/config/metaweblogConfig"
-import MetaweblogPlaceholder from "./lib/config/metaweblogPlaceholder"
+import { MetaweblogPlaceholder } from "zhi-metaweblog-api"
 
-export { MetaWeblogApiAdaptor, MetaweblogConfig, MetaweblogPlaceholder }
+class WordpressPlaceholder extends MetaweblogPlaceholder {}
+
+export default WordpressPlaceholder

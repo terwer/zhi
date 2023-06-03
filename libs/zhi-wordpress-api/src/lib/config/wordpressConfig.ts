@@ -23,8 +23,28 @@
  * questions.
  */
 
-import MetaWeblogApiAdaptor from "./lib/adaptor/metaWeblogApiAdaptor"
-import MetaweblogConfig from "./lib/config/metaweblogConfig"
-import MetaweblogPlaceholder from "./lib/config/metaweblogPlaceholder"
+import { MetaweblogConfig } from "zhi-metaweblog-api"
+import { PageTypeEnum } from "zhi-blog-api"
+import WordpressConstants from "../constants/wordpressConstants"
 
-export { MetaWeblogApiAdaptor, MetaweblogConfig, MetaweblogPlaceholder }
+/**
+ * Wordpress配置类
+ */
+class WordpressConfig extends MetaweblogConfig {
+  constructor(home: string, username: string, password: string) {
+    let apiUrl: string
+    let detectedHome: string = home.endsWith("/") ? home.slice(0, -1) : home
+    if (detectedHome.includes("xmlrpc.php")) {
+      apiUrl = detectedHome
+      detectedHome = detectedHome.replace(/\/xmlrpc.php$/, "")
+    } else {
+      apiUrl = `${detectedHome}/xmlrpc.php`
+    }
+    super(detectedHome, apiUrl, username, password)
+    this.posidKey = WordpressConstants.WORDPRESS_POSTID_KEY
+    this.previewUrl = "/?p=[postid]"
+    this.pageType = PageTypeEnum.Markdown
+  }
+}
+
+export default WordpressConfig
