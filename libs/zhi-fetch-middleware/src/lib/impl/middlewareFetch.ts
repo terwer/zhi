@@ -23,10 +23,45 @@
  * questions.
  */
 
+import { simpleLogger } from "zhi-lib-base"
+import { StrUtil } from "zhi-common"
+
+const logger = simpleLogger("middleware-fetch", "zhi-fetch-middleware", true)
+
 export const fetchMiddleware = async (
   appInstance: any,
   apiUrl: string,
   fetchOptions: RequestInit,
-  formJson: any[],
   middlewareUrl: string
-) => {}
+) => {
+  if (StrUtil.isEmptyString(middlewareUrl)) {
+    throw new Error("middlewareUrl can not be empty")
+  }
+
+  const middleApiUrl = middlewareUrl + "/fetch"
+  logger.debug("apiUrl=>", apiUrl)
+
+  logger.debug("fetchOptions=>", fetchOptions)
+
+  const originalFetchParams = {
+    apiUrl,
+    fetchOptions,
+  }
+
+  const data = {
+    fetchParams: originalFetchParams,
+  }
+
+  const middleFetchOption = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }
+
+  logger.debug("middleApiUrl=>", middleApiUrl)
+  logger.debug("middleFetchOption=>", middleFetchOption)
+
+  return await fetch(middleApiUrl, middleFetchOption)
+}

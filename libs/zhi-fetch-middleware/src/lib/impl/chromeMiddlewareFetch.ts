@@ -22,3 +22,9 @@
  * or visit www.terwer.space if you need additional information or have any
  * questions.
  */
+export const fetchChromeMiddleware = async (
+  appInstance: any,
+  apiUrl: string,
+  fetchOptions: RequestInit,
+  middlewareUrl: string
+) => {}

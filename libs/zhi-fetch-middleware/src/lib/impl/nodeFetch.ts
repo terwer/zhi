@@ -33,14 +33,8 @@ const logger = simpleLogger("node-fetch", "zhi-fetch-middleware")
  * @param appInstance - 应用实例
  * @param apiUrl - 请求地址
  * @param fetchOptions - 请求参数
- * @param formJson - form请求数据
  */
-export const fetchNode = async (
-  appInstance: any,
-  apiUrl: string,
-  fetchOptions: RequestInit,
-  formJson?: any[]
-): Promise<any> => {
+export const fetchNode = async (appInstance: any, apiUrl: string, fetchOptions: RequestInit): Promise<any> => {
   try {
     logger.debug("fetchNode开始")
     logger.debug("apiUrl=>", apiUrl)

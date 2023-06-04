@@ -66,34 +66,6 @@ class CommonFetchClient {
   //   return await customHandler(apiUrl, fetchOptions)
   // }
 
-  /**
-   * 发送form数据的fetch的兼容处理，统一返回最终的JSON数据
-   *
-   * @param apiUrl - 请求地址
-   * @param fetchOptions - 请求参数
-   * @param formJson - form请求数据
-   */
-  // protected async formFetchCall(apiUrl: string, fetchOptions: RequestInit, formJson: any[]): Promise<any> {
-  //   return await this.fetchRequest(apiUrl, fetchOptions, formJson)
-  // }
-
-  /**
-   * 支持自定义处理的发送form数据的fetch的兼容处理，统一返回最终的JSON数据
-   *
-   * @param apiUrl - 请求地址
-   * @param fetchOptions - 请求参数
-   * @param formJson - form请求数据
-   * @param customHandler - 自定义处理器
-   */
-  // protected async customFormFetchCall(
-  //   apiUrl: string,
-  //   fetchOptions: RequestInit,
-  //   formJson: any[],
-  //   customHandler: any
-  // ): Promise<any> {
-  //   return await customHandler(apiUrl, fetchOptions, formJson)
-  // }
-
   //================================================================
   // private function
   //================================================================
@@ -102,33 +74,22 @@ class CommonFetchClient {
    *
    * @param apiUrl - 端点
    * @param fetchOptions - 请求参数
-   * @param formJson - form请求数据
    * @param middlewareUrl - 可选，当环境不支持时候，必传
    */
-  private async fetchRequest(
-    apiUrl: string,
-    fetchOptions: RequestInit,
-    formJson?: any[],
-    middlewareUrl?: string
-  ): Promise<any> {
-    if (formJson) {
-      return await this.doFormFetch(apiUrl, fetchOptions, formJson)
-    } else {
-      return await this.doFetch(apiUrl, fetchOptions)
-    }
+  private async fetchRequest(apiUrl: string, fetchOptions: RequestInit, middlewareUrl?: string): Promise<any> {
+    return await this.doFetch(apiUrl, fetchOptions, middlewareUrl)
   }
 
   /**
    * fetch的兼容处理，统一返回最终的JSON数据
    * @param apiUrl 请求地址
    * @param fetchOptions 请求参数
-   * @param formJson form请求数据
+   * @param middlewareUrl - 可选，当环境不支持时候，必传
    */
-  private async doFetch(apiUrl: string, fetchOptions: RequestInit, formJson?: any[]): Promise<any> {
-    // const response = await fetch(apiUrl, fetchOps)
-    const response: any = await this.fetchEntry(apiUrl, fetchOptions, formJson)
+  private async doFetch(apiUrl: string, fetchOptions: RequestInit, middlewareUrl?: string): Promise<any> {
+    const response: any = await this.fetchEntry(apiUrl, fetchOptions, middlewareUrl)
     if (!response) {
-      throw new Error("请求异常")
+      throw new Error("请求异常，response is undefined")
     }
 
     let resJson
@@ -174,29 +135,12 @@ class CommonFetchClient {
   }
 
   /**
-   * 发送form数据的fetch的兼容处理，统一返回最终的JSON数据
-   *
-   * @param apiUrl - 请求地址
-   * @param fetchOptions - 请求参数
-   * @param formJson - form请求数据
-   */
-  private async doFormFetch(apiUrl: string, fetchOptions: RequestInit, formJson: any[]): Promise<any> {
-    return Promise.resolve({})
-  }
-
-  /**
    * 同时兼容浏览器和思源宿主环境的fetch API，支持浏览器跨域
    * @param apiUrl - 请求地址
    * @param fetchOptions - 请求参数
-   * @param formJson - form请求数据
    * @param middlewareUrl - 可选，当环境不支持时候，必传
    */
-  private async fetchEntry(
-    apiUrl: string,
-    fetchOptions: RequestInit,
-    formJson?: any[],
-    middlewareUrl?: string
-  ): Promise<any> {
+  private async fetchEntry(apiUrl: string, fetchOptions: RequestInit, middlewareUrl?: string): Promise<any> {
     let result
 
     const deviceType = DeviceDetection.getDevice()
@@ -205,31 +149,31 @@ class CommonFetchClient {
     switch (deviceType) {
       case DeviceTypeEnum.DeviceType_Node: {
         this.logger.info("当前处于Node环境，使用node的fetch获取数据")
-        result = await fetchNode(this.appInstance, apiUrl, fetchOptions, formJson)
+        result = await fetchNode(this.appInstance, apiUrl, fetchOptions)
         break
       }
       case DeviceTypeEnum.DeviceType_Siyuan_Widget:
       case DeviceTypeEnum.DeviceType_Siyuan_MainWin:
       case DeviceTypeEnum.DeviceType_Siyuan_NewWin: {
         this.logger.info("当前处于思源笔记环境，使用electron的fetch获取数据")
-        result = await fetchNode(this.appInstance, apiUrl, fetchOptions, formJson)
+        result = await fetchNode(this.appInstance, apiUrl, fetchOptions)
         break
       }
       case DeviceTypeEnum.DeviceType_Chrome_Extension: {
         this.logger.info("当前处于Chrome插件中，需要模拟fetch解决CORS跨域问题")
-        result = await fetchChrome(this.appInstance, apiUrl, fetchOptions, formJson)
+        result = await fetchChrome(this.appInstance, apiUrl, fetchOptions)
         break
       }
       case DeviceTypeEnum.DeviceType_Siyuan_Browser:
       case DeviceTypeEnum.DeviceType_Chrome_Browser:
       case DeviceTypeEnum.DeviceType_Mobile_Device: {
         this.logger.info("当前处于浏览器或移动设备，已开启请求代理解决CORS跨域问题")
-        result = await fetchMiddleware(this.appInstance, apiUrl, fetchOptions, formJson, middlewareUrl)
+        result = await fetchMiddleware(this.appInstance, apiUrl, fetchOptions, middlewareUrl)
         break
       }
       default: {
         this.logger.info("未知设备类型，已开启请求代理解决CORS跨域问题")
-        result = await fetchMiddleware(this.appInstance, apiUrl, fetchOptions, formJson, middlewareUrl)
+        result = await fetchMiddleware(this.appInstance, apiUrl, fetchOptions, middlewareUrl)
         break
       }
     }

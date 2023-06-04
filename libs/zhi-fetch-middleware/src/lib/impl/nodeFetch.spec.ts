@@ -33,7 +33,7 @@ describe("test nodeFetch", async () => {
   // appInstance
   const appInstance: any = {}
   // const projectBase = path.resolve(__dirname, "../../..")
-  const moduleBase = path.resolve(__dirname, "../../../../../../..")
+  // const moduleBase = path.resolve(__dirname, "../../../../../../..")
   appInstance.fetch = fetch
 
   it("test fetchNode", async () => {
@@ -59,11 +59,6 @@ describe("test nodeFetch", async () => {
     }
 
     const result = await fetchNode(appInstance, apiUrl, fetchOptions)
-    console.log("test fetchNode result =>", result)
-  })
-
-  it("test fetchNode formData", async () => {
-    const result = await fetchNode(appInstance, "", {}, [])
     console.log("test fetchNode result =>", result)
   })
 })

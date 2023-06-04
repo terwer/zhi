@@ -23,4 +23,4 @@
  * questions.
  */
 
-export const fetchChrome = async (appInstance: any, apiUrl: string, fetchOptions: RequestInit, formJson: any[]) => {}
+export const fetchChrome = async (appInstance: any, apiUrl: string, fetchOptions: RequestInit) => {}
