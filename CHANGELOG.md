@@ -1,5 +1,43 @@
 # Changelog
 
+## [1.2.0](https://github.com/terwer/zhi/compare/v1.1.0...v1.2.0) (2023-06-04)
+
+
+### Features
+
+* add other libs for xmlrpc and fetch ([40b6c43](https://github.com/terwer/zhi/commit/40b6c432514d301874fd7b5a9f4af45372204387))
+* init other api ([4d7a742](https://github.com/terwer/zhi/commit/4d7a742c25ccc6017367f6a4dfdc880b6bdac21c))
+* **zhi-blog-api:** define attachment object ([c596056](https://github.com/terwer/zhi/commit/c5960560bd15df21a7ff04c3fa7877576008cf66))
+* **zhi-common:** add implemented exception ([3568d3f](https://github.com/terwer/zhi/commit/3568d3f473dec78eb67c736d4f5fc01527678fc3))
+* **zhi-common:** add json parse error ([142b24c](https://github.com/terwer/zhi/commit/142b24cc6b5fdb2c082b1abdfb13af9c8ec3e893))
+* **zhi-common:** add now year ([eb44819](https://github.com/terwer/zhi/commit/eb44819d67e25aaf35a8717528ce913a0508781a))
+* **zhi-common:** universal framework slimming ([b267a78](https://github.com/terwer/zhi/commit/b267a7898882b548356ca55d95b44bafd53b918b))
+* **zhi-electron:** remove explicit dependencies ([30131d7](https://github.com/terwer/zhi/commit/30131d7831a4559a4a285537df94758432256c02))
+* **zhi-fetch-middleware:** add fetch middleware ([32b7066](https://github.com/terwer/zhi/commit/32b706682ffdfd3140bf46e0a8bf6ea2830dae42))
+* **zhi-fetch-middleware:** add fetch middleware ([99d003c](https://github.com/terwer/zhi/commit/99d003cfaffba97ea068bd3306f18878581357ab))
+* **zhi-fetch-middleware:** node fetch ([d69f1d0](https://github.com/terwer/zhi/commit/d69f1d0ce78484f6fdd7415b9f62a23eff1084f2))
+* **zhi-fetch-middleware:** the first available fetch middleware ([cf00ebc](https://github.com/terwer/zhi/commit/cf00ebc5f2050ac0eb31a12416a8bc769ead3730))
+* **zhi-lib-base:** add libiary base ([2a3537b](https://github.com/terwer/zhi/commit/2a3537b617bcaab6176a89db0a2268c1a650a658))
+* **zhi-lib-base:** add unit tests ([005ae3c](https://github.com/terwer/zhi/commit/005ae3cc45bc2520cf808ed47d6a91084886618a))
+* **zhi-metaweblog-api:** add metaweblog api ([6d085bf](https://github.com/terwer/zhi/commit/6d085bf88a6407c6ff88508aba0233f5ba69e1bc))
+* **zhi-root:** add hook、siyuanhook、bridge ([7603286](https://github.com/terwer/zhi/commit/760328664748543c978d2bf57dc75ce7b8455ea5))
+* **zhi-siyuan-api:** add custom new media object handler ([64e8dfe](https://github.com/terwer/zhi/commit/64e8dfe00630cd83000ef5ca142f1b22628c81ba))
+* **zhi-siyuan-api:** add dunamic invoke ([7445ce9](https://github.com/terwer/zhi/commit/7445ce9e18d2f4618b02ca5e6279d732d13a7d96))
+* **zhi-siyuan-api:** add newMediaObject support ([5ab1089](https://github.com/terwer/zhi/commit/5ab10899294e99d076d8a41de490dccd2e2671b5))
+* **zhi-siyuan-api:** add zhi-siyuan-api for blog ([c2271c3](https://github.com/terwer/zhi/commit/c2271c354805a8e8334cd2d58cf446237f6b7c47))
+* **zhi-siyuan-api:** reduce the packing volume ([61dad84](https://github.com/terwer/zhi/commit/61dad8444cf1ffe2d729cde3debd08bdca93dd5c))
+* **zhi-siyuan-api:** remove init ([847a59b](https://github.com/terwer/zhi/commit/847a59bc061ca7882e33e5b37c43e712d8886a99))
+* **zhi-siyuan-api:** split code to reduce bundle size ([941c6ff](https://github.com/terwer/zhi/commit/941c6ff70ead178c03e5d674aa82db29fc17ddfc))
+* **zhi-typecho-api:** add typecho api ([31dcdf5](https://github.com/terwer/zhi/commit/31dcdf5ab5f73c6c93bb867b081b84ab3f3a95a6))
+* **zhi-wordpress-api:** add wordpress api ([41f99b6](https://github.com/terwer/zhi/commit/41f99b6bd50517d8d04e1554cb53cb9bfe25ea38))
+* **zhi-xmlrpc-middleware:** first version of the generic xmlrpc client ([6a0daf0](https://github.com/terwer/zhi/commit/6a0daf0297708e44678749ab32326142ad375f00))
+* **zhi-xmlrpc-middleware:** test fetch node ([42c8469](https://github.com/terwer/zhi/commit/42c8469feaed41fd8dd5fec7d5e5d4fcf16f36cc))
+
+
+### Bug Fixes
+
+* **zhi-blog-api:** fix blog type enum ([be671cd](https://github.com/terwer/zhi/commit/be671cd56e0973e47a9151c3c8e4524df4a42049))
+
 ## [1.1.0](https://github.com/terwer/zhi/compare/v1.0.0...v1.1.0) (2023-05-20)
 ### Features
 * add importer ([5aa433d](https://github.com/terwer/zhi/commit/5aa433d950250270387b480424bd7b3264628fa8))
