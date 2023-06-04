@@ -23,4 +23,47 @@
  * questions.
  */
 
-export const fetchChrome = async (appInstance: any, apiUrl: string, fetchOptions: RequestInit) => {}
+import { simpleLogger } from "zhi-lib-base"
+
+const logger = simpleLogger("fetch-chrome", "zhi-fetch-middleware", true)
+
+/**
+ * 向Chrome发送消息
+ * @param message 消息
+ */
+async function sendChromeMessage(message: any) {
+  return await new Promise((resolve, reject) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // chrome.runtime.sendMessage(message, resolve)
+    chrome.runtime.sendMessage(message, (response) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (chrome.runtime.lastError) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        reject(chrome.runtime.lastError)
+      } else {
+        resolve(response)
+      }
+    })
+  })
+}
+
+export const fetchChrome = async (appInstance: any, apiUrl: string, fetchOptions: RequestInit) => {
+  try {
+    const reqOps = {
+      // 里面的值应该可以自定义，用于判断哪个请求之类的
+      type: "fetchChromeJson",
+      apiUrl, // 需要请求的url
+      fetchCORSOptions: fetchOptions,
+    }
+    logger.debug("fetchChrome reqOps=>", reqOps)
+    const resJson = await sendChromeMessage(reqOps)
+    logger.debug("fetchChromeJson resJson=>", resJson)
+
+    return resJson
+  } catch (e: any) {
+    throw new Error(`请求异常 => ${e.toString()}`)
+  }
+}

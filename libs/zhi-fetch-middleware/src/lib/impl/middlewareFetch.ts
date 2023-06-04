@@ -26,7 +26,7 @@
 import { simpleLogger } from "zhi-lib-base"
 import { StrUtil } from "zhi-common"
 
-const logger = simpleLogger("middleware-fetch", "zhi-fetch-middleware", true)
+const logger = simpleLogger("middleware-fetch", "zhi-fetch-middleware", false)
 
 export const fetchMiddleware = async (
   appInstance: any,

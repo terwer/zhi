@@ -22,9 +22,17 @@
  * or visit www.terwer.space if you need additional information or have any
  * questions.
  */
+import { fetchMiddleware } from "./middlewareFetch"
+
 export const fetchChromeMiddleware = async (
   appInstance: any,
   apiUrl: string,
   fetchOptions: RequestInit,
   middlewareUrl: string
-) => {}
+) => {
+  try {
+    return await fetchMiddleware(appInstance, apiUrl, fetchOptions, middlewareUrl)
+  } catch (e: any) {
+    throw new Error(e)
+  }
+}
