@@ -23,7 +23,7 @@
       - [ ] [zhi-wordpress-api](https://github.com/terwer/zhi/tree/main/libs/zhi-wordpress-api)
       - [ ] [zhi-typecho-api](https://github.com/terwer/zhi/tree/main/libs/zhi-typecho-api)
       - [ ] [zhi-cnblogs-api](https://github.com/terwer/zhi/tree/main/libs/zhi-cnblogs-api)
-  - [ ] [zhi-fetch-middleware](https://github.com/terwer/zhi/tree/main/libs/zhi-fetch-middleware)
+  - [X] [zhi-fetch-middleware](https://github.com/terwer/zhi/tree/main/libs/zhi-fetch-middleware)
     - [ ] [zhi-rest-api](https://github.com/terwer/zhi/tree/main/libs/zhi-rest-api)
       - [ ] [zhi-github-api](https://github.com/terwer/zhi/tree/main/libs/zhi-github-api)
       - [ ] [zhi-gitlab-api](https://github.com/terwer/zhi/tree/main/libs/zhi-gitlab-api)
