@@ -1,5 +1,3 @@
-const init = () => {
-  return "ok"
-}
+import CommonFetchClient from "./lib/commonFetchClient"
 
-export default init
+export { CommonFetchClient }

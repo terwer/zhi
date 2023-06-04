@@ -49,6 +49,41 @@ class CommonXmlrpcClient {
   }
 
   /**
+   * xmlrpc统一调用入口
+   *
+   * @param reqMethod - 方法
+   * @param reqParams - 参数
+   * @param middlewareUrl - 可选，当环境不支持时候，必传
+   */
+  public async methodCall(reqMethod: string, reqParams: any[], middlewareUrl?: string): Promise<any> {
+    const result = await this.fetchXmlrpc(this.apiUrl, reqMethod, reqParams, middlewareUrl)
+    this.logger.info("请求结果，result=>", result)
+    return result
+  }
+
+  /**
+   * 自定义xmlrpc统一调用入口
+   *
+   * @param reqMethod - 方法
+   * @param reqParams - 参数
+   * @param customHandler - 自定义处理器
+   */
+  public async customMethodCall(reqMethod: string, reqParams: any[], customHandler: any): Promise<any> {
+    let result
+    if (customHandler) {
+      result = await customHandler(this.apiUrl, reqMethod, reqParams)
+    } else {
+      result = await this.fetchXmlrpc(this.apiUrl, reqMethod, reqParams)
+    }
+    this.logger.info("请求结果，result=>", result)
+    return result
+  }
+
+  //================================================================
+  // private function
+  //================================================================
+
+  /**
    * 同时兼容浏览器和思源宿主环境的xmlrpc API
    *
    * @param apiUrl - 端点
@@ -104,37 +139,6 @@ class CommonXmlrpcClient {
 
     this.logger.debug("最终返回给前端的数据=>", result)
 
-    return result
-  }
-
-  /**
-   * xmlrpc统一调用入口
-   *
-   * @param reqMethod - 方法
-   * @param reqParams - 参数
-   * @param middlewareUrl - 可选，当环境不支持时候，必传
-   */
-  public async methodCall(reqMethod: string, reqParams: any[], middlewareUrl?: string): Promise<any> {
-    const result = await this.fetchXmlrpc(this.apiUrl, reqMethod, reqParams, middlewareUrl)
-    this.logger.info("请求结果，result=>", result)
-    return result
-  }
-
-  /**
-   * 自定义xmlrpc统一调用入口
-   *
-   * @param reqMethod - 方法
-   * @param reqParams - 参数
-   * @param customHandler - 自定义处理器
-   */
-  public async customMethodCall(reqMethod: string, reqParams: any[], customHandler: any): Promise<any> {
-    let result
-    if (customHandler) {
-      result = await customHandler(this.apiUrl, reqMethod, reqParams)
-    } else {
-      result = await this.fetchXmlrpc(this.apiUrl, reqMethod, reqParams)
-    }
-    this.logger.info("请求结果，result=>", result)
     return result
   }
 }

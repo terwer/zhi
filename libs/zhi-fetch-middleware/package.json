@@ -26,6 +26,12 @@
   },
   "devDependencies": {
     "@terwer/eslint-config-custom": "^1.2.0",
-    "@terwer/vite-config-custom": "^0.5.0"
+    "@terwer/vite-config-custom": "^0.5.0",
+    "js-base64": "^3.7.5"
+  },
+  "dependencies": {
+    "zhi-common": "workspace:^",
+    "zhi-device": "workspace:*",
+    "zhi-lib-base": "workspace:*"
   }
 }

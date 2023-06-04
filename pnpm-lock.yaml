@@ -263,6 +263,16 @@ importers:
         version: link:../../tools/vite-config-custom
 
   libs/zhi-fetch-middleware:
+    dependencies:
+      zhi-common:
+        specifier: workspace:^
+        version: link:../zhi-common
+      zhi-device:
+        specifier: workspace:*
+        version: link:../zhi-device
+      zhi-lib-base:
+        specifier: workspace:*
+        version: link:../zhi-lib-base
     devDependencies:
       '@terwer/eslint-config-custom':
         specifier: ^1.2.0
@@ -270,6 +280,9 @@ importers:
       '@terwer/vite-config-custom':
         specifier: ^0.5.0
         version: registry.npmjs.org/@terwer/vite-config-custom@0.5.0(jsdom@22.1.0)(minimist@1.2.8)(rollup-plugin-livereload@2.0.5)(tslib@2.5.2)(typescript@5.1.3)(vite-plugin-css-injected-by-js@3.1.1)(vite-plugin-dts@2.3.0)(vite-plugin-no-bundle@2.0.2)(vite-plugin-static-copy@0.15.0)(vite-tsconfig-paths@4.2.0)(vite@4.3.9)(vitest@0.31.4)
+      js-base64:
+        specifier: ^3.7.5
+        version: registry.npmjs.org/js-base64@3.7.5
 
   libs/zhi-http-api:
     devDependencies:
@@ -2642,6 +2655,7 @@ packages:
     name: '@commitlint/load'
     version: 17.5.0
     engines: {node: '>=v14'}
+    requiresBuild: true
     dependencies:
       '@commitlint/config-validator': registry.npmjs.org/@commitlint/config-validator@17.4.4
       '@commitlint/execute-rule': registry.npmjs.org/@commitlint/execute-rule@17.4.0
@@ -12772,6 +12786,12 @@ packages:
     version: 3.1.1
     engines: {node: '>=10'}
     dev: false
+
+  registry.npmjs.org/js-base64@3.7.5:
+    resolution: {integrity: sha512-3MEt5DTINKqfScXKfJFrRbxkrnk2AxPWGBL/ycjz4dK8iqiSJ06UxD8jh8xuh6p10TX4t2+7FsBYVxxQbMg+qA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/js-base64/-/js-base64-3.7.5.tgz}
+    name: js-base64
+    version: 3.7.5
+    dev: true
 
   registry.npmjs.org/js-sdsl@4.4.0:
     resolution: {integrity: sha512-FfVSdx6pJ41Oa+CF7RDaFmTnCaFhua+SNYQX74riGOpl96x+2jQCqEfQ2bnXu/5DPCqlRuiqyvTJM0Qjz26IVg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/js-sdsl/-/js-sdsl-4.4.0.tgz}
