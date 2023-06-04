@@ -27,6 +27,7 @@ import UserBlog from "./models/userBlog"
 import Post from "./models/post"
 import MediaObject from "./models/mediaObject"
 import CategoryInfo from "./models/categoryInfo"
+import Attachment from "./models/attachmentInfo"
 
 /**
  * 通用博客接口
@@ -97,10 +98,11 @@ interface IBlogApi {
    * 文章详情
    * @param postid - postid
    * @param useSlug - 是否使用的是别名（可选，部分平台不支持）
+   * @param skipBody - 是否忽略正文（可选，部分平台不支持）
    * @see {@link https://codex.wordpress.org/XML-RPC_MetaWeblog_API#metaWeblog.getPost getPost}
    * @returns {Promise<Post>}
    */
-  getPost(postid: string, useSlug?: boolean): Promise<Post>
+  getPost(postid: string, useSlug?: boolean, skipBody?: boolean): Promise<Post>
 
   /**
    * 更新文章
@@ -165,11 +167,12 @@ interface IBlogApi {
   /**
    * 上传附件
    *
-   * @param mediaObject
+   * @param mediaObject - 资源
+   * @param customHandler - 自定义处理器
    * @see {@link https://codex.wordpress.org/XML-RPC_MetaWeblog_API#metaWeblog.newMediaObject newMediaObject}
    * @returns {Promise<MediaObject>}
    */
-  newMediaObject(mediaObject: MediaObject): Promise<MediaObject>
+  newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<Attachment>
 }
 
 export type { IBlogApi }

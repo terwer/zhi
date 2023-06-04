@@ -55,7 +55,12 @@ class EnvHelper {
       return undefined
     }
 
-    const envValue = env.getEnvOrDefault(LogConstants.LOG_LEVEL_KEY, LogLevelEnum.LOG_LEVEL_INFO)
+    let envValue
+    try {
+      envValue = env.getEnvOrDefault(LogConstants.LOG_LEVEL_KEY, LogLevelEnum.LOG_LEVEL_INFO)
+    } catch (e) {
+      envValue = LogLevelEnum.LOG_LEVEL_INFO
+    }
     const envLevel = EnvHelper.stringToEnumValue(LogLevelEnum, envValue.toUpperCase())
     if (!envLevel) {
       console.warn(
@@ -63,7 +68,7 @@ class EnvHelper {
       )
     }
 
-    return envLevel
+    return envLevel ?? LogLevelEnum.LOG_LEVEL_INFO
   }
 
   /**

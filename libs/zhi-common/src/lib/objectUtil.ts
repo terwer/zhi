@@ -36,7 +36,7 @@ class ObjectUtil {
    *
    * @param obj - 对象
    */
-  public isEmptyObject(obj: any): boolean {
+  public static isEmptyObject(obj: any): boolean {
     if (!obj) {
       return true
     }

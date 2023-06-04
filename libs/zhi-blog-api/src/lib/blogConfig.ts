@@ -24,6 +24,7 @@
  */
 
 import BlogPlaceholder from "./blogPlaceholder"
+import PageTypeEnum from "./enums/pageTypeEnum"
 
 /**
  * 页面类型
@@ -123,7 +124,7 @@ abstract class BlogConfig {
   /**
    * 文章类型
    */
-  protected pageType: PageType
+  protected pageType: PageTypeEnum
 
   /**
    * 操作提示
@@ -147,7 +148,7 @@ abstract class BlogConfig {
     this.blogName = ""
     this.posidKey = ""
     this.previewUrl = ""
-    this.pageType = PageType.Markdown
+    this.pageType = PageTypeEnum.Markdown
     this.placeholder = undefined
     this.fixTitle = false
   }

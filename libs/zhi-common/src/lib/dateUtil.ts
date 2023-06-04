@@ -31,7 +31,7 @@
  * @since 1.0.0
  */
 class DateUtil {
-  private readonly TIME_SPLIT = " "
+  private static readonly TIME_SPLIT = " "
 
   /**
    * 给日期添加小时
@@ -41,7 +41,7 @@ class DateUtil {
    * @author terwer
    * @since 1.0.0
    */
-  private addHoursToDate(date: Date, numOfHours: number): Date {
+  private static addHoursToDate(date: Date, numOfHours: number): Date {
     date.setTime(date.getTime() + numOfHours * 60 * 60 * 1000)
     return date
   }
@@ -55,7 +55,7 @@ class DateUtil {
    * @author terwer
    * @since 1.0.0
    */
-  private formatIsoToZhDateFormat(str: string, isAddTimeZone?: boolean, isShort?: boolean): string {
+  private static formatIsoToZhDateFormat(str: string, isAddTimeZone?: boolean, isShort?: boolean): string {
     if (!str) {
       return ""
     }
@@ -101,7 +101,7 @@ class DateUtil {
    *
    * @param str - '2022-07-18T06:25:48.000Z
    */
-  public formatIsoToZh(str: string) {
+  public static formatIsoToZh(str: string) {
     return this.formatIsoToZhDateFormat(str, false, false)
   }
 
@@ -110,7 +110,7 @@ class DateUtil {
    *
    * @param str - '2022-07-18T06:25:48.000Z
    */
-  public formatIsoToZhDate(str: string) {
+  public static formatIsoToZhDate(str: string) {
     return this.formatIsoToZhDateFormat(str, false, true)
   }
 
@@ -119,7 +119,7 @@ class DateUtil {
    *
    * @param str - '2022-07-18T06:25:48.000Z
    */
-  public formatIsoToZhTime(str: string) {
+  public static formatIsoToZhTime(str: string) {
     const dt = this.formatIsoToZhDateFormat(str, false)
     return dt.split(this.TIME_SPLIT)[1]
   }
@@ -127,23 +127,30 @@ class DateUtil {
   /**
    * 当前日期时间完整格式，格式：2023-03-10 02:03:43
    */
-  public nowZh() {
+  public static nowZh() {
     return this.formatIsoToZhDateFormat(new Date().toISOString(), true)
   }
 
   /**
    * 当前日期，格式：2023-03-10
    */
-  public nowDateZh() {
+  public static nowDateZh() {
     return this.formatIsoToZhDateFormat(new Date().toISOString(), true, true)
   }
 
   /**
    * 当前时间，格式：02:03:43
    */
-  public nowTimeZh() {
+  public static nowTimeZh() {
     const now = this.formatIsoToZhDateFormat(new Date().toISOString(), true)
     return now.split(this.TIME_SPLIT)[1]
+  }
+
+  /**
+   * 当前年份
+   */
+  public static nowYear(): number {
+    return new Date().getFullYear()
   }
 }
 

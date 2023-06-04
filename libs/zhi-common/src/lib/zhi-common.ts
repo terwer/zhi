@@ -26,9 +26,7 @@
 import JsonUtil from "./jsonUtil"
 import DateUtil from "./dateUtil"
 import StrUtil from "./strUtil"
-import VersionUtil from "./versionUtil"
 import HtmlUtil from "./htmlUtil"
-import MarkdownUtil from "./markdownUtil"
 import ObjectUtil from "./objectUtil"
 
 /**
@@ -39,23 +37,11 @@ import ObjectUtil from "./objectUtil"
  * @since 1.3.0
  */
 class ZhiCommon {
-  public readonly dateUtil
-  public readonly strUtil
-  public readonly versionUtil
-  public readonly htmlUtil
-  public readonly markdownUtil
-  public readonly jsonUtil
-  public readonly objectUtil
-
-  constructor() {
-    this.dateUtil = new DateUtil()
-    this.strUtil = new StrUtil()
-    this.versionUtil = new VersionUtil()
-    this.htmlUtil = new HtmlUtil()
-    this.markdownUtil = new MarkdownUtil()
-    this.jsonUtil = new JsonUtil()
-    this.objectUtil = new ObjectUtil()
-  }
+  public static readonly dateUtil = DateUtil
+  public static readonly strUtil = StrUtil
+  public static readonly htmlUtil = HtmlUtil
+  public static readonly jsonUtil = JsonUtil
+  public static readonly objectUtil = ObjectUtil
 }
 
 export default ZhiCommon

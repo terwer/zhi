@@ -1,0 +1,37 @@
+{
+  "name": "plugin-publisher-bridge",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "a bridge between publisher plugin and widget",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "repository": "terwer/zhi",
+  "homepage": "https://github.com/terwer/zhi/tree/main/libs/plugin-publisher-bridge",
+  "author": "terwer",
+  "license": "GPL",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "keywords": [
+    "zhi",
+    "lib"
+  ],
+  "scripts": {
+    "serve": "vite",
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "start": "vite preview",
+    "test": "vitest --watch"
+  },
+  "devDependencies": {
+    "@terwer/eslint-config-custom": "workspace:*",
+    "@terwer/vite-config-custom": "workspace:*"
+  },
+  "dependencies": {
+    "zhi-device": "workspace:*",
+    "zhi-env": "workspace:*",
+    "zhi-log": "workspace:*",
+    "zhi-publisher-hook": "workspace:*"
+  }
+}

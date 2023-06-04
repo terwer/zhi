@@ -23,91 +23,89 @@
  * questions.
  */
 
-import { describe, expect, it } from "vitest"
+import { describe, it } from "vitest"
 import SiyuanKernelApi from "./siyuanKernelApi"
-import { Env } from "zhi-env"
-import SiyuanConfig from "./siyuanConfig"
+import SiyuanConfig from "./config/siyuanConfig"
+import path from "path"
 
-describe("SiyuanKernelApi", () => {
-  it("constructor", function () {
-    const env = new Env(import.meta.env)
-    const kernelApi = new SiyuanKernelApi(env)
-    expect(kernelApi).toBeTruthy()
-  })
-
-  it("sql using .env", async () => {
-    const env = new Env(import.meta.env)
-    const kernelApi = new SiyuanKernelApi(env)
-    const result = await kernelApi.sql("select 1 from blocks limit 1")
-    console.log("result=>", result)
-  })
+describe("SiyuanKernelApi", async () => {
+  // appInstance
+  const appInstance: any = {}
+  const projectBase = path.resolve(__dirname, "../../..")
+  const moduleBase = path.resolve(__dirname, "../../../../..")
+  const zhiCommon = (await import(path.join(moduleBase, "libs/zhi-common/dist/index.js"))) as any
+  appInstance.zhiCommon = {
+    ZhiUtil: zhiCommon["ZhiUtil"],
+  }
+  // lute
+  require(path.join(moduleBase, "libs/zhi-common/public/libs/lute/lute-1.7.5-20230410.min.cjs"))
 
   it("sql using siyuanConfig", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const kernelApi = new SiyuanKernelApi(siyuanConfig)
+    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
     const result = await kernelApi.sql("select 1 from blocks limit 1")
     console.log("result=>", result)
   })
 
   it("getRootBlocksCount", async () => {
-    const env = new Env(import.meta.env)
-    const kernelApi = new SiyuanKernelApi(env)
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
     const result = await kernelApi.getRootBlocksCount("")
     console.log("result=>", result)
   })
 
   it("lsNotebooks", async () => {
-    const env = new Env(import.meta.env)
-    const kernelApi = new SiyuanKernelApi(env)
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
     const result = await kernelApi.lsNotebooks()
     console.log("result=>", result)
   })
 
   it("openNotebook", async () => {
-    const env = new Env(import.meta.env)
-    const kernelApi = new SiyuanKernelApi(env)
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
     const result = await kernelApi.openNotebook("20220718062546-2nbmy21")
     console.log("result=>", result)
   })
 
   it("closeNotebook", async () => {
-    const env = new Env(import.meta.env)
-    const kernelApi = new SiyuanKernelApi(env)
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
     const result = await kernelApi.closeNotebook("20220718062546-2nbmy21")
     console.log("result=>", result)
   })
 
   it("renameNotebook", async () => {
-    const env = new Env(import.meta.env)
-    const kernelApi = new SiyuanKernelApi(env)
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
     const result = await kernelApi.renameNotebook("20220621105123-dlyn6nl", "临时文档")
     console.log("result=>", result)
   })
 
   it("createNotebook", async () => {
-    const env = new Env(import.meta.env)
-    const kernelApi = new SiyuanKernelApi(env)
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
     const result = await kernelApi.createNotebook("临时文档3")
     console.log("result=>", result)
   })
 
   it("removeNotebook", async () => {
-    const env = new Env(import.meta.env)
-    const kernelApi = new SiyuanKernelApi(env)
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
     const result = await kernelApi.removeNotebook("20230401225851-4zgh677")
     console.log("result=>", result)
   })
 
   it("getNotebookConf", async () => {
-    const env = new Env(import.meta.env)
-    const kernelApi = new SiyuanKernelApi(env)
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
     const result = await kernelApi.getNotebookConf("20220621105123-dlyn6nl")
     console.log("result=>", result)
   })
 
   it("setNotebookConf", async () => {
-    const env = new Env(import.meta.env)
-    const kernelApi = new SiyuanKernelApi(env)
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
     const result = await kernelApi.setNotebookConf({
       notebook: "20220621105123-dlyn6nl",
       conf: {
@@ -123,8 +121,8 @@ describe("SiyuanKernelApi", () => {
   })
 
   it("pushMsg", async () => {
-    const env = new Env(import.meta.env)
-    const kernelApi = new SiyuanKernelApi(env)
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
     const result = await kernelApi.pushMsg({
       msg: "测试消息",
     })
@@ -132,8 +130,8 @@ describe("SiyuanKernelApi", () => {
   })
 
   it("pushErrMsg", async () => {
-    const env = new Env(import.meta.env)
-    const kernelApi = new SiyuanKernelApi(env)
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
     const result = await kernelApi.pushErrMsg({
       msg: "测试错误消息",
     })
@@ -141,8 +139,8 @@ describe("SiyuanKernelApi", () => {
   })
 
   it("getRootBlocks", async () => {
-    const env = new Env(import.meta.env)
-    const kernelApi = new SiyuanKernelApi(env)
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
     const result = await kernelApi.getRootBlocks(0, 10, "")
     console.log("result=>", result)
   })

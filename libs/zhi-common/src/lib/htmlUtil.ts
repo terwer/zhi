@@ -23,24 +23,16 @@
  * questions.
  */
 
-import MarkdownUtil from "./markdownUtil"
-
 /**
  * HTML 处理工具类
  */
 class HtmlUtil {
-  private readonly mdUtil
-
-  constructor() {
-    this.mdUtil = new MarkdownUtil()
-  }
-
   /**
    * 移除标题数字
    *
    * @param str - 字符串
    */
-  public removeTitleNumber(str: string): string {
+  public static removeTitleNumber(str: string): string {
     let newstr = str
 
     // 移除序号
@@ -55,7 +47,7 @@ class HtmlUtil {
    *
    * @param str - 原字符
    */
-  public removeWidgetTag(str: string): string {
+  public static removeWidgetTag(str: string): string {
     let newstr = str.toString()
 
     // 旧版发布挂件
@@ -78,7 +70,7 @@ class HtmlUtil {
    *
    * @param str - 原字符
    */
-  public removeMdWidgetTag(str: string): string {
+  public static removeMdWidgetTag(str: string): string {
     let newstr = str.toString()
 
     // 删除挂件的iframe
@@ -92,7 +84,7 @@ class HtmlUtil {
    *
    * @param str - 字符串
    */
-  public filterHtml(str: string): string {
+  public static filterHtml(str: string): string {
     /*
      * <.*?>为正则表达式，其中的.表示任意字符，*?表示出现0次或0次以上，此方法可以去掉双头标签(双头针对于残缺的标签)
      * "<.*?"表示<尖括号后的所有字符，此方法可以去掉残缺的标签，及后面的内容
@@ -140,7 +132,7 @@ class HtmlUtil {
    * @param length - 长度
    * @param ignore - 不要结尾省略号
    */
-  public parseHtml(html: string, length: number, ignore?: boolean): string {
+  public static parseHtml(html: string, length: number, ignore?: boolean): string {
     const allText = this.filterHtml(html)
     if (allText.length < length) {
       return allText
@@ -152,31 +144,11 @@ class HtmlUtil {
   }
 
   /**
-   * 将Markdown转换为HTML
-   *
-   * @param md - Markdown
-   */
-  public async mdToHtml(md: string): Promise<string> {
-    const html = await this.mdUtil.renderHTML(md)
-    return this.removeWidgetTag(html)
-  }
-
-  /**
-   * 将Markdown转换为纯文本
-   *
-   * @param md - Markdown
-   */
-  public async mdToPlainText(md: string): Promise<string> {
-    const html = await this.mdToHtml(md)
-    return this.filterHtml(html)
-  }
-
-  /**
    * 移除H1标签
    *
    * @param html - html
    */
-  public removeH1(html: string): string {
+  public static removeH1(html: string): string {
     let newstr = html
 
     const h1Regex = /<h1.*\/h1>/g
@@ -199,7 +171,7 @@ class HtmlUtil {
    * 在这个例子中，我们使用正则表达式 /^# .*$/gm 来匹配所有的 h1 标签。
    * 在 JavaScript 中，^ 匹配行首，# 匹配 # 字符，.* 匹配任意字符，$ 匹配行尾，m 标记表示多行模式。
    */
-  public removeMdH1(md: string) {
+  public static removeMdH1(md: string) {
     let newstr = md
     const mdH1Regex = /^# .*$/gm
     newstr = newstr.replace(mdH1Regex, "")

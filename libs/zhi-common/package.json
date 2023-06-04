@@ -1,6 +1,6 @@
 {
   "name": "zhi-common",
-  "version": "1.5.3",
+  "version": "1.8.1",
   "type": "module",
   "description": "a collection of util tools",
   "main": "./dist/index.js",
@@ -27,15 +27,9 @@
   "devDependencies": {
     "@terwer/eslint-config-custom": "workspace:*",
     "@terwer/tsconfig": "workspace:*",
-    "@terwer/vite-config-custom": "workspace:*",
-    "@types/showdown": "^2.0.1"
+    "@terwer/vite-config-custom": "workspace:*"
   },
   "dependencies": {
-    "ajv": "^8.12.0",
-    "compare-versions": "5.0.3",
-    "showdown": "^2.1.0",
-    "zhi-device": "workspace:*",
-    "zhi-env": "workspace:*",
-    "zhi-log": "workspace:*"
+    "zhi-lib-base": "workspace:*"
   }
 }

@@ -23,9 +23,6 @@
  * questions.
  */
 
-import { Env } from "zhi-env"
-import { ZhiUtil } from "zhi-common"
-
 /**
  * 工具类统一入口，每个应用自己实现
  *
@@ -33,12 +30,17 @@ import { ZhiUtil } from "zhi-common"
  * @author terwer
  * @since 1.0.0
  */
-class ZhiSiyuanApiUtil extends ZhiUtil {
-  public static override zhiEnv(): Env {
-    if (!this.env) {
-      this.env = new Env(import.meta.env)
+class ZhiSiyuanApiUtil {
+  /**
+   * 通用工具入口
+   *
+   * @param appInstance - 应用实例
+   */
+  public static zhiCommon(appInstance: any) {
+    if (!appInstance.zhiCommon) {
+      throw new Error("appInstance must have zhiCommon.ZhiUtil property")
     }
-    return this.env
+    return appInstance.zhiCommon.ZhiUtil.zhiCommon()
   }
 }
 

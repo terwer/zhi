@@ -1,0 +1,39 @@
+{
+  "name": "zhi-xmlrpc-middleware",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "abstract xmlrpc middle layer",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "repository": "terwer/zhi",
+  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-xmlrpc-middleware",
+  "author": "terwer",
+  "license": "GPL",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "keywords": [
+    "zhi",
+    "lib"
+  ],
+  "scripts": {
+    "serve": "vite",
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "start": "vite preview",
+    "test": "npx vitest --watch"
+  },
+  "devDependencies": {
+    "@terwer/eslint-config-custom": "^1.2.0",
+    "@terwer/vite-config-custom": "^0.5.0",
+    "cross-fetch": "^3.1.6",
+    "simple-xmlrpc": "^1.2.2",
+    "xmlbuilder2": "^3.1.1"
+  },
+  "dependencies": {
+    "zhi-common": "workspace:^",
+    "zhi-device": "workspace:*",
+    "zhi-lib-base": "workspace:*"
+  }
+}

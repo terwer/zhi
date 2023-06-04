@@ -23,38 +23,47 @@
  * questions.
  */
 
-import Ajv, { JSONSchemaType } from "ajv"
+import StrUtil from "./strUtil"
+import { simpleLogger } from "zhi-lib-base"
 
 /**
- * 校验 JSON schema
+ * JSON 解析工具类
  *
  * @author terwer
  * @version 1.5.0
  * @since 1.5.0
  */
 class JsonUtil {
-  private ajv: Ajv
+  private static logger = simpleLogger("json-util")
 
-  constructor() {
-    this.ajv = new Ajv()
-  }
+  /**
+   * 安全的解析json
+   *
+   * @param str json字符串
+   * @param def 默认值
+   */
+  public static safeParse<T>(str: string, def: T): T {
+    let ret
 
-  public validateJson<T>(schema: JSONSchemaType<T>, data: T): { valid: boolean; error?: string } {
-    const valid = this.ajv.validate(schema, data)
-    if (valid) {
-      return { valid }
-    } else {
-      return { valid, error: this.ajv.errorsText() }
+    // 如果字符创为空或者undefined等，返回默认json
+    if (StrUtil.isEmptyString(str)) {
+      ret = def
     }
-  }
 
-  public validateObjectSchema(schemaObject: object, dataObject: object): { valid: boolean; error?: string } {
-    const valid = this.ajv.validate(schemaObject, dataObject)
-    if (valid) {
-      return { valid }
-    } else {
-      return { valid, error: this.ajv.errorsText() }
+    // 尝试解析json
+    try {
+      ret = JSON.parse(str) || def
+    } catch (e) {
+      ret = def
+      this.logger.error("json parse error", e)
     }
+
+    // 如果json被二次转义，在尝试解析一次
+    if (typeof ret === "string") {
+      ret = JSON.parse(ret) || def
+    }
+
+    return ret
   }
 }
 

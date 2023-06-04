@@ -24,7 +24,11 @@
  */
 
 import ZhiCommon from "./lib/zhi-common"
-import ZhiUtil from "./lib/ZhiUtil"
+import DateUtil from "./lib/dateUtil"
+import HtmlUtil from "./lib/htmlUtil"
+import JsonUtil from "./lib/jsonUtil"
+import StrUtil from "./lib/strUtil"
+import ObjectUtil from "./lib/objectUtil"
 
 export { ZhiCommon }
-export { ZhiUtil }
+export { DateUtil, HtmlUtil, JsonUtil, StrUtil, ObjectUtil }

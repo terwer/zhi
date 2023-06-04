@@ -23,5 +23,5 @@
  * questions.
  */
 
-import BlogApi from "./blogApi"
-export default BlogApi
+import BlogAdaptor from "./blogAdaptor"
+export default BlogAdaptor
