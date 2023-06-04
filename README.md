@@ -53,3 +53,4 @@
 - [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - Blog plugin, blog & share <sup>in progress</sup>
 - [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - Import tools, import epub, docx, pdf, html and other formats to Siyuan notes <sup>are available</sup>
 - [siyuan-plugin-custom-slug](https://github.com/terwer/siyuan-plugin-custom-slug) - Document alias, a new alias index for document titles, convenient for quick search <sup>Listed</sup>
+- [siyuan-plugin-code-block](https://github.com/terwer/siyuan-plugin-code-block) - Code block beautification, imitating Mac style code block style <sup>has been launched</sup>
