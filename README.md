@@ -43,14 +43,15 @@
 - [changelog-parser](https://github.com/terwer/zhi/tree/dev/tools/changelog-parser)
 
 ### themes
-- [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - Zhihu Theme <sup>is now available</sup>
+- [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - Zhihu Theme <sup>available</sup>
 
 ### widgets
-- [sy-post-publisher](https://github.com/terwer/sy-post-publisher) - The Publishing Tool widget <sup>version is now available</sup>
+- [sy-post-publisher](https://github.com/terwer/sy-post-publisher) - The Publishing Tool widget <sup>available</sup>
 
 ### plugins
 - [siyuan-plugin-publisher](https://github.com/terwer/siyuan-plugin-publisher) - Publishing tools <sup>in progress</sup>
 - [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - Blog plugin, blog & share <sup>in progress</sup>
-- [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - Import tools, import epub, docx, pdf, html and other formats to Siyuan notes <sup>are available</sup>
-- [siyuan-plugin-custom-slug](https://github.com/terwer/siyuan-plugin-custom-slug) - Document alias, a new alias index for document titles, convenient for quick search <sup>Listed</sup>
-- [siyuan-plugin-code-block](https://github.com/terwer/siyuan-plugin-code-block) - Code block beautification, imitating Mac style code block style <sup>has been launched</sup>
+- [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - Import tools, import epub, docx, pdf, html and other formats to Siyuan notes <sup>available</sup>
+- [siyuan-plugin-custom-slug](https://github.com/terwer/siyuan-plugin-custom-slug) - Document alias, a new alias index for document titles, convenient for quick search <sup>available</sup>
+- [siyuan-plugin-code-block](https://github.com/terwer/siyuan-plugin-code-block) - Code block beautification, imitating Mac style code block style <sup>available</sup>
+- [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - Blog plugin, blog & share <sup>in progress</sup>
