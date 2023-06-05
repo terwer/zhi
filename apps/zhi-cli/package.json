@@ -1,9 +1,16 @@
 {
   "name": "zhi-cli",
-  "version": "0.1.0",
-  "type": "module",
+  "version": "1.4.2",
   "description": "a tool for generating zhi framework related projects",
-  "main": "./dist/index.js",
+  "type": "module",
+  "bin": {
+    "zhi-cli": "dist/index.cjs"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "main": "./dist/index.cjs",
   "typings": "./dist/index.d.ts",
   "repository": "terwer/zhi",
   "homepage": "https://github.com/terwer/zhi/tree/main/apps/zhi-cli",
@@ -12,8 +19,8 @@
   "keywords": [],
   "scripts": {
     "dev": "zhi-build --watch",
-    "build": "zhi-build --production",
-    "test": "vitest",
+    "build": "zhi-build --production && npm link",
+    "test": "zhi-cli",
     "lint": "eslint 'src/**/*.{ts,js}' --fix"
   },
   "devDependencies": {
