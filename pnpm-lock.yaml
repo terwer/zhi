@@ -58,6 +58,22 @@ importers:
         specifier: ^0.2.0
         version: 0.2.0
 
+  libs/zhi-common:
+    dependencies:
+      zhi-lib-base:
+        specifier: workspace:*
+        version: link:../zhi-lib-base
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config-custom
+      '@terwer/tsconfig':
+        specifier: workspace:*
+        version: link:../../tools/tsconfig
+      '@terwer/vite-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/vite-config-custom
+
   libs/zhi-device:
     devDependencies:
       '@terwer/eslint-config-custom':
@@ -78,6 +94,15 @@ importers:
       '@terwer/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
+      '@terwer/vite-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/vite-config-custom
+
+  libs/zhi-lib-base:
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config-custom
       '@terwer/vite-config-custom':
         specifier: workspace:*
         version: link:../../tools/vite-config-custom

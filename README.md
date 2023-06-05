@@ -12,7 +12,7 @@
 
 ### libraries
 - zhi-framework - Core framework (originally unpublished `zhi` theme )
-  - [ ] [zhi-lib-base](https://github.com/terwer/zhi/tree/main/libs/zhi-lib-base)
+  - [X] [zhi-lib-base](https://github.com/terwer/zhi/tree/main/libs/zhi-lib-base)
   - [X] [zhi-device](https://github.com/terwer/zhi/tree/main/libs/zhi-device)
   - [X] [zhi-env](https://github.com/terwer/zhi/tree/main/libs/zhi-env)
   - [X] [zhi-log](https://github.com/terwer/zhi/tree/main/libs/zhi-log)

@@ -12,7 +12,7 @@
 
 ### 类库
 - zhi-framework - 核心框架（ 原未发布的 `zhi` 主题拆分出来的模块 )
-  - [ ] [zhi-lib-base](https://github.com/terwer/zhi/tree/main/libs/zhi-lib-base)
+  - [X] [zhi-lib-base](https://github.com/terwer/zhi/tree/main/libs/zhi-lib-base)
   - [X] [zhi-device](https://github.com/terwer/zhi/tree/main/libs/zhi-device)
   - [X] [zhi-env](https://github.com/terwer/zhi/tree/main/libs/zhi-env)
   - [X] [zhi-log](https://github.com/terwer/zhi/tree/main/libs/zhi-log)
