@@ -6,7 +6,8 @@
     "dev": "turbo run dev",
     "build": "turbo run build",
     "lint": "turbo run lint",
-    "cz": "git-cz"
+    "cz": "git-cz",
+    "prepareDocs": "turbo run build --scope='!zhi-docs'"
   },
   "config": {
     "commitizen": {
