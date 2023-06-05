@@ -1,5 +1,5 @@
 {
-  "name": "typedoc-vitepress-theme",
+  "name": "@terwer/typedoc-vitepress-theme",
   "version": "1.0.0-next.0",
   "description": "A typedoc-plugin-markdown theme that publishes Markdown pages compatible with VitePress.",
   "main": "./dist/index.js",
@@ -18,7 +18,6 @@
   "author": "Thomas Grey",
   "scripts": {
     "lint": "eslint ./src --ext .ts",
-    "prepublishOnly": "npm run lint && npm run build",
     "build": "rm -rf ./dist && tsc",
     "predocs": "npm run build",
     "docs": "typedoc --options ../../stubs/typedoc.1.js --plugin typedoc-plugin-markdown --plugin ./dist --out docs",
