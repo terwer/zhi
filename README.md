@@ -44,11 +44,18 @@
 
 - [zhi-cli](https://github.com/terwer/zhi/tree/dev/apps/zhi-cli)
 
+### docs
+
+- [zhi-docs](https://github.com/terwer/zhi/tree/dev/apps/zhi-docs)
+
 ### tools
 
+- [commit-config-custom](https://github.com/terwer/zhi/tree/dev/tools/commit-config-custom)
+- [esbuild-config-custom](https://github.com/terwer/zhi/tree/dev/tools/esbuild-config-custom)
 - [eslint-config-custom](https://github.com/terwer/zhi/tree/dev/tools/eslint-config-custom)
+- [tsconfig](https://github.com/terwer/zhi/tree/dev/tools/tsconfig)
 - [vite-config-custom](https://github.com/terwer/zhi/tree/dev/tools/vite-config-custom)
-- [changelog-parser](https://github.com/terwer/zhi/tree/dev/tools/changelog-parser)
+- [vitest-config-custom](https://github.com/terwer/zhi/tree/dev/tools/vitest-config-custom)
 
 ### themes
 - [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - Zhihu Theme <sup>Available</sup>
