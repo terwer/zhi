@@ -12,6 +12,7 @@ coverage
 out/
 build
 dist
+cache
 
 # misc
 .DS_Store

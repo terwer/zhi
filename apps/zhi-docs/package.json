@@ -1,0 +1,24 @@
+{
+  "name": "zhi-docs",
+  "version": "1.0.0",
+  "type": "module",
+  "author": "terwer",
+  "license": "MIT",
+  "scripts": {
+    "dev": "pnpm predocs:dev && pnpm docs:dev",
+    "build": "pnpm predocs:dev && pnpm docs:build",
+    "publish-typedoc": "typedoc --options typedoc.json",
+    "predocs:dev": "pnpm publish-typedoc",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "typedoc": "^0.24.8",
+    "typedoc-plugin-frontmatter": "^0.0.2",
+    "typedoc-plugin-markdown": "workspace:*",
+    "typedoc-vitepress-theme": "workspace:*",
+    "vitepress": "1.0.0-beta.1",
+    "vue": "^3.3.4"
+  }
+}

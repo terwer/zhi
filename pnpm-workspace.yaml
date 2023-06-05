@@ -2,3 +2,4 @@ packages:
   - "tools/*"    # tools
   - "libs/*"     # libraries
   - "apps/*"     # apps
+  - "temps/*"    # temps
