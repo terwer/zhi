@@ -60,18 +60,18 @@ importers:
 
   apps/zhi-docs:
     devDependencies:
+      '@terwer/typedoc-plugin-markdown':
+        specifier: 4.0.0-next.11
+        version: link:../../temps/typedoc-plugin-markdown
+      '@terwer/typedoc-vitepress-theme':
+        specifier: 1.0.0-next.0
+        version: link:../../temps/typedoc-vitepress-theme
       typedoc:
         specifier: ^0.24.8
         version: 0.24.8(typescript@5.1.3)
       typedoc-plugin-frontmatter:
         specifier: ^0.0.2
         version: 0.0.2
-      typedoc-plugin-markdown:
-        specifier: workspace:*
-        version: link:../../temps/typedoc-plugin-markdown
-      typedoc-vitepress-theme:
-        specifier: workspace:*
-        version: link:../../temps/typedoc-vitepress-theme
       vitepress:
         specifier: 1.0.0-beta.1
         version: 1.0.0-beta.1(@algolia/client-search@4.17.1)
@@ -239,7 +239,7 @@ importers:
 
   temps/typedoc-vitepress-theme:
     dependencies:
-      typedoc-plugin-markdown:
+      '@terwer/typedoc-plugin-markdown':
         specifier: workspace:*
         version: link:../typedoc-plugin-markdown
 

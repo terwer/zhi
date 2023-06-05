@@ -1,4 +1,4 @@
-import { NavigationItem } from 'typedoc-plugin-markdown';
+import { NavigationItem } from '@terwer/typedoc-plugin-markdown';
 import { SidebarOptions } from '../model';
 import sidebarVitepress from './sidebar.vitepress';
 import sidebarVuepress1 from './sidebar.vuepress1';

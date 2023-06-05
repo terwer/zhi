@@ -4,7 +4,7 @@ import { Application, ParameterType } from 'typedoc';
 import {
   MarkdownPluginOptionsReader,
   MarkdownRendererEvent,
-} from 'typedoc-plugin-markdown';
+} from '@terwer/typedoc-plugin-markdown';
 import { SidebarOptions } from './model';
 import { DEFAULT_SIDEBAR_OPTIONS } from './options';
 import { getSidebar } from './sidebars/sidebars';
