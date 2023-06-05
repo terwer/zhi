@@ -24,25 +24,46 @@
  */
 
 /**
- * @packageDocumentation
- * zhi-cli 脚手架
- */
-
-import { Command } from "commander"
-import { initCommand } from "./init/commnd"
-import pkg from "../package.json" assert { type: "json" }
-
-/**
- * cli 入口
+ * 日志常量
  *
  * @public
+ * @author terwer
+ * @since 1.4.0
  */
-const cliMain = () => {
-  const program = new Command()
-  program.name("Zhi project creator").description("Create projects for zhi theme").version(pkg.version)
-  program.addCommand(initCommand())
-  program.parse(process.argv)
+class LogConstants {
+  public static readonly LOG_LEVEL_KEY = "VITE_LOG_LEVEL"
+  public static readonly LOG_PREFIX_KEY = "VITE_LOG_PREFIX"
 }
-cliMain()
 
-export default cliMain
+/**
+ * 日志级别
+ *
+ * @author terwer
+ * @since 1.0.7
+ * @public
+ */
+enum LogLevelEnum {
+  /**
+   * TRACE
+   */
+  LOG_LEVEL_TRACE = "TRACE",
+  /**
+   * DEBUG
+   */
+  LOG_LEVEL_DEBUG = "DEBUG",
+  /**
+   * INFO
+   */
+  LOG_LEVEL_INFO = "INFO",
+  /**
+   * WARN
+   */
+  LOG_LEVEL_WARN = "WARN",
+  /**
+   * ERROR
+   */
+  LOG_LEVEL_ERROR = "ERROR",
+}
+
+export default LogLevelEnum
+export { LogConstants }

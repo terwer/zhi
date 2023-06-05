@@ -23,26 +23,39 @@
  * questions.
  */
 
-/**
- * @packageDocumentation
- * zhi-cli 脚手架
- */
+import fs from "fs-extra"
+import path from "path"
+import handlebars from "handlebars"
+import { LogFactory, LogLevelEnum } from "zhi-log"
 
-import { Command } from "commander"
-import { initCommand } from "./init/commnd"
-import pkg from "../package.json" assert { type: "json" }
+const logger = LogFactory.customLogFactory(LogLevelEnum.LOG_LEVEL_INFO, "zhi-cli").getLogger("init:modify")
 
-/**
- * cli 入口
- *
- * @public
- */
-const cliMain = () => {
-  const program = new Command()
-  program.name("Zhi project creator").description("Create projects for zhi theme").version(pkg.version)
-  program.addCommand(initCommand())
-  program.parse(process.argv)
+const modifyTemplate = function (downloadPath: string, file: string, options: any) {
+  const templatePath = path.join(downloadPath, file)
+  logger.info(`start modifying ${file} ...`)
+  if (fs.existsSync(templatePath)) {
+    const content = fs.readFileSync(templatePath).toString()
+    const template = handlebars.compile(content)
+
+    const result = template(options)
+    fs.writeFileSync(templatePath, result)
+    logger.info(`modify ${file} complete`)
+  } else {
+    logger.error(`no ${file}, ignore`)
+  }
 }
-cliMain()
 
-export default cliMain
+/**
+ * 模板字符串替换
+ *
+ * @param downloadPath - 项目根路径
+ * @param fileList - 文件路径列表，注意：相对于项目根路径，例如：["package.json", "README.md"]
+ * @param options - 字符串Object
+ */
+const modifyFiles = (downloadPath: string, fileList: string[], options: any) => {
+  for (const file of fileList) {
+    modifyTemplate(downloadPath, file, options)
+  }
+}
+
+export default modifyFiles

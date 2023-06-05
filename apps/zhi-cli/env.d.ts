@@ -23,6 +23,4 @@
  * questions.
  */
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv
-}
+declare module "enquirer/lib/prompts/select"

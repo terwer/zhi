@@ -23,26 +23,43 @@
  * questions.
  */
 
-/**
- * @packageDocumentation
- * zhi-cli 脚手架
- */
-
-import { Command } from "commander"
-import { initCommand } from "./init/commnd"
-import pkg from "../package.json" assert { type: "json" }
+import LogLevelEnum from "../logConstants"
+import { Env } from "zhi-env"
+import Logger from "../logger"
+import DefaultLogger from "../defaultLogger"
 
 /**
- * cli 入口
+ * 日志记录工厂
  *
  * @public
+ * @author terwer
+ * @since 1.0.0
  */
-const cliMain = () => {
-  const program = new Command()
-  program.name("Zhi project creator").description("Create projects for zhi theme").version(pkg.version)
-  program.addCommand(initCommand())
-  program.parse(process.argv)
-}
-cliMain()
+abstract class AbstractLogFactory {
+  private logger
 
-export default cliMain
+  /**
+   * 默认日志级别
+   *
+   * @param level - 可选，未设置默认INFO
+   * @param sign - 可选前缀，默认zhi
+   * @param env - 可选环境变量实例
+   */
+  protected constructor(level?: LogLevelEnum, sign?: string, env?: Env) {
+    this.logger = new Logger(level, sign, env)
+  }
+
+  /**
+   * 获取日志记录器
+   *
+   * @param loggerName - 日志记录器名称
+   * @param stackSize - 打印栈的深度
+   * @protected
+   */
+  protected getLogger(loggerName?: string, stackSize?: number): DefaultLogger {
+    this.logger.setStackSize(stackSize)
+    return this.logger.getLogger(loggerName)
+  }
+}
+
+export default AbstractLogFactory

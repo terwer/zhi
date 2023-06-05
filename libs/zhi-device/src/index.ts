@@ -23,26 +23,15 @@
  * questions.
  */
 
-/**
- * @packageDocumentation
- * zhi-cli 脚手架
- */
-
-import { Command } from "commander"
-import { initCommand } from "./init/commnd"
-import pkg from "../package.json" assert { type: "json" }
+import DeviceDetection from "./deviceDetection"
+import DeviceTypeEnum from "./lib/deviceTypeEnum"
+import BasePathTypeEnum from "./lib/basePathTypeEnum"
+import BrowserUtil from "./lib/browserUtil"
+import SiyuanDevice from "./lib/siyuanDevice"
 
 /**
- * cli 入口
- *
- * @public
+ * zhi-device 入口
  */
-const cliMain = () => {
-  const program = new Command()
-  program.name("Zhi project creator").description("Create projects for zhi theme").version(pkg.version)
-  program.addCommand(initCommand())
-  program.parse(process.argv)
-}
-cliMain()
-
-export default cliMain
+export { DeviceDetection }
+export { BrowserUtil, SiyuanDevice }
+export { DeviceTypeEnum, BasePathTypeEnum }

@@ -24,25 +24,34 @@
  */
 
 /**
- * @packageDocumentation
- * zhi-cli 脚手架
- */
-
-import { Command } from "commander"
-import { initCommand } from "./init/commnd"
-import pkg from "../package.json" assert { type: "json" }
-
-/**
- * cli 入口
+ * 基本路径枚举
  *
  * @public
+ * @author terwer
+ * @version 0.1.0
+ * @since 0.1.0
  */
-const cliMain = () => {
-  const program = new Command()
-  program.name("Zhi project creator").description("Create projects for zhi theme").version(pkg.version)
-  program.addCommand(initCommand())
-  program.parse(process.argv)
+enum BasePathTypeEnum {
+  /**
+   * Appearance
+   */
+  BasePathType_Appearance = "Appearance",
+  /**
+   * Data
+   */
+  BasePathType_Data = "Data",
+  /**
+   * Themes
+   */
+  BasePathType_Themes = "Themes",
+  /**
+   * Zhi 主题目录
+   */
+  BasePathType_ZhiTheme = "ZhiTheme",
+  /**
+   * 未设置
+   */
+  BasePathType_None = "None",
 }
-cliMain()
 
-export default cliMain
+export default BasePathTypeEnum

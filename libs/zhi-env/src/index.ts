@@ -25,24 +25,11 @@
 
 /**
  * @packageDocumentation
- * zhi-cli 脚手架
+ * zhi-env 通用环境变量模块
  */
 
-import { Command } from "commander"
-import { initCommand } from "./init/commnd"
-import pkg from "../package.json" assert { type: "json" }
+import EnvConstants from "./lib/EnvConstants"
+import Env from "./lib/zhi-env"
 
-/**
- * cli 入口
- *
- * @public
- */
-const cliMain = () => {
-  const program = new Command()
-  program.name("Zhi project creator").description("Create projects for zhi theme").version(pkg.version)
-  program.addCommand(initCommand())
-  program.parse(process.argv)
-}
-cliMain()
-
-export default cliMain
+export { Env }
+export { EnvConstants }
