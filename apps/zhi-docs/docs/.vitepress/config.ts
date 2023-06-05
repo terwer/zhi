@@ -3,6 +3,7 @@ import typedocSidebar from "../api/typedoc-sidebar.json"
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  ignoreDeadLinks: true,
   title: "Zhi Framework",
   description: "The ultimate framework for building blog and theme",
   themeConfig: {

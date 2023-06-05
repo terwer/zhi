@@ -62,10 +62,10 @@ importers:
     devDependencies:
       '@terwer/typedoc-plugin-markdown':
         specifier: 4.0.0-next.11
-        version: link:../../temps/typedoc-plugin-markdown
+        version: 4.0.0-next.11(prettier@2.8.7)(typedoc@0.24.8)
       '@terwer/typedoc-vitepress-theme':
         specifier: 1.0.0-next.0-terwer.1
-        version: link:../../temps/typedoc-vitepress-theme
+        version: 1.0.0-next.0-terwer.1(@terwer/typedoc-plugin-markdown@4.0.0-next.11)
       typedoc:
         specifier: ^0.24.8
         version: 0.24.8(typescript@5.1.3)
@@ -1495,6 +1495,24 @@ packages:
       colors: 1.2.5
       string-argv: 0.3.2
     dev: false
+
+  /@terwer/typedoc-plugin-markdown@4.0.0-next.11(prettier@2.8.7)(typedoc@0.24.8):
+    resolution: {integrity: sha512-YX4VqVSIBHB21Wh5fALNhiErJf35Uvcbd8eMoB6fOpmLLZMnU63BKYssNfVtv8mm5oywC6gqPFBflFg4H9iuOg==}
+    peerDependencies:
+      prettier: '>=1.8.0'
+      typedoc: '>=0.24.0'
+    dependencies:
+      prettier: 2.8.7
+      typedoc: 0.24.8(typescript@5.1.3)
+    dev: true
+
+  /@terwer/typedoc-vitepress-theme@1.0.0-next.0-terwer.1(@terwer/typedoc-plugin-markdown@4.0.0-next.11):
+    resolution: {integrity: sha512-pmFGoFNPNLeaWMLK7jRbgZIMGQ8rx0Rh0EtZ0y9y5Ry1Wj7e+F4AYBe7Svs4O+e254jDdplurYLsFfBHYR83tg==}
+    peerDependencies:
+      '@terwer/typedoc-plugin-markdown': 4.0.0-next.11
+    dependencies:
+      '@terwer/typedoc-plugin-markdown': 4.0.0-next.11(prettier@2.8.7)(typedoc@0.24.8)
+    dev: true
 
   /@tootallnate/once@2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
@@ -5693,7 +5711,6 @@ packages:
     resolution: {integrity: sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
-    dev: false
 
   /pretty-format@27.5.1:
     resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}
