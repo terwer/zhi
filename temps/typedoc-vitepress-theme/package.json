@@ -32,5 +32,8 @@
   "keywords": [
     "vuepress",
     "typedoc"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
