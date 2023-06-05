@@ -1,13 +1,9 @@
 {
-  "name": "@terwer/tsconfig",
-  "version": "1.0.0",
+  "name": "tsconfig",
+  "version": "0.0.1",
   "private": true,
-  "files": [
-    "base.json",
-    "nextjs.json",
-    "react-library.json"
-  ],
-  "devDependencies": {
-    "@types/node": "^20.2.1"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
   }
 }
