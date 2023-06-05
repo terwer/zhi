@@ -11,7 +11,7 @@
 ## Zhi 项目家族
 
 ### 类库
-- zhi-framework - 核心框架
+- zhi-framework - 核心框架 
   - [X] [zhi-lib-base](https://github.com/terwer/zhi/tree/main/libs/zhi-lib-base)
   - [X] [zhi-device](https://github.com/terwer/zhi/tree/main/libs/zhi-device)
   - [X] [zhi-env](https://github.com/terwer/zhi/tree/main/libs/zhi-env)
