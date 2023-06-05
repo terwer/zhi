@@ -1,21 +1,23 @@
 {
-  "name": "zhi-common",
-  "version": "1.9.0",
+  "name": "zhi-blog-api",
+  "version": "1.6.0",
   "type": "module",
-  "description": "a collection of util tools",
+  "description": "a common blog interface",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "repository": "terwer/zhi",
-  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-common",
+  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api",
   "author": "terwer",
-  "license": "MIT",
+  "license": "GPL",
   "files": [
     "dist",
     "README.md"
   ],
   "keywords": [
     "zhi",
-    "lib"
+    "lib",
+    "blog",
+    "api"
   ],
   "scripts": {
     "serve": "vite",

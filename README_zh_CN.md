@@ -21,7 +21,7 @@
     - [ ] [zhi-common-json-validate](https://github.com/terwer/zhi/tree/main/libs/zhi-common-json-validate)
     - [ ] [zhi-common-markdown](https://github.com/terwer/zhi/tree/main/libs/zhi-common-markdown)
     - [ ] [zhi-common-version](https://github.com/terwer/zhi/tree/main/libs/zhi-common-version)
-  - [ ] [zhi-blog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api)
+  - [X] [zhi-blog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api)
   - [X] [zhi-xmlrpc-middleware](https://github.com/terwer/zhi/tree/main/libs/zhi-xmlrpc-middleware)
     - [ ] [zhi-metaweblog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-metaweblog-api)
       - [ ] [zhi-wordpress-api](https://github.com/terwer/zhi/tree/main/libs/zhi-wordpress-api)
