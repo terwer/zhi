@@ -64,7 +64,7 @@ importers:
         specifier: 4.0.0-next.11
         version: link:../../temps/typedoc-plugin-markdown
       '@terwer/typedoc-vitepress-theme':
-        specifier: 1.0.0-next.0
+        specifier: 1.0.0-next.0-terwer.1
         version: link:../../temps/typedoc-vitepress-theme
       typedoc:
         specifier: ^0.24.8
