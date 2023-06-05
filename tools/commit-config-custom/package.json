@@ -10,7 +10,7 @@
   ],
   "author": "terwer",
   "license": "GPL",
-  "peerDependencies": {
+  "devDependencies": {
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-angular": "^17.6.1",
     "@commitlint/cz-commitlint": "^17.5.0",
