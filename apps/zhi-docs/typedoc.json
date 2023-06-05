@@ -1,8 +1,8 @@
 {
   "plugin": [
     "typedoc-plugin-frontmatter",
-    "./node_modules/typedoc-plugin-markdown/dist",
-    "./node_modules/typedoc-vitepress-theme/dist"
+    "@terwer/typedoc-plugin-markdown",
+    "@terwer/typedoc-plugin-markdown"
   ],
   "entryPoints": [
     "../../libs/zhi-device/src/index.ts",

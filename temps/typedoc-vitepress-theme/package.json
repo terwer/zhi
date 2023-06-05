@@ -26,7 +26,7 @@
     "docs:preview": "vitepress preview docs"
   },
   "peerDependencies": {
-    "typedoc-plugin-markdown": "workspace:*"
+    "@terwer/typedoc-plugin-markdown": "workspace:*"
   },
   "license": "MIT",
   "keywords": [
