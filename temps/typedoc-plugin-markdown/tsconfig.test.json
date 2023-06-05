@@ -1,3 +1,0 @@
-{
-  "extends": "../../tools/typedoc-tsconfig/tsconfig.test.json"
-}

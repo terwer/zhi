@@ -1,8 +1,0 @@
-{
-  "extends": "../../temps/typedoc-tsconfig/tsconfig.json",
-  "compilerOptions": {
-    "outDir": "./dist",
-    "esModuleInterop": true
-  },
-  "exclude": ["./dist", "./test", "**/*.spec.ts"]
-}
