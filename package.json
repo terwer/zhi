@@ -7,7 +7,7 @@
     "build": "turbo run build",
     "lint": "turbo run lint",
     "cz": "git-cz",
-    "predoc": "pnpm build -F zhi-lib-base && pnpm build -F zhi-device && pnpm build -F zhi-env && pnpm build -F zhi-log && pnpm build -F zhi-common && pnpm build -F zhi-blog-api"
+    "predoc": "turbo run build --scope='!zhi-docs'"
   },
   "config": {
     "commitizen": {

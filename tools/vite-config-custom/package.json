@@ -9,7 +9,7 @@
   ],
   "author": "terwer",
   "license": "MIT",
-  "peerDependencies": {
+  "devDependencies": {
     "@types/minimist": "1.2.2",
     "jsdom": "^22.0.0",
     "minimist": "^1.2.8",
