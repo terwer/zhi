@@ -27,5 +27,8 @@
   "devDependencies": {
     "@terwer/eslint-config-custom": "workspace:*",
     "@terwer/vite-config-custom": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
