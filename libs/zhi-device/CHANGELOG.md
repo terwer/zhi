@@ -1,5 +1,11 @@
 # zhi-device
 
+## 1.1.3
+
+### Patch Changes
+
+- update deps
+
 ## 1.1.2
 
 ### Patch Changes

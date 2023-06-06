@@ -1,5 +1,11 @@
 # @terwer/vite-config-custom
 
+## 0.7.3
+
+### Patch Changes
+
+- update deps
+
 ## 0.7.2
 
 ### Patch Changes

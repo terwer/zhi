@@ -1,6 +1,6 @@
 {
   "name": "@terwer/vite-config-custom",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "custom config for vite",
   "main": "./vite.config.ts",
   "keywords": [

@@ -1,6 +1,6 @@
 {
   "name": "@terwer/vitest-config-custom",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "custom config for vitest",
   "keywords": [
     "vite",
