@@ -1,6 +1,7 @@
 {
-  "name": "zhi",
+  "name": "zhi-framework",
   "private": true,
+  "version": "1.0.0",
   "packageManager": "pnpm@7.15.0",
   "scripts": {
     "dev": "turbo run dev",
