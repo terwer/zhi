@@ -1,14 +1,14 @@
 {
   "name": "@terwer/vitest-config-custom",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "custom config for vitest",
   "keywords": [
     "vite",
     "vitest"
   ],
   "author": "terwer",
-  "license": "GPL",
-  "devDependencies": {
+  "license": "MIT",
+  "peerDependencies": {
     "jsdom": "^21.1.1",
     "vite": "^4.2.2",
     "vitest": "^0.31.1"
