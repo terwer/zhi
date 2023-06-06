@@ -35,6 +35,19 @@ module.exports = {
     [
       "docusaurus-plugin-typedoc",
       {
+        id: "zhi-lib-base",
+        entryPoints: ["../../libs/zhi-lib-base/src/index.ts"],
+        tsconfig: "../../libs/zhi-lib-base/tsconfig.json",
+        plugin: ["typedoc-plugin-rename-defaults"],
+        out: "zhi-lib-base",
+        sidebar: {
+          categoryLabel: "Zhi Lib Base",
+        },
+      },
+    ],
+    [
+      "docusaurus-plugin-typedoc",
+      {
         id: "zhi-device",
         entryPoints: ["../../libs/zhi-device/src/index.ts"],
         tsconfig: "../../libs/zhi-device/tsconfig.json",
