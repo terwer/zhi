@@ -2,6 +2,7 @@
   "name": "@terwer/vite-config-custom",
   "version": "0.7.0",
   "description": "custom config for vite",
+  "main": "./index.cjs",
   "keywords": [
     "vite",
     "vitest",

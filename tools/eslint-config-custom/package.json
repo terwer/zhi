@@ -3,7 +3,7 @@
   "version": "1.3.0",
   "description": "custom config for eslint, support typescript, vue, astro, svelte, next etc.default is typescript",
   "main": "./typescript/index.cjs",
-  "license": "GPL",
+  "license": "MIT",
   "devDependencies": {
     "@nuxt/eslint-config": "^0.1.1",
     "@typescript-eslint/eslint-plugin": "^5.57.1",

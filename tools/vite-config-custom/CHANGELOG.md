@@ -1,0 +1,7 @@
+# @terwer/vite-config-custom
+
+## 0.7.0
+
+### Minor Changes
+
+- update deps
