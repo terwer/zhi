@@ -1,6 +1,6 @@
 {
   "name": "zhi-env",
-  "version": "1.17.2",
+  "version": "1.18.0",
   "type": "module",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -8,7 +8,7 @@
   "repository": "terwer/zhi",
   "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-env",
   "author": "terwer",
-  "license": "GPL",
+  "license": "MIT",
   "files": [
     "dist",
     "README.md"
@@ -29,5 +29,8 @@
     "@terwer/eslint-config-custom": "workspace:*",
     "@terwer/tsconfig": "workspace:*",
     "@terwer/vite-config-custom": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

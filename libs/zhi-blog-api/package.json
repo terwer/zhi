@@ -1,6 +1,6 @@
 {
   "name": "zhi-blog-api",
-  "version": "1.5.3",
+  "version": "1.6.0",
   "type": "module",
   "description": "a common blog interface",
   "main": "./dist/index.js",
@@ -8,7 +8,7 @@
   "repository": "terwer/zhi",
   "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api",
   "author": "terwer",
-  "license": "GPL",
+  "license": "MIT",
   "files": [
     "dist",
     "README.md"
@@ -33,5 +33,8 @@
   },
   "dependencies": {
     "zhi-lib-base": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

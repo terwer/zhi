@@ -2,47 +2,13 @@
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
   "pipeline": {
-    "dev": {
-      "cache": false
-    },
-    "localDev": {
-      "cache": false
-    },
     "build": {
+      "dependsOn": ["^build"]
+    },
+    "lint": {},
+    "dev": {
       "cache": false,
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
-    },
-    "localBuild": {
-      "cache": false
-    },
-    "staticBuild": {
-      "cache": false
-    },
-    "nodeBuild": {
-      "cache": false
-    },
-    "dockerBuild": {
-      "cache": false
-    },
-    "vercelBuild": {
-      "cache": false,
-      "dependsOn": ["^build"]
-    },
-    "siyuanBuild": {
-      "cache": false
-    },
-    "test": {
-      "dependsOn": ["^build"]
-    },
-    "start": {
-      "dependsOn": ["^build"]
-    },
-    "doc": {
-      "dependsOn": ["^build"]
-    },
-    "lint": {
-      "outputs": []
+      "persistent": true
     }
   }
 }

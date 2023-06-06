@@ -1,6 +1,6 @@
 {
   "name": "zhi-log",
-  "version": "1.13.3",
+  "version": "1.14.0",
   "type": "module",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -8,7 +8,7 @@
   "repository": "terwer/zhi",
   "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-log",
   "author": "terwer",
-  "license": "GPL",
+  "license": "MIT",
   "files": [
     "dist",
     "README.md"
@@ -38,5 +38,8 @@
     "loglevel-plugin-prefix": "^0.8.4",
     "zhi-device": "workspace:*",
     "zhi-env": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

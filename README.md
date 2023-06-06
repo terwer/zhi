@@ -11,13 +11,17 @@
 ## Zhi family
 
 ### libraries
-- zhi-framework - Core framework (originally unpublished `zhi` theme )
-  - [ ] [zhi-lib-base](https://github.com/terwer/zhi/tree/main/libs/zhi-lib-base)
+- zhi-framework - Core framework
+  - [X] [zhi-lib-base](https://github.com/terwer/zhi/tree/main/libs/zhi-lib-base)
   - [X] [zhi-device](https://github.com/terwer/zhi/tree/main/libs/zhi-device)
-  - [ ] [zhi-env](https://github.com/terwer/zhi/tree/main/libs/zhi-env)
-  - [ ] [zhi-log](https://github.com/terwer/zhi/tree/main/libs/zhi-log)
-  - [ ] [zhi-common](https://github.com/terwer/zhi/tree/main/libs/zhi-common)
-  - [ ] [zhi-blog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api)
+  - [X] [zhi-env](https://github.com/terwer/zhi/tree/main/libs/zhi-env)
+  - [X] [zhi-log](https://github.com/terwer/zhi/tree/main/libs/zhi-log)
+  - [X] [zhi-common](https://github.com/terwer/zhi/tree/main/libs/zhi-common)
+    - [ ] [zhi-common-basic](https://github.com/terwer/zhi/tree/main/libs/zhi-common-basic)
+    - [ ] [zhi-common-json-validate](https://github.com/terwer/zhi/tree/main/libs/zhi-common-json-validate)
+    - [ ] [zhi-common-markdown](https://github.com/terwer/zhi/tree/main/libs/zhi-common-markdown)
+    - [ ] [zhi-common-version](https://github.com/terwer/zhi/tree/main/libs/zhi-common-version)
+  - [X] [zhi-blog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api)
   - [X] [zhi-xmlrpc-middleware](https://github.com/terwer/zhi/tree/main/libs/zhi-xmlrpc-middleware)
     - [ ] [zhi-metaweblog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-metaweblog-api)
       - [ ] [zhi-wordpress-api](https://github.com/terwer/zhi/tree/main/libs/zhi-wordpress-api)
@@ -36,21 +40,30 @@
       - [ ] [zhi-zhihu-api](https://github.com/terwer/zhi/tree/main/libs/zhi-zhihu-api)
       - [ ] [zhi-csdn-api](https://github.com/terwer/zhi/tree/main/libs/zhi-csdn-api)
 
+### scaffold
+
+- [zhi-cli](https://github.com/terwer/zhi/tree/dev/apps/zhi-cli)
+
 ### tools
 
+- [commit-config-custom](https://github.com/terwer/zhi/tree/dev/tools/commit-config-custom)
+- [esbuild-config-custom](https://github.com/terwer/zhi/tree/dev/tools/esbuild-config-custom)
 - [eslint-config-custom](https://github.com/terwer/zhi/tree/dev/tools/eslint-config-custom)
+- [tsconfig](https://github.com/terwer/zhi/tree/dev/tools/tsconfig)
 - [vite-config-custom](https://github.com/terwer/zhi/tree/dev/tools/vite-config-custom)
-- [changelog-parser](https://github.com/terwer/zhi/tree/dev/tools/changelog-parser)
+- [vitest-config-custom](https://github.com/terwer/zhi/tree/dev/tools/vitest-config-custom)
 
 ### themes
-- [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - Zhihu Theme <sup>is now available</sup>
+- [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - Zhihu Theme <sup>Available</sup>
 
 ### widgets
-- [sy-post-publisher](https://github.com/terwer/sy-post-publisher) - The Publishing Tool widget <sup>version is now available</sup>
+- [sy-post-publisher](https://github.com/terwer/sy-post-publisher) - The Publishing Tool widget <sup>Available</sup>
 
 ### plugins
-- [siyuan-plugin-publisher](https://github.com/terwer/siyuan-plugin-publisher) - Publishing tools <sup>in progress</sup>
-- [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - Blog plugin, blog & share <sup>in progress</sup>
-- [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - Import tools, import epub, docx, pdf, html and other formats to Siyuan notes <sup>are available</sup>
-- [siyuan-plugin-custom-slug](https://github.com/terwer/siyuan-plugin-custom-slug) - Document alias, a new alias index for document titles, convenient for quick search <sup>Listed</sup>
-- [siyuan-plugin-code-block](https://github.com/terwer/siyuan-plugin-code-block) - Code block beautification, imitating Mac style code block style <sup>has been launched</sup>
+- [siyuan-plugin-publisher](https://github.com/terwer/siyuan-plugin-publisher) - Publishing tools <sup>In progress</sup>
+- [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - Blog plugin, blog & share <sup>In progress</sup>
+- [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - Import tools, import epub, docx, pdf, html and other formats to Siyuan notes <sup>Available</sup>
+- [siyuan-plugin-custom-slug](https://github.com/terwer/siyuan-plugin-custom-slug) - Document alias, a new alias index for document titles, convenient for quick search <sup>Available</sup>
+- [siyuan-plugin-code-block](https://github.com/terwer/siyuan-plugin-code-block) - Code block beautification, imitating Mac style code block style <sup>Available</sup>
+- [siyuan-plugin-2md](https://github.com/terwer/siyuan-plugin-2md) - Markdown batch conversion, batch conversion of documents of Siyuan notes into Markdown files, support conversion properties for Hexo, HUGO, Vitepress, Obsidian and other platforms corresponding to FrontFormatter <sup>In progress</sup>
+- [siyuan-plugin-random-doc](https://github.com/terwer/siyuan-plugin-random-doc) - Random Doc <sup>In progress</sup>

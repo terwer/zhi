@@ -3,11 +3,18 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
+    "moduleResolution": "node",
     "isolatedModules": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "outDir": "./lib"
+    "outDir": "./dist"
   },
-  "include": ["env.d.ts", "**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "./**/*.vue",
+    "./**/*.ts",
+    "./**/*.spec.ts"
+  ],
+  "exclude": [
+    "./dist"
+  ]
 }

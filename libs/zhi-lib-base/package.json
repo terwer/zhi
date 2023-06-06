@@ -1,6 +1,6 @@
 {
   "name": "zhi-lib-base",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "minimization dependencies for class library",
   "main": "./dist/index.js",
@@ -8,7 +8,7 @@
   "repository": "terwer/zhi",
   "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-lib-base",
   "author": "terwer",
-  "license": "GPL",
+  "license": "MIT",
   "files": [
     "dist",
     "README.md"
@@ -25,7 +25,10 @@
     "test": "npx vitest --watch"
   },
   "devDependencies": {
-    "@terwer/eslint-config-custom": "^1.2.0",
-    "@terwer/vite-config-custom": "^0.5.0"
+    "@terwer/eslint-config-custom": "workspace:*",
+    "@terwer/vite-config-custom": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
