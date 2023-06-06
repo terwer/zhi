@@ -38,5 +38,8 @@
     "loglevel-plugin-prefix": "^0.8.4",
     "zhi-device": "workspace:*",
     "zhi-env": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
