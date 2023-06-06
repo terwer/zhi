@@ -8,7 +8,7 @@
   "repository": "terwer/zhi",
   "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api",
   "author": "terwer",
-  "license": "GPL",
+  "license": "MIT",
   "files": [
     "dist",
     "README.md"
