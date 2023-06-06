@@ -44,10 +44,6 @@
 
 - [zhi-cli](https://github.com/terwer/zhi/tree/dev/apps/zhi-cli)
 
-### 文档
-
-- [zhi-docs](https://github.com/terwer/zhi/tree/dev/apps/zhi-docs)
-
 ### 工具
 
 - [commit-config-custom](https://github.com/terwer/zhi/tree/dev/tools/commit-config-custom)
@@ -69,5 +65,5 @@
 - [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - 导入工具，导入 epub, docx, pdf, html 等格式到思源笔记 <sup>已上架</sup>
 - [siyuan-plugin-custom-slug](https://github.com/terwer/siyuan-plugin-custom-slug) - 文档别名，为文档标题新建别名索引，方便快速搜索 <sup>已上架</sup>
 - [siyuan-plugin-code-block](https://github.com/terwer/siyuan-plugin-code-block) - 代码块美化，模仿Mac风格的代码块风格 <sup>已上架</sup>
-- [siyuan-plugin-2md](https://github.com/terwer/siyuan-plugin-2md) - Markdown批量转换，将思源笔记的文档批量转换为Markdown文件，支持转换属性为Hexo、HUGO、Vitepress、Obsidian等平台对应的FrontFormatter
-  <sup>进行中</sup>
+- [siyuan-plugin-2md](https://github.com/terwer/siyuan-plugin-2md) - Markdown批量转换，将思源笔记的文档批量转换为Markdown文件，支持转换属性为Hexo、HUGO、Vitepress、Obsidian等平台对应的FrontFormatter <sup>进行中</sup>
+- [siyuan-plugin-random-doc](https://github.com/terwer/siyuan-plugin-random-doc) - 文档漫游 <sup>进行中</sup>

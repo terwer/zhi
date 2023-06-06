@@ -44,10 +44,6 @@
 
 - [zhi-cli](https://github.com/terwer/zhi/tree/dev/apps/zhi-cli)
 
-### docs
-
-- [zhi-docs](https://github.com/terwer/zhi/tree/dev/apps/zhi-docs)
-
 ### tools
 
 - [commit-config-custom](https://github.com/terwer/zhi/tree/dev/tools/commit-config-custom)
@@ -69,5 +65,5 @@
 - [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - Import tools, import epub, docx, pdf, html and other formats to Siyuan notes <sup>Available</sup>
 - [siyuan-plugin-custom-slug](https://github.com/terwer/siyuan-plugin-custom-slug) - Document alias, a new alias index for document titles, convenient for quick search <sup>Available</sup>
 - [siyuan-plugin-code-block](https://github.com/terwer/siyuan-plugin-code-block) - Code block beautification, imitating Mac style code block style <sup>Available</sup>
-- [siyuan-plugin-2md](https://github.com/terwer/siyuan-plugin-2md) - Markdown batch conversion, batch conversion of documents of Siyuan notes into Markdown files, support conversion properties for Hexo, HUGO, Vitepress, Obsidian and other platforms corresponding to FrontFormatter
-  <sup>In progress</sup>
+- [siyuan-plugin-2md](https://github.com/terwer/siyuan-plugin-2md) - Markdown batch conversion, batch conversion of documents of Siyuan notes into Markdown files, support conversion properties for Hexo, HUGO, Vitepress, Obsidian and other platforms corresponding to FrontFormatter <sup>In progress</sup>
+- [siyuan-plugin-random-doc](https://github.com/terwer/siyuan-plugin-random-doc) - Random Doc <sup>In progress</sup>
