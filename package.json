@@ -8,6 +8,7 @@
     "build": "turbo run build",
     "lint": "turbo run lint",
     "cz": "git-cz",
+    "add-changeset": "changeset",
     "publish-packages": "turbo run build lint && changeset version && changeset publish"
   },
   "config": {

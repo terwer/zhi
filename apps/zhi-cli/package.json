@@ -40,5 +40,8 @@
     "git-clone": "^0.2.0",
     "handlebars": "^4.7.7",
     "zhi-log": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
