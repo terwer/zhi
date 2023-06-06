@@ -1,0 +1,10 @@
+# zhi-log
+
+## 1.14.1
+
+### Patch Changes
+
+- update deps
+- Updated dependencies
+  - zhi-device@1.1.1
+  - zhi-env@1.18.1
