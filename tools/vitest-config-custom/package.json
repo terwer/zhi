@@ -8,7 +8,7 @@
   ],
   "author": "terwer",
   "license": "MIT",
-  "devDependencies": {
+  "peerDependencies": {
     "jsdom": "^21.1.1",
     "vite": "^4.2.2",
     "vitest": "^0.31.1"
