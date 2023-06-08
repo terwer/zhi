@@ -15,7 +15,7 @@
   "homepage": "https://github.com/terwer/zhi/tree/main/tools/esbuild-config-custom",
   "author": "terwer",
   "license": "MIT",
-  "devDependencies": {
+  "peerDependencies": {
     "@types/minimist": "^1.2.2",
     "dotenv": "^16.0.3",
     "esbuild": "^0.17.17",
