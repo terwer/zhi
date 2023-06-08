@@ -1,5 +1,11 @@
 # @terwer/vite-config-custom
 
+## 0.7.5
+
+### Patch Changes
+
+- fix esbuild deps
+
 ## 0.7.4
 
 ### Patch Changes

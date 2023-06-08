@@ -1,5 +1,13 @@
 # zhi-common
 
+## 1.9.5
+
+### Patch Changes
+
+- fix esbuild deps
+- Updated dependencies
+  - zhi-lib-base@0.2.5
+
 ## 1.9.4
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # zhi-device
 
+## 1.1.5
+
+### Patch Changes
+
+- fix esbuild deps
+
 ## 1.1.4
 
 ### Patch Changes

@@ -1,5 +1,14 @@
 # zhi-log
 
+## 1.14.5
+
+### Patch Changes
+
+- fix esbuild deps
+- Updated dependencies
+  - zhi-device@1.1.5
+  - zhi-env@1.18.5
+
 ## 1.14.4
 
 ### Patch Changes

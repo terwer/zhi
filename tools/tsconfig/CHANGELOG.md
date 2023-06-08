@@ -1,5 +1,11 @@
 # @terwer/tsconfig
 
+## 0.0.6
+
+### Patch Changes
+
+- fix esbuild deps
+
 ## 0.0.5
 
 ### Patch Changes

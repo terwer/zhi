@@ -1,5 +1,11 @@
 # @terwer/commit-config-custom
 
+## 1.0.8
+
+### Patch Changes
+
+- fix esbuild deps
+
 ## 1.0.7
 
 ### Patch Changes

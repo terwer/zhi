@@ -1,5 +1,15 @@
 # zhi-fetch-middleware
 
+## 0.1.5
+
+### Patch Changes
+
+- fix esbuild deps
+- Updated dependencies
+  - zhi-lib-base@0.2.5
+  - zhi-common@1.9.5
+  - zhi-device@1.1.5
+
 ## 0.1.4
 
 ### Patch Changes

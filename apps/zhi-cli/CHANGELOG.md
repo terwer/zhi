@@ -1,5 +1,13 @@
 # zhi-cli
 
+## 1.5.5
+
+### Patch Changes
+
+- fix esbuild deps
+- Updated dependencies
+  - zhi-log@1.14.5
+
 ## 1.5.4
 
 ### Patch Changes

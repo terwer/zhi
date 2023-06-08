@@ -1,5 +1,11 @@
 # zhi-env
 
+## 1.18.5
+
+### Patch Changes
+
+- fix esbuild deps
+
 ## 1.18.4
 
 ### Patch Changes
