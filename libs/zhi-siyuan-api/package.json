@@ -1,12 +1,12 @@
 {
-  "name": "zhi-xmlrpc-middleware",
-  "version": "0.2.8",
+  "name": "zhi-siyuan-api",
+  "version": "1.9.1",
   "type": "module",
-  "description": "abstract xmlrpc middle layer",
+  "description": "a siyuan-note api including both kernel and client",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "repository": "terwer/zhi",
-  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-xmlrpc-middleware",
+  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api",
   "author": "terwer",
   "license": "GPL",
   "files": [
@@ -15,25 +15,28 @@
   ],
   "keywords": [
     "zhi",
-    "lib"
+    "lib",
+    "siyuan",
+    "note",
+    "api"
   ],
   "scripts": {
     "serve": "vite",
     "dev": "vite build --watch",
     "build": "vite build",
     "start": "vite preview",
-    "test": "npx vitest --watch"
+    "test": "vitest --watch"
   },
   "devDependencies": {
     "@terwer/eslint-config-custom": "workspace:*",
+    "@terwer/tsconfig": "workspace:*",
     "@terwer/vite-config-custom": "workspace:*",
-    "cross-fetch": "^3.1.6",
-    "simple-xmlrpc": "^1.2.2",
-    "xmlbuilder2": "^3.1.1"
+    "form-data": "^4.0.0"
   },
   "dependencies": {
+    "cross-fetch": "^3.1.6",
+    "zhi-blog-api": "workspace:*",
     "zhi-common": "workspace:*",
-    "zhi-device": "workspace:*",
     "zhi-lib-base": "workspace:*"
   },
   "publishConfig": {

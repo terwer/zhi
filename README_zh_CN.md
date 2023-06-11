@@ -34,7 +34,7 @@
       - [ ] [zhi-yuque-api](https://github.com/terwer/zhi/tree/main/libs/zhi-yuque-api)
       - [ ] [zhi-liandi-api](https://github.com/terwer/zhi/tree/main/libs/zhi-liandi-api)
       - [ ] [zhi-kms-api](https://github.com/terwer/zhi/tree/main/libs/zhi-kms-api)
-      - [ ] [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api)
+      - [X] [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api)
       - [ ] [zhi-wechat-api](https://github.com/terwer/zhi/tree/main/libs/zhi-wechat-api)
     - [ ] [zhi-http-api](https://github.com/terwer/zhi/tree/main/libs/zhi-http-api)
       - [ ] [zhi-zhihu-api](https://github.com/terwer/zhi/tree/main/libs/zhi-zhihu-api)
@@ -67,3 +67,4 @@
 - [siyuan-plugin-code-block](https://github.com/terwer/siyuan-plugin-code-block) - 代码块美化，模仿Mac风格的代码块风格 <sup>已上架</sup>
 - [siyuan-plugin-2md](https://github.com/terwer/siyuan-plugin-2md) - Markdown批量转换，将思源笔记的文档批量转换为Markdown文件，支持转换属性为Hexo、HUGO、Vitepress、Obsidian等平台对应的FrontFormatter <sup>进行中</sup>
 - [siyuan-plugin-random-doc](https://github.com/terwer/siyuan-plugin-random-doc) - 文档漫游 <sup>进行中</sup>
+- [siyuan-plugin-picgo](https://github.com/terwer/siyuan-plugin-picgo) - PocGo图床 <sup>进行中</sup>
