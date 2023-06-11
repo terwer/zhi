@@ -1,5 +1,15 @@
 # zhi-fetch-middleware
 
+## 0.1.6
+
+### Patch Changes
+
+- add hash query string
+- Updated dependencies
+  - zhi-lib-base@0.2.6
+  - zhi-common@1.9.6
+  - zhi-device@1.1.6
+
 ## 0.1.5
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @terwer/tsconfig
 
+## 0.0.7
+
+### Patch Changes
+
+- add hash query string
+
 ## 0.0.6
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @terwer/commit-config-custom
 
+## 1.0.9
+
+### Patch Changes
+
+- add hash query string
+
 ## 1.0.8
 
 ### Patch Changes

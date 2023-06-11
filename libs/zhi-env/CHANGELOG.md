@@ -1,5 +1,11 @@
 # zhi-env
 
+## 1.18.6
+
+### Patch Changes
+
+- add hash query string
+
 ## 1.18.5
 
 ### Patch Changes

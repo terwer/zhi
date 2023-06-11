@@ -1,5 +1,11 @@
 # @terwer/vitest-config-custom
 
+## 1.0.6
+
+### Patch Changes
+
+- add hash query string
+
 ## 1.0.5
 
 ### Patch Changes

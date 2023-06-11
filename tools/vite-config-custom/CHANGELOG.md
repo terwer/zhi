@@ -1,5 +1,11 @@
 # @terwer/vite-config-custom
 
+## 0.7.6
+
+### Patch Changes
+
+- add hash query string
+
 ## 0.7.5
 
 ### Patch Changes

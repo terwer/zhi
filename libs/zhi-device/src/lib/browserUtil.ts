@@ -71,40 +71,50 @@ class BrowserUtil {
   }
 
   /**
-   * 获取url参数
+   * 通用的从 url 中获取获取参数的方法
    *
-   * @param sParam - 参数
+   * @param key - 参数
+   * @author terwer
+   * @version 0.9.0
+   * @since 0.0.1
    */
-  public static getQueryString = (sParam: string): string => {
-    if (!BrowserUtil.isInBrowser) {
-      return ""
-    }
-    const sPageURL = window.location.search.substring(1)
-    const sURLVariables = sPageURL.split("&")
-
-    for (let i = 0; i < sURLVariables.length; i++) {
-      const sParameterName = sURLVariables[i].split("=")
-      if (sParameterName[0] === sParam) {
-        return sParameterName[1]
-      }
-    }
-
-    return ""
-  }
-
-  public static getHashQueryString = (sParam: string): string => {
-    if (!BrowserUtil.isInBrowser) {
+  public static getQueryParam = (key: string) => {
+    if (BrowserUtil.isInBrowser) {
       return ""
     }
 
     const url = window.location.href
-    const hashIndex = url.indexOf("#")
-    const queryStart = hashIndex === -1 ? url.length : hashIndex + 2
-    const queryEnd = url.length
-    const query = url.slice(queryStart, queryEnd)
-    const queryParams = new URLSearchParams(query)
 
-    return queryParams.get(sParam) ?? ""
+    // Check for query parameters first
+    const queryStringStart = url.indexOf("?")
+    if (queryStringStart !== -1) {
+      const queryStringEnd = url.indexOf("#", queryStringStart)
+      const queryString =
+        queryStringEnd !== -1
+          ? url.substring(queryStringStart + 1, queryStringEnd)
+          : url.substring(queryStringStart + 1)
+      const urlSearchParams = new URLSearchParams(queryString)
+      const valueFromQueryParams = urlSearchParams.get(key)
+
+      if (valueFromQueryParams) {
+        return valueFromQueryParams
+      }
+    }
+
+    // Check for hash parameters if query parameters not found
+    const hashStringStart = url.indexOf("#")
+    if (hashStringStart !== -1) {
+      const hashString = url.substring(hashStringStart + 1)
+      const urlSearchParams = new URLSearchParams(hashString)
+      const valueFromHashParams = urlSearchParams.get(key)
+
+      if (valueFromHashParams) {
+        return valueFromHashParams
+      }
+    }
+
+    // Return an empty string if the parameter is not found
+    return ""
   }
 
   /**
