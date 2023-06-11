@@ -79,6 +79,7 @@ class BrowserUtil {
    * @since 0.0.1
    */
   public static getQueryParam = (key: string) => {
+    // check env
     if (!BrowserUtil.isInBrowser) {
       return ""
     }
