@@ -1,5 +1,17 @@
 # zhi-lib-base
 
+## 0.2.6
+
+### Patch Changes
+
+- add hash query string
+
+## 0.2.5
+
+### Patch Changes
+
+- fix esbuild deps
+
 ## 0.2.4
 
 ### Patch Changes

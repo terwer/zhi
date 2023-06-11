@@ -1,5 +1,23 @@
 # zhi-log
 
+## 1.14.6
+
+### Patch Changes
+
+- add hash query string
+- Updated dependencies
+  - zhi-device@1.1.6
+  - zhi-env@1.18.6
+
+## 1.14.5
+
+### Patch Changes
+
+- fix esbuild deps
+- Updated dependencies
+  - zhi-device@1.1.5
+  - zhi-env@1.18.5
+
 ## 1.14.4
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # @terwer/esbuild-config-custom
 
+## 1.0.12
+
+### Patch Changes
+
+- add hash query string
+
+## 1.0.11
+
+### Patch Changes
+
+- fix esbuild deps
+
 ## 1.0.10
 
 ### Patch Changes

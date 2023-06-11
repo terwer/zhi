@@ -1,6 +1,6 @@
 {
   "name": "zhi-cli",
-  "version": "1.5.4",
+  "version": "1.5.6",
   "description": "a tool for generating zhi framework related projects",
   "type": "module",
   "bin": {

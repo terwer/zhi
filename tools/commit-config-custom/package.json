@@ -1,6 +1,6 @@
 {
   "name": "@terwer/commit-config-custom",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "type": "module",
   "description": "commitlint custom config",
   "keywords": [
