@@ -55,10 +55,9 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
   /**
    * 初始化思源服务端 API
    *
-   * @param appInstance - 应用实例
    * @param cfg -配置项
    */
-  constructor(appInstance: any, cfg: SiyuanConfig) {
+  constructor(cfg: SiyuanConfig) {
     this.VERSION = "1.0.0"
 
     this.siyuanConfig = cfg
@@ -514,6 +513,22 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
 
   public async uploadAsset(formData: any): Promise<SiyuanData> {
     return await this.siyuanRequestForm("/api/asset/upload", formData)
+  }
+
+  /**
+   * 以id获取所有图片块
+   *
+   * @param blockId - 块ID
+   */
+  public async getImageBlocksByID(blockId: string): Promise<any[]> {
+    const stmt = `select *
+                from blocks
+                where root_id = '${blockId}' and markdown like '%![%'`
+    const data = await this.sql(stmt)
+    if (!data) {
+      throw new Error("通过ID查询图片块信息失败")
+    }
+    return data as any[]
   }
 }
 

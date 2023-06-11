@@ -34,7 +34,7 @@
       - [ ] [zhi-yuque-api](https://github.com/terwer/zhi/tree/main/libs/zhi-yuque-api)
       - [ ] [zhi-liandi-api](https://github.com/terwer/zhi/tree/main/libs/zhi-liandi-api)
       - [ ] [zhi-kms-api](https://github.com/terwer/zhi/tree/main/libs/zhi-kms-api)
-      - [ ] [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api)
+      - [X] [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api)
       - [ ] [zhi-wechat-api](https://github.com/terwer/zhi/tree/main/libs/zhi-wechat-api)
     - [ ] [zhi-http-api](https://github.com/terwer/zhi/tree/main/libs/zhi-http-api)
       - [ ] [zhi-zhihu-api](https://github.com/terwer/zhi/tree/main/libs/zhi-zhihu-api)
@@ -67,3 +67,4 @@
 - [siyuan-plugin-code-block](https://github.com/terwer/siyuan-plugin-code-block) - Code block beautification, imitating Mac style code block style <sup>Available</sup>
 - [siyuan-plugin-2md](https://github.com/terwer/siyuan-plugin-2md) - Markdown batch conversion, batch conversion of documents of Siyuan notes into Markdown files, support conversion properties for Hexo, HUGO, Vitepress, Obsidian and other platforms corresponding to FrontFormatter <sup>In progress</sup>
 - [siyuan-plugin-random-doc](https://github.com/terwer/siyuan-plugin-random-doc) - Random Doc <sup>In progress</sup>
+- [siyuan-plugin-picgo](https://github.com/terwer/siyuan-plugin-picgo) - PocGo <sup>In progress</sup>

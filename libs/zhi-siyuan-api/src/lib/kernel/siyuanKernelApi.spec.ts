@@ -26,84 +26,77 @@
 import { describe, it } from "vitest"
 import SiyuanKernelApi from "./siyuanKernelApi"
 import SiyuanConfig from "../config/siyuanConfig"
-import path from "path"
 
 describe("SiyuanKernelApi", async () => {
-  // appInstance
-  const appInstance: any = {}
-  const projectBase = path.resolve(__dirname, "../../..")
-  const moduleBase = path.resolve(__dirname, "../../../../..")
-  console.log(path.join(moduleBase, "libs/zhi-common/dist/index.js"))
-
   // lute
   // require(path.join(moduleBase, "libs/zhi-common/public/libs/lute/lute-1.7.5-20230410.min.cjs"))
 
   it("sql using siyuanConfig", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
     const result = await kernelApi.sql("select 1 from blocks limit 1")
     console.log("result=>", result)
   })
 
   it("getRootBlocksCount", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
     const result = await kernelApi.getRootBlocksCount("")
     console.log("result=>", result)
   })
 
   it("lsNotebooks", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
     const result = await kernelApi.lsNotebooks()
     console.log("result=>", result)
   })
 
   it("openNotebook", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
     const result = await kernelApi.openNotebook("20220718062546-2nbmy21")
     console.log("result=>", result)
   })
 
   it("closeNotebook", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
     const result = await kernelApi.closeNotebook("20220718062546-2nbmy21")
     console.log("result=>", result)
   })
 
   it("renameNotebook", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
     const result = await kernelApi.renameNotebook("20220621105123-dlyn6nl", "临时文档")
     console.log("result=>", result)
   })
 
   it("createNotebook", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
     const result = await kernelApi.createNotebook("临时文档3")
     console.log("result=>", result)
   })
 
   it("removeNotebook", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
     const result = await kernelApi.removeNotebook("20230401225851-4zgh677")
     console.log("result=>", result)
   })
 
   it("getNotebookConf", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
     const result = await kernelApi.getNotebookConf("20220621105123-dlyn6nl")
     console.log("result=>", result)
   })
 
   it("setNotebookConf", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
     const result = await kernelApi.setNotebookConf({
       notebook: "20220621105123-dlyn6nl",
       conf: {
@@ -120,7 +113,7 @@ describe("SiyuanKernelApi", async () => {
 
   it("pushMsg", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
     const result = await kernelApi.pushMsg({
       msg: "测试消息",
     })
@@ -129,7 +122,7 @@ describe("SiyuanKernelApi", async () => {
 
   it("pushErrMsg", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
     const result = await kernelApi.pushErrMsg({
       msg: "测试错误消息",
     })
@@ -138,7 +131,7 @@ describe("SiyuanKernelApi", async () => {
 
   it("getRootBlocks", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const kernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
     const result = await kernelApi.getRootBlocks(0, 10, "")
     console.log("result=>", result)
   })
