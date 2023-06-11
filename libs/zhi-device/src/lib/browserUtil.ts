@@ -92,6 +92,21 @@ class BrowserUtil {
     return ""
   }
 
+  public static getHashQueryString = (sParam: string): string => {
+    if (!BrowserUtil.isInBrowser) {
+      return ""
+    }
+
+    const url = window.location.href
+    const hashIndex = url.indexOf("#")
+    const queryStart = hashIndex === -1 ? url.length : hashIndex + 2
+    const queryEnd = url.length
+    const query = url.slice(queryStart, queryEnd)
+    const queryParams = new URLSearchParams(query)
+
+    return queryParams.get(sParam) ?? ""
+  }
+
   /**
    * 替换 URL 的参数
    * 思路：
