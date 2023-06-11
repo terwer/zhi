@@ -1,5 +1,11 @@
 # zhi-device
 
+## 2.0.0
+
+### Major Changes
+
+- add hash query
+
 ## 1.1.6
 
 ### Patch Changes

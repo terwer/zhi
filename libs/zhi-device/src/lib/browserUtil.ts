@@ -71,7 +71,7 @@ class BrowserUtil {
   }
 
   /**
-   * 通用的从 url 中获取获取参数的方法
+   * 通用的从 url 中获取获取参数的方法，优先获取查询参数，然后获取 hash 参数与
    *
    * @param key - 参数
    * @author terwer
