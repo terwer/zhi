@@ -1,5 +1,11 @@
 # zhi-lib-base
 
+## 0.3.0
+
+### Minor Changes
+
+- deal with boolean in log
+
 ## 0.2.6
 
 ### Patch Changes

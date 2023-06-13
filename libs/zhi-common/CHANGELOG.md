@@ -1,5 +1,12 @@
 # zhi-common
 
+## 1.9.7
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.3.0
+
 ## 1.9.6
 
 ### Patch Changes
