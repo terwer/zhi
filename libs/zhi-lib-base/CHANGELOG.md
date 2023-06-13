@@ -1,5 +1,11 @@
 # zhi-lib-base
 
+## 0.3.1
+
+### Patch Changes
+
+- fix boolean msg
+
 ## 0.3.0
 
 ### Minor Changes

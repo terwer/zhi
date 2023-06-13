@@ -152,6 +152,18 @@ class DateUtil {
   public static nowYear(): number {
     return new Date().getFullYear()
   }
+
+  /**
+   * 时间戳转时间
+   *
+   * @param timestamp - 时间戳
+   */
+  public static formatTimestampToZhDate(timestamp: any) {
+    if (typeof timestamp == "string") {
+      timestamp = parseInt(timestamp)
+    }
+    return this.formatIsoToZhDate(new Date(timestamp).toISOString())
+  }
 }
 
 export default DateUtil

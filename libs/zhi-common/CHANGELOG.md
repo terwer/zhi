@@ -1,5 +1,18 @@
 # zhi-common
 
+## 1.10.0
+
+### Minor Changes
+
+- add formatTimestampToZhDate
+
+## 1.9.8
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.3.1
+
 ## 1.9.7
 
 ### Patch Changes

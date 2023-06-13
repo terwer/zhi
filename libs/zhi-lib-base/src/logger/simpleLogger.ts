@@ -56,28 +56,28 @@ const simpleLogger = (name: string, customSign?: string, isDev?: boolean): ILogg
 
   const log = (msg: any, obj?: any) => {
     const time = formatDate(new Date())
-    const formattedMsg = obj && typeof obj === "boolean" ? String(obj) : obj
+    const formattedMsg = typeof obj === "boolean" ? String(obj) : obj
 
     console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`, formattedMsg)
   }
 
   const infoLog = (msg: any, obj?: any) => {
     const time = formatDate(new Date())
-    const formattedMsg = obj && typeof obj === "boolean" ? String(obj) : obj
+    const formattedMsg = typeof obj === "boolean" ? String(obj) : obj
 
     console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`, formattedMsg)
   }
 
   const warnLog = (msg: any, obj?: any) => {
     const time = formatDate(new Date())
-    const formattedMsg = obj && typeof obj === "boolean" ? String(obj) : obj
+    const formattedMsg = typeof obj === "boolean" ? String(obj) : obj
     console.warn(`[${sign}] [${time}] [WARN] [${name}] ${msg}`, formattedMsg)
   }
 
   const errorLog = (msg: string | Error, obj?: any) => {
     const time = formatDate(new Date())
     const message = msg instanceof Error ? "an error occurred =>" : `${msg}`
-    const formattedMsg = obj && typeof obj === "boolean" ? String(obj) : obj || `${msg}`
+    const formattedMsg = typeof obj === "boolean" ? String(obj) : obj || `${msg}`
 
     console.error(`[${sign}] [${time}] [ERROR] [${name}] ${message}`, formattedMsg)
   }
