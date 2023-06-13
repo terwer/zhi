@@ -43,10 +43,9 @@ class SiyuanDevice {
       return false
     }
     return (
-      window.frameElement != null &&
-      window.frameElement.parentElement != null &&
-      window.frameElement.parentElement.parentElement != null &&
-      window.frameElement.parentElement.parentElement.getAttribute("data-node-id") !== ""
+      typeof (window as any).parent.process !== "undefined" &&
+      (window as any).parent.process.versions != null &&
+      (window as any).parent.process.versions.electron != null
     )
   }
 

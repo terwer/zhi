@@ -1,5 +1,11 @@
 # zhi-device
 
+## 2.2.0
+
+### Minor Changes
+
+- make a better check for widget
+
 ## 2.1.0
 
 ### Minor Changes
