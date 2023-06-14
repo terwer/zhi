@@ -39,6 +39,8 @@
     - [ ] [zhi-http-api](https://github.com/terwer/zhi/tree/main/libs/zhi-http-api)
       - [ ] [zhi-zhihu-api](https://github.com/terwer/zhi/tree/main/libs/zhi-zhihu-api)
       - [ ] [zhi-csdn-api](https://github.com/terwer/zhi/tree/main/libs/zhi-csdn-api)
+  - [ ] [zhi-picgo-core](https://github.com/terwer/zhi/tree/main/libs/zhi-picgo-core)
+    - [ ] [zhi-siyuan-picgo](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-picgo)
 
 ### 脚手架
 
