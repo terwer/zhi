@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.11.0
+
+### Minor Changes
+
+- change json safeParse
+
 ## 1.10.0
 
 ### Minor Changes
