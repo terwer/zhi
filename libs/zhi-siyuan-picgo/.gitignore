@@ -1,7 +1,0 @@
-.idea
-node_modules
-dist
-test-dist
-venv
-__pycache__
-.DS_Store
