@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 1.11.0
+
+### Minor Changes
+
+- remove cross-fetch
+
 ## 1.10.0
 
 ### Minor Changes

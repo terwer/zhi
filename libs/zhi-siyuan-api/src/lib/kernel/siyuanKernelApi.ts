@@ -26,7 +26,6 @@
 import SiyuanConfig from "../config/siyuanConfig"
 import ISiyuanKernelApi, { type SiyuanData } from "./ISiyuanKernelApi"
 import { simpleLogger } from "zhi-lib-base/src"
-import fetch from "cross-fetch"
 import { StrUtil } from "zhi-common"
 
 /**
