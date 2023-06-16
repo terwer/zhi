@@ -23,36 +23,39 @@
  * questions.
  */
 
-import SiyuanConfig from "./config/siyuanConfig"
-import SiyuanKernelApi from "./kernel/siyuanKernelApi"
-import SiyuanClientApi from "./client/siyuanClientApi"
+import MarkdownAdaptor from "./MarkdownAdaptor"
+import showdown from "showdown"
+import { simpleLogger } from "zhi-lib-base"
 
 /**
- * 思源笔记API
+ * showdown 适配器
  *
  * @author terwer
+ * @version 1.0.0
  * @since 1.0.0
  */
-class SiyuanApi {
-  /**
-   * 思源笔记内核API
-   */
-  public readonly kernelApi
+class ShowdownAdaptor implements MarkdownAdaptor {
+  private readonly logger
+  private readonly converter
 
-  /**
-   * 思源笔记客户端API
-   */
-  public readonly clientApi
+  constructor() {
+    this.logger = simpleLogger("showdown-adaptor", "zhi-common-markdown", false)
 
-  /**
-   * 构造思源 API对象
-   *
-   * @param cfg - 配置项
-   */
-  constructor(cfg: SiyuanConfig) {
-    this.kernelApi = new SiyuanKernelApi(cfg)
-    this.clientApi = new SiyuanClientApi()
+    this.converter = new showdown.Converter()
+  }
+
+  isAvailable(): boolean {
+    return typeof showdown !== "undefined"
+  }
+
+  renderMarkdownStr(md: string): Promise<string> {
+    if (!this.isAvailable()) {
+      throw new Error("Showdown is not available")
+    }
+
+    this.logger.info("Showdown is rendering md to HTML...")
+    return Promise.resolve(this.converter.makeHtml(md))
   }
 }
 
-export default SiyuanApi
+export default ShowdownAdaptor

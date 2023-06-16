@@ -23,36 +23,25 @@
  * questions.
  */
 
-import SiyuanConfig from "./config/siyuanConfig"
-import SiyuanKernelApi from "./kernel/siyuanKernelApi"
-import SiyuanClientApi from "./client/siyuanClientApi"
-
 /**
- * 思源笔记API
+ * Markdown适配器接口
  *
  * @author terwer
+ * @version 1.0.0
  * @since 1.0.0
  */
-class SiyuanApi {
+interface MarkdownAdaptor {
   /**
-   * 思源笔记内核API
+   * 是否可用
    */
-  public readonly kernelApi
+  isAvailable(): boolean
 
   /**
-   * 思源笔记客户端API
-   */
-  public readonly clientApi
-
-  /**
-   * 构造思源 API对象
+   * 渲染MD
    *
-   * @param cfg - 配置项
+   * @param md - Markdown
    */
-  constructor(cfg: SiyuanConfig) {
-    this.kernelApi = new SiyuanKernelApi(cfg)
-    this.clientApi = new SiyuanClientApi()
-  }
+  renderMarkdownStr(md: string): Promise<string>
 }
 
-export default SiyuanApi
+export default MarkdownAdaptor

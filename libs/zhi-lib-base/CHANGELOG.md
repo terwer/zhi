@@ -1,5 +1,17 @@
 # zhi-lib-base
 
+## 0.4.1
+
+### Patch Changes
+
+- fix deps
+
+## 0.4.0
+
+### Minor Changes
+
+- fix log msg
+
 ## 0.3.1
 
 ### Patch Changes

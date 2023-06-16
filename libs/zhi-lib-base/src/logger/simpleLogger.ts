@@ -58,20 +58,33 @@ const simpleLogger = (name: string, customSign?: string, isDev?: boolean): ILogg
     const time = formatDate(new Date())
     const formattedMsg = typeof obj === "boolean" ? String(obj) : obj
 
-    console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`, formattedMsg)
+    if (formattedMsg) {
+      console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`, formattedMsg)
+    } else {
+      console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`)
+    }
   }
 
   const infoLog = (msg: any, obj?: any) => {
     const time = formatDate(new Date())
     const formattedMsg = typeof obj === "boolean" ? String(obj) : obj
 
-    console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`, formattedMsg)
+    if (formattedMsg) {
+      console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`, formattedMsg)
+    } else {
+      console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`)
+    }
   }
 
   const warnLog = (msg: any, obj?: any) => {
     const time = formatDate(new Date())
     const formattedMsg = typeof obj === "boolean" ? String(obj) : obj
-    console.warn(`[${sign}] [${time}] [WARN] [${name}] ${msg}`, formattedMsg)
+
+    if (formattedMsg) {
+      console.warn(`[${sign}] [${time}] [WARN] [${name}] ${msg}`, formattedMsg)
+    } else {
+      console.warn(`[${sign}] [${time}] [WARN] [${name}] ${msg}`)
+    }
   }
 
   const errorLog = (msg: string | Error, obj?: any) => {
@@ -79,23 +92,43 @@ const simpleLogger = (name: string, customSign?: string, isDev?: boolean): ILogg
     const message = msg instanceof Error ? "an error occurred =>" : `${msg}`
     const formattedMsg = typeof obj === "boolean" ? String(obj) : obj || `${msg}`
 
-    console.error(`[${sign}] [${time}] [ERROR] [${name}] ${message}`, formattedMsg)
+    if (formattedMsg) {
+      console.error(`[${sign}] [${time}] [ERROR] [${name}] ${message}`, formattedMsg)
+    } else {
+      console.error(`[${sign}] [${time}] [ERROR] [${name}] ${message}`)
+    }
   }
 
   return {
     debug: (msg: string, obj?: any) => {
       if (isDev) {
-        log(msg, obj)
+        if (obj) {
+          log(msg, obj)
+        } else {
+          log(msg)
+        }
       }
     },
     info: (msg: string, obj?: any) => {
-      infoLog(msg, obj)
+      if (obj) {
+        infoLog(msg, obj)
+      } else {
+        infoLog(msg)
+      }
     },
     warn: (msg: string, obj?: any) => {
-      warnLog(msg, obj)
+      if (obj) {
+        warnLog(msg, obj)
+      } else {
+        warnLog(msg)
+      }
     },
     error: (msg: string | Error, obj?: any) => {
-      errorLog(msg, obj)
+      if (obj) {
+        errorLog(msg, obj)
+      } else {
+        errorLog(msg)
+      }
     },
   }
 }

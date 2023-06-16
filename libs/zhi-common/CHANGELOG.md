@@ -1,5 +1,20 @@
 # zhi-common
 
+## 1.11.2
+
+### Patch Changes
+
+- fix deps
+- Updated dependencies
+  - zhi-lib-base@0.4.1
+
+## 1.11.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.4.0
+
 ## 1.11.0
 
 ### Minor Changes

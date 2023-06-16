@@ -23,36 +23,53 @@
  * questions.
  */
 
-import SiyuanConfig from "./config/siyuanConfig"
-import SiyuanKernelApi from "./kernel/siyuanKernelApi"
-import SiyuanClientApi from "./client/siyuanClientApi"
+import LuteAdaptor from "./md-adaptor/LuteAdaptor"
+import ShowdownAdaptor from "./md-adaptor/ShowdownAdaptor"
+import MarkdownAdaptor from "./md-adaptor/MarkdownAdaptor"
+import { simpleLogger } from "zhi-lib-base"
 
 /**
- * 思源笔记API
+ * Markdown 处理工具类
  *
  * @author terwer
+ * @version 1.0.0
  * @since 1.0.0
  */
-class SiyuanApi {
-  /**
-   * 思源笔记内核API
-   */
-  public readonly kernelApi
+class MarkdownUtil {
+  private readonly logger
+  private mdAdaptor: MarkdownAdaptor = new ShowdownAdaptor()
+
+  constructor() {
+    this.logger = simpleLogger("markdown-util", "zhi-common-markdown", false)
+  }
 
   /**
-   * 思源笔记客户端API
+   * 获取当前 MD 解析器名称
    */
-  public readonly clientApi
+  private getCurrentAdaptorName() {
+    if (this.mdAdaptor instanceof LuteAdaptor) {
+      return "Lute"
+    } else if (this.mdAdaptor instanceof ShowdownAdaptor) {
+      return "Showdown"
+    }
+    return "None"
+  }
 
   /**
-   * 构造思源 API对象
+   * 渲染Markdown
    *
-   * @param cfg - 配置项
+   * @param md - Markdown文本
    */
-  constructor(cfg: SiyuanConfig) {
-    this.kernelApi = new SiyuanKernelApi(cfg)
-    this.clientApi = new SiyuanClientApi()
+  public async renderHTML(md: string): Promise<string> {
+    const luteNew = new LuteAdaptor()
+    this.logger.debug("Lute status =>", luteNew.isAvailable())
+    if (luteNew.isAvailable()) {
+      this.mdAdaptor = luteNew
+    }
+
+    this.logger.info(`Using ${this.getCurrentAdaptorName()} as markdown renderer`)
+    return await this.mdAdaptor.renderMarkdownStr(md)
   }
 }
 
-export default SiyuanApi
+export default MarkdownUtil
