@@ -116,10 +116,7 @@ class SiYuanApiAdaptor extends BlogApi {
       const commonPost = new Post()
       commonPost.postid = siyuanPost.root_id
       commonPost.title = title
-      commonPost.permalink =
-        customSlug === ""
-          ? StrUtil.appendStr("/post/", siyuanPost.root_id)
-          : StrUtil.appendStr("/post/", customSlug, ".html")
+      commonPost.permalink = StrUtil.appendStr("/s/", siyuanPost.root_id)
       // commonPost.isPublished = isPublished
       commonPost.mt_keywords = page.mt_keywords
       commonPost.description = page.description
