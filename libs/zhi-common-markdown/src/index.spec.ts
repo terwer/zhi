@@ -23,36 +23,10 @@
  * questions.
  */
 
-import SiyuanConfig from "./config/siyuanConfig"
-import SiyuanKernelApi from "./kernel/siyuanKernelApi"
-import SiyuanClientApi from "./client/siyuanClientApi"
+import { describe, it } from "vitest"
 
-/**
- * 思源笔记API
- *
- * @author terwer
- * @since 1.0.0
- */
-class SiyuanApi {
-  /**
-   * 思源笔记内核API
-   */
-  public readonly kernelApi
-
-  /**
-   * 思源笔记客户端API
-   */
-  public readonly clientApi
-
-  /**
-   * 构造思源 API对象
-   *
-   * @param cfg - 配置项
-   */
-  constructor(cfg: SiyuanConfig) {
-    this.kernelApi = new SiyuanKernelApi(cfg)
-    this.clientApi = new SiyuanClientApi()
-  }
-}
-
-export default SiyuanApi
+describe("index", () => {
+  it("test index", () => {
+    console.log("hello")
+  })
+})

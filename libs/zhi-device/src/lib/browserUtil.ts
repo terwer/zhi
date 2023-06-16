@@ -189,24 +189,26 @@ class BrowserUtil {
    * @param tabname - tabname
    * @param t - 延迟时间
    */
-  public static reloadTabPage = (tabname: string, t = 200): void => {
+  public static reloadTabPage = (tabname: string, t?: number): void => {
     setTimeout(function () {
       if (BrowserUtil.isInBrowser) {
         const url = window.location.href
         window.location.href = BrowserUtil.setUrlParameter(url, "tab", tabname)
       }
-    }, t)
+    }, t ?? 200)
   }
 
   /**
    * 刷新当前tab页面
+   *
+   * @param t - 延迟时间
    */
-  public static reloadPage = (): void => {
+  public static reloadPage = (t?: number): void => {
     setTimeout(function () {
       if (BrowserUtil.isInBrowser) {
         window.location.reload()
       }
-    }, 200)
+    }, t ?? 200)
   }
 
   /**
@@ -214,8 +216,9 @@ class BrowserUtil {
    *
    * @param msg - 消息提示
    * @param cb - 回调
+   * @param t - 延迟时间
    */
-  public static reloadPageWithMessageCallback = (msg: string, cb: any): void => {
+  public static reloadPageWithMessageCallback = (msg: string, cb?: any, t?: number): void => {
     if (cb) {
       cb(msg)
     }
@@ -224,7 +227,7 @@ class BrowserUtil {
       if (BrowserUtil.isInBrowser) {
         window.location.reload()
       }
-    }, 200)
+    }, t ?? 200)
   }
 }
 

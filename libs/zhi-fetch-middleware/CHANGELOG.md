@@ -1,5 +1,66 @@
 # zhi-fetch-middleware
 
+## 0.1.16
+
+### Patch Changes
+
+- fix deps
+- Updated dependencies
+  - zhi-lib-base@0.4.1
+  - zhi-common@1.11.2
+
+## 0.1.15
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.4.0
+  - zhi-common@1.11.1
+
+## 0.1.14
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.3.0
+
+## 0.1.13
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.11.0
+
+## 0.1.12
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.10.0
+
+## 0.1.11
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.3.1
+  - zhi-common@1.9.8
+
+## 0.1.10
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.3.0
+  - zhi-common@1.9.7
+
+## 0.1.9
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.2.0
+
 ## 0.1.8
 
 ### Patch Changes

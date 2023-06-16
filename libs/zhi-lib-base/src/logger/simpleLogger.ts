@@ -54,62 +54,81 @@ const simpleLogger = (name: string, customSign?: string, isDev?: boolean): ILogg
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
   }
 
-  const log = (level: string, msg: any, obj?: any) => {
+  const log = (msg: any, obj?: any) => {
     const time = formatDate(new Date())
-    if (obj) {
-      console.log(`[${sign}] [${time}] [${level}] [${name}] ${msg}`, obj)
+    const formattedMsg = typeof obj === "boolean" ? String(obj) : obj
+
+    if (formattedMsg) {
+      console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`, formattedMsg)
     } else {
-      console.log(`[${sign}] [${time}] [${level}] [${name}] ${msg}`)
+      console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`)
     }
   }
 
   const infoLog = (msg: any, obj?: any) => {
     const time = formatDate(new Date())
-    if (obj) {
-      console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`, obj)
+    const formattedMsg = typeof obj === "boolean" ? String(obj) : obj
+
+    if (formattedMsg) {
+      console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`, formattedMsg)
     } else {
       console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`)
     }
   }
+
   const warnLog = (msg: any, obj?: any) => {
     const time = formatDate(new Date())
-    if (obj) {
-      console.warn(`[${sign}] [${time}] [WARN] [${name}] ${msg}`, obj)
+    const formattedMsg = typeof obj === "boolean" ? String(obj) : obj
+
+    if (formattedMsg) {
+      console.warn(`[${sign}] [${time}] [WARN] [${name}] ${msg}`, formattedMsg)
     } else {
       console.warn(`[${sign}] [${time}] [WARN] [${name}] ${msg}`)
     }
   }
+
   const errorLog = (msg: string | Error, obj?: any) => {
     const time = formatDate(new Date())
-    if (obj) {
-      if (typeof msg == "string") {
-        console.error(`[${sign}] [${time}] [ERROR] [${name}] ${msg}`, obj)
-      } else {
-        console.error(`[${sign}] [${time}] [ERROR] [${name}] ${msg.toString()}`, obj)
-      }
+    const message = msg instanceof Error ? "an error occurred =>" : `${msg}`
+    const formattedMsg = typeof obj === "boolean" ? String(obj) : obj || `${msg}`
+
+    if (formattedMsg) {
+      console.error(`[${sign}] [${time}] [ERROR] [${name}] ${message}`, formattedMsg)
     } else {
-      if (typeof msg == "string") {
-        console.error(`[${sign}] [${time}] [ERROR] [${name}] ${msg.toString()}`)
-      } else {
-        console.error(`[${sign}] [${time}] [ERROR] [${name}] an error occurred =>`, msg)
-      }
+      console.error(`[${sign}] [${time}] [ERROR] [${name}] ${message}`)
     }
   }
 
   return {
     debug: (msg: string, obj?: any) => {
       if (isDev) {
-        log("DEBUG", msg, obj)
+        if (obj) {
+          log(msg, obj)
+        } else {
+          log(msg)
+        }
       }
     },
     info: (msg: string, obj?: any) => {
-      infoLog(msg, obj)
+      if (obj) {
+        infoLog(msg, obj)
+      } else {
+        infoLog(msg)
+      }
     },
     warn: (msg: string, obj?: any) => {
-      warnLog(msg, obj)
+      if (obj) {
+        warnLog(msg, obj)
+      } else {
+        warnLog(msg)
+      }
     },
     error: (msg: string | Error, obj?: any) => {
-      errorLog(msg, obj)
+      if (obj) {
+        errorLog(msg, obj)
+      } else {
+        errorLog(msg)
+      }
     },
   }
 }

@@ -23,36 +23,19 @@
  * questions.
  */
 
-import SiyuanConfig from "./config/siyuanConfig"
-import SiyuanKernelApi from "./kernel/siyuanKernelApi"
-import SiyuanClientApi from "./client/siyuanClientApi"
+import { describe, it, expect } from "vitest"
+import path from "path"
+import MarkdownUtil from "./markdownUtil"
 
-/**
- * 思源笔记API
- *
- * @author terwer
- * @since 1.0.0
- */
-class SiyuanApi {
-  /**
-   * 思源笔记内核API
-   */
-  public readonly kernelApi
+describe("markdownUtil", () => {
+  const moduleBase = path.resolve(__dirname, "../../../..")
+  // lute
+  require(path.join(moduleBase, "libs/zhi-common-markdown/public/libs/lute/lute-1.7.5-20230410.min.cjs"))
 
-  /**
-   * 思源笔记客户端API
-   */
-  public readonly clientApi
-
-  /**
-   * 构造思源 API对象
-   *
-   * @param cfg - 配置项
-   */
-  constructor(cfg: SiyuanConfig) {
-    this.kernelApi = new SiyuanKernelApi(cfg)
-    this.clientApi = new SiyuanClientApi()
-  }
-}
-
-export default SiyuanApi
+  it("test renderHTML", async () => {
+    const markdownUtil = new MarkdownUtil()
+    const result = await markdownUtil.renderHTML("# hello")
+    console.log(result)
+    expect(result).toBe("<h1>hello</h1>\n")
+  })
+})

@@ -1,5 +1,46 @@
 # zhi-common
 
+## 1.11.2
+
+### Patch Changes
+
+- fix deps
+- Updated dependencies
+  - zhi-lib-base@0.4.1
+
+## 1.11.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.4.0
+
+## 1.11.0
+
+### Minor Changes
+
+- change json safeParse
+
+## 1.10.0
+
+### Minor Changes
+
+- add formatTimestampToZhDate
+
+## 1.9.8
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.3.1
+
+## 1.9.7
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.3.0
+
 ## 1.9.6
 
 ### Patch Changes

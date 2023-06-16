@@ -32,16 +32,10 @@ import fs from "fs"
 import SiyuanKernelApi from "../kernel/siyuanKernelApi"
 
 describe("SiYuanApiAdaptor", async () => {
-  // appInstance
-  const appInstance: any = {}
   const projectBase = path.resolve(__dirname, "../../..")
   const moduleBase = path.resolve(__dirname, "../../../../..")
-  const zhiCommon = (await import(path.join(moduleBase, "libs/zhi-common/dist/index.js"))) as any
-  appInstance.zhiCommon = {
-    ZhiUtil: zhiCommon["ZhiUtil"],
-  }
   // lute
-  require(path.join(moduleBase, "libs/zhi-common/public/libs/lute/lute-1.7.5-20230410.min.cjs"))
+  require(path.join(moduleBase, "libs/zhi-common-markdown/public/libs/lute/lute-1.7.5-20230410.min.cjs"))
 
   beforeEach(async () => {
     console.log("======test is starting...======")
@@ -53,14 +47,14 @@ describe("SiYuanApiAdaptor", async () => {
 
   it("test apiAdaptor", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const apiAdaptor = new SiYuanApiAdaptor(appInstance, siyuanConfig)
+    const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
     expect(apiAdaptor).toBeTruthy()
   })
 
   it("test siyuan getUsersBlogs", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const apiAdaptor = new SiYuanApiAdaptor(appInstance, siyuanConfig)
+    const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
     const usersBlogs = await apiAdaptor.getUsersBlogs()
     console.log(usersBlogs)
@@ -68,7 +62,7 @@ describe("SiYuanApiAdaptor", async () => {
 
   it("test siyuan getRecentPostsCount", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const apiAdaptor = new SiYuanApiAdaptor(appInstance, siyuanConfig)
+    const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
     const recentPostsCount = await apiAdaptor.getRecentPostsCount()
     console.log(recentPostsCount)
@@ -76,7 +70,7 @@ describe("SiYuanApiAdaptor", async () => {
 
   it("test siyuan getRecentPosts", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const apiAdaptor = new SiYuanApiAdaptor(appInstance, siyuanConfig)
+    const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
     const recentPosts = await apiAdaptor.getRecentPosts(10)
     console.log(recentPosts)
@@ -85,7 +79,7 @@ describe("SiYuanApiAdaptor", async () => {
   it("test siyuan newPost", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
     siyuanConfig.notebook = "20230506132031-qbtyjdk"
-    const apiAdaptor = new SiYuanApiAdaptor(appInstance, siyuanConfig)
+    const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
     const post = new Post()
     post.title = "自动发布的测试标题"
@@ -99,7 +93,7 @@ describe("SiYuanApiAdaptor", async () => {
 
   it("test siyuan getPost", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const apiAdaptor = new SiYuanApiAdaptor(appInstance, siyuanConfig)
+    const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
     const postid = "20230526221603-3mgotyw"
     const post = await apiAdaptor.getPost(postid)
@@ -108,7 +102,7 @@ describe("SiYuanApiAdaptor", async () => {
 
   it("test siyuan editPost", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const apiAdaptor = new SiYuanApiAdaptor(appInstance, siyuanConfig)
+    const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
     const postid = "20230526221603-3mgotyw"
     const post = new Post()
@@ -124,7 +118,7 @@ describe("SiYuanApiAdaptor", async () => {
   it("test siyuan deletePost", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
     siyuanConfig.notebook = "20230506132031-qbtyjdk"
-    const apiAdaptor = new SiYuanApiAdaptor(appInstance, siyuanConfig)
+    const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
     const postid = "20230526224518-oea9ey7"
     const data = await apiAdaptor.deletePost(postid)
@@ -133,7 +127,7 @@ describe("SiYuanApiAdaptor", async () => {
 
   it("test siyuan getCategories", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const apiAdaptor = new SiYuanApiAdaptor(appInstance, siyuanConfig)
+    const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
     const data = await apiAdaptor.getCategories()
     console.log(data)
@@ -143,7 +137,7 @@ describe("SiYuanApiAdaptor", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
     siyuanConfig.home = "http://127.0.0.1:6806"
     siyuanConfig.previewUrl = "siyuan://blocks/[postid]"
-    const apiAdaptor = new SiYuanApiAdaptor(appInstance, siyuanConfig)
+    const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
     const postid = "20230526221603-3mgotyw"
     const data = await apiAdaptor.getPreviewUrl(postid)
@@ -152,8 +146,8 @@ describe("SiYuanApiAdaptor", async () => {
 
   it("test siyuan newMediaObject", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
-    const apiAdaptor = new SiYuanApiAdaptor(appInstance, siyuanConfig)
-    const siyuanKernelApi = new SiyuanKernelApi(appInstance, siyuanConfig)
+    const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
+    const siyuanKernelApi = new SiyuanKernelApi(siyuanConfig)
 
     const url = path.join(projectBase, "./testdata/photo.jpg")
     const file = fs.readFileSync(url)

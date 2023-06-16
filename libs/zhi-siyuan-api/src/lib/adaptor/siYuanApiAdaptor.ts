@@ -44,17 +44,16 @@ class SiYuanApiAdaptor extends BlogApi {
   /**
    * 初始化思源 API 适配器
    *
-   * @param appInstance - 应用实例[必须包含zhiCommon.ZhiUtil]
    * @param cfg 配置项
    */
-  constructor(appInstance: any, cfg: SiyuanConfig) {
+  constructor(cfg: SiyuanConfig) {
     super()
 
     this.cfg = cfg
 
     this.logger = simpleLogger("zhi-siyuan-api", "siyuan-api-adaptor", false)
 
-    this.siyuanKernelApi = new SiyuanKernelApi(appInstance, cfg)
+    this.siyuanKernelApi = new SiyuanKernelApi(cfg)
   }
 
   public override async getUsersBlogs(): Promise<Array<UserBlog>> {

@@ -1,5 +1,29 @@
 # zhi-lib-base
 
+## 0.4.1
+
+### Patch Changes
+
+- fix deps
+
+## 0.4.0
+
+### Minor Changes
+
+- fix log msg
+
+## 0.3.1
+
+### Patch Changes
+
+- fix boolean msg
+
+## 0.3.0
+
+### Minor Changes
+
+- deal with boolean in log
+
 ## 0.2.6
 
 ### Patch Changes

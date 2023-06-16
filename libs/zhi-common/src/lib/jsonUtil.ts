@@ -42,8 +42,13 @@ class JsonUtil {
    * @param str json字符串
    * @param def 默认值
    */
-  public static safeParse<T>(str: string, def: T): T {
+  public static safeParse<T>(str: any, def: T): T {
     let ret
+
+    if (typeof str !== "string") {
+      this.logger.warn("not json string, ignore parse")
+      return str
+    }
 
     // 如果字符创为空或者undefined等，返回默认json
     if (StrUtil.isEmptyString(str)) {

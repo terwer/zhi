@@ -19,7 +19,7 @@
   - [X] [zhi-common](https://github.com/terwer/zhi/tree/main/libs/zhi-common)
     - [ ] [zhi-common-basic](https://github.com/terwer/zhi/tree/main/libs/zhi-common-basic)
     - [ ] [zhi-common-json-validate](https://github.com/terwer/zhi/tree/main/libs/zhi-common-json-validate)
-    - [ ] [zhi-common-markdown](https://github.com/terwer/zhi/tree/main/libs/zhi-common-markdown)
+    - [X] [zhi-common-markdown](https://github.com/terwer/zhi/tree/main/libs/zhi-common-markdown)
     - [ ] [zhi-common-version](https://github.com/terwer/zhi/tree/main/libs/zhi-common-version)
   - [X] [zhi-blog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api)
   - [X] [zhi-xmlrpc-middleware](https://github.com/terwer/zhi/tree/main/libs/zhi-xmlrpc-middleware)
@@ -39,6 +39,8 @@
     - [ ] [zhi-http-api](https://github.com/terwer/zhi/tree/main/libs/zhi-http-api)
       - [ ] [zhi-zhihu-api](https://github.com/terwer/zhi/tree/main/libs/zhi-zhihu-api)
       - [ ] [zhi-csdn-api](https://github.com/terwer/zhi/tree/main/libs/zhi-csdn-api)
+  - [ ] [zhi-picgo-core](https://github.com/terwer/zhi/tree/main/libs/zhi-picgo-core)
+    - [ ] [zhi-siyuan-picgo](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-picgo)
 
 ### 脚手架
 
