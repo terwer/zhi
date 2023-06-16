@@ -1,5 +1,11 @@
 # zhi-common-markdown
 
+## 0.1.2
+
+### Patch Changes
+
+- fix markdown lib type to es
+
 ## 0.1.1
 
 ### Patch Changes

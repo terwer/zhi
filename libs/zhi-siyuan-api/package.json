@@ -1,6 +1,6 @@
 {
   "name": "zhi-siyuan-api",
-  "version": "1.9.7",
+  "version": "1.9.8",
   "type": "module",
   "description": "a siyuan-note api including both kernel and client",
   "main": "./dist/index.js",
@@ -37,6 +37,7 @@
     "cross-fetch": "^3.1.6",
     "zhi-blog-api": "workspace:*",
     "zhi-common": "workspace:*",
+    "zhi-common-markdown": "workspace:*",
     "zhi-lib-base": "workspace:*"
   },
   "publishConfig": {

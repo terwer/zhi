@@ -1,5 +1,13 @@
 # zhi-siyuan-api
 
+## 1.9.8
+
+### Patch Changes
+
+- fix markdown lib type to es
+- Updated dependencies
+  - zhi-common-markdown@0.1.2
+
 ## 1.9.7
 
 ### Patch Changes

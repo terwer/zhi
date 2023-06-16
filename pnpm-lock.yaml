@@ -212,6 +212,9 @@ importers:
       zhi-common:
         specifier: workspace:*
         version: link:../zhi-common
+      zhi-common-markdown:
+        specifier: workspace:*
+        version: link:../zhi-common-markdown
       zhi-lib-base:
         specifier: workspace:*
         version: link:../zhi-lib-base

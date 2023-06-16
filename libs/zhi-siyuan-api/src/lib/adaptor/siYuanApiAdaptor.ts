@@ -27,6 +27,8 @@ import { Attachment, BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, U
 import SiyuanKernelApi from "../kernel/siyuanKernelApi"
 import SiyuanConfig from "../config/siyuanConfig"
 import { NotImplementedException, simpleLogger } from "zhi-lib-base"
+import { HtmlUtil, StrUtil } from "zhi-common"
+import { MarkdownUtil } from "zhi-common-markdown"
 
 /**
  * 思源笔记API适配器
@@ -36,10 +38,10 @@ import { NotImplementedException, simpleLogger } from "zhi-lib-base"
  * @since 1.0.0
  */
 class SiYuanApiAdaptor extends BlogApi {
-  private logger: any
-  private common: any
+  private logger
   private readonly siyuanKernelApi
   private readonly cfg
+  private markdownUtil
 
   /**
    * 初始化思源 API 适配器
@@ -50,10 +52,9 @@ class SiYuanApiAdaptor extends BlogApi {
     super()
 
     this.cfg = cfg
-
     this.logger = simpleLogger("zhi-siyuan-api", "siyuan-api-adaptor", false)
-
     this.siyuanKernelApi = new SiyuanKernelApi(cfg)
+    this.markdownUtil = new MarkdownUtil()
   }
 
   public override async getUsersBlogs(): Promise<Array<UserBlog>> {
@@ -108,7 +109,7 @@ class SiYuanApiAdaptor extends BlogApi {
       // 标题处理
       let title = siyuanPost.content ?? ""
       if (this.cfg.fixTitle) {
-        title = this.common.htmlUtil.removeTitleNumber(title)
+        title = HtmlUtil.removeTitleNumber(title)
       }
 
       // 适配公共属性
@@ -117,8 +118,8 @@ class SiYuanApiAdaptor extends BlogApi {
       commonPost.title = title
       commonPost.permalink =
         customSlug === ""
-          ? this.common.strUtil.appendStr("/post/", siyuanPost.root_id)
-          : this.common.strUtil.appendStr("/post/", customSlug, ".html")
+          ? StrUtil.appendStr("/post/", siyuanPost.root_id)
+          : StrUtil.appendStr("/post/", customSlug, ".html")
       // commonPost.isPublished = isPublished
       commonPost.mt_keywords = page.mt_keywords
       commonPost.description = page.description
@@ -163,7 +164,7 @@ class SiYuanApiAdaptor extends BlogApi {
     // 标题处理
     let title = siyuanPost.content ?? ""
     if (this.cfg.fixTitle) {
-      title = this.common.htmlUtil.removeTitleNumber(title)
+      title = HtmlUtil.removeTitleNumber(title)
     }
 
     // 渲染Markdown
@@ -171,11 +172,11 @@ class SiYuanApiAdaptor extends BlogApi {
     // 如果忽略 body，则不进行转换
     if (!skipBody) {
       const md = await this.siyuanKernelApi.exportMdContent(pid)
-      html = await this.common.markdownUtil.renderHTML(md.content)
+      html = await this.markdownUtil.renderHTML(md.content)
       // 移除挂件html
-      html = this.common.htmlUtil.removeWidgetTag(html)
+      html = HtmlUtil.removeWidgetTag(html)
       if (this.cfg.fixTitle) {
-        html = this.common.htmlUtil.removeH1(html)
+        html = HtmlUtil.removeH1(html)
       }
     }
 
