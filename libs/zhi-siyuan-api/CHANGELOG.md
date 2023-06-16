@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 1.10.0
+
+### Minor Changes
+
+- add post permissions
+
 ## 1.9.8
 
 ### Patch Changes

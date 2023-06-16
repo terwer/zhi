@@ -93,15 +93,18 @@ class SiYuanApiAdaptor extends BlogApi {
       const attrs = await this.siyuanKernelApi.getBlockAttrs(siyuanPost.root_id)
       const page = await this.getPost(siyuanPost.root_id, false, true)
 
-      // // 发布状态
-      // let isPublished = true
-      // const publishStatus = attrs["custom-publish-status"] || "draft"
-      // if (publishStatus == "secret") {
-      //     isPublished = false;
-      // }
-      //
-      // // 访问密码
-      // const postPassword = attrs["custom-publish-password"] || ""
+      // 发布状态
+      let isPublished = true
+      const publishStatus = attrs["custom-publish-status"] || "draft"
+      if (publishStatus == "secret") {
+        isPublished = false
+      }
+
+      // 访问密码
+      const postPassword = attrs["custom-publish-password"] || ""
+      if (postPassword !== "") {
+        isPublished = false
+      }
 
       // 文章别名
       const customSlug = attrs["custom-slug"] || ""
@@ -116,8 +119,8 @@ class SiYuanApiAdaptor extends BlogApi {
       const commonPost = new Post()
       commonPost.postid = siyuanPost.root_id
       commonPost.title = title
-      commonPost.permalink = StrUtil.appendStr("/s/", siyuanPost.root_id)
-      // commonPost.isPublished = isPublished
+      commonPost.permalink = StrUtil.appendStr("/s/", customSlug === "" ? siyuanPost.root_id : customSlug)
+      commonPost.isPublished = isPublished
       commonPost.mt_keywords = page.mt_keywords
       commonPost.description = page.description
       result.push(commonPost)
