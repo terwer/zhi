@@ -62,7 +62,12 @@ class Post {
   shortDesc?: string
 
   /**
-   * 描述
+   * MD正文
+   */
+  markdown?: string
+
+  /**
+   * 正文
    */
   description: string
 
@@ -111,6 +116,7 @@ class Post {
     this.title = ""
     this.mt_keywords = ""
     this.permalink = ""
+    this.markdown = ""
     this.description = ""
     this.wp_slug = ""
     this.dateCreated = new Date()

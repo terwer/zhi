@@ -1,5 +1,32 @@
 # zhi-siyuan-api
 
+## 1.12.2
+
+### Patch Changes
+
+- fix content
+- Updated dependencies
+  - zhi-blog-api@1.7.2
+
+## 1.12.1
+
+### Patch Changes
+
+- update deps
+- Updated dependencies
+  - zhi-blog-api@1.7.1
+
+## 1.12.0
+
+### Minor Changes
+
+- add markdown to post model
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.7.0
+
 ## 1.11.0
 
 ### Minor Changes

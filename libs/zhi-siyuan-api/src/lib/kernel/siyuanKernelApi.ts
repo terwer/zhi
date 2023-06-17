@@ -205,6 +205,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
 
   /**
    * 导出markdown文本
+   *
    * @param docId 文档id
    */
   public async exportMdContent(docId: string): Promise<any> {
@@ -212,6 +213,19 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       id: docId,
     }
     const url = "/api/export/exportMdContent"
+    return await this.siyuanRequest(url, data)
+  }
+
+  /**
+   * 导出预览
+   *
+   * @param docId 文档id
+   */
+  public async exportPreview(docId: string): Promise<any> {
+    const data = {
+      id: docId,
+    }
+    const url = "/api/export/preview"
     return await this.siyuanRequest(url, data)
   }
 

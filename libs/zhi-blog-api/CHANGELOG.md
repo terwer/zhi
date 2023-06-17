@@ -1,5 +1,23 @@
 # zhi-blog-api
 
+## 1.7.2
+
+### Patch Changes
+
+- fix content
+
+## 1.7.1
+
+### Patch Changes
+
+- update deps
+
+## 1.7.0
+
+### Minor Changes
+
+- add markdown to post model
+
 ## 1.6.10
 
 ### Patch Changes

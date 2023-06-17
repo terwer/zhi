@@ -1,6 +1,6 @@
 {
   "name": "zhi-siyuan-api",
-  "version": "1.11.0",
+  "version": "1.12.2",
   "type": "module",
   "description": "a siyuan-note api including both kernel and client",
   "main": "./dist/index.js",
@@ -8,7 +8,7 @@
   "repository": "terwer/zhi",
   "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api",
   "author": "terwer",
-  "license": "GPL",
+  "license": "MIT",
   "files": [
     "dist",
     "README.md"
@@ -36,7 +36,6 @@
   "dependencies": {
     "zhi-blog-api": "workspace:*",
     "zhi-common": "workspace:*",
-    "zhi-common-markdown": "workspace:*",
     "zhi-lib-base": "workspace:*"
   },
   "publishConfig": {

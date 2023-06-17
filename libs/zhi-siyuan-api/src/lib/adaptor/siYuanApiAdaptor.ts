@@ -28,7 +28,6 @@ import SiyuanKernelApi from "../kernel/siyuanKernelApi"
 import SiyuanConfig from "../config/siyuanConfig"
 import { NotImplementedException, simpleLogger } from "zhi-lib-base"
 import { HtmlUtil, StrUtil } from "zhi-common"
-import { MarkdownUtil } from "zhi-common-markdown"
 
 /**
  * 思源笔记API适配器
@@ -41,7 +40,6 @@ class SiYuanApiAdaptor extends BlogApi {
   private logger
   private readonly siyuanKernelApi
   private readonly cfg
-  private markdownUtil
 
   /**
    * 初始化思源 API 适配器
@@ -54,7 +52,6 @@ class SiYuanApiAdaptor extends BlogApi {
     this.cfg = cfg
     this.logger = simpleLogger("zhi-siyuan-api", "siyuan-api-adaptor", false)
     this.siyuanKernelApi = new SiyuanKernelApi(cfg)
-    this.markdownUtil = new MarkdownUtil()
   }
 
   public override async getUsersBlogs(): Promise<Array<UserBlog>> {
@@ -88,41 +85,17 @@ class SiYuanApiAdaptor extends BlogApi {
     this.logger.debug("getRecentPosts from siyuan, get counts =>", siyuanPosts.length)
     for (let i = 0; i < siyuanPosts.length; i++) {
       const siyuanPost = siyuanPosts[i]
-
-      // 某些属性详情页控制即可
-      const attrs = await this.siyuanKernelApi.getBlockAttrs(siyuanPost.root_id)
-      const page = await this.getPost(siyuanPost.root_id, false, true)
-
-      // 发布状态
-      let isPublished = true
-      const publishStatus = attrs["custom-publish-status"] || "draft"
-      if (publishStatus == "secret") {
-        isPublished = false
-      }
-
-      // 访问密码
-      const postPassword = attrs["custom-publish-password"] || ""
-      if (postPassword !== "") {
-        isPublished = false
-      }
-
-      // 文章别名
-      const customSlug = attrs["custom-slug"] || ""
-
-      // 标题处理
-      let title = siyuanPost.content ?? ""
-      if (this.cfg.fixTitle) {
-        title = HtmlUtil.removeTitleNumber(title)
-      }
+      const post = await this.getPost(siyuanPost.root_id, false, true)
 
       // 适配公共属性
       const commonPost = new Post()
       commonPost.postid = siyuanPost.root_id
-      commonPost.title = title
-      commonPost.permalink = StrUtil.appendStr("/s/", customSlug === "" ? siyuanPost.root_id : customSlug)
-      commonPost.isPublished = isPublished
-      commonPost.mt_keywords = page.mt_keywords
-      commonPost.description = page.description
+      commonPost.title = post.title
+      commonPost.description = post.description
+      commonPost.permalink = post.permalink
+      commonPost.isPublished = post.isPublished
+      commonPost.mt_keywords = post.mt_keywords
+      commonPost.categories = post.categories
       result.push(commonPost)
     }
 
@@ -167,12 +140,12 @@ class SiYuanApiAdaptor extends BlogApi {
       title = HtmlUtil.removeTitleNumber(title)
     }
 
+    const md = (await this.siyuanKernelApi.exportMdContent(pid)).content
     // 渲染Markdown
     let html
     // 如果忽略 body，则不进行转换
     if (!skipBody) {
-      const md = await this.siyuanKernelApi.exportMdContent(pid)
-      html = await this.markdownUtil.renderHTML(md.content)
+      html = (await this.siyuanKernelApi.exportPreview(pid)).html
       // 移除挂件html
       html = HtmlUtil.removeWidgetTag(html)
       if (this.cfg.fixTitle) {
@@ -184,12 +157,12 @@ class SiYuanApiAdaptor extends BlogApi {
     const commonPost = new Post()
     commonPost.postid = siyuanPost.root_id || ""
     commonPost.title = title || ""
+    commonPost.markdown = md || ""
     commonPost.description = html || ""
     commonPost.shortDesc = shortDesc || ""
     commonPost.mt_keywords = attrs.tags || ""
     commonPost.post_status = isPublished ? PostStatusEnum.PostStatusEnum_Publish : PostStatusEnum.PostStatusEnum_Draft
     commonPost.wp_password = postPassword
-    // commonPost.dateCreated
 
     return commonPost
   }
