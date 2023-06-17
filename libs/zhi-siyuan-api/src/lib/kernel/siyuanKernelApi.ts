@@ -229,6 +229,16 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     return await this.siyuanRequest(url, data)
   }
 
+  public async getDoc(docId: string): Promise<SiyuanData> {
+    const params = {
+      id: docId,
+      isBacklink: false,
+      mode: 0,
+      size: 128,
+    }
+    const url = "/api/filetree/getDoc"
+    return await this.siyuanRequest(url, params)
+  }
   /**
    * 以sql发送请求
    *

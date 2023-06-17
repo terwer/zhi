@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.8.0
+
+### Minor Changes
+
+- add editor dom
+
 ## 1.7.2
 
 ### Patch Changes

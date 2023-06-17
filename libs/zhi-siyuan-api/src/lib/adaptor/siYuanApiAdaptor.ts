@@ -141,6 +141,7 @@ class SiYuanApiAdaptor extends BlogApi {
     }
 
     const md = (await this.siyuanKernelApi.exportMdContent(pid)).content
+    const editorDom = (await this.siyuanKernelApi.getDoc(pid)).content
     // 渲染Markdown
     let html
     // 如果忽略 body，则不进行转换
@@ -158,6 +159,7 @@ class SiYuanApiAdaptor extends BlogApi {
     commonPost.postid = siyuanPost.root_id || ""
     commonPost.title = title || ""
     commonPost.markdown = md || ""
+    commonPost.editorDom = editorDom || ""
     commonPost.description = html || ""
     commonPost.shortDesc = shortDesc || ""
     commonPost.mt_keywords = attrs.tags || ""

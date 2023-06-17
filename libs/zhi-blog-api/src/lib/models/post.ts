@@ -67,6 +67,11 @@ class Post {
   markdown?: string
 
   /**
+   * 编辑器DOM
+   */
+  editorDom?: string
+
+  /**
    * 正文
    */
   description: string
@@ -117,6 +122,7 @@ class Post {
     this.mt_keywords = ""
     this.permalink = ""
     this.markdown = ""
+    this.editorDom = ""
     this.description = ""
     this.wp_slug = ""
     this.dateCreated = new Date()

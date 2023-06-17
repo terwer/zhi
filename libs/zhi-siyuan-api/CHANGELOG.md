@@ -1,5 +1,16 @@
 # zhi-siyuan-api
 
+## 1.13.0
+
+### Minor Changes
+
+- add editor dom
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.8.0
+
 ## 1.12.2
 
 ### Patch Changes
