@@ -1,5 +1,17 @@
 # zhi-siyuan-api
 
+## 1.16.0
+
+### Minor Changes
+
+- fix text get error
+
+## 1.15.1
+
+### Patch Changes
+
+- add log
+
 ## 1.15.0
 
 ### Minor Changes

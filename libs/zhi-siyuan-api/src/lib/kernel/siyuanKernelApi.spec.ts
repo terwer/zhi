@@ -139,7 +139,7 @@ describe("SiyuanKernelApi", async () => {
   it("getFile", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
     const kernelApi = new SiyuanKernelApi(siyuanConfig)
-    const result = await kernelApi.getFile("/data/storage/petal/app.config.json", "text")
+    const result = await kernelApi.getFile("/data/storage/petal/siyuan-blog/app.config.json", "text")
     console.log("result=>", result)
   })
 
