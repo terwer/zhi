@@ -135,4 +135,32 @@ describe("SiyuanKernelApi", async () => {
     const result = await kernelApi.getRootBlocks(0, 10, "")
     console.log("result=>", result)
   })
+
+  it("getFile", async () => {
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
+    const result = await kernelApi.getFile("/data/storage/petal/app.config.json", "text")
+    console.log("result=>", result)
+  })
+
+  it("isFileExists", async () => {
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
+    const result = await kernelApi.isFileExists("/data/storage/petal/siyuan-blog/app.config.json", "text")
+    console.log("result=>", result)
+  })
+
+  it("removeFile", async () => {
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
+    const result = await kernelApi.removeFile("/data/storage/petal/siyuan-blog/app.config.json")
+    console.log("result=>", result)
+  })
+
+  it("putFile", async () => {
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
+    const result = await kernelApi.putFile("/data/storage/petal/siyuan-blog/app.config.json", "hello")
+    console.log("result=>", result)
+  })
 })

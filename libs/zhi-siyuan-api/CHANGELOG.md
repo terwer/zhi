@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 1.14.1
+
+### Patch Changes
+
+- fix puf file
+
 ## 1.14.0
 
 ### Minor Changes

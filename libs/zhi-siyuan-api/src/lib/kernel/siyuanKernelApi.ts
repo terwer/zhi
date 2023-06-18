@@ -26,7 +26,7 @@
 import SiyuanConfig from "../config/siyuanConfig"
 import ISiyuanKernelApi, { type SiyuanData } from "./ISiyuanKernelApi"
 import { simpleLogger } from "zhi-lib-base/src"
-import { StrUtil } from "zhi-common"
+import { JsonUtil, StrUtil } from "zhi-common"
 
 /**
  * 思源笔记服务端API v2.8.2
@@ -582,6 +582,22 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
   }
 
   /**
+   * 文件是否存在
+   *
+   * @param path - 路径
+   * @param type - 类型
+   */
+  public async isFileExists(path: string, type: "text" | "json"): Promise<boolean> {
+    try {
+      const res = await this.getFile(path, type)
+      const data = JsonUtil.safeParse<SiyuanData>(res, {} as SiyuanData)
+      return data.code == 200
+    } catch {
+      return false
+    }
+  }
+
+  /**
    * 删除文件
    *
    * @param path - 路径
@@ -591,21 +607,6 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       path: path,
     }
     return await this.siyuanRequest("/api/file/removeFile", params)
-  }
-
-  /**
-   * 文件是否存在
-   *
-   * @param path - 路径
-   * @param type - 类型
-   */
-  public async isFileExists(path: string, type: "text" | "json"): Promise<boolean> {
-    try {
-      const res = await this.getFile(path, type)
-      return res !== null
-    } catch {
-      return false
-    }
   }
 
   /**
