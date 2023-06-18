@@ -553,6 +553,89 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     }
     return data as any[]
   }
+
+  /**
+   * 读取文件
+   *
+   * @param path - 文件路径，例如：/data/20210808180117-6v0mkxr/20200923234011-ieuun1p.sy
+   * @param type - 类型
+   */
+  public async getFile(path: string, type: "text" | "json"): Promise<any> {
+    const response = await fetch(`${this.siyuanConfig.apiUrl}/api/file/getFile`, {
+      method: "POST",
+      headers: {
+        Authorization: `Token ${this.siyuanConfig.password}`,
+      },
+      body: JSON.stringify({
+        path: path,
+      }),
+    })
+    if (response.status === 200) {
+      if (type === "text") {
+        return await response.text()
+      }
+      if (type === "json") {
+        return await response.json()
+      }
+    }
+    return null
+  }
+
+  /**
+   * 删除文件
+   *
+   * @param path - 路径
+   */
+  public async removeFile(path: string): Promise<SiyuanData> {
+    const params = {
+      path: path,
+    }
+    return await this.siyuanRequest("/api/file/removeFile", params)
+  }
+
+  /**
+   * 文件是否存在
+   *
+   * @param path - 路径
+   * @param type - 类型
+   */
+  public async isFileExists(path: string, type: "text" | "json"): Promise<boolean> {
+    try {
+      const res = await this.getFile(path, type)
+      return res !== null
+    } catch {
+      return false
+    }
+  }
+
+  /**
+   * 写入文件
+   *
+   * @param path - 文件路径，例如：/data/20210808180117-6v0mkxr/20200923234011-ieuun1p.sy
+   * @param file - 上传的文件
+   */
+  public async putFile(path: string, file: any): Promise<SiyuanData> {
+    const formData = new FormData()
+    formData.append("path", path)
+    formData.append("isDir", "false")
+    formData.append("modTime", Math.floor(Date.now() / 1000).toString())
+    formData.append("file", file)
+    return await this.siyuanRequestForm("/api/file/putFile", formData)
+  }
+
+  /**
+   * 将文本数据保存到指定路径
+   *
+   * @param path - 保存文件的路径
+   * @param text - 要保存的文本数据
+   * @returns - Promise 对象，表示保存操作是否成功
+   */
+  public async saveTextData(path: string, text: string): Promise<SiyuanData> {
+    // 创建一个包含文本数据的 Blob 对象，并将其放入 File 中
+    const file = new File([new Blob([text])], path.split("/").pop())
+    // 调用 putFile 方法将文件保存到指定路径
+    return await this.putFile(path, file)
+  }
 }
 
 export default SiyuanKernelApi

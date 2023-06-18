@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 1.14.0
+
+### Minor Changes
+
+- add file api
+
 ## 1.13.0
 
 ### Minor Changes

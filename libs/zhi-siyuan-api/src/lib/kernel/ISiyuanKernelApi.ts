@@ -78,6 +78,15 @@ interface ISiyuanKernelApi {
 
   // /api/asset/upload
   uploadAsset(formData: any): Promise<SiyuanData>
+
+  // /api/file/getFile
+  getFile(path: string, type: "text" | "json"): Promise<any>
+  // /api/file/removeFile
+  removeFile(path: string): Promise<SiyuanData>
+  isFileExists(path: string, type: "text" | "json"): Promise<boolean>
+  // /api/file/putFile
+  putFile(path: string, file: any): Promise<SiyuanData>
+  saveTextData(path: string, text: string): Promise<SiyuanData>
 }
 
 export default ISiyuanKernelApi
