@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 1.15.0
+
+### Minor Changes
+
+- add text check
+
 ## 1.14.1
 
 ### Patch Changes

@@ -572,7 +572,12 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     })
     if (response.status === 200) {
       if (type === "text") {
-        return await response.text()
+        const text = await response.text()
+        const resData = JsonUtil.safeParse<SiyuanData>(text, {} as SiyuanData)
+        if (resData?.code == 200) {
+          return resData.data
+        }
+        return ""
       }
       if (type === "json") {
         return await response.json()
