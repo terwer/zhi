@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 1.20.0
+
+### Minor Changes
+
+- add custom-publish-time attr
+
 ## 1.19.0
 
 ### Minor Changes

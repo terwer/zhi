@@ -159,6 +159,7 @@ class SiYuanApiAdaptor extends BlogApi {
 
     const publicAttrs = {
       "custom-publish-status": attrs["custom-publish-status"],
+      "custom-publish-time": attrs["custom-publish-time"],
       "custom-expires": attrs["custom-expires"],
       // "custom-desc": attrs["custom-desc"],
     }
