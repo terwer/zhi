@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 1.17.0
+
+### Minor Changes
+
+- fix skipbody not work
+
 ## 1.16.0
 
 ### Minor Changes

@@ -131,7 +131,7 @@ class SiYuanApiAdaptor extends BlogApi {
     // 访问密码
     const postPassword = attrs["custom-post-password"] || ""
 
-    // 访问密码
+    // 摘要
     const shortDesc = attrs["custom-desc"] || ""
 
     // 标题处理
@@ -140,12 +140,14 @@ class SiYuanApiAdaptor extends BlogApi {
       title = HtmlUtil.removeTitleNumber(title)
     }
 
-    const md = (await this.siyuanKernelApi.exportMdContent(pid)).content
-    const editorDom = (await this.siyuanKernelApi.getDoc(pid)).content
     // 渲染Markdown
+    let md
     let html
+    let editorDom
     // 如果忽略 body，则不进行转换
     if (!skipBody) {
+      md = (await this.siyuanKernelApi.exportMdContent(pid)).content
+      editorDom = (await this.siyuanKernelApi.getDoc(pid)).content
       html = (await this.siyuanKernelApi.exportPreview(pid)).html
       // 移除挂件html
       html = HtmlUtil.removeWidgetTag(html)
