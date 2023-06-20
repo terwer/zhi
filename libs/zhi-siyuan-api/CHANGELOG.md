@@ -1,5 +1,27 @@
 # zhi-siyuan-api
 
+## 1.19.0
+
+### Minor Changes
+
+- add custom-expires attr
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.10.0
+
+## 1.18.0
+
+### Minor Changes
+
+- add attrs
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.9.0
+
 ## 1.17.0
 
 ### Minor Changes

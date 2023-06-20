@@ -124,15 +124,12 @@ class SiYuanApiAdaptor extends BlogApi {
     // 发布状态
     let isPublished = true
     const publishStatus = attrs["custom-publish-status"] || "draft"
-    if (publishStatus === "secret") {
+    if (publishStatus !== PostStatusEnum.PostStatusEnum_Publish) {
       isPublished = false
     }
 
     // 访问密码
-    const postPassword = attrs["custom-post-password"] || ""
-
-    // 摘要
-    const shortDesc = attrs["custom-desc"] || ""
+    // const postPassword = attrs["custom-post-password"] || ""
 
     // 标题处理
     let title = siyuanPost.content ?? ""
@@ -140,12 +137,16 @@ class SiYuanApiAdaptor extends BlogApi {
       title = HtmlUtil.removeTitleNumber(title)
     }
 
+    let shortDesc
     // 渲染Markdown
     let md
     let html
     let editorDom
     // 如果忽略 body，则不进行转换
     if (!skipBody) {
+      // 摘要
+      shortDesc = attrs["custom-desc"] || ""
+
       md = (await this.siyuanKernelApi.exportMdContent(pid)).content
       editorDom = (await this.siyuanKernelApi.getDoc(pid)).content
       html = (await this.siyuanKernelApi.exportPreview(pid)).html
@@ -155,6 +156,13 @@ class SiYuanApiAdaptor extends BlogApi {
         html = HtmlUtil.removeH1(html)
       }
     }
+
+    const publicAttrs = {
+      "custom-publish-status": attrs["custom-publish-status"],
+      "custom-expires": attrs["custom-expires"],
+      // "custom-desc": attrs["custom-desc"],
+    }
+    this.logger.info("get publicAttrs from siyuan getPost=>", publicAttrs)
 
     // 适配公共属性
     const commonPost = new Post()
@@ -166,7 +174,9 @@ class SiYuanApiAdaptor extends BlogApi {
     commonPost.shortDesc = shortDesc || ""
     commonPost.mt_keywords = attrs.tags || ""
     commonPost.post_status = isPublished ? PostStatusEnum.PostStatusEnum_Publish : PostStatusEnum.PostStatusEnum_Draft
-    commonPost.wp_password = postPassword
+    // commonPost.wp_password = postPassword
+    commonPost.wp_password = "******"
+    commonPost.attrs = JSON.stringify(publicAttrs)
 
     return commonPost
   }

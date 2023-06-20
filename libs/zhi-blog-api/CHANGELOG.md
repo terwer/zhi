@@ -1,5 +1,17 @@
 # zhi-blog-api
 
+## 1.10.0
+
+### Minor Changes
+
+- add custom-expires attr
+
+## 1.9.0
+
+### Minor Changes
+
+- add attrs
+
 ## 1.8.0
 
 ### Minor Changes

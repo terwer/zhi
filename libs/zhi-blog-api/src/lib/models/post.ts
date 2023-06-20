@@ -116,6 +116,11 @@ class Post {
    */
   wp_password: string
 
+  /**
+   * 附加属性
+   */
+  attrs?: string
+
   constructor() {
     this.postid = ""
     this.title = ""
@@ -130,6 +135,7 @@ class Post {
     this.isPublished = true
     this.post_status = PostStatusEnum.PostStatusEnum_Publish
     this.wp_password = ""
+    this.attrs = "{}"
   }
 }
 
