@@ -1,5 +1,21 @@
 # zhi-siyuan-api
 
+## 1.22.0
+
+### Minor Changes
+
+- remove dev flag
+
+## 1.21.0
+
+### Minor Changes
+
+- debug mode
+
+### Patch Changes
+
+- add debug log
+
 ## 1.20.0
 
 ### Minor Changes

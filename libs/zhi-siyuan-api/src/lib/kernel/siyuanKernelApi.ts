@@ -25,8 +25,8 @@
 
 import SiyuanConfig from "../config/siyuanConfig"
 import ISiyuanKernelApi, { type SiyuanData } from "./ISiyuanKernelApi"
-import { simpleLogger } from "zhi-lib-base/src"
 import { JsonUtil, StrUtil } from "zhi-common"
+import { createAppLogger } from "../utils"
 
 /**
  * 思源笔记服务端API v2.8.2
@@ -60,7 +60,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     this.VERSION = "1.0.0"
 
     this.siyuanConfig = cfg
-    this.logger = simpleLogger("zhi-siyuan-api", "siyuan-kernel-api", false)
+    this.logger = createAppLogger("siyuan-kernel-api")
   }
 
   /**

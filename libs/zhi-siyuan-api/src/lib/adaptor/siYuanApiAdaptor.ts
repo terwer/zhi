@@ -26,8 +26,9 @@
 import { Attachment, BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, UserBlog } from "zhi-blog-api"
 import SiyuanKernelApi from "../kernel/siyuanKernelApi"
 import SiyuanConfig from "../config/siyuanConfig"
-import { NotImplementedException, simpleLogger } from "zhi-lib-base"
-import { HtmlUtil, StrUtil } from "zhi-common"
+import { NotImplementedException } from "zhi-lib-base"
+import { HtmlUtil } from "zhi-common"
+import { createAppLogger } from "../utils"
 
 /**
  * 思源笔记API适配器
@@ -50,7 +51,7 @@ class SiYuanApiAdaptor extends BlogApi {
     super()
 
     this.cfg = cfg
-    this.logger = simpleLogger("zhi-siyuan-api", "siyuan-api-adaptor", false)
+    this.logger = createAppLogger("siyuan-api-adaptor")
     this.siyuanKernelApi = new SiyuanKernelApi(cfg)
   }
 
@@ -119,7 +120,9 @@ class SiYuanApiAdaptor extends BlogApi {
       throw new Error("文章不存存在，postid=>" + pid)
     }
 
+    this.logger.info(`Ready to get block properties, block ID is => ${pid}`)
     const attrs = await this.siyuanKernelApi.getBlockAttrs(pid)
+    this.logger.debug(`getBlockAttrs attrs => ${attrs}`)
 
     // 发布状态
     let isPublished = true
