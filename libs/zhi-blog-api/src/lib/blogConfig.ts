@@ -102,6 +102,11 @@ abstract class BlogConfig {
   protected password: string
 
   /**
+   * 请求 cookie
+   */
+  protected cookie: string
+
+  /**
    * 是否发布
    */
   protected apiStatus: boolean
@@ -144,6 +149,7 @@ abstract class BlogConfig {
     this.username = ""
     this.passwordType = PasswordType.PasswordType_Password
     this.password = ""
+    this.cookie = undefined
     this.apiStatus = false
     this.blogName = ""
     this.posidKey = ""

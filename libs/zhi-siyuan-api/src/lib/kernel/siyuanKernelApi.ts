@@ -273,6 +273,13 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
         },
       })
     }
+    if (!StrUtil.isEmptyString(this.siyuanConfig.cookie)) {
+      Object.assign(fetchOps, {
+        headers: {
+          Cookie: this.siyuanConfig.cookie,
+        },
+      })
+    }
 
     this.logger.debug("开始向思源请求数据，reqUrl=>", reqUrl)
     this.logger.debug("开始向思源请求数据，fetchOps=>", fetchOps)
@@ -297,6 +304,13 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       Object.assign(fetchOps, {
         headers: {
           Authorization: `Token ${this.siyuanConfig.password}`,
+        },
+      })
+    }
+    if (!StrUtil.isEmptyString(this.siyuanConfig.cookie)) {
+      Object.assign(fetchOps, {
+        headers: {
+          Cookie: this.siyuanConfig.cookie,
         },
       })
     }
@@ -564,6 +578,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     const response = await fetch(`${this.siyuanConfig.apiUrl}/api/file/getFile`, {
       method: "POST",
       headers: {
+        Cookie: this.siyuanConfig.cookie,
         Authorization: `Token ${this.siyuanConfig.password}`,
       },
       body: JSON.stringify({

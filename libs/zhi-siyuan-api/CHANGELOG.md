@@ -1,5 +1,27 @@
 # zhi-siyuan-api
 
+## 1.24.0
+
+### Minor Changes
+
+- add publish bridge
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.12.0
+
+## 1.23.0
+
+### Minor Changes
+
+- suupport cookie
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.11.0
+
 ## 1.22.0
 
 ### Minor Changes

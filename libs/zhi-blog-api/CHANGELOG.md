@@ -1,5 +1,17 @@
 # zhi-blog-api
 
+## 1.12.0
+
+### Minor Changes
+
+- add publish bridge
+
+## 1.11.0
+
+### Minor Changes
+
+- suupport cookie
+
 ## 1.10.0
 
 ### Minor Changes

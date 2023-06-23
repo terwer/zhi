@@ -1,23 +1,21 @@
 {
-  "name": "zhi-blog-api",
-  "version": "1.12.0",
+  "name": "zhi-publisher-hook",
+  "version": "0.1.0",
   "type": "module",
-  "description": "a common blog interface",
+  "description": "siyuanhook for sy-post-publisher widget",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "repository": "terwer/zhi",
-  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api",
+  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-publisher-hook",
   "author": "terwer",
-  "license": "MIT",
+  "license": "GPL",
   "files": [
     "dist",
     "README.md"
   ],
   "keywords": [
     "zhi",
-    "lib",
-    "blog",
-    "api"
+    "lib"
   ],
   "scripts": {
     "serve": "vite",
@@ -28,11 +26,12 @@
   },
   "devDependencies": {
     "@terwer/eslint-config-custom": "workspace:*",
-    "@terwer/tsconfig": "workspace:*",
     "@terwer/vite-config-custom": "workspace:*"
   },
   "dependencies": {
-    "zhi-lib-base": "workspace:*"
+    "zhi-device": "workspace:*",
+    "zhi-env": "workspace:*",
+    "zhi-log": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

@@ -63,7 +63,7 @@
 
 ### 插件
 - [siyuan-plugin-publisher](https://github.com/terwer/siyuan-plugin-publisher) - 发布工具 <sup>进行中</sup>
-- [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - 博客插件，博客 & 分享 <sup>进行中</sup>
+- [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - 博客插件，博客 & 分享 <sup>已上架</sup>
 - [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - 导入工具，导入 epub, docx, pdf, html 等格式到思源笔记 <sup>已上架</sup>
 - [siyuan-plugin-custom-slug](https://github.com/terwer/siyuan-plugin-custom-slug) - 文档别名，为文档标题新建别名索引，方便快速搜索 <sup>已上架</sup>
 - [siyuan-plugin-code-block](https://github.com/terwer/siyuan-plugin-code-block) - 代码块美化，模仿Mac风格的代码块风格 <sup>已上架</sup>
