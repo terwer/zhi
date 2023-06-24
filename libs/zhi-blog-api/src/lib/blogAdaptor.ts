@@ -39,7 +39,7 @@ import Attachment from "./models/attachmentInfo"
  * @since 1.0.0
  */
 class BlogAdaptor implements IBlogApi {
-  private readonly logger
+  protected logger
   private readonly apiAdaptor: IBlogApi
 
   /**

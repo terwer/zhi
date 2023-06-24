@@ -31,7 +31,7 @@ import { HtmlUtil } from "zhi-common"
 import { createAppLogger } from "../utils"
 
 /**
- * 思源笔记API适配器
+ * 思源笔记 API 适配器
  *
  * @author terwer
  * @version 1.0.0

@@ -107,6 +107,12 @@ abstract class BlogConfig {
   protected cookie: string
 
   /**
+   * 代理地址
+   * @protected
+   */
+  protected middlewareUrl?: string
+
+  /**
    * 是否发布
    */
   protected apiStatus: boolean
@@ -150,6 +156,7 @@ abstract class BlogConfig {
     this.passwordType = PasswordType.PasswordType_Password
     this.password = ""
     this.cookie = undefined
+    this.middlewareUrl = ""
     this.apiStatus = false
     this.blogName = ""
     this.posidKey = ""

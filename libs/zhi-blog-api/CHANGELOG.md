@@ -1,5 +1,17 @@
 # zhi-blog-api
 
+## 1.13.1
+
+### Patch Changes
+
+- change logger
+
+## 1.13.0
+
+### Minor Changes
+
+- add middleware url config
+
 ## 1.12.0
 
 ### Minor Changes

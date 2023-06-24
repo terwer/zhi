@@ -1,5 +1,24 @@
 # zhi-siyuan-api
 
+## 1.25.1
+
+### Patch Changes
+
+- change logger
+- Updated dependencies
+  - zhi-blog-api@1.13.1
+
+## 1.25.0
+
+### Minor Changes
+
+- add middleware url config
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.13.0
+
 ## 1.24.0
 
 ### Minor Changes
