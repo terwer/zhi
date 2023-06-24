@@ -113,6 +113,12 @@ abstract class BlogConfig {
   protected middlewareUrl?: string
 
   /**
+   * 标识
+   * @protected
+   */
+  protected blogid?: string
+
+  /**
    * 是否发布
    */
   protected apiStatus: boolean
@@ -157,6 +163,7 @@ abstract class BlogConfig {
     this.password = ""
     this.cookie = undefined
     this.middlewareUrl = ""
+    this.blogid = ""
     this.apiStatus = false
     this.blogName = ""
     this.posidKey = ""

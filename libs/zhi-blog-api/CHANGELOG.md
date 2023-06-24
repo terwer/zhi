@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.13.2
+
+### Patch Changes
+
+- add blogid
+
 ## 1.13.1
 
 ### Patch Changes
