@@ -1,5 +1,19 @@
 # zhi-common
 
+## 1.11.4
+
+### Patch Changes
+
+- fix debug log
+- Updated dependencies
+  - zhi-lib-base@0.4.2
+
+## 1.11.3
+
+### Patch Changes
+
+- add str func
+
 ## 1.11.2
 
 ### Patch Changes

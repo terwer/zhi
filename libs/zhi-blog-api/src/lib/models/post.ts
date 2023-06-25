@@ -97,6 +97,11 @@ class Post {
   categories: Array<string>
 
   /**
+   * 分类别名，大部分平台不需要
+   */
+  cate_slugs?: string[]
+
+  /**
    * 更多
    */
   mt_text_more?: string
@@ -132,6 +137,7 @@ class Post {
     this.wp_slug = ""
     this.dateCreated = new Date()
     this.categories = []
+    this.cate_slugs = []
     this.isPublished = true
     this.post_status = PostStatusEnum.PostStatusEnum_Publish
     this.wp_password = ""

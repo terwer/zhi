@@ -1,5 +1,12 @@
 # zhi-common-markdown
 
+## 0.1.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.4.2
+
 ## 0.1.2
 
 ### Patch Changes

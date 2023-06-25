@@ -1,5 +1,25 @@
 # zhi-blog-api
 
+## 1.13.5
+
+### Patch Changes
+
+- fix debug log
+- Updated dependencies
+  - zhi-lib-base@0.4.2
+
+## 1.13.4
+
+### Patch Changes
+
+- add str func
+
+## 1.13.3
+
+### Patch Changes
+
+- add cate slugs
+
 ## 1.13.2
 
 ### Patch Changes

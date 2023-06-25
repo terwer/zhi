@@ -59,9 +59,9 @@ const simpleLogger = (name: string, customSign?: string, isDev?: boolean): ILogg
     const formattedMsg = typeof obj === "boolean" ? String(obj) : obj
 
     if (formattedMsg) {
-      console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`, formattedMsg)
+      console.log(`[${sign}] [${time}] [DEBUG] [${name}] ${msg}`, formattedMsg)
     } else {
-      console.info(`[${sign}] [${time}] [INFO] [${name}] ${msg}`)
+      console.log(`[${sign}] [${time}] [DEBUG] [${name}] ${msg}`)
     }
   }
 

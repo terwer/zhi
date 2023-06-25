@@ -149,6 +149,24 @@ class StrUtil {
     }
     return val.toString().toLowerCase() === "true"
   }
+
+  /**
+   * 首字母大写
+   * 
+   * @param name
+   */
+  public static upperFirst(name: string): string {
+    return name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase()
+  }
+
+  /**
+   * 字符串拼接
+   * 
+   * @param str
+   */
+  public static appendStr(...str: string[]): string {
+    return str.join("")
+  }
 }
 
 export default StrUtil

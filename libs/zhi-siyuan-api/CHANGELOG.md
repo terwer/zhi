@@ -1,5 +1,31 @@
 # zhi-siyuan-api
 
+## 1.25.5
+
+### Patch Changes
+
+- fix debug log
+- Updated dependencies
+  - zhi-blog-api@1.13.5
+  - zhi-lib-base@0.4.2
+  - zhi-common@1.11.4
+
+## 1.25.4
+
+### Patch Changes
+
+- add str func
+- Updated dependencies
+  - zhi-blog-api@1.13.4
+  - zhi-common@1.11.3
+
+## 1.25.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.13.3
+
 ## 1.25.2
 
 ### Patch Changes

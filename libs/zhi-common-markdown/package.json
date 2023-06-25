@@ -1,6 +1,6 @@
 {
   "name": "zhi-common-markdown",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "type": "module",
   "description": "a universal Markdown parsing tool",
   "main": "./dist/index.js",
@@ -25,8 +25,8 @@
     "test": "npx vitest --watch"
   },
   "devDependencies": {
-    "@terwer/eslint-config-custom": "^1.2.0",
-    "@terwer/vite-config-custom": "^0.5.0",
+    "@terwer/eslint-config-custom": "workspace:*",
+    "@terwer/vite-config-custom": "workspace:*",
     "@types/showdown": "^2.0.1"
   },
   "dependencies": {
