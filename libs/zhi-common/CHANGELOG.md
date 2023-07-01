@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.11.5
+
+### Patch Changes
+
+- change log level
+
 ## 1.11.4
 
 ### Patch Changes
