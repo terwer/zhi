@@ -80,25 +80,25 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
   }
 
   /**
-     * 分页获取根文档
+   * 分页获取根文档
 
-     * ```sql
-     * select DISTINCT b2.root_id,b2.parent_id,b2.content from blocks b2
-     *        WHERE 1==1
-     * AND b2.id IN (
-     *     SELECT DISTINCT b1.root_id
-     *        FROM blocks b1
-     *        WHERE 1 = 1
-     *        AND ((b1.content LIKE '%github%') OR (b1.tag LIKE '%github%'))
-     *        ORDER BY b1.updated DESC,b1.created DESC LIMIT 0,10
-     * )
-     * ORDER BY b2.updated DESC,b2.created DESC
-     * ```
-     *
-     * @param page 页码
-     * @param pagesize 数目
-     * @param keyword 可选，搜索关键字
-     */
+   * ```sql
+   * select DISTINCT b2.root_id,b2.parent_id,b2.content from blocks b2
+   *        WHERE 1==1
+   * AND b2.id IN (
+   *     SELECT DISTINCT b1.root_id
+   *        FROM blocks b1
+   *        WHERE 1 = 1
+   *        AND ((b1.content LIKE '%github%') OR (b1.tag LIKE '%github%'))
+   *        ORDER BY b1.updated DESC,b1.created DESC LIMIT 0,10
+   * )
+   * ORDER BY b2.updated DESC,b2.created DESC
+   * ```
+   *
+   * @param page 页码
+   * @param pagesize 数目
+   * @param keyword 可选，搜索关键字
+   */
   public async getRootBlocks(page: number, pagesize: number, keyword: string): Promise<any> {
     const stmt = `select DISTINCT b2.root_id,b2.parent_id,b2.content from blocks b2
         WHERE 1==1
@@ -239,6 +239,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     const url = "/api/filetree/getDoc"
     return await this.siyuanRequest(url, params)
   }
+
   /**
    * 以sql发送请求
    *
@@ -615,6 +616,24 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     } catch {
       return false
     }
+  }
+
+  /**
+   * 获取公开文件
+   *
+   * @param path - 完整路径
+   */
+  public async getPublicFile(path: string): Promise<any> {
+    const response = await fetch(`${this.siyuanConfig.apiUrl}${path}`, { method: "GET" })
+    if (response.status === 200) {
+      const text = await response.text()
+      const resData = JsonUtil.safeParse<SiyuanData>(text, {} as SiyuanData)
+      if (resData?.code === 404) {
+        return ""
+      }
+      return text
+    }
+    return null
   }
 
   /**

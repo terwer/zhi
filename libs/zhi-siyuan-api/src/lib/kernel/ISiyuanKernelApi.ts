@@ -81,6 +81,7 @@ interface ISiyuanKernelApi {
 
   // /api/file/getFile
   getFile(path: string, type: "text" | "json"): Promise<any>
+  getPublicFile(path: string): Promise<any>
   // /api/file/removeFile
   removeFile(path: string): Promise<SiyuanData>
   isFileExists(path: string, type: "text" | "json"): Promise<boolean>

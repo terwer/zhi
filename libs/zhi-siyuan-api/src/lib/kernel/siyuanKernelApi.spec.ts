@@ -143,6 +143,13 @@ describe("SiyuanKernelApi", async () => {
     console.log("result=>", result)
   })
 
+  it("getPublicFile", async () => {
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6807", "")
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
+    const result = await kernelApi.getPublicFile("/public/siyuan-blog/share-type.json")
+    console.log("result=>", result)
+  })
+
   it("isFileExists", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
     const kernelApi = new SiyuanKernelApi(siyuanConfig)

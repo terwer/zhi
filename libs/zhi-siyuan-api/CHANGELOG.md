@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 1.26.0
+
+### Minor Changes
+
+- add public file api
+
 ## 1.25.6
 
 ### Patch Changes
