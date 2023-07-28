@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.15.0
+
+### Minor Changes
+
+- rollback apiStatus property
+
 ## 1.14.0
 
 ### Minor Changes

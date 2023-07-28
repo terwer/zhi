@@ -119,6 +119,11 @@ abstract class BlogConfig {
   protected blogid?: string
 
   /**
+   * 是否发布
+   */
+  protected apiStatus: boolean
+
+  /**
    * 博客名（API获取）
    */
   protected blogName: string
