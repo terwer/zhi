@@ -1,5 +1,11 @@
 # zhi-xmlrpc-middleware
 
+## 0.3.0
+
+### Minor Changes
+
+- add tokenSettingUrl setting
+
 ## 0.2.19
 
 ### Patch Changes

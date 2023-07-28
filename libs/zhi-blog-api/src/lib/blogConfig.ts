@@ -102,12 +102,17 @@ abstract class BlogConfig {
   protected password: string
 
   /**
+   * 密码/token设置地址
+   */
+  protected tokenSettingUrl: string
+
+  /**
    * 请求 cookie
    */
   protected cookie: string
 
   /**
-   * 代理地址
+   * 跨域代理地址
    * @protected
    */
   protected middlewareUrl?: string
@@ -119,7 +124,7 @@ abstract class BlogConfig {
   protected blogid?: string
 
   /**
-   * 是否发布
+   * API 是否可用
    */
   protected apiStatus: boolean
 

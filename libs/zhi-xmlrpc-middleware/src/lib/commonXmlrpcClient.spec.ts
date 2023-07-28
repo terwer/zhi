@@ -47,7 +47,8 @@ describe("test commonXmlrpcClient", async () => {
     console.log("moduleBase=>", moduleBase)
     // console.log("appInstance=>", appInstance)
 
-    const commonXmlrpcClient = new CommonXmlrpcClient(appInstance, "http://127.0.0.1:8000/xmlrpc.php")
+    // const commonXmlrpcClient = new CommonXmlrpcClient(appInstance, "http://127.0.0.1:8000/xmlrpc.php")
+    const commonXmlrpcClient = new CommonXmlrpcClient(appInstance, "http://127.0.0.1:8000")
     const result = await commonXmlrpcClient.methodCall("metaWeblog.getUsersBlogs", ["", "terwer", "123456"])
     console.log("test fetchNode result =>", result)
   })

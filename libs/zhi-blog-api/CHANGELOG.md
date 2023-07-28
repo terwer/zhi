@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.16.0
+
+### Minor Changes
+
+- add tokenSettingUrl setting
+
 ## 1.15.0
 
 ### Minor Changes
