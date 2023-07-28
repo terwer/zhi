@@ -1,5 +1,16 @@
 # zhi-siyuan-api
 
+## 1.27.0
+
+### Minor Changes
+
+- remove apiStatus
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.14.0
+
 ## 1.26.0
 
 ### Minor Changes

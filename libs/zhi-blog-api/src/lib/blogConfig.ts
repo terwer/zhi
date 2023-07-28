@@ -119,11 +119,6 @@ abstract class BlogConfig {
   protected blogid?: string
 
   /**
-   * 是否发布
-   */
-  protected apiStatus: boolean
-
-  /**
    * 博客名（API获取）
    */
   protected blogName: string
@@ -164,7 +159,6 @@ abstract class BlogConfig {
     this.cookie = undefined
     this.middlewareUrl = ""
     this.blogid = ""
-    this.apiStatus = false
     this.blogName = ""
     this.posidKey = ""
     this.previewUrl = ""

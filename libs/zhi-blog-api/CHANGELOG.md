@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.14.0
+
+### Minor Changes
+
+- remove apiStatus
+
 ## 1.13.5
 
 ### Patch Changes
