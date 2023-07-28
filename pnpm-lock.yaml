@@ -249,6 +249,16 @@ importers:
         version: 4.0.0
 
   libs/zhi-wechatsync-middleware:
+    dependencies:
+      zhi-blog-api:
+        specifier: workspace:*
+        version: link:../zhi-blog-api
+      zhi-common:
+        specifier: workspace:*
+        version: link:../zhi-common
+      zhi-lib-base:
+        specifier: workspace:*
+        version: link:../zhi-lib-base
     devDependencies:
       '@terwer/eslint-config-custom':
         specifier: workspace:*

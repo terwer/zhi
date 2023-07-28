@@ -1,6 +1,6 @@
 {
   "name": "zhi-github-middleware",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "type": "module",
   "description": "a middleware for github api",
   "main": "./dist/index.js",
@@ -15,7 +15,9 @@
   ],
   "keywords": [
     "zhi",
-    "lib"
+    "lib",
+    "github",
+    "api"
   ],
   "scripts": {
     "serve": "vite",

@@ -1,5 +1,17 @@
 # zhi-wechatsync-middleware
 
+## 0.1.2
+
+### Patch Changes
+
+- update wechatsync
+
+## 0.1.1
+
+### Patch Changes
+
+- init wechatsync
+
 ## 0.1.0
 
 ### Minor Changes

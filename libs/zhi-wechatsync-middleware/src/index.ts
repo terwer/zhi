@@ -1,5 +1,3 @@
-const init = () => {
-  return "ok"
-}
+import CommonWechatsyncClient from "./lib/commonWechatsyncClient"
 
-export default init
+export { CommonWechatsyncClient }

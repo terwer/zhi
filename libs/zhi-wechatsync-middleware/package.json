@@ -1,6 +1,6 @@
 {
   "name": "zhi-wechatsync-middleware",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "type": "module",
   "description": "publish sdk via wechatsync",
   "main": "./dist/index.js",
@@ -27,6 +27,11 @@
   "devDependencies": {
     "@terwer/eslint-config-custom": "workspace:*",
     "@terwer/vite-config-custom": "workspace:*"
+  },
+  "dependencies": {
+    "zhi-blog-api": "workspace:*",
+    "zhi-common": "workspace:*",
+    "zhi-lib-base": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

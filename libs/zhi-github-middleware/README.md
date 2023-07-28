@@ -6,12 +6,18 @@ a middleware for github api
 
 ```js
 // usage
+import { CommonGithubClient } from "zhi-github-middleware"
+
+const githubConfig = new GithubConfig("terwer", "hexo-blog", "")
+const commonGithubClient = new CommonGithubClient(githubConfig)
+const result = await commonGithubClient.getGithubPageTreeNode("")
 ```
 
 ## Deps
 
 ```
-## Congregations! zhi-github-middleware need no deps, it is just pure js code 🎉
+@octokit/core
+js-base64
 ```
 
 ## Dev
