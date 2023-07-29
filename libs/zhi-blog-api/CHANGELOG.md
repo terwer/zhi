@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.18.1
+
+### Patch Changes
+
+- fix getMetaData type
+
 ## 1.18.0
 
 ### Minor Changes

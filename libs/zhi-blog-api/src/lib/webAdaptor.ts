@@ -41,7 +41,7 @@ class WebAdaptor extends BlogAdaptor {
   private readonly webAdaptor: IWebApi
 
   /**
-   * 初始化网页授权 API
+   * 初始化网页授权的 API
    *
    * @param webAdaptor - 对应博客的适配器，例如：ZhihuWebAdaptor
    */
