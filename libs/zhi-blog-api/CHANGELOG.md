@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.17.3
+
+### Patch Changes
+
+- update WebAdaptor
+
 ## 1.17.2
 
 ### Patch Changes

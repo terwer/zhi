@@ -37,6 +37,10 @@ import { NotImplementedException } from "zhi-lib-base"
  * @see [wechatsync BaseAdapter]{@link https://github.com/wechatsync/Wechatsync/blob/master/packages/%40wechatsync/drivers/src/BaseAdapter.js}
  */
 class WebAdaptor extends BlogAdaptor {
+  constructor() {
+    super(null)
+  }
+
   /**
    * 组装元数据：调用平台 API 获取用户信息和平台信息，并返回组装数据
    *
