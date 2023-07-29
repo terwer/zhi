@@ -25,7 +25,8 @@
 
 import BlogAdaptor from "./blogAdaptor"
 import Post from "./models/post"
-import { NotImplementedException } from "zhi-lib-base"
+import { simpleLogger } from "zhi-lib-base"
+import { IWebApi } from "./IWebApi"
 
 /**
  * 网页授权核心基类
@@ -37,58 +38,38 @@ import { NotImplementedException } from "zhi-lib-base"
  * @see [wechatsync BaseAdapter]{@link https://github.com/wechatsync/Wechatsync/blob/master/packages/%40wechatsync/drivers/src/BaseAdapter.js}
  */
 class WebAdaptor extends BlogAdaptor {
-  constructor() {
-    super(null)
-  }
+  private readonly webAdaptor: IWebApi
 
   /**
-   * 组装元数据：调用平台 API 获取用户信息和平台信息，并返回组装数据
+   * 初始化网页授权 API
    *
-   * @returns Promise<MetaData> 元数据
+   * @param webAdaptor - 对应博客的适配器，例如：ZhihuWebAdaptor
    */
+  constructor(webAdaptor: IWebApi) {
+    super(webAdaptor)
+    this.logger = simpleLogger("web-adaptor", "zhi-blog-api", false)
+    this.VERSION = "0.9.0"
+    this.webAdaptor = webAdaptor
+  }
+
   public async getMetaData(): Promise<object> {
-    throw new NotImplementedException("该功能未实现，请在子类重写该方法")
+    return await this.webAdaptor.getMetaData()
   }
 
-  /**
-   * 内容预处理：预处理平台无法兼容的文本内容
-   *
-   * @param post 文章内容
-   * @returns Promise<Post> 预处理后的文章内容
-   */
   public async preEditPost(post: Post): Promise<Post> {
-    throw new NotImplementedException("该功能未实现，请在子类重写该方法")
+    return await this.webAdaptor.preEditPost(post)
   }
 
-  /**
-   * 创建文章：调用平台 API 创建草稿
-   *
-   * @param post 文章内容
-   */
   public async addPost(post: Post): Promise<void> {
-    throw new NotImplementedException("该功能未实现，请在子类重写该方法")
+    return await this.webAdaptor.addPost(post)
   }
 
-  /**
-   * 上传图片：调用平台 API 上传图片
-   *
-   * @param file 图片文件
-   * @returns Promise<string> 上传后的图片地址
-   */
   public async uploadFile(file: File): Promise<string> {
-    throw new NotImplementedException("该功能未实现，请在子类重写该方法")
+    return await this.webAdaptor.uploadFile(file)
   }
 
-  /**
-   * 更新文章：调用平台 API 更新文章（发布工具内部通过该接口替换文章内图片地址）
-   *
-   * @param postid 文章 ID
-   * @param post 更新后的文章内容
-   * @param publish 是否发布
-   * @returns Promise<boolean> 更新结果
-   */
-  public override async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {
-    throw new NotImplementedException("该功能未实现，请在子类重写该方法")
+  public async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {
+    return this.webAdaptor.editPost(postid, post, publish)
   }
 }
 

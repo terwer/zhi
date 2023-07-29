@@ -39,13 +39,13 @@ import Attachment from "./models/attachmentInfo"
  * @since 1.0.0
  */
 class BlogAdaptor implements IBlogApi {
-  protected logger
+  protected logger: any
   private readonly apiAdaptor: IBlogApi
 
   /**
    * 博客API版本号
    */
-  public readonly VERSION
+  public VERSION: string
 
   /**
    * 初始化博客 API
@@ -53,7 +53,7 @@ class BlogAdaptor implements IBlogApi {
    * @param apiAdaptor - 对应博客的适配器，例如：SiYuanApiAdaptor
    */
   constructor(apiAdaptor: IBlogApi) {
-    this.logger = simpleLogger("zhi-blog-api", "zhi", false)
+    this.logger = simpleLogger("blog-adaptor", "zhi-blog-api", false)
     this.VERSION = "1.0.0"
     this.apiAdaptor = apiAdaptor
   }

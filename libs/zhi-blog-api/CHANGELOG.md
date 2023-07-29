@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.18.0
+
+### Minor Changes
+
+- change blog base api
+
 ## 1.17.3
 
 ### Patch Changes

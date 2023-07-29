@@ -2,6 +2,7 @@ import BlogConfig, { PageType, PasswordType } from "./lib/blogConfig"
 import BlogPlaceholder from "./lib/blogPlaceholder"
 import BlogApi from "./lib/blogApi"
 import BlogAdaptor from "./lib/blogAdaptor"
+import WebApi from "./lib/webApi"
 import WebAdaptor from "./lib/webAdaptor"
 import Post from "./lib/models/post"
 import UserBlog from "./lib/models/userBlog"
@@ -14,7 +15,8 @@ import BlogTypeEnum from "./lib/enums/blogTypeEnum"
 import Attachment from "./lib/models/attachmentInfo"
 import PageTypeEnum from "./lib/enums/pageTypeEnum"
 
-export { BlogApi, BlogAdaptor, WebAdaptor }
+export { BlogApi, BlogAdaptor }
+export { WebApi, WebAdaptor }
 export { BlogConfig, BlogPlaceholder, PasswordType, PageType, PostStatusEnum }
 export { Post, UserBlog, SiteConfig, CategoryInfo, MediaObject, Attachment }
 export { BlogConstants, BlogTypeEnum, PageTypeEnum }
