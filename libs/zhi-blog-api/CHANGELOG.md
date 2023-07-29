@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.17.0
+
+### Minor Changes
+
+- add WebAdaptor
+
 ## 1.16.0
 
 ### Minor Changes
