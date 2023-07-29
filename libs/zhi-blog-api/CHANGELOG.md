@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.17.2
+
+### Patch Changes
+
+- fix export error
+
 ## 1.17.1
 
 ### Patch Changes
