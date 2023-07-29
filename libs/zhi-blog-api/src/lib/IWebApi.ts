@@ -41,7 +41,7 @@ interface IWebApi extends IBlogApi {
    *
    * @returns Promise<MetaData> 元数据
    */
-  getMetaData(): Promise<object>
+  getMetaData(): Promise<any>
 
   /**
    * 内容预处理：预处理平台无法兼容的文本内容

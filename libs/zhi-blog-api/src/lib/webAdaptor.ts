@@ -52,7 +52,7 @@ class WebAdaptor extends BlogAdaptor {
     this.webAdaptor = webAdaptor
   }
 
-  public async getMetaData(): Promise<object> {
+  public async getMetaData(): Promise<any> {
     return await this.webAdaptor.getMetaData()
   }
 
