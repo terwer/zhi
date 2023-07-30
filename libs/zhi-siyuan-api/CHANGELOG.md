@@ -1,5 +1,17 @@
 # zhi-siyuan-api
 
+## 1.28.0
+
+### Minor Changes
+
+- fix return type error in some cases
+
+## 1.27.13
+
+### Patch Changes
+
+- fix retutn yupe
+
 ## 1.27.12
 
 ### Patch Changes

@@ -40,7 +40,7 @@ interface SiyuanData {
   /**
    * 可能为 \{\}、[] 或者 NULL，根据不同接口而不同
    */
-  data: any[] | object | null | undefined
+  data: any[] | any | null | undefined
 }
 
 /**
@@ -97,7 +97,7 @@ interface ISiyuanKernelApi {
     method?: "GET" | "POST",
     contentType?: string,
     timeout?: number
-  ): Promise<SiyuanData>
+  ): Promise<SiyuanData["data"]>
 }
 
 export default ISiyuanKernelApi

@@ -27,16 +27,6 @@ import SiyuanConfig from "../config/siyuanConfig"
 import ISiyuanKernelApi, { type SiyuanData } from "./ISiyuanKernelApi"
 import { JsonUtil, StrUtil } from "zhi-common"
 import { createAppLogger } from "../utils"
-import * as url from "url";
-import * as url from "url";
-import * as url from "url";
-import * as url from "url";
-import * as url from "url";
-import * as url from "url";
-import FormData, { name } from "form-data";
-import * as url from "url";
-import * as url from "url";
-import path from "path";
 
 /**
  * 思源笔记服务端API v2.8.2
@@ -704,7 +694,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     method?: "GET" | "POST",
     contentType?: string,
     timeout?: number
-  ): Promise<SiyuanData> {
+  ): Promise<SiyuanData["data"]> {
     const params = {
       url: url,
       headers: headers,
