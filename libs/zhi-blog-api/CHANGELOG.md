@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.18.3
+
+### Patch Changes
+
+- allow web api build cookies
+
 ## 1.18.2
 
 ### Patch Changes

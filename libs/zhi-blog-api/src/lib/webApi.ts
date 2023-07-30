@@ -30,11 +30,16 @@ import UserBlog from "./models/userBlog"
 import MediaObject from "./models/mediaObject"
 import Attachment from "./models/attachmentInfo"
 import { NotImplementedException } from "zhi-lib-base"
+import ElectronCookie from "./models/ElectronCookie"
 
 /**
  * 网页授权基类
  */
 class WebApi implements IWebApi {
+  public async buildCookie(cookies: ElectronCookie[]): Promise<string> {
+    throw new NotImplementedException("You must implement this method in sub class")
+  }
+
   public async addPost(post: Post): Promise<void> {
     throw new NotImplementedException("You must implement this method in sub class")
   }

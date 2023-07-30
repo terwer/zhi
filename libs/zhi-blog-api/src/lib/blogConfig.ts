@@ -66,10 +66,16 @@ export enum PasswordType {
    * 密码
    */
   PasswordType_Password,
+
   /**
    * token
    */
   PasswordType_Token,
+
+  /**
+   * cookie
+   */
+  PasswordType_Cookie,
 }
 
 /**

@@ -27,6 +27,7 @@ import BlogAdaptor from "./blogAdaptor"
 import Post from "./models/post"
 import { simpleLogger } from "zhi-lib-base"
 import { IWebApi } from "./IWebApi"
+import ElectronCookie from "./models/ElectronCookie"
 
 /**
  * 网页授权核心基类
@@ -50,6 +51,10 @@ class WebAdaptor extends BlogAdaptor {
     this.logger = simpleLogger("web-adaptor", "zhi-blog-api", false)
     this.VERSION = "0.9.0"
     this.webAdaptor = webAdaptor
+  }
+
+  public async buildCookie(cookies: ElectronCookie[]): Promise<string> {
+    return await this.webAdaptor.buildCookie(cookies)
   }
 
   public async getMetaData(): Promise<any> {

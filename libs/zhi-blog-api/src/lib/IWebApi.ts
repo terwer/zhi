@@ -25,6 +25,7 @@
 
 import { IBlogApi } from "./IBlogApi"
 import Post from "./models/post"
+import ElectronCookie from "./models/ElectronCookie"
 
 /**
  * 通用博客接口
@@ -37,9 +38,17 @@ import Post from "./models/post"
  */
 interface IWebApi extends IBlogApi {
   /**
+   * 构建 Cookie 字符串
+   *
+   * @param cookies - ElectronCookie 数组
+   * @returns 构建后的 Cookie 字符串
+   */
+  buildCookie(cookies: ElectronCookie[]): Promise<string>
+
+  /**
    * 组装元数据：调用平台 API 获取用户信息和平台信息，并返回组装数据
    *
-   * @returns Promise<MetaData> 元数据
+   * @returns Promise<any> 元数据
    */
   getMetaData(): Promise<any>
 
