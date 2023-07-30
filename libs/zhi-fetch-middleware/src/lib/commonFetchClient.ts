@@ -37,7 +37,7 @@ class CommonFetchClient {
   private readonly requestUrl
   private readonly middlewareUrl
 
-  constructor(appInstance: any, requestUrl: string, middlewareUrl?: string) {
+  constructor(appInstance: any, requestUrl?: string, middlewareUrl?: string) {
     this.appInstance = appInstance
     this.logger = simpleLogger("common-fetch-client", "zhi-fetch-middleware")
     this.requestUrl = requestUrl
@@ -52,8 +52,8 @@ class CommonFetchClient {
    * @param middlewareUrl - 可选，当环境不支持时候，必传
    */
   public async fetchCall(endpointUrl: string, fetchOptions: RequestInit, middlewareUrl?: string): Promise<any> {
-    const apiUrl = this.requestUrl + endpointUrl
-    return await this.fetchRequest(apiUrl, fetchOptions, middlewareUrl)
+    const apiUrl = this.requestUrl ? this.requestUrl + endpointUrl : endpointUrl
+    return await this.fetchRequest(apiUrl, fetchOptions, middlewareUrl ?? this.middlewareUrl)
   }
 
   /**

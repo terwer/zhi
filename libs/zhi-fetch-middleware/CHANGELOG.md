@@ -1,5 +1,11 @@
 # zhi-fetch-middleware
 
+## 0.1.20
+
+### Patch Changes
+
+- fix CommonFetchClient init
+
 ## 0.1.19
 
 ### Patch Changes
