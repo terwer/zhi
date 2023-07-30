@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.0
+
+### Minor Changes
+
+- add metadata for webapi
+
 ## 1.19.0
 
 ### Minor Changes

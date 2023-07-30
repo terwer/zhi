@@ -39,11 +39,17 @@ class WebConfig extends BlogConfig {
    */
   public override posidKey = ""
 
+  /**
+   * 元数据
+   */
+  public metadata: any
+
   constructor(password: string) {
     super()
     this.password = password
     this.passwordType = PasswordType.PasswordType_Cookie
     this.posidKey = ""
+    this.metadata = {}
   }
 }
 
