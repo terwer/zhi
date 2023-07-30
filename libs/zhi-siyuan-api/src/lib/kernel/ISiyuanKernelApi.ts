@@ -88,6 +88,16 @@ interface ISiyuanKernelApi {
   // /api/file/putFile
   putFile(path: string, file: any): Promise<SiyuanData>
   saveTextData(path: string, text: string): Promise<SiyuanData>
+
+  // /api/network/forwardProxy
+  forwardProxy(
+    url: string,
+    headers: any[],
+    payload?: any,
+    method?: "GET" | "POST",
+    contentType?: string,
+    timeout?: number
+  ): Promise<SiyuanData>
 }
 
 export default ISiyuanKernelApi

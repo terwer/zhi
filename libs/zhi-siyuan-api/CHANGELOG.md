@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 1.27.11
+
+### Patch Changes
+
+- add forwardProxy
+
 ## 1.27.10
 
 ### Patch Changes

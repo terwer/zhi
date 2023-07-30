@@ -27,6 +27,16 @@ import SiyuanConfig from "../config/siyuanConfig"
 import ISiyuanKernelApi, { type SiyuanData } from "./ISiyuanKernelApi"
 import { JsonUtil, StrUtil } from "zhi-common"
 import { createAppLogger } from "../utils"
+import * as url from "url";
+import * as url from "url";
+import * as url from "url";
+import * as url from "url";
+import * as url from "url";
+import * as url from "url";
+import FormData, { name } from "form-data";
+import * as url from "url";
+import * as url from "url";
+import path from "path";
 
 /**
  * 思源笔记服务端API v2.8.2
@@ -675,6 +685,35 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     const file = new File([new Blob([text])], path.split("/").pop())
     // 调用 putFile 方法将文件保存到指定路径
     return await this.putFile(path, file)
+  }
+
+  /**
+   * 正向代理
+   *
+   * @param url - 转发的 URL
+   * @param headers - HTTP 请求标头
+   * @param payload - HTTP 请求体，对象或者是字符串
+   * @param method - HTTP 方法，默认为 GET
+   * @param contentType - HTTP Content-Type，默认为 application/json
+   * @param timeout - 超时时间，单位为毫秒，默认为 7000 毫秒
+   */
+  public async forwardProxy(
+    url: string,
+    headers: any[],
+    payload?: any,
+    method?: "GET" | "POST",
+    contentType?: string,
+    timeout?: number
+  ): Promise<SiyuanData> {
+    const params = {
+      url: url,
+      headers: headers,
+      payload: payload,
+      method: method,
+      contentType: contentType,
+      timeout: timeout,
+    }
+    return await this.siyuanRequest("/api/network/forwardProxy", params)
   }
 }
 
