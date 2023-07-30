@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.18.2
+
+### Patch Changes
+
+- add electron cookie
+
 ## 1.18.1
 
 ### Patch Changes
