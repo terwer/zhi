@@ -26,6 +26,7 @@
 import { IBlogApi } from "./IBlogApi"
 import Post from "./models/post"
 import ElectronCookie from "./models/ElectronCookie"
+import WebConfig from "./WebConfig"
 
 /**
  * 通用博客接口
@@ -37,6 +38,13 @@ import ElectronCookie from "./models/ElectronCookie"
  * @since 1.0.0
  */
 interface IWebApi extends IBlogApi {
+  /**
+   * 更新 WebConfig 配置
+   *
+   * @param cfg - 要更新的 WebConfig 对象
+   */
+  updateCfg(cfg: WebConfig): void
+
   /**
    * 构建 Cookie 字符串
    *

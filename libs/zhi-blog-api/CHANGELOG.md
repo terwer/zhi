@@ -1,5 +1,12 @@
 # zhi-blog-api
 
+## 1.19.0
+
+### Minor Changes
+
+- add webconfig
+- add updateCfg method for web auth
+
 ## 1.18.3
 
 ### Patch Changes
