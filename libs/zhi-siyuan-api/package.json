@@ -1,6 +1,6 @@
 {
   "name": "zhi-siyuan-api",
-  "version": "1.28.1",
+  "version": "1.28.2",
   "type": "module",
   "description": "a siyuan-note api including both kernel and client",
   "main": "./dist/index.js",

@@ -44,12 +44,18 @@ class WebConfig extends BlogConfig {
    */
   public metadata: any
 
-  constructor(password: string) {
+  /**
+   * 跨域代理地址
+   */
+  public override middlewareUrl = ""
+
+  constructor(password: string, middlewareUrl?: string) {
     super()
     this.password = password
     this.passwordType = PasswordType.PasswordType_Cookie
     this.posidKey = ""
     this.metadata = {}
+    this.middlewareUrl = middlewareUrl
   }
 }
 

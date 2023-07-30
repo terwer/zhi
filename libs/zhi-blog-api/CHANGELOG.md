@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.1
+
+### Patch Changes
+
+- add middlewareUrl for webconfig
+
 ## 1.20.0
 
 ### Minor Changes
