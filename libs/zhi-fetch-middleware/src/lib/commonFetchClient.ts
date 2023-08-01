@@ -95,7 +95,8 @@ class CommonFetchClient {
 
     let resJson
 
-    if (typeof response === "object") {
+    const isResponse = response?.status && response?.headers && response?.url
+    if (isResponse || response instanceof Response) {
       // 解析响应体并返回响应结果
       const statusCode = response.status
 
