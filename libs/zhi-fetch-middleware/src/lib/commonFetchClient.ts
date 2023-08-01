@@ -24,7 +24,7 @@
  */
 
 import { simpleLogger } from "zhi-lib-base"
-import { BrowserUtil, DeviceDetection, DeviceTypeEnum } from "zhi-device"
+import { BrowserUtil, DeviceDetection, DeviceTypeEnum, SiyuanDevice } from "zhi-device"
 import { StrUtil } from "zhi-common"
 import { fetchNode } from "./impl/nodeFetch"
 import { fetchChrome } from "./impl/chromeFetch"
@@ -122,6 +122,8 @@ class CommonFetchClient {
       if (BrowserUtil.isNode) {
         resJson = await response.json()
       } else if (BrowserUtil.isElectron()) {
+        resJson = await response.json()
+      } else if (SiyuanDevice.isInSiyuanWidget()) {
         resJson = await response.json()
       } else {
         const corsJson = await response.json()

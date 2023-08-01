@@ -1,5 +1,11 @@
 # zhi-fetch-middleware
 
+## 0.2.0
+
+### Minor Changes
+
+- fix siyuan widget cannot parse response error
+
 ## 0.1.20
 
 ### Patch Changes
