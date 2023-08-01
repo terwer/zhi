@@ -1,5 +1,17 @@
 # zhi-fetch-middleware
 
+## 0.2.3
+
+### Patch Changes
+
+- fix resp error
+
+## 0.2.2
+
+### Patch Changes
+
+- fix resp error
+
 ## 0.2.1
 
 ### Patch Changes

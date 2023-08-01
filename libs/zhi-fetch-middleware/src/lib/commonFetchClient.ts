@@ -37,9 +37,9 @@ class CommonFetchClient {
   private readonly requestUrl
   private readonly middlewareUrl
 
-  constructor(appInstance: any, requestUrl?: string, middlewareUrl?: string) {
+  constructor(appInstance: any, requestUrl?: string, middlewareUrl?: string, isDev?: boolean) {
     this.appInstance = appInstance
-    this.logger = simpleLogger("common-fetch-client", "zhi-fetch-middleware")
+    this.logger = simpleLogger("common-fetch-client", "zhi-fetch-middleware", isDev)
     this.requestUrl = requestUrl
     this.middlewareUrl = middlewareUrl
   }
@@ -95,7 +95,7 @@ class CommonFetchClient {
 
     let resJson
 
-    if (typeof response !== "undefined" && response instanceof Response) {
+    if (typeof response === "object") {
       // 解析响应体并返回响应结果
       const statusCode = response.status
 
