@@ -39,7 +39,7 @@ import { createAppLogger } from "../utils"
  */
 class SiYuanApiAdaptor extends BlogApi {
   private logger
-  private readonly siyuanKernelApi
+  private readonly siyuanKernelApi: SiyuanKernelApi
   private readonly cfg
 
   /**
@@ -104,7 +104,8 @@ class SiYuanApiAdaptor extends BlogApi {
   }
 
   public override async newPost(post: Post, publish?: boolean): Promise<string> {
-    return await this.siyuanKernelApi.createDocWithMd(this.cfg.notebook, `/${post.title}`, post.description)
+    const ret = await this.siyuanKernelApi.createDocWithMd(this.cfg.notebook, `/${post.title}`, post.description)
+    return ret.data
   }
 
   public override async getPost(postid: string, useSlug?: boolean, skipBody?: boolean): Promise<Post> {
@@ -151,7 +152,8 @@ class SiYuanApiAdaptor extends BlogApi {
       shortDesc = attrs["custom-desc"] || ""
 
       md = (await this.siyuanKernelApi.exportMdContent(pid)).content
-      editorDom = (await this.siyuanKernelApi.getDoc(pid)).content
+      const edData = await this.siyuanKernelApi.getDoc(pid)
+      editorDom = edData.content
       html = (await this.siyuanKernelApi.exportPreview(pid)).html
       // 移除挂件html
       html = HtmlUtil.removeWidgetTag(html)
@@ -186,7 +188,19 @@ class SiYuanApiAdaptor extends BlogApi {
   }
 
   public override async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {
-    return await super.editPost(postid, post, publish)
+    let flag = false
+    try {
+      // 更新标题
+      const title = post.title
+      await this.siyuanKernelApi.setBlockAttrs(postid, {
+        title: title,
+      })
+      flag = true
+    } catch (e) {
+      flag = false
+      this.logger.error("更新思源笔记元数据错误，异常", e)
+    }
+    return flag
   }
 
   public override async deletePost(postid: string): Promise<boolean> {
@@ -197,7 +211,8 @@ class SiYuanApiAdaptor extends BlogApi {
   public override async getCategories(): Promise<CategoryInfo[]> {
     const cats = [] as CategoryInfo[]
 
-    let notebooks: any[] = (await this.siyuanKernelApi.lsNotebooks()).notebooks
+    const notes = (await this.siyuanKernelApi.lsNotebooks()) as any
+    let notebooks: any[] = notes.notebooks
     //用户指南不应该作为可以写入的笔记本
     const hiddenNotebook: Set<string> = new Set(["思源笔记用户指南", "SiYuan User Guide"])
     notebooks = notebooks.filter((notebook) => !notebook.closed && !hiddenNotebook.has(notebook.name))

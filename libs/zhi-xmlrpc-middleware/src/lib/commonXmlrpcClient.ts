@@ -61,23 +61,23 @@ class CommonXmlrpcClient {
     return result
   }
 
-  /**
-   * 自定义xmlrpc统一调用入口
-   *
-   * @param reqMethod - 方法
-   * @param reqParams - 参数
-   * @param customHandler - 自定义处理器
-   */
-  public async customMethodCall(reqMethod: string, reqParams: any[], customHandler: any): Promise<any> {
-    let result
-    if (customHandler) {
-      result = await customHandler(this.apiUrl, reqMethod, reqParams)
-    } else {
-      result = await this.fetchXmlrpc(this.apiUrl, reqMethod, reqParams)
-    }
-    this.logger.info("请求结果，result=>", result)
-    return result
-  }
+  // /**
+  //  * 自定义xmlrpc统一调用入口
+  //  *
+  //  * @param reqMethod - 方法
+  //  * @param reqParams - 参数
+  //  * @param customHandler - 自定义处理器
+  //  */
+  // public async customMethodCall(reqMethod: string, reqParams: any[], customHandler: any): Promise<any> {
+  //   let result
+  //   if (customHandler) {
+  //     result = await customHandler(this.apiUrl, reqMethod, reqParams)
+  //   } else {
+  //     result = await this.fetchXmlrpc(this.apiUrl, reqMethod, reqParams)
+  //   }
+  //   this.logger.info("请求结果，result=>", result)
+  //   return result
+  // }
 
   //================================================================
   // private function

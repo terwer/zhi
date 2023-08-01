@@ -180,4 +180,31 @@ describe("test SiyuanKernelApi", async () => {
     const result = await kernelApi.forwardProxy(url, headers)
     console.log("result=>", result)
   })
+
+  it("test getBlockKramdown", async () => {
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
+    const id = "20230731201306-ps6ld6p"
+    const result = await kernelApi.getBlockKramdown(id)
+    console.log("result=>", result)
+  })
+
+  it("test getBlockAttrs", async () => {
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
+    const id = "20230731201306-ps6ld6p"
+    const result = await kernelApi.getBlockAttrs(id)
+    console.log("result=>", result)
+  })
+
+  it("test setBlockAttrs", async () => {
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
+    const id = "20230731201306-ps6ld6p"
+    const title = "哈哈哈4"
+    const result = await kernelApi.setBlockAttrs(id, {
+      title: title,
+    })
+    console.log("result=>", result)
+  })
 })

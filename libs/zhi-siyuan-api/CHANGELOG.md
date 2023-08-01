@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 1.29.0
+
+### Minor Changes
+
+- allow siyuan-api change title
+
 ## 1.28.2
 
 ### Patch Changes

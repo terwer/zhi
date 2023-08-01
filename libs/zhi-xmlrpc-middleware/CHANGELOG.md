@@ -1,5 +1,11 @@
 # zhi-xmlrpc-middleware
 
+## 0.4.0
+
+### Minor Changes
+
+- allow siyuan-api change title
+
 ## 0.3.0
 
 ### Minor Changes

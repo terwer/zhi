@@ -27,6 +27,7 @@ import SiyuanConfig from "../config/siyuanConfig"
 import ISiyuanKernelApi, { type SiyuanData } from "./ISiyuanKernelApi"
 import { JsonUtil, StrUtil } from "zhi-common"
 import { createAppLogger } from "../utils"
+import FormData from "form-data"
 
 /**
  * 思源笔记服务端API v2.8.2
@@ -229,7 +230,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     return await this.siyuanRequest(url, data)
   }
 
-  public async getDoc(docId: string): Promise<SiyuanData> {
+  public async getDoc(docId: string): Promise<SiyuanData["data"]> {
     const params = {
       id: docId,
       isBacklink: false,
@@ -260,7 +261,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    * @param url - url
    * @param data - 数据
    */
-  public async siyuanRequest(url: string, data: object): Promise<SiyuanData> {
+  public async siyuanRequest(url: string, data: object): Promise<SiyuanData["data"]> {
     const reqUrl = `${this.siyuanConfig.apiUrl}${url}`
 
     const fetchOps = {
@@ -495,31 +496,6 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
   }
 
   /**
-   * 获取块属性
-   * @param blockId
-   */
-  public async getBlockAttrs(blockId: string): Promise<any> {
-    const data = {
-      id: blockId,
-    }
-    const url = "/api/attr/getBlockAttrs"
-    return await this.siyuanRequest(url, data)
-  }
-
-  /**
-   * 设置块属性
-   * @param blockId
-   * @param attrs
-   */
-  public async setBlockAttrs(blockId: string, attrs: any): Promise<any> {
-    const url = "/api/attr/setBlockAttrs"
-    return await this.siyuanRequest(url, {
-      id: blockId,
-      attrs,
-    })
-  }
-
-  /**
    * 通过 Markdown 创建文档
    *
    * @param notebook - 笔记本
@@ -704,6 +680,47 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       timeout: timeout,
     }
     return await this.siyuanRequest("/api/network/forwardProxy", params)
+  }
+
+  /**
+   * 获取块属性
+   * @param blockId
+   */
+  public async getBlockAttrs(blockId: string): Promise<any> {
+    const data = {
+      id: blockId,
+    }
+    const url = "/api/attr/getBlockAttrs"
+    return await this.siyuanRequest(url, data)
+  }
+
+  /**
+   * 设置块属性
+   * @param blockId
+   * @param attrs
+   */
+  public async setBlockAttrs(blockId: string, attrs: any): Promise<any> {
+    const url = "/api/attr/setBlockAttrs"
+    return await this.siyuanRequest(url, {
+      id: blockId,
+      attrs,
+    })
+  }
+
+  public async getBlockKramdown(id: string): Promise<SiyuanData["data"]> {
+    const params = {
+      id: id,
+    }
+    return await this.siyuanRequest("/api/block/getBlockKramdown", params)
+  }
+
+  public async updateBlock(id: string, data: string, dataType?: "markdown" | "dom"): Promise<SiyuanData["data"]> {
+    const params = {
+      dataType: dataType ?? "markdown",
+      data: data,
+      id: id,
+    }
+    return await this.siyuanRequest("/api/block/updateBlock", params)
   }
 }
 

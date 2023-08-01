@@ -98,6 +98,15 @@ interface ISiyuanKernelApi {
     contentType?: string,
     timeout?: number
   ): Promise<SiyuanData["data"]>
+
+  // /api/attr/getBlockAttrs
+  getBlockAttrs(blockId: string): Promise<any>
+  // setBlockAttrs
+  setBlockAttrs(blockId: string, attrs: any): Promise<any>
+  // /api/block/getBlockKramdown
+  getBlockKramdown(id: string): Promise<SiyuanData["data"]>
+  // /api/block/updateBlock
+  updateBlock(id: string, data: string, dataType?: "markdown" | "dom"): Promise<SiyuanData["data"]>
 }
 
 export default ISiyuanKernelApi
