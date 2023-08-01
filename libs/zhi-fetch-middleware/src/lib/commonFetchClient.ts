@@ -119,6 +119,9 @@ class CommonFetchClient {
         }
       }
 
+      this.logger.debug("isNode=>", BrowserUtil.isNode)
+      this.logger.debug("isElectron=>", BrowserUtil.isElectron())
+      this.logger.debug("isInSiyuanWidget=>", SiyuanDevice.isInSiyuanWidget())
       if (BrowserUtil.isNode) {
         resJson = await response.json()
       } else if (BrowserUtil.isElectron()) {
@@ -126,10 +129,12 @@ class CommonFetchClient {
       } else if (SiyuanDevice.isInSiyuanWidget()) {
         resJson = await response.json()
       } else {
+        this.logger.debug("解析CORSBody")
         const corsJson = await response.json()
         resJson = this.parseCORSBody(corsJson)
       }
     } else {
+      this.logger.debug("response不是Response的实例", typeof response)
       resJson = response
     }
 
