@@ -26,9 +26,9 @@
 import BlogAdaptor from "./blogAdaptor"
 import Post from "./models/post"
 import { simpleLogger } from "zhi-lib-base"
-import { IWebApi } from "./IWebApi"
 import ElectronCookie from "./models/ElectronCookie"
 import WebConfig from "./WebConfig"
+import WebApi from "./webApi"
 
 /**
  * 网页授权核心基类
@@ -40,14 +40,14 @@ import WebConfig from "./WebConfig"
  * @see [wechatsync BaseAdapter]{@link https://github.com/wechatsync/Wechatsync/blob/master/packages/%40wechatsync/drivers/src/BaseAdapter.js}
  */
 class WebAdaptor extends BlogAdaptor {
-  private readonly webAdaptor: IWebApi
+  private readonly webAdaptor: WebApi
 
   /**
    * 初始化网页授权的 API
    *
    * @param webAdaptor - 对应博客的适配器，例如：ZhihuWebAdaptor
    */
-  constructor(webAdaptor: IWebApi) {
+  constructor(webAdaptor: WebApi) {
     super(webAdaptor)
     this.logger = simpleLogger("web-adaptor", "zhi-blog-api", false)
     this.VERSION = "0.9.0"

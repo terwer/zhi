@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.2
+
+### Patch Changes
+
+- fix type error
+
 ## 1.20.1
 
 ### Patch Changes

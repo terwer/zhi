@@ -30,6 +30,7 @@ import MediaObject from "./models/mediaObject"
 import { IBlogApi } from "./IBlogApi"
 import { simpleLogger } from "zhi-lib-base"
 import Attachment from "./models/attachmentInfo"
+import BlogApi from "./blogApi"
 
 /**
  * 博客API
@@ -40,7 +41,7 @@ import Attachment from "./models/attachmentInfo"
  */
 class BlogAdaptor implements IBlogApi {
   protected logger: any
-  private readonly apiAdaptor: IBlogApi
+  private readonly apiAdaptor: BlogApi
 
   /**
    * 博客API版本号
@@ -52,7 +53,7 @@ class BlogAdaptor implements IBlogApi {
    *
    * @param apiAdaptor - 对应博客的适配器，例如：SiYuanApiAdaptor
    */
-  constructor(apiAdaptor: IBlogApi) {
+  constructor(apiAdaptor: BlogApi) {
     this.logger = simpleLogger("blog-adaptor", "zhi-blog-api", false)
     this.VERSION = "1.0.0"
     this.apiAdaptor = apiAdaptor
