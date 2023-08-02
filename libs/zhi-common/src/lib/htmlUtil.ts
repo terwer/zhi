@@ -130,17 +130,32 @@ class HtmlUtil {
    *
    * @param html - html
    * @param length - 长度
-   * @param ignore - 不要结尾省略号
+   * @param ignoreSign - 不要结尾省略号
    */
-  public static parseHtml(html: string, length: number, ignore?: boolean): string {
+  public static parseHtml(html: string, length: number, ignoreSign?: boolean): string {
     const allText = this.filterHtml(html)
-    if (allText.length < length) {
-      return allText
+    const ellipsis = ignoreSign ? "" : "..."
+
+    // 使用正则表达式匹配中文字符
+    const chineseCharReg = /[\u4e00-\u9fa5]/
+    let textLength = 0
+    let result = ""
+
+    for (let i = 0; i < allText.length; i++) {
+      const char = allText[i]
+      if (chineseCharReg.test(char)) {
+        textLength += 2 // 中文字符长度为2
+      } else {
+        textLength += 1 // 英文字符长度为1
+      }
+
+      if (textLength > length) {
+        result = allText.slice(0, i) + ellipsis
+        break
+      }
     }
-    if (ignore === true) {
-      return allText.substring(0, length)
-    }
-    return allText.substring(0, length) + "..."
+
+    return result || allText
   }
 
   /**

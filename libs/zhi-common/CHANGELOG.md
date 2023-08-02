@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.11.6
+
+### Patch Changes
+
+- feat: 截取指定长度 html 兼容中英文
+
 ## 1.11.5
 
 ### Patch Changes
