@@ -130,14 +130,19 @@ abstract class BlogConfig {
   protected blogid?: string
 
   /**
-   * API 是否可用
-   */
-  protected apiStatus: boolean
-
-  /**
    * 博客名（API获取）
    */
   protected blogName: string
+
+  /**
+   * 是否开启知识空间，如果开启了，blogid就保存默认的知识空间ID
+   */
+  protected enableKnowledgeSpace?: boolean
+
+  /**
+   * API 是否可用
+   */
+  protected apiStatus: boolean
 
   /**
    * 文章别名key
@@ -181,6 +186,7 @@ abstract class BlogConfig {
     this.pageType = PageTypeEnum.Markdown
     this.placeholder = undefined
     this.fixTitle = false
+    this.enableKnowledgeSpace = false
   }
 }
 

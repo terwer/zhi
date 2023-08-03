@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.3
+
+### Patch Changes
+
+- feat: add enableKnowledgeSpace property
+
 ## 1.20.2
 
 ### Patch Changes
