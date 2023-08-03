@@ -87,15 +87,12 @@ const simpleLogger = (name: string, customSign?: string, isDev?: boolean): ILogg
     }
   }
 
-  const errorLog = (msg: string | Error, obj?: any) => {
+  const errorLog = (msg: any, obj?: any) => {
     const time = formatDate(new Date())
-    const message = msg instanceof Error ? "an error occurred =>" : `${msg}`
-    const formattedMsg = typeof obj === "boolean" ? String(obj) : obj || `${msg}`
-
-    if (formattedMsg) {
-      console.error(`[${sign}] [${time}] [ERROR] [${name}] ${message}`, formattedMsg)
+    if (obj) {
+      console.error(`[${sign}] [${time}] [ERROR] [${name}] ${msg.toString()}`, obj)
     } else {
-      console.error(`[${sign}] [${time}] [ERROR] [${name}] ${message}`)
+      console.error(`[${sign}] [${time}] [ERROR] [${name}] ${msg.toString()}`)
     }
   }
 
