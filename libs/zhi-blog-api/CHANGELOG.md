@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.6
+
+### Patch Changes
+
+- make apiUrl public
+
 ## 1.20.5
 
 ### Patch Changes

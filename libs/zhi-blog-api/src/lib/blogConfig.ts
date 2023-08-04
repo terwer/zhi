@@ -90,7 +90,7 @@ abstract class BlogConfig {
   /**
    * API地址
    */
-  protected apiUrl: string
+  public apiUrl: string
 
   /**
    * 用户名
@@ -105,7 +105,7 @@ abstract class BlogConfig {
   /**
    * 密码
    */
-  protected password: string
+  public password: string
 
   /**
    * 密码/token设置地址
