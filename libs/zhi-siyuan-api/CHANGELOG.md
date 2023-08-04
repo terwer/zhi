@@ -1,5 +1,19 @@
 # zhi-siyuan-api
 
+## 1.29.9
+
+### Patch Changes
+
+- add knowledgeSpaceTitle
+- Updated dependencies
+  - zhi-blog-api@1.20.8
+
+## 1.29.8
+
+### Patch Changes
+
+- feat: change logger name
+
 ## 1.29.7
 
 ### Patch Changes

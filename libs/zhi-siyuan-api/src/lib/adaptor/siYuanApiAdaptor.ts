@@ -28,7 +28,7 @@ import SiyuanKernelApi from "../kernel/siyuanKernelApi"
 import SiyuanConfig from "../config/siyuanConfig"
 import { NotImplementedException } from "zhi-lib-base"
 import { HtmlUtil } from "zhi-common"
-import { createAppLogger } from "../utils"
+import { createSiyuanAppLogger } from "../utils"
 
 /**
  * 思源笔记 API 适配器
@@ -51,7 +51,7 @@ class SiYuanApiAdaptor extends BlogApi {
     super()
 
     this.cfg = cfg
-    this.logger = createAppLogger("siyuan-api-adaptor")
+    this.logger = createSiyuanAppLogger("siyuan-api-adaptor")
     this.siyuanKernelApi = new SiyuanKernelApi(cfg)
   }
 

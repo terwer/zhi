@@ -47,6 +47,6 @@ interface ILogger {
  * @version 1.0.0
  * @since 1.0.0
  */
-export const createAppLogger = (name: string): ILogger => {
+export const createSiyuanAppLogger = (name: string): ILogger => {
   return simpleLogger(name, "zhi-siyuan-api", isDev)
 }

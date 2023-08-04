@@ -26,7 +26,7 @@
 import SiyuanConfig from "../config/siyuanConfig"
 import ISiyuanKernelApi, { type SiyuanData } from "./ISiyuanKernelApi"
 import { JsonUtil, StrUtil } from "zhi-common"
-import { createAppLogger } from "../utils"
+import { createSiyuanAppLogger } from "../utils"
 import FormData from "form-data"
 
 /**
@@ -61,7 +61,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     this.VERSION = "1.0.0"
 
     this.siyuanConfig = cfg
-    this.logger = createAppLogger("siyuan-kernel-api")
+    this.logger = createSiyuanAppLogger("siyuan-kernel-api")
   }
 
   /**

@@ -133,11 +133,6 @@ abstract class BlogConfig {
   public blogName?: string
 
   /**
-   * 是否开启知识空间，如果开启了，blogid就保存默认的知识空间ID
-   */
-  public enableKnowledgeSpace?: boolean
-
-  /**
    * API 是否可用
    */
   public apiStatus: boolean
@@ -169,6 +164,16 @@ abstract class BlogConfig {
    */
   public fixTitle?: boolean
 
+  /**
+   * 知识空间名称，例如：语雀叫做知识库、Confluence叫做知识空间、Notion可以叫做根页面
+   */
+  public knowledgeSpaceTitle?: string
+
+  /**
+   * 是否开启知识空间，如果开启了，blogid就保存默认的知识空间ID
+   */
+  public enableKnowledgeSpace?: boolean
+
   protected constructor() {
     this.home = ""
     this.apiUrl = ""
@@ -184,6 +189,7 @@ abstract class BlogConfig {
     this.pageType = PageTypeEnum.Markdown
     this.placeholder = undefined
     this.fixTitle = false
+    this.knowledgeSpaceTitle = "知识库"
     this.enableKnowledgeSpace = false
   }
 }
