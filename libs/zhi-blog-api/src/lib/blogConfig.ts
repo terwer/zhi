@@ -85,7 +85,7 @@ abstract class BlogConfig {
   /**
    * 首页
    */
-  protected home: string
+  public home?: string
 
   /**
    * API地址
@@ -95,12 +95,12 @@ abstract class BlogConfig {
   /**
    * 用户名
    */
-  protected username: string
+  public username?: string
 
   /**
    * 密码类型
    */
-  protected passwordType: PasswordType
+  public passwordType: PasswordType
 
   /**
    * 密码
@@ -110,12 +110,12 @@ abstract class BlogConfig {
   /**
    * 密码/token设置地址
    */
-  protected tokenSettingUrl: string
+  public tokenSettingUrl?: string
 
   /**
    * 请求 cookie
    */
-  protected cookie: string
+  public cookie?: string
 
   /**
    * 跨域代理地址
@@ -124,51 +124,50 @@ abstract class BlogConfig {
 
   /**
    * 标识
-   * @protected
    */
-  protected blogid?: string
+  public blogid?: string
 
   /**
    * 博客名（API获取）
    */
-  protected blogName: string
+  public blogName?: string
 
   /**
    * 是否开启知识空间，如果开启了，blogid就保存默认的知识空间ID
    */
-  protected enableKnowledgeSpace?: boolean
+  public enableKnowledgeSpace?: boolean
 
   /**
    * API 是否可用
    */
-  protected apiStatus: boolean
+  public apiStatus: boolean
 
   /**
    * 文章别名key
    */
-  protected posidKey: string
+  public posidKey: string
 
   /**
    * 文章预览链接
    */
-  protected previewUrl: string
+  public previewUrl?: string
 
   /**
    * 文章类型
    */
-  protected pageType: PageTypeEnum
+  public pageType?: PageTypeEnum
 
   /**
    * 操作提示
    */
-  protected placeholder: BlogPlaceholder | undefined
+  public placeholder?: BlogPlaceholder | undefined
 
   /**
    * 是否处理标题
    *
    * @protected
    */
-  protected fixTitle: boolean
+  public fixTitle?: boolean
 
   protected constructor() {
     this.home = ""
