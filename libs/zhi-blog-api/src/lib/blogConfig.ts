@@ -119,9 +119,8 @@ abstract class BlogConfig {
 
   /**
    * 跨域代理地址
-   * @protected
    */
-  protected middlewareUrl?: string
+  public middlewareUrl?: string
 
   /**
    * 标识

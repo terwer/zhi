@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.5
+
+### Patch Changes
+
+- make middlewareUrl public
+
 ## 1.20.4
 
 ### Patch Changes
