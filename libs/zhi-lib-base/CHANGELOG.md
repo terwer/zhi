@@ -1,5 +1,11 @@
 # zhi-lib-base
 
+## 0.4.4
+
+### Patch Changes
+
+- fix parameter
+
 ## 0.4.3
 
 ### Patch Changes

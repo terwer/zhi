@@ -1,5 +1,12 @@
 # zhi-blog-api
 
+## 1.20.10
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.4.4
+
 ## 1.20.9
 
 ### Patch Changes

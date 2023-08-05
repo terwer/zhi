@@ -49,11 +49,10 @@ class CommonFetchClient {
    *
    * @param endpointUrl - 请求地址
    * @param fetchOptions - 请求参数
-   * @param middlewareUrl - 可选，当环境不支持时候，必传
    */
-  public async fetchCall(endpointUrl: string, fetchOptions: RequestInit, middlewareUrl?: string): Promise<any> {
+  public async fetchCall(endpointUrl: string, fetchOptions: RequestInit): Promise<any> {
     const apiUrl = this.requestUrl ? this.requestUrl + endpointUrl : endpointUrl
-    return await this.fetchRequest(apiUrl, fetchOptions, middlewareUrl ?? this.middlewareUrl)
+    return await this.fetchRequest(apiUrl, fetchOptions, this.middlewareUrl)
   }
 
   /**

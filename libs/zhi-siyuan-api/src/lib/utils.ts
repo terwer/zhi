@@ -28,7 +28,7 @@ import { simpleLogger } from "zhi-lib-base"
 /**
  * 是否调试模式总开关
  */
-export const isDev = false
+export const isSiyuanApiDev = false
 
 /**
  * 简单的日志接口
@@ -48,5 +48,5 @@ interface ILogger {
  * @since 1.0.0
  */
 export const createSiyuanAppLogger = (name: string): ILogger => {
-  return simpleLogger(name, "zhi-siyuan-api", isDev)
+  return simpleLogger(name, "zhi-siyuan-api", isSiyuanApiDev)
 }

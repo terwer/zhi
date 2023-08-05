@@ -27,7 +27,7 @@ import { describe, expect, it, vitest } from "vitest"
 import simpleLogger from "./simpleLogger"
 
 describe("test simpleLogger", () => {
-  it("should log debug message when isDev is true", () => {
+  it("should log debug message when isSiyuanApiDev is true", () => {
     const spy = vitest.spyOn(console, "log")
 
     const logger = simpleLogger("test", "sign", true)
@@ -39,7 +39,7 @@ describe("test simpleLogger", () => {
     spy.mockRestore()
   })
 
-  it("should not log debug message when isDev is false", () => {
+  it("should not log debug message when isSiyuanApiDev is false", () => {
     const spy = vitest.spyOn(console, "log")
 
     const logger = simpleLogger("test", "sign", false)
