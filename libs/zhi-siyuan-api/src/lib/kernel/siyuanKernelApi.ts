@@ -667,7 +667,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     url: string,
     headers: any[],
     payload?: any,
-    method?: "GET" | "POST" | "PUT" | "DELETE",
+    method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH",
     contentType?: string,
     timeout?: number
   ): Promise<SiyuanData["data"]> {

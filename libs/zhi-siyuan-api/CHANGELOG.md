@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 1.29.13
+
+### Patch Changes
+
+- add PATCH method
+
 ## 1.29.12
 
 ### Patch Changes
