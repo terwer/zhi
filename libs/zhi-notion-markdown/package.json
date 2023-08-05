@@ -1,0 +1,38 @@
+{
+  "name": "zhi-notion-markdown",
+  "version": "0.1.1",
+  "type": "module",
+  "description": "convert md to notion blocks and back",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "repository": "terwer/zhi",
+  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-notion-markdown",
+  "author": "terwer",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "keywords": [
+    "zhi",
+    "lib"
+  ],
+  "scripts": {
+    "serve": "vite",
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "start": "vite preview",
+    "test": "npx vitest --watch"
+  },
+  "devDependencies": {
+    "@terwer/eslint-config-custom": "workspace:*",
+    "@terwer/vite-config-custom": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@tryfabric/martian": "^1.2.4",
+    "notion-to-md": "^3.1.1"
+  }
+}
