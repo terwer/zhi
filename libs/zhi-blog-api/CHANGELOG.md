@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.11
+
+### Patch Changes
+
+- add error message
+
 ## 1.20.10
 
 ### Patch Changes
