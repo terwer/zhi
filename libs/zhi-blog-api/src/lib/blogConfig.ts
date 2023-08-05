@@ -118,11 +118,6 @@ abstract class BlogConfig {
   public cookie?: string
 
   /**
-   * 跨域代理地址
-   */
-  public middlewareUrl?: string
-
-  /**
    * 标识
    */
   public blogid?: string
@@ -165,6 +160,11 @@ abstract class BlogConfig {
   public fixTitle?: boolean
 
   /**
+   * 跨域代理地址
+   */
+  public middlewareUrl?: string
+
+  /**
    * 知识空间名称，例如：语雀叫做知识库、Confluence叫做知识空间、Notion可以叫做根页面
    */
   public knowledgeSpaceTitle?: string
@@ -181,7 +181,6 @@ abstract class BlogConfig {
     this.passwordType = PasswordType.PasswordType_Password
     this.password = ""
     this.cookie = undefined
-    this.middlewareUrl = ""
     this.blogid = ""
     this.blogName = ""
     this.posidKey = ""
@@ -189,6 +188,7 @@ abstract class BlogConfig {
     this.pageType = PageTypeEnum.Markdown
     this.placeholder = undefined
     this.fixTitle = false
+    this.middlewareUrl = ""
     this.knowledgeSpaceTitle = "知识库"
     this.enableKnowledgeSpace = false
   }

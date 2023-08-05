@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.9
+
+### Patch Changes
+
+- add rest methods support
+
 ## 1.20.8
 
 ### Patch Changes

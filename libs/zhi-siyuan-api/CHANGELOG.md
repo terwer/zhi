@@ -1,5 +1,13 @@
 # zhi-siyuan-api
 
+## 1.29.10
+
+### Patch Changes
+
+- add rest methods support
+- Updated dependencies
+  - zhi-blog-api@1.20.9
+
 ## 1.29.9
 
 ### Patch Changes
