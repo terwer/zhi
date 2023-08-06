@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.11.9
+
+### Patch Changes
+
+- add a getProperty util method
+
 ## 1.11.8
 
 ### Patch Changes

@@ -23,6 +23,9 @@
  * questions.
  */
 
+import { simpleLogger } from "zhi-lib-base"
+import StrUtil from "./strUtil"
+
 /**
  * Object 工具类
  *
@@ -31,6 +34,8 @@
  * @since 1.0.0
  */
 class ObjectUtil {
+  private static logger = simpleLogger("pbject-util")
+
   /**
    * 检测是否是空对象
    *
@@ -45,6 +50,34 @@ class ObjectUtil {
       Object.getOwnPropertyNames(obj).length === 0 &&
       Object.getOwnPropertySymbols(obj).length === 0
     )
+  }
+
+  /**
+   * 获取对象的属性值
+   *
+   * @param {any} object - 目标对象
+   * @param {string} key - 属性键值
+   * @param {any} [defaultValue=""] - 默认值
+   */
+  public static getProperty(object: any, key: string, defaultValue: any = ""): any {
+    if (typeof object !== "object") {
+      throw new Error("Invalid arguments. object should be an object")
+    }
+
+    if (StrUtil.isEmptyString(key)) {
+      return defaultValue
+    }
+
+    try {
+      // eslint-disable-next-line no-prototype-builtins
+      if (object.hasOwnProperty(key)) {
+        return object[key]
+      }
+      return defaultValue
+    } catch (error) {
+      this.logger.warn(`getProperty ${key} Error:`, error)
+      return defaultValue
+    }
   }
 }
 
