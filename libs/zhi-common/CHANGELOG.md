@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.12.1
+
+### Patch Changes
+
+- export yaml util
+
 ## 1.12.0
 
 ### Minor Changes
