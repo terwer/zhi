@@ -1,5 +1,12 @@
 # zhi-xmlrpc-middleware
 
+## 0.4.10
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.13.2
+
 ## 0.4.9
 
 ### Patch Changes

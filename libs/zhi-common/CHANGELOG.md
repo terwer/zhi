@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.13.2
+
+### Patch Changes
+
+- disable cahr
+
 ## 1.13.1
 
 ### Patch Changes

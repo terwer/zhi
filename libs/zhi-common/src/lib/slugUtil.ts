@@ -50,6 +50,8 @@ class AliasTranslator {
     const json = await v.json()
     let res = json[0][0]
     res = res.replace(/-/g, "")
+    res = res.replace(/_/g, "")
+    res = res.replace(/#/g, "")
     res = res.replace(/\./g, "")
     res = res.replace(/~/g, "")
 
