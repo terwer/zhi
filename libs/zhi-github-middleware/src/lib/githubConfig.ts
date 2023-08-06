@@ -68,11 +68,6 @@ export class GithubConfig {
   email: string
 
   /**
-   * 文章别名key
-   */
-  posidKey: string
-
-  /**
    * MD文件预览规则（占位符：[user] [repo] [branch] [docpath]）
    */
   previewMdUrl: string
@@ -93,32 +88,19 @@ export class GithubConfig {
    */
   mdFilenameRule: string
 
-  /**
-   * 是否使用meta.json（next.js需要）
-   */
-  useMetaJson: boolean
-
-  /**
-   * API状态是否正常
-   */
-  apiStatus: boolean
-
   constructor(githubUser: string, githubRepo: string, githubToken: string) {
     this.githubUser = githubUser
     this.githubRepo = githubRepo
     this.githubToken = githubToken
     this.defaultBranch = "main"
     this.defaultPath = "docs/_posts"
-    this.defaultMsg = "auto published by sy-post-publisher"
+    this.defaultMsg = "auto published by siyuan-plugin-publisher"
     this.author = "terwer"
     this.email = "youweics@163.com"
-    this.posidKey = ""
     this.previewMdUrl = ""
     this.previewUrl = ""
     this.baseUrl = "https://github.com"
     this.mdFilenameRule = "[filename].md"
-    this.useMetaJson = false
-    this.apiStatus = false
   }
 }
 
