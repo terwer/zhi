@@ -180,8 +180,7 @@ class SiYuanApiAdaptor extends BlogApi {
     commonPost.shortDesc = shortDesc || ""
     commonPost.mt_keywords = attrs.tags || ""
     commonPost.post_status = isPublished ? PostStatusEnum.PostStatusEnum_Publish : PostStatusEnum.PostStatusEnum_Draft
-    // commonPost.wp_password = postPassword
-    commonPost.wp_password = "******"
+    commonPost.wp_password = ""
     commonPost.attrs = JSON.stringify(publicAttrs)
 
     return commonPost

@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.0.0
+
+### Major Changes
+
+- fix init password
+
 ## 1.29.14
 
 ### Patch Changes
