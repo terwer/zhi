@@ -46,7 +46,7 @@ class JsonUtil {
     let ret
 
     if (typeof str !== "string") {
-      this.logger.warn("not json string, ignore parse")
+      this.logger.debug("not json string, ignore parse")
       return str
     }
 

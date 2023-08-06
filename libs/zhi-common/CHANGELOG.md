@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.11.10
+
+### Patch Changes
+
+- ignore warn message
+
 ## 1.11.9
 
 ### Patch Changes
