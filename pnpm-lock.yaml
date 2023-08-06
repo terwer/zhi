@@ -79,6 +79,9 @@ importers:
 
   libs/zhi-common:
     dependencies:
+      js-yaml:
+        specifier: ^4.1.0
+        version: 4.1.0
       zhi-lib-base:
         specifier: workspace:*
         version: link:../zhi-lib-base

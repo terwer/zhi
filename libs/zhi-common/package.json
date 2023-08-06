@@ -1,6 +1,6 @@
 {
   "name": "zhi-common",
-  "version": "1.11.10",
+  "version": "1.12.0",
   "type": "module",
   "description": "a collection of util tools",
   "main": "./dist/index.js",
@@ -30,6 +30,7 @@
     "@terwer/vite-config-custom": "workspace:*"
   },
   "dependencies": {
+    "js-yaml": "^4.1.0",
     "zhi-lib-base": "workspace:*"
   },
   "publishConfig": {
