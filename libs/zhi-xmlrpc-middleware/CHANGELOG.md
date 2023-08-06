@@ -1,5 +1,20 @@
 # zhi-xmlrpc-middleware
 
+## 0.4.9
+
+### Patch Changes
+
+- add str util methods
+- Updated dependencies
+  - zhi-common@1.13.1
+
+## 0.4.8
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.13.0
+
 ## 0.4.7
 
 ### Patch Changes

@@ -158,6 +158,35 @@ class StrUtil {
   public static upperFirst(name: string): string {
     return name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase()
   }
+
+  /**
+   * 移除标题数字
+   *
+   * @param str
+   */
+  public static removeTitleNumber(str: string): string {
+    let newstr = str
+
+    // 移除序号
+    const publisherRegex = /([0-9]*)\./
+    newstr = newstr.replace(publisherRegex, "")
+
+    return newstr
+  }
+
+  /**
+   * 根据拼音获取首字母
+   *
+   * @param pinyin
+   */
+  public static getFirstLetters(pinyin: string) {
+    let firstLetters = ""
+    const pinyinArr = pinyin.split("-")
+    pinyinArr.forEach((item) => {
+      firstLetters += item[0]
+    })
+    return firstLetters
+  }
 }
 
 export default StrUtil

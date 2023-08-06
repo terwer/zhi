@@ -1,5 +1,20 @@
 # zhi-siyuan-api
 
+## 2.0.5
+
+### Patch Changes
+
+- add str util methods
+- Updated dependencies
+  - zhi-common@1.13.1
+
+## 2.0.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.13.0
+
 ## 2.0.3
 
 ### Patch Changes

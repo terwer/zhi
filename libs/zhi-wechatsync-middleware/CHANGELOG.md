@@ -1,5 +1,20 @@
 # zhi-wechatsync-middleware
 
+## 0.1.30
+
+### Patch Changes
+
+- add str util methods
+- Updated dependencies
+  - zhi-common@1.13.1
+
+## 0.1.29
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.13.0
+
 ## 0.1.28
 
 ### Patch Changes

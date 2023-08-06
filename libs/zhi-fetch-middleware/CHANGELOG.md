@@ -1,5 +1,20 @@
 # zhi-fetch-middleware
 
+## 0.2.14
+
+### Patch Changes
+
+- add str util methods
+- Updated dependencies
+  - zhi-common@1.13.1
+
+## 0.2.13
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.13.0
+
 ## 0.2.12
 
 ### Patch Changes

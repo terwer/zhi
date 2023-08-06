@@ -23,14 +23,52 @@
  * questions.
  */
 
-import ZhiCommon from "./lib/zhi-common"
-import DateUtil from "./lib/dateUtil"
-import HtmlUtil from "./lib/htmlUtil"
-import JsonUtil from "./lib/jsonUtil"
-import StrUtil from "./lib/strUtil"
-import ObjectUtil from "./lib/objectUtil"
-import YamlUtil from "./lib/yamlUtil"
-import AliasTranslator from "./lib/slugUtil"
+import { slugify } from "transliteration"
+import StrUtil from "./strUtil"
 
-export { ZhiCommon }
-export { DateUtil, HtmlUtil, JsonUtil, StrUtil, ObjectUtil, YamlUtil, AliasTranslator }
+/**
+ * 别名翻译器类
+ *
+ * @author terwer
+ * @since 1.12.1
+ */
+class AliasTranslator {
+  /**
+   * 将中文名翻译为英文别名
+   *
+   * @param q 中文名
+   * @param fixTitle 是否去除标题数字
+   * @returns Promise<string> 英文别名
+   */
+  public static async wordSlugify(q: string, fixTitle?: boolean): Promise<string> {
+    q = q ?? "无标题"
+    if (fixTitle) {
+      q = StrUtil.removeTitleNumber(q).trim()
+    }
+
+    const v = await fetch("https://api.terwer.space/api/translate?q=" + q)
+    const json = await v.json()
+    let res = json[0][0]
+    res = res.replace(/-/g, "")
+    res = res.replace(/\./g, "")
+    res = res.replace(/~/g, "")
+
+    res = slugify(res)
+
+    res = res.replace(/@/g, "")
+
+    return res
+  }
+
+  /**
+   * 将拼音转换为别名
+   *
+   * @param q 拼音
+   * @returns string 别名
+   */
+  public static pinyinSlugify(q: string): string {
+    return slugify(q)
+  }
+}
+
+export default AliasTranslator
