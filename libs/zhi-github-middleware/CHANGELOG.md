@@ -1,5 +1,17 @@
 # zhi-github-middleware
 
+## 0.1.11
+
+### Patch Changes
+
+- export github config
+
+## 0.1.10
+
+### Patch Changes
+
+- export GithubConfig
+
 ## 0.1.9
 
 ### Patch Changes
