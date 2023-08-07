@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.0.9
+
+### Patch Changes
+
+- feat: optimize property settings
+
 ## 2.0.8
 
 ### Patch Changes

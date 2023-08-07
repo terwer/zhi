@@ -27,7 +27,7 @@ import { Attachment, BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, U
 import SiyuanKernelApi from "../kernel/siyuanKernelApi"
 import SiyuanConfig from "../config/siyuanConfig"
 import { NotImplementedException } from "zhi-lib-base"
-import { HtmlUtil, ObjectUtil } from "zhi-common"
+import { HtmlUtil, ObjectUtil, StrUtil } from "zhi-common"
 import { createSiyuanAppLogger } from "../utils"
 
 /**
@@ -120,10 +120,11 @@ class SiYuanApiAdaptor extends BlogApi {
     if (!siyuanPost) {
       throw new Error("文章不存存在，postid=>" + pid)
     }
+    this.logger.debug(`siyuanPost =>`, siyuanPost)
 
     this.logger.info(`Ready to get block properties, block ID is => ${pid}`)
     const attrs = await this.siyuanKernelApi.getBlockAttrs(pid)
-    this.logger.debug(`getBlockAttrs attrs => ${attrs}`)
+    this.logger.debug(`getBlockAttrs attrs =>`, attrs)
 
     // 发布状态
     let isPublished = true
@@ -132,26 +133,18 @@ class SiYuanApiAdaptor extends BlogApi {
       isPublished = false
     }
 
-    // 访问密码
-    // const postPassword = attrs["custom-post-password"] || ""
-
     // 标题处理
     let title = siyuanPost.content ?? ""
     if (this.cfg.fixTitle) {
       title = HtmlUtil.removeTitleNumber(title)
     }
 
-    const memo = ObjectUtil.getProperty(attrs, "memo", "")
-    let shortDesc = memo
     // 渲染Markdown
     let md: string
     let html: string
     let editorDom: string
     // 如果忽略 body，则不进行转换
     if (!skipBody) {
-      // 摘要，custom-desc已废弃，知识为了兼容之前的，后续直接使用memo
-      shortDesc = ObjectUtil.getProperty(attrs, "custom-desc", "")
-
       md = (await this.siyuanKernelApi.exportMdContent(pid)).content
       const edData = await this.siyuanKernelApi.getDoc(pid)
       editorDom = edData.content
@@ -163,12 +156,24 @@ class SiYuanApiAdaptor extends BlogApi {
       }
     }
 
+    // 别名
     const alias = ObjectUtil.getProperty(attrs, "alias", "")
+    const slug = ObjectUtil.getProperty(attrs, "custom-slug", alias)
+
+    // 摘要，custom-desc已废弃，知识为了兼容之前的，后续直接使用memo
+    const memo = ObjectUtil.getProperty(attrs, "memo", "")
+    const shortDesc = ObjectUtil.getProperty(attrs, "custom-desc", memo)
+
+    // 分类
+    const cates = ObjectUtil.getProperty(attrs, "custom-categories", "")
+    const cateNames = StrUtil.isEmptyString(cates) ? [] : cates.split(",")
+
+    // 公共属性
     const publicAttrs = {
       "custom-publish-status": ObjectUtil.getProperty(attrs, "custom-publish-status", ""),
       "custom-publish-time": ObjectUtil.getProperty(attrs, "custom-publish-time", ""),
       "custom-expires": ObjectUtil.getProperty(attrs, "custom-expires", ""),
-      "custom-slug": ObjectUtil.getProperty(attrs, "custom-slug", alias),
+      "custom-slug": slug,
       "custom-desc": shortDesc,
     }
     this.logger.info("get publicAttrs from siyuan getPost=>", publicAttrs)
@@ -180,10 +185,19 @@ class SiYuanApiAdaptor extends BlogApi {
     commonPost.markdown = md ?? ""
     commonPost.editorDom = editorDom ?? ""
     commonPost.description = html ?? ""
-    commonPost.wp_slug = shortDesc ?? ""
+    commonPost.wp_slug = slug ?? ""
     commonPost.shortDesc = shortDesc ?? ""
+    commonPost.mt_text_more = shortDesc ?? ""
+    commonPost.mt_excerpt = shortDesc ?? ""
     commonPost.mt_keywords = attrs.tags ?? ""
+    // 支持分类的平台在页面实时设置
+    commonPost.categories = cateNames ?? []
+    // 支持知识库的在页面实时设置
+    commonPost.cate_slugs = []
+    commonPost.link = siyuanPost.hpath ?? ""
+    commonPost.permalink = `siyuan://blocks/${siyuanPost.root_id}`
     commonPost.post_status = isPublished ? PostStatusEnum.PostStatusEnum_Publish : PostStatusEnum.PostStatusEnum_Draft
+    // 为了安全，密码需要在页面实时设置
     commonPost.wp_password = ""
     commonPost.attrs = JSON.stringify(publicAttrs)
 
