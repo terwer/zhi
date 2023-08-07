@@ -1,5 +1,12 @@
 # zhi-siyuan-api
 
+## 2.0.13
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.12
+
 ## 2.0.12
 
 ### Patch Changes

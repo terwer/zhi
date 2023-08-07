@@ -1,6 +1,6 @@
 {
   "name": "zhi-blog-api",
-  "version": "1.20.11",
+  "version": "1.20.12",
   "type": "module",
   "description": "a common blog interface",
   "main": "./dist/index.js",

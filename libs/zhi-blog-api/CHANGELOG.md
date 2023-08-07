@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.12
+
+### Patch Changes
+
+- add well message
+
 ## 1.20.11
 
 ### Patch Changes
