@@ -25,6 +25,7 @@
 
 import { simpleLogger } from "zhi-lib-base"
 import StrUtil from "./strUtil"
+import { isRef, isReactive, toRaw } from "vue"
 
 /**
  * Object 工具类
@@ -69,9 +70,17 @@ class ObjectUtil {
     }
 
     try {
+      let obj = object
+
+      if (isRef(object)) {
+        obj = toRaw(object)
+      } else if (isReactive(object)) {
+        obj = toRaw(object)
+      }
+
       // eslint-disable-next-line no-prototype-builtins
-      if (object.hasOwnProperty(key)) {
-        return object[key]
+      if (obj.hasOwnProperty(key)) {
+        return obj[key]
       }
       return defaultValue
     } catch (error) {

@@ -1,6 +1,6 @@
 {
   "name": "zhi-github-middleware",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "type": "module",
   "description": "a middleware for github api",
   "main": "./dist/index.js",

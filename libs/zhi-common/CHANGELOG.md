@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.13.4
+
+### Patch Changes
+
+- compatible with vue's ref and reactive
+
 ## 1.13.3
 
 ### Patch Changes
