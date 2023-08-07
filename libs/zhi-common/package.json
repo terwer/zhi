@@ -1,6 +1,6 @@
 {
   "name": "zhi-common",
-  "version": "1.13.2",
+  "version": "1.13.3",
   "type": "module",
   "description": "a collection of util tools",
   "main": "./dist/index.js",
@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "js-yaml": "^4.1.0",
+    "shorthash2": "^1.0.3",
     "transliteration": "^2.3.5",
     "zhi-lib-base": "workspace:*"
   },

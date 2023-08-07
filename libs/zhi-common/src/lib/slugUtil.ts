@@ -25,6 +25,8 @@
 
 import { slugify } from "transliteration"
 import StrUtil from "./strUtil"
+import shortHash from "shorthash2"
+import { simpleLogger } from "zhi-lib-base"
 
 /**
  * 别名翻译器类
@@ -33,19 +35,30 @@ import StrUtil from "./strUtil"
  * @since 1.12.1
  */
 class AliasTranslator {
+  private static logger = simpleLogger("slug-util")
+
+  /**
+   * 修复标题
+   *
+   * @param q - 输入的标题字符串
+   * @param isFixTitle - 是否修复标题，默认为true
+   * @returns 修复后的标题字符串
+   */
+  public static fixTitle(q: string, isFixTitle?: boolean): string {
+    q = q ?? "无标题"
+    if (isFixTitle) {
+      q = StrUtil.removeTitleNumber(q).trim()
+    }
+    return q
+  }
+
   /**
    * 将中文名翻译为英文别名
    *
    * @param q 中文名
-   * @param fixTitle 是否去除标题数字
    * @returns Promise<string> 英文别名
    */
-  public static async wordSlugify(q: string, fixTitle?: boolean): Promise<string> {
-    q = q ?? "无标题"
-    if (fixTitle) {
-      q = StrUtil.removeTitleNumber(q).trim()
-    }
-
+  public static async wordSlugify(q: string): Promise<string> {
     const v = await fetch("https://api.terwer.space/api/translate?q=" + q)
     const json = await v.json()
     let res = json[0][0]
@@ -70,6 +83,47 @@ class AliasTranslator {
    */
   public static pinyinSlugify(q: string): string {
     return slugify(q)
+  }
+
+  public static hashstr(title: string) {
+    const newstr = title + new Date().toISOString()
+    return ["-", shortHash(newstr).toLowerCase()].join("")
+  }
+
+  /**
+   * 获取页面原始slug
+   *
+   * @param q - 输入的标题字符串
+   * @param isFixTitle - 是否修复标题，默认为true
+   * @returns 页面的原始slug
+   */
+  public static async getPageOriginSlug(q: string, isFixTitle?: boolean): Promise<string> {
+    const title = this.fixTitle(q, isFixTitle)
+    let slug = title
+    try {
+      slug = await this.wordSlugify(q)
+      this.logger.debug(`Successfully generated slug for "${q}": ${slug}`)
+    } catch (e) {
+      this.logger.warn(`Failed to generate slug for "${q}". Using pinyin slug: ${slug}`)
+      slug = this.pinyinSlugify(q)
+    }
+    return slug
+  }
+
+  /**
+   * 获取页面slug
+   *
+   * @param q - 输入的标题字符串
+   * @param isFixTitle - 是否修复标题，默认为true
+   * @returns 页面的slug
+   */
+  public static async getPageSlug(q: string, isFixTitle?: boolean): Promise<string> {
+    const title = this.fixTitle(q, isFixTitle)
+    const slug = await this.getPageOriginSlug(q, isFixTitle)
+    const hash = this.hashstr(title)
+
+    this.logger.debug(`Generated slug for "${q}": ${slug}`)
+    return [slug, hash].join("")
   }
 }
 

@@ -82,6 +82,9 @@ importers:
       js-yaml:
         specifier: ^4.1.0
         version: 4.1.0
+      shorthash2:
+        specifier: ^1.0.3
+        version: 1.0.3
       transliteration:
         specifier: ^2.3.5
         version: 2.3.5
@@ -7047,6 +7050,10 @@ packages:
   /shebang-regex@3.0.0:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
+    dev: false
+
+  /shorthash2@1.0.3:
+    resolution: {integrity: sha512-oB8s64JsyJ2xhHJlnTwGg++Y3BTF6XnXeXMC7OygD8vtNcCRDiMxEGONvUOeZbxfwEXENmRlqPDouMR/OtGDsw==}
     dev: false
 
   /showdown@2.1.0:

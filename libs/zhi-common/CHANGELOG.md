@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.13.3
+
+### Patch Changes
+
+- change slug method
+
 ## 1.13.2
 
 ### Patch Changes

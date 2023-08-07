@@ -34,7 +34,7 @@ import StrUtil from "./strUtil"
  * @since 1.0.0
  */
 class ObjectUtil {
-  private static logger = simpleLogger("pbject-util")
+  private static logger = simpleLogger("object-util")
 
   /**
    * 检测是否是空对象
