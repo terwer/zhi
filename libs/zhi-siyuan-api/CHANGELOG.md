@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.0.10
+
+### Patch Changes
+
+- fix packaging format errors
+
 ## 2.0.9
 
 ### Patch Changes

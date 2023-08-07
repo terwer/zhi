@@ -1,5 +1,11 @@
 # zhi-notion-markdown
 
+## 0.1.2
+
+### Patch Changes
+
+- fix packaging format errors
+
 ## 0.1.1
 
 ### Patch Changes
