@@ -1,5 +1,11 @@
 # zhi-wechatsync-middleware
 
+## 0.1.33
+
+### Patch Changes
+
+- fix: fix packaging format errors
+
 ## 0.1.32
 
 ### Patch Changes

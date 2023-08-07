@@ -1,5 +1,11 @@
 # zhi-github-middleware
 
+## 0.1.17
+
+### Patch Changes
+
+- fix: fix packaging format errors
+
 ## 0.1.16
 
 ### Patch Changes

@@ -47,7 +47,7 @@ export default defineConfig({
       entry: resolve(__dirname, "src/index.ts"),
       // the proper extensions will be added
       fileName: "index",
-      formats: ["cjs"],
+      formats: ["es"],
     },
     rollupOptions: {
       plugins: [...(isWatch ? [livereload(devDistDir)] : [])],
