@@ -27,7 +27,7 @@ import { Attachment, BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, U
 import SiyuanKernelApi from "../kernel/siyuanKernelApi"
 import SiyuanConfig from "../config/siyuanConfig"
 import { NotImplementedException } from "zhi-lib-base"
-import { HtmlUtil } from "zhi-common"
+import { HtmlUtil, ObjectUtil } from "zhi-common"
 import { createSiyuanAppLogger } from "../utils"
 
 /**
@@ -141,15 +141,16 @@ class SiYuanApiAdaptor extends BlogApi {
       title = HtmlUtil.removeTitleNumber(title)
     }
 
-    let shortDesc
+    const memo = ObjectUtil.getProperty(attrs, "memo", "")
+    let shortDesc = memo
     // 渲染Markdown
-    let md
-    let html
-    let editorDom
+    let md: string
+    let html: string
+    let editorDom: string
     // 如果忽略 body，则不进行转换
     if (!skipBody) {
-      // 摘要
-      shortDesc = attrs["custom-desc"] || ""
+      // 摘要，custom-desc已废弃，知识为了兼容之前的，后续直接使用memo
+      shortDesc = ObjectUtil.getProperty(attrs, "custom-desc", "")
 
       md = (await this.siyuanKernelApi.exportMdContent(pid)).content
       const edData = await this.siyuanKernelApi.getDoc(pid)
@@ -162,23 +163,26 @@ class SiYuanApiAdaptor extends BlogApi {
       }
     }
 
+    const alias = ObjectUtil.getProperty(attrs, "alias", "")
     const publicAttrs = {
-      "custom-publish-status": attrs["custom-publish-status"],
-      "custom-publish-time": attrs["custom-publish-time"],
-      "custom-expires": attrs["custom-expires"],
-      // "custom-desc": attrs["custom-desc"],
+      "custom-publish-status": ObjectUtil.getProperty(attrs, "custom-publish-status", ""),
+      "custom-publish-time": ObjectUtil.getProperty(attrs, "custom-publish-time", ""),
+      "custom-expires": ObjectUtil.getProperty(attrs, "custom-expires", ""),
+      "custom-slug": ObjectUtil.getProperty(attrs, "custom-slug", alias),
+      "custom-desc": shortDesc,
     }
     this.logger.info("get publicAttrs from siyuan getPost=>", publicAttrs)
 
     // 适配公共属性
     const commonPost = new Post()
-    commonPost.postid = siyuanPost.root_id || ""
-    commonPost.title = title || ""
-    commonPost.markdown = md || ""
-    commonPost.editorDom = editorDom || ""
-    commonPost.description = html || ""
-    commonPost.shortDesc = shortDesc || ""
-    commonPost.mt_keywords = attrs.tags || ""
+    commonPost.postid = siyuanPost.root_id ?? ""
+    commonPost.title = title ?? ""
+    commonPost.markdown = md ?? ""
+    commonPost.editorDom = editorDom ?? ""
+    commonPost.description = html ?? ""
+    commonPost.wp_slug = shortDesc ?? ""
+    commonPost.shortDesc = shortDesc ?? ""
+    commonPost.mt_keywords = attrs.tags ?? ""
     commonPost.post_status = isPublished ? PostStatusEnum.PostStatusEnum_Publish : PostStatusEnum.PostStatusEnum_Draft
     commonPost.wp_password = ""
     commonPost.attrs = JSON.stringify(publicAttrs)

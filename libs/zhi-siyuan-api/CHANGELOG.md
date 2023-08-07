@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.0.8
+
+### Patch Changes
+
+- fix: fix aliases and digest fetches
+
 ## 2.0.7
 
 ### Patch Changes
