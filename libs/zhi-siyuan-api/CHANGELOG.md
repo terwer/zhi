@@ -1,5 +1,13 @@
 # zhi-siyuan-api
 
+## 2.0.14
+
+### Patch Changes
+
+- feat: add html format
+- Updated dependencies
+  - zhi-blog-api@1.20.13
+
 ## 2.0.13
 
 ### Patch Changes

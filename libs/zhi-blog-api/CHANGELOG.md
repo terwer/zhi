@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.13
+
+### Patch Changes
+
+- feat: add html format
+
 ## 1.20.12
 
 ### Patch Changes

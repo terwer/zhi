@@ -62,6 +62,11 @@ class Post {
   shortDesc?: string
 
   /**
+   * HTML正文
+   */
+  html?: string
+
+  /**
    * MD正文
    */
   markdown?: string
@@ -131,6 +136,7 @@ class Post {
     this.title = ""
     this.mt_keywords = ""
     this.permalink = ""
+    this.html = ""
     this.markdown = ""
     this.editorDom = ""
     this.description = ""

@@ -183,6 +183,7 @@ class SiYuanApiAdaptor extends BlogApi {
     commonPost.postid = siyuanPost.root_id ?? ""
     commonPost.title = title ?? ""
     commonPost.markdown = md ?? ""
+    commonPost.html = html ?? ""
     commonPost.editorDom = editorDom ?? ""
     commonPost.description = html ?? ""
     commonPost.wp_slug = slug ?? ""
