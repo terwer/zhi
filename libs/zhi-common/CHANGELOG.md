@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.14.0
+
+### Minor Changes
+
+- feat: add get github page method
+
 ## 1.13.4
 
 ### Patch Changes

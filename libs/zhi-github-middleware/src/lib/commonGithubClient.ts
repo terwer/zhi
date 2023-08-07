@@ -63,12 +63,13 @@ class CommonGithubClient {
   }
 
   /**
-   * 获取Github文件的sha，如果文件不存在返回undefined，存在返回sha
+   * 获取Github文件内容
+   *
    * 子类API使用，应用层面不建议直接调用
    *
    * @param docPath 完整文件路径，例如：docs/_posts/测试.md
    */
-  async getPageData(docPath: string): Promise<any> {
+  protected async getPageData(docPath: string): Promise<any> {
     let data
 
     if (StrUtil.isEmptyString(this.githubConfig.githubUser) || StrUtil.isEmptyString(this.githubConfig.githubRepo)) {
@@ -220,7 +221,17 @@ class CommonGithubClient {
   }
 
   /**
-   * 获取Github文件的sha，如果文件不存在返回undefined，存在返回sha
+   * 获取单个页面
+   *
+   * @param docPath - 页面地址
+   */
+  public async getGithubPage(docPath: string): Promise<any> {
+    const data = await this.getPageData(docPath)
+    return data
+  }
+
+  /**
+   * 获取Github文件树列表
    *
    * @param docPath 完整文件路径，例如：docs/_posts/测试.md
    */

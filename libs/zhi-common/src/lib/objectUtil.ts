@@ -61,23 +61,23 @@ class ObjectUtil {
    * @param {any} [defaultValue=""] - 默认值
    */
   public static getProperty(object: any, key: string, defaultValue: any = ""): any {
-    if (typeof object !== "object") {
-      throw new Error("Invalid arguments. object should be an object")
-    }
-
     if (StrUtil.isEmptyString(key)) {
       return defaultValue
     }
 
+    let obj = object
+
+    if (isRef(object)) {
+      obj = toRaw(object)
+    } else if (isReactive(object)) {
+      obj = toRaw(object)
+    }
+
+    if (typeof obj !== "object") {
+      throw new Error("Invalid arguments. object should be an object")
+    }
+
     try {
-      let obj = object
-
-      if (isRef(object)) {
-        obj = toRaw(object)
-      } else if (isReactive(object)) {
-        obj = toRaw(object)
-      }
-
       // eslint-disable-next-line no-prototype-builtins
       if (obj.hasOwnProperty(key)) {
         return obj[key]

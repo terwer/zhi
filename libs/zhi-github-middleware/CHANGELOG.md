@@ -1,5 +1,16 @@
 # zhi-github-middleware
 
+## 0.2.0
+
+### Minor Changes
+
+- feat: add get github page method
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.14.0
+
 ## 0.1.18
 
 ### Patch Changes
