@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.15
+
+### Patch Changes
+
+- change base class
+
 ## 1.20.14
 
 ### Patch Changes
