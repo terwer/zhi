@@ -73,7 +73,7 @@ interface IWebApi extends IBlogApi {
    *
    * @param post 文章内容
    */
-  addPost(post: Post): Promise<void>
+  addPost(post: Post): Promise<any>
 
   /**
    * 上传图片：调用平台 API 上传图片

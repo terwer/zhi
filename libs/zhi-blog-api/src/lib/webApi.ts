@@ -45,7 +45,7 @@ class WebApi implements IWebApi {
     throw new NotImplementedException("You must implement buildCookie in sub class")
   }
 
-  public async addPost(post: Post): Promise<void> {
+  public async addPost(post: Post): Promise<any> {
     throw new NotImplementedException("You must implement addPost in sub class")
   }
 

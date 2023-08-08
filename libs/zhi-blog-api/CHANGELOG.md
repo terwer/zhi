@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.14
+
+### Patch Changes
+
+- change return type
+
 ## 1.20.13
 
 ### Patch Changes
