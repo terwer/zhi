@@ -100,27 +100,31 @@ class DateUtil {
    * 转换ISO日期为中文完整时间
    *
    * @param str - '2022-07-18T06:25:48.000Z
+   * @param isAddTimeZone - 是否增加时区，默认不增加
+   * @param isShort - 是否短时间
    */
-  public static formatIsoToZh(str: string) {
-    return this.formatIsoToZhDateFormat(str, false, false)
+  public static formatIsoToZh(str: string, isAddTimeZone?: boolean, isShort?: boolean) {
+    return this.formatIsoToZhDateFormat(str, isAddTimeZone, isShort)
   }
 
   /**
    * 转换ISO日期为中文日期
    *
    * @param str - '2022-07-18T06:25:48.000Z
+   * @param isAddTimeZone - 是否增加时区，默认不增加
    */
-  public static formatIsoToZhDate(str: string) {
-    return this.formatIsoToZhDateFormat(str, false, true)
+  public static formatIsoToZhDate(str: string, isAddTimeZone?: boolean) {
+    return this.formatIsoToZhDateFormat(str, isAddTimeZone, true)
   }
 
   /**
    * 转换ISO日期为中文时间
    *
    * @param str - '2022-07-18T06:25:48.000Z
+   * @param isAddTimeZone - 是否增加时区，默认不增加
    */
-  public static formatIsoToZhTime(str: string) {
-    const dt = this.formatIsoToZhDateFormat(str, false)
+  public static formatIsoToZhTime(str: string, isAddTimeZone?: boolean) {
+    const dt = this.formatIsoToZhDateFormat(str, isAddTimeZone)
     return dt.split(this.TIME_SPLIT)[1]
   }
 
