@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.16
+
+### Patch Changes
+
+- fix fields
+
 ## 1.20.15
 
 ### Patch Changes

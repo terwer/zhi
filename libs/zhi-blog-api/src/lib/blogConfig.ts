@@ -165,6 +165,21 @@ abstract class BlogConfig {
   public middlewareUrl?: string
 
   /**
+   * 是否启用用户名
+   */
+  public usernameEnabled = false
+
+  /**
+   * 是否允许修改预览地址
+   */
+  public allowPreviewUrlChange = true
+
+  /**
+   * 是否展示Token设置地址
+   */
+  public showTokenTip = false
+
+  /**
    * 知识空间名称，例如：语雀叫做知识库、Confluence叫做知识空间、Notion可以叫做根页面
    */
   public knowledgeSpaceTitle?: string
@@ -189,6 +204,9 @@ abstract class BlogConfig {
     this.placeholder = undefined
     this.fixTitle = false
     this.middlewareUrl = ""
+    this.usernameEnabled = false
+    this.allowPreviewUrlChange = true
+    this.showTokenTip = false
     this.knowledgeSpaceTitle = "知识库"
     this.enableKnowledgeSpace = false
   }
