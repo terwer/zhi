@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.17
+
+### Patch Changes
+
+- make placeholder public
+
 ## 1.20.16
 
 ### Patch Changes
