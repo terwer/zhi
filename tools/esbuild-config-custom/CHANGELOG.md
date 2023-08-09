@@ -1,5 +1,17 @@
 # @terwer/esbuild-config-custom
 
+## 1.1.0
+
+### Minor Changes
+
+- 9aea505: esbuild config via windows
+
+### Patch Changes
+
+- fix esbuild build
+- fix esbuild
+- fix esbuild
+
 ## 1.0.12
 
 ### Patch Changes

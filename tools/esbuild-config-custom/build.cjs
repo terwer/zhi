@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const os = require("os")
 const path = require("path")
 const esbuild = require("esbuild")
 const minimist = require("minimist")
