@@ -26,6 +26,7 @@ class ZhiBuild {
     // 读取用户定义的配置文件
     let userEsbuildConfig = {}
     let customConfig = {}
+    // 兼容 windows
     const isWindows = os.platform() === "win32"
     const esbuildConfigFile = isWindows ? `file:///${path.join(process.cwd(), cfg)}` : path.join(process.cwd(), cfg)
     console.log("reading user defined esbuild config from =>", esbuildConfigFile)

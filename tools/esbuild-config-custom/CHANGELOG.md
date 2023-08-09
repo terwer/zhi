@@ -1,5 +1,11 @@
 # @terwer/esbuild-config-custom
 
+## 1.2.0
+
+### Minor Changes
+
+- compatible esbuild with windows
+
 ## 1.1.0
 
 ### Minor Changes
