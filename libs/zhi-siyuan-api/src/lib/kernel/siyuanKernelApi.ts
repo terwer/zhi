@@ -27,7 +27,6 @@ import SiyuanConfig from "../config/siyuanConfig"
 import ISiyuanKernelApi, { type SiyuanData } from "./ISiyuanKernelApi"
 import { JsonUtil, StrUtil } from "zhi-common"
 import { createSiyuanAppLogger } from "../utils"
-import FormData from "form-data"
 
 /**
  * 思源笔记服务端API v2.8.2
@@ -631,6 +630,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    * @param file - 上传的文件
    */
   public async putFile(path: string, file: any): Promise<SiyuanData> {
+    // import FormData from "form-data"
     const formData = new FormData()
     formData.append("path", path)
     formData.append("isDir", "false")

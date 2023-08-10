@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.0.20
+
+### Patch Changes
+
+- change formData
+
 ## 2.0.19
 
 ### Patch Changes
