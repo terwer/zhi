@@ -66,8 +66,8 @@ class WebAdaptor extends BlogAdaptor {
     return await this.webAdaptor.getMetaData()
   }
 
-  public async preEditPost(post: Post): Promise<Post> {
-    return await this.webAdaptor.preEditPost(post)
+  public async preEditPost(post: Post, dynCfg: any): Promise<Post> {
+    return await this.webAdaptor.preEditPost(post, dynCfg)
   }
 
   public async addPost(post: Post): Promise<void> {

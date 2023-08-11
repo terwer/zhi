@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.20
+
+### Patch Changes
+
+- add dynCfg parameter
+
 ## 1.20.19
 
 ### Patch Changes
