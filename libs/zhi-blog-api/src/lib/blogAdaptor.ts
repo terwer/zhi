@@ -92,6 +92,16 @@ class BlogAdaptor implements IBlogApi {
   }
 
   /**
+   * 内容预处理：预处理平台无法兼容的文本内容
+   *
+   * @param post 文章内容
+   * @returns Promise<Post> 预处理后的文章内容
+   */
+  public async preEditPost(post: Post): Promise<Post> {
+    return await this.apiAdaptor.preEditPost(post)
+  }
+
+  /**
    * 发布文章
    *
    * @param post - 文章

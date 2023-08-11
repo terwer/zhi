@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.19
+
+### Patch Changes
+
+- add preEditPost
+
 ## 1.20.18
 
 ### Patch Changes
