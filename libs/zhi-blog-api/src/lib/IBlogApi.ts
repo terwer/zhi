@@ -66,6 +66,14 @@ interface IBlogApi {
   getRecentPosts(numOfPosts: number, page?: number, keyword?: string): Promise<Array<Post>>
 
   /**
+   * 内容预处理：预处理平台无法兼容的文本内容
+   *
+   * @param post 文章内容
+   * @returns Promise<Post> 预处理后的文章内容
+   */
+  preEditPost(post: Post): Promise<Post>
+
+  /**
    * 发布文章
    *
    * @param post - 文章

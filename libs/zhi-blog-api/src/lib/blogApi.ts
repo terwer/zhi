@@ -47,6 +47,10 @@ class BlogApi implements IBlogApi {
     throw new NotImplementedException("You must implement getRecentPosts in sub class")
   }
 
+  public async preEditPost(post: Post): Promise<Post> {
+    throw new NotImplementedException("You must implement preEditPost in sub class")
+  }
+
   public async newPost(post: Post, publish?: boolean): Promise<string> {
     throw new NotImplementedException("You must implement newPost in sub class")
   }

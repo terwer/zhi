@@ -42,7 +42,7 @@ class WebApi extends BlogApi implements IWebApi {
     throw new NotImplementedException("You must implement buildCookie in sub class")
   }
 
-  public async getMetaData(): Promise<object> {
+  public async getMetaData(): Promise<any> {
     throw new NotImplementedException("You must implement getMetaData in sub class")
   }
 
@@ -54,7 +54,7 @@ class WebApi extends BlogApi implements IWebApi {
     throw new NotImplementedException("You must implement addPost in sub class")
   }
 
-  public async uploadFile(file: File): Promise<string> {
+  public async uploadFile(file: File): Promise<any> {
     throw new NotImplementedException("You must implement uploadFile in sub class")
   }
 
