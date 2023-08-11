@@ -66,8 +66,15 @@ class WebAdaptor extends BlogAdaptor {
     return await this.webAdaptor.getMetaData()
   }
 
-  public async preEditPost(post: Post, dynCfg: any): Promise<Post> {
-    return await this.webAdaptor.preEditPost(post, dynCfg)
+  /**
+   * 内容预处理：预处理平台无法兼容的文本内容
+   *
+   * @param post 文章对象
+   * @param id - 思源笔记文档ID
+   * @param publishCfg - 发布配置
+   */
+  public async preEditPost(post: Post, id?: string, publishCfg?: any): Promise<Post> {
+    return await this.webAdaptor.preEditPost(post, id, publishCfg)
   }
 
   public async addPost(post: Post): Promise<void> {

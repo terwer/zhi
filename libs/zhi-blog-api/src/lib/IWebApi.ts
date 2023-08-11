@@ -63,11 +63,11 @@ interface IWebApi extends IBlogApi {
   /**
    * 内容预处理：预处理平台无法兼容的文本内容
    *
-   * @param post 文章内容
-   * @param dynCfg 平台基本配置
-   * @returns Promise<Post> 预处理后的文章内容
+   * @param post 文章对象
+   * @param id - 思源笔记文档ID
+   * @param publishCfg - 发布配置
    */
-  preEditPost(post: Post, dynCfg: any): Promise<Post>
+  preEditPost(post: Post, id?: string, publishCfg?: any): Promise<Post>
 
   /**
    * 创建文章：调用平台 API 创建草稿
