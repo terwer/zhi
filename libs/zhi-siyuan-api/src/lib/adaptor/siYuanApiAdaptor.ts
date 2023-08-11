@@ -103,6 +103,11 @@ class SiYuanApiAdaptor extends BlogApi {
     return result
   }
 
+  public async preEditPost(post: Post, dynCfg: any): Promise<Post> {
+    this.logger.info("思源笔记内部，忽略预处理")
+    return post
+  }
+
   public override async newPost(post: Post, publish?: boolean): Promise<string> {
     const ret = await this.siyuanKernelApi.createDocWithMd(this.cfg.notebook, `/${post.title}`, post.description)
     return ret.data

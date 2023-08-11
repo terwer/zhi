@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.0.25
+
+### Patch Changes
+
+- preEditPost impl
+
 ## 2.0.24
 
 ### Patch Changes
