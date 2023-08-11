@@ -1,5 +1,13 @@
 # zhi-siyuan-api
 
+## 2.0.21
+
+### Patch Changes
+
+- fix handle chars
+- Updated dependencies
+  - zhi-common@1.14.2
+
 ## 2.0.20
 
 ### Patch Changes

@@ -166,8 +166,15 @@ class HtmlUtil {
   public static removeH1(html: string): string {
     let newstr = html
 
-    const h1Regex = /<h1.*\/h1>/g
-    newstr = newstr.replace(h1Regex, "")
+    // 在正则表达式中使用非贪婪模式
+    const h1Regex = /<h1.*?\/h1>/
+    // 查找第一个匹配的 <h1> 标签
+    const match = newstr.match(h1Regex)
+
+    // 替换第一个 <h1> 标签及其内容为空字符串
+    if (match) {
+      newstr = newstr.replace(match[0], "")
+    }
 
     return newstr
   }
@@ -188,7 +195,7 @@ class HtmlUtil {
    */
   public static removeMdH1(md: string) {
     let newstr = md
-    const mdH1Regex = /^# .*$/gm
+    const mdH1Regex = /^# .*$/m // 移除 'g' 标志以仅匹配第一个 H1 标题
     newstr = newstr.replace(mdH1Regex, "")
     return newstr
   }

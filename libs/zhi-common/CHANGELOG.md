@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.14.2
+
+### Patch Changes
+
+- fix handle chars
+
 ## 1.14.1
 
 ### Patch Changes

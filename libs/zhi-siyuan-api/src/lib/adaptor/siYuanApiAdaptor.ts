@@ -149,11 +149,16 @@ class SiYuanApiAdaptor extends BlogApi {
       const edData = await this.siyuanKernelApi.getDoc(pid)
       editorDom = edData.content
       html = (await this.siyuanKernelApi.exportPreview(pid)).html
+
       // 移除挂件html
+      md = HtmlUtil.removeMdWidgetTag(md)
       html = HtmlUtil.removeWidgetTag(html)
-      if (this.cfg.fixTitle) {
-        html = HtmlUtil.removeH1(html)
-      }
+      this.logger.info("挂件的HTML已移除")
+
+      // 删除H1
+      md = HtmlUtil.removeMdH1(md)
+      html = HtmlUtil.removeH1(html)
+      this.logger.info("第一个H1已移除")
     }
 
     // 别名
