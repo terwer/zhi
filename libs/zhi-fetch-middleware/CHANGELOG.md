@@ -1,5 +1,11 @@
 # zhi-fetch-middleware
 
+## 0.2.21
+
+### Patch Changes
+
+- add fetch response check
+
 ## 0.2.20
 
 ### Patch Changes

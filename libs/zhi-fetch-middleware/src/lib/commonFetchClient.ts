@@ -92,10 +92,19 @@ class CommonFetchClient {
       throw new Error("请求异常，response is undefined")
     }
 
-    let resJson
+    let resJson: any
 
     const isResponse = response?.status && response?.headers && response?.url
-    if (isResponse || response instanceof Response) {
+    const isStream = response?.body instanceof ReadableStream
+    const isString = response?.body instanceof String
+    this.logger.info(`check if response is valid, isResponse=>${isResponse}`)
+    this.logger.info(`check response body is stream =>${isStream}`, typeof response?.body)
+    this.logger.info(`check response body is string =>${isString}`, typeof response?.body)
+
+    if (!isResponse || !(response instanceof Response) || isStream) {
+      this.logger.debug("response不是Response的实例", typeof response)
+      resJson = response
+    } else {
       // 解析响应体并返回响应结果
       const statusCode = response.status
 
@@ -133,9 +142,6 @@ class CommonFetchClient {
         const corsJson = await response.json()
         resJson = this.parseCORSBody(corsJson)
       }
-    } else {
-      this.logger.debug("response不是Response的实例", typeof response)
-      resJson = response
     }
 
     return resJson
