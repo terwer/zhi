@@ -6,6 +6,7 @@ import { viteStaticCopy } from "vite-plugin-static-copy"
 import dts from "vite-plugin-dts"
 import minimist from "minimist"
 import livereload from "rollup-plugin-livereload"
+import { nodePolyfills } from "vite-plugin-node-polyfills"
 
 const args = minimist(process.argv.slice(2))
 const isWatch = args.watch || args.w || false
@@ -31,6 +32,13 @@ export default defineConfig({
           dest: "./",
         },
       ],
+    }),
+
+    // 在浏览器中polyfill node
+    // https://github.com/davidmyersdev/vite-plugin-node-polyfills/blob/main/test/src/main.ts
+    nodePolyfills({
+      exclude: ["fs"],
+      protocolImports: true,
     }),
   ],
 

@@ -1,6 +1,6 @@
 {
   "name": "zhi-notion-markdown",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "type": "module",
   "description": "convert md to notion blocks and back",
   "main": "./dist/index.js",
@@ -26,7 +26,8 @@
   },
   "devDependencies": {
     "@terwer/eslint-config-custom": "workspace:*",
-    "@terwer/vite-config-custom": "workspace:*"
+    "@terwer/vite-config-custom": "workspace:*",
+    "vite-plugin-node-polyfills": "^0.8.2"
   },
   "publishConfig": {
     "access": "public"

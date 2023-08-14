@@ -1,5 +1,11 @@
 # zhi-notion-markdown
 
+## 0.1.3
+
+### Patch Changes
+
+- polifill path and url
+
 ## 0.1.2
 
 ### Patch Changes
