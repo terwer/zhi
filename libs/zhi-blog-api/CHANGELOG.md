@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.20.22
+
+### Patch Changes
+
+- remove duplicate parameters
+
 ## 1.20.21
 
 ### Patch Changes

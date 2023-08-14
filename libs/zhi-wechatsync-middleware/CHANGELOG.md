@@ -1,5 +1,12 @@
 # zhi-wechatsync-middleware
 
+## 0.1.48
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.22
+
 ## 0.1.47
 
 ### Patch Changes

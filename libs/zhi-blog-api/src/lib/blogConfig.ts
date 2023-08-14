@@ -113,11 +113,6 @@ abstract class BlogConfig {
   public tokenSettingUrl?: string
 
   /**
-   * 请求 cookie
-   */
-  public cookie?: string
-
-  /**
    * 标识
    */
   public blogid?: string
@@ -195,7 +190,6 @@ abstract class BlogConfig {
     this.username = ""
     this.passwordType = PasswordType.PasswordType_Password
     this.password = ""
-    this.cookie = undefined
     this.blogid = ""
     this.blogName = ""
     this.posidKey = ""
