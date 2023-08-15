@@ -207,19 +207,9 @@ class DateUtil {
   }
 
   private static changeTimeZone(date: any, timeZone: string): Date {
-    if (typeof date === "string") {
-      return new Date(
-        new Date(date).toLocaleString("zh-CN", {
-          timeZone,
-        })
-      )
-    }
-
-    return new Date(
-      date.toLocaleString("zh-CN", {
-        timeZone,
-      })
-    )
+    const options = { timeZone: timeZone }
+    const dateObj = typeof date === "string" ? new Date(date) : date
+    return new Date(dateObj.toLocaleString("zh-CN", options))
   }
 
   /**
@@ -228,12 +218,13 @@ class DateUtil {
    * @param dateString dateString
    *
    * ```
-   * should be in ISO format: "yyyy-mm-dd", "yyyy-mm" or "yyyy" or yyyymmddsss
+   * should be in ISO format: "yyyy-mm-dd hh:MM:ss" or
+   * "yyyy-mm-dd", "yyyy-mm" or "yyyy" or yyyymmddsss
    * ```
    *
    * @returns {Date}
    */
-  public static covertStringToDate(dateString: string): Date {
+  public static convertStringToDate(dateString: string): Date {
     const datestr = this.formatNumToZhDate(dateString)
     return this.changeTimeZone(datestr, "Asia/Shanghai")
   }

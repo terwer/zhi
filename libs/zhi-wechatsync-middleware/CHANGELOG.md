@@ -1,5 +1,20 @@
 # zhi-wechatsync-middleware
 
+## 0.2.3
+
+### Patch Changes
+
+- fix typo
+- Updated dependencies
+  - zhi-common@1.16.1
+
+## 0.2.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.16.0
+
 ## 0.2.1
 
 ### Patch Changes

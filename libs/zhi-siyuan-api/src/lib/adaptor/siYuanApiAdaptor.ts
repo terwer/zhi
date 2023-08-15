@@ -197,8 +197,8 @@ class SiYuanApiAdaptor extends BlogApi {
     // 适配公共属性
     const commonPost = new Post()
     commonPost.postid = siyuanPost.root_id ?? ""
-    commonPost.dateCreated = DateUtil.covertStringToDate(DateUtil.formatNumToZhDate(siyuanPost.created))
-    commonPost.dateUpdated = DateUtil.covertStringToDate(DateUtil.formatNumToZhDate(siyuanPost.updated))
+    commonPost.dateCreated = DateUtil.convertStringToDate(DateUtil.formatNumToZhDate(siyuanPost.created))
+    commonPost.dateUpdated = DateUtil.convertStringToDate(DateUtil.formatNumToZhDate(siyuanPost.updated))
     commonPost.title = title
     commonPost.markdown = md ?? ""
     commonPost.html = html ?? ""

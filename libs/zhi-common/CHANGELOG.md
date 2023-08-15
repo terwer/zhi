@@ -1,5 +1,17 @@
 # zhi-common
 
+## 1.16.1
+
+### Patch Changes
+
+- fix typo
+
+## 1.16.0
+
+### Minor Changes
+
+- fix dateUtil
+
 ## 1.15.1
 
 ### Patch Changes
