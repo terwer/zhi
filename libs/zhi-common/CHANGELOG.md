@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.16.2
+
+### Patch Changes
+
+- add yaml
+
 ## 1.16.1
 
 ### Patch Changes

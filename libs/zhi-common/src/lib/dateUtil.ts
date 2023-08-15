@@ -206,12 +206,6 @@ class DateUtil {
     return datestr
   }
 
-  private static changeTimeZone(date: any, timeZone: string): Date {
-    const options = { timeZone: timeZone }
-    const dateObj = typeof date === "string" ? new Date(date) : date
-    return new Date(dateObj.toLocaleString("zh-CN", options))
-  }
-
   /**
    * 字符转Date
    *
@@ -226,7 +220,7 @@ class DateUtil {
    */
   public static convertStringToDate(dateString: string): Date {
     const datestr = this.formatNumToZhDate(dateString)
-    return this.changeTimeZone(datestr, "Asia/Shanghai")
+    return new Date(datestr)
   }
 }
 
