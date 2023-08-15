@@ -1,5 +1,19 @@
 # zhi-siyuan-api
 
+## 2.1.1
+
+### Patch Changes
+
+- add yaml
+- add yaml
+- add yaml
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - zhi-blog-api@1.22.1
+  - zhi-common@1.15.1
+
 ## 2.1.0
 
 ### Minor Changes

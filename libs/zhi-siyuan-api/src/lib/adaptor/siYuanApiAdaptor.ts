@@ -27,7 +27,7 @@ import { Attachment, BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, U
 import SiyuanKernelApi from "../kernel/siyuanKernelApi"
 import SiyuanConfig from "../config/siyuanConfig"
 import { NotImplementedException } from "zhi-lib-base"
-import { DateUtil, HtmlUtil, ObjectUtil, StrUtil, YamlUtil } from "zhi-common"
+import { DateUtil, HtmlUtil, ObjectUtil, StrUtil, YamlUtil } from "zhi-common";
 import { createSiyuanAppLogger } from "../utils"
 
 /**
@@ -194,25 +194,12 @@ class SiYuanApiAdaptor extends BlogApi {
     }
     // this.logger.info("get publicAttrs from siyuan getPost=>", publicAttrs)
 
-    // yaml 适配
-    let yaml = "---\n---"
-    const yamlObj = {
-      siyuanCreated: DateUtil.formatNumToZhDate(siyuanPost.created),
-      siyuanUpdated: DateUtil.formatNumToZhDate(siyuanPost.updated),
-      siyuanTitle: title,
-      siyuanSlug: slug,
-      permalink: plink,
-      siyuanDesc: shortDesc,
-      siyuanCategory: cateNames,
-      siyuanTags: tags,
-    }
-    yaml = YamlUtil.obj2Yaml(yamlObj)
-
     // 适配公共属性
     const commonPost = new Post()
     commonPost.postid = siyuanPost.root_id ?? ""
+    commonPost.dateCreated = DateUtil.covertStringToDate(DateUtil.formatNumToZhDate(siyuanPost.created))
+    commonPost.dateUpdated = DateUtil.covertStringToDate(DateUtil.formatNumToZhDate(siyuanPost.updated))
     commonPost.title = title
-    commonPost.yaml = yaml
     commonPost.markdown = md ?? ""
     commonPost.html = html ?? ""
     commonPost.editorDom = editorDom ?? ""
@@ -232,6 +219,10 @@ class SiYuanApiAdaptor extends BlogApi {
     // 为了安全，密码需要在页面实时设置
     commonPost.wp_password = ""
     commonPost.attrs = JSON.stringify(publicAttrs)
+
+    // yaml 适配
+    const yamlObj = commonPost.toYamlObj()
+    commonPost.yaml = YamlUtil.obj2Yaml(yamlObj)
 
     return commonPost
   }

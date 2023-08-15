@@ -102,6 +102,11 @@ class Post {
   dateCreated: Date
 
   /**
+   * 更新时间
+   */
+  dateUpdated: Date
+
+  /**
    * 分类
    */
   categories: Array<string>
@@ -154,6 +159,19 @@ class Post {
     this.post_status = PostStatusEnum.PostStatusEnum_Publish
     this.wp_password = ""
     this.attrs = "{}"
+  }
+
+  public toYamlObj() {
+    return {
+      created: this.dateCreated,
+      updated: this.dateUpdated,
+      title: this.title,
+      slug: this.wp_slug,
+      permalink: this.permalink,
+      desc: this.shortDesc,
+      tags: this.mt_keywords,
+      categories: this.categories,
+    }
   }
 }
 
