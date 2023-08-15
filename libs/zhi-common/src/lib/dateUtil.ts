@@ -168,6 +168,43 @@ class DateUtil {
     }
     return this.formatIsoToZhDate(new Date(timestamp).toISOString())
   }
+
+  /**
+   * 转换数字日期为中文日期
+   *
+   * @param str '20220718142548'
+   */
+  public static formatNumToZhDate(str: string) {
+    if (!str) {
+      return ""
+    }
+    const newstr = str
+
+    const onlyNumbers = newstr.replace(/\D/g, "")
+    // logUtil.logInfo("onlyNumbers=>", onlyNumbers)
+    const year = onlyNumbers.slice(0, 4)
+    const month = onlyNumbers.slice(4, 6)
+    const day = onlyNumbers.slice(6, 8)
+    const hour = onlyNumbers.slice(8, 10)
+    const min = onlyNumbers.slice(10, 12)
+    const sec = onlyNumbers.slice(12, 14)
+
+    let datestr = year
+    if (!month) {
+      datestr = year
+    } else if (!day) {
+      datestr = year + "-" + month
+    } else if (!hour) {
+      datestr = year + "-" + month + "-" + day
+    } else if (!min) {
+      datestr = year + "-" + month + "-" + day + " " + hour
+    } else if (!sec) {
+      datestr = year + "-" + month + "-" + day + " " + hour + ":" + min
+    } else {
+      datestr = year + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec
+    }
+    return datestr
+  }
 }
 
 export default DateUtil

@@ -95,9 +95,9 @@ describe("SiYuanApiAdaptor", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
     const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
-    const postid = "20230731201306-ps6ld6p"
+    const postid = "20230722212237-oc9s0y8"
     const post = await apiAdaptor.getPost(postid)
-    console.log(post)
+    console.log(post.yaml)
   })
 
   it("test siyuan editPost", async () => {

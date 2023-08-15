@@ -1,5 +1,18 @@
 # zhi-blog-api
 
+## 1.22.0
+
+### Minor Changes
+
+- add yaml
+- add formatNumToZhDate
+
+## 1.21.0
+
+### Minor Changes
+
+- add yaml prop
+
 ## 1.20.22
 
 ### Patch Changes

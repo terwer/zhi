@@ -1,5 +1,12 @@
 # zhi-common
 
+## 1.15.0
+
+### Minor Changes
+
+- add yaml
+- add formatNumToZhDate
+
 ## 1.14.2
 
 ### Patch Changes

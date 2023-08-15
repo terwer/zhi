@@ -27,7 +27,7 @@ import { Attachment, BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, U
 import SiyuanKernelApi from "../kernel/siyuanKernelApi"
 import SiyuanConfig from "../config/siyuanConfig"
 import { NotImplementedException } from "zhi-lib-base"
-import { HtmlUtil, ObjectUtil, StrUtil } from "zhi-common"
+import { DateUtil, HtmlUtil, ObjectUtil, StrUtil, YamlUtil } from "zhi-common"
 import { createSiyuanAppLogger } from "../utils"
 
 /**
@@ -170,6 +170,9 @@ class SiYuanApiAdaptor extends BlogApi {
     const alias = ObjectUtil.getProperty(attrs, "alias", "")
     const slug = ObjectUtil.getProperty(attrs, "custom-slug", alias)
 
+    // 永久链接
+    const plink = `siyuan://blocks/${siyuanPost.root_id}`
+
     // 摘要，custom-desc已废弃，知识为了兼容之前的，后续直接使用memo
     const memo = ObjectUtil.getProperty(attrs, "memo", "")
     const shortDesc = ObjectUtil.getProperty(attrs, "custom-desc", memo)
@@ -177,6 +180,9 @@ class SiYuanApiAdaptor extends BlogApi {
     // 分类
     const cates = ObjectUtil.getProperty(attrs, "custom-categories", "")
     const cateNames = StrUtil.isEmptyString(cates) ? [] : cates.split(",")
+
+    // 标签
+    const tags = attrs.tags ?? ""
 
     // 公共属性
     const publicAttrs = {
@@ -186,12 +192,27 @@ class SiYuanApiAdaptor extends BlogApi {
       "custom-slug": slug,
       "custom-desc": shortDesc,
     }
-    this.logger.info("get publicAttrs from siyuan getPost=>", publicAttrs)
+    // this.logger.info("get publicAttrs from siyuan getPost=>", publicAttrs)
+
+    // yaml 适配
+    let yaml = "---\n---"
+    const yamlObj = {
+      siyuanCreated: DateUtil.formatNumToZhDate(siyuanPost.created),
+      siyuanUpdated: DateUtil.formatNumToZhDate(siyuanPost.updated),
+      siyuanTitle: title,
+      siyuanSlug: slug,
+      permalink: plink,
+      siyuanDesc: shortDesc,
+      siyuanCategory: cateNames,
+      siyuanTags: tags,
+    }
+    yaml = YamlUtil.obj2Yaml(yamlObj)
 
     // 适配公共属性
     const commonPost = new Post()
     commonPost.postid = siyuanPost.root_id ?? ""
-    commonPost.title = title ?? ""
+    commonPost.title = title
+    commonPost.yaml = yaml
     commonPost.markdown = md ?? ""
     commonPost.html = html ?? ""
     commonPost.editorDom = editorDom ?? ""
@@ -200,13 +221,13 @@ class SiYuanApiAdaptor extends BlogApi {
     commonPost.shortDesc = shortDesc ?? ""
     commonPost.mt_text_more = shortDesc ?? ""
     commonPost.mt_excerpt = shortDesc ?? ""
-    commonPost.mt_keywords = attrs.tags ?? ""
+    commonPost.mt_keywords = tags
     // 支持分类的平台在页面实时设置
-    commonPost.categories = cateNames ?? []
+    commonPost.categories = cateNames
     // 支持知识库的在页面实时设置
     commonPost.cate_slugs = []
     commonPost.link = siyuanPost.hpath ?? ""
-    commonPost.permalink = `siyuan://blocks/${siyuanPost.root_id}`
+    commonPost.permalink = plink
     commonPost.post_status = isPublished ? PostStatusEnum.PostStatusEnum_Publish : PostStatusEnum.PostStatusEnum_Draft
     // 为了安全，密码需要在页面实时设置
     commonPost.wp_password = ""

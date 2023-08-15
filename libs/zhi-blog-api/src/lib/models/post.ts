@@ -62,6 +62,11 @@ class Post {
   shortDesc?: string
 
   /**
+   * 属性对应的yaml
+   */
+  yaml: string
+
+  /**
    * HTML正文
    */
   html?: string
@@ -136,6 +141,7 @@ class Post {
     this.title = ""
     this.mt_keywords = ""
     this.permalink = ""
+    this.yaml = "---\n---"
     this.html = ""
     this.markdown = ""
     this.editorDom = ""

@@ -1,5 +1,26 @@
 # zhi-siyuan-api
 
+## 2.1.0
+
+### Minor Changes
+
+- add yaml
+- add formatNumToZhDate
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-blog-api@1.22.0
+  - zhi-common@1.15.0
+
+## 2.0.28
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.21.0
+
 ## 2.0.27
 
 ### Patch Changes
