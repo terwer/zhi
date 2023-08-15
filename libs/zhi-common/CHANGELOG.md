@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.17.0
+
+### Minor Changes
+
+- fix timrzone error
+
 ## 1.16.2
 
 ### Patch Changes

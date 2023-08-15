@@ -24,6 +24,7 @@
  */
 
 import PostStatusEnum from "../enums/postStatusEnum"
+import { DateUtil } from "zhi-common"
 
 /**
  * 通用文章模型定义
@@ -163,8 +164,8 @@ class Post {
 
   public toYamlObj() {
     return {
-      created: this.dateCreated,
-      updated: this.dateUpdated,
+      created: DateUtil.formatIsoToZh(this.dateCreated.toISOString(), true),
+      updated: DateUtil.formatIsoToZh(this.dateUpdated.toISOString(), true),
       title: this.title,
       slug: this.wp_slug,
       permalink: this.permalink,

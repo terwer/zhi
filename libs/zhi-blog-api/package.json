@@ -1,6 +1,6 @@
 {
   "name": "zhi-blog-api",
-  "version": "1.22.1",
+  "version": "1.23.0",
   "type": "module",
   "description": "a common blog interface",
   "main": "./dist/index.js",
@@ -32,6 +32,7 @@
     "@terwer/vite-config-custom": "workspace:*"
   },
   "dependencies": {
+    "zhi-common": "workspace:*",
     "zhi-lib-base": "workspace:*"
   },
   "publishConfig": {

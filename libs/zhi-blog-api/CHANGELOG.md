@@ -1,5 +1,16 @@
 # zhi-blog-api
 
+## 1.23.0
+
+### Minor Changes
+
+- fix timrzone error
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.17.0
+
 ## 1.22.1
 
 ### Patch Changes

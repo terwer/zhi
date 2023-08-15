@@ -63,6 +63,9 @@ importers:
 
   libs/zhi-blog-api:
     dependencies:
+      zhi-common:
+        specifier: workspace:*
+        version: link:../zhi-common
       zhi-lib-base:
         specifier: workspace:*
         version: link:../zhi-lib-base

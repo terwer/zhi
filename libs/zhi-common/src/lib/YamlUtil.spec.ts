@@ -22,39 +22,26 @@
  * or visit www.terwer.space if you need additional information or have any
  * questions.
  */
+import { describe, it } from "vitest"
+import YamlUtil from "./yamlUtil"
+import DateUtil from "./dateUtil"
 
-import jsYaml from "js-yaml"
-import StrUtil from "./strUtil"
+describe("test YamlUtil", () => {
+  it("test yaml2Obj", () => {
+    const yaml = "---\n---"
+    const obj = YamlUtil.yaml2Obj(yaml)
+    console.log(obj)
+  })
 
-/**
- * YAML工具类
- *
- * @author terwer
- * @since 0.8.1
- */
-class YamlUtil {
-  /**
-   * yaml转对象
-   *
-   * @param yaml yaml格式的字符串
-   */
-  public static yaml2Obj(yaml: string): any {
-    yaml = yaml.replace("---\n", "")
-    yaml = yaml.replace("---", "")
-    return jsYaml.load(yaml, {})
-  }
+  it("test obj2Yaml", () => {
+    // 调用函数进行转换
+    const dateString = "2022-07-01 12:00:00"
+    const shanghaiDate = DateUtil.convertStringToDate(dateString)
 
-  /**
-   * 对象转yaml字符串
-   *
-   * @param obj
-   */
-  public static obj2Yaml(obj: any): string {
-    // https://www.npmjs.com/package/js-yaml
-    let res = jsYaml.dump(obj, {})
-    res = StrUtil.appendStr("---\n", res, "---")
-    return res
-  }
-}
-
-export default YamlUtil
+    const obj = {
+      date: DateUtil.formatIsoToZh(shanghaiDate.toISOString(), true),
+    }
+    const yaml = YamlUtil.obj2Yaml(obj)
+    console.log(yaml)
+  })
+})
