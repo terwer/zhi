@@ -1,6 +1,6 @@
 {
   "name": "zhi-log",
-  "version": "1.14.10",
+  "version": "1.14.11",
   "type": "module",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",

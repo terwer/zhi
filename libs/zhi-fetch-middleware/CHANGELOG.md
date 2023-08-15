@@ -1,5 +1,12 @@
 # zhi-fetch-middleware
 
+## 0.2.22
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.3.1
+
 ## 0.2.21
 
 ### Patch Changes

@@ -229,6 +229,26 @@ class BrowserUtil {
       }
     }, t ?? 200)
   }
+
+  /**
+   * 复制网页内容到剪贴板
+   *
+   * @param text - 待复制的文本
+   */
+  public static async copyToClipboardInBrowser(text: string) {
+    if (navigator && navigator.clipboard) {
+      await navigator.clipboard.writeText(text)
+    } else {
+      const input = document.createElement("input")
+      input.style.position = "fixed"
+      input.style.opacity = "0"
+      input.value = text
+      document.body.appendChild(input)
+      input.select()
+      document.execCommand("copy")
+      document.body.removeChild(input)
+    }
+  }
 }
 
 export default BrowserUtil
