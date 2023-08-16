@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.25.0
+
+### Minor Changes
+
+- add categoryType
+
 ## 1.24.1
 
 ### Patch Changes

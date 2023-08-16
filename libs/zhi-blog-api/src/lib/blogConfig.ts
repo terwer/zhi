@@ -25,6 +25,7 @@
 
 import BlogPlaceholder from "./blogPlaceholder"
 import PageTypeEnum from "./enums/pageTypeEnum"
+import { CategoryTypeEnum } from "./enums/categoryTypeEnum"
 
 /**
  * 页面类型
@@ -184,6 +185,11 @@ abstract class BlogConfig {
    */
   public enableKnowledgeSpace?: boolean
 
+  /**
+   * 分类类型，默认无
+   */
+  public categoryType: CategoryTypeEnum
+
   protected constructor() {
     this.home = ""
     this.apiUrl = ""
@@ -203,6 +209,7 @@ abstract class BlogConfig {
     this.showTokenTip = false
     this.knowledgeSpaceTitle = "知识库"
     this.enableKnowledgeSpace = false
+    this.categoryType = CategoryTypeEnum.CategoryType_None
   }
 }
 
