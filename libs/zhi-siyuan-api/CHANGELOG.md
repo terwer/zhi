@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.1.6
+
+### Patch Changes
+
+- change updated to latest
+
 ## 2.1.5
 
 ### Patch Changes

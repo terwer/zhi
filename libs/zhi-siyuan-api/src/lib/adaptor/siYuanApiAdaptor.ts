@@ -27,7 +27,7 @@ import { Attachment, BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, U
 import SiyuanKernelApi from "../kernel/siyuanKernelApi"
 import SiyuanConfig from "../config/siyuanConfig"
 import { NotImplementedException } from "zhi-lib-base"
-import { DateUtil, HtmlUtil, ObjectUtil, StrUtil, YamlUtil } from "zhi-common";
+import { DateUtil, HtmlUtil, ObjectUtil, StrUtil, YamlUtil } from "zhi-common"
 import { createSiyuanAppLogger } from "../utils"
 
 /**
@@ -198,7 +198,7 @@ class SiYuanApiAdaptor extends BlogApi {
     const commonPost = new Post()
     commonPost.postid = siyuanPost.root_id ?? ""
     commonPost.dateCreated = DateUtil.convertStringToDate(DateUtil.formatNumToZhDate(siyuanPost.created))
-    commonPost.dateUpdated = DateUtil.convertStringToDate(DateUtil.formatNumToZhDate(siyuanPost.updated))
+    commonPost.dateUpdated = new Date()
     commonPost.title = title
     commonPost.markdown = md ?? ""
     commonPost.html = html ?? ""
