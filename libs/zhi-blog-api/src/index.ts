@@ -17,11 +17,12 @@ import PageTypeEnum from "./lib/enums/pageTypeEnum"
 import ElectronCookie from "./lib/models/ElectronCookie"
 import WebConfig from "./lib/WebConfig"
 import WebPlaceholder from "./lib/WebPlaceholder"
+import CategoryTypeEnum from "./lib/enums/categoryTypeEnum"
 
 export { BlogApi, BlogAdaptor }
 export { WebApi, WebAdaptor }
 export { BlogConfig, BlogPlaceholder, PasswordType, PageType, PostStatusEnum }
 export { WebConfig, WebPlaceholder }
 export { Post, UserBlog, SiteConfig, CategoryInfo, MediaObject, Attachment }
-export { BlogConstants, BlogTypeEnum, PageTypeEnum }
+export { BlogConstants, BlogTypeEnum, PageTypeEnum, CategoryTypeEnum }
 export type { ElectronCookie }

@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.25.1
+
+### Patch Changes
+
+- add CategoryTypeEnum
+
 ## 1.25.0
 
 ### Minor Changes

@@ -55,4 +55,5 @@ enum CategoryTypeEnum {
    */
   CategoryType_None = "none",
 }
-export { CategoryTypeEnum }
+
+export default CategoryTypeEnum

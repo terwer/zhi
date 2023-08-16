@@ -25,7 +25,7 @@
 
 import BlogPlaceholder from "./blogPlaceholder"
 import PageTypeEnum from "./enums/pageTypeEnum"
-import { CategoryTypeEnum } from "./enums/categoryTypeEnum"
+import CategoryTypeEnum from "./enums/categoryTypeEnum"
 
 /**
  * 页面类型
