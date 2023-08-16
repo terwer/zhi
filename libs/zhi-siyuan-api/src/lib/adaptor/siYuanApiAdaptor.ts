@@ -41,6 +41,7 @@ class SiYuanApiAdaptor extends BlogApi {
   private logger
   private readonly siyuanKernelApi: SiyuanKernelApi
   private readonly cfg
+  private readonly MAX_PREVIEW_LENGTH = 255
 
   /**
    * 初始化思源 API 适配器
@@ -175,7 +176,11 @@ class SiYuanApiAdaptor extends BlogApi {
 
     // 摘要，custom-desc已废弃，知识为了兼容之前的，后续直接使用memo
     const memo = ObjectUtil.getProperty(attrs, "memo", "")
-    const shortDesc = ObjectUtil.getProperty(attrs, "custom-desc", memo)
+    let shortDesc = ObjectUtil.getProperty(attrs, "custom-desc", memo)
+    // 如果还是空，就生成默认的
+    if (StrUtil.isEmptyString(shortDesc)) {
+      shortDesc = HtmlUtil.parseHtml(html, this.MAX_PREVIEW_LENGTH, true)
+    }
 
     // 分类
     const cates = ObjectUtil.getProperty(attrs, "custom-categories", "")

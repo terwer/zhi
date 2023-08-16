@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.1.7
+
+### Patch Changes
+
+- add default desc
+
 ## 2.1.6
 
 ### Patch Changes
