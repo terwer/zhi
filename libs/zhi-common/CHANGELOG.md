@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.20.0
+
+### Minor Changes
+
+- add smart tags
+
 ## 1.19.0
 
 ### Minor Changes

@@ -24,7 +24,7 @@
  */
 
 import SmartUtil from "./smartUtil"
-import { describe, it, expect } from "vitest"
+import { describe, it } from "vitest"
 
 describe("test smartUtil", () => {
   it("test autoSummary", async () => {
@@ -33,5 +33,13 @@ describe("test smartUtil", () => {
 
     // 断言摘要不为空
     console.log("summary result =>", { summary })
+  })
+
+  it("test autoTags", async () => {
+    const q = "测试的一些可用文本，看看有没有可用的关键词啊"
+    const tags = await SmartUtil.autoTags(q, 5)
+
+    // 断言摘要不为空
+    console.log("tags result =>", { tags })
   })
 })
