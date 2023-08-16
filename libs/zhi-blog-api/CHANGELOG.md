@@ -1,5 +1,23 @@
 # zhi-blog-api
 
+## 1.24.0
+
+### Minor Changes
+
+- add autoSummary
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.19.0
+
+## 1.23.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.18.0
+
 ## 1.23.0
 
 ### Minor Changes

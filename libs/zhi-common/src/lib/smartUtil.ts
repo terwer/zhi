@@ -23,16 +23,46 @@
  * questions.
  */
 
-import ZhiCommon from "./lib/zhi-common"
-import DateUtil from "./lib/dateUtil"
-import HtmlUtil from "./lib/htmlUtil"
-import JsonUtil from "./lib/jsonUtil"
-import StrUtil from "./lib/strUtil"
-import ObjectUtil from "./lib/objectUtil"
-import YamlUtil from "./lib/yamlUtil"
-import AliasTranslator from "./lib/slugUtil"
-import SmartUtil from "./lib/smartUtil"
+import JsonUtil from "./jsonUtil"
 
-export { ZhiCommon }
-export { DateUtil, HtmlUtil, JsonUtil, StrUtil, ObjectUtil, YamlUtil, AliasTranslator }
-export { SmartUtil }
+class SmartUtil {
+  /**
+   * 根据给定的查询参数自动生成摘要
+   *
+   * @param {string} q - 查询参数
+   * @returns {Promise<string>} 生成的摘要
+   */
+  public static async autoSummary(q: string): Promise<any> {
+    const url = "http://kms.terwergreen.com:8888/api/summary"
+    const headers = {
+      "Content-Type": "application/json",
+    }
+    const data = JSON.stringify({ q })
+
+    const requestOptions: RequestInit = {
+      method: "POST",
+      headers,
+      body: data,
+    }
+
+    try {
+      const response = await fetch(url, requestOptions)
+      if (response.ok) {
+        const summary = await response.text()
+        return JsonUtil.safeParse<any>(summary, {})
+      } else {
+        return {
+          result: "",
+          errMsg: "Request failed",
+        }
+      }
+    } catch (e: any) {
+      return {
+        result: e.toString(),
+        errMsg: e,
+      }
+    }
+  }
+}
+
+export default SmartUtil

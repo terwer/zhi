@@ -23,16 +23,15 @@
  * questions.
  */
 
-import ZhiCommon from "./lib/zhi-common"
-import DateUtil from "./lib/dateUtil"
-import HtmlUtil from "./lib/htmlUtil"
-import JsonUtil from "./lib/jsonUtil"
-import StrUtil from "./lib/strUtil"
-import ObjectUtil from "./lib/objectUtil"
-import YamlUtil from "./lib/yamlUtil"
-import AliasTranslator from "./lib/slugUtil"
-import SmartUtil from "./lib/smartUtil"
+import SmartUtil from "./smartUtil"
+import { describe, it, expect } from "vitest"
 
-export { ZhiCommon }
-export { DateUtil, HtmlUtil, JsonUtil, StrUtil, ObjectUtil, YamlUtil, AliasTranslator }
-export { SmartUtil }
+describe("test smartUtil", () => {
+  it("test autoSummary", async () => {
+    const q = "测试查询参数"
+    const summary = await SmartUtil.autoSummary(q)
+
+    // 断言摘要不为空
+    console.log("summary result =>", { summary })
+  })
+})

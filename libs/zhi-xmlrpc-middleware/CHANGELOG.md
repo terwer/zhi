@@ -1,5 +1,23 @@
 # zhi-xmlrpc-middleware
 
+## 0.5.0
+
+### Minor Changes
+
+- add autoSummary
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.19.0
+
+## 0.4.23
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.18.0
+
 ## 0.4.22
 
 ### Patch Changes

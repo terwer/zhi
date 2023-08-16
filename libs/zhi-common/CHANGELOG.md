@@ -1,5 +1,17 @@
 # zhi-common
 
+## 1.19.0
+
+### Minor Changes
+
+- add autoSummary
+
+## 1.18.0
+
+### Minor Changes
+
+- add autoSummary
+
 ## 1.17.0
 
 ### Minor Changes
