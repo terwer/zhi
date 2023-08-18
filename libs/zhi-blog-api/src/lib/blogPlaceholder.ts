@@ -58,7 +58,7 @@ abstract class BlogPlaceholder {
   /**
    * API状态是否正常操作提示
    */
-  public apiStatusPlaceholder: boolean
+  public apiStatusPlaceholder: string
 
   /**
    * 博客名（API获取）操作提示
@@ -80,17 +80,23 @@ abstract class BlogPlaceholder {
    */
   public pageTypePlaceholder: string
 
+  /**
+   * 分类只读提示
+   */
+  public cateReadonlyModeTip: string
+
   constructor() {
     this.homePlaceholder = ""
     this.apiUrlPlaceholder = ""
     this.usernamePlaceholder = ""
     this.passwordTypePlaceholder = ""
     this.passwordPlaceholder = ""
-    this.apiStatusPlaceholder = false
+    this.apiStatusPlaceholder = ""
     this.blogNamePlaceholder = ""
     this.posidKeyPlaceholder = ""
     this.previewUrlPlaceholder = ""
     this.pageTypePlaceholder = ""
+    this.cateReadonlyModeTip = ""
   }
 }
 

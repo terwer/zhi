@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.26.0
+
+### Minor Changes
+
+- add cateReadonlyModeTip
+
 ## 1.25.1
 
 ### Patch Changes
