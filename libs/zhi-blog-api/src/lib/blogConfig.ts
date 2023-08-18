@@ -190,6 +190,11 @@ abstract class BlogConfig {
    */
   public categoryType: CategoryTypeEnum
 
+  /**
+   * 是否允许修改分类
+   */
+  public cateAllowChange: boolean
+
   protected constructor() {
     this.home = ""
     this.apiUrl = ""
@@ -210,6 +215,7 @@ abstract class BlogConfig {
     this.knowledgeSpaceTitle = "知识库"
     this.enableKnowledgeSpace = false
     this.categoryType = CategoryTypeEnum.CategoryType_None
+    this.cateAllowChange = false
   }
 }
 

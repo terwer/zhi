@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.27.0
+
+### Minor Changes
+
+- add cateAllowChange
+
 ## 1.26.0
 
 ### Minor Changes
