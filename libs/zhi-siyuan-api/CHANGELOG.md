@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.3.0
+
+### Minor Changes
+
+- add SingleBlockAtt method
+
 ## 2.2.3
 
 ### Patch Changes

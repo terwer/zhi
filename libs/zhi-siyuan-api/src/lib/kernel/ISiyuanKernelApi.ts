@@ -101,8 +101,10 @@ interface ISiyuanKernelApi {
 
   // /api/attr/getBlockAttrs
   getBlockAttrs(blockId: string): Promise<any>
+  getSingleBlockAttr(blockId: string, key: string): Promise<string>
   // setBlockAttrs
   setBlockAttrs(blockId: string, attrs: any): Promise<any>
+  setSingleBlockAttr(blockId: string, key: string, value: string): Promise<any>
   // /api/block/getBlockKramdown
   getBlockKramdown(id: string): Promise<SiyuanData["data"]>
   // /api/block/updateBlock

@@ -197,6 +197,15 @@ describe("test SiyuanKernelApi", async () => {
     console.log("result=>", result)
   })
 
+  it("test getBlockAttr", async () => {
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const kernelApi = new SiyuanKernelApi(siyuanConfig)
+    const id = "20230722212237-oc9s0y8"
+    const key = "custom-categories"
+    const result = await kernelApi.getSingleBlockAttr(id, key)
+    console.log("result=>", result)
+  })
+
   it("test setBlockAttrs", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
     const kernelApi = new SiyuanKernelApi(siyuanConfig)

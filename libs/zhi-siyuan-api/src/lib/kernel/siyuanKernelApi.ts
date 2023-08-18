@@ -695,12 +695,51 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
   }
 
   /**
+   * 获取单个块属性
+   *
+   * @param blockId - 块ID
+   * @param key - 属性key
+   */
+  public async getSingleBlockAttr(blockId: string, key: string): Promise<string> {
+    const stmt = `select value from attributes where root_id = '${blockId}'
+                               and type = 'b'
+                               and name = '${key}'`
+    const data = await this.sql(stmt)
+    if (!data) {
+      throw new Error(`查询块属性失败, id=${blockId} =>${key}`)
+    }
+
+    if (data.length == 0) {
+      return ""
+    }
+    return data[0]?.value ?? ""
+  }
+
+  /**
    * 设置块属性
+   *
    * @param blockId
    * @param attrs
    */
   public async setBlockAttrs(blockId: string, attrs: any): Promise<any> {
     const url = "/api/attr/setBlockAttrs"
+    return await this.siyuanRequest(url, {
+      id: blockId,
+      attrs,
+    })
+  }
+
+  /**
+   * 设置单个块属性
+   *
+   * @param blockId
+   * @param attrs
+   */
+  public async setSingleBlockAttr(blockId: string, key: string, value: string): Promise<any> {
+    const url = "/api/attr/setBlockAttrs"
+    const attrs = {
+      [key]: value,
+    }
     return await this.siyuanRequest(url, {
       id: blockId,
       attrs,
