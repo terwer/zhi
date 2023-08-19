@@ -36,12 +36,11 @@ class YamlUtil {
   /**
    * yaml转对象
    *
-   * @param yaml yaml格式的字符串
+   * @param content - 待处理的包含YAML的字符串
    */
-  public static yaml2Obj(yaml: string): any {
-    yaml = yaml.replace("---\n", "")
-    yaml = yaml.replace("---", "")
-    return jsYaml.load(yaml, {})
+  public static yaml2Obj(content: string): any {
+    const frontMatter = this.extractFrontmatter(content)
+    return jsYaml.load(frontMatter, {})
   }
 
   /**
@@ -54,6 +53,22 @@ class YamlUtil {
     let res = jsYaml.dump(obj, {})
     res = StrUtil.appendStr("---\n", res, "---")
     return res
+  }
+
+  /**
+   * 提取正文前置数据的静态公共方法
+   *
+   * @param content - 包含正文和前置数据的字符串
+   */
+  public static extractFrontmatter(content: string): any {
+    let frontMatter: string
+    const match = content.match(/^---\n([\s\S]*?)---\n/)
+    if (match) {
+      frontMatter = match[0].trim()
+    } else {
+      frontMatter = `---\n---`
+    }
+    return frontMatter
   }
 }
 
