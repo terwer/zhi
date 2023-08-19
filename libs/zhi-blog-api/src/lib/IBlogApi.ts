@@ -28,6 +28,7 @@ import Post from "./models/post"
 import MediaObject from "./models/mediaObject"
 import CategoryInfo from "./models/categoryInfo"
 import Attachment from "./models/attachmentInfo"
+import YamlConvertAdaptor from "./yamlConvertAdaptor"
 
 /**
  * 通用博客接口
@@ -189,6 +190,11 @@ interface IBlogApi {
    * @returns {Promise<MediaObject>}
    */
   newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<Attachment>
+
+  /**
+   * 获取YAML适配器
+   */
+  getYamlAdaptor(): YamlConvertAdaptor
 }
 
 export type { IBlogApi }

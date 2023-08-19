@@ -30,6 +30,7 @@ import UserBlog from "./models/userBlog"
 import MediaObject from "./models/mediaObject"
 import { NotImplementedException } from "zhi-lib-base"
 import Attachment from "./models/attachmentInfo"
+import YamlConvertAdaptor from "./yamlConvertAdaptor"
 
 /**
  * 博客基类
@@ -81,6 +82,10 @@ class BlogApi implements IBlogApi {
 
   public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<Attachment> {
     throw new NotImplementedException("You must implement newMediaObject in sub class")
+  }
+
+  public getYamlAdaptor(): YamlConvertAdaptor {
+    throw new NotImplementedException("You must implement getYamlAdaptor in sub class")
   }
 }
 

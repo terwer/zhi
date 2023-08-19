@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.30.0
+
+### Minor Changes
+
+- add YamlConvertAdaptor
+
 ## 1.29.1
 
 ### Patch Changes

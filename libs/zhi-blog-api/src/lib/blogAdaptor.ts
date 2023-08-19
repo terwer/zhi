@@ -31,6 +31,7 @@ import { IBlogApi } from "./IBlogApi"
 import { simpleLogger } from "zhi-lib-base"
 import Attachment from "./models/attachmentInfo"
 import BlogApi from "./blogApi"
+import YamlConvertAdaptor from "./yamlConvertAdaptor"
 
 /**
  * 博客API
@@ -179,6 +180,13 @@ class BlogAdaptor implements IBlogApi {
    */
   public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<Attachment> {
     return await this.apiAdaptor.newMediaObject(mediaObject, customHandler)
+  }
+
+  /**
+   * 获取YAML适配器
+   */
+  public getYamlAdaptor(): YamlConvertAdaptor {
+    return this.apiAdaptor.getYamlAdaptor()
   }
 }
 
