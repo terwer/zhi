@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.29.0
+
+### Minor Changes
+
+- add knowledgeSpaceType
+
 ## 1.28.0
 
 ### Minor Changes
@@ -10,7 +16,7 @@
 
 ### Minor Changes
 
-- add cateAllowChange
+- add allowCateChange
 
 ## 1.26.0
 

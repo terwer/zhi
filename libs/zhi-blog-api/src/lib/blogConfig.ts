@@ -176,14 +176,34 @@ abstract class BlogConfig {
   public showTokenTip = false
 
   /**
+   * 是否开启知识空间，如果开启了，blogid就保存默认的知识空间ID
+   */
+  public knowledgeSpaceEnabled?: boolean
+
+  /**
    * 知识空间名称，例如：语雀叫做知识库、Confluence叫做知识空间、Notion可以叫做根页面
    */
   public knowledgeSpaceTitle?: string
 
   /**
-   * 是否开启知识空间，如果开启了，blogid就保存默认的知识空间ID
+   * 知识空间类型
    */
-  public enableKnowledgeSpace?: boolean
+  public knowledgeSpaceType: CategoryTypeEnum
+
+  /**
+   * 是否开启摘要
+   */
+  public descEnabled?: boolean
+
+  /**
+   * 是否开启摘要
+   */
+  public tagEnabled?: boolean
+
+  /**
+   * 是否开启分类
+   */
+  public cateEnabled?: boolean
 
   /**
    * 分类类型，默认无
@@ -193,7 +213,7 @@ abstract class BlogConfig {
   /**
    * 是否允许修改分类
    */
-  public cateAllowChange: boolean
+  public allowCateChange: boolean
 
   protected constructor() {
     this.home = ""
@@ -210,12 +230,16 @@ abstract class BlogConfig {
     this.fixTitle = false
     this.middlewareUrl = ""
     this.usernameEnabled = false
-    this.allowPreviewUrlChange = true
     this.showTokenTip = false
+    this.allowPreviewUrlChange = true
+    this.knowledgeSpaceEnabled = false
     this.knowledgeSpaceTitle = "知识库"
-    this.enableKnowledgeSpace = false
+    this.knowledgeSpaceType = CategoryTypeEnum.CategoryType_None
+    this.descEnabled = false
+    this.tagEnabled = false
+    this.cateEnabled = false
+    this.allowCateChange = false
     this.categoryType = CategoryTypeEnum.CategoryType_None
-    this.cateAllowChange = false
   }
 }
 
