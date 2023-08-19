@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.28.0
+
+### Minor Changes
+
+- add getCategoryTreeNodes
+
 ## 1.27.0
 
 ### Minor Changes

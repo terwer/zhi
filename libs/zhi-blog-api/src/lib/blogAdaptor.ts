@@ -154,6 +154,15 @@ class BlogAdaptor implements IBlogApi {
   }
 
   /**
+   * 获取文件树列表
+   *
+   * @param docPath 完整文件路径，例如：docs/_posts/测试.md
+   */
+  public async getCategoryTreeNodes(docPath: string): Promise<any[]> {
+    return await this.apiAdaptor.getCategoryTreeNodes(docPath)
+  }
+
+  /**
    * 获取预览链接
    *
    * @param postid - 文章ID

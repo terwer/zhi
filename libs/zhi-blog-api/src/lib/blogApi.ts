@@ -71,6 +71,10 @@ class BlogApi implements IBlogApi {
     throw new NotImplementedException("You must implement getCategories in sub class")
   }
 
+  public async getCategoryTreeNodes(docPath: string): Promise<any[]> {
+    throw new NotImplementedException("You must implement getCategoryTreeNodes in sub class")
+  }
+
   public async getPreviewUrl(postid: string): Promise<string> {
     throw new NotImplementedException("You must implement getPreviewUrl in sub class")
   }

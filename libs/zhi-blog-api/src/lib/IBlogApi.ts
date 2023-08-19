@@ -166,6 +166,13 @@ interface IBlogApi {
   getCategories(): Promise<CategoryInfo[]>
 
   /**
+   * 获取文件树列表
+   *
+   * @param docPath 完整文件路径，例如：docs/_posts/测试.md
+   */
+  getCategoryTreeNodes(docPath: string): Promise<any[]>
+
+  /**
    * 获取预览链接
    *
    * @param postid - 文章ID
