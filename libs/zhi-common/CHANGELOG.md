@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.22.0
+
+### Minor Changes
+
+- fix string parser
+
 ## 1.21.0
 
 ### Minor Changes

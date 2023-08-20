@@ -36,7 +36,7 @@ class HtmlUtil {
     let newstr = str
 
     // 移除序号
-    const publisherRegex = /([0-9]*)\./
+    const publisherRegex = /([0-9]*)\.?/
     newstr = newstr.replace(publisherRegex, "")
 
     return newstr
@@ -114,6 +114,9 @@ class HtmlUtil {
     str = str.replace(/!/g, "_")
     str = str.replace(/@/g, "at_")
 
+    // 去除HTML分隔符
+    str = str.replace(/---/g, "")
+
     // 需要排除的字符
     const excludeWords = ["\\d*/\\d/\\d*", "[、|\\\\]", "[，|,]", "\\d", "/", "-"]
     for (let i = 0; i < excludeWords.length; i++) {
@@ -175,6 +178,9 @@ class HtmlUtil {
     if (match) {
       newstr = newstr.replace(match[0], "")
     }
+
+    // 去除HTML分隔符
+    newstr = newstr.replace(/---/g, "")
 
     return newstr
   }

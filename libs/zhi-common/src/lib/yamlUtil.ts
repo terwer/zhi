@@ -44,6 +44,35 @@ class YamlUtil {
   }
 
   /**
+   * 将 YAML 文档的内容解析为对象
+   *
+   * @param content - YAML 文档的内容
+   * @returns 解析后的对象
+   * @throws 如果找不到 YAML 分隔符，则抛出错误
+   */
+  public static async yaml2ObjAsync(content: string): Promise<any> {
+    // 提取 YAML
+    const frontMatter = this.extractFrontmatter(content, true)
+
+    // 去掉分隔符
+    const regex = /^---\n([\s\S]*)\n---$/
+    const match = frontMatter.match(regex)
+
+    if (match) {
+      const rawContent = match[1]
+      try {
+        // 转换YAML
+        const parsedDocs = jsYaml.load(rawContent)
+        return parsedDocs
+      } catch (error) {
+        throw new Error("无法解析 YAML 内容")
+      }
+    } else {
+      throw new Error("找不到 YAML 分隔符！")
+    }
+  }
+
+  /**
    * 对象转yaml字符串
    *
    * @param obj
@@ -59,16 +88,22 @@ class YamlUtil {
    * 提取正文前置数据的静态公共方法
    *
    * @param content - 包含正文和前置数据的字符串
+   * @param addSign - 是否包含符号
    */
-  public static extractFrontmatter(content: string): any {
-    let frontMatter: string
-    const match = content.match(/^---\n([\s\S]*?)---\n/)
+  public static extractFrontmatter(content: string, addSign?: boolean): any {
+    const regex = /^---\n([\s\S]*?\n)---/
+    const match = content.match(regex)
+
     if (match) {
-      frontMatter = match[0].trim()
+      let frontMatter = match[1].trim()
+      if (addSign) {
+        frontMatter = `---\n${frontMatter}\n---`
+      }
+      console.log(frontMatter)
+      return frontMatter
     } else {
-      frontMatter = `---\n---`
+      return ""
     }
-    return frontMatter
   }
 }
 

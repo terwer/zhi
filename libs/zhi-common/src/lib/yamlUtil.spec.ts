@@ -33,6 +33,21 @@ describe("test YamlUtil", () => {
     console.log(obj)
   })
 
+  it("test yaml2Obj2", async () => {
+    const yaml = `---
+title: 测试文档1
+date: '2023-07-22 21:22:37'
+updated: '2023-08-16 18:26:44'
+excerpt: 图片测试，远程图片4。图片测试，本地图片。这是一篇测试文章，等会会删除。
+permalink: /post/test-document-1-z1fvylk.html
+comments: true
+toc: true
+---地方
+就还好哈哈哈哈这种怎么---`
+    const obj = await YamlUtil.yaml2ObjAsync(yaml)
+    console.log(obj)
+  })
+
   it("test obj2Yaml", () => {
     // 调用函数进行转换
     const dateString = "2022-07-01 12:00:00"
