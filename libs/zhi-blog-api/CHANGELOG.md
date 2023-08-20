@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.31.1
+
+### Patch Changes
+
+- add knowledgeSpaceReadonlyModeTip
+
 ## 1.31.0
 
 ### Minor Changes

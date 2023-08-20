@@ -81,6 +81,11 @@ abstract class BlogPlaceholder {
   public pageTypePlaceholder: string
 
   /**
+   * 知识空间只读提示
+   */
+  public knowledgeSpaceReadonlyModeTip: string
+
+  /**
    * 分类只读提示
    */
   public cateReadonlyModeTip: string
@@ -96,6 +101,7 @@ abstract class BlogPlaceholder {
     this.posidKeyPlaceholder = ""
     this.previewUrlPlaceholder = ""
     this.pageTypePlaceholder = ""
+    this.knowledgeSpaceReadonlyModeTip = ""
     this.cateReadonlyModeTip = ""
   }
 }
