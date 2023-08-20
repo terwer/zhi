@@ -1,5 +1,16 @@
 # zhi-blog-api
 
+## 1.31.0
+
+### Minor Changes
+
+- add allowKnowledgeSpaceChange
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.0
+
 ## 1.30.1
 
 ### Patch Changes

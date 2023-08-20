@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.23.0
+
+### Minor Changes
+
+- add allowKnowledgeSpaceChange
+
 ## 1.22.0
 
 ### Minor Changes

@@ -99,7 +99,6 @@ class YamlUtil {
       if (addSign) {
         frontMatter = `---\n${frontMatter}\n---`
       }
-      console.log(frontMatter)
       return frontMatter
     } else {
       return ""

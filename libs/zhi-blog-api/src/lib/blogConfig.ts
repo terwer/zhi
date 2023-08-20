@@ -191,6 +191,11 @@ abstract class BlogConfig {
   public knowledgeSpaceType: CategoryTypeEnum
 
   /**
+   * 是否允许修改知识空间
+   */
+  public allowKnowledgeSpaceChange: boolean
+
+  /**
    * 是否开启摘要
    */
   public descEnabled?: boolean
@@ -206,14 +211,19 @@ abstract class BlogConfig {
   public cateEnabled?: boolean
 
   /**
-   * 分类类型，默认无
-   */
-  public categoryType: CategoryTypeEnum
-
-  /**
    * 是否允许修改分类
    */
   public allowCateChange: boolean
+
+  /**
+   * 分类名称，默认：文章分类
+   */
+  public cateTitle?: string
+
+  /**
+   * 分类类型，默认无
+   */
+  public categoryType: CategoryTypeEnum
 
   protected constructor() {
     this.home = ""
@@ -234,10 +244,12 @@ abstract class BlogConfig {
     this.allowPreviewUrlChange = true
     this.knowledgeSpaceEnabled = false
     this.knowledgeSpaceTitle = "知识库"
+    this.allowKnowledgeSpaceChange = false
     this.knowledgeSpaceType = CategoryTypeEnum.CategoryType_None
     this.descEnabled = false
     this.tagEnabled = false
     this.cateEnabled = false
+    this.cateTitle = "文章分类"
     this.allowCateChange = false
     this.categoryType = CategoryTypeEnum.CategoryType_None
   }
