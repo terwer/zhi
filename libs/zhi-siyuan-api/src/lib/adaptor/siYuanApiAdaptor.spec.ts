@@ -97,7 +97,7 @@ describe("SiYuanApiAdaptor", async () => {
 
     const postid = "20230722212237-oc9s0y8"
     const post = await apiAdaptor.getPost(postid)
-    console.log(post.yaml)
+    console.log(post)
   })
 
   it("test siyuan editPost", async () => {

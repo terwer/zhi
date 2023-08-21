@@ -29,6 +29,7 @@ import SiyuanConfig from "../config/siyuanConfig"
 import { NotImplementedException } from "zhi-lib-base"
 import { DateUtil, HtmlUtil, ObjectUtil, StrUtil, YamlUtil } from "zhi-common"
 import { createSiyuanAppLogger } from "../utils"
+import { SiyuanAttr } from "./siyuanAttr"
 
 /**
  * 思源笔记 API 适配器
@@ -167,27 +168,22 @@ class SiYuanApiAdaptor extends BlogApi {
       this.logger.info("第一个H1已移除")
     }
 
-    // 别名
-    const alias = ObjectUtil.getProperty(attrs, "alias", "")
-    const slug = ObjectUtil.getProperty(attrs, "custom-slug", alias)
+    // 别名(Custom_Slug优先，没有默认获取Sys_alias)
+    const alias = ObjectUtil.getProperty(attrs, SiyuanAttr.Sys_alias, "")
+    const slug = ObjectUtil.getProperty(attrs, SiyuanAttr.Custom_slug, alias)
 
     // 永久链接
     const plink = `siyuan://blocks/${siyuanPost.root_id}`
 
-    // 摘要，custom-desc已废弃，知识为了兼容之前的，后续直接使用memo
-    const memo = ObjectUtil.getProperty(attrs, "memo", "")
-    let shortDesc = ObjectUtil.getProperty(attrs, "custom-desc", memo)
-    // 如果还是空，就生成默认的
-    if (StrUtil.isEmptyString(shortDesc)) {
-      shortDesc = HtmlUtil.parseHtml(html, this.MAX_PREVIEW_LENGTH, true)
-    }
-
-    // 分类
-    const cates = ObjectUtil.getProperty(attrs, "custom-categories", "")
-    const cateNames = StrUtil.isEmptyString(cates) ? [] : cates.split(",")
+    // 摘要
+    const shortDesc = ObjectUtil.getProperty(attrs, SiyuanAttr.Sys_memo)
 
     // 标签
-    const tags = attrs.tags ?? ""
+    const tags = ObjectUtil.getProperty(attrs, SiyuanAttr.Sys_tags, "")
+
+    // 分类
+    const cates = ObjectUtil.getProperty(attrs, SiyuanAttr.Custom_categories, "")
+    const cateNames = StrUtil.isEmptyString(cates) ? [] : cates.split(",")
 
     // 公共属性
     const publicAttrs = {
@@ -195,7 +191,6 @@ class SiYuanApiAdaptor extends BlogApi {
       "custom-publish-time": ObjectUtil.getProperty(attrs, "custom-publish-time", ""),
       "custom-expires": ObjectUtil.getProperty(attrs, "custom-expires", ""),
       "custom-slug": slug,
-      "custom-desc": shortDesc,
     }
     // this.logger.info("get publicAttrs from siyuan getPost=>", publicAttrs)
 
