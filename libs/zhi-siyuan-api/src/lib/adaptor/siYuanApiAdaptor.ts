@@ -29,7 +29,7 @@ import SiyuanConfig from "../config/siyuanConfig"
 import { NotImplementedException } from "zhi-lib-base"
 import { DateUtil, HtmlUtil, ObjectUtil, StrUtil, YamlUtil } from "zhi-common"
 import { createSiyuanAppLogger } from "../utils"
-import { SiyuanAttr } from "./siyuanAttr"
+import SiyuanAttr from "./siyuanAttr"
 
 /**
  * 思源笔记 API 适配器

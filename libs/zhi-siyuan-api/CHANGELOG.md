@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.4.1
+
+### Patch Changes
+
+- export SiyuanAttr
+
 ## 2.4.0
 
 ### Minor Changes

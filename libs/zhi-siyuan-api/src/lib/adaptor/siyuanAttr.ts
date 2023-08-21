@@ -56,4 +56,4 @@ enum SiyuanAttr {
   Custom_categories = "custom-categories",
 }
 
-export { SiyuanAttr }
+export default SiyuanAttr
