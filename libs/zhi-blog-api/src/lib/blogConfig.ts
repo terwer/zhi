@@ -25,6 +25,7 @@
 
 import BlogPlaceholder from "./blogPlaceholder"
 import PageTypeEnum from "./enums/pageTypeEnum"
+import CategoryTypeEnum from "./enums/categoryTypeEnum"
 
 /**
  * 页面类型
@@ -66,10 +67,16 @@ export enum PasswordType {
    * 密码
    */
   PasswordType_Password,
+
   /**
    * token
    */
   PasswordType_Token,
+
+  /**
+   * cookie
+   */
+  PasswordType_Cookie,
 }
 
 /**
@@ -79,64 +86,144 @@ abstract class BlogConfig {
   /**
    * 首页
    */
-  protected home: string
+  public home?: string
 
   /**
    * API地址
    */
-  protected apiUrl: string
+  public apiUrl: string
 
   /**
    * 用户名
    */
-  protected username: string
+  public username?: string
 
   /**
    * 密码类型
    */
-  protected passwordType: PasswordType
+  public passwordType: PasswordType
 
   /**
    * 密码
    */
-  protected password: string
+  public password: string
 
   /**
-   * 是否发布
+   * 密码/token设置地址
    */
-  protected apiStatus: boolean
+  public tokenSettingUrl?: string
+
+  /**
+   * 标识
+   */
+  public blogid?: string
 
   /**
    * 博客名（API获取）
    */
-  protected blogName: string
+  public blogName?: string
+
+  /**
+   * API 是否可用
+   */
+  public apiStatus: boolean
 
   /**
    * 文章别名key
    */
-  protected posidKey: string
+  public posidKey: string
 
   /**
    * 文章预览链接
    */
-  protected previewUrl: string
+  public previewUrl?: string
 
   /**
    * 文章类型
    */
-  protected pageType: PageTypeEnum
+  public pageType?: PageTypeEnum
 
   /**
    * 操作提示
    */
-  protected placeholder: BlogPlaceholder | undefined
+  public placeholder?: BlogPlaceholder | undefined
 
   /**
    * 是否处理标题
    *
    * @protected
    */
-  protected fixTitle: boolean
+  public fixTitle?: boolean
+
+  /**
+   * 跨域代理地址
+   */
+  public middlewareUrl?: string
+
+  /**
+   * 是否启用用户名
+   */
+  public usernameEnabled = false
+
+  /**
+   * 是否允许修改预览地址
+   */
+  public allowPreviewUrlChange = true
+
+  /**
+   * 是否展示Token设置地址
+   */
+  public showTokenTip = false
+
+  /**
+   * 是否开启知识空间，如果开启了，blogid就保存默认的知识空间ID
+   */
+  public knowledgeSpaceEnabled?: boolean
+
+  /**
+   * 知识空间名称，例如：语雀叫做知识库、Confluence叫做知识空间、Notion可以叫做根页面
+   */
+  public knowledgeSpaceTitle?: string
+
+  /**
+   * 知识空间类型
+   */
+  public knowledgeSpaceType: CategoryTypeEnum
+
+  /**
+   * 是否允许修改知识空间
+   */
+  public allowKnowledgeSpaceChange: boolean
+
+  /**
+   * 是否开启摘要
+   */
+  public descEnabled?: boolean
+
+  /**
+   * 是否开启摘要
+   */
+  public tagEnabled?: boolean
+
+  /**
+   * 是否开启分类
+   */
+  public cateEnabled?: boolean
+
+  /**
+   * 是否允许修改分类
+   */
+  public allowCateChange: boolean
+
+  /**
+   * 分类名称，默认：文章分类
+   */
+  public cateTitle?: string
+
+  /**
+   * 分类类型，默认无
+   */
+  public categoryType: CategoryTypeEnum
 
   protected constructor() {
     this.home = ""
@@ -144,13 +231,27 @@ abstract class BlogConfig {
     this.username = ""
     this.passwordType = PasswordType.PasswordType_Password
     this.password = ""
-    this.apiStatus = false
+    this.blogid = ""
     this.blogName = ""
     this.posidKey = ""
     this.previewUrl = ""
     this.pageType = PageTypeEnum.Markdown
     this.placeholder = undefined
     this.fixTitle = false
+    this.middlewareUrl = ""
+    this.usernameEnabled = false
+    this.showTokenTip = false
+    this.allowPreviewUrlChange = true
+    this.knowledgeSpaceEnabled = false
+    this.knowledgeSpaceTitle = "知识库"
+    this.allowKnowledgeSpaceChange = false
+    this.knowledgeSpaceType = CategoryTypeEnum.CategoryType_None
+    this.descEnabled = false
+    this.tagEnabled = false
+    this.cateEnabled = false
+    this.cateTitle = "文章分类"
+    this.allowCateChange = false
+    this.categoryType = CategoryTypeEnum.CategoryType_None
   }
 }
 

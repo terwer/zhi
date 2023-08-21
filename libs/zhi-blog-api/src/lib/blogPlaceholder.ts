@@ -33,52 +33,62 @@ abstract class BlogPlaceholder {
   /**
    * 首页操作提示
    */
-  protected homePlaceholder: string
+  public homePlaceholder: string
 
   /**
    * API 地址操作提示
    */
-  protected apiUrlPlaceholder: string
+  public apiUrlPlaceholder: string
 
   /**
    * 用户名操作提示
    */
-  protected usernamePlaceholder: string
+  public usernamePlaceholder: string
 
   /**
    * 密码类型操作提示
    */
-  protected passwordTypePlaceholder: string
+  public passwordTypePlaceholder: string
 
   /**
    * 密码操作提示
    */
-  protected passwordPlaceholder: string
+  public passwordPlaceholder: string
 
   /**
    * API状态是否正常操作提示
    */
-  protected apiStatusPlaceholder: boolean
+  public apiStatusPlaceholder: string
 
   /**
    * 博客名（API获取）操作提示
    */
-  protected blogNamePlaceholder: string
+  public blogNamePlaceholder: string
 
   /**
    * 文章别名key操作提示
    */
-  protected posidKeyPlaceholder: string
+  public posidKeyPlaceholder: string
 
   /**
    * 文章预览链接操作提示
    */
-  protected previewUrlPlaceholder: string
+  public previewUrlPlaceholder: string
 
   /**
    * 文章类型操作提示
    */
-  protected pageTypePlaceholder: string
+  public pageTypePlaceholder: string
+
+  /**
+   * 知识空间只读提示
+   */
+  public knowledgeSpaceReadonlyModeTip: string
+
+  /**
+   * 分类只读提示
+   */
+  public cateReadonlyModeTip: string
 
   constructor() {
     this.homePlaceholder = ""
@@ -86,11 +96,13 @@ abstract class BlogPlaceholder {
     this.usernamePlaceholder = ""
     this.passwordTypePlaceholder = ""
     this.passwordPlaceholder = ""
-    this.apiStatusPlaceholder = false
+    this.apiStatusPlaceholder = ""
     this.blogNamePlaceholder = ""
     this.posidKeyPlaceholder = ""
     this.previewUrlPlaceholder = ""
     this.pageTypePlaceholder = ""
+    this.knowledgeSpaceReadonlyModeTip = ""
+    this.cateReadonlyModeTip = ""
   }
 }
 

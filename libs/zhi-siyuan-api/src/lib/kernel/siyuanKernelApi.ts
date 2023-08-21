@@ -25,9 +25,8 @@
 
 import SiyuanConfig from "../config/siyuanConfig"
 import ISiyuanKernelApi, { type SiyuanData } from "./ISiyuanKernelApi"
-import { simpleLogger } from "zhi-lib-base/src"
-import fetch from "cross-fetch"
-import { StrUtil } from "zhi-common"
+import { JsonUtil, StrUtil } from "zhi-common"
+import { createSiyuanAppLogger } from "../utils"
 
 /**
  * 思源笔记服务端API v2.8.2
@@ -61,7 +60,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     this.VERSION = "1.0.0"
 
     this.siyuanConfig = cfg
-    this.logger = simpleLogger("zhi-siyuan-api", "siyuan-kernel-api", false)
+    this.logger = createSiyuanAppLogger("siyuan-kernel-api")
   }
 
   /**
@@ -81,25 +80,25 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
   }
 
   /**
-     * 分页获取根文档
+   * 分页获取根文档
 
-     * ```sql
-     * select DISTINCT b2.root_id,b2.parent_id,b2.content from blocks b2
-     *        WHERE 1==1
-     * AND b2.id IN (
-     *     SELECT DISTINCT b1.root_id
-     *        FROM blocks b1
-     *        WHERE 1 = 1
-     *        AND ((b1.content LIKE '%github%') OR (b1.tag LIKE '%github%'))
-     *        ORDER BY b1.updated DESC,b1.created DESC LIMIT 0,10
-     * )
-     * ORDER BY b2.updated DESC,b2.created DESC
-     * ```
-     *
-     * @param page 页码
-     * @param pagesize 数目
-     * @param keyword 可选，搜索关键字
-     */
+   * ```sql
+   * select DISTINCT b2.root_id,b2.parent_id,b2.content from blocks b2
+   *        WHERE 1==1
+   * AND b2.id IN (
+   *     SELECT DISTINCT b1.root_id
+   *        FROM blocks b1
+   *        WHERE 1 = 1
+   *        AND ((b1.content LIKE '%github%') OR (b1.tag LIKE '%github%'))
+   *        ORDER BY b1.updated DESC,b1.created DESC LIMIT 0,10
+   * )
+   * ORDER BY b2.updated DESC,b2.created DESC
+   * ```
+   *
+   * @param page 页码
+   * @param pagesize 数目
+   * @param keyword 可选，搜索关键字
+   */
   public async getRootBlocks(page: number, pagesize: number, keyword: string): Promise<any> {
     const stmt = `select DISTINCT b2.root_id,b2.parent_id,b2.content from blocks b2
         WHERE 1==1
@@ -206,6 +205,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
 
   /**
    * 导出markdown文本
+   *
    * @param docId 文档id
    */
   public async exportMdContent(docId: string): Promise<any> {
@@ -214,6 +214,30 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     }
     const url = "/api/export/exportMdContent"
     return await this.siyuanRequest(url, data)
+  }
+
+  /**
+   * 导出预览
+   *
+   * @param docId 文档id
+   */
+  public async exportPreview(docId: string): Promise<any> {
+    const data = {
+      id: docId,
+    }
+    const url = "/api/export/preview"
+    return await this.siyuanRequest(url, data)
+  }
+
+  public async getDoc(docId: string): Promise<SiyuanData["data"]> {
+    const params = {
+      id: docId,
+      isBacklink: false,
+      mode: 0,
+      size: 128,
+    }
+    const url = "/api/filetree/getDoc"
+    return await this.siyuanRequest(url, params)
   }
 
   /**
@@ -236,7 +260,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    * @param url - url
    * @param data - 数据
    */
-  public async siyuanRequest(url: string, data: object): Promise<SiyuanData> {
+  public async siyuanRequest(url: string, data: object): Promise<SiyuanData["data"]> {
     const reqUrl = `${this.siyuanConfig.apiUrl}${url}`
 
     const fetchOps = {
@@ -247,6 +271,13 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       Object.assign(fetchOps, {
         headers: {
           Authorization: `Token ${this.siyuanConfig.password}`,
+        },
+      })
+    }
+    if (!StrUtil.isEmptyString(this.siyuanConfig.cookie)) {
+      Object.assign(fetchOps, {
+        headers: {
+          Cookie: this.siyuanConfig.cookie,
         },
       })
     }
@@ -274,6 +305,13 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       Object.assign(fetchOps, {
         headers: {
           Authorization: `Token ${this.siyuanConfig.password}`,
+        },
+      })
+    }
+    if (!StrUtil.isEmptyString(this.siyuanConfig.cookie)) {
+      Object.assign(fetchOps, {
+        headers: {
+          Cookie: this.siyuanConfig.cookie,
         },
       })
     }
@@ -457,31 +495,6 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
   }
 
   /**
-   * 获取块属性
-   * @param blockId
-   */
-  public async getBlockAttrs(blockId: string): Promise<any> {
-    const data = {
-      id: blockId,
-    }
-    const url = "/api/attr/getBlockAttrs"
-    return await this.siyuanRequest(url, data)
-  }
-
-  /**
-   * 设置块属性
-   * @param blockId
-   * @param attrs
-   */
-  public async setBlockAttrs(blockId: string, attrs: any): Promise<any> {
-    const url = "/api/attr/setBlockAttrs"
-    return await this.siyuanRequest(url, {
-      id: blockId,
-      attrs,
-    })
-  }
-
-  /**
    * 通过 Markdown 创建文档
    *
    * @param notebook - 笔记本
@@ -529,6 +542,224 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       throw new Error("通过ID查询图片块信息失败")
     }
     return data as any[]
+  }
+
+  /**
+   * 读取文件
+   *
+   * @param path - 文件路径，例如：/data/20210808180117-6v0mkxr/20200923234011-ieuun1p.sy
+   * @param type - 类型
+   */
+  public async getFile(path: string, type: "text" | "json"): Promise<any> {
+    const response = await fetch(`${this.siyuanConfig.apiUrl}/api/file/getFile`, {
+      method: "POST",
+      headers: {
+        Cookie: this.siyuanConfig.cookie,
+        Authorization: `Token ${this.siyuanConfig.password}`,
+      },
+      body: JSON.stringify({
+        path: path,
+      }),
+    })
+    if (response.status === 200) {
+      if (type === "text") {
+        const text = await response.text()
+        const resData = JsonUtil.safeParse<SiyuanData>(text, {} as SiyuanData)
+        if (resData?.code === 404) {
+          return ""
+        }
+        return text
+      }
+      if (type === "json") {
+        return await response.json()
+      }
+    }
+    return null
+  }
+
+  /**
+   * 文件是否存在
+   *
+   * @param path - 路径
+   * @param type - 类型
+   */
+  public async isFileExists(path: string, type: "text" | "json"): Promise<boolean> {
+    try {
+      const res = await this.getFile(path, type)
+      const data = JsonUtil.safeParse<SiyuanData>(res, {} as SiyuanData)
+      return data.code == 200
+    } catch {
+      return false
+    }
+  }
+
+  /**
+   * 获取公开文件
+   *
+   * @param path - 完整路径
+   */
+  public async getPublicFile(path: string): Promise<any> {
+    const response = await fetch(`${this.siyuanConfig.apiUrl}${path}`, { method: "GET" })
+    if (response.status === 200) {
+      const text = await response.text()
+      const resData = JsonUtil.safeParse<SiyuanData>(text, {} as SiyuanData)
+      if (resData?.code === 404) {
+        return ""
+      }
+      return text
+    }
+    return null
+  }
+
+  /**
+   * 删除文件
+   *
+   * @param path - 路径
+   */
+  public async removeFile(path: string): Promise<SiyuanData> {
+    const params = {
+      path: path,
+    }
+    return await this.siyuanRequest("/api/file/removeFile", params)
+  }
+
+  /**
+   * 写入文件
+   *
+   * @param path - 文件路径，例如：/data/20210808180117-6v0mkxr/20200923234011-ieuun1p.sy
+   * @param file - 上传的文件
+   */
+  public async putFile(path: string, file: any): Promise<SiyuanData> {
+    // import FormData from "form-data"
+    const formData = new FormData()
+    formData.append("path", path)
+    formData.append("isDir", "false")
+    formData.append("modTime", Math.floor(Date.now() / 1000).toString())
+    formData.append("file", file)
+    return await this.siyuanRequestForm("/api/file/putFile", formData)
+  }
+
+  /**
+   * 将文本数据保存到指定路径
+   *
+   * @param path - 保存文件的路径
+   * @param text - 要保存的文本数据
+   * @returns - Promise 对象，表示保存操作是否成功
+   */
+  public async saveTextData(path: string, text: string): Promise<SiyuanData> {
+    // 创建一个包含文本数据的 Blob 对象，并将其放入 File 中
+    const file = new File([new Blob([text])], path.split("/").pop())
+    // 调用 putFile 方法将文件保存到指定路径
+    return await this.putFile(path, file)
+  }
+
+  /**
+   * 正向代理
+   *
+   * @param url - 转发的 URL
+   * @param headers - HTTP 请求标头
+   * @param payload - HTTP 请求体，对象或者是字符串
+   * @param method - HTTP 方法，默认为 GET
+   * @param contentType - HTTP Content-Type，默认为 application/json
+   * @param timeout - 超时时间，单位为毫秒，默认为 7000 毫秒
+   */
+  public async forwardProxy(
+    url: string,
+    headers: any[],
+    payload?: any,
+    method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH",
+    contentType?: string,
+    timeout?: number
+  ): Promise<SiyuanData["data"]> {
+    const params = {
+      url: url,
+      headers: headers,
+      payload: payload,
+      method: method,
+      contentType: contentType,
+      timeout: timeout,
+    }
+    return await this.siyuanRequest("/api/network/forwardProxy", params)
+  }
+
+  /**
+   * 获取块属性
+   * @param blockId
+   */
+  public async getBlockAttrs(blockId: string): Promise<any> {
+    const data = {
+      id: blockId,
+    }
+    const url = "/api/attr/getBlockAttrs"
+    return await this.siyuanRequest(url, data)
+  }
+
+  /**
+   * 获取单个块属性
+   *
+   * @param blockId - 块ID
+   * @param key - 属性key
+   */
+  public async getSingleBlockAttr(blockId: string, key: string): Promise<string> {
+    const stmt = `select value from attributes where root_id = '${blockId}'
+                               and type = 'b'
+                               and name = '${key}'`
+    const data = await this.sql(stmt)
+    if (!data) {
+      throw new Error(`查询块属性失败, id=${blockId} =>${key}`)
+    }
+
+    if (data.length == 0) {
+      return ""
+    }
+    return data[0]?.value ?? ""
+  }
+
+  /**
+   * 设置块属性
+   *
+   * @param blockId
+   * @param attrs
+   */
+  public async setBlockAttrs(blockId: string, attrs: any): Promise<any> {
+    const url = "/api/attr/setBlockAttrs"
+    return await this.siyuanRequest(url, {
+      id: blockId,
+      attrs,
+    })
+  }
+
+  /**
+   * 设置单个块属性
+   *
+   * @param blockId
+   * @param attrs
+   */
+  public async setSingleBlockAttr(blockId: string, key: string, value: string): Promise<any> {
+    const url = "/api/attr/setBlockAttrs"
+    const attrs = {
+      [key]: value,
+    }
+    return await this.siyuanRequest(url, {
+      id: blockId,
+      attrs,
+    })
+  }
+
+  public async getBlockKramdown(id: string): Promise<SiyuanData["data"]> {
+    const params = {
+      id: id,
+    }
+    return await this.siyuanRequest("/api/block/getBlockKramdown", params)
+  }
+
+  public async updateBlock(id: string, data: string, dataType?: "markdown" | "dom"): Promise<SiyuanData["data"]> {
+    const params = {
+      dataType: dataType ?? "markdown",
+      data: data,
+      id: id,
+    }
+    return await this.siyuanRequest("/api/block/updateBlock", params)
   }
 }
 

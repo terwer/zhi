@@ -1,6 +1,6 @@
 {
   "name": "zhi-xmlrpc-middleware",
-  "version": "0.2.16",
+  "version": "0.5.4",
   "type": "module",
   "description": "abstract xmlrpc middle layer",
   "main": "./dist/index.js",

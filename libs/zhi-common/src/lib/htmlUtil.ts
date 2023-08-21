@@ -36,7 +36,7 @@ class HtmlUtil {
     let newstr = str
 
     // 移除序号
-    const publisherRegex = /([0-9]*)\./
+    const publisherRegex = /([0-9]*)\.?/
     newstr = newstr.replace(publisherRegex, "")
 
     return newstr
@@ -114,6 +114,9 @@ class HtmlUtil {
     str = str.replace(/!/g, "_")
     str = str.replace(/@/g, "at_")
 
+    // 去除HTML分隔符
+    str = str.replace(/---/g, "")
+
     // 需要排除的字符
     const excludeWords = ["\\d*/\\d/\\d*", "[、|\\\\]", "[，|,]", "\\d", "/", "-"]
     for (let i = 0; i < excludeWords.length; i++) {
@@ -130,17 +133,32 @@ class HtmlUtil {
    *
    * @param html - html
    * @param length - 长度
-   * @param ignore - 不要结尾省略号
+   * @param ignoreSign - 不要结尾省略号
    */
-  public static parseHtml(html: string, length: number, ignore?: boolean): string {
+  public static parseHtml(html: string, length: number, ignoreSign?: boolean): string {
     const allText = this.filterHtml(html)
-    if (allText.length < length) {
-      return allText
+    const ellipsis = ignoreSign ? "" : "..."
+
+    // 使用正则表达式匹配中文字符
+    const chineseCharReg = /[\u4e00-\u9fa5]/
+    let textLength = 0
+    let result = ""
+
+    for (let i = 0; i < allText.length; i++) {
+      const char = allText[i]
+      if (chineseCharReg.test(char)) {
+        textLength += 2 // 中文字符长度为2
+      } else {
+        textLength += 1 // 英文字符长度为1
+      }
+
+      if (textLength > length) {
+        result = allText.slice(0, i) + ellipsis
+        break
+      }
     }
-    if (ignore === true) {
-      return allText.substring(0, length)
-    }
-    return allText.substring(0, length) + "..."
+
+    return result || allText
   }
 
   /**
@@ -151,8 +169,18 @@ class HtmlUtil {
   public static removeH1(html: string): string {
     let newstr = html
 
-    const h1Regex = /<h1.*\/h1>/g
-    newstr = newstr.replace(h1Regex, "")
+    // 在正则表达式中使用非贪婪模式
+    const h1Regex = /<h1.*?\/h1>/
+    // 查找第一个匹配的 <h1> 标签
+    const match = newstr.match(h1Regex)
+
+    // 替换第一个 <h1> 标签及其内容为空字符串
+    if (match) {
+      newstr = newstr.replace(match[0], "")
+    }
+
+    // 去除HTML分隔符
+    newstr = newstr.replace(/---/g, "")
 
     return newstr
   }
@@ -173,7 +201,7 @@ class HtmlUtil {
    */
   public static removeMdH1(md: string) {
     let newstr = md
-    const mdH1Regex = /^# .*$/gm
+    const mdH1Regex = /^# .*$/m // 移除 'g' 标志以仅匹配第一个 H1 标题
     newstr = newstr.replace(mdH1Regex, "")
     return newstr
   }

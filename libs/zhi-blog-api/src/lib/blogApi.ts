@@ -30,49 +30,62 @@ import UserBlog from "./models/userBlog"
 import MediaObject from "./models/mediaObject"
 import { NotImplementedException } from "zhi-lib-base"
 import Attachment from "./models/attachmentInfo"
+import YamlConvertAdaptor from "./yamlConvertAdaptor"
 
 /**
  * 博客基类
  */
 class BlogApi implements IBlogApi {
   public async getUsersBlogs(): Promise<Array<UserBlog>> {
-    throw new NotImplementedException("You must implement this method in sub class")
+    throw new NotImplementedException("You must implement getUsersBlogs in sub class")
   }
 
   public async getRecentPostsCount(keyword?: string): Promise<number> {
-    throw new NotImplementedException("You must implement this method in sub class")
+    throw new NotImplementedException("You must implement getRecentPostsCount in sub class")
   }
 
   public async getRecentPosts(numOfPosts: number, page?: number, keyword?: string): Promise<Array<Post>> {
-    throw new NotImplementedException("You must implement this method in sub class")
+    throw new NotImplementedException("You must implement getRecentPosts in sub class")
+  }
+
+  public async preEditPost(post: Post, id?: string, publishCfg?: any): Promise<Post> {
+    throw new NotImplementedException("You must implement preEditPost in sub class")
   }
 
   public async newPost(post: Post, publish?: boolean): Promise<string> {
-    throw new NotImplementedException("You must implement this method in sub class")
+    throw new NotImplementedException("You must implement newPost in sub class")
   }
 
   public async getPost(postid: string, useSlug?: boolean, skipBody?: boolean): Promise<Post> {
-    throw new NotImplementedException("You must implement this method in sub class")
+    throw new NotImplementedException("You must implement getPost in sub class")
   }
 
   public async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {
-    throw new NotImplementedException("You must implement this method in sub class")
+    throw new NotImplementedException("You must implement editPost in sub class")
   }
 
   public async deletePost(postid: string): Promise<boolean> {
-    throw new NotImplementedException("You must implement this method in sub class")
+    throw new NotImplementedException("You must implement deletePost in sub class")
   }
 
   public async getCategories(): Promise<CategoryInfo[]> {
-    throw new NotImplementedException("You must implement this method in sub class")
+    throw new NotImplementedException("You must implement getCategories in sub class")
+  }
+
+  public async getCategoryTreeNodes(docPath: string): Promise<any[]> {
+    throw new NotImplementedException("You must implement getCategoryTreeNodes in sub class")
   }
 
   public async getPreviewUrl(postid: string): Promise<string> {
-    throw new NotImplementedException("You must implement this method in sub class")
+    throw new NotImplementedException("You must implement getPreviewUrl in sub class")
   }
 
   public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<Attachment> {
-    throw new NotImplementedException("You must implement this method in sub class")
+    throw new NotImplementedException("You must implement newMediaObject in sub class")
+  }
+
+  public getYamlAdaptor(): YamlConvertAdaptor {
+    throw new NotImplementedException("You must implement getYamlAdaptor in sub class")
   }
 }
 

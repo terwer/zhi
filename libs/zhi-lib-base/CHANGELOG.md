@@ -1,5 +1,23 @@
 # zhi-lib-base
 
+## 0.4.4
+
+### Patch Changes
+
+- fix parameter
+
+## 0.4.3
+
+### Patch Changes
+
+- change error log type
+
+## 0.4.2
+
+### Patch Changes
+
+- fix debug log
+
 ## 0.4.1
 
 ### Patch Changes

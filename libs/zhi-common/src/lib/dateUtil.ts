@@ -100,27 +100,31 @@ class DateUtil {
    * 转换ISO日期为中文完整时间
    *
    * @param str - '2022-07-18T06:25:48.000Z
+   * @param isAddTimeZone - 是否增加时区，默认不增加
+   * @param isShort - 是否短时间
    */
-  public static formatIsoToZh(str: string) {
-    return this.formatIsoToZhDateFormat(str, false, false)
+  public static formatIsoToZh(str: string, isAddTimeZone?: boolean, isShort?: boolean) {
+    return this.formatIsoToZhDateFormat(str, isAddTimeZone, isShort)
   }
 
   /**
    * 转换ISO日期为中文日期
    *
    * @param str - '2022-07-18T06:25:48.000Z
+   * @param isAddTimeZone - 是否增加时区，默认不增加
    */
-  public static formatIsoToZhDate(str: string) {
-    return this.formatIsoToZhDateFormat(str, false, true)
+  public static formatIsoToZhDate(str: string, isAddTimeZone?: boolean) {
+    return this.formatIsoToZhDateFormat(str, isAddTimeZone, true)
   }
 
   /**
    * 转换ISO日期为中文时间
    *
    * @param str - '2022-07-18T06:25:48.000Z
+   * @param isAddTimeZone - 是否增加时区，默认不增加
    */
-  public static formatIsoToZhTime(str: string) {
-    const dt = this.formatIsoToZhDateFormat(str, false)
+  public static formatIsoToZhTime(str: string, isAddTimeZone?: boolean) {
+    const dt = this.formatIsoToZhDateFormat(str, isAddTimeZone)
     return dt.split(this.TIME_SPLIT)[1]
   }
 
@@ -163,6 +167,60 @@ class DateUtil {
       timestamp = parseInt(timestamp)
     }
     return this.formatIsoToZhDate(new Date(timestamp).toISOString())
+  }
+
+  /**
+   * 转换数字日期为中文日期
+   *
+   * @param str '20220718142548'
+   */
+  public static formatNumToZhDate(str: string) {
+    if (!str) {
+      return ""
+    }
+    const newstr = str
+
+    const onlyNumbers = newstr.replace(/\D/g, "")
+    // logUtil.logInfo("onlyNumbers=>", onlyNumbers)
+    const year = onlyNumbers.slice(0, 4)
+    const month = onlyNumbers.slice(4, 6)
+    const day = onlyNumbers.slice(6, 8)
+    const hour = onlyNumbers.slice(8, 10)
+    const min = onlyNumbers.slice(10, 12)
+    const sec = onlyNumbers.slice(12, 14)
+
+    let datestr = year
+    if (!month) {
+      datestr = year
+    } else if (!day) {
+      datestr = year + "-" + month
+    } else if (!hour) {
+      datestr = year + "-" + month + "-" + day
+    } else if (!min) {
+      datestr = year + "-" + month + "-" + day + " " + hour
+    } else if (!sec) {
+      datestr = year + "-" + month + "-" + day + " " + hour + ":" + min
+    } else {
+      datestr = year + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec
+    }
+    return datestr
+  }
+
+  /**
+   * 字符转Date
+   *
+   * @param dateString dateString
+   *
+   * ```
+   * should be in ISO format: "yyyy-mm-dd hh:MM:ss" or
+   * "yyyy-mm-dd", "yyyy-mm" or "yyyy" or yyyymmddsss
+   * ```
+   *
+   * @returns {Date}
+   */
+  public static convertStringToDate(dateString: string): Date {
+    const datestr = this.formatNumToZhDate(dateString)
+    return new Date(datestr)
   }
 }
 

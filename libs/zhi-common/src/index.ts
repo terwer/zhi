@@ -29,6 +29,10 @@ import HtmlUtil from "./lib/htmlUtil"
 import JsonUtil from "./lib/jsonUtil"
 import StrUtil from "./lib/strUtil"
 import ObjectUtil from "./lib/objectUtil"
+import YamlUtil from "./lib/yamlUtil"
+import AliasTranslator from "./lib/slugUtil"
+import SmartUtil from "./lib/smartUtil"
 
 export { ZhiCommon }
-export { DateUtil, HtmlUtil, JsonUtil, StrUtil, ObjectUtil }
+export { DateUtil, HtmlUtil, JsonUtil, StrUtil, ObjectUtil, YamlUtil, AliasTranslator }
+export { SmartUtil }

@@ -95,7 +95,7 @@ describe("SiYuanApiAdaptor", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
     const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
-    const postid = "20230526221603-3mgotyw"
+    const postid = "20230722212237-oc9s0y8"
     const post = await apiAdaptor.getPost(postid)
     console.log(post)
   })
@@ -104,9 +104,10 @@ describe("SiYuanApiAdaptor", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
     const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
-    const postid = "20230526221603-3mgotyw"
+    const postid = "20230731201306-ps6ld6p"
     const post = new Post()
     post.title = "自动发布的测试标题2"
+    // 不支持更新正文
     post.description = "# 自动发布的测试内容2"
     post.mt_keywords = "标签1,标签2"
     post.categories = ["分类1", "分类2"]

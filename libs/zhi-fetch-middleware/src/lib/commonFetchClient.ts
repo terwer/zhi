@@ -24,7 +24,7 @@
  */
 
 import { simpleLogger } from "zhi-lib-base"
-import { BrowserUtil, DeviceDetection, DeviceTypeEnum } from "zhi-device"
+import { BrowserUtil, DeviceDetection, DeviceTypeEnum, SiyuanDevice } from "zhi-device"
 import { StrUtil } from "zhi-common"
 import { fetchNode } from "./impl/nodeFetch"
 import { fetchChrome } from "./impl/chromeFetch"
@@ -37,9 +37,9 @@ class CommonFetchClient {
   private readonly requestUrl
   private readonly middlewareUrl
 
-  constructor(appInstance: any, requestUrl: string, middlewareUrl?: string) {
+  constructor(appInstance: any, requestUrl?: string, middlewareUrl?: string, isDev?: boolean) {
     this.appInstance = appInstance
-    this.logger = simpleLogger("common-fetch-client", "zhi-fetch-middleware")
+    this.logger = simpleLogger("common-fetch-client", "zhi-fetch-middleware", isDev)
     this.requestUrl = requestUrl
     this.middlewareUrl = middlewareUrl
   }
@@ -49,11 +49,10 @@ class CommonFetchClient {
    *
    * @param endpointUrl - 请求地址
    * @param fetchOptions - 请求参数
-   * @param middlewareUrl - 可选，当环境不支持时候，必传
    */
-  public async fetchCall(endpointUrl: string, fetchOptions: RequestInit, middlewareUrl?: string): Promise<any> {
-    const apiUrl = this.requestUrl + endpointUrl
-    return await this.fetchRequest(apiUrl, fetchOptions, middlewareUrl)
+  public async fetchCall(endpointUrl: string, fetchOptions: RequestInit): Promise<any> {
+    const apiUrl = this.requestUrl ? this.requestUrl + endpointUrl : endpointUrl
+    return await this.fetchRequest(apiUrl, fetchOptions, this.middlewareUrl)
   }
 
   /**
@@ -93,9 +92,19 @@ class CommonFetchClient {
       throw new Error("请求异常，response is undefined")
     }
 
-    let resJson
+    let resJson: any
 
-    if (typeof response !== "undefined" && response instanceof Response) {
+    const isResponse = response?.status && response?.headers && response?.url
+    const isStream = response?.body instanceof ReadableStream
+    const isString = response?.body instanceof String
+    this.logger.info(`check if response is valid, isResponse=>${isResponse}`)
+    this.logger.info(`check response body is stream =>${isStream}`, typeof response?.body)
+    this.logger.info(`check response body is string =>${isString}`, typeof response?.body)
+
+    if (!isResponse || !(response instanceof Response) || isStream) {
+      this.logger.debug("response不是Response的实例", typeof response)
+      resJson = response
+    } else {
       // 解析响应体并返回响应结果
       const statusCode = response.status
 
@@ -119,16 +128,20 @@ class CommonFetchClient {
         }
       }
 
+      this.logger.debug("isNode=>", BrowserUtil.isNode)
+      this.logger.debug("isElectron=>", BrowserUtil.isElectron())
+      this.logger.debug("isInSiyuanWidget=>", SiyuanDevice.isInSiyuanWidget())
       if (BrowserUtil.isNode) {
         resJson = await response.json()
       } else if (BrowserUtil.isElectron()) {
         resJson = await response.json()
+      } else if (SiyuanDevice.isInSiyuanWidget()) {
+        resJson = await response.json()
       } else {
+        this.logger.debug("解析CORSBody")
         const corsJson = await response.json()
         resJson = this.parseCORSBody(corsJson)
       }
-    } else {
-      resJson = response
     }
 
     return resJson

@@ -1,0 +1,536 @@
+# zhi-wechatsync-middleware
+
+## 0.3.14
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.32.1
+
+## 0.3.13
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.32.0
+
+## 0.3.12
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.31.1
+
+## 0.3.11
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.31.0
+  - zhi-common@1.23.0
+
+## 0.3.10
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.22.0
+  - zhi-blog-api@1.30.1
+
+## 0.3.9
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.30.0
+
+## 0.3.8
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.21.0
+  - zhi-blog-api@1.29.1
+
+## 0.3.7
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.29.0
+
+## 0.3.6
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.28.0
+
+## 0.3.5
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.27.0
+
+## 0.3.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.26.0
+
+## 0.3.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.25.1
+
+## 0.3.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.25.0
+
+## 0.3.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.20.0
+  - zhi-blog-api@1.24.1
+
+## 0.3.0
+
+### Minor Changes
+
+- add autoSummary
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.24.0
+  - zhi-common@1.19.0
+
+## 0.2.6
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.18.0
+  - zhi-blog-api@1.23.1
+
+## 0.2.5
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.23.0
+  - zhi-common@1.17.0
+
+## 0.2.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.16.2
+
+## 0.2.3
+
+### Patch Changes
+
+- fix typo
+- Updated dependencies
+  - zhi-common@1.16.1
+
+## 0.2.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.16.0
+
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - zhi-blog-api@1.22.1
+  - zhi-common@1.15.1
+
+## 0.2.0
+
+### Minor Changes
+
+- add yaml
+- add formatNumToZhDate
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-blog-api@1.22.0
+  - zhi-common@1.15.0
+
+## 0.1.49
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.21.0
+
+## 0.1.48
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.22
+
+## 0.1.47
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.21
+
+## 0.1.46
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.20
+
+## 0.1.45
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.19
+
+## 0.1.44
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.18
+
+## 0.1.43
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.14.2
+
+## 0.1.42
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.17
+
+## 0.1.41
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.16
+
+## 0.1.40
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.15
+
+## 0.1.39
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.14
+
+## 0.1.38
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.14.1
+
+## 0.1.37
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.13
+
+## 0.1.36
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.12
+
+## 0.1.35
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.14.0
+
+## 0.1.34
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.13.4
+
+## 0.1.33
+
+### Patch Changes
+
+- fix: fix packaging format errors
+
+## 0.1.32
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.13.3
+
+## 0.1.31
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.13.2
+
+## 0.1.30
+
+### Patch Changes
+
+- add str util methods
+- Updated dependencies
+  - zhi-common@1.13.1
+
+## 0.1.29
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.13.0
+
+## 0.1.28
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.12.1
+
+## 0.1.27
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.12.0
+
+## 0.1.26
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.11.10
+
+## 0.1.25
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.11.9
+
+## 0.1.24
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.11
+
+## 0.1.23
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.4.4
+  - zhi-blog-api@1.20.10
+  - zhi-common@1.11.8
+
+## 0.1.22
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.9
+
+## 0.1.21
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.8
+
+## 0.1.20
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.7
+
+## 0.1.19
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.6
+
+## 0.1.18
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.5
+
+## 0.1.17
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.4.3
+  - zhi-blog-api@1.20.4
+  - zhi-common@1.11.7
+
+## 0.1.16
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.3
+
+## 0.1.15
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.2
+
+## 0.1.14
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.11.6
+
+## 0.1.13
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.1
+
+## 0.1.12
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.20.0
+
+## 0.1.11
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-blog-api@1.19.0
+
+## 0.1.10
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.18.3
+
+## 0.1.9
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.18.2
+
+## 0.1.8
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.18.1
+
+## 0.1.7
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.18.0
+
+## 0.1.6
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.17.3
+
+## 0.1.5
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.17.2
+
+## 0.1.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.17.1
+
+## 0.1.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.17.0
+
+## 0.1.2
+
+### Patch Changes
+
+- update wechatsync
+
+## 0.1.1
+
+### Patch Changes
+
+- init wechatsync
+
+## 0.1.0
+
+### Minor Changes
+
+- add github api
+
+## 0.0.2
+
+### Patch Changes
+
+- init lib for github and wechatsync

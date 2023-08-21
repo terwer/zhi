@@ -1,6 +1,6 @@
 {
   "name": "zhi-lib-base",
-  "version": "0.4.1",
+  "version": "0.4.4",
   "type": "module",
   "description": "minimization dependencies for class library",
   "main": "./dist/index.js",

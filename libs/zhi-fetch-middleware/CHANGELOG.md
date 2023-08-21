@@ -1,5 +1,284 @@
 # zhi-fetch-middleware
 
+## 0.3.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.0
+
+## 0.3.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.22.0
+
+## 0.3.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.21.0
+
+## 0.3.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.20.0
+
+## 0.3.0
+
+### Minor Changes
+
+- add autoSummary
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.19.0
+
+## 0.2.29
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.18.0
+
+## 0.2.28
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.17.0
+
+## 0.2.27
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.16.2
+
+## 0.2.26
+
+### Patch Changes
+
+- fix typo
+- Updated dependencies
+  - zhi-common@1.16.1
+
+## 0.2.25
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.16.0
+
+## 0.2.24
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - zhi-common@1.15.1
+
+## 0.2.23
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-common@1.15.0
+
+## 0.2.22
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.3.1
+
+## 0.2.21
+
+### Patch Changes
+
+- add fetch response check
+
+## 0.2.20
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.14.2
+
+## 0.2.19
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.14.1
+
+## 0.2.18
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.14.0
+
+## 0.2.17
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.13.4
+
+## 0.2.16
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.13.3
+
+## 0.2.15
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.13.2
+
+## 0.2.14
+
+### Patch Changes
+
+- add str util methods
+- Updated dependencies
+  - zhi-common@1.13.1
+
+## 0.2.13
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.13.0
+
+## 0.2.12
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.12.1
+
+## 0.2.11
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.12.0
+
+## 0.2.10
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.11.10
+
+## 0.2.9
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.11.9
+
+## 0.2.8
+
+### Patch Changes
+
+- fix parameter
+- Updated dependencies
+  - zhi-lib-base@0.4.4
+  - zhi-common@1.11.8
+
+## 0.2.7
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.4.3
+  - zhi-common@1.11.7
+
+## 0.2.6
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.11.6
+
+## 0.2.5
+
+### Patch Changes
+
+- fix resp error
+
+## 0.2.4
+
+### Patch Changes
+
+- fix repo error
+
+## 0.2.3
+
+### Patch Changes
+
+- fix resp error
+
+## 0.2.2
+
+### Patch Changes
+
+- fix resp error
+
+## 0.2.1
+
+### Patch Changes
+
+- fix resp error
+
+## 0.2.0
+
+### Minor Changes
+
+- fix siyuan widget cannot parse response error
+
+## 0.1.20
+
+### Patch Changes
+
+- fix CommonFetchClient init
+
+## 0.1.19
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.11.5
+
+## 0.1.18
+
+### Patch Changes
+
+- fix debug log
+- Updated dependencies
+  - zhi-lib-base@0.4.2
+  - zhi-common@1.11.4
+
+## 0.1.17
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.11.3
+
 ## 0.1.16
 
 ### Patch Changes

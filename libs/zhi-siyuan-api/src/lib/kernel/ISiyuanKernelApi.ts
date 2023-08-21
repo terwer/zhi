@@ -40,7 +40,7 @@ interface SiyuanData {
   /**
    * 可能为 \{\}、[] 或者 NULL，根据不同接口而不同
    */
-  data: any[] | object | null | undefined
+  data: any[] | any | null | undefined
 }
 
 /**
@@ -78,6 +78,37 @@ interface ISiyuanKernelApi {
 
   // /api/asset/upload
   uploadAsset(formData: any): Promise<SiyuanData>
+
+  // /api/file/getFile
+  getFile(path: string, type: "text" | "json"): Promise<any>
+  getPublicFile(path: string): Promise<any>
+  // /api/file/removeFile
+  removeFile(path: string): Promise<SiyuanData>
+  isFileExists(path: string, type: "text" | "json"): Promise<boolean>
+  // /api/file/putFile
+  putFile(path: string, file: any): Promise<SiyuanData>
+  saveTextData(path: string, text: string): Promise<SiyuanData>
+
+  // /api/network/forwardProxy
+  forwardProxy(
+    url: string,
+    headers: any[],
+    payload?: any,
+    method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH",
+    contentType?: string,
+    timeout?: number
+  ): Promise<SiyuanData["data"]>
+
+  // /api/attr/getBlockAttrs
+  getBlockAttrs(blockId: string): Promise<any>
+  getSingleBlockAttr(blockId: string, key: string): Promise<string>
+  // setBlockAttrs
+  setBlockAttrs(blockId: string, attrs: any): Promise<any>
+  setSingleBlockAttr(blockId: string, key: string, value: string): Promise<any>
+  // /api/block/getBlockKramdown
+  getBlockKramdown(id: string): Promise<SiyuanData["data"]>
+  // /api/block/updateBlock
+  updateBlock(id: string, data: string, dataType?: "markdown" | "dom"): Promise<SiyuanData["data"]>
 }
 
 export default ISiyuanKernelApi

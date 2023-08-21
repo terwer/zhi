@@ -30,6 +30,8 @@ import MediaObject from "./models/mediaObject"
 import { IBlogApi } from "./IBlogApi"
 import { simpleLogger } from "zhi-lib-base"
 import Attachment from "./models/attachmentInfo"
+import BlogApi from "./blogApi"
+import YamlConvertAdaptor from "./yamlConvertAdaptor"
 
 /**
  * 博客API
@@ -39,21 +41,21 @@ import Attachment from "./models/attachmentInfo"
  * @since 1.0.0
  */
 class BlogAdaptor implements IBlogApi {
-  private readonly logger
-  private readonly apiAdaptor: IBlogApi
+  protected logger: any
+  private readonly apiAdaptor: BlogApi
 
   /**
    * 博客API版本号
    */
-  public readonly VERSION
+  public VERSION: string
 
   /**
    * 初始化博客 API
    *
    * @param apiAdaptor - 对应博客的适配器，例如：SiYuanApiAdaptor
    */
-  constructor(apiAdaptor: IBlogApi) {
-    this.logger = simpleLogger("zhi-blog-api", "zhi", false)
+  constructor(apiAdaptor: BlogApi) {
+    this.logger = simpleLogger("blog-adaptor", "zhi-blog-api", false)
     this.VERSION = "1.0.0"
     this.apiAdaptor = apiAdaptor
   }
@@ -88,6 +90,17 @@ class BlogAdaptor implements IBlogApi {
       this.logger.error("getRecentPosts fetch posts failed", e)
       return Promise.resolve([])
     }
+  }
+
+  /**
+   * 内容预处理：预处理平台无法兼容的文本内容
+   *
+   * @param post 文章对象
+   * @param id - 思源笔记文档ID
+   * @param publishCfg - 发布配置
+   */
+  public async preEditPost(post: Post, id?: string, publishCfg?: any): Promise<Post> {
+    return await this.apiAdaptor.preEditPost(post, id, publishCfg)
   }
 
   /**
@@ -142,6 +155,15 @@ class BlogAdaptor implements IBlogApi {
   }
 
   /**
+   * 获取文件树列表
+   *
+   * @param docPath 完整文件路径，例如：docs/_posts/测试.md
+   */
+  public async getCategoryTreeNodes(docPath: string): Promise<any[]> {
+    return await this.apiAdaptor.getCategoryTreeNodes(docPath)
+  }
+
+  /**
    * 获取预览链接
    *
    * @param postid - 文章ID
@@ -158,6 +180,13 @@ class BlogAdaptor implements IBlogApi {
    */
   public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<Attachment> {
     return await this.apiAdaptor.newMediaObject(mediaObject, customHandler)
+  }
+
+  /**
+   * 获取YAML适配器
+   */
+  public getYamlAdaptor(): YamlConvertAdaptor {
+    return this.apiAdaptor.getYamlAdaptor()
   }
 }
 

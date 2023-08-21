@@ -1,5 +1,11 @@
 # zhi-device
 
+## 2.3.1
+
+### Patch Changes
+
+- add copyToClipboardInBrowser
+
 ## 2.3.0
 
 ### Minor Changes

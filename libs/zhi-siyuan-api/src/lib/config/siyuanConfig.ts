@@ -48,6 +48,11 @@ class SiyuanConfig extends BlogConfig {
   public override password = ""
 
   /**
+   * 请求 cookie
+   */
+  public override cookie = ""
+
+  /**
    * 思源笔记操作提示
    *
    * @protected

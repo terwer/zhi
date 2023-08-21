@@ -28,6 +28,7 @@ import Post from "./models/post"
 import MediaObject from "./models/mediaObject"
 import CategoryInfo from "./models/categoryInfo"
 import Attachment from "./models/attachmentInfo"
+import YamlConvertAdaptor from "./yamlConvertAdaptor"
 
 /**
  * 通用博客接口
@@ -64,6 +65,15 @@ interface IBlogApi {
    * @returns {Promise<Array<Post>>}
    */
   getRecentPosts(numOfPosts: number, page?: number, keyword?: string): Promise<Array<Post>>
+
+  /**
+   * 内容预处理：预处理平台无法兼容的文本内容
+   *
+   * @param post 文章对象
+   * @param id - 思源笔记文档ID
+   * @param publishCfg - 发布配置
+   */
+  preEditPost(post: Post, id?: string, publishCfg?: any): Promise<Post>
 
   /**
    * 发布文章
@@ -157,6 +167,13 @@ interface IBlogApi {
   getCategories(): Promise<CategoryInfo[]>
 
   /**
+   * 获取文件树列表
+   *
+   * @param docPath 完整文件路径，例如：docs/_posts/测试.md
+   */
+  getCategoryTreeNodes(docPath: string): Promise<any[]>
+
+  /**
    * 获取预览链接
    *
    * @param postid - 文章ID
@@ -173,6 +190,11 @@ interface IBlogApi {
    * @returns {Promise<MediaObject>}
    */
   newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<Attachment>
+
+  /**
+   * 获取YAML适配器
+   */
+  getYamlAdaptor(): YamlConvertAdaptor
 }
 
 export type { IBlogApi }

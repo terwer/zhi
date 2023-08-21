@@ -46,7 +46,7 @@ class JsonUtil {
     let ret
 
     if (typeof str !== "string") {
-      this.logger.warn("not json string, ignore parse")
+      this.logger.debug("not json string, ignore parse")
       return str
     }
 
@@ -60,7 +60,7 @@ class JsonUtil {
       ret = JSON.parse(str) || def
     } catch (e) {
       ret = def
-      this.logger.error("json parse error", e)
+      this.logger.warn("json parse error", e)
     }
 
     // 如果json被二次转义，在尝试解析一次
