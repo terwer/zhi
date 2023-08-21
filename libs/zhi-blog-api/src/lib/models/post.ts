@@ -162,17 +162,100 @@ class Post {
     this.attrs = "{}"
   }
 
-  public toYamlObj() {
+  /**
+   * 将当前对象的数据转换为适用于 YAML 的对象
+   *
+   * @returns {Object} 表示数据的适用于 YAML 的对象
+   */
+  public toYamlObj(): Record<string, any> {
     return {
+      /**
+       * 创建日期，已转换为中文格式
+       */
       created: DateUtil.formatIsoToZh(this.dateCreated.toISOString(), true),
+
+      /**
+       * 更新日期，已转换为中文格式。
+       */
       updated: DateUtil.formatIsoToZh(this.dateUpdated.toISOString(), true),
+
+      /**
+       * 标题。
+       */
       title: this.title,
+
+      /**
+       * WordPress 别名
+       */
       slug: this.wp_slug,
+
+      /**
+       * 永久链接
+       */
       permalink: this.permalink,
+
+      /**
+       * 简短描述
+       */
       desc: this.shortDesc,
+
+      /**
+       * 标签
+       */
       tags: this.mt_keywords,
+
+      /**
+       * 分类列表
+       */
       categories: this.categories,
     }
+  }
+
+  /**
+   * 使用来自适用于 YAML 的对象的数据填充当前对象的属性
+   *
+   * @param {Object} yamlObj - 包含要填充对象属性的数据的适用于 YAML 的对象
+   */
+  public fromYaml(yamlObj: Record<string, any>): void {
+    /**
+     * 创建日期
+     */
+    this.dateCreated = yamlObj.created
+
+    /**
+     * 更新日期
+     */
+    this.dateUpdated = yamlObj.updated
+
+    /**
+     * 标题
+     */
+    this.title = yamlObj.title
+
+    /**
+     * WordPress 别名
+     */
+    this.wp_slug = yamlObj.slug
+
+    /**
+     * 永久链接
+     */
+    this.permalink = yamlObj.permalink
+
+    /**
+     * 简短描述
+     */
+    this.shortDesc = yamlObj.desc
+
+    /**
+     * 标签
+     */
+    this.mt_keywords = yamlObj.tags
+
+    /**
+     * 分类列表
+     */
+    this.categories = yamlObj.categories
   }
 }
 

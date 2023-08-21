@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.32.0
+
+### Minor Changes
+
+- add fromYaml
+
 ## 1.31.1
 
 ### Patch Changes
