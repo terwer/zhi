@@ -220,12 +220,12 @@ class Post {
     /**
      * 创建日期
      */
-    this.dateCreated = yamlObj.created
+    this.dateCreated = DateUtil.convertStringToDate(yamlObj.created)
 
     /**
      * 更新日期
      */
-    this.dateUpdated = yamlObj.updated
+    this.dateUpdated = DateUtil.convertStringToDate(yamlObj.updated)
 
     /**
      * 标题

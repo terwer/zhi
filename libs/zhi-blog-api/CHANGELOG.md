@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.32.1
+
+### Patch Changes
+
+- fix date type
+
 ## 1.32.0
 
 ### Minor Changes
