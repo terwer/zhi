@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.23.1
+
+### Patch Changes
+
+- add addYamlToMd
+
 ## 1.23.0
 
 ### Minor Changes
