@@ -1,5 +1,15 @@
 # zhi-blog-api
 
+## 1.33.0
+
+### Minor Changes
+
+- add removeWidgetTag option
+
+### Patch Changes
+
+- add PreferenceConfig
+
 ## 1.32.2
 
 ### Patch Changes

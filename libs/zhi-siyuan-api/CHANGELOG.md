@@ -1,5 +1,17 @@
 # zhi-siyuan-api
 
+## 2.5.0
+
+### Minor Changes
+
+- add removeWidgetTag option
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-blog-api@1.33.0
+
 ## 2.4.4
 
 ### Patch Changes

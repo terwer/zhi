@@ -26,6 +26,7 @@
 import BlogPlaceholder from "./blogPlaceholder"
 import PageTypeEnum from "./enums/pageTypeEnum"
 import CategoryTypeEnum from "./enums/categoryTypeEnum"
+import PreferenceConfig from "./PreferenceConfig"
 
 /**
  * 页面类型
@@ -149,11 +150,9 @@ abstract class BlogConfig {
   public placeholder?: BlogPlaceholder | undefined
 
   /**
-   * 是否处理标题
-   *
-   * @protected
+   * 偏好设置
    */
-  public fixTitle?: boolean
+  public preferenceConfig?: PreferenceConfig | undefined
 
   /**
    * 跨域代理地址
@@ -237,7 +236,7 @@ abstract class BlogConfig {
     this.previewUrl = ""
     this.pageType = PageTypeEnum.Markdown
     this.placeholder = undefined
-    this.fixTitle = false
+    this.preferenceConfig = new PreferenceConfig()
     this.middlewareUrl = ""
     this.usernameEnabled = false
     this.showTokenTip = false
