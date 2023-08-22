@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.5.2
+
+### Patch Changes
+
+- set siyuan preferenceConfig
+
 ## 2.5.1
 
 ### Patch Changes
