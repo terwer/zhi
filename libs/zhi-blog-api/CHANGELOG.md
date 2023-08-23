@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.34.0
+
+### Minor Changes
+
+- feat: optimize YAML null handling
+
 ## 1.33.1
 
 ### Patch Changes
