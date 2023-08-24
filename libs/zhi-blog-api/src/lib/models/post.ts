@@ -194,7 +194,12 @@ class Post {
     this.wp_slug = yamlObj?.slug ?? this.wp_slug
     this.permalink = yamlObj?.permalink ?? this.permalink
     this.shortDesc = yamlObj?.desc ?? this.shortDesc
-    this.mt_keywords = yamlObj?.tags ? yamlObj?.tags.join(",") : this.mt_keywords
+    // 修复历史遗留问题
+    if (typeof yamlObj?.tags === "string" && yamlObj?.tags.indexOf(",") > -1) {
+      this.mt_keywords = yamlObj?.tag
+    } else {
+      this.mt_keywords = yamlObj?.tags ? yamlObj?.tags.join(",") : this.mt_keywords
+    }
     this.categories = yamlObj?.categories ?? this.categories
   }
 }
