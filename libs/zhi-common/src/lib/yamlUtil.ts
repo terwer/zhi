@@ -129,19 +129,12 @@ class YamlUtil {
    * 将 YAML 头部添加到 Markdown 内容中
    *
    * @param yaml - 要添加的 YAML 头部
-   * @param markdown - 原始的 Markdown 内容
+   * @param content - 原始的 Markdown 内容
    * @returns 更新后的 Markdown 内容
    */
-  public static addYamlToMd(yaml: string, markdown: string): string {
-    const regex = /^---\n([\s\S]*?\n)---/
-
-    if (regex.test(markdown)) {
-      markdown = markdown.replace(regex, "")
-      this.logger.info("发现原有的YAML，已移除")
-    }
-
+  public static addYamlToMd(yaml: string, content: string): string {
+    const markdown = this.extractMarkdown(content)
     const updatedMarkdown = `${yaml}\n${markdown}`
-
     return updatedMarkdown
   }
 }
