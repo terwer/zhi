@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.34.5
+
+### Patch Changes
+
+- 8a55a296: fix yaml error
+
 ## 1.34.4
 
 ### Patch Changes
