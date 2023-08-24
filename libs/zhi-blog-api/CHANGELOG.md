@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.34.3
+
+### Patch Changes
+
+- fix deps
+
 ## 1.34.2
 
 ### Patch Changes
