@@ -224,6 +224,11 @@ abstract class BlogConfig {
    */
   public categoryType: CategoryTypeEnum
 
+  /**
+   * 是否生成YAML永久链接
+   */
+  public yamlLinkEnabled: boolean
+
   protected constructor() {
     this.home = ""
     this.apiUrl = ""
@@ -251,6 +256,7 @@ abstract class BlogConfig {
     this.cateTitle = "文章分类"
     this.allowCateChange = false
     this.categoryType = CategoryTypeEnum.CategoryType_None
+    this.yamlLinkEnabled = true
   }
 }
 

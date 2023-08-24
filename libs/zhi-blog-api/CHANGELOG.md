@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.34.2
+
+### Patch Changes
+
+- add yamlLinkEnabled
+
 ## 1.34.1
 
 ### Patch Changes
