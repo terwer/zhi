@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.34.4
+
+### Patch Changes
+
+- fix field error
+
 ## 1.34.3
 
 ### Patch Changes
