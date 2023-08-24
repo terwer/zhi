@@ -1,6 +1,6 @@
 {
   "name": "zhi-wechatsync-middleware",
-  "version": "0.3.23",
+  "version": "0.3.24",
   "type": "module",
   "description": "publish sdk via wechatsync",
   "main": "./dist/index.js",

@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.23.2
+
+### Patch Changes
+
+- add extractMarkdown
+
 ## 1.23.1
 
 ### Patch Changes
