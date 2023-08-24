@@ -1,5 +1,11 @@
 # zhi-lib-base
 
+## 0.5.0
+
+### Minor Changes
+
+- fix: set shamefully-hoist to true to avoid build error
+
 ## 0.4.4
 
 ### Patch Changes
