@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.34.1
+
+### Patch Changes
+
+- fix: fix tag split
+
 ## 1.34.0
 
 ### Minor Changes

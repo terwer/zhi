@@ -176,7 +176,7 @@ class Post {
     this.wp_slug && (yamlObj.slug = this.wp_slug)
     this.permalink && (yamlObj.permalink = this.permalink)
     this.shortDesc && (yamlObj.desc = this.shortDesc)
-    this.mt_keywords && (yamlObj.tags = this.mt_keywords)
+    this.mt_keywords && (yamlObj.tags = this.mt_keywords.split(","))
     this.categories && (yamlObj.categories = this.categories)
 
     return yamlObj
@@ -194,7 +194,7 @@ class Post {
     this.wp_slug = yamlObj?.slug ?? this.wp_slug
     this.permalink = yamlObj?.permalink ?? this.permalink
     this.shortDesc = yamlObj?.desc ?? this.shortDesc
-    this.mt_keywords = yamlObj?.tags ?? this.mt_keywords
+    this.mt_keywords = yamlObj?.tags.join(",") ?? this.mt_keywords
     this.categories = yamlObj?.categories ?? this.categories
   }
 }
