@@ -1,5 +1,19 @@
 # zhi-blog-api
 
+## 1.34.9
+
+### Patch Changes
+
+- fix: remove unused type define
+
+## 1.34.8
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.5.0
+  - zhi-common@1.23.4
+
 ## 1.34.7
 
 ### Patch Changes
