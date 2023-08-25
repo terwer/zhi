@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.23.5
+
+### Patch Changes
+
+- fix: change json parse
+
 ## 1.23.4
 
 ### Patch Changes
