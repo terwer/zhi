@@ -28,9 +28,14 @@
  */
 class PreferenceConfig {
   /**
-   * 是否处理标题，主要是去除数字.
+   * 是否处理标题，主要是去除数字
    */
   public fixTitle: boolean
+
+  /**
+   * 不修改标题
+   */
+  public keepTitle: boolean
 
   /**
    * 是否删除正文第一个H1
@@ -44,6 +49,7 @@ class PreferenceConfig {
 
   constructor() {
     this.fixTitle = false
+    this.keepTitle = false
     this.removeFirstH1 = false
     this.removeMdWidgetTag = false
   }

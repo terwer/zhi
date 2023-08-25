@@ -1,5 +1,17 @@
 # zhi-blog-api
 
+## 1.34.12
+
+### Patch Changes
+
+- feat: add keep title
+
+## 1.34.11
+
+### Patch Changes
+
+- feat: add keepTitle
+
 ## 1.34.10
 
 ### Patch Changes

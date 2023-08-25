@@ -1,5 +1,20 @@
 # zhi-wechatsync-middleware
 
+## 0.3.30
+
+### Patch Changes
+
+- feat: add keep title
+- Updated dependencies
+  - zhi-blog-api@1.34.12
+
+## 0.3.29
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.34.11
+
 ## 0.3.28
 
 ### Patch Changes

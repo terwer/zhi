@@ -235,10 +235,14 @@ class SiYuanApiAdaptor extends BlogApi {
     let flag = false
     try {
       // 更新标题
-      const title = post.title
-      await this.siyuanKernelApi.setBlockAttrs(postid, {
-        title: title,
-      })
+      if (!this.cfg?.preferenceConfig.keepTitle) {
+        const title = post.title
+        await this.siyuanKernelApi.setBlockAttrs(postid, {
+          title: title,
+        })
+        this.logger.error("检测到配置，已修改思源笔记文档标题")
+      }
+
       flag = true
     } catch (e) {
       flag = false

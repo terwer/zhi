@@ -1,5 +1,20 @@
 # zhi-siyuan-api
 
+## 2.5.15
+
+### Patch Changes
+
+- feat: add keep title
+- Updated dependencies
+  - zhi-blog-api@1.34.12
+
+## 2.5.14
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.34.11
+
 ## 2.5.13
 
 ### Patch Changes
