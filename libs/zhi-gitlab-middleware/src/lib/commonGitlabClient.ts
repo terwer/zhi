@@ -25,7 +25,7 @@
 
 import { simpleLogger } from "zhi-lib-base"
 import { CommonFetchClient } from "zhi-fetch-middleware"
-import { JsonUtil } from "zhi-common/src"
+import { JsonUtil } from "zhi-common"
 
 class CommonGitlabClient {
   private readonly logger: any

@@ -1,6 +1,6 @@
 {
   "name": "zhi-gitlab-middleware",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "type": "module",
   "description": "a middleware for gitlab api ",
   "main": "./dist/index.js",

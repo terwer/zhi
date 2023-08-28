@@ -1,5 +1,11 @@
 # zhi-gitlab-middleware
 
+## 0.2.3
+
+### Patch Changes
+
+- add CommonGitlabClient
+
 ## 0.2.2
 
 ### Patch Changes
