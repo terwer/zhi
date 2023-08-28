@@ -1,5 +1,11 @@
 # zhi-gitlab-middleware
 
+## 0.2.1
+
+### Patch Changes
+
+- add getRepositoryTree
+
 ## 0.2.0
 
 ### Minor Changes

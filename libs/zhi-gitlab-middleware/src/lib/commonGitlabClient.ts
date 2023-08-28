@@ -204,6 +204,7 @@ class CommonGitlabClient {
       `/api/v4/projects/${encodeURIComponent(id)}/repository/tree?path=${encodeURIComponent(path)}` +
       `&pagination=keyset&per_page=100`
     if (pageToken) {
+      this.logger.debug("using page token to get next page")
       endpointUrl = endpointUrl + `&page_token=${pageToken}`
     }
     const fetchOptions: RequestInit = {
