@@ -216,7 +216,7 @@ class CommonGitlabClient {
     const response = await this.commonFetchClient.fetchCall(endpointUrl, fetchOptions)
     const resText = await response.text()
     const data = JsonUtil.safeParse<any>(resText, {} as any)
-    this.logger.debug(`read Repository tree on branch ${this.branch}`)
+    this.logger.debug(`read repository tree on branch ${this.branch}`)
 
     const treeNode = [] as any[]
 

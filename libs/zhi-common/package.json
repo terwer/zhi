@@ -27,7 +27,8 @@
   "devDependencies": {
     "@terwer/eslint-config-custom": "workspace:*",
     "@terwer/tsconfig": "workspace:*",
-    "@terwer/vite-config-custom": "workspace:*"
+    "@terwer/vite-config-custom": "workspace:*",
+    "@types/js-yaml": "^4.0.5"
   },
   "dependencies": {
     "js-yaml": "^4.1.0",
