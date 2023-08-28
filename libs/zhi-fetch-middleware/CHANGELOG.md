@@ -1,5 +1,12 @@
 # zhi-fetch-middleware
 
+## 0.3.10
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.6
+
 ## 0.3.9
 
 ### Patch Changes

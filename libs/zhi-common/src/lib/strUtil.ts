@@ -121,18 +121,17 @@ class StrUtil {
   public static pathJoin(path1: string, path2: string): string {
     let path = path1
     const path1LastIdx = path1.lastIndexOf("/")
-    // logUtil.logInfo("path1.length=>", path1.length)
-    // logUtil.logInfo("path1LastIdx=>", path1LastIdx)
+
     if (path1LastIdx + 1 === path1.length) {
       path = path1.substring(0, path1LastIdx)
     }
 
     const path2Idx = path2.indexOf("/")
-    // logUtil.logInfo("path2Idx=>", path2Idx)
-    if (path2Idx > 0) {
-      path = path + "/" + path2
-    } else {
+
+    if (path2Idx === 0) {
       path = path + path2
+    } else {
+      path = path + "/" + path2
     }
 
     return path
