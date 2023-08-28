@@ -197,15 +197,12 @@ importers:
 
   libs/zhi-gitlab-middleware:
     dependencies:
-      '@gitbeaker/rest':
-        specifier: ^39.12.0
-        version: 39.12.0
-      js-base64:
-        specifier: ^3.7.5
-        version: 3.7.5
       zhi-common:
         specifier: workspace:*
         version: link:../zhi-common
+      zhi-fetch-middleware:
+        specifier: workspace:*
+        version: link:../zhi-fetch-middleware
       zhi-lib-base:
         specifier: workspace:*
         version: link:../zhi-lib-base
@@ -216,6 +213,9 @@ importers:
       '@terwer/vite-config-custom':
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
+      js-base64:
+        specifier: ^3.7.5
+        version: 3.7.5
 
   libs/zhi-lib-base:
     devDependencies:
@@ -1650,31 +1650,6 @@ packages:
   /@eslint/js@8.38.0:
     resolution: {integrity: sha512-IoD2MfUnOV58ghIHCiil01PcohxjbYR/qCxsoC+xNgUwh1EY8jOOrYmu3d3a71+tJJ23uscEV4X2HJWMsPJu4g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    dev: false
-
-  /@gitbeaker/core@39.12.0:
-    resolution: {integrity: sha512-c/LQl+UI+rXjXx+P+kLrdTOZnyD/RdhRWnkuBE8b8/dwfvnJ3ANEv1WBZhVJpTwn6miHlurERiOeLmKeQJ+J6w==}
-    engines: {node: '>=18.0.0'}
-    dependencies:
-      '@gitbeaker/requester-utils': 39.12.0
-      qs: 6.11.2
-      xcase: 2.0.1
-    dev: false
-
-  /@gitbeaker/requester-utils@39.12.0:
-    resolution: {integrity: sha512-0016Xnt6xIO3kSUuJ/mcXyN8LWUMpqAmLFbXZWMzJ9YZpQHX9vPKsrFHz4/P9Dh9eWKoAnkjEXEf/F6w1gX6Dg==}
-    engines: {node: '>=18.0.0'}
-    dependencies:
-      qs: 6.11.2
-      xcase: 2.0.1
-    dev: false
-
-  /@gitbeaker/rest@39.12.0:
-    resolution: {integrity: sha512-PILr042hCuB/A/QE7IGQ0ADTMN1e8lvehEfZEQEp78aWlqyNFmi6IUZqL6q8v3Stu6WRKSRcMCOidY83hiCSsA==}
-    engines: {node: '>=18.0.0'}
-    dependencies:
-      '@gitbeaker/core': 39.12.0
-      '@gitbeaker/requester-utils': 39.12.0
     dev: false
 
   /@humanwhocodes/config-array@0.11.10:
@@ -6351,6 +6326,7 @@ packages:
 
   /object-inspect@1.12.3:
     resolution: {integrity: sha512-geUvdk7c+eizMNUDkRpW1wJwgfOiOeHbxBR/hLXK1aT6zmVSO0jsQcs7fj6MGw89jC/cjGfLcNOrtMYtGqm81g==}
+    dev: true
 
   /object-is@1.1.5:
     resolution: {integrity: sha512-3cyDsyHgtmi7I7DfSSI2LDp6SK2lwvtbg0p0R1e0RvTqF5ceGx+K2dfSjm1bKDMVCFEDAQvy+o8c6a7VujOddw==}
@@ -6889,13 +6865,6 @@ packages:
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
     dev: false
 
-  /qs@6.11.2:
-    resolution: {integrity: sha512-tDNIz22aBzCDxLtVH++VnTfzxlfeK5CbqohpSqpJgj1Wg/cQbStNAz3NuqCs5vV+pjBsK4x4pN9HlVh7rcYRiA==}
-    engines: {node: '>=0.6'}
-    dependencies:
-      side-channel: 1.0.4
-    dev: false
-
   /querystring-es3@0.2.1:
     resolution: {integrity: sha512-773xhDQnZBMFobEiztv8LIl70ch5MSF/jUQVlhwFyBILqq96anmoctVIYz+ZRp0qbCKATTn6ev02M3r7Ga5vqA==}
     engines: {node: '>=0.4.x'}
@@ -7323,6 +7292,7 @@ packages:
       call-bind: 1.0.2
       get-intrinsic: 1.2.1
       object-inspect: 1.12.3
+    dev: true
 
   /siginfo@2.0.0:
     resolution: {integrity: sha512-ybx0WO1/8bSBLEWXZvEd7gMW3Sn3JFlW3TvX1nREbDLRNQNaeNN8WK0meBwPdAaOI7TtRRRJn/Es1zhrrCHu7g==}
@@ -8801,10 +8771,6 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
-    dev: false
-
-  /xcase@2.0.1:
-    resolution: {integrity: sha512-UmFXIPU+9Eg3E9m/728Bii0lAIuoc+6nbrNUKaRPJOFp91ih44qqGlWtxMB6kXFrRD6po+86ksHM5XHCfk6iPw==}
     dev: false
 
   /xml-name-validator@4.0.0:
