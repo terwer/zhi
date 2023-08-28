@@ -1,5 +1,11 @@
 # zhi-github-middleware
 
+## 0.4.0
+
+### Minor Changes
+
+- add zhi-gitlab-middleware
+
 ## 0.3.9
 
 ### Patch Changes

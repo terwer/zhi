@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.6.0
+
+### Minor Changes
+
+- add zhi-gitlab-middleware
+
 ## 2.5.15
 
 ### Patch Changes

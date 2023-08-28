@@ -23,20 +23,35 @@
  * questions.
  */
 
-import { BlogAdaptor } from "zhi-blog-api"
+import { Gitlab } from "@gitbeaker/rest"
 import { simpleLogger } from "zhi-lib-base"
+import { Base64 } from "js-base64"
 
-class CommonWechatsyncClient {
-  private readonly logger
-  private readonly driver
-  constructor(driver: BlogAdaptor) {
-    this.logger = simpleLogger("common-wechatsync-client", "zhi-wechatsync-middleware")
-    this.driver = driver
+class CommonGitlabClient {
+  private readonly logger: any
+  private readonly gitlabApi: any
+
+  constructor(host: string, token: string) {
+    this.logger = simpleLogger("common-gitlab-client", "zhi-gitlab-middleware")
+    this.gitlabApi = new Gitlab({
+      host: host,
+      token: token,
+    })
   }
 
-  public async doSync() {
-    this.logger.info("start sync post...", this.driver)
+  /**
+   * 从存储库中检索文件内容
+   *
+   * @param projectId - 项目ID
+   * @param filePath - 文件路径
+   * @param ref - 分支、标签或提交哈希
+   * @returns 文件内容
+   */
+  public async getFileContent(projectId: string, filePath: string, ref: string): Promise<string> {
+    const file = await this.gitlabApi.RepositoryFiles.show(projectId, filePath, ref)
+    this.logger.debug(`get file form ${filePath} on branch ${ref}`)
+    return Base64.fromBase64(file.content)
   }
 }
 
-export default CommonWechatsyncClient
+export default CommonGitlabClient

@@ -240,7 +240,7 @@ class SiYuanApiAdaptor extends BlogApi {
         await this.siyuanKernelApi.setBlockAttrs(postid, {
           title: title,
         })
-        this.logger.error("检测到配置，已修改思源笔记文档标题")
+        this.logger.info("检测到配置，已修改思源笔记文档标题")
       }
 
       flag = true
