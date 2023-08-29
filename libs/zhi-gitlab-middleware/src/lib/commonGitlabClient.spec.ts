@@ -27,11 +27,13 @@ import CommonGitlabClient from "./commonGitlabClient"
 import { describe, it } from "vitest"
 import fetch from "cross-fetch"
 import { Base64 } from "js-base64"
+import { CommonFetchClient } from "zhi-fetch-middleware"
 
 describe("test CommonGitlabClient", () => {
   // appInstance
   const appInstance: any = {}
   appInstance.fetch = fetch
+  appInstance.CommonFetchClient = CommonFetchClient
 
   // const commonGithubClient = new CommonGitlabClient(appInstance, "http://localhost:8002", "", "3", "main")
   const commonGithubClient = new CommonGitlabClient(
