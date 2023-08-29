@@ -25,6 +25,7 @@
 
 import { simpleLogger } from "zhi-lib-base"
 import { JsonUtil } from "zhi-common"
+import { CommonFetchClient } from "zhi-fetch-middleware"
 
 /**
  * 通用的Gitlab客户端
@@ -38,7 +39,7 @@ class CommonGitlabClient {
   private readonly commitMessage: string
   private readonly authorEmail: string
   private readonly authorName: string
-  private readonly commonFetchClient: any
+  private readonly commonFetchClient: CommonFetchClient
 
   /**
    * 初始化 Gitlab API
@@ -74,7 +75,6 @@ class CommonGitlabClient {
     this.commitMessage = commitMessage
     this.authorEmail = authorEmail
     this.authorName = authorName
-    const CommonFetchClient = appInstance.CommonFetchClient
     this.commonFetchClient = new CommonFetchClient(appInstance, host, middlewareUrl, false)
   }
 
