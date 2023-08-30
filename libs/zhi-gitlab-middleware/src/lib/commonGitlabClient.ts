@@ -96,6 +96,7 @@ class CommonGitlabClient {
       },
     }
     const response = await this.commonFetchClient.fetchCall(endpointUrl, fetchOptions)
+    this.logger.debug("get response from fetchCall", response)
     const resText = await response.text()
     const resJson = JsonUtil.safeParse<any>(resText, {} as any)
     this.logger.debug(`get file form ${filePath} on branch ${this.branch}`)
