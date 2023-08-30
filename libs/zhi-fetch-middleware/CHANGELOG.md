@@ -1,5 +1,17 @@
 # zhi-fetch-middleware
 
+## 0.3.16
+
+### Patch Changes
+
+- fix: fix response type
+
+## 0.3.15
+
+### Patch Changes
+
+- fix: change response type
+
 ## 0.3.14
 
 ### Patch Changes

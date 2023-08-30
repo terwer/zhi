@@ -94,16 +94,17 @@ class CommonFetchClient {
 
     let resJson: any
 
-    const isResponse = response?.status && response?.headers && response?.url
-    const isGitlabResponse = response?.body && response?.headers
+    const isResponse = response?.status !== undefined && response?.headers !== undefined && response?.url !== undefined
+    const isGitlabResponse = response?.body !== undefined && response?.headers !== undefined
     const isStream = response?.body instanceof ReadableStream
     const isString = response?.body instanceof String
     this.logger.info(`check if response is valid, isResponse=>${isResponse}`)
-    this.logger.info(`check response body is stream =>${isStream}`, typeof response?.body)
-    this.logger.info(`check response body is string =>${isString}`, typeof response?.body)
+    this.logger.info(`check if response is isGitlabResponse, isGitlabResponse=>${isGitlabResponse}`)
+    this.logger.info(`check response body is stream =>${isStream}`)
+    this.logger.info(`check response body is string =>${isString}`)
 
     if (!isResponse || !isGitlabResponse || !(response instanceof Response) || isStream) {
-      this.logger.debug("response不是Response的实例", typeof response)
+      this.logger.debug("response不是Response的实例，直接返回", typeof response)
       resJson = response
     } else {
       // 解析响应体并返回响应结果
