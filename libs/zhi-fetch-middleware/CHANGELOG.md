@@ -1,5 +1,29 @@
 # zhi-fetch-middleware
 
+## 0.3.14
+
+### Patch Changes
+
+- fix: fix response type
+
+## 0.3.13
+
+### Patch Changes
+
+- fix: fix type
+
+## 0.3.12
+
+### Patch Changes
+
+- fix: fix type
+
+## 0.3.11
+
+### Patch Changes
+
+- feat: adapt gitlab response
+
 ## 0.3.10
 
 ### Patch Changes
