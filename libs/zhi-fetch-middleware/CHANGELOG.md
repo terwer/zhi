@@ -1,5 +1,11 @@
 # zhi-fetch-middleware
 
+## 0.4.2
+
+### Patch Changes
+
+- fix: change resposne type
+
 ## 0.4.1
 
 ### Patch Changes

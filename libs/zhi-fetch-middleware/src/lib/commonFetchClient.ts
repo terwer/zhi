@@ -145,9 +145,10 @@ class CommonFetchClient {
       } else if (SiyuanDevice.isInSiyuanWidget()) {
         resJson = await response.json()
       } else {
-        this.logger.debug("解析CORSBody")
+        this.logger.debug("开始解析CORSBody")
         const corsJson = await response.json()
         resJson = this.parseCORSBody(corsJson)
+        this.logger.debug("CORSBody is =>", resJson)
       }
     }
 

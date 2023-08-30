@@ -1,5 +1,12 @@
 # zhi-gitlab-middleware
 
+## 0.4.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.4.2
+
 ## 0.4.2
 
 ### Patch Changes
