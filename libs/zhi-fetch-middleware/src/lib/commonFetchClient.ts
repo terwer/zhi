@@ -105,8 +105,10 @@ class CommonFetchClient {
     } else {
       // 解析响应体并返回响应结果
       const statusCode = response.status
-      const successCodes = [200, 201]
-      if (!successCodes.includes(statusCode)) {
+      const httpSuccess = statusCode >= 200 && statusCode < 300
+      if (!httpSuccess) {
+        this.logger.error("fetch请求错误，response=>", response)
+        this.logger.error(`fetch请求错误，code ${statusCode}, body => ${response?.body}`)
         if (statusCode === 400) {
           throw new Error("错误请求，服务器不理解请求的语法")
         } else if (statusCode === 401) {
@@ -124,7 +126,7 @@ class CommonFetchClient {
           }
           throw new Error(msg)
         } else {
-          throw new Error("fetch请求错误")
+          throw new Error(`fetch请求错误，code is ${statusCode}, body => ${response?.body}`)
         }
       }
 

@@ -1,5 +1,23 @@
 # zhi-gitlab-middleware
 
+## 0.6.0
+
+### Minor Changes
+
+- feat: change http success code
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.6.0
+
+## 0.5.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.5.1
+
 ## 0.5.1
 
 ### Patch Changes
