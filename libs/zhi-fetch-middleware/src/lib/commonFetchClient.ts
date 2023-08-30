@@ -96,7 +96,7 @@ class CommonFetchClient {
 
     const isResponse = response?.status !== undefined && response?.headers !== undefined && response?.url !== undefined
     const isGitlabResponse = response?.body !== undefined && response?.headers !== undefined
-    const isStream = response?.body instanceof ReadableStream
+    const isStream = response?.body instanceof ReadableStream && !isGitlabResponse
     const isString = response?.body instanceof String
     this.logger.info(`check if response is valid, isResponse=>${isResponse}`)
     this.logger.info(`check if response is isGitlabResponse, isGitlabResponse=>${isGitlabResponse}`)
