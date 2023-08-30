@@ -1,5 +1,11 @@
 # zhi-gitlab-middleware
 
+## 0.5.0
+
+### Minor Changes
+
+- fix: add return for delete
+
 ## 0.4.5
 
 ### Patch Changes

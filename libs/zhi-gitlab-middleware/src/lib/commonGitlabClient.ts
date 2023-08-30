@@ -171,7 +171,7 @@ class CommonGitlabClient {
    * @param filePath - 文件路径
    * @returns 删除文件的响应
    */
-  public async deleteRepositoryFile(filePath: string): Promise<void> {
+  public async deleteRepositoryFile(filePath: string): Promise<any> {
     const id = `${this.user}/${this.repo}`
     const endpointUrl =
       `/api/v4/projects/${encodeURIComponent(id)}/repository/files/` + `${encodeURIComponent(filePath)}`
@@ -189,7 +189,8 @@ class CommonGitlabClient {
       },
       body: JSON.stringify(requestData),
     }
-    await this.commonFetchClient.fetchCall(endpointUrl, fetchOptions)
+    const resJson = await this.commonFetchClient.fetchCall(endpointUrl, fetchOptions)
+    return resJson
   }
 
   /**
