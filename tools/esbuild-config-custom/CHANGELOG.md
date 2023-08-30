@@ -1,5 +1,19 @@
 # @terwer/esbuild-config-custom
 
+## 2.0.0
+
+### Major Changes
+
+- fix: fix windows import
+
+### Minor Changes
+
+- fix: windows build is ok now
+
+### Patch Changes
+
+- fix: fix windows build
+
 ## 1.2.0
 
 ### Minor Changes
