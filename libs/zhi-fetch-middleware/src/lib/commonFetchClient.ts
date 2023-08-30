@@ -95,25 +95,16 @@ class CommonFetchClient {
     let resJson: any
 
     const isResponse = response?.status !== undefined && response?.headers !== undefined && response?.url !== undefined
-    const isGitlabResponse = response?.body !== undefined && response?.headers !== undefined
-    const isStream = response?.body instanceof ReadableStream && !isGitlabResponse
-    const isString = response?.body instanceof String
+    const isStream = !isResponse && response?.body instanceof ReadableStream
     this.logger.info(`check if response is valid, isResponse=>${isResponse}`)
-    this.logger.info(`check if response is isGitlabResponse, isGitlabResponse=>${isGitlabResponse}`)
-    this.logger.info(`check response body is stream =>${isStream}`)
-    this.logger.info(`check response body is string =>${isString}`)
+    this.logger.info(`check response is stream =>${isStream}`)
 
-    if (!isResponse || !isGitlabResponse || !(response instanceof Response) || isStream) {
+    if (isStream) {
       this.logger.info("检测到response不是Response的实例，直接返回", typeof response)
       resJson = response
     } else {
       // 解析响应体并返回响应结果
-      let statusCode = response.status
-      if (isGitlabResponse) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        statusCode = response?.headers?.status ?? statusCode
-      }
+      const statusCode = response.status
 
       if (statusCode !== 200) {
         if (statusCode === 401) {
