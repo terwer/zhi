@@ -24,7 +24,6 @@
  */
 
 import { simpleLogger } from "zhi-lib-base"
-import { JsonUtil } from "zhi-common"
 import { CommonFetchClient } from "zhi-fetch-middleware"
 
 /**
@@ -54,6 +53,7 @@ class CommonGitlabClient {
    * @param authorEmail - 邮箱
    * @param authorName - 提交人
    * @param middlewareUrl - 代理地址
+   * @param isDev - 是否调试模式
    */
   constructor(
     appInstance: any,
@@ -95,10 +95,8 @@ class CommonGitlabClient {
         "PRIVATE-TOKEN": this.token,
       },
     }
-    const response = await this.commonFetchClient.fetchCall(endpointUrl, fetchOptions)
-    this.logger.debug("get response from fetchCall", response)
-    const resText = await response.text()
-    const resJson = JsonUtil.safeParse<any>(resText, {} as any)
+    const resJson = await this.commonFetchClient.fetchCall(endpointUrl, fetchOptions)
+    this.logger.debug("get resJson from fetchCall", resJson)
     this.logger.debug(`get file form ${filePath} on branch ${this.branch}`)
     return resJson
   }
@@ -129,9 +127,8 @@ class CommonGitlabClient {
       },
       body: JSON.stringify(requestData),
     }
-    const response = await this.commonFetchClient.fetchCall(endpointUrl, fetchOptions)
-    const resText = await response.text()
-    const resJson = JsonUtil.safeParse<any>(resText, {} as any)
+    const resJson = await this.commonFetchClient.fetchCall(endpointUrl, fetchOptions)
+    this.logger.debug("get resJson from fetchCall", resJson)
     this.logger.debug(`created file at ${filePath} on branch ${this.branch}`)
     return resJson
   }
@@ -162,9 +159,8 @@ class CommonGitlabClient {
       },
       body: JSON.stringify(requestData),
     }
-    const response = await this.commonFetchClient.fetchCall(endpointUrl, fetchOptions)
-    const resText = await response.text()
-    const resJson = JsonUtil.safeParse<any>(resText, {} as any)
+    const resJson = await this.commonFetchClient.fetchCall(endpointUrl, fetchOptions)
+    this.logger.debug("get resJson from fetchCall", resJson)
     this.logger.debug(`updated file at ${filePath} on branch ${requestData.branch}`)
     return resJson
   }
@@ -218,13 +214,12 @@ class CommonGitlabClient {
         "PRIVATE-TOKEN": this.token,
       },
     }
-    const response = await this.commonFetchClient.fetchCall(endpointUrl, fetchOptions)
-    const resText = await response.text()
-    const data = JsonUtil.safeParse<any>(resText, {} as any)
+    const resJson = await this.commonFetchClient.fetchCall(endpointUrl, fetchOptions)
+    this.logger.debug("get resJson from fetchCall", resJson)
     this.logger.debug(`read repository tree on branch ${this.branch}`)
 
     const treeNode = [] as any[]
-
+    const data = resJson
     if (data && data.length > 0) {
       for (let i = 0; i < data.length; i++) {
         const item = data[i]

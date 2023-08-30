@@ -200,9 +200,9 @@ importers:
 
   libs/zhi-gitlab-middleware:
     dependencies:
-      zhi-common:
+      zhi-fetch-middleware:
         specifier: workspace:*
-        version: link:../zhi-common
+        version: link:../zhi-fetch-middleware
       zhi-lib-base:
         specifier: workspace:*
         version: link:../zhi-lib-base
@@ -216,9 +216,6 @@ importers:
       js-base64:
         specifier: ^3.7.5
         version: 3.7.5
-      zhi-fetch-middleware:
-        specifier: workspace:*
-        version: link:../zhi-fetch-middleware
 
   libs/zhi-lib-base:
     devDependencies:
