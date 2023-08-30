@@ -1,5 +1,11 @@
 # zhi-fetch-middleware
 
+## 0.5.0
+
+### Minor Changes
+
+- feat: compatible http 201 status code
+
 ## 0.4.4
 
 ### Patch Changes

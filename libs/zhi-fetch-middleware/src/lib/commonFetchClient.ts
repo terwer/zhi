@@ -105,9 +105,11 @@ class CommonFetchClient {
     } else {
       // 解析响应体并返回响应结果
       const statusCode = response.status
-
-      if (statusCode !== 200) {
-        if (statusCode === 401) {
+      const successCodes = [200, 201]
+      if (!successCodes.includes(statusCode)) {
+        if (statusCode === 400) {
+          throw new Error("错误请求，服务器不理解请求的语法")
+        } else if (statusCode === 401) {
           throw new Error("因权限不足操作已被禁止")
         } else if (statusCode > 401) {
           if (statusCode === 413) {
