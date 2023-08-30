@@ -25,6 +25,7 @@
 
 import jsYaml from "js-yaml"
 import StrUtil from "./strUtil"
+import { simpleLogger } from "zhi-lib-base"
 
 /**
  * YAML工具类
@@ -33,6 +34,8 @@ import StrUtil from "./strUtil"
  * @since 0.8.1
  */
 class YamlUtil {
+  private static logger = simpleLogger("yaml-util")
+
   /**
    * yaml转对象
    *
@@ -103,6 +106,36 @@ class YamlUtil {
     } else {
       return ""
     }
+  }
+
+  /**
+   * 提取正文
+   *
+   * @param content - 包含正文和前置数据的字符串
+   */
+  public static extractMarkdown(content: string): any {
+    const regex = /^---\n([\s\S]*?\n)---/
+
+    let markdown = content
+    if (regex.test(content)) {
+      markdown = content.replace(regex, "")
+      this.logger.info("发现原有的YAML，已移除")
+    }
+
+    return markdown
+  }
+
+  /**
+   * 将 YAML 头部添加到 Markdown 内容中
+   *
+   * @param yaml - 要添加的 YAML 头部
+   * @param content - 原始的 Markdown 内容
+   * @returns 更新后的 Markdown 内容
+   */
+  public static addYamlToMd(yaml: string, content: string): string {
+    const markdown = this.extractMarkdown(content)
+    const updatedMarkdown = `${yaml}\n${markdown}`
+    return updatedMarkdown
   }
 }
 

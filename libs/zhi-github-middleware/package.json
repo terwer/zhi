@@ -1,6 +1,6 @@
 {
   "name": "zhi-github-middleware",
-  "version": "0.3.4",
+  "version": "0.4.1",
   "type": "module",
   "description": "a middleware for github api",
   "main": "./dist/index.js",
@@ -30,13 +30,13 @@
     "@terwer/eslint-config-custom": "workspace:*",
     "@terwer/vite-config-custom": "workspace:*"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "dependencies": {
     "@octokit/core": "^5.0.0",
     "js-base64": "^3.7.5",
     "zhi-common": "workspace:*",
     "zhi-lib-base": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

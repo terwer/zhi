@@ -28,25 +28,36 @@ class ZhiBuild {
     let customConfig = {}
     // 兼容 windows
     const isWindows = os.platform() === "win32"
-    const esbuildConfigFile = isWindows ? `file:///${path.join(process.cwd(), cfg)}` : path.join(process.cwd(), cfg)
+    const esbuildConfigFile = isWindows
+      ? `${path.join(process.cwd(), cfg)}`.replace(/\\/g, "/")
+      : path.join(process.cwd(), cfg)
     console.log("reading user defined esbuild config from =>", esbuildConfigFile)
-    if (existsSync(esbuildConfigFile)) {
+    if (!existsSync(esbuildConfigFile)) {
+      console.warn(`userEsbuildConfig not found, using default`)
+    } else {
       try {
-        // 兼容 mjs 和 cjs
-        const pkg = await import(esbuildConfigFile)
-        console.log("pkg=>", pkg)
-        let cfg = pkg
-        if (pkg.default) {
-          cfg = pkg.default
+        let customCfg
+        try {
+          console.log(`try import esbuildConfigFile => ${esbuildConfigFile}`)
+          // 兼容 mjs 和 cjs
+          const pkg = await import(esbuildConfigFile)
+          console.log("pkg=>", pkg)
+          customCfg = pkg
+          if (pkg.default) {
+            customCfg = pkg.default
+          }
+        } catch (e) {
+          console.log(`import error, using require instead.esbuildConfigFile => ${esbuildConfigFile}`)
+          customCfg = require(esbuildConfigFile)
         }
-        userEsbuildConfig = cfg.esbuildConfig ?? {}
-        customConfig = cfg.customConfig ?? {}
-      } catch (error) {
-        console.error(`Failed to load esbuild config: ${error}`)
+        userEsbuildConfig = customCfg.esbuildConfig ?? {}
+        customConfig = customCfg.customConfig ?? {}
+      } catch (e2) {
+        console.error(`Failed to load esbuild config: ${e2}`)
         process.exit(1)
       }
     }
-    // console.log("parsed user defined esbuild config", esbuildConfig)
+    console.log("parsed user defined esbuild config", userEsbuildConfig)
 
     // ===================
     // 默认集成的配置开始

@@ -69,4 +69,12 @@ describe("StrUtil", () => {
     const result = StrUtil.f(str)
     expect(result).toEqual(expected)
   })
+
+  it("test pathJoin", () => {
+    const home = "http://localhost:8002/"
+    const username = "terwer"
+    const repo = "terwer-github-io"
+    const url = StrUtil.pathJoin(StrUtil.pathJoin(home, username), repo)
+    console.log(url)
+  })
 })

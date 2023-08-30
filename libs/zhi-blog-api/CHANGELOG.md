@@ -1,5 +1,118 @@
 # zhi-blog-api
 
+## 1.34.13
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.6
+
+## 1.34.12
+
+### Patch Changes
+
+- feat: add keep title
+
+## 1.34.11
+
+### Patch Changes
+
+- feat: add keepTitle
+
+## 1.34.10
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.5
+
+## 1.34.9
+
+### Patch Changes
+
+- fix: remove unused type define
+
+## 1.34.8
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.5.0
+  - zhi-common@1.23.4
+
+## 1.34.7
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.3
+
+## 1.34.6
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.2
+
+## 1.34.5
+
+### Patch Changes
+
+- 8a55a296: fix yaml error
+
+## 1.34.4
+
+### Patch Changes
+
+- fix field error
+
+## 1.34.3
+
+### Patch Changes
+
+- fix deps
+
+## 1.34.2
+
+### Patch Changes
+
+- add yamlLinkEnabled
+
+## 1.34.1
+
+### Patch Changes
+
+- fix: fix tag split
+
+## 1.34.0
+
+### Minor Changes
+
+- feat: optimize YAML null handling
+
+## 1.33.1
+
+### Patch Changes
+
+- export PreferenceConfig
+
+## 1.33.0
+
+### Minor Changes
+
+- add removeWidgetTag option
+
+### Patch Changes
+
+- add PreferenceConfig
+
+## 1.32.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.1
+
 ## 1.32.1
 
 ### Patch Changes

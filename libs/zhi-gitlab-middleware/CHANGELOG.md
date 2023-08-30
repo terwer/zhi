@@ -1,0 +1,160 @@
+# zhi-gitlab-middleware
+
+## 0.6.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.6.3
+
+## 0.6.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.6.2
+
+## 0.6.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.6.1
+
+## 0.6.0
+
+### Minor Changes
+
+- feat: change http success code
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.6.0
+
+## 0.5.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.5.1
+
+## 0.5.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.5.0
+
+## 0.5.0
+
+### Minor Changes
+
+- fix: add return for delete
+
+## 0.4.5
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.4.4
+
+## 0.4.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.4.3
+
+## 0.4.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.4.2
+
+## 0.4.2
+
+### Patch Changes
+
+- fix: change response type
+
+## 0.4.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.4.1
+
+## 0.4.0
+
+### Minor Changes
+
+- fix: fix resposne type
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.4.0
+
+## 0.3.3
+
+### Patch Changes
+
+- fix: add response log
+
+## 0.3.2
+
+### Patch Changes
+
+- add isDev sign
+
+## 0.3.1
+
+### Patch Changes
+
+- fix: fix fetch
+
+## 0.3.0
+
+### Minor Changes
+
+- fix fetch
+
+## 0.2.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.6
+  - zhi-fetch-middleware@0.3.10
+
+## 0.2.3
+
+### Patch Changes
+
+- add CommonGitlabClient
+
+## 0.2.2
+
+### Patch Changes
+
+- add CommonGitlabClient
+
+## 0.2.1
+
+### Patch Changes
+
+- add getRepositoryTree
+
+## 0.2.0
+
+### Minor Changes
+
+- add CommonGitlabClient
+
+## 0.1.0
+
+### Minor Changes
+
+- add zhi-gitlab-middleware

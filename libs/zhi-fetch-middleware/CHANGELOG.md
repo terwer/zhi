@@ -1,5 +1,150 @@
 # zhi-fetch-middleware
 
+## 0.6.3
+
+### Patch Changes
+
+- fix: add safeParseBodyJson
+
+## 0.6.2
+
+### Patch Changes
+
+- fix: add safeParseBodyJson
+
+## 0.6.1
+
+### Patch Changes
+
+- feat: change http success code
+
+## 0.6.0
+
+### Minor Changes
+
+- feat: change http success code
+
+## 0.5.1
+
+### Patch Changes
+
+- feat: compatible http 201 status code
+
+## 0.5.0
+
+### Minor Changes
+
+- feat: compatible http 201 status code
+
+## 0.4.4
+
+### Patch Changes
+
+- fix: change response type
+
+## 0.4.3
+
+### Patch Changes
+
+- fix: change response type
+
+## 0.4.2
+
+### Patch Changes
+
+- fix: change resposne type
+
+## 0.4.1
+
+### Patch Changes
+
+- fix: fix response type
+
+## 0.4.0
+
+### Minor Changes
+
+- fix: fix resposne type
+
+## 0.3.16
+
+### Patch Changes
+
+- fix: fix response type
+
+## 0.3.15
+
+### Patch Changes
+
+- fix: change response type
+
+## 0.3.14
+
+### Patch Changes
+
+- fix: fix response type
+
+## 0.3.13
+
+### Patch Changes
+
+- fix: fix type
+
+## 0.3.12
+
+### Patch Changes
+
+- fix: fix type
+
+## 0.3.11
+
+### Patch Changes
+
+- feat: adapt gitlab response
+
+## 0.3.10
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.6
+
+## 0.3.9
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.5
+
+## 0.3.8
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.5.0
+  - zhi-common@1.23.4
+
+## 0.3.7
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.3
+
+## 0.3.6
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.2
+
+## 0.3.5
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.1
+
 ## 0.3.4
 
 ### Patch Changes

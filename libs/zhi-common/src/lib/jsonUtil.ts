@@ -57,6 +57,7 @@ class JsonUtil {
 
     // 尝试解析json
     try {
+      str = this.extractContent(str)
       ret = JSON.parse(str) || def
     } catch (e) {
       ret = def
@@ -69,6 +70,11 @@ class JsonUtil {
     }
 
     return ret
+  }
+
+  private static extractContent(input: string): string {
+    const match = input.match(/```json\n([\s\S]*)\n```/)
+    return match ? match[1] : input
   }
 }
 

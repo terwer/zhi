@@ -23,20 +23,36 @@
  * questions.
  */
 
-import { BlogAdaptor } from "zhi-blog-api"
-import { simpleLogger } from "zhi-lib-base"
+/**
+ * 偏好设置
+ */
+class PreferenceConfig {
+  /**
+   * 是否处理标题，主要是去除数字
+   */
+  public fixTitle: boolean
 
-class CommonWechatsyncClient {
-  private readonly logger
-  private readonly driver
-  constructor(driver: BlogAdaptor) {
-    this.logger = simpleLogger("common-wechatsync-client", "zhi-wechatsync-middleware")
-    this.driver = driver
-  }
+  /**
+   * 不修改标题
+   */
+  public keepTitle: boolean
 
-  public async doSync() {
-    this.logger.info("start sync post...", this.driver)
+  /**
+   * 是否删除正文第一个H1
+   */
+  public removeFirstH1: boolean
+
+  /**
+   * 移除挂件的 HTML
+   */
+  public removeMdWidgetTag: boolean
+
+  constructor() {
+    this.fixTitle = false
+    this.keepTitle = false
+    this.removeFirstH1 = false
+    this.removeMdWidgetTag = false
   }
 }
 
-export default CommonWechatsyncClient
+export default PreferenceConfig

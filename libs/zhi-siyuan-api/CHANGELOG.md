@@ -1,5 +1,149 @@
 # zhi-siyuan-api
 
+## 2.6.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.6
+  - zhi-blog-api@1.34.13
+
+## 2.6.0
+
+### Minor Changes
+
+- add zhi-gitlab-middleware
+
+## 2.5.15
+
+### Patch Changes
+
+- feat: add keep title
+- Updated dependencies
+  - zhi-blog-api@1.34.12
+
+## 2.5.14
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.34.11
+
+## 2.5.13
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.5
+  - zhi-blog-api@1.34.10
+
+## 2.5.12
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.34.9
+
+## 2.5.11
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.5.0
+  - zhi-blog-api@1.34.8
+  - zhi-common@1.23.4
+
+## 2.5.10
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.3
+  - zhi-blog-api@1.34.7
+
+## 2.5.9
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.2
+  - zhi-blog-api@1.34.6
+
+## 2.5.8
+
+### Patch Changes
+
+- Updated dependencies [8a55a296]
+  - zhi-blog-api@1.34.5
+
+## 2.5.7
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.34.4
+
+## 2.5.6
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.34.3
+
+## 2.5.5
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.34.2
+
+## 2.5.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.34.1
+
+## 2.5.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.34.0
+
+## 2.5.2
+
+### Patch Changes
+
+- set siyuan preferenceConfig
+
+## 2.5.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.33.1
+
+## 2.5.0
+
+### Minor Changes
+
+- add removeWidgetTag option
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-blog-api@1.33.0
+
+## 2.4.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.1
+  - zhi-blog-api@1.32.2
+
 ## 2.4.3
 
 ### Patch Changes

@@ -1,5 +1,42 @@
 # zhi-common
 
+## 1.23.6
+
+### Patch Changes
+
+- fix: fix pathJoin
+
+## 1.23.5
+
+### Patch Changes
+
+- fix: change json parse
+
+## 1.23.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.5.0
+
+## 1.23.3
+
+### Patch Changes
+
+- add extractMarkdown
+
+## 1.23.2
+
+### Patch Changes
+
+- add extractMarkdown
+
+## 1.23.1
+
+### Patch Changes
+
+- add addYamlToMd
+
 ## 1.23.0
 
 ### Minor Changes

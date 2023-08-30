@@ -142,8 +142,9 @@ class SiYuanApiAdaptor extends BlogApi {
 
     // 标题处理
     let title = siyuanPost.content ?? ""
-    if (this.cfg.fixTitle) {
+    if (this.cfg?.preferenceConfig.fixTitle) {
       title = HtmlUtil.removeTitleNumber(title)
+      this.logger.info("检测到配置，标题序号已移除")
     }
 
     // 渲染Markdown
@@ -153,19 +154,22 @@ class SiYuanApiAdaptor extends BlogApi {
     // 如果忽略 body，则不进行转换
     if (!skipBody) {
       md = (await this.siyuanKernelApi.exportMdContent(pid)).content
-      const edData = await this.siyuanKernelApi.getDoc(pid)
-      editorDom = edData.content
+      editorDom = (await this.siyuanKernelApi.getDoc(pid)).content
       html = (await this.siyuanKernelApi.exportPreview(pid)).html
 
       // 移除挂件html
-      md = HtmlUtil.removeMdWidgetTag(md)
-      html = HtmlUtil.removeWidgetTag(html)
-      this.logger.info("挂件的HTML已移除")
+      if (this.cfg?.preferenceConfig.removeMdWidgetTag) {
+        md = HtmlUtil.removeMdWidgetTag(md)
+        html = HtmlUtil.removeWidgetTag(html)
+        this.logger.info("检测到配置，挂件的HTML已移除")
+      }
 
       // 删除H1
-      md = HtmlUtil.removeMdH1(md)
-      html = HtmlUtil.removeH1(html)
-      this.logger.info("第一个H1已移除")
+      if (this.cfg?.preferenceConfig.removeFirstH1) {
+        md = HtmlUtil.removeMdH1(md)
+        html = HtmlUtil.removeH1(html)
+        this.logger.info("检测到配置，第一个H1已移除")
+      }
     }
 
     // 别名(Custom_Slug优先，没有默认获取Sys_alias)
@@ -231,10 +235,14 @@ class SiYuanApiAdaptor extends BlogApi {
     let flag = false
     try {
       // 更新标题
-      const title = post.title
-      await this.siyuanKernelApi.setBlockAttrs(postid, {
-        title: title,
-      })
+      if (!this.cfg?.preferenceConfig.keepTitle) {
+        const title = post.title
+        await this.siyuanKernelApi.setBlockAttrs(postid, {
+          title: title,
+        })
+        this.logger.info("检测到配置，已修改思源笔记文档标题")
+      }
+
       flag = true
     } catch (e) {
       flag = false

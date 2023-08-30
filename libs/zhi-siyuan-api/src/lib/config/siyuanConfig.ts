@@ -22,7 +22,7 @@
  * or visit www.terwer.space if you need additional information or have any
  * questions.
  */
-import { BlogConfig, PasswordType } from "zhi-blog-api"
+import { BlogConfig, PasswordType, PreferenceConfig } from "zhi-blog-api"
 import SiyuanPlaceholder from "./siyuanPlaceholder"
 
 /**
@@ -50,7 +50,7 @@ class SiyuanConfig extends BlogConfig {
   /**
    * 请求 cookie
    */
-  public override cookie = ""
+  public cookie = ""
 
   /**
    * 思源笔记操作提示
@@ -58,13 +58,6 @@ class SiyuanConfig extends BlogConfig {
    * @protected
    */
   public override placeholder = {} as SiyuanPlaceholder
-
-  /**
-   * 是否修复标题
-   *
-   * @protected
-   */
-  public override fixTitle = true
 
   /**
    * 预览链接
@@ -83,7 +76,7 @@ class SiyuanConfig extends BlogConfig {
     this.passwordType = PasswordType.PasswordType_Token
     this.password = password ?? ""
     this.placeholder = new SiyuanPlaceholder()
-    this.fixTitle = true
+    this.preferenceConfig = new PreferenceConfig()
     this.previewUrl = "siyuan://blocks/[postid]"
     this.notebook = ""
   }

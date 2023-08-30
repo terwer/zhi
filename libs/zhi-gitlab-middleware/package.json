@@ -1,12 +1,12 @@
 {
-  "name": "zhi-wechatsync-middleware",
-  "version": "0.3.14",
+  "name": "zhi-gitlab-middleware",
+  "version": "0.6.3",
   "type": "module",
-  "description": "publish sdk via wechatsync",
+  "description": "a middleware for gitlab api ",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "repository": "terwer/zhi",
-  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-wechatsync-middleware",
+  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-gitlab-middleware",
   "author": "terwer",
   "license": "MIT",
   "files": [
@@ -26,11 +26,11 @@
   },
   "devDependencies": {
     "@terwer/eslint-config-custom": "workspace:*",
-    "@terwer/vite-config-custom": "workspace:*"
+    "@terwer/vite-config-custom": "workspace:*",
+    "js-base64": "^3.7.5"
   },
   "dependencies": {
-    "zhi-blog-api": "workspace:*",
-    "zhi-common": "workspace:*",
+    "zhi-fetch-middleware": "workspace:*",
     "zhi-lib-base": "workspace:*"
   },
   "publishConfig": {
