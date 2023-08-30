@@ -108,7 +108,11 @@ class CommonFetchClient {
       const httpSuccess = statusCode >= 200 && statusCode < 300
       if (!httpSuccess) {
         this.logger.error("fetch请求错误，response=>", response)
-        this.logger.error(`fetch请求错误，code ${statusCode}, body => ${response?.body}`)
+        let resBody = response?.body
+        if (response?.body instanceof ReadableStream) {
+          resBody = await response.text()
+        }
+        this.logger.error(`fetch请求错误，code ${statusCode}, body =>`, resBody)
         if (statusCode === 400) {
           throw new Error("错误请求，服务器不理解请求的语法")
         } else if (statusCode === 401) {

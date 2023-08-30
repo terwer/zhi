@@ -1,5 +1,11 @@
 # zhi-fetch-middleware
 
+## 0.6.1
+
+### Patch Changes
+
+- feat: change http success code
+
 ## 0.6.0
 
 ### Minor Changes
