@@ -33,9 +33,9 @@ import { fetchMiddleware } from "./impl/middlewareFetch"
 class CommonFetchClient {
   private readonly appInstance: any
 
-  private readonly logger
-  private readonly requestUrl
-  private readonly middlewareUrl
+  private readonly logger: any
+  private readonly requestUrl: string
+  private readonly middlewareUrl: string
 
   constructor(appInstance: any, requestUrl?: string, middlewareUrl?: string, isDev?: boolean) {
     this.appInstance = appInstance
@@ -213,7 +213,7 @@ class CommonFetchClient {
   private async safeParseBodyJson(response: any) {
     const resText = await response.text()
     const resJson = JsonUtil.safeParse<any>(resText, {} as any)
-    return resJson()
+    return resJson
   }
 
   /**
