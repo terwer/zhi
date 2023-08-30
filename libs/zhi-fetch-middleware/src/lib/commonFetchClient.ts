@@ -104,7 +104,7 @@ class CommonFetchClient {
     this.logger.info(`check response body is string =>${isString}`)
 
     if (!isResponse || !isGitlabResponse || !(response instanceof Response) || isStream) {
-      this.logger.debug("response不是Response的实例，直接返回", typeof response)
+      this.logger.info("检测到response不是Response的实例，直接返回", typeof response)
       resJson = response
     } else {
       // 解析响应体并返回响应结果
@@ -135,9 +135,9 @@ class CommonFetchClient {
         }
       }
 
-      this.logger.debug("isNode=>", BrowserUtil.isNode)
-      this.logger.debug("isElectron=>", BrowserUtil.isElectron())
-      this.logger.debug("isInSiyuanWidget=>", SiyuanDevice.isInSiyuanWidget())
+      this.logger.info("isNode=>", BrowserUtil.isNode)
+      this.logger.info("isElectron=>", BrowserUtil.isElectron())
+      this.logger.info("isInSiyuanWidget=>", SiyuanDevice.isInSiyuanWidget())
       if (BrowserUtil.isNode) {
         resJson = await response.json()
       } else if (BrowserUtil.isElectron()) {

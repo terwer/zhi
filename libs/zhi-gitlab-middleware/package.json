@@ -1,6 +1,6 @@
 {
   "name": "zhi-gitlab-middleware",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "type": "module",
   "description": "a middleware for gitlab api ",
   "main": "./dist/index.js",
@@ -27,12 +27,12 @@
   "devDependencies": {
     "@terwer/eslint-config-custom": "workspace:*",
     "@terwer/vite-config-custom": "workspace:*",
-    "js-base64": "^3.7.5",
-    "zhi-fetch-middleware": "workspace:*"
+    "js-base64": "^3.7.5"
   },
   "dependencies": {
     "zhi-common": "workspace:*",
-    "zhi-lib-base": "workspace:*"
+    "zhi-lib-base": "workspace:*",
+    "zhi-fetch-middleware": "workspace:*"
   },
   "publishConfig": {
     "access": "public"
