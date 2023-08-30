@@ -139,10 +139,10 @@ class CommonFetchClient {
         this.logger.debug("开始解析CORSBody")
         const corsJson = await response.json()
         resJson = this.parseCORSBody(corsJson)
-        this.logger.debug("CORSBody is =>", resJson)
       }
     }
 
+    this.logger.debug("全部处理完毕，resJson=>", resJson)
     return resJson
   }
 
