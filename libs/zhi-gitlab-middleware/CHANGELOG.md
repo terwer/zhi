@@ -1,5 +1,11 @@
 # zhi-gitlab-middleware
 
+## 0.3.2
+
+### Patch Changes
+
+- add isDev sign
+
 ## 0.3.1
 
 ### Patch Changes

@@ -65,7 +65,8 @@ class CommonGitlabClient {
     commitMessage: string,
     authorEmail: string,
     authorName: string,
-    middlewareUrl?: string
+    middlewareUrl?: string,
+    isDev?: boolean
   ) {
     this.logger = simpleLogger("common-gitlab-client", "zhi-gitlab-middleware")
     this.token = token
@@ -75,7 +76,7 @@ class CommonGitlabClient {
     this.commitMessage = commitMessage
     this.authorEmail = authorEmail
     this.authorName = authorName
-    this.commonFetchClient = new CommonFetchClient(appInstance, host, middlewareUrl, false)
+    this.commonFetchClient = new CommonFetchClient(appInstance, host, middlewareUrl, isDev)
   }
 
   /**
