@@ -1,5 +1,11 @@
 # zhi-fetch-middleware
 
+## 0.6.2
+
+### Patch Changes
+
+- fix: add safeParseBodyJson
+
 ## 0.6.1
 
 ### Patch Changes

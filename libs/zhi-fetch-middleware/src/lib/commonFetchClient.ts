@@ -25,7 +25,7 @@
 
 import { simpleLogger } from "zhi-lib-base"
 import { BrowserUtil, DeviceDetection, DeviceTypeEnum, SiyuanDevice } from "zhi-device"
-import { StrUtil } from "zhi-common"
+import { JsonUtil, StrUtil } from "zhi-common"
 import { fetchNode } from "./impl/nodeFetch"
 import { fetchChrome } from "./impl/chromeFetch"
 import { fetchMiddleware } from "./impl/middlewareFetch"
@@ -138,14 +138,14 @@ class CommonFetchClient {
       this.logger.info("isElectron=>", BrowserUtil.isElectron())
       this.logger.info("isInSiyuanWidget=>", SiyuanDevice.isInSiyuanWidget())
       if (BrowserUtil.isNode) {
-        resJson = await response.json()
+        resJson = await this.safeParseBodyJson(response)
       } else if (BrowserUtil.isElectron()) {
-        resJson = await response.json()
+        resJson = await this.safeParseBodyJson(response)
       } else if (SiyuanDevice.isInSiyuanWidget()) {
-        resJson = await response.json()
+        resJson = await this.safeParseBodyJson(response)
       } else {
         this.logger.debug("开始解析CORSBody")
-        const corsJson = await response.json()
+        const corsJson = await this.safeParseBodyJson(response)
         resJson = this.parseCORSBody(corsJson)
       }
     }
@@ -161,7 +161,7 @@ class CommonFetchClient {
    * @param middlewareUrl - 可选，当环境不支持时候，必传
    */
   private async fetchEntry(apiUrl: string, fetchOptions: RequestInit, middlewareUrl?: string): Promise<any> {
-    let result
+    let result: any
 
     const deviceType = DeviceDetection.getDevice()
     this.logger.info("deviceType =>", deviceType)
@@ -205,6 +205,15 @@ class CommonFetchClient {
     this.logger.debug("最终返回给前端的数据=>", result)
 
     return result
+  }
+
+  //================================================================
+  // private function
+  //================================================================
+  private async safeParseBodyJson(response: any) {
+    const resText = await response.text()
+    const resJson = JsonUtil.safeParse<any>(resText, {} as any)
+    return resJson()
   }
 
   /**
