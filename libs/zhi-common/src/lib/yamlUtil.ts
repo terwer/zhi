@@ -35,6 +35,7 @@ import { simpleLogger } from "zhi-lib-base"
  */
 class YamlUtil {
   private static logger = simpleLogger("yaml-util")
+  private static YAML_REGEX = /---\n([\s\S]*?\n)---/
 
   /**
    * yaml转对象
@@ -43,7 +44,11 @@ class YamlUtil {
    */
   public static yaml2Obj(content: string): any {
     const frontMatter = this.extractFrontmatter(content)
-    return jsYaml.load(frontMatter, {})
+    let ret = jsYaml.load(frontMatter, {})
+    if (!ret) {
+      ret = {}
+    }
+    return ret
   }
 
   /**
@@ -56,11 +61,8 @@ class YamlUtil {
   public static async yaml2ObjAsync(content: string): Promise<any> {
     // 提取 YAML
     const frontMatter = this.extractFrontmatter(content, true)
-
     // 去掉分隔符
-    const regex = /^---\n([\s\S]*)\n---$/
-    const match = frontMatter.match(regex)
-
+    const match = frontMatter.match(this.YAML_REGEX)
     if (match) {
       const rawContent = match[1]
       try {
@@ -94,9 +96,7 @@ class YamlUtil {
    * @param addSign - 是否包含符号
    */
   public static extractFrontmatter(content: string, addSign?: boolean): any {
-    const regex = /^---\n([\s\S]*?\n)---/
-    const match = content.match(regex)
-
+    const match = content.match(this.YAML_REGEX)
     if (match) {
       let frontMatter = match[1].trim()
       if (addSign) {
@@ -114,11 +114,9 @@ class YamlUtil {
    * @param content - 包含正文和前置数据的字符串
    */
   public static extractMarkdown(content: string): any {
-    const regex = /^---\n([\s\S]*?\n)---/
-
     let markdown = content
-    if (regex.test(content)) {
-      markdown = content.replace(regex, "")
+    if (this.YAML_REGEX.test(content)) {
+      markdown = content.replace(this.YAML_REGEX, "")
       this.logger.info("发现原有的YAML，已移除")
     }
 

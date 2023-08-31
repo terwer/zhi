@@ -59,4 +59,44 @@ toc: true
     const yaml = YamlUtil.obj2Yaml(obj)
     console.log(yaml)
   })
+
+  it("test extractMarkdown", () => {
+    const md = `---
+title: 'WordPress未开启xmlrpc的时候给出友好提示 · Issue #643 · terwersiyuan-plugin-publisher'
+date: '2023-08-31 11:09:31'
+updated: '2023-08-31 11:12:18'
+permalink: /post/wordpress-does-not-open-xmlrpc-to-give-friendly-prompts-nbtkf.html
+comments: true
+toc: true
+---
+# WordPress未开启xmlrpc的时候给出友好提示 · Issue #643 · terwersiyuan-plugin-publisher
+
+---
+
+* [https://github.com/terwer/siyuan-plugin-publisher/issues/643 - GitHub](https://github.com/terwer/siyuan-plugin-publisher/issues/643)
+* Slash commands
+* 2023-08-31 11:09:31
+
+---
+
+**Slash commands**
+
+Beta
+
+[   Give feedback ](https://github.com/feedback/slash-commands)
+
+**Slash commands**
+
+Beta
+
+[   Give feedback ](https://github.com/feedback/slash-commands)
+
+#### An unexpected error has occurred
+
+**       **         Attach files by dragging & dropping, selecting or pasting them.       **       **         **           **             Uploading your files…           **       **       **         We don’t support that file type.         **           **Try again** with a           GIF, JPEG, JPG, MOV, MP4, PNG, SVG, WEBM, CSV, DOCX, FODG, FODP, FODS, FODT, GZ, LOG, MD, ODF, ODG, ODP, ODS, ODT, PATCH, PDF, PPTX, TGZ, TXT, XLS, XLSX or ZIP.         **       **       **         Attaching documents requires write permission to this repository.         **           **Try again** with a GIF, JPEG, JPG, MOV, MP4, PNG, SVG, WEBM, CSV, DOCX, FODG, FODP, FODS, FODT, GZ, LOG, MD, ODF, ODG, ODP, ODS, ODT, PATCH, PDF, PPTX, TGZ, TXT, XLS, XLSX or ZIP.         **       **       **         We don’t support that file type.         **           **Try again** with a GIF, JPEG, JPG, MOV, MP4, PNG, SVG, WEBM, CSV, DOCX, FODG, FODP, FODS, FODT, GZ, LOG, MD, ODF, ODG, ODP, ODS, ODT, PATCH, PDF, PPTX, TGZ, TXT, XLS, XLSX or ZIP.         **       **       **       **       **         This file is empty.         **           **Try again** with a file that’s not empty.         **       **       **         This file is hidden.         **           **Try again** with another file.         **       **       **         Something went really wrong, and we can’t process that file.         **           **Try again.**         **       **     [            ](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+`
+    const result = YamlUtil.extractMarkdown(md)
+    const result2 = YamlUtil.extractMarkdown(result)
+    console.log(result2)
+  })
 })

@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.23.7
+
+### Patch Changes
+
+- feat: Optimize YAML parsing
+
 ## 1.23.6
 
 ### Patch Changes
