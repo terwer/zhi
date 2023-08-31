@@ -1,5 +1,16 @@
 # zhi-siyuan-api
 
+## 2.7.0
+
+### Minor Changes
+
+- feat: Extract fromYaml and toYamlObj
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.35.0
+
 ## 2.6.2
 
 ### Patch Changes

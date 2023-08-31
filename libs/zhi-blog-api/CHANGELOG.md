@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.35.0
+
+### Minor Changes
+
+- feat: Extract fromYaml and toYamlObj
+
 ## 1.34.14
 
 ### Patch Changes

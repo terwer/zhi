@@ -23,7 +23,7 @@
  * questions.
  */
 
-import { Attachment, BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, UserBlog } from "zhi-blog-api"
+import { Attachment, BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, PostUtil, UserBlog } from "zhi-blog-api"
 import SiyuanKernelApi from "../kernel/siyuanKernelApi"
 import SiyuanConfig from "../config/siyuanConfig"
 import { NotImplementedException } from "zhi-lib-base"
@@ -225,7 +225,7 @@ class SiYuanApiAdaptor extends BlogApi {
     commonPost.attrs = JSON.stringify(publicAttrs)
 
     // yaml 适配
-    const yamlObj = commonPost.toYamlObj()
+    const yamlObj = PostUtil.toYamlObj(commonPost)
     commonPost.yaml = YamlUtil.obj2Yaml(yamlObj)
 
     return commonPost
