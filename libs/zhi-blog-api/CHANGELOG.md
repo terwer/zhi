@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.36.0
+
+### Minor Changes
+
+- feat: YAML serialization requires merge labels and classifications
+
 ## 1.35.0
 
 ### Minor Changes

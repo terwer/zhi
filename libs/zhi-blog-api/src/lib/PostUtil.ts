@@ -60,18 +60,24 @@ class PostUtil {
    */
   public static fromYaml(post: Post, yamlObj: Record<string, any>): void {
     post.dateCreated = yamlObj?.created ? DateUtil.convertStringToDate(yamlObj.created) : post.dateCreated
-    post.dateUpdated = yamlObj?.updated ? DateUtil.convertStringToDate(yamlObj.updated) : post.dateUpdated
+    post.dateUpdated =
+      (yamlObj?.updated ? DateUtil.convertStringToDate(yamlObj.updated) : post.dateUpdated) ?? new Date()
     post.title = yamlObj?.title ?? post.title
     post.wp_slug = yamlObj?.slug ?? post.wp_slug
     post.permalink = yamlObj?.permalink ?? post.permalink
     post.shortDesc = yamlObj?.desc ?? post.shortDesc
-    // 修复历史遗留问题
-    if (typeof yamlObj?.tags === "string" && yamlObj?.tags.indexOf(",") > -1) {
-      post.mt_keywords = yamlObj?.tag
-    } else {
-      post.mt_keywords = yamlObj?.tags ? yamlObj?.tags.join(",") : post.mt_keywords
+
+    // 标签合并
+    if (yamlObj?.tags && yamlObj.tags.length > 0) {
+      const existingTags = post.mt_keywords.split(",")
+      const uniqueKeywords = [...new Set([...existingTags, ...yamlObj.tags])]
+      post.mt_keywords = uniqueKeywords.join(",")
     }
-    post.categories = yamlObj?.categories ?? post.categories
+
+    // 分类合并
+    if (yamlObj?.categories && yamlObj.categories.length > 0) {
+      post.categories = [...new Set([...post.categories, ...yamlObj.categories])]
+    }
   }
 }
 
