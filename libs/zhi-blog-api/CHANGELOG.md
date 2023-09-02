@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.36.1
+
+### Patch Changes
+
+- fix； change empty categories
+
 ## 1.36.0
 
 ### Minor Changes

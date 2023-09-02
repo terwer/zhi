@@ -71,12 +71,13 @@ class PostUtil {
     if (yamlObj?.tags && yamlObj.tags.length > 0) {
       const existingTags = post.mt_keywords.split(",")
       const uniqueKeywords = [...new Set([...existingTags, ...yamlObj.tags])]
-      post.mt_keywords = uniqueKeywords.join(",")
+      post.mt_keywords = uniqueKeywords.length > 0 ? uniqueKeywords.join(",") : ""
     }
 
     // 分类合并
     if (yamlObj?.categories && yamlObj.categories.length > 0) {
-      post.categories = [...new Set([...post.categories, ...yamlObj.categories])]
+      const combinedCategories = [...new Set([...post.categories, ...yamlObj.categories])]
+      post.categories = combinedCategories.length > 0 ? combinedCategories : []
     }
   }
 }
