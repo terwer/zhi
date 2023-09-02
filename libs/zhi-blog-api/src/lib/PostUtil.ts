@@ -70,13 +70,15 @@ class PostUtil {
     // 标签合并
     if (yamlObj?.tags && yamlObj.tags.length > 0) {
       const existingTags = post.mt_keywords.split(",")
-      const uniqueKeywords = [...new Set([...existingTags, ...yamlObj.tags])]
+      const uniqueKeywords = [...new Set([...existingTags, ...yamlObj.tags])].filter((tag) => tag.trim() !== "")
       post.mt_keywords = uniqueKeywords.length > 0 ? uniqueKeywords.join(",") : ""
     }
 
     // 分类合并
     if (yamlObj?.categories && yamlObj.categories.length > 0) {
-      const combinedCategories = [...new Set([...post.categories, ...yamlObj.categories])]
+      const combinedCategories = [...new Set([...post.categories, ...yamlObj.categories])].filter(
+        (cate) => cate.trim() !== ""
+      )
       post.categories = combinedCategories.length > 0 ? combinedCategories : []
     }
   }

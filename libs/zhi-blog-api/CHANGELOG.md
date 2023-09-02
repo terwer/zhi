@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.36.2
+
+### Patch Changes
+
+- fix: deduplicate duplicate null values
+
 ## 1.36.1
 
 ### Patch Changes
