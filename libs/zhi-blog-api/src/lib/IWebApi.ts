@@ -80,9 +80,10 @@ interface IWebApi extends IBlogApi {
    * 上传图片：调用平台 API 上传图片
    *
    * @param file 图片文件
+   * @param filename 文件名，可选
    * @returns Promise<string> 上传后的图片地址
    */
-  uploadFile(file: File): Promise<any>
+  uploadFile(file: File, filename?: string): Promise<any>
 
   /**
    * 更新文章：调用平台 API 更新文章（发布工具内部通过该接口替换文章内图片地址）

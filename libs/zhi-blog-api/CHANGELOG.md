@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.36.3
+
+### Patch Changes
+
+- feat: add filename for uploadFile
+
 ## 1.36.2
 
 ### Patch Changes
