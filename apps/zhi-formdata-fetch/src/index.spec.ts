@@ -14,7 +14,7 @@ describe("zhi-formdata-fetch", () => {
     console.log(FormdataFetch)
 
     const f = new FormdataFetch()
-    const response = await f.doFetch("baidu.com")
+    const response = await f.doFetch()
     console.log(response)
   })
 })
