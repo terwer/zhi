@@ -1,0 +1,32 @@
+{
+  "name": "zhi-formdata-fetch",
+  "version": "0.1.2",
+  "type": "module",
+  "description": "custom fetch with formdata",
+  "main": "./dist/index.cjs",
+  "typings": "./dist/index.d.ts",
+  "repository": "terwer/zhi",
+  "homepage": "https://github.com/terwer/zhi/tree/main/apps/zhi-formdata-fetch",
+  "author": "terwer",
+  "license": "MIT",
+  "keywords": [],
+  "scripts": {
+    "dev": "zhi-build --watch",
+    "build": "zhi-build --production",
+    "test": "vitest",
+    "lint": "eslint 'src/**/*.{ts,js}' --fix"
+  },
+  "devDependencies": {
+    "@terwer/esbuild-config-custom": "workspace:*",
+    "@terwer/eslint-config-custom": "workspace:*",
+    "@terwer/tsconfig": "workspace:*",
+    "@terwer/vitest-config-custom": "workspace:*"
+  },
+  "dependencies": {
+    "formdata-polyfill": "^4.0.10",
+    "zhi-lib-base": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
