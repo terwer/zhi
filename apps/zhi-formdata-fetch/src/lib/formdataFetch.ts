@@ -23,9 +23,7 @@
  * questions.
  */
 
-import fetch from "node-fetch"
-import { FormData, formDataToBlob } from "formdata-polyfill/esm.min.js"
-import { Readable } from "node:stream"
+import fetch, { Headers } from "node-fetch"
 import { simpleLogger } from "zhi-lib-base"
 
 // https://github.com/node-fetch/node-fetch/issues/1582#issuecomment-1154842272
@@ -60,21 +58,23 @@ class FormdataFetch {
    * @returns 包含响应数据的Promise
    */
   public async doFetch(url: string, headers: Record<string, any>, formData?: FormData) {
-    const blob: any = formDataToBlob(formData ?? new FormData())
-    const stream = Readable.from(blob.stream())
-    const h = {
-      ...headers,
-      "Content-Length": blob.size,
-      "Content-Type": blob.type,
+    const myHeaders = new Headers()
+    // 将headers中的键值对追加到myHeaders中
+    for (const key in headers) {
+      // eslint-disable-next-line no-prototype-builtins
+      if (headers.hasOwnProperty(key)) {
+        myHeaders.append(key, headers[key])
+      }
     }
-    this.logger.debug("headers =>", h)
+    this.logger.debug("headers =>", myHeaders)
 
-    const response = await fetch(url, {
+    const requestOptions = {
       method: "POST",
-      headers: h,
-      body: stream,
-    })
+      headers: myHeaders,
+      body: formData,
+    }
 
+    const response = await fetch(url, requestOptions)
     if (!response.ok) {
       throw new Error("Network response was not ok")
     }

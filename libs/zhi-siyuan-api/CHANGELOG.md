@@ -1,5 +1,29 @@
 # zhi-siyuan-api
 
+## 2.9.0
+
+### Minor Changes
+
+- feat: change form fetch
+
+## 2.8.2
+
+### Patch Changes
+
+- feat: export formDataToBlob
+
+## 2.8.1
+
+### Patch Changes
+
+- fix: add response log
+
+## 2.8.0
+
+### Minor Changes
+
+- feat: add payloadEncoding and responseEncoding
+
 ## 2.7.4
 
 ### Patch Changes

@@ -286,6 +286,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     this.logger.debug("开始向思源请求数据，fetchOps=>", fetchOps)
 
     const response = await fetch(reqUrl, fetchOps)
+    this.logger.debug("思源请求数据返回，response=>", response)
     const resJson = await response.json()
     this.logger.debug("思源请求数据返回，resJson=>", resJson)
 
@@ -669,6 +670,8 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     payload?: any,
     method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH",
     contentType?: string,
+    payloadEncoding?: "text" | "base64" | "base64-std" | "base64-url" | "base32" | "base32-std" | "base32-hex" | "hex",
+    responseEncoding?: "text" | "base64" | "base64-std" | "base64-url" | "base32" | "base32-std" | "base32-hex" | "hex",
     timeout?: number
   ): Promise<SiyuanData["data"]> {
     const params = {
@@ -677,6 +680,8 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       payload: payload,
       method: method,
       contentType: contentType,
+      payloadEncoding: payloadEncoding,
+      responseEncoding: responseEncoding,
       timeout: timeout,
     }
     return await this.siyuanRequest("/api/network/forwardProxy", params)

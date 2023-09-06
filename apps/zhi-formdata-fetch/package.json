@@ -1,6 +1,6 @@
 {
   "name": "zhi-formdata-fetch",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "type": "module",
   "description": "custom fetch with formdata",
   "main": "./dist/index.cjs",
@@ -23,7 +23,7 @@
     "@terwer/vitest-config-custom": "workspace:*"
   },
   "dependencies": {
-    "formdata-polyfill": "^4.0.10",
+    "node-fetch": "^3.3.2",
     "zhi-lib-base": "workspace:*"
   },
   "publishConfig": {

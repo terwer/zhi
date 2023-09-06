@@ -3,8 +3,8 @@ import { describe, it } from "vitest"
 
 describe("zhi-formdata-fetch", () => {
   // it("test doFetch", async () => {
-  //   const f = new FormdataFetch()
-  //   const response = await f.doFetch("baidu.com")
+  //   const f = new FormdataFetch(true)
+  //   const response = await f.doFetch()
   //   console.log(response)
   // })
 
