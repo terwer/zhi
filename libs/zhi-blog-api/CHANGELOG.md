@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.37.1
+
+### Patch Changes
+
+- feat: add tagSlugEnabled
+
 ## 1.37.0
 
 ### Minor Changes

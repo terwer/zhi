@@ -229,6 +229,11 @@ abstract class BlogConfig {
    */
   public yamlLinkEnabled: boolean
 
+  /**
+   * 是否运行标签别名
+   */
+  public tagSlugEnabled: boolean
+
   protected constructor() {
     this.home = ""
     this.apiUrl = ""
@@ -257,6 +262,7 @@ abstract class BlogConfig {
     this.allowCateChange = false
     this.categoryType = CategoryTypeEnum.CategoryType_None
     this.yamlLinkEnabled = true
+    this.tagSlugEnabled = false
   }
 }
 
