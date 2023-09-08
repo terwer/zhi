@@ -43,11 +43,6 @@ class Post {
   title: string
 
   /**
-   * 逗号分隔的标签
-   */
-  mt_keywords: string
-
-  /**
    * 链接
    */
   link?: string
@@ -108,9 +103,19 @@ class Post {
   dateUpdated: Date
 
   /**
+   * 逗号分隔的标签
+   */
+  mt_keywords: string
+
+  /**
+   * 标签别名，大部分平台不需要
+   */
+  tags_slugs?: string
+
+  /**
    * 分类
    */
-  categories: Array<string>
+  categories: string[]
 
   /**
    * 分类别名，大部分平台不需要
@@ -145,7 +150,6 @@ class Post {
   constructor() {
     this.postid = ""
     this.title = ""
-    this.mt_keywords = ""
     this.permalink = ""
     this.yaml = "---\n---"
     this.html = ""
@@ -154,6 +158,8 @@ class Post {
     this.description = ""
     this.wp_slug = ""
     this.dateCreated = new Date()
+    this.mt_keywords = ""
+    this.tags_slugs = ""
     this.categories = []
     this.cate_slugs = []
     this.isPublished = true
