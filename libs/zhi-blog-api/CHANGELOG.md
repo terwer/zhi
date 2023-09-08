@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.38.0
+
+### Minor Changes
+
+- feat: add getTags method
+
 ## 1.37.1
 
 ### Patch Changes

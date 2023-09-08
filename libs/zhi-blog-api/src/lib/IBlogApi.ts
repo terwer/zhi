@@ -29,6 +29,7 @@ import MediaObject from "./models/mediaObject"
 import CategoryInfo from "./models/categoryInfo"
 import Attachment from "./models/attachmentInfo"
 import YamlConvertAdaptor from "./yamlConvertAdaptor"
+import TagInfo from "./models/tagInfo"
 
 /**
  * 通用博客接口
@@ -165,6 +166,11 @@ interface IBlogApi {
    * @returns {Promise<CategoryInfo[]>}
    */
   getCategories(): Promise<CategoryInfo[]>
+
+  /**
+   * 获取标签列表
+   */
+  getTags(): Promise<TagInfo[]>
 
   /**
    * 获取文件树列表

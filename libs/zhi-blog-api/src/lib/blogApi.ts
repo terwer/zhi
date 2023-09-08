@@ -31,6 +31,7 @@ import MediaObject from "./models/mediaObject"
 import { NotImplementedException } from "zhi-lib-base"
 import Attachment from "./models/attachmentInfo"
 import YamlConvertAdaptor from "./yamlConvertAdaptor"
+import TagInfo from "./models/tagInfo"
 
 /**
  * 博客基类
@@ -70,6 +71,10 @@ class BlogApi implements IBlogApi {
 
   public async getCategories(): Promise<CategoryInfo[]> {
     throw new NotImplementedException("You must implement getCategories in sub class")
+  }
+
+  getTags(): Promise<TagInfo[]> {
+    throw new NotImplementedException("You must implement getTags in sub class")
   }
 
   public async getCategoryTreeNodes(docPath: string): Promise<any[]> {

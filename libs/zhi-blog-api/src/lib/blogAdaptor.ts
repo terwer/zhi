@@ -32,6 +32,7 @@ import { simpleLogger } from "zhi-lib-base"
 import Attachment from "./models/attachmentInfo"
 import BlogApi from "./blogApi"
 import YamlConvertAdaptor from "./yamlConvertAdaptor"
+import TagInfo from "./models/tagInfo"
 
 /**
  * 博客API
@@ -145,6 +146,13 @@ class BlogAdaptor implements IBlogApi {
    */
   public async deletePost(postid: string): Promise<boolean> {
     return await this.apiAdaptor.deletePost(postid)
+  }
+
+  /**
+   * 获取标签列表
+   */
+  public async getTags(): Promise<TagInfo[]> {
+    return await this.apiAdaptor.getTags()
   }
 
   /**
