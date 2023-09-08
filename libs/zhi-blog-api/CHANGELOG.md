@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.39.0
+
+### Minor Changes
+
+- feat: export TagInfo
+
 ## 1.38.0
 
 ### Minor Changes
