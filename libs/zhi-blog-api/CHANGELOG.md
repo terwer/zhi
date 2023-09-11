@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.40.0
+
+### Minor Changes
+
+- feat: add mdFilename
+
 ## 1.39.0
 
 ### Minor Changes

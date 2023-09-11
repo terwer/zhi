@@ -63,6 +63,11 @@ class Post {
   yaml: string
 
   /**
+   * MD 文件名，不包括 .md
+   */
+  mdFilename?: string
+
+  /**
    * HTML正文
    */
   html?: string
@@ -152,6 +157,7 @@ class Post {
     this.title = ""
     this.permalink = ""
     this.yaml = "---\n---"
+    this.mdFilename = "test"
     this.html = ""
     this.markdown = ""
     this.editorDom = ""
