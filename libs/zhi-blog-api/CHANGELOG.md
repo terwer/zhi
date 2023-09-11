@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.42.0
+
+### Minor Changes
+
+- feat: add usePathCategory
+
 ## 1.41.0
 
 ### Minor Changes

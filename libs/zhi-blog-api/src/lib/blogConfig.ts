@@ -239,6 +239,11 @@ abstract class BlogConfig {
    */
   useMdFilename?: boolean
 
+  /**
+   * 是否使用路径作为分类
+   */
+  usePathCategory?: boolean
+
   protected constructor() {
     this.home = ""
     this.apiUrl = ""
@@ -269,6 +274,7 @@ abstract class BlogConfig {
     this.yamlLinkEnabled = true
     this.tagSlugEnabled = false
     this.useMdFilename = false
+    this.usePathCategory = false
   }
 }
 
