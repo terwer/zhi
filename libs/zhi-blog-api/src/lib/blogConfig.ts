@@ -234,6 +234,11 @@ abstract class BlogConfig {
    */
   public tagSlugEnabled: boolean
 
+  /**
+   * 是否使用标题作为MD 文件名
+   */
+  useMdFilename?: boolean
+
   protected constructor() {
     this.home = ""
     this.apiUrl = ""
@@ -263,6 +268,7 @@ abstract class BlogConfig {
     this.categoryType = CategoryTypeEnum.CategoryType_None
     this.yamlLinkEnabled = true
     this.tagSlugEnabled = false
+    this.useMdFilename = false
   }
 }
 
