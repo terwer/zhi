@@ -64,8 +64,8 @@ class BlogAdaptor implements IBlogApi {
   /**
    * 博客配置列表
    */
-  public async getUsersBlogs(): Promise<Array<UserBlog>> {
-    return await this.apiAdaptor.getUsersBlogs()
+  public async getUsersBlogs(keyword?: string): Promise<Array<UserBlog>> {
+    return await this.apiAdaptor.getUsersBlogs(keyword)
   }
 
   /**

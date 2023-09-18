@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.44.2
+
+### Patch Changes
+
+- fix: add search
+
 ## 1.44.1
 
 ### Patch Changes

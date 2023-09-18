@@ -37,7 +37,7 @@ import TagInfo from "./models/tagInfo"
  * 博客基类
  */
 class BlogApi implements IBlogApi {
-  public async getUsersBlogs(): Promise<Array<UserBlog>> {
+  public async getUsersBlogs(keyword?: string): Promise<Array<UserBlog>> {
     throw new NotImplementedException("You must implement getUsersBlogs in sub class")
   }
 

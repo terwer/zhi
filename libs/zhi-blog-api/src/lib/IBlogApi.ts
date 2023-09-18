@@ -43,10 +43,12 @@ import TagInfo from "./models/tagInfo"
 interface IBlogApi {
   /**
    * 博客配置列表
+   *
+   * @param keyword - 搜索关键字，部分平台不支持
    * @see {@link https://codex.wordpress.org/XML-RPC_MetaWeblog_API#metaWeblog.getUsersBlogs getUsersBlogs}
    * @returns {Promise<Array<UserBlog>>}
    */
-  getUsersBlogs(): Promise<Array<UserBlog>>
+  getUsersBlogs(keyword?: string): Promise<Array<UserBlog>>
 
   /**
    * 最新文章数目

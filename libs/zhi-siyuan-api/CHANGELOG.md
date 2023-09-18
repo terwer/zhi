@@ -1,5 +1,13 @@
 # zhi-siyuan-api
 
+## 2.10.2
+
+### Patch Changes
+
+- fix: add search
+- Updated dependencies
+  - zhi-blog-api@1.44.2
+
 ## 2.10.1
 
 ### Patch Changes

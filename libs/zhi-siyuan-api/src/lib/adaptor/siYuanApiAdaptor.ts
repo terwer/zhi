@@ -57,7 +57,7 @@ class SiYuanApiAdaptor extends BlogApi {
     this.siyuanKernelApi = new SiyuanKernelApi(cfg)
   }
 
-  public override async getUsersBlogs(): Promise<Array<UserBlog>> {
+  public override async getUsersBlogs(keyword?: string): Promise<Array<UserBlog>> {
     const usersBlogs: UserBlog[] = []
     const userBlog = new UserBlog()
 
