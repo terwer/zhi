@@ -1,5 +1,17 @@
 # zhi-blog-api
 
+## 1.44.1
+
+### Patch Changes
+
+- fix: add search option
+
+## 1.44.0
+
+### Minor Changes
+
+- feat: add search for getCategories
+
 ## 1.43.0
 
 ### Minor Changes

@@ -1,5 +1,24 @@
 # zhi-siyuan-api
 
+## 2.10.1
+
+### Patch Changes
+
+- fix: add search option
+- Updated dependencies
+  - zhi-blog-api@1.44.1
+
+## 2.10.0
+
+### Minor Changes
+
+- feat: add search for getCategories
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.44.0
+
 ## 2.9.8
 
 ### Patch Changes

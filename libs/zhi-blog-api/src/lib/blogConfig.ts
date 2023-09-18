@@ -244,6 +244,11 @@ abstract class BlogConfig {
    */
   usePathCategory?: boolean
 
+  /**
+   * 是否允许分类搜索
+   */
+  public cateSearchEnabled?: boolean
+
   protected constructor() {
     this.home = ""
     this.apiUrl = ""
@@ -275,6 +280,7 @@ abstract class BlogConfig {
     this.tagSlugEnabled = false
     this.useMdFilename = false
     this.usePathCategory = false
+    this.cateSearchEnabled = false
   }
 }
 

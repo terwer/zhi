@@ -69,7 +69,7 @@ class BlogApi implements IBlogApi {
     throw new NotImplementedException("You must implement deletePost in sub class")
   }
 
-  public async getCategories(): Promise<CategoryInfo[]> {
+  public async getCategories(keyword?: string): Promise<CategoryInfo[]> {
     throw new NotImplementedException("You must implement getCategories in sub class")
   }
 

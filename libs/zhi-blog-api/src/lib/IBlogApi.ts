@@ -162,10 +162,11 @@ interface IBlogApi {
   /**
    * 获取分类列表
    *
+   * @param keyword - 搜索关键字，部分平台不支持
    * @see {@link https://codex.wordpress.org/XML-RPC_MetaWeblog_API#metaWeblog.getCategories getCategories}
    * @returns {Promise<CategoryInfo[]>}
    */
-  getCategories(): Promise<CategoryInfo[]>
+  getCategories(keyword?: string): Promise<CategoryInfo[]>
 
   /**
    * 获取标签列表

@@ -158,8 +158,8 @@ class BlogAdaptor implements IBlogApi {
   /**
    * 获取分类列表
    */
-  public async getCategories(): Promise<CategoryInfo[]> {
-    return await this.apiAdaptor.getCategories()
+  public async getCategories(keyword?: string): Promise<CategoryInfo[]> {
+    return await this.apiAdaptor.getCategories(keyword)
   }
 
   /**

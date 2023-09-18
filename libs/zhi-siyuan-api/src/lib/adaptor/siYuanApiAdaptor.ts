@@ -256,7 +256,7 @@ class SiYuanApiAdaptor extends BlogApi {
     return true
   }
 
-  public override async getCategories(): Promise<CategoryInfo[]> {
+  public override async getCategories(keyword?: string): Promise<CategoryInfo[]> {
     const cats = [] as CategoryInfo[]
 
     const notes = (await this.siyuanKernelApi.lsNotebooks()) as any
