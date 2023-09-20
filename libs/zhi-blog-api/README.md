@@ -7,8 +7,7 @@ Note: BlogApi should be implemented as a specific BlogApi, it cannot be used dir
 ## Deps
 
 ```
-├── zhi-env
-├── zhi-log
+├── zhi-lib-base
 ```
 
 ## Dev

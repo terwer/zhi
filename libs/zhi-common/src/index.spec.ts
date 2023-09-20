@@ -24,12 +24,9 @@
  */
 
 import { describe, it } from "vitest"
-import ZhiCommonUtil from "./lib/ZhiCommonUtil"
 
 describe("zhi-common", () => {
   it("index", () => {
-    const logger = ZhiCommonUtil.zhiLog("zhi-common-test")
-    logger.debug("test common util debug")
-    logger.info("test common util")
+    console.log("hello")
   })
 })

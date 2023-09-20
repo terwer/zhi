@@ -1,22 +1,29 @@
 {
   "name": "@terwer/vite-config-custom",
-  "version": "0.1.0",
+  "version": "0.7.6",
   "description": "custom config for vite",
+  "main": "./vite.config.ts",
   "keywords": [
     "vite",
     "vitest",
     "typescript"
   ],
   "author": "terwer",
-  "license": "GPL",
-  "devDependencies": {
-    "jsdom": "^21.1.1",
+  "license": "MIT",
+  "peerDependencies": {
+    "@types/minimist": "1.2.2",
+    "jsdom": "^22.0.0",
+    "minimist": "^1.2.8",
+    "rollup-plugin-livereload": "^2.0.5",
     "typescript": "^5.0.4",
-    "vite": "^4.2.2",
-    "vite-plugin-css-injected-by-js": "^3.1.0",
+    "vite": "^4.3.5",
     "vite-plugin-dts": "^2.3.0",
-    "vite-plugin-static-copy": "^0.14.0",
+    "vite-plugin-node-polyfills": "^0.8.2",
+    "vite-plugin-static-copy": "^0.15.0",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^0.30.1"
+    "vitest": "^0.31.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

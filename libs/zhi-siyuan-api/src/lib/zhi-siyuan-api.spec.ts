@@ -25,12 +25,19 @@
 
 import SiyuanApi from "./zhi-siyuan-api"
 import { describe, expect, it } from "vitest"
-import ZhiSiyuanApiUtil from "./ZhiSiyuanApiUtil"
+import SiyuanConfig from "./config/siyuanConfig"
 
-describe("zhiSiyuanApi", () => {
+describe("zhiSiyuanApi", async () => {
+  // // appInstance
+  // const appInstance: any = {}
+  // const projectBase = path.resolve(__dirname, "../../..")
+  // const moduleBase = path.resolve(__dirname, "../../../../..")
+  // // lute
+  // require(path.join(moduleBase, "libs/zhi-common/public/libs/lute/lute-1.7.5-20230410.min.cjs"))
+
   it("siyuanApi", () => {
-    const env = ZhiSiyuanApiUtil.zhiEnv()
-    const siyuanApi = new SiyuanApi(env)
+    const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    const siyuanApi = new SiyuanApi(siyuanConfig)
     expect(siyuanApi).toBeTruthy()
   })
 })

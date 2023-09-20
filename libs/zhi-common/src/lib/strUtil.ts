@@ -39,7 +39,7 @@ class StrUtil {
    * @author terwer
    * @since 0.0.1
    */
-  public f(str: string, ...args: (string | number | boolean | object)[]): string {
+  public static f(str: string, ...args: (string | number | boolean | object)[]): string {
     let ret = str
     for (let i = 0; i < args.length; i++) {
       const arg = args[i]
@@ -57,7 +57,7 @@ class StrUtil {
    *
    * @param str - 字符串数组
    */
-  public appendStr(...str: string[]): string {
+  public static appendStr(...str: string[]): string {
     return str.join("")
   }
 
@@ -67,7 +67,7 @@ class StrUtil {
    * @param str - 字符串
    * @param arr - 字符串数组
    */
-  public includeInArray(str: string, arr: string[]): boolean {
+  public static includeInArray(str: string, arr: string[]): boolean {
     let flag = false
     for (let i = 0; i < arr.length; i++) {
       const item = arr[i]
@@ -86,7 +86,7 @@ class StrUtil {
    * @param length - 长度
    * @param ignore - 不要结尾省略号
    */
-  public getByLength(str: string, length: number, ignore?: boolean): string {
+  public static getByLength(str: string, length: number, ignore?: boolean): string {
     const allText = str
     if (allText.length < length) {
       return allText
@@ -102,7 +102,7 @@ class StrUtil {
    *
    * @param str - 待检测的字符串
    */
-  public isEmptyString(str: any): boolean {
+  public static isEmptyString(str: any): boolean {
     if (!str) {
       return true
     }
@@ -118,21 +118,20 @@ class StrUtil {
    * @param path1 - 路径1
    * @param path2 - 路径2
    */
-  public pathJoin(path1: string, path2: string): string {
+  public static pathJoin(path1: string, path2: string): string {
     let path = path1
     const path1LastIdx = path1.lastIndexOf("/")
-    // logUtil.logInfo("path1.length=>", path1.length)
-    // logUtil.logInfo("path1LastIdx=>", path1LastIdx)
+
     if (path1LastIdx + 1 === path1.length) {
       path = path1.substring(0, path1LastIdx)
     }
 
     const path2Idx = path2.indexOf("/")
-    // logUtil.logInfo("path2Idx=>", path2Idx)
-    if (path2Idx > 0) {
-      path = path + "/" + path2
-    } else {
+
+    if (path2Idx === 0) {
       path = path + path2
+    } else {
+      path = path + "/" + path2
     }
 
     return path
@@ -143,11 +142,49 @@ class StrUtil {
    *
    * @param val - val
    */
-  public parseBoolean(val: any) {
+  public static parseBoolean(val: any) {
     if (!val) {
       val = "false"
     }
     return val.toString().toLowerCase() === "true"
+  }
+
+  /**
+   * 首字母大写
+   *
+   * @param name
+   */
+  public static upperFirst(name: string): string {
+    return name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase()
+  }
+
+  /**
+   * 移除标题数字
+   *
+   * @param str
+   */
+  public static removeTitleNumber(str: string): string {
+    let newstr = str
+
+    // 移除序号
+    const publisherRegex = /([0-9]*)\./
+    newstr = newstr.replace(publisherRegex, "")
+
+    return newstr
+  }
+
+  /**
+   * 根据拼音获取首字母
+   *
+   * @param pinyin
+   */
+  public static getFirstLetters(pinyin: string) {
+    let firstLetters = ""
+    const pinyinArr = pinyin.split("-")
+    pinyinArr.forEach((item) => {
+      firstLetters += item[0]
+    })
+    return firstLetters
   }
 }
 

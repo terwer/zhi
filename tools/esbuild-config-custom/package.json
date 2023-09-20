@@ -1,6 +1,6 @@
 {
   "name": "@terwer/esbuild-config-custom",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "type": "module",
   "description": "universal esbuild tool for library",
   "bin": {
@@ -14,7 +14,7 @@
   "repository": "terwer/zhi",
   "homepage": "https://github.com/terwer/zhi/tree/main/tools/esbuild-config-custom",
   "author": "terwer",
-  "license": "GPL",
+  "license": "MIT",
   "peerDependencies": {
     "@types/minimist": "^1.2.2",
     "dotenv": "^16.0.3",

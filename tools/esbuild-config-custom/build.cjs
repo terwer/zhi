@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const os = require("os")
 const path = require("path")
 const esbuild = require("esbuild")
 const minimist = require("minimist")
@@ -25,31 +26,38 @@ class ZhiBuild {
     // 读取用户定义的配置文件
     let userEsbuildConfig = {}
     let customConfig = {}
-    const esbuildConfigFile = path.join(process.cwd(), cfg)
+    // 兼容 windows
+    const isWindows = os.platform() === "win32"
+    const esbuildConfigFile = isWindows
+      ? `${path.join(process.cwd(), cfg)}`.replace(/\\/g, "/")
+      : path.join(process.cwd(), cfg)
     console.log("reading user defined esbuild config from =>", esbuildConfigFile)
-    if (existsSync(esbuildConfigFile)) {
+    if (!existsSync(esbuildConfigFile)) {
+      console.warn(`userEsbuildConfig not found, using default`)
+    } else {
       try {
-        // 兼容 mjs 和 cjs
-        // const pkg = await import(esbuildConfigFile)
-        const protocol = process.platform === 'win32' ? 'file:///' : 'file://';
-        // 获取文件的绝对路径
-        const esbuildConfigPath = path.resolve(esbuildConfigFile);
-        // 拼接 file:// 协议和路径
-        const esbuildConfigFileUrl = protocol + esbuildConfigPath;
-        const pkg = await import(esbuildConfigFileUrl);
-        console.log("pkg=>", pkg)
-        let cfg = pkg
-        if (pkg.default) {
-          cfg = pkg.default
+        let customCfg
+        try {
+          console.log(`try import esbuildConfigFile => ${esbuildConfigFile}`)
+          // 兼容 mjs 和 cjs
+          const pkg = await import(esbuildConfigFile)
+          console.log("pkg=>", pkg)
+          customCfg = pkg
+          if (pkg.default) {
+            customCfg = pkg.default
+          }
+        } catch (e) {
+          console.log(`import error, using require instead.esbuildConfigFile => ${esbuildConfigFile}`)
+          customCfg = require(esbuildConfigFile)
         }
-        userEsbuildConfig = cfg.esbuildConfig ?? {}
-        customConfig = cfg.customConfig ?? {}
-      } catch (error) {
-        console.error(`Failed to load esbuild config: ${error}`)
+        userEsbuildConfig = customCfg.esbuildConfig ?? {}
+        customConfig = customCfg.customConfig ?? {}
+      } catch (e2) {
+        console.error(`Failed to load esbuild config: ${e2}`)
         process.exit(1)
       }
     }
-    // console.log("parsed user defined esbuild config", esbuildConfig)
+    console.log("parsed user defined esbuild config", userEsbuildConfig)
 
     // ===================
     // 默认集成的配置开始

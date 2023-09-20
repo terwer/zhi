@@ -1,7 +1,9 @@
 import BlogConfig, { PageType, PasswordType } from "./lib/blogConfig"
 import BlogPlaceholder from "./lib/blogPlaceholder"
-import BlogApi from "./lib/zhi-blog-api"
-import { IBlogApi } from "./lib/IBlogApi"
+import BlogApi from "./lib/blogApi"
+import BlogAdaptor from "./lib/blogAdaptor"
+import WebApi from "./lib/webApi"
+import WebAdaptor from "./lib/webAdaptor"
 import Post from "./lib/models/post"
 import UserBlog from "./lib/models/userBlog"
 import SiteConfig from "./lib/models/siteConfig"
@@ -10,9 +12,25 @@ import CategoryInfo from "./lib/models/categoryInfo"
 import MediaObject from "./lib/models/mediaObject"
 import BlogConstants from "./lib/blogConstants"
 import BlogTypeEnum from "./lib/enums/blogTypeEnum"
+import Attachment from "./lib/models/attachmentInfo"
+import PageTypeEnum from "./lib/enums/pageTypeEnum"
+import ElectronCookie from "./lib/models/ElectronCookie"
+import WebConfig from "./lib/WebConfig"
+import WebPlaceholder from "./lib/WebPlaceholder"
+import CategoryTypeEnum from "./lib/enums/categoryTypeEnum"
+import YamlFormatObj from "./lib/models/yamlFormatObj"
+import YamlConvertAdaptor from "./lib/yamlConvertAdaptor"
+import PreferenceConfig from "./lib/PreferenceConfig"
+import PostUtil from "./lib/PostUtil"
+import TagInfo from "./lib/models/tagInfo"
 
-export { BlogApi }
-export type { IBlogApi }
+export { BlogApi, BlogAdaptor }
+export { WebApi, WebAdaptor }
 export { BlogConfig, BlogPlaceholder, PasswordType, PageType, PostStatusEnum }
-export { Post, UserBlog, SiteConfig, CategoryInfo, MediaObject }
-export { BlogConstants, BlogTypeEnum }
+export { WebConfig, WebPlaceholder }
+export { Post, UserBlog, SiteConfig, CategoryInfo, TagInfo, MediaObject, Attachment }
+export { BlogConstants, BlogTypeEnum, PageTypeEnum, CategoryTypeEnum }
+export { YamlFormatObj, YamlConvertAdaptor }
+export { PostUtil }
+export { PreferenceConfig }
+export { type ElectronCookie }

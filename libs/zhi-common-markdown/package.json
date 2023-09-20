@@ -1,0 +1,39 @@
+{
+  "name": "zhi-common-markdown",
+  "version": "0.1.6",
+  "type": "module",
+  "description": "a universal Markdown parsing tool",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "repository": "terwer/zhi",
+  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-common-markdown",
+  "author": "terwer",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "keywords": [
+    "zhi",
+    "lib"
+  ],
+  "scripts": {
+    "serve": "vite",
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "start": "vite preview",
+    "test": "npx vitest --watch"
+  },
+  "devDependencies": {
+    "@terwer/eslint-config-custom": "workspace:*",
+    "@terwer/vite-config-custom": "workspace:*",
+    "@types/showdown": "^2.0.1"
+  },
+  "dependencies": {
+    "showdown": "^2.1.0",
+    "zhi-lib-base": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

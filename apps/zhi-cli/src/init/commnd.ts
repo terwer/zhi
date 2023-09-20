@@ -32,6 +32,7 @@ import { downloadTemplate } from "./download"
 import modifyFiles from "./modify"
 import { prompt } from "enquirer"
 import Select from "enquirer/lib/prompts/select"
+import template from "../../template.json" assert { type: "json" }
 
 const logger = LogFactory.customLogFactory(LogLevelEnum.LOG_LEVEL_INFO, "zhi-cli").getLogger("init")
 const templateGitUrl = "https://github.com/terwer/zhi-ts-template"
@@ -52,7 +53,7 @@ export const initCommand = () => {
         const templatePrompt = new Select({
           name: "template",
           message: "What template you want to use?",
-          choices: ["turbo-workspace-simple", "ts-vite-lib", "ts-esbuild-lib"],
+          choices: template,
         })
         branch = await templatePrompt.run()
       }

@@ -32,29 +32,25 @@
  */
 class BrowserUtil {
   /**
-   * 是否在浏览器环境
+   * 是否在Node环境
    */
-  public static isNode = typeof process !== "undefined"
+  public static isNode = typeof process !== "undefined" && process.versions != null && process.versions.node != null
 
   /**
    * 是否在浏览器环境
    */
-  public static isInBrowser = typeof window !== "undefined"
+  public static isInBrowser = typeof window !== "undefined" && typeof document !== "undefined"
 
   /**
    * 浏览器路径分隔符
    */
-  public static BrowserSeperator = "/"
+  public static BrowserSeparator = "/"
 
   /**
    * 是否是Electron环境
    */
   public static isElectron = () => {
-    if (!BrowserUtil.isInBrowser || !window.navigator || !window.navigator.userAgent) {
-      return false
-    }
-
-    return /Electron/.test(window.navigator.userAgent)
+    return typeof process !== "undefined" && process.versions != null && process.versions.electron != null
   }
 
   /**
@@ -75,24 +71,50 @@ class BrowserUtil {
   }
 
   /**
-   * 获取url参数
+   * 通用的从 url 中获取获取参数的方法，优先获取查询参数，然后获取 hash 参数与
    *
-   * @param sParam - 参数
+   * @param key - 参数
+   * @author terwer
+   * @version 0.9.0
+   * @since 0.0.1
    */
-  public static getQueryString = (sParam: string): string => {
+  public static getQueryParam = (key: string) => {
+    // check env
     if (!BrowserUtil.isInBrowser) {
       return ""
     }
-    const sPageURL = window.location.search.substring(1)
-    const sURLVariables = sPageURL.split("&")
 
-    for (let i = 0; i < sURLVariables.length; i++) {
-      const sParameterName = sURLVariables[i].split("=")
-      if (sParameterName[0] === sParam) {
-        return sParameterName[1]
+    const url = window.location.href
+
+    // Check for query parameters first
+    const queryStringStart = url.indexOf("?")
+    if (queryStringStart !== -1) {
+      const queryStringEnd = url.indexOf("#", queryStringStart)
+      const queryString =
+        queryStringEnd !== -1
+          ? url.substring(queryStringStart + 1, queryStringEnd)
+          : url.substring(queryStringStart + 1)
+      const urlSearchParams = new URLSearchParams(queryString)
+      const valueFromQueryParams = urlSearchParams.get(key)
+
+      if (valueFromQueryParams) {
+        return valueFromQueryParams
       }
     }
 
+    // Check for hash parameters if query parameters not found
+    const hashStringStart = url.indexOf("#")
+    if (hashStringStart !== -1) {
+      const hashString = url.substring(hashStringStart + 1)
+      const urlSearchParams = new URLSearchParams(hashString)
+      const valueFromHashParams = urlSearchParams.get(key)
+
+      if (valueFromHashParams) {
+        return valueFromHashParams
+      }
+    }
+
+    // Return an empty string if the parameter is not found
     return ""
   }
 
@@ -167,24 +189,26 @@ class BrowserUtil {
    * @param tabname - tabname
    * @param t - 延迟时间
    */
-  public static reloadTabPage = (tabname: string, t = 200): void => {
+  public static reloadTabPage = (tabname: string, t?: number): void => {
     setTimeout(function () {
       if (BrowserUtil.isInBrowser) {
         const url = window.location.href
         window.location.href = BrowserUtil.setUrlParameter(url, "tab", tabname)
       }
-    }, t)
+    }, t ?? 200)
   }
 
   /**
    * 刷新当前tab页面
+   *
+   * @param t - 延迟时间
    */
-  public static reloadPage = (): void => {
+  public static reloadPage = (t?: number): void => {
     setTimeout(function () {
       if (BrowserUtil.isInBrowser) {
         window.location.reload()
       }
-    }, 200)
+    }, t ?? 200)
   }
 
   /**
@@ -192,8 +216,9 @@ class BrowserUtil {
    *
    * @param msg - 消息提示
    * @param cb - 回调
+   * @param t - 延迟时间
    */
-  public static reloadPageWithMessageCallback = (msg: string, cb: any): void => {
+  public static reloadPageWithMessageCallback = (msg: string, cb?: any, t?: number): void => {
     if (cb) {
       cb(msg)
     }
@@ -202,7 +227,27 @@ class BrowserUtil {
       if (BrowserUtil.isInBrowser) {
         window.location.reload()
       }
-    }, 200)
+    }, t ?? 200)
+  }
+
+  /**
+   * 复制网页内容到剪贴板
+   *
+   * @param text - 待复制的文本
+   */
+  public static async copyToClipboardInBrowser(text: string) {
+    if (navigator && navigator.clipboard) {
+      await navigator.clipboard.writeText(text)
+    } else {
+      const input = document.createElement("input")
+      input.style.position = "fixed"
+      input.style.opacity = "0"
+      input.value = text
+      document.body.appendChild(input)
+      input.select()
+      document.execCommand("copy")
+      document.body.removeChild(input)
+    }
   }
 }
 

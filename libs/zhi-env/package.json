@@ -1,6 +1,6 @@
 {
   "name": "zhi-env",
-  "version": "1.17.0",
+  "version": "1.18.6",
   "type": "module",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -8,7 +8,7 @@
   "repository": "terwer/zhi",
   "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-env",
   "author": "terwer",
-  "license": "GPL",
+  "license": "MIT",
   "files": [
     "dist",
     "README.md"
@@ -19,7 +19,8 @@
     "env"
   ],
   "scripts": {
-    "dev": "vite",
+    "serve": "vite",
+    "dev": "vite build --watch",
     "build": "vite build",
     "start": "vite preview",
     "test": "vitest --watch"
@@ -28,5 +29,8 @@
     "@terwer/eslint-config-custom": "workspace:*",
     "@terwer/tsconfig": "workspace:*",
     "@terwer/vite-config-custom": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -23,38 +23,58 @@
  * questions.
  */
 
-import Ajv, { JSONSchemaType } from "ajv"
+import StrUtil from "./strUtil"
+import { simpleLogger } from "zhi-lib-base"
 
 /**
- * 校验 JSON schema
+ * JSON 解析工具类
  *
  * @author terwer
  * @version 1.5.0
  * @since 1.5.0
  */
 class JsonUtil {
-  private ajv: Ajv
+  private static logger = simpleLogger("json-util")
 
-  constructor() {
-    this.ajv = new Ajv()
+  /**
+   * 安全的解析json
+   *
+   * @param str json字符串
+   * @param def 默认值
+   */
+  public static safeParse<T>(str: any, def: T): T {
+    let ret
+
+    if (typeof str !== "string") {
+      this.logger.debug("not json string, ignore parse")
+      return str
+    }
+
+    // 如果字符创为空或者undefined等，返回默认json
+    if (StrUtil.isEmptyString(str)) {
+      ret = def
+    }
+
+    // 尝试解析json
+    try {
+      str = this.extractContent(str)
+      ret = JSON.parse(str) || def
+    } catch (e) {
+      ret = def
+      this.logger.warn("json parse error", e)
+    }
+
+    // 如果json被二次转义，在尝试解析一次
+    if (typeof ret === "string") {
+      ret = JSON.parse(ret) || def
+    }
+
+    return ret
   }
 
-  public validateJson<T>(schema: JSONSchemaType<T>, data: T): { valid: boolean; error?: string } {
-    const valid = this.ajv.validate(schema, data)
-    if (valid) {
-      return { valid }
-    } else {
-      return { valid, error: this.ajv.errorsText() }
-    }
-  }
-
-  public validateObjectSchema(schemaObject: object, dataObject: object): { valid: boolean; error?: string } {
-    const valid = this.ajv.validate(schemaObject, dataObject)
-    if (valid) {
-      return { valid }
-    } else {
-      return { valid, error: this.ajv.errorsText() }
-    }
+  private static extractContent(input: string): string {
+    const match = input.match(/```json\n([\s\S]*)\n```/)
+    return match ? match[1] : input
   }
 }
 

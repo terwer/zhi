@@ -24,6 +24,7 @@
  */
 
 import PostStatusEnum from "../enums/postStatusEnum"
+import { DateUtil } from "zhi-common"
 
 /**
  * 通用文章模型定义
@@ -42,11 +43,6 @@ class Post {
   title: string
 
   /**
-   * 逗号分隔的标签
-   */
-  mt_keywords: string
-
-  /**
    * 链接
    */
   link?: string
@@ -62,7 +58,32 @@ class Post {
   shortDesc?: string
 
   /**
-   * 描述
+   * 属性对应的yaml
+   */
+  yaml: string
+
+  /**
+   * MD 文件名，不包括 .md
+   */
+  mdFilename?: string
+
+  /**
+   * HTML正文
+   */
+  html?: string
+
+  /**
+   * MD正文
+   */
+  markdown?: string
+
+  /**
+   * 编辑器DOM
+   */
+  editorDom?: string
+
+  /**
+   * 正文
    */
   description: string
 
@@ -82,9 +103,29 @@ class Post {
   dateCreated: Date
 
   /**
+   * 更新时间
+   */
+  dateUpdated: Date
+
+  /**
+   * 逗号分隔的标签
+   */
+  mt_keywords: string
+
+  /**
+   * 标签别名，大部分平台不需要
+   */
+  tags_slugs?: string
+
+  /**
    * 分类
    */
-  categories: Array<string>
+  categories: string[]
+
+  /**
+   * 分类别名，大部分平台不需要
+   */
+  cate_slugs?: string[]
 
   /**
    * 更多
@@ -106,18 +147,31 @@ class Post {
    */
   wp_password: string
 
+  /**
+   * 附加属性
+   */
+  attrs?: string
+
   constructor() {
     this.postid = ""
     this.title = ""
-    this.mt_keywords = ""
     this.permalink = ""
+    this.yaml = "---\n---"
+    this.mdFilename = "test"
+    this.html = ""
+    this.markdown = ""
+    this.editorDom = ""
     this.description = ""
     this.wp_slug = ""
     this.dateCreated = new Date()
+    this.mt_keywords = ""
+    this.tags_slugs = ""
     this.categories = []
+    this.cate_slugs = []
     this.isPublished = true
     this.post_status = PostStatusEnum.PostStatusEnum_Publish
     this.wp_password = ""
+    this.attrs = "{}"
   }
 }
 

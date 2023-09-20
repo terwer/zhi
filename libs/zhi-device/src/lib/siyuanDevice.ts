@@ -43,33 +43,21 @@ class SiyuanDevice {
       return false
     }
     return (
-      window.frameElement != null &&
-      window.frameElement.parentElement != null &&
-      window.frameElement.parentElement.parentElement != null &&
-      window.frameElement.parentElement.parentElement.getAttribute("data-node-id") !== ""
+      typeof (window as any).parent.process !== "undefined" &&
+      (window as any).parent.process.versions != null &&
+      (window as any).parent.process.versions.electron != null
     )
   }
 
   /**
    * 思源笔记新窗口
    *
-   * @deprecated window.terwer 判断方式已废弃，建议以后打开新窗口注入 window.siyuanNewWin ，这样语义会更容易理解
    * @author terwer
    * @version 0.1.0
    * @since 0.0.1
    */
   public static isInSiyuanNewWin = () => {
-    if (!BrowserUtil.isInBrowser) {
-      return false
-    }
-    if (!BrowserUtil.isElectron()) {
-      return false
-    }
-
-    /**
-     * @deprecated 已废弃，建议以后使用 window.siyuanNewWin 来判断，会更有意义
-     */
-    return typeof (window as any).terwer !== "undefined" || typeof (window as any).siyuanNewWin !== "undefined"
+    return typeof window !== "undefined" && (window as any).process && (window as any).process.type === "renderer"
   }
 
   /**
@@ -317,7 +305,7 @@ class SiyuanDevice {
   }
 
   public static browserJoinPath(...paths: string[]): string {
-    return paths.join(BrowserUtil.BrowserSeperator)
+    return paths.join(BrowserUtil.BrowserSeparator)
   }
 
   /**

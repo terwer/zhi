@@ -1,45 +1,25 @@
 {
-  "name": "zhi",
-  "version": "0.1.0",
-  "description": "The ultimate framework for building blog and theme",
+  "name": "zhi-framework",
   "private": true,
-  "workspaces": [
-    "tools/*",
-    "libs/*",
-    "apps/*"
-  ],
+  "version": "1.0.0",
+  "packageManager": "pnpm@7.15.0",
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "localBuild": "turbo run localBuild",
-    "staticBuild": "turbo run staticBuild",
-    "nodeBuild": "turbo run nodeBuild",
-    "dockerBuild": "turbo run dockerBuild",
-    "vercelBuild": "turbo run vercelBuild",
-    "siyuanBuild": "turbo run siyuanBuild",
-    "test": "turbo run test",
-    "start": "turbo run start",
-    "predoc": "pnpm build -F zhi-device && pnpm build -F zhi-env && pnpm build -F zhi-log && pnpm build -F zhi-common && pnpm build -F zhi-blog-api && pnpm build -F zhi-siyuan-api",
     "lint": "turbo run lint",
-    "graph": " turbo run build --graph=dependency-graph.png",
-    "prepare": "is-ci || husky install",
-    "cz": "git-cz"
+    "cz": "git-cz",
+    "add-changeset": "changeset",
+    "publish-packages": "turbo run build lint && changeset version && changeset publish"
   },
   "config": {
     "commitizen": {
       "path": "@commitlint/cz-commitlint"
-    },
-    "commitizenEmoji": {}
+    }
   },
   "devDependencies": {
-    "turbo": "^1.9.3",
-    "@terwer/eslint-config-custom": "workspace:*"
-  },
-  "engines": {
-    "node": ">=16.0.0"
-  },
-  "packageManager": "pnpm@8.1.1",
-  "repository": "terwer/zhi",
-  "homepage": "https://terwer.space",
-  "author": "terwer"
+    "@changesets/cli": "^2.26.2",
+    "@terwer/commit-config-custom": "workspace:*",
+    "@terwer/eslint-config-custom": "workspace:*",
+    "turbo": "^1.10.12"
+  }
 }

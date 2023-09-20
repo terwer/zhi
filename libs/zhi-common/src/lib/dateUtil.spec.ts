@@ -26,41 +26,39 @@ import DateUtil from "./dateUtil"
 import { describe, expect, it } from "vitest"
 
 describe("DateUtil", () => {
-  const dateUtil = new DateUtil()
-
   it("formatIsoToZh", () => {
     const isoDate = "2022-07-18T06:25:48.000Z"
-    const result = dateUtil.formatIsoToZh(isoDate)
+    const result = DateUtil.formatIsoToZh(isoDate)
     const expectedZhDate = "2022-07-18 06:25:48"
     expect(result).toEqual(expectedZhDate)
   })
 
   it("formatIsoToZhDate", () => {
     const isoDate = "2022-07-18T06:25:48.000Z"
-    const result = dateUtil.formatIsoToZhDate(isoDate)
+    const result = DateUtil.formatIsoToZhDate(isoDate)
     const expectedZhDate = "2022-07-18"
     expect(result).toEqual(expectedZhDate)
   })
 
   it("formatIsoToZhTime", () => {
     const isoDate = "2022-07-18T06:25:48.000Z"
-    const result = dateUtil.formatIsoToZhTime(isoDate)
+    const result = DateUtil.formatIsoToZhTime(isoDate)
     const expectedZhDate = "06:25:48"
     expect(result).toEqual(expectedZhDate)
   })
 
   it("nowZh", () => {
-    const result = dateUtil.nowZh()
+    const result = DateUtil.nowZh()
     console.log(result)
   })
 
   it("nowDateZh", () => {
-    const result = dateUtil.nowDateZh()
+    const result = DateUtil.nowDateZh()
     console.log(result)
   })
 
   it("nowTimeZh", () => {
-    const result = dateUtil.nowTimeZh()
+    const result = DateUtil.nowTimeZh()
     console.log(result)
   })
 })

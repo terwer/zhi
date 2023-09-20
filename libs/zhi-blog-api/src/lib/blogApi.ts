@@ -23,139 +23,74 @@
  * questions.
  */
 
-import UserBlog from "./models/userBlog"
+import { IBlogApi } from "./IBlogApi"
 import Post from "./models/post"
 import CategoryInfo from "./models/categoryInfo"
+import UserBlog from "./models/userBlog"
 import MediaObject from "./models/mediaObject"
-import type { IBlogApi } from "./IBlogApi"
-import ZhiBlogApiUtil from "./utils/ZhiBlogApiUtil"
+import { NotImplementedException } from "zhi-lib-base"
+import Attachment from "./models/attachmentInfo"
+import YamlConvertAdaptor from "./yamlConvertAdaptor"
+import TagInfo from "./models/tagInfo"
 
 /**
- * 博客API
- *
- * @public
- * @author terwer
- * @since 1.0.0
+ * 博客基类
  */
 class BlogApi implements IBlogApi {
-  private readonly logger
-  private readonly apiAdaptor: IBlogApi
-
-  /**
-   * 博客API版本号
-   */
-  public readonly VERSION
-
-  /**
-   * 初始化博客 API
-   *
-   * @param apiAdaptor - 对应博客的适配器，例如：SiYuanApiAdaptor
-   */
-  constructor(apiAdaptor: IBlogApi) {
-    this.logger = ZhiBlogApiUtil.zhiLog("zhi-blog-api")
-    this.VERSION = "1.0.0"
-    this.apiAdaptor = apiAdaptor
+  public async getUsersBlogs(keyword?: string): Promise<Array<UserBlog>> {
+    throw new NotImplementedException("You must implement getUsersBlogs in sub class")
   }
 
-  /**
-   * 博客配置列表
-   */
-  public async getUsersBlogs(): Promise<Array<UserBlog>> {
-    return await this.apiAdaptor.getUsersBlogs()
-  }
-
-  /**
-   * 最新文章数目
-   *
-   * @param keyword - 关键字（可选，部分平台不支持搜索）
-   */
   public async getRecentPostsCount(keyword?: string): Promise<number> {
-    return await this.apiAdaptor.getRecentPostsCount(keyword)
+    throw new NotImplementedException("You must implement getRecentPostsCount in sub class")
   }
 
-  /**
-   * 最新文章
-   *
-   * @param numOfPosts - 文章数目
-   * @param page - 页码（可选，从0开始，部分平台不支持分页）
-   * @param keyword - 关键字（可选，部分平台不支持搜索）
-   */
   public async getRecentPosts(numOfPosts: number, page?: number, keyword?: string): Promise<Array<Post>> {
-    try {
-      return await this.apiAdaptor.getRecentPosts(numOfPosts, page, keyword)
-    } catch (e) {
-      this.logger.error("getRecentPosts fetch posts failed", e)
-      return Promise.resolve([])
-    }
+    throw new NotImplementedException("You must implement getRecentPosts in sub class")
   }
 
-  /**
-   * 发布文章
-   *
-   * @param post - 文章
-   * @param publish - 可选，是否发布
-   */
+  public async preEditPost(post: Post, id?: string, publishCfg?: any): Promise<Post> {
+    throw new NotImplementedException("You must implement preEditPost in sub class")
+  }
+
   public async newPost(post: Post, publish?: boolean): Promise<string> {
-    return await this.apiAdaptor.newPost(post, publish)
+    throw new NotImplementedException("You must implement newPost in sub class")
   }
 
-  /**
-   * 文章详情
-   * @param postid - postid
-   * @param useSlug - 是否使用的是别名（可选，部分平台不支持）
-   */
-  public async getPost(postid: string, useSlug?: boolean): Promise<Post> {
-    try {
-      return await this.apiAdaptor.getPost(postid, useSlug)
-    } catch (e) {
-      this.logger.error(`getPost fetch posts failed => ${postid},`, e)
-      return Promise.resolve(new Post())
-    }
+  public async getPost(postid: string, useSlug?: boolean, skipBody?: boolean): Promise<Post> {
+    throw new NotImplementedException("You must implement getPost in sub class")
   }
 
-  /**
-   * 更新文章
-   *
-   * @param postid - 文章id
-   * @param post - 文章
-   * @param publish - 可选，是否发布
-   */
   public async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {
-    return await this.apiAdaptor.editPost(postid, post, publish)
+    throw new NotImplementedException("You must implement editPost in sub class")
   }
 
-  /**
-   * 删除文章
-   *
-   * @param postid - 文章ID
-   */
   public async deletePost(postid: string): Promise<boolean> {
-    return await this.apiAdaptor.deletePost(postid)
+    throw new NotImplementedException("You must implement deletePost in sub class")
   }
 
-  /**
-   * 获取分类列表
-   */
-  public async getCategories(): Promise<CategoryInfo[]> {
-    return await this.apiAdaptor.getCategories()
+  public async getCategories(keyword?: string): Promise<CategoryInfo[]> {
+    throw new NotImplementedException("You must implement getCategories in sub class")
   }
 
-  /**
-   * 获取预览链接
-   *
-   * @param postid - 文章ID
-   */
+  getTags(): Promise<TagInfo[]> {
+    throw new NotImplementedException("You must implement getTags in sub class")
+  }
+
+  public async getCategoryTreeNodes(docPath: string): Promise<any[]> {
+    throw new NotImplementedException("You must implement getCategoryTreeNodes in sub class")
+  }
+
   public async getPreviewUrl(postid: string): Promise<string> {
-    return await this.apiAdaptor.getPreviewUrl(postid)
+    throw new NotImplementedException("You must implement getPreviewUrl in sub class")
   }
 
-  /**
-   * 上传附件
-   *
-   * @param mediaObject
-   */
-  public async newMediaObject(mediaObject: MediaObject): Promise<MediaObject> {
-    return await this.apiAdaptor.newMediaObject(mediaObject)
+  public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<Attachment> {
+    throw new NotImplementedException("You must implement newMediaObject in sub class")
+  }
+
+  public getYamlAdaptor(): YamlConvertAdaptor {
+    throw new NotImplementedException("You must implement getYamlAdaptor in sub class")
   }
 }
 

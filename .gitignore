@@ -8,6 +8,12 @@ node_modules
 # testing
 coverage
 
+# build
+out/
+build
+dist
+cache
+
 # misc
 .DS_Store
 *.pem
@@ -16,9 +22,9 @@ coverage
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
 
 # local env files
+.env
 .env.local
 .env.development.local
 .env.test.local
@@ -27,10 +33,9 @@ yarn-error.log*
 # turbo
 .turbo
 
+# vercel
+.vercel
+
 # IDE
 .idea
-
-# doc
-reports
-.vercel
-dist
+temps

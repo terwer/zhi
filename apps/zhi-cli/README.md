@@ -1,5 +1,4 @@
 # zhi-cli
-
 a tool for generating zhi framework related projects
 
 [Read more about node with cli](https://www.terwer.space/post/use-typescript-to-develop-a-custom-nodejs-frontend-development-scaffold-1i5fne.html)
@@ -16,31 +15,11 @@ n 16
 npm i -g zhi-cli
 ```
 
-Note: this project is under turbo-workspace, you need to create a turbo-workspace first and add the projects inside
-
-a turbo-workspace may like
-
-```
-zhi
-├── apps
-│   ├── zhi-cli
-│   ├── zhi-core
-├── packages
-│   ├── api-docs
-│   ├── eslint-config-custom
-│   ├── tsconfig
-├── pnpm-worpspace.yaml
-├── turbo.json
-```
-
 Creating project use the following commands
 
 ```bash
 ## turbo-workspace
 zhi-cli init my-turbo-workspace turbo-workspace-simple
-
-## ts-cli
-## zhi-cli init my-project ts-cli
 
 ## ts-vite-lib
 zhi-cli init my-project ts-esbuild-lib
@@ -48,11 +27,8 @@ zhi-cli init my-project ts-esbuild-lib
 ## ts-vite-lib
 zhi-cli init my-project ts-vite-lib
 
-## ts-vite-vue
-## zhi-cli init my-project ts-vite-vue
-
-## ts-vite-react
-## zhi-cli init my-project ts-vite-react
+## ts-vite-siyuan-plugin
+zhi-cli init my-siyuan-plugin ts-vite-siyuan-plugin
 ```
 
 ## Dev
@@ -67,17 +43,11 @@ pnpm dev -F zhi-cli
 pnpm build -F zhi-cli
 ```
 
-## Api
-
-```bash
-pnpm doc -F zhi-cli
-pnpm md -F zhi-cli
-```
-
 ## Test
 
-```bash
-pnpm test -F zhi-cli
+```
+chmod u+x apps/zhi-cli/dist/index.cjs
+zhi-cli -h
 ```
 
 ## Publish
