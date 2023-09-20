@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.24.0
+
+### Minor Changes
+
+- fix: change yaml regex
+
 ## 1.23.7
 
 ### Patch Changes

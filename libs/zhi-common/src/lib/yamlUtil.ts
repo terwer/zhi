@@ -35,7 +35,7 @@ import { simpleLogger } from "zhi-lib-base"
  */
 class YamlUtil {
   private static logger = simpleLogger("yaml-util")
-  private static YAML_REGEX = /---\n([\s\S]*?\n)---/
+  private static YAML_REGEX = /^-{3}\n([\s\S]*?\n)-{3}/
 
   /**
    * yaml转对象
