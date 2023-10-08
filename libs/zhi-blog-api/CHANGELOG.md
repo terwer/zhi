@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.44.4
+
+### Patch Changes
+
+- fix: remove same item
+
 ## 1.44.3
 
 ### Patch Changes
