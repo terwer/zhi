@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.45.0
+
+### Minor Changes
+
+- feat: not force lowercase
+
 ## 1.44.4
 
 ### Patch Changes
