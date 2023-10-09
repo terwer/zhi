@@ -32,6 +32,7 @@ import { simpleLogger } from "zhi-lib-base"
 import Attachment from "./models/attachmentInfo"
 import BlogApi from "./blogApi"
 import YamlConvertAdaptor from "./yamlConvertAdaptor"
+import TagInfo from "./models/tagInfo"
 
 /**
  * 博客API
@@ -63,8 +64,8 @@ class BlogAdaptor implements IBlogApi {
   /**
    * 博客配置列表
    */
-  public async getUsersBlogs(): Promise<Array<UserBlog>> {
-    return await this.apiAdaptor.getUsersBlogs()
+  public async getUsersBlogs(keyword?: string): Promise<Array<UserBlog>> {
+    return await this.apiAdaptor.getUsersBlogs(keyword)
   }
 
   /**
@@ -148,10 +149,17 @@ class BlogAdaptor implements IBlogApi {
   }
 
   /**
+   * 获取标签列表
+   */
+  public async getTags(): Promise<TagInfo[]> {
+    return await this.apiAdaptor.getTags()
+  }
+
+  /**
    * 获取分类列表
    */
-  public async getCategories(): Promise<CategoryInfo[]> {
-    return await this.apiAdaptor.getCategories()
+  public async getCategories(keyword?: string): Promise<CategoryInfo[]> {
+    return await this.apiAdaptor.getCategories(keyword)
   }
 
   /**

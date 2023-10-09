@@ -81,8 +81,8 @@ class WebAdaptor extends BlogAdaptor {
     return await this.webAdaptor.addPost(post)
   }
 
-  public async uploadFile(file: File): Promise<string> {
-    return await this.webAdaptor.uploadFile(file)
+  public async uploadFile(file: File, filename?: string): Promise<any> {
+    return await this.webAdaptor.uploadFile(file, filename)
   }
 
   public async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {

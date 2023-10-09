@@ -43,11 +43,6 @@ class Post {
   title: string
 
   /**
-   * 逗号分隔的标签
-   */
-  mt_keywords: string
-
-  /**
    * 链接
    */
   link?: string
@@ -66,6 +61,11 @@ class Post {
    * 属性对应的yaml
    */
   yaml: string
+
+  /**
+   * MD 文件名，不包括 .md
+   */
+  mdFilename?: string
 
   /**
    * HTML正文
@@ -108,9 +108,19 @@ class Post {
   dateUpdated: Date
 
   /**
+   * 逗号分隔的标签
+   */
+  mt_keywords: string
+
+  /**
+   * 标签别名，大部分平台不需要
+   */
+  tags_slugs?: string
+
+  /**
    * 分类
    */
-  categories: Array<string>
+  categories: string[]
 
   /**
    * 分类别名，大部分平台不需要
@@ -145,62 +155,23 @@ class Post {
   constructor() {
     this.postid = ""
     this.title = ""
-    this.mt_keywords = ""
     this.permalink = ""
     this.yaml = "---\n---"
+    this.mdFilename = "test"
     this.html = ""
     this.markdown = ""
     this.editorDom = ""
     this.description = ""
     this.wp_slug = ""
     this.dateCreated = new Date()
+    this.mt_keywords = ""
+    this.tags_slugs = ""
     this.categories = []
     this.cate_slugs = []
     this.isPublished = true
     this.post_status = PostStatusEnum.PostStatusEnum_Publish
     this.wp_password = ""
     this.attrs = "{}"
-  }
-
-  /**
-   * 将当前对象的数据转换为适用于 YAML 的对象
-   *
-   * @returns {Object} 表示数据的适用于 YAML 的对象
-   */
-  public toYamlObj(): Record<string, any> {
-    const yamlObj: Record<string, any> = {}
-
-    this.dateCreated && (yamlObj.created = DateUtil.formatIsoToZh(this.dateCreated.toISOString(), true))
-    this.dateUpdated && (yamlObj.updated = DateUtil.formatIsoToZh(this.dateUpdated.toISOString(), true))
-    this.title && (yamlObj.title = this.title)
-    this.wp_slug && (yamlObj.slug = this.wp_slug)
-    this.permalink && (yamlObj.permalink = this.permalink)
-    this.shortDesc && (yamlObj.desc = this.shortDesc)
-    this.mt_keywords && (yamlObj.tags = this.mt_keywords?.split(","))
-    this.categories && (yamlObj.categories = this.categories)
-
-    return yamlObj
-  }
-
-  /**
-   * 使用来自适用于 YAML 的对象的数据填充当前对象的属性
-   *
-   * @param {Object} yamlObj - 包含要填充对象属性的数据的适用于 YAML 的对象
-   */
-  public fromYaml(yamlObj: Record<string, any>): void {
-    this.dateCreated = yamlObj?.created ? DateUtil.convertStringToDate(yamlObj.created) : this.dateCreated
-    this.dateUpdated = yamlObj?.updated ? DateUtil.convertStringToDate(yamlObj.updated) : this.dateUpdated
-    this.title = yamlObj?.title ?? this.title
-    this.wp_slug = yamlObj?.slug ?? this.wp_slug
-    this.permalink = yamlObj?.permalink ?? this.permalink
-    this.shortDesc = yamlObj?.desc ?? this.shortDesc
-    // 修复历史遗留问题
-    if (typeof yamlObj?.tags === "string" && yamlObj?.tags.indexOf(",") > -1) {
-      this.mt_keywords = yamlObj?.tag
-    } else {
-      this.mt_keywords = yamlObj?.tags ? yamlObj?.tags.join(",") : this.mt_keywords
-    }
-    this.categories = yamlObj?.categories ?? this.categories
   }
 }
 

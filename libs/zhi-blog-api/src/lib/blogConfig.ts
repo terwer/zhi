@@ -229,6 +229,26 @@ abstract class BlogConfig {
    */
   public yamlLinkEnabled: boolean
 
+  /**
+   * 是否运行标签别名
+   */
+  public tagSlugEnabled: boolean
+
+  /**
+   * 是否使用标题作为MD 文件名
+   */
+  useMdFilename?: boolean
+
+  /**
+   * 是否使用路径作为分类
+   */
+  usePathCategory?: boolean
+
+  /**
+   * 是否允许分类搜索
+   */
+  public cateSearchEnabled?: boolean
+
   protected constructor() {
     this.home = ""
     this.apiUrl = ""
@@ -257,6 +277,10 @@ abstract class BlogConfig {
     this.allowCateChange = false
     this.categoryType = CategoryTypeEnum.CategoryType_None
     this.yamlLinkEnabled = true
+    this.tagSlugEnabled = false
+    this.useMdFilename = false
+    this.usePathCategory = false
+    this.cateSearchEnabled = false
   }
 }
 

@@ -21,13 +21,16 @@ import CategoryTypeEnum from "./lib/enums/categoryTypeEnum"
 import YamlFormatObj from "./lib/models/yamlFormatObj"
 import YamlConvertAdaptor from "./lib/yamlConvertAdaptor"
 import PreferenceConfig from "./lib/PreferenceConfig"
+import PostUtil from "./lib/PostUtil"
+import TagInfo from "./lib/models/tagInfo"
 
 export { BlogApi, BlogAdaptor }
 export { WebApi, WebAdaptor }
 export { BlogConfig, BlogPlaceholder, PasswordType, PageType, PostStatusEnum }
 export { WebConfig, WebPlaceholder }
-export { Post, UserBlog, SiteConfig, CategoryInfo, MediaObject, Attachment }
+export { Post, UserBlog, SiteConfig, CategoryInfo, TagInfo, MediaObject, Attachment }
 export { BlogConstants, BlogTypeEnum, PageTypeEnum, CategoryTypeEnum }
 export { YamlFormatObj, YamlConvertAdaptor }
+export { PostUtil }
 export { PreferenceConfig }
 export { type ElectronCookie }

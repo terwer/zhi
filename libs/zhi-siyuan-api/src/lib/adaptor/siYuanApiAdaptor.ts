@@ -23,7 +23,7 @@
  * questions.
  */
 
-import { Attachment, BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, UserBlog } from "zhi-blog-api"
+import { Attachment, BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, PostUtil, UserBlog } from "zhi-blog-api"
 import SiyuanKernelApi from "../kernel/siyuanKernelApi"
 import SiyuanConfig from "../config/siyuanConfig"
 import { NotImplementedException } from "zhi-lib-base"
@@ -57,7 +57,7 @@ class SiYuanApiAdaptor extends BlogApi {
     this.siyuanKernelApi = new SiyuanKernelApi(cfg)
   }
 
-  public override async getUsersBlogs(): Promise<Array<UserBlog>> {
+  public override async getUsersBlogs(keyword?: string): Promise<Array<UserBlog>> {
     const usersBlogs: UserBlog[] = []
     const userBlog = new UserBlog()
 
@@ -225,7 +225,7 @@ class SiYuanApiAdaptor extends BlogApi {
     commonPost.attrs = JSON.stringify(publicAttrs)
 
     // yaml 适配
-    const yamlObj = commonPost.toYamlObj()
+    const yamlObj = PostUtil.toYamlObj(commonPost)
     commonPost.yaml = YamlUtil.obj2Yaml(yamlObj)
 
     return commonPost
@@ -256,7 +256,7 @@ class SiYuanApiAdaptor extends BlogApi {
     return true
   }
 
-  public override async getCategories(): Promise<CategoryInfo[]> {
+  public override async getCategories(keyword?: string): Promise<CategoryInfo[]> {
     const cats = [] as CategoryInfo[]
 
     const notes = (await this.siyuanKernelApi.lsNotebooks()) as any

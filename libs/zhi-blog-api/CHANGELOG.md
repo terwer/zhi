@@ -1,5 +1,127 @@
 # zhi-blog-api
 
+## 1.45.0
+
+### Minor Changes
+
+- feat: not force lowercase
+
+## 1.44.4
+
+### Patch Changes
+
+- fix: remove same item
+
+## 1.44.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.24.0
+
+## 1.44.2
+
+### Patch Changes
+
+- fix: add search
+
+## 1.44.1
+
+### Patch Changes
+
+- fix: add search option
+
+## 1.44.0
+
+### Minor Changes
+
+- feat: add search for getCategories
+
+## 1.43.0
+
+### Minor Changes
+
+- feat: add mdFilename
+
+## 1.42.0
+
+### Minor Changes
+
+- feat: add usePathCategory
+
+## 1.41.0
+
+### Minor Changes
+
+- feat: add useMdFilename
+
+## 1.40.0
+
+### Minor Changes
+
+- feat: add mdFilename
+
+## 1.39.0
+
+### Minor Changes
+
+- feat: export TagInfo
+
+## 1.38.0
+
+### Minor Changes
+
+- feat: add getTags method
+
+## 1.37.1
+
+### Patch Changes
+
+- feat: add tagSlugEnabled
+
+## 1.37.0
+
+### Minor Changes
+
+- feat: add tags_slugs field
+
+## 1.36.3
+
+### Patch Changes
+
+- feat: add filename for uploadFile
+
+## 1.36.2
+
+### Patch Changes
+
+- fix: deduplicate duplicate null values
+
+## 1.36.1
+
+### Patch Changes
+
+- fix； change empty categories
+
+## 1.36.0
+
+### Minor Changes
+
+- feat: YAML serialization requires merge labels and classifications
+
+## 1.35.0
+
+### Minor Changes
+
+- feat: Extract fromYaml and toYamlObj
+
+## 1.34.14
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.7
+
 ## 1.34.13
 
 ### Patch Changes

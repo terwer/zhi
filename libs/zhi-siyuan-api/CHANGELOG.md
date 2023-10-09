@@ -1,5 +1,181 @@
 # zhi-siyuan-api
 
+## 2.10.5
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.45.0
+
+## 2.10.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.44.4
+
+## 2.10.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.24.0
+  - zhi-blog-api@1.44.3
+
+## 2.10.2
+
+### Patch Changes
+
+- fix: add search
+- Updated dependencies
+  - zhi-blog-api@1.44.2
+
+## 2.10.1
+
+### Patch Changes
+
+- fix: add search option
+- Updated dependencies
+  - zhi-blog-api@1.44.1
+
+## 2.10.0
+
+### Minor Changes
+
+- feat: add search for getCategories
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.44.0
+
+## 2.9.8
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.43.0
+
+## 2.9.7
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.42.0
+
+## 2.9.6
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.41.0
+
+## 2.9.5
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.40.0
+
+## 2.9.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.39.0
+
+## 2.9.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.38.0
+
+## 2.9.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.37.1
+
+## 2.9.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.37.0
+
+## 2.9.0
+
+### Minor Changes
+
+- feat: change form fetch
+
+## 2.8.2
+
+### Patch Changes
+
+- feat: export formDataToBlob
+
+## 2.8.1
+
+### Patch Changes
+
+- fix: add response log
+
+## 2.8.0
+
+### Minor Changes
+
+- feat: add payloadEncoding and responseEncoding
+
+## 2.7.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.36.3
+
+## 2.7.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.36.2
+
+## 2.7.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.36.1
+
+## 2.7.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.36.0
+
+## 2.7.0
+
+### Minor Changes
+
+- feat: Extract fromYaml and toYamlObj
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.35.0
+
+## 2.6.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.23.7
+  - zhi-blog-api@1.34.14
+
 ## 2.6.1
 
 ### Patch Changes

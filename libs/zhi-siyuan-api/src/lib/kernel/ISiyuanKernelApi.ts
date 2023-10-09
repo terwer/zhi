@@ -96,6 +96,8 @@ interface ISiyuanKernelApi {
     payload?: any,
     method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH",
     contentType?: string,
+    payloadEncoding?: "text" | "base64" | "base64-std" | "base64-url" | "base32" | "base32-std" | "base32-hex" | "hex",
+    responseEncoding?: "text" | "base64" | "base64-std" | "base64-url" | "base32" | "base32-std" | "base32-hex" | "hex",
     timeout?: number
   ): Promise<SiyuanData["data"]>
 

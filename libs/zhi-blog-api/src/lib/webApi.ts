@@ -54,7 +54,7 @@ class WebApi extends BlogApi implements IWebApi {
     throw new NotImplementedException("You must implement addPost in sub class")
   }
 
-  public async uploadFile(file: File): Promise<any> {
+  public async uploadFile(file: File, filename?: string): Promise<any> {
     throw new NotImplementedException("You must implement uploadFile in sub class")
   }
 

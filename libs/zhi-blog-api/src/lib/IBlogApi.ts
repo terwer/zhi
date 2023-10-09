@@ -29,6 +29,7 @@ import MediaObject from "./models/mediaObject"
 import CategoryInfo from "./models/categoryInfo"
 import Attachment from "./models/attachmentInfo"
 import YamlConvertAdaptor from "./yamlConvertAdaptor"
+import TagInfo from "./models/tagInfo"
 
 /**
  * 通用博客接口
@@ -42,10 +43,12 @@ import YamlConvertAdaptor from "./yamlConvertAdaptor"
 interface IBlogApi {
   /**
    * 博客配置列表
+   *
+   * @param keyword - 搜索关键字，部分平台不支持
    * @see {@link https://codex.wordpress.org/XML-RPC_MetaWeblog_API#metaWeblog.getUsersBlogs getUsersBlogs}
    * @returns {Promise<Array<UserBlog>>}
    */
-  getUsersBlogs(): Promise<Array<UserBlog>>
+  getUsersBlogs(keyword?: string): Promise<Array<UserBlog>>
 
   /**
    * 最新文章数目
@@ -161,10 +164,16 @@ interface IBlogApi {
   /**
    * 获取分类列表
    *
+   * @param keyword - 搜索关键字，部分平台不支持
    * @see {@link https://codex.wordpress.org/XML-RPC_MetaWeblog_API#metaWeblog.getCategories getCategories}
    * @returns {Promise<CategoryInfo[]>}
    */
-  getCategories(): Promise<CategoryInfo[]>
+  getCategories(keyword?: string): Promise<CategoryInfo[]>
+
+  /**
+   * 获取标签列表
+   */
+  getTags(): Promise<TagInfo[]>
 
   /**
    * 获取文件树列表
