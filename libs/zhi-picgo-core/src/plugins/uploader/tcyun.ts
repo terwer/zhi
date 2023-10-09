@@ -19,7 +19,7 @@ const generateSignature = (options: ITcyunConfig, fileName: string): ISignature 
   const appId = options.appId
   const bucket = options.bucket
   let signature
-  let signTime: string = ""
+  let signTime = ""
   if (!options.version || options.version === "v4") {
     const random = Math.floor(Math.random() * 10000000000)
     const current = Math.floor(new Date().getTime() / 1000) - 1
