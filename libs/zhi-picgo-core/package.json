@@ -1,13 +1,10 @@
 {
   "name": "zhi-picgo-core",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "description": "A tool for picture uploading forked from PicGO-Core",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "typings": "dist/index.d.ts",
-  "bin": {
-    "picgo": "./bin/picgo"
-  },
   "publishConfig": {
     "access": "public"
   },
