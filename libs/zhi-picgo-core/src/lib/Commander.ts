@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { Command } from 'commander'
-import inquirer, { Inquirer } from 'inquirer'
-import { IPlugin, ICommander, IPicGo } from '../types'
-import commanders from '../plugins/commander'
-import { getCurrentPluginName } from './LifecyclePlugins'
+import { Command } from "commander"
+import inquirer, { Inquirer } from "inquirer"
+import { IPlugin, ICommander, IPicGo } from "../types"
+import commanders from "../plugins/commander"
+import { getCurrentPluginName } from "./LifecyclePlugins"
 
 export class Commander implements ICommander {
-  private readonly name = 'commander'
+  private readonly name = "commander"
   static currentPlugin: string | null
   private readonly list: Map<string, IPlugin> = new Map()
   private readonly pluginIdMap: Map<string, string[]> = new Map()
@@ -15,31 +15,33 @@ export class Commander implements ICommander {
   program: Command
   inquirer: Inquirer
 
-  constructor (ctx: IPicGo) {
+  constructor(ctx: IPicGo) {
     this.program = new Command()
     this.inquirer = inquirer
     this.ctx = ctx
   }
 
-  getName (): string {
+  getName(): string {
     return this.name
   }
 
-  init (): void {
+  init(): void {
     this.program
-      .version(process.env.PICGO_VERSION, '-v, --version')
-      .option('-d, --debug', 'debug mode', () => {
+      .version(process.env.PICGO_VERSION, "-v, --version")
+      .option("-d, --debug", "debug mode", () => {
         this.ctx.setConfig({
-          debug: true
+          debug: true,
         })
       })
-      .option('-s, --silent', 'silent mode', () => {
+      .option("-s, --silent", "silent mode", () => {
         this.ctx.setConfig({
-          silent: true
+          silent: true,
         })
       })
-      .on('command:*', () => {
-        this.ctx.log.error(`Invalid command: ${this.program.args.join(' ')}\nSee --help for a list of available commands.`)
+      .on("command:*", () => {
+        this.ctx.log.error(
+          `Invalid command: ${this.program.args.join(" ")}\nSee --help for a list of available commands.`
+        )
         process.exit(1)
       })
 
@@ -47,9 +49,9 @@ export class Commander implements ICommander {
     commanders(this.ctx)
   }
 
-  register (id: string, plugin: IPlugin): void {
-    if (!id) throw new TypeError('name is required!')
-    if (typeof plugin.handle !== 'function') throw new TypeError('plugin.handle must be a function!')
+  register(id: string, plugin: IPlugin): void {
+    if (!id) throw new TypeError("name is required!")
+    if (typeof plugin.handle !== "function") throw new TypeError("plugin.handle must be a function!")
     if (this.list.has(id)) throw new TypeError(`${this.name} plugin duplicate id: ${id}!`)
     this.list.set(id, plugin)
     const currentPluginName = getCurrentPluginName()
@@ -62,7 +64,7 @@ export class Commander implements ICommander {
     }
   }
 
-  unregister (pluginName: string): void {
+  unregister(pluginName: string): void {
     if (this.pluginIdMap.has(pluginName)) {
       const pluginList = this.pluginIdMap.get(pluginName)
       pluginList?.forEach((plugin: string) => {
@@ -71,7 +73,7 @@ export class Commander implements ICommander {
     }
   }
 
-  loadCommands (): void {
+  loadCommands(): void {
     this.getList().forEach((item: IPlugin) => {
       try {
         item.handle(this.ctx)
@@ -81,15 +83,15 @@ export class Commander implements ICommander {
     })
   }
 
-  get (id: string): IPlugin | undefined {
+  get(id: string): IPlugin | undefined {
     return this.list.get(id)
   }
 
-  getList (): IPlugin[] {
+  getList(): IPlugin[] {
     return [...this.list.values()]
   }
 
-  getIdList (): string[] {
+  getIdList(): string[] {
     return [...this.list.keys()]
   }
 }

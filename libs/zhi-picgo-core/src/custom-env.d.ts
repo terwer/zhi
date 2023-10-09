@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-declare module '*.sh' {
+declare module "*.sh" {
   const src: string
   export default src
 }
-declare module '*.applescript' {
+declare module "*.applescript" {
   const src: string
   export default src
 }
-declare module '*.ps1' {
+declare module "*.ps1" {
   const src: string
   export default src
 }

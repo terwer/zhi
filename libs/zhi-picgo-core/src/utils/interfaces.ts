@@ -1,7 +1,7 @@
 /** This file is deprecated */
 
-import { PicGo } from '../core/PicGo'
-import LifecyclePlugins from '../lib/LifecyclePlugins'
+import { PicGo } from "../core/PicGo"
+import LifecyclePlugins from "../lib/LifecyclePlugins"
 
 /**
  * for plugin config
@@ -55,7 +55,7 @@ export interface IQiniuConfig {
   /** 自定义域名 */
   url: string
   /** 存储区域编号 */
-  area: 'z0' | 'z1' | 'z2' | 'na0' | 'as0'
+  area: "z0" | "z1" | "z2" | "na0" | "as0"
   /** 网址后缀，比如使用 `?imageslim` 可进行[图片瘦身](https://developer.qiniu.com/dora/api/1271/image-thin-body-imageslim) */
   options: string
   /** 自定义存储路径，比如 `img/` */
@@ -90,7 +90,7 @@ export interface ITcyunConfig {
   /** 自定义域名，注意要加 `http://` 或者 `https://` */
   customUrl: string
   /** COS 版本，v4 或者 v5 */
-  version: 'v5' | 'v4'
+  version: "v5" | "v4"
 }
 /** GitHub 图床配置项 */
 export interface IGithubConfig {

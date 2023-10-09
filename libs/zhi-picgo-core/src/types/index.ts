@@ -1,6 +1,6 @@
-import { Command } from 'commander'
-import { Inquirer } from 'inquirer'
-import { IRequestPromiseOptions } from './oldRequest'
+import { Command } from "commander"
+import { Inquirer } from "inquirer"
+import { IRequestPromiseOptions } from "./oldRequest"
 
 export interface IPicGo extends NodeJS.EventEmitter {
   /**
@@ -64,7 +64,7 @@ export interface IPicGo extends NodeJS.EventEmitter {
    *
    * http request tool
    */
-  request: IRequest['request']
+  request: IRequest["request"]
 
   i18n: II18nManager
 
@@ -160,12 +160,15 @@ export interface IPluginLoader {
 }
 
 export interface IRequestOld {
-  request: import('axios').AxiosInstance
+  request: import("axios").AxiosInstance
 }
 
-export type IOldReqOptions = Omit<IRequestPromiseOptions & {
-  url: string
-}, 'auth'>
+export type IOldReqOptions = Omit<
+  IRequestPromiseOptions & {
+    url: string
+  },
+  "auth"
+>
 
 export type IOldReqOptionsWithFullResponse = IOldReqOptions & {
   resolveWithFullResponse: true
@@ -186,7 +189,7 @@ export type IReqOptions<T = any> = AxiosRequestConfig<T> & {
  * for PicGo new request api, the response will be Buffer
  */
 export type IReqOptionsWithArrayBufferRes<T = any> = IReqOptions<T> & {
-  responseType: 'arraybuffer'
+  responseType: "arraybuffer"
 }
 
 /**
@@ -199,9 +202,9 @@ export type IFullResponse<T = any, U = any> = AxiosResponse<T, U> & {
   body: T
 }
 
-type AxiosResponse<T = any, U = any> = import('axios').AxiosResponse<T, U>
+type AxiosResponse<T = any, U = any> = import("axios").AxiosResponse<T, U>
 
-type AxiosRequestConfig<T = any> = import('axios').AxiosRequestConfig<T>
+type AxiosRequestConfig<T = any> = import("axios").AxiosRequestConfig<T>
 
 interface IRequestOptionsWithFullResponse {
   resolveWithFullResponse: true
@@ -212,21 +215,28 @@ interface IRequestOptionsWithJSON {
 }
 
 interface IRequestOptionsWithResponseTypeArrayBuffer {
-  responseType: 'arraybuffer'
+  responseType: "arraybuffer"
 }
 
 /**
  * T is the response data type
  * U is the config type
  */
-export type IResponse<T, U> = U extends IRequestOptionsWithFullResponse ? IFullResponse<T, U>
-  : U extends IRequestOptionsWithJSON ? T
-    : U extends IRequestOptionsWithResponseTypeArrayBuffer ? Buffer
-      : U extends IOldReqOptionsWithFullResponse ? IFullResponse<T, U>
-        : U extends IOldReqOptionsWithJSON ? T
-          : U extends IOldReqOptions ? string
-            : U extends IReqOptionsWithBodyResOnly ? T
-              : string
+export type IResponse<T, U> = U extends IRequestOptionsWithFullResponse
+  ? IFullResponse<T, U>
+  : U extends IRequestOptionsWithJSON
+  ? T
+  : U extends IRequestOptionsWithResponseTypeArrayBuffer
+  ? Buffer
+  : U extends IOldReqOptionsWithFullResponse
+  ? IFullResponse<T, U>
+  : U extends IOldReqOptionsWithJSON
+  ? T
+  : U extends IOldReqOptions
+  ? string
+  : U extends IReqOptionsWithBodyResOnly
+  ? T
+  : string
 
 /**
  * the old request lib will be removed in v1.5.0+
@@ -244,12 +254,19 @@ export type IRequestConfig<T> = T extends IRequestLibOnlyOptions ? IOldReqOption
 // export type INewRequest<T = any, U = any> = (config: IRequestConfig<T>) => Promise<IResponse<T, U>>
 
 export interface IRequest {
-  request: <T, U extends (
-    IRequestConfig<U> extends IOldReqOptions ? IOldReqOptions : IRequestConfig<U> extends AxiosRequestConfig ? AxiosRequestConfig : never
-  )>(config: U) => Promise<IResponse<T, U>>
+  request: <
+    T,
+    U extends IRequestConfig<U> extends IOldReqOptions
+      ? IOldReqOptions
+      : IRequestConfig<U> extends AxiosRequestConfig
+      ? AxiosRequestConfig
+      : never
+  >(
+    config: U
+  ) => Promise<IResponse<T, U>>
 }
 
-export type ILogColor = 'blue' | 'green' | 'yellow' | 'red'
+export type ILogColor = "blue" | "green" | "yellow" | "red"
 
 /**
  * for uploading image info
@@ -291,7 +308,7 @@ export interface IQiniuConfig {
   /** 自定义域名 */
   url: string
   /** 存储区域编号 */
-  area: 'z0' | 'z1' | 'z2' | 'na0' | 'as0' | string
+  area: "z0" | "z1" | "z2" | "na0" | "as0" | string
   /** 网址后缀，比如使用 `?imageslim` 可进行[图片瘦身](https://developer.qiniu.com/dora/api/1271/image-thin-body-imageslim) */
   options: string
   /** 自定义存储路径，比如 `img/` */
@@ -326,7 +343,7 @@ export interface ITcyunConfig {
   /** 自定义域名，注意要加 `http://` 或者 `https://` */
   customUrl: string
   /** COS 版本，v4 或者 v5 */
-  version: 'v5' | 'v4'
+  version: "v5" | "v4"
   /** 针对图片的一些后缀处理参数 PicGo 2.4.0+ PicGo-Core 1.5.0+ */
   options: string
 }
@@ -411,7 +428,7 @@ export interface IPlugin {
   [propName: string]: any
 }
 
-export type IPluginNameType = 'simple' | 'scope' | 'normal' | 'unknown'
+export type IPluginNameType = "simple" | "scope" | "normal" | "unknown"
 
 export interface IPluginProcessResult {
   success: boolean
@@ -426,9 +443,21 @@ export interface IPluginProcessResult {
 }
 
 export interface IPluginHandler {
-  install: (plugins: string[], options?: IPluginHandlerOptions, env?: IProcessEnv) => Promise<IPluginHandlerResult<boolean>>
-  update: (plugins: string[], options?: IPluginHandlerOptions, env?: IProcessEnv) => Promise<IPluginHandlerResult<boolean>>
-  uninstall: (plugins: string[], options?: IPluginHandlerOptions, env?: IProcessEnv) => Promise<IPluginHandlerResult<boolean>>
+  install: (
+    plugins: string[],
+    options?: IPluginHandlerOptions,
+    env?: IProcessEnv
+  ) => Promise<IPluginHandlerResult<boolean>>
+  update: (
+    plugins: string[],
+    options?: IPluginHandlerOptions,
+    env?: IProcessEnv
+  ) => Promise<IPluginHandlerResult<boolean>>
+  uninstall: (
+    plugins: string[],
+    options?: IPluginHandlerOptions,
+    env?: IProcessEnv
+  ) => Promise<IPluginHandlerResult<boolean>>
 }
 
 export interface IPluginHandlerResult<T> {

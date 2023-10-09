@@ -381,6 +381,9 @@ importers:
       '@rollup/plugin-replace':
         specifier: ^3.0.0
         version: 3.1.0(rollup@2.79.1)
+      '@terwer/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config-custom
       '@types/cross-spawn':
         specifier: ^6.0.0
         version: 6.0.3
@@ -586,7 +589,7 @@ importers:
         version: 2.1.1(esbuild@0.17.17)
       esbuild-plugin-d.ts:
         specifier: ^1.1.0
-        version: 1.1.0(postcss@8.4.24)(typescript@5.2.2)
+        version: 1.1.0(postcss@8.4.24)(typescript@4.9.5)
       esbuild-plugin-ifdef:
         specifier: ^1.0.1
         version: 1.0.1
@@ -5726,7 +5729,7 @@ packages:
       globby: 11.1.0
     dev: false
 
-  /esbuild-plugin-d.ts@1.1.0(postcss@8.4.24)(typescript@5.2.2):
+  /esbuild-plugin-d.ts@1.1.0(postcss@8.4.24)(typescript@4.9.5):
     resolution: {integrity: sha512-3oSR3kUS4fNdKHLYLcST9YOfD2dULe7/UbXnrnu/mRybJYW+jZlYNgklb9Pt7osg6B1qwAYMyr2jTC+Ijj2YbQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -5735,8 +5738,8 @@ packages:
       chalk: 4.1.2
       jju: 1.4.0
       tmp: 0.2.1
-      tsup: 5.12.9(postcss@8.4.24)(typescript@5.2.2)
-      typescript: 5.2.2
+      tsup: 5.12.9(postcss@8.4.24)(typescript@4.9.5)
+      typescript: 4.9.5
     transitivePeerDependencies:
       - '@swc/core'
       - postcss
@@ -11202,7 +11205,7 @@ packages:
   /tslib@2.5.3:
     resolution: {integrity: sha512-mSxlJJwl3BMEQCUNnxXBU9jP4JBktcEGhURcPR6VQVlnP0FdDEsIaz0C35dXNGLyRfrATNofF0F5p2KPxQgB+w==}
 
-  /tsup@5.12.9(postcss@8.4.24)(typescript@5.2.2):
+  /tsup@5.12.9(postcss@8.4.24)(typescript@4.9.5):
     resolution: {integrity: sha512-dUpuouWZYe40lLufo64qEhDpIDsWhRbr2expv5dHEMjwqeKJS2aXA/FPqs1dxO4T6mBojo7rvo3jP9NNzaKyDg==}
     hasBin: true
     peerDependencies:
@@ -11232,7 +11235,7 @@ packages:
       source-map: 0.8.0-beta.0
       sucrase: 3.32.0
       tree-kill: 1.2.2
-      typescript: 5.2.2
+      typescript: 4.9.5
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -11439,12 +11442,6 @@ packages:
   /typescript@5.0.4:
     resolution: {integrity: sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==}
     engines: {node: '>=12.20'}
-    hasBin: true
-    dev: false
-
-  /typescript@5.2.2:
-    resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
-    engines: {node: '>=14.17'}
     hasBin: true
     dev: false
 

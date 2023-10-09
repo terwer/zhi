@@ -3,6 +3,7 @@ declare module 'download-git-repo' {
   export = download
 }
 declare module 'lodash-id' {
+  // eslint-disable-next-line no-var
   var lodashId: any
   export = lodashId
 }

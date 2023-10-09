@@ -1,24 +1,24 @@
-import { EventEmitter } from 'events'
-import { ILifecyclePlugins, IPicGo, IPlugin, Undefinable } from '../types'
-import { handleUrlEncode } from '../utils/common'
-import { IBuildInEvent } from '../utils/enum'
-import { createContext } from '../utils/createContext'
+import { EventEmitter } from "events"
+import { ILifecyclePlugins, IPicGo, IPlugin, Undefinable } from "../types"
+import { handleUrlEncode } from "../utils/common"
+import { IBuildInEvent } from "../utils/enum"
+import { createContext } from "../utils/createContext"
 
 export class Lifecycle extends EventEmitter {
   private readonly ctx: IPicGo
 
-  constructor (ctx: IPicGo) {
+  constructor(ctx: IPicGo) {
     super()
     this.ctx = ctx
   }
 
-  async start (input: any[]): Promise<IPicGo> {
+  async start(input: any[]): Promise<IPicGo> {
     // ensure every upload process has an unique context
     const ctx = createContext(this.ctx)
     try {
       // images input
       if (!Array.isArray(input)) {
-        throw new Error('Input must be an array.')
+        throw new Error("Input must be an array.")
       }
       ctx.input = input
       ctx.output = []
@@ -35,29 +35,29 @@ export class Lifecycle extends EventEmitter {
       ctx.emit(IBuildInEvent.UPLOAD_PROGRESS, -1)
       ctx.emit(IBuildInEvent.FAILED, e)
       ctx.log.error(e)
-      if (ctx.getConfig<Undefinable<string>>('debug')) {
+      if (ctx.getConfig<Undefinable<string>>("debug")) {
         throw e
       }
       return ctx
     }
   }
 
-  private async beforeTransform (ctx: IPicGo): Promise<IPicGo> {
+  private async beforeTransform(ctx: IPicGo): Promise<IPicGo> {
     ctx.emit(IBuildInEvent.UPLOAD_PROGRESS, 0)
     ctx.emit(IBuildInEvent.BEFORE_TRANSFORM, ctx)
-    ctx.log.info('Before transform')
+    ctx.log.info("Before transform")
     await this.handlePlugins(ctx.helper.beforeTransformPlugins, ctx)
     return ctx
   }
 
-  private async doTransform (ctx: IPicGo): Promise<IPicGo> {
+  private async doTransform(ctx: IPicGo): Promise<IPicGo> {
     ctx.emit(IBuildInEvent.UPLOAD_PROGRESS, 30)
-    const type = ctx.getConfig<Undefinable<string>>('picBed.transformer') || 'path'
+    const type = ctx.getConfig<Undefinable<string>>("picBed.transformer") || "path"
     let currentTransformer = type
     let transformer = ctx.helper.transformer.get(type)
     if (!transformer) {
-      transformer = ctx.helper.transformer.get('path')
-      currentTransformer = 'path'
+      transformer = ctx.helper.transformer.get("path")
+      currentTransformer = "path"
       ctx.log.warn(`Can't find transformer - ${type}, switch to default transformer - path`)
     }
     ctx.log.info(`Transforming... Current transformer is [${currentTransformer}]`)
@@ -65,22 +65,25 @@ export class Lifecycle extends EventEmitter {
     return ctx
   }
 
-  private async beforeUpload (ctx: IPicGo): Promise<IPicGo> {
+  private async beforeUpload(ctx: IPicGo): Promise<IPicGo> {
     ctx.emit(IBuildInEvent.UPLOAD_PROGRESS, 60)
-    ctx.log.info('Before upload')
+    ctx.log.info("Before upload")
     ctx.emit(IBuildInEvent.BEFORE_UPLOAD, ctx)
     await this.handlePlugins(ctx.helper.beforeUploadPlugins, ctx)
     return ctx
   }
 
-  private async doUpload (ctx: IPicGo): Promise<IPicGo> {
-    let type = ctx.getConfig<Undefinable<string>>('picBed.uploader') || ctx.getConfig<Undefinable<string>>('picBed.current') || 'github'
+  private async doUpload(ctx: IPicGo): Promise<IPicGo> {
+    let type =
+      ctx.getConfig<Undefinable<string>>("picBed.uploader") ||
+      ctx.getConfig<Undefinable<string>>("picBed.current") ||
+      "github"
     let uploader = ctx.helper.uploader.get(type)
     let currentTransformer = type
     if (!uploader) {
-      type = 'github'
-      currentTransformer = 'github'
-      uploader = ctx.helper.uploader.get('github')
+      type = "github"
+      currentTransformer = "github"
+      uploader = ctx.helper.uploader.get("github")
       ctx.log.warn(`Can't find uploader - ${type}, switch to default uploader - github`)
     }
     ctx.log.info(`Uploading... Current uploader is [${currentTransformer}]`)
@@ -91,17 +94,17 @@ export class Lifecycle extends EventEmitter {
     return ctx
   }
 
-  private async afterUpload (ctx: IPicGo): Promise<IPicGo> {
+  private async afterUpload(ctx: IPicGo): Promise<IPicGo> {
     ctx.emit(IBuildInEvent.AFTER_UPLOAD, ctx)
     ctx.emit(IBuildInEvent.UPLOAD_PROGRESS, 100)
     await this.handlePlugins(ctx.helper.afterUploadPlugins, ctx)
-    let msg = ''
+    let msg = ""
     const length = ctx.output.length
     for (let i = 0; i < length; i++) {
-      if (typeof ctx.output[i].imgUrl !== 'undefined') {
+      if (typeof ctx.output[i].imgUrl !== "undefined") {
         msg += handleUrlEncode(ctx.output[i].imgUrl!)
         if (i !== length - 1) {
-          msg += '\n'
+          msg += "\n"
         }
       }
       delete ctx.output[i].base64Image
@@ -112,19 +115,21 @@ export class Lifecycle extends EventEmitter {
     return ctx
   }
 
-  private async handlePlugins (lifeCyclePlugins: ILifecyclePlugins, ctx: IPicGo): Promise<IPicGo> {
+  private async handlePlugins(lifeCyclePlugins: ILifecyclePlugins, ctx: IPicGo): Promise<IPicGo> {
     const plugins = lifeCyclePlugins.getList()
     const pluginNames = lifeCyclePlugins.getIdList()
     const lifeCycleName = lifeCyclePlugins.getName()
-    await Promise.all(plugins.map(async (plugin: IPlugin, index: number) => {
-      try {
-        ctx.log.info(`${lifeCycleName}: ${pluginNames[index]} running`)
-        await plugin.handle(ctx)
-      } catch (e) {
-        ctx.log.error(`${lifeCycleName}: ${pluginNames[index]} error`)
-        throw e
-      }
-    }))
+    await Promise.all(
+      plugins.map(async (plugin: IPlugin, index: number) => {
+        try {
+          ctx.log.info(`${lifeCycleName}: ${pluginNames[index]} running`)
+          await plugin.handle(ctx)
+        } catch (e) {
+          ctx.log.error(`${lifeCycleName}: ${pluginNames[index]} error`)
+          throw e
+        }
+      })
+    )
     return ctx
   }
 }

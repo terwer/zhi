@@ -1,18 +1,12 @@
-import fs from 'fs-extra'
-import path from 'path'
-import { imageSize } from 'image-size'
-import {
-  IImgSize,
-  IPathTransformedImgInfo,
-  IPluginNameType,
-  ILogger,
-  IPicGo
-} from '../types'
-import { URL } from 'url'
+import fs from "fs-extra"
+import path from "path"
+import { imageSize } from "image-size"
+import { IImgSize, IPathTransformedImgInfo, IPluginNameType, ILogger, IPicGo } from "../types"
+import { URL } from "url"
 
-export const isUrl = (url: string): boolean => (url.startsWith('http://') || url.startsWith('https://'))
+export const isUrl = (url: string): boolean => url.startsWith("http://") || url.startsWith("https://")
 export const isUrlEncode = (url: string): boolean => {
-  url = url || ''
+  url = url || ""
   try {
     // the whole url encode or decode shold not use encodeURIComponent or decodeURIComponent
     return url !== decodeURI(url)
@@ -34,14 +28,14 @@ export const getImageSize = (file: Buffer): IImgSize => {
     return {
       real: true,
       width,
-      height
+      height,
     }
   } catch (e) {
     // fallback to 200 * 200
     return {
       real: false,
       width: 200,
-      height: 200
+      height: 200,
     }
   }
 }
@@ -52,12 +46,12 @@ export const getFSFile = async (filePath: string): Promise<IPathTransformedImgIn
       extname: path.extname(filePath),
       fileName: path.basename(filePath),
       buffer: await fs.readFile(filePath),
-      success: true
+      success: true,
     }
   } catch {
     return {
       reason: `read file ${filePath} error`,
-      success: false
+      success: false,
     }
   }
 }
@@ -65,22 +59,23 @@ export const getFSFile = async (filePath: string): Promise<IPathTransformedImgIn
 export const getURLFile = async (url: string, ctx: IPicGo): Promise<IPathTransformedImgInfo> => {
   url = handleUrlEncode(url)
   let isImage = false
-  let extname = ''
+  let extname = ""
   let timeoutId: NodeJS.Timeout
   const requestFn = new Promise<IPathTransformedImgInfo>((resolve, reject) => {
-    (async () => {
+    ;(async () => {
       try {
-        const res = await ctx.request({
-          method: 'get',
-          url,
-          resolveWithFullResponse: true,
-          responseType: 'arraybuffer'
-        })
+        const res = await ctx
+          .request({
+            method: "get",
+            url,
+            resolveWithFullResponse: true,
+            responseType: "arraybuffer",
+          })
           .then((resp) => {
-            const contentType = resp.headers['content-type']
-            if (contentType?.includes('image')) {
+            const contentType = resp.headers["content-type"]
+            if (contentType?.includes("image")) {
               isImage = true
-              extname = `.${contentType.split('image/')[1]}`
+              extname = `.${contentType.split("image/")[1]}`
             }
             return resp.data as Buffer
           })
@@ -91,12 +86,12 @@ export const getURLFile = async (url: string, ctx: IPicGo): Promise<IPathTransfo
             buffer: res,
             fileName: path.basename(urlPath),
             extname,
-            success: true
+            success: true,
           })
         } else {
           resolve({
             success: false,
-            reason: `${url} is not image`
+            reason: `${url} is not image`,
           })
         }
       } catch (error: any) {
@@ -104,7 +99,7 @@ export const getURLFile = async (url: string, ctx: IPicGo): Promise<IPathTransfo
         resolve({
           success: false,
           // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-          reason: `request ${url} error, ${error?.message ?? ''}`
+          reason: `request ${url} error, ${error?.message ?? ""}`,
         })
       }
     })().catch(reject)
@@ -113,7 +108,7 @@ export const getURLFile = async (url: string, ctx: IPicGo): Promise<IPathTransfo
     timeoutId = setTimeout(() => {
       resolve({
         success: false,
-        reason: `request ${url} timeout`
+        reason: `request ${url} timeout`,
       })
     }, 10000)
   })
@@ -131,13 +126,13 @@ export const getURLFile = async (url: string, ctx: IPicGo): Promise<IPathTransfo
  */
 export const getPluginNameType = (name: string): IPluginNameType => {
   if (/^@[^/]+\/picgo-plugin-/.test(name)) {
-    return 'scope'
-  } else if (name.startsWith('picgo-plugin-')) {
-    return 'normal'
+    return "scope"
+  } else if (name.startsWith("picgo-plugin-")) {
+    return "normal"
   } else if (isSimpleName(name)) {
-    return 'simple'
+    return "simple"
   }
-  return 'unknown'
+  return "unknown"
 }
 
 /**
@@ -155,7 +150,7 @@ export const isSimpleName = (nameOrPath: string): boolean => {
   if (fs.existsSync(pluginPath)) {
     return false
   }
-  if (nameOrPath.includes('/') || nameOrPath.includes('\\')) {
+  if (nameOrPath.includes("/") || nameOrPath.includes("\\")) {
     return false
   }
   return true
@@ -170,9 +165,9 @@ export const isSimpleName = (nameOrPath: string): boolean => {
  */
 export const handleStreamlinePluginName = (name: string): string => {
   if (/^@[^/]+\/picgo-plugin-/.test(name)) {
-    return name.replace(/^@[^/]+\/picgo-plugin-/, '')
+    return name.replace(/^@[^/]+\/picgo-plugin-/, "")
   } else {
-    return name.replace(/picgo-plugin-/, '')
+    return name.replace(/picgo-plugin-/, "")
   }
 }
 
@@ -184,7 +179,7 @@ export const handleStreamlinePluginName = (name: string): string => {
  * @param name pluginSimpleName
  * @param scope pluginScope
  */
-export const handleCompletePluginName = (name: string, scope = ''): string => {
+export const handleCompletePluginName = (name: string, scope = ""): string => {
   if (scope) {
     return `@${scope}/picgo-plugin-${name}`
   } else {
@@ -205,10 +200,10 @@ export const handleCompletePluginName = (name: string, scope = ''): string => {
 export const getProcessPluginName = (nameOrPath: string, logger: ILogger | Console = console): string => {
   const pluginNameType = getPluginNameType(nameOrPath)
   switch (pluginNameType) {
-    case 'normal':
-    case 'scope':
+    case "normal":
+    case "scope":
       return nameOrPath
-    case 'simple':
+    case "simple":
       return handleCompletePluginName(nameOrPath)
     default: {
       // now, the pluginNameType is unknow here
@@ -224,7 +219,7 @@ export const getProcessPluginName = (nameOrPath: string, logger: ILogger | Conso
       }
       // 3. invalid nameOrPath
       logger.warn(`Can't find plugin ${nameOrPath}`)
-      return ''
+      return ""
     }
   }
 }
@@ -244,11 +239,11 @@ export const getProcessPluginName = (nameOrPath: string, logger: ILogger | Conso
 export const getNormalPluginName = (nameOrPath: string, logger: ILogger | Console = console): string => {
   const pluginNameType = getPluginNameType(nameOrPath)
   switch (pluginNameType) {
-    case 'normal':
+    case "normal":
       return removePluginVersion(nameOrPath)
-    case 'scope':
+    case "scope":
       return removePluginVersion(nameOrPath, true)
-    case 'simple':
+    case "simple":
       return removePluginVersion(handleCompletePluginName(nameOrPath))
     default: {
       // now, the nameOrPath must be path
@@ -256,17 +251,21 @@ export const getNormalPluginName = (nameOrPath: string, logger: ILogger | Consol
       // we need to find the package.json's name cause npm using the name in package.json's name filed
       if (!fs.existsSync(nameOrPath)) {
         logger.warn(`Can't find plugin: ${nameOrPath}`)
-        return ''
+        return ""
       }
-      const packageJSONPath = path.posix.join(nameOrPath, 'package.json')
+      const packageJSONPath = path.posix.join(nameOrPath, "package.json")
       if (!fs.existsSync(packageJSONPath)) {
         logger.warn(`Can't find plugin: ${nameOrPath}`)
-        return ''
+        return ""
       } else {
         const pkg = fs.readJSONSync(packageJSONPath) || {}
-        if (!pkg.name?.includes('picgo-plugin-')) {
-          logger.warn(`The plugin package.json's name filed is ${pkg.name as string || 'empty'}, need to include the prefix: picgo-plugin-`)
-          return ''
+        if (!pkg.name?.includes("picgo-plugin-")) {
+          logger.warn(
+            `The plugin package.json's name filed is ${
+              (pkg.name as string) || "empty"
+            }, need to include the prefix: picgo-plugin-`
+          )
+          return ""
         }
         return pkg.name
       }
@@ -283,7 +282,7 @@ export const getNormalPluginName = (nameOrPath: string, logger: ILogger | Consol
  */
 export const handleUnixStylePath = (pathStr: string): string => {
   const pathArr = pathStr.split(path.sep)
-  return pathArr.join('/')
+  return pathArr.join("/")
 }
 
 /**
@@ -293,8 +292,8 @@ export const handleUnixStylePath = (pathStr: string): string => {
  * @param nameOrPath
  * @param scope
  */
-export const removePluginVersion = (nameOrPath: string, scope: boolean = false): string => {
-  if (!nameOrPath.includes('@')) {
+export const removePluginVersion = (nameOrPath: string, scope = false): string => {
+  if (!nameOrPath.includes("@")) {
     return nameOrPath
   } else {
     let reg = /(.+\/)?(picgo-plugin-\w+)(@.+)*/
@@ -304,7 +303,7 @@ export const removePluginVersion = (nameOrPath: string, scope: boolean = false):
     }
     const matchArr = nameOrPath.match(reg)
     if (!matchArr) {
-      console.warn('can not remove plugin version')
+      console.warn("can not remove plugin version")
       return nameOrPath
     } else {
       return matchArr[2]
@@ -323,7 +322,7 @@ export const configBlackList = []
  * @param key
  */
 export const isConfigKeyInBlackList = (key: string): boolean => {
-  return configBlackList.some(blackItem => key.startsWith(blackItem))
+  return configBlackList.some((blackItem) => key.startsWith(blackItem))
 }
 
 /**
@@ -333,18 +332,15 @@ export const isConfigKeyInBlackList = (key: string): boolean => {
  * @param config
  * @returns
  */
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const isInputConfigValid = (config: any): boolean => {
-  if (
-    typeof config === 'object' &&
-    !Array.isArray(config) &&
-    Object.keys(config).length > 0
-  ) {
+  if (typeof config === "object" && !Array.isArray(config) && Object.keys(config).length > 0) {
     return true
   }
   return false
 }
 
-export function safeParse<T> (str: string): T | string {
+export function safeParse<T>(str: string): T | string {
   try {
     return JSON.parse(str)
   } catch (error) {
@@ -372,9 +368,9 @@ export const forceNumber = (num: string | number = 0): number => {
 }
 
 export const isDev = (): boolean => {
-  return process.env.NODE_ENV === 'development'
+  return process.env.NODE_ENV === "development"
 }
 
 export const isProd = (): boolean => {
-  return process.env.NODE_ENV === 'production'
+  return process.env.NODE_ENV === "production"
 }

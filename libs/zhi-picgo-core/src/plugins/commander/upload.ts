@@ -1,18 +1,18 @@
-import path from 'path'
-import fs from 'fs-extra'
-import { isUrl } from '../../utils/common'
-import { IPicGo, IPlugin } from '../../types'
+import path from "path"
+import fs from "fs-extra"
+import { isUrl } from "../../utils/common"
+import { IPicGo, IPlugin } from "../../types"
 
 const upload: IPlugin = {
   handle: (ctx: IPicGo) => {
     const cmd = ctx.cmd
     cmd.program
-      .command('upload')
-      .description('upload, go go go')
-      .arguments('[input...]')
-      .alias('u')
+      .command("upload")
+      .description("upload, go go go")
+      .arguments("[input...]")
+      .alias("u")
       .action((input: string[]) => {
-        (async () => {
+        ;(async () => {
           const inputList = input
             .map((item: string) => {
               return isUrl(item) ? item : path.resolve(item)
@@ -25,9 +25,11 @@ const upload: IPlugin = {
               return exist
             })
           await ctx.upload(inputList)
-        })().catch((e) => { ctx.log.error(e) })
+        })().catch((e) => {
+          ctx.log.error(e)
+        })
       })
-  }
+  },
 }
 
 export default upload

@@ -1,4 +1,4 @@
-import { IPicGo } from '../types'
+import { IPicGo } from "../types"
 
 /**
  * create an unique context for each upload process
@@ -40,6 +40,6 @@ export const createContext = (ctx: IPicGo): IPicGo => {
     listenerCount: ctx.listenerCount.bind(ctx),
     prependListener: ctx.prependListener.bind(ctx),
     prependOnceListener: ctx.prependOnceListener.bind(ctx),
-    eventNames: ctx.eventNames.bind(ctx)
+    eventNames: ctx.eventNames.bind(ctx),
   }
 }

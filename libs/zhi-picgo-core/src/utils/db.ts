@@ -1,28 +1,28 @@
-import { IConfig, IPicGo } from '../types'
-import { JSONStore } from '@picgo/store'
-import { IJSON } from '@picgo/store/dist/types'
+import { IConfig, IPicGo } from "../types"
+import { JSONStore } from "@picgo/store"
+import { IJSON } from "@picgo/store/dist/types"
 
 class DB {
   private readonly ctx: IPicGo
   private readonly db: JSONStore
-  constructor (ctx: IPicGo) {
+  constructor(ctx: IPicGo) {
     this.ctx = ctx
     this.db = new JSONStore(this.ctx.configPath)
 
-    if (!this.db.has('picBed')) {
+    if (!this.db.has("picBed")) {
       try {
-        this.db.set('picBed', {
-          uploader: 'github',
-          current: 'github'
+        this.db.set("picBed", {
+          uploader: "github",
+          current: "github",
         })
       } catch (e: any) {
         this.ctx.log.error(e)
         throw e
       }
     }
-    if (!this.db.has('picgoPlugins')) {
+    if (!this.db.has("picgoPlugins")) {
       try {
-        this.db.set('picgoPlugins', {})
+        this.db.set("picgoPlugins", {})
       } catch (e: any) {
         this.ctx.log.error(e)
         throw e
@@ -30,37 +30,39 @@ class DB {
     }
   }
 
-  read (flush?: boolean): IJSON {
+  read(flush?: boolean): IJSON {
     return this.db.read(flush)
   }
 
-  get (key: string = ''): any {
+  get(key = ""): any {
     this.read(true)
     return this.db.get(key)
   }
 
-  set (key: string, value: any): void {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  set(key: string, value: any): void {
     this.read(true)
     return this.db.set(key, value)
   }
 
-  has (key: string): boolean {
+  has(key: string): boolean {
     this.read(true)
     return this.db.has(key)
   }
 
-  unset (key: string, value: any): boolean {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  unset(key: string, value: any): boolean {
     this.read(true)
     return this.db.unset(key, value)
   }
 
-  saveConfig (config: Partial<IConfig>): void {
+  saveConfig(config: Partial<IConfig>): void {
     Object.keys(config).forEach((name: string) => {
       this.set(name, config[name])
     })
   }
 
-  removeConfig (config: IConfig): void {
+  removeConfig(config: IConfig): void {
     Object.keys(config).forEach((name: string) => {
       this.unset(name, config[name])
     })

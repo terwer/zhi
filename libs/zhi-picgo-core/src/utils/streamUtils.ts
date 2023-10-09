@@ -1,5 +1,6 @@
-import arrayBufferToBuffer from 'arraybuffer-to-buffer'
+import arrayBufferToBuffer from "arraybuffer-to-buffer"
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const readBuffer = (buf: any): Buffer => {
   let imageBuffer = buf
   if (imageBuffer instanceof ArrayBuffer) {
@@ -9,7 +10,7 @@ const readBuffer = (buf: any): Buffer => {
 }
 
 const streamUtils = {
-  readBuffer
+  readBuffer,
 }
 
 export default streamUtils
