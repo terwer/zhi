@@ -43,6 +43,11 @@ class Post {
   title: string
 
   /**
+   * 原始标题
+   */
+  originalTitle: string
+
+  /**
    * 链接
    */
   link?: string
@@ -155,6 +160,7 @@ class Post {
   constructor() {
     this.postid = ""
     this.title = ""
+    this.originalTitle = this.title
     this.permalink = ""
     this.yaml = "---\n---"
     this.mdFilename = "test"

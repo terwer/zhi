@@ -142,6 +142,8 @@ class SiYuanApiAdaptor extends BlogApi {
 
     // 标题处理
     let title = siyuanPost.content ?? ""
+    // 原始标题
+    const originalTitle = title
     if (this.cfg?.preferenceConfig.fixTitle) {
       title = HtmlUtil.removeTitleNumber(title)
       this.logger.info("检测到配置，标题序号已移除")
@@ -204,6 +206,7 @@ class SiYuanApiAdaptor extends BlogApi {
     commonPost.dateCreated = DateUtil.convertStringToDate(DateUtil.formatNumToZhDate(siyuanPost.created))
     commonPost.dateUpdated = new Date()
     commonPost.title = title
+    commonPost.originalTitle = originalTitle
     commonPost.markdown = md ?? ""
     commonPost.html = html ?? ""
     commonPost.editorDom = editorDom ?? ""
