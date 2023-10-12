@@ -80,6 +80,15 @@ importers:
         specifier: workspace:*
         version: link:../../tools/vite-config-custom
 
+  libs/zhi-chatgpt:
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config-custom
+      '@terwer/vite-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/vite-config-custom
+
   libs/zhi-common:
     dependencies:
       js-yaml:

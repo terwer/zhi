@@ -11,6 +11,7 @@
 ## Zhi 项目家族
 
 ### 类库
+
 - zhi-framework - 核心框架 
   - [X] [zhi-lib-base](https://github.com/terwer/zhi/tree/main/libs/zhi-lib-base)
   - [X] [zhi-device](https://github.com/terwer/zhi/tree/main/libs/zhi-device)
@@ -22,29 +23,20 @@
     - [X] [zhi-common-markdown](https://github.com/terwer/zhi/tree/main/libs/zhi-common-markdown)
     - [ ] [zhi-common-version](https://github.com/terwer/zhi/tree/main/libs/zhi-common-version)
   - [X] [zhi-blog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api)
+  - [X] [zhi-notion-markdown](https://github.com/terwer/zhi/tree/main/libs/zhi-notion-markdown)
   - [X] [zhi-xmlrpc-middleware](https://github.com/terwer/zhi/tree/main/libs/zhi-xmlrpc-middleware)
-    - [ ] [zhi-metaweblog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-metaweblog-api)
-      - [ ] [zhi-wordpress-api](https://github.com/terwer/zhi/tree/main/libs/zhi-wordpress-api)
-      - [ ] [zhi-typecho-api](https://github.com/terwer/zhi/tree/main/libs/zhi-typecho-api)
-      - [ ] [zhi-cnblogs-api](https://github.com/terwer/zhi/tree/main/libs/zhi-cnblogs-api)
   - [X] [zhi-fetch-middleware](https://github.com/terwer/zhi/tree/main/libs/zhi-fetch-middleware)
-    - [ ] [zhi-rest-api](https://github.com/terwer/zhi/tree/main/libs/zhi-rest-api)
-      - [ ] [zhi-github-api](https://github.com/terwer/zhi/tree/main/libs/zhi-github-api)
-      - [ ] [zhi-gitlab-api](https://github.com/terwer/zhi/tree/main/libs/zhi-gitlab-api)
-      - [ ] [zhi-yuque-api](https://github.com/terwer/zhi/tree/main/libs/zhi-yuque-api)
-      - [ ] [zhi-liandi-api](https://github.com/terwer/zhi/tree/main/libs/zhi-liandi-api)
-      - [ ] [zhi-kms-api](https://github.com/terwer/zhi/tree/main/libs/zhi-kms-api)
-      - [X] [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api)
-      - [ ] [zhi-wechat-api](https://github.com/terwer/zhi/tree/main/libs/zhi-wechat-api)
-    - [ ] [zhi-http-api](https://github.com/terwer/zhi/tree/main/libs/zhi-http-api)
-      - [ ] [zhi-zhihu-api](https://github.com/terwer/zhi/tree/main/libs/zhi-zhihu-api)
-      - [ ] [zhi-csdn-api](https://github.com/terwer/zhi/tree/main/libs/zhi-csdn-api)
-  - [ ] [zhi-picgo-core](https://github.com/terwer/zhi/tree/main/libs/zhi-picgo-core)
-    - [ ] [zhi-siyuan-picgo](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-picgo)
+  - [X] [zhi-github-middleware](https://github.com/terwer/zhi/tree/main/libs/zhi-github-middleware)
+  - [X] [zhi-gitlab-middleware](https://github.com/terwer/zhi/tree/main/libs/zhi-gitlab-middleware)
+  - [X] [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api)
+  - [X] [zhi-picgo-core](https://github.com/terwer/zhi/tree/main/libs/zhi-picgo-core)
+  - [X] [zhi-siyuan-picgo](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-picgo)
+  - [ ] [zhi-chatgpt](https://github.com/terwer/zhi/tree/main/libs/zhi-chatgpt)
 
-### 脚手架
+### 脚手架 && 文档
 
 - [zhi-cli](https://github.com/terwer/zhi/tree/dev/apps/zhi-cli)
+- [zhi-docs](https://github.com/terwer/zhi/tree/dev/apps/zhi-docs)
 
 ### 工具
 
@@ -56,17 +48,18 @@
 - [vitest-config-custom](https://github.com/terwer/zhi/tree/dev/tools/vitest-config-custom)
 
 ### 主题
-- [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - 知乎主题 <sup>已上架</sup>
+- [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - 知乎主题 <sup>已上架</sup> <a title="Releases" target="_blank" href="https://github.com/terwer/siyuan-theme-zhihu/releases"><img src="https://img.shields.io/github/release/terwer/siyuan-theme-zhihu.svg?style=flat-square&color=9CF"></a>
 
 ### 挂件
-- [sy-post-publisher](https://github.com/terwer/sy-post-publisher) - 发布工具挂件版 <sup>已上架</sup>
+- [sy-post-publisher](https://github.com/terwer/sy-post-publisher) - 发布工具挂件版 <sup>已上架</sup> <a title="Releases" target="_blank" href="https://github.com/terwer/sy-post-publisher/releases"><img src="https://img.shields.io/github/release/terwer/sy-post-publisher.svg?style=flat-square&color=9CF"></a>
 
 ### 插件
-- [siyuan-plugin-publisher](https://github.com/terwer/siyuan-plugin-publisher) - 发布工具 <sup>进行中</sup>
-- [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - 博客插件，博客 & 分享 <sup>已上架</sup>
-- [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - 导入工具，导入 epub, docx, pdf, html 等格式到思源笔记 <sup>已上架</sup>
-- [siyuan-plugin-custom-slug](https://github.com/terwer/siyuan-plugin-custom-slug) - 文档别名，为文档标题新建别名索引，方便快速搜索 <sup>已上架</sup>
-- [siyuan-plugin-code-block](https://github.com/terwer/siyuan-plugin-code-block) - 代码块美化，模仿Mac风格的代码块风格 <sup>已上架</sup>
-- [siyuan-plugin-2md](https://github.com/terwer/siyuan-plugin-2md) - Markdown批量转换，将思源笔记的文档批量转换为Markdown文件，支持转换属性为Hexo、HUGO、Vitepress、Obsidian等平台对应的FrontFormatter <sup>进行中</sup>
-- [siyuan-plugin-random-doc](https://github.com/terwer/siyuan-plugin-random-doc) - 文档漫游 <sup>进行中</sup>
-- [siyuan-plugin-picgo](https://github.com/terwer/siyuan-plugin-picgo) - PocGo图床 <sup>进行中</sup>
+
+- [siyuan-plugin-publisher](https://github.com/terwer/siyuan-plugin-publisher) - 发布工具 <sup>已上架</sup> <a title="Releases" target="_blank" href="https://github.com/terwer/siyuan-plugin-publisher/releases"><img src="https://img.shields.io/github/release/terwer/siyuan-plugin-publisher.svg?style=flat-square&color=9CF"></a>
+- [siyuan-plugin-picgo](https://github.com/terwer/siyuan-plugin-picgo) - PicGo图床 <sup>已上架</sup> <a title="Releases" target="_blank" href="https://github.com/terwer/siyuan-plugin-picgo/releases"><img src="https://img.shields.io/github/release/terwer/siyuan-plugin-picgo.svg?style=flat-square&color=9CF"></a>
+- [siyuan-plugin-blog](https://github.com/terwer/siyuan-plugin-blog) - 博客插件 <sup>已上架</sup> <a title="Releases" target="_blank" href="https://github.com/terwer/siyuan-plugin-blog/releases"><img src="https://img.shields.io/github/release/terwer/siyuan-plugin-blog.svg?style=flat-square&color=9CF"></a>
+- [siyuan-plugin-importer](https://github.com/terwer/siyuan-plugin-importer) - 导入工具 <sup>已上架</sup> <a title="Releases" target="_blank" href="https://github.com/terwer/siyuan-plugin-importer/releases"><img src="https://img.shields.io/github/release/terwer/siyuan-plugin-importer.svg?style=flat-square&color=9CF"></a>
+- [siyuan-plugin-custom-slug](https://github.com/terwer/siyuan-plugin-custom-slug) - 文档别名 <sup>已上架</sup> <a title="Releases" target="_blank" href="https://github.com/terwer/siyuan-plugin-custom-slug/releases"><img src="https://img.shields.io/github/release/terwer/siyuan-plugin-custom-slug.svg?style=flat-square&color=9CF"></a>
+- [siyuan-plugin-kanban-girl](https://github.com/terwer/siyuan-plugin-kanban-girl) - 看板娘 <sup>已上架</sup> <a title="Releases" target="_blank" href="https://github.com/terwer/siyuan-plugin-kanban-girl/releases"><img src="https://img.shields.io/github/release/terwer/siyuan-plugin-kanban-girl.svg?style=flat-square&color=9CF"></a>
+- [siyuan-plugin-random-doc](https://github.com/terwer/siyuan-plugin-random-doc) - 文档漫游 <sup>已上架</sup> <a title="Releases" target="_blank" href="https://github.com/terwer/siyuan-plugin-random-doc/releases"><img src="https://img.shields.io/github/release/terwer/siyuan-plugin-random-doc.svg?style=flat-square&color=9CF"></a>
+- [siyuan-plugin-code-block](https://github.com/terwer/siyuan-plugin-code-block) - 代码块美化 <sup>已上架</sup> <a title="Releases" target="_blank" href="https://github.com/terwer/siyuan-plugin-code-block/releases"><img src="https://img.shields.io/github/release/terwer/siyuan-plugin-code-block.svg?style=flat-square&color=9CF"></a>
