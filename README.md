@@ -48,7 +48,7 @@
 - [vitest-config-custom](https://github.com/terwer/zhi/tree/dev/tools/vitest-config-custom)
 
 ### themes
-- [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - Zhihu Theme <sup>Available</sup>
+- [siyuan-theme-zhihu](https://github.com/terwer/siyuan-theme-zhihu) - Zhihu Theme <sup>Available</sup> <a title="Releases" target="_blank" href="https://github.com/terwer/siyuan-theme-zhihu/releases"><img src="https://img.shields.io/github/release/terwer/siyuan-theme-zhihu.svg?style=flat-square&color=9CF"></a>
 
 ### widgets
 - [sy-post-publisher](https://github.com/terwer/sy-post-publisher) - The Publishing Tool widget <sup>Available</sup> <a title="Releases" target="_blank" href="https://github.com/terwer/siyuan-plugin-publisher/releases"><img src="https://img.shields.io/github/release/terwer/sy-post-publisher.svg?style=flat-square&color=9CF"></a>
