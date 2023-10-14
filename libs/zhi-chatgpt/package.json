@@ -1,6 +1,6 @@
 {
   "name": "zhi-chatgpt",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "description": "chatgpt api for siyuan-note",
   "main": "./dist/index.js",
@@ -27,6 +27,9 @@
   "devDependencies": {
     "@terwer/eslint-config-custom": "workspace:*",
     "@terwer/vite-config-custom": "workspace:*"
+  },
+  "dependencies": {
+    "chatgpt": "^5.2.5"
   },
   "publishConfig": {
     "access": "public"

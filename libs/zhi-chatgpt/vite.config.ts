@@ -6,6 +6,7 @@ import { viteStaticCopy } from "vite-plugin-static-copy"
 import dts from "vite-plugin-dts"
 import minimist from "minimist"
 import livereload from "rollup-plugin-livereload"
+import { nodePolyfills } from "vite-plugin-node-polyfills"
 
 const args = minimist(process.argv.slice(2))
 const isWatch = args.watch || args.w || false
@@ -32,6 +33,11 @@ export default defineConfig({
         },
       ],
     }),
+
+    nodePolyfills({
+      exclude: ["fs"],
+      protocolImports: true,
+    }),
   ],
 
   build: {
@@ -47,7 +53,7 @@ export default defineConfig({
       entry: resolve(__dirname, "src/index.ts"),
       // the proper extensions will be added
       fileName: "index",
-      formats: ["cjs"],
+      formats: ["es"],
     },
     rollupOptions: {
       plugins: [...(isWatch ? [livereload(devDistDir)] : [])],
@@ -65,4 +71,4 @@ export default defineConfig({
     environment: "jsdom",
     include: ["src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
   },
-})
+} as any)

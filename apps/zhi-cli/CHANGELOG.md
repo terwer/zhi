@@ -1,5 +1,13 @@
 # zhi-cli
 
+## 1.5.12
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-log@1.14.12
+
 ## 1.5.11
 
 ### Patch Changes

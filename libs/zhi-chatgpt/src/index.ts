@@ -1,5 +1,1 @@
-const init = () => {
-  return "ok"
-}
-
-export default init
+export * from "chatgpt"

@@ -1,0 +1,14 @@
+{
+  "extends": "../../tools/tsconfig/base.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "isolatedModules": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "outDir": "./lib"
+  },
+  "include": ["env.d.ts", "**/*.ts", "**/*.spec.ts"],
+  "exclude": ["node_modules"]
+}

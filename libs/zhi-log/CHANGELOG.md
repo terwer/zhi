@@ -1,5 +1,12 @@
 # zhi-log
 
+## 1.14.12
+
+### Patch Changes
+
+- feat: add zhi-infra
+- add zhi-chatgpt zhi-infra
+
 ## 1.14.11
 
 ### Patch Changes
