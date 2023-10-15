@@ -1,12 +1,12 @@
 {
-  "name": "zhi-blog-api",
-  "version": "1.46.0",
+  "name": "zhi-chatgpt",
+  "version": "0.0.3",
   "type": "module",
-  "description": "a common blog interface",
+  "description": "chatgpt api for siyuan-note",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "repository": "terwer/zhi",
-  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api",
+  "homepage": "https://github.com/terwer/zhi/tree/main/libs/zhi-chatgpt",
   "author": "terwer",
   "license": "MIT",
   "files": [
@@ -15,25 +15,21 @@
   ],
   "keywords": [
     "zhi",
-    "lib",
-    "blog",
-    "api"
+    "lib"
   ],
   "scripts": {
     "serve": "vite",
     "dev": "vite build --watch",
     "build": "vite build",
     "start": "vite preview",
-    "test": "vitest --watch"
+    "test": "npx vitest --watch"
   },
   "devDependencies": {
     "@terwer/eslint-config-custom": "workspace:*",
-    "@terwer/tsconfig": "workspace:*",
     "@terwer/vite-config-custom": "workspace:*"
   },
   "dependencies": {
-    "zhi-common": "workspace:*",
-    "zhi-lib-base": "workspace:*"
+    "chatgpt": "^5.2.5"
   },
   "publishConfig": {
     "access": "public"

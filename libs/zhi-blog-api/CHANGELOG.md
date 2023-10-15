@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.46.0
+
+### Minor Changes
+
+- feat: add originalTitle
+
 ## 1.45.0
 
 ### Minor Changes
