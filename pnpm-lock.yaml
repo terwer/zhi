@@ -146,6 +146,19 @@ importers:
         specifier: ^4.0.5
         version: 4.0.5
 
+  libs/zhi-common-json-validate:
+    dependencies:
+      ajv:
+        specifier: ^8.12.0
+        version: 8.12.0
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config-custom
+      '@terwer/vite-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/vite-config-custom
+
   libs/zhi-common-markdown:
     dependencies:
       showdown:
@@ -164,6 +177,19 @@ importers:
       '@types/showdown':
         specifier: ^2.0.1
         version: 2.0.1
+
+  libs/zhi-common-version:
+    dependencies:
+      compare-versions:
+        specifier: ^6.1.0
+        version: 6.1.0
+    devDependencies:
+      '@terwer/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config-custom
+      '@terwer/vite-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/vite-config-custom
 
   libs/zhi-device:
     devDependencies:
@@ -4678,6 +4704,10 @@ packages:
     dependencies:
       array-ify: 1.0.0
       dot-prop: 5.3.0
+
+  /compare-versions@6.1.0:
+    resolution: {integrity: sha512-LNZQXhqUvqUTotpZ00qLSaify3b4VFD588aRr8MKFw4CMUr98ytzCW5wDH5qx/DEY5kCDXcbcRuCqL0szEf2tg==}
+    dev: false
 
   /concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
