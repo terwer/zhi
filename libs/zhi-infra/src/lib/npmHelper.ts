@@ -40,18 +40,21 @@ class NpmPackageManager {
   }
 
   /**
-   * 执行 Shell 命令。
-   * @param target - 目标命令。
-   * @param cmd - 要执行的命令。
-   * @param path - 命令执行的路径。
-   * @returns 执行结果的 Promise。
+   * 执行 Shell 命令
+   *
+   * @param target - 目标命令
+   * @param cmd - 要执行的命令
+   * @param path - 命令执行的路径
+   * @returns 执行结果的 Promise
    */
-  shellCmd(target: string, cmd: string, path: string): Promise<{ code: number; data: string }> {
+  shellCmd(target: string, cmd: string, path?: string): Promise<{ code: number; data: string }> {
     const spawn = SiyuanDevice.siyuanWindow().require("cross-spawn")
+    const process = SiyuanDevice.siyuanWindow()?.process ?? global.process
+
     return new Promise((resolve, reject) => {
       const args = cmd.split(/\s+/)
       const processer = spawn(target, args, {
-        cwd: path,
+        cwd: path ?? process.cwd(),
       })
 
       let output = ""
@@ -78,9 +81,10 @@ class NpmPackageManager {
   }
 
   /**
-   * 执行 NPM 命令。
-   * @param cmd - 要执行的 NPM 命令。
-   * @returns 执行结果的 Promise。
+   * 执行 NPM 命令
+   *
+   * @param cmd - 要执行的 NPM 命令
+   * @returns 执行结果的 Promise
    */
   npmCmd(cmd: string): Promise<{ code: number; data: string }> {
     return this.shellCmd("npm", cmd, this.zhiAppNpmPath)
@@ -95,8 +99,9 @@ class NpmPackageManager {
   }
 
   /**
-   * 安装 NPM 依赖。
-   * @param moduleName - 可选的模块名，不传默认安装全量。
+   * 安装 NPM 依赖
+   *
+   * @param moduleName - 可选的模块名，不传默认安装全量
    */
   async npmInstall(moduleName?: string): Promise<void> {
     if (moduleName) {
@@ -107,9 +112,10 @@ class NpmPackageManager {
   }
 
   /**
-   * 安装依赖并马上导入。
-   * @param moduleName - 依赖名称。
-   * @returns 导入的模块。
+   * 安装依赖并马上导入
+   *
+   * @param moduleName - 依赖名称
+   * @returns 导入的模块
    */
   async requireInstall(moduleName: string): Promise<any> {
     await this.npmCmd(`install ${moduleName}`)

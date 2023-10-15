@@ -25,6 +25,7 @@ async function init(zhiNpmPath?: string, isFixPath?: boolean) {
   } else {
     logger.info("zhi infra is already inited.skip")
   }
+  return win.npmManager
 }
 
 export default init
