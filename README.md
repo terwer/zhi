@@ -18,10 +18,9 @@
   - [X] [zhi-env](https://github.com/terwer/zhi/tree/main/libs/zhi-env) ![zhi-env](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-env%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-log](https://github.com/terwer/zhi/tree/main/libs/zhi-log) ![zhi-log](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-log%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-common](https://github.com/terwer/zhi/tree/main/libs/zhi-common) ![zhi-common](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-common%2Fpackage.json&query=%24.version&label=release)
-    - [ ] [zhi-common-basic](https://github.com/terwer/zhi/tree/main/libs/zhi-common-basic)
-    - [ ] [zhi-common-json-validate](https://github.com/terwer/zhi/tree/main/libs/zhi-common-json-validate)
+    - [X] [zhi-common-json-validate](https://github.com/terwer/zhi/tree/main/libs/zhi-common-json-validate) ![zhi-common-json-validate](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-common-json-validate%2Fpackage.json&query=%24.version&label=release)
     - [X] [zhi-common-markdown](https://github.com/terwer/zhi/tree/main/libs/zhi-common-markdown) ![zhi-common-markdown](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-common-markdown%2Fpackage.json&query=%24.version&label=release)
-    - [ ] [zhi-common-version](https://github.com/terwer/zhi/tree/main/libs/zhi-common-version)
+    - [X] [zhi-common-version](https://github.com/terwer/zhi/tree/main/libs/zhi-common-version) ![zhi-common-version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-common-version%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-infra](https://github.com/terwer/zhi/tree/main/libs/zhi-infra) ![zhi-infra](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-infra%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-cmd](https://github.com/terwer/zhi/tree/main/libs/zhi-cmd) ![zhi-infra](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-cmd%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-blog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api) ![zhi-blog-api](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-blog-api%2Fpackage.json&query=%24.version&label=release)
@@ -33,7 +32,7 @@
   - [X] [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api) ![zhi-siyuan-api](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-siyuan-api%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-picgo-core](https://github.com/terwer/zhi/tree/main/libs/zhi-picgo-core) ![zhi-picgo-core](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-picgo-core%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-siyuan-picgo](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-picgo) ![zhi-siyuan-picgo](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-siyuan-picgo%2Fpackage.json&query=%24.version&label=release)
-  - [ ] [zhi-chatgpt](https://github.com/terwer/zhi/tree/main/libs/zhi-chatgpt) ![zhi-chatgpt](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-chatgpt%2Fpackage.json&query=%24.version&label=release)
+  - [X] [zhi-chatgpt](https://github.com/terwer/zhi/tree/main/libs/zhi-chatgpt) ![zhi-chatgpt](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-chatgpt%2Fpackage.json&query=%24.version&label=release)
 
 ### scaffold && docs
 
