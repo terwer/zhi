@@ -6,13 +6,15 @@ import { simpleLogger } from "zhi-lib-base"
 /**
  * 基础设施初始化入口
  *
- * @param zhiNpmPath - 内置的 NPM 目录
- * @param isFixPath - 是否修复路径
+ * @param params
+ *   zhiNpmPath - 内置的 NPM 目录
+ *   isFixPath - 是否修复路径
  */
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-async function init(zhiNpmPath?: string, isFixPath?: boolean) {
+async function init(...params: any[]) {
   const logger = simpleLogger("init-infra", "zhi", false)
   const win = SiyuanDevice.siyuanWindow()
+  const zhiNpmPath: string = params.length > 0 ? params[0] : undefined
+  const isFixPath: boolean = params.length > 1 ? params[1] : undefined
   if (!win.zhiInfraInited) {
     const zhiInfra = new ZhiInfra(zhiNpmPath)
     if (isFixPath) {

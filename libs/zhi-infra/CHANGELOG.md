@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.3.0
+
+### Minor Changes
+
+- feat: change zhi infra params to array
+
 ## 0.2.3
 
 ### Patch Changes
