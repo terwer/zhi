@@ -66,7 +66,10 @@ class CustomCmd {
 
       const child = fork(command, args, options)
       // 用户目录的 Download/log.txt
-      const logFilePath = path.join(process.env.HOME, "Downloads", "electron-command-log.txt")
+      const logFilePath = path.join(
+        process.env?.HOME ?? process.env?.USERPROFILE ?? process.env?.Temp ?? cwd,
+        "electron-command-log.txt"
+      )
       console.log(`命令执行日志已保存到文件 => ${logFilePath}`)
       const logStream = fs.createWriteStream(logFilePath, { flags: "a" })
 
@@ -100,33 +103,33 @@ class CustomCmd {
     })
   }
 
-  // /**
-  //  * 自定义执行系统命令
-  //  *
-  //  * 示例：
-  //  * ```
-  //  * await customCmd.executeCommand("./node_modules/.bin/nuxt", ["preview"], { shell: true, cwd: '/Users/terwer/Downloads/nu' })
-  //  * await customCmd.executeCommand("node", ["./server/index.mjs"], { cwd: '/Users/terwer/Downloads/nu' })
-  //  * ```
-  //  *
-  //  * @param command - 命令
-  //  * @param args - 参数
-  //  * @param options - 选项
-  //  */
-  // public async executeCommand(command: string, args: string[], options = {}) {
-  //   const { exec } = SiyuanDevice.requireLib("child_process")
-  //   const fullCommand = `${command} ${args.join(" ")}`
-  //   return new Promise((resolve, reject) => {
-  //     exec(fullCommand, options, (err: any, stdout: any) => {
-  //       if (err) {
-  //         reject(err)
-  //       } else {
-  //         resolve(stdout.trim())
-  //       }
-  //     })
-  //   })
-  // }
-  //
+  /**
+   * 自定义执行系统命令
+   *
+   * 示例：
+   * ```
+   * await customCmd.executeCommand("./node_modules/.bin/nuxt", ["preview"], { shell: true, cwd: '/Users/terwer/Downloads/nu' })
+   * await customCmd.executeCommand("node", ["./server/index.mjs"], { cwd: '/Users/terwer/Downloads/nu' })
+   * ```
+   *
+   * @param command - 命令
+   * @param args - 参数
+   * @param options - 选项
+   */
+  public async executeCommand(command: string, args: string[], options = {}) {
+    const { exec } = SiyuanDevice.requireLib("child_process")
+    const fullCommand = `${command} ${args.join(" ")}`
+    return new Promise((resolve, reject) => {
+      exec(fullCommand, options, (err: any, stdout: any) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve(stdout.trim())
+        }
+      })
+    })
+  }
+
   // /**
   //  * 自定义执行系统命令
   //  *
@@ -166,13 +169,13 @@ class CustomCmd {
   //     })
   //   })
   // }
-  //
-  // /**
-  //  * 获取系统的 Node 版本
-  //  */
-  // public async getSystemNodeVersion() {
-  //   return await this.executeCommand("node", ["-v"], { shell: true })
-  // }
+
+  /**
+   * 获取系统的 Node 版本
+   */
+  public async getSystemNodeVersion() {
+    return await this.executeCommand("node", ["-v"], { shell: true })
+  }
 
   /**
    * 获取 Electron 的 Node 版本

@@ -1,5 +1,17 @@
 # zhi-cmd
 
+## 0.4.0
+
+### Minor Changes
+
+- feat: add executeCommand
+
+## 0.3.1
+
+### Patch Changes
+
+- fix: fix electron cmd log path
+
 ## 0.3.0
 
 ### Minor Changes
