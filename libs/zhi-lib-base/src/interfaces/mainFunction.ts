@@ -23,9 +23,9 @@
  * questions.
  */
 
-import NotImplementedException from "./exception/notImplementedException"
-import simpleLogger from "./logger/simpleLogger"
-import MainFunction from "./interfaces/mainFunction"
+// 定义接口
+interface MainFunction {
+  (args: any[]): Promise<any>
+}
 
-export { NotImplementedException, simpleLogger }
-export type { MainFunction }
+export default MainFunction

@@ -1,5 +1,14 @@
 # zhi-blog-api
 
+## 1.46.1
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-lib-base@0.6.0
+  - zhi-common@1.24.1
+
 ## 1.46.0
 
 ### Minor Changes

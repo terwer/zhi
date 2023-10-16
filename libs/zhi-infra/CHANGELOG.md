@@ -1,5 +1,25 @@
 # zhi-infra
 
+## 0.5.0
+
+### Minor Changes
+
+- feat: add MainFunction
+- feat: add MainFunction
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-lib-base@0.6.0
+  - zhi-common@1.24.1
+
+## 0.4.0
+
+### Minor Changes
+
+- feat: add params
+
 ## 0.3.0
 
 ### Minor Changes
