@@ -51,7 +51,7 @@ enum BasePathTypeEnum {
   /**
    * 当前插件目录
    */
-  BasePathType_ThisPlugin = "当前插件",
+  BasePathType_ThisPlugin = "ThisPlugin",
   /**
    * 未设置
    */

@@ -1,5 +1,11 @@
 # zhi-device
 
+## 2.6.0
+
+### Minor Changes
+
+- fix: fix this plugin name
+
 ## 2.5.0
 
 ### Minor Changes
