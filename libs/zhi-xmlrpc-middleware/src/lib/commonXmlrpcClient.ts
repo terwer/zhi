@@ -109,7 +109,7 @@ class CommonXmlrpcClient {
       }
       case DeviceTypeEnum.DeviceType_Siyuan_Widget:
       case DeviceTypeEnum.DeviceType_Siyuan_MainWin:
-      case DeviceTypeEnum.DeviceType_Siyuan_NewWin: {
+      case DeviceTypeEnum.DeviceType_Siyuan_RendererWin: {
         this.logger.info("当前处于思源笔记环境，使用electron的fetch获取数据")
         result = await fetchNode(this.appInstance, apiUrl, reqMethod, reqParams)
         break

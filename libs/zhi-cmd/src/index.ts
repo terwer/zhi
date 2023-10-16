@@ -1,8 +1,13 @@
 import { CustomCmd } from "./lib/customCmd"
 import { SiyuanDevice } from "zhi-device"
-import { simpleLogger } from "zhi-lib-base"
+import { MainFunction, simpleLogger } from "zhi-lib-base"
 
-const init = () => {
+/**
+ * 命令类库入口
+ *
+ * @param args 参数，可选
+ */
+const main: MainFunction = async (args: any[]) => {
   const logger = simpleLogger("zhi-cmd", "zhi", true)
   const win = SiyuanDevice.siyuanWindow()
   if (!win.zhiCmdInited) {
@@ -17,4 +22,4 @@ const init = () => {
   return win.zhiCmd
 }
 
-export default init
+export default main

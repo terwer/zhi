@@ -43,6 +43,7 @@ class SiyuanDevice {
       return false
     }
     return (
+      typeof (window as any).siyuan === "undefined" &&
       typeof (window as any).parent.process !== "undefined" &&
       (window as any).parent.process.versions != null &&
       (window as any).parent.process.versions.electron != null
@@ -50,13 +51,13 @@ class SiyuanDevice {
   }
 
   /**
-   * 思源笔记新窗口
+   * 思源笔记渲染窗口
    *
    * @author terwer
    * @version 0.1.0
    * @since 0.0.1
    */
-  public static isInSiyuanNewWin = () => {
+  public static isInSiyuanRendererWin = () => {
     return typeof window !== "undefined" && (window as any).process && (window as any).process.type === "renderer"
   }
 
@@ -78,7 +79,7 @@ class SiyuanDevice {
     if (this.isInSiyuanWidget()) {
       win = parent.window
     } else {
-      if (this.isInSiyuanNewWin()) {
+      if (this.isInSiyuanRendererWin()) {
         win = window
       } else if (this.isInSiyuanBrowser()) {
         win = window

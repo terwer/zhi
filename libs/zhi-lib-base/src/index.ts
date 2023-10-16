@@ -25,5 +25,7 @@
 
 import NotImplementedException from "./exception/notImplementedException"
 import simpleLogger from "./logger/simpleLogger"
+import MainFunction from "./interfaces/mainFunction"
 
 export { NotImplementedException, simpleLogger }
+export type { MainFunction }

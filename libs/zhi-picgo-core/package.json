@@ -11,8 +11,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production rimraf ./dist && rollup -c rollup.config.js",
     "dev": "cross-env NODE_ENV=development rollup -c rollup.config.js -w",
-    "start": "node ./bin/picgo",
-    "lint": "eslint src/**/*.ts --fix"
+    "start": "node ./bin/picgo"
   },
   "keywords": [
     "picture",

@@ -1,5 +1,33 @@
 # zhi-gitlab-middleware
 
+## 0.6.9
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-lib-base@0.6.0
+  - zhi-fetch-middleware@0.7.2
+
+## 0.6.8
+
+### Patch Changes
+
+- zhi-fetch-middleware@0.7.1
+
+## 0.6.7
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.7.0
+
+## 0.6.6
+
+### Patch Changes
+
+- zhi-fetch-middleware@0.6.6
+
 ## 0.6.5
 
 ### Patch Changes

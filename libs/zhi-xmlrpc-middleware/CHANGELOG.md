@@ -1,5 +1,39 @@
 # zhi-xmlrpc-middleware
 
+## 0.6.2
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-lib-base@0.6.0
+  - zhi-common@1.24.1
+
+## 0.6.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.6.0
+
+## 0.6.0
+
+### Minor Changes
+
+- feat: change device type
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.5.0
+
+## 0.5.13
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.4.0
+
 ## 0.5.12
 
 ### Patch Changes

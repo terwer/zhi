@@ -1,6 +1,6 @@
 {
   "name": "zhi-infra",
-  "version": "0.2.0",
+  "version": "0.5.0",
   "type": "module",
   "description": "basic issues for zhi",
   "main": "./dist/index.cjs",
@@ -17,12 +17,7 @@
   "scripts": {
     "dev": "zhi-build --watch --outDir=/Users/terwer/Documents/mydocs/SiYuanWorkspace/public/conf/appearance/themes/zhi/server/infra",
     "build": "zhi-build --production",
-    "test": "jest --coverage=true --coverageDirectory=../../reports/test/zhi-server-infra",
-    "lint": "eslint 'src/**/*.{ts,js}' --fix",
-    "doc": "../../packages/api-docs/node_modules/.bin/api-extractor run --local --verbose",
-    "md": "../../packages/api-docs/node_modules/.bin/api-documenter markdown -i temp -o ../zhi-docs/src/api/zhi-server-infra && pnpm mdfix",
-    "mdfix": "pnpm mdfmt && rm ../zhi-docs/src/api/zhi-server-infra/index.md",
-    "mdfmt": "echo '---\ntitle: zhi-server-infra\n---' | cat - ../zhi-docs/src/api/zhi-server-infra/index.md > ../zhi-docs/src/api/zhi-server-infra/README.md"
+    "test": "jest --coverage=true --coverageDirectory=../../reports/test/zhi-server-infra"
   },
   "devDependencies": {
     "@terwer/esbuild-config-custom": "workspace:*",

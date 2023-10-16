@@ -1,18 +1,20 @@
 import ZhiInfra from "./zhiInfra"
 import "./lib/requireHacker"
 import { SiyuanDevice } from "zhi-device"
-import { simpleLogger } from "zhi-lib-base"
+import { simpleLogger, MainFunction } from "zhi-lib-base"
 
 /**
  * 基础设施初始化入口
  *
- * @param zhiNpmPath - 内置的 NPM 目录
- * @param isFixPath - 是否修复路径
+ * @param args
+ *   zhiNpmPath - 内置的 NPM 目录
+ *   isFixPath - 是否修复路径
  */
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-async function init(zhiNpmPath?: string, isFixPath?: boolean) {
+const main: MainFunction = async (args: any[]) => {
   const logger = simpleLogger("init-infra", "zhi", false)
   const win = SiyuanDevice.siyuanWindow()
+  const zhiNpmPath: string = args.length > 0 ? args[0] : undefined
+  const isFixPath: boolean = args.length > 1 ? args[1] : undefined
   if (!win.zhiInfraInited) {
     const zhiInfra = new ZhiInfra(zhiNpmPath)
     if (isFixPath) {
@@ -28,4 +30,4 @@ async function init(zhiNpmPath?: string, isFixPath?: boolean) {
   return win.npmManager
 }
 
-export default init
+export default main

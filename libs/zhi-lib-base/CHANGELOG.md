@@ -1,5 +1,12 @@
 # zhi-lib-base
 
+## 0.6.0
+
+### Minor Changes
+
+- feat: add MainFunction
+- feat: add MainFunction
+
 ## 0.5.0
 
 ### Minor Changes

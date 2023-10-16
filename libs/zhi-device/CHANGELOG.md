@@ -1,5 +1,23 @@
 # zhi-device
 
+## 2.6.0
+
+### Minor Changes
+
+- fix: fix this plugin name
+
+## 2.5.0
+
+### Minor Changes
+
+- feat: change device type
+
+## 2.4.0
+
+### Minor Changes
+
+- feat: add path type
+
 ## 2.3.1
 
 ### Patch Changes

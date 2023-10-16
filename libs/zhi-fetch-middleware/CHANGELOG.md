@@ -1,5 +1,39 @@
 # zhi-fetch-middleware
 
+## 0.7.2
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-lib-base@0.6.0
+  - zhi-common@1.24.1
+
+## 0.7.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.6.0
+
+## 0.7.0
+
+### Minor Changes
+
+- feat: change device type
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.5.0
+
+## 0.6.6
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.4.0
+
 ## 0.6.5
 
 ### Patch Changes

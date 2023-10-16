@@ -23,39 +23,9 @@
  * questions.
  */
 
-/**
- * 基本路径枚举
- *
- * @public
- * @author terwer
- * @version 0.1.0
- * @since 0.1.0
- */
-enum BasePathTypeEnum {
-  /**
-   * Appearance
-   */
-  BasePathType_Appearance = "Appearance",
-  /**
-   * Data
-   */
-  BasePathType_Data = "Data",
-  /**
-   * Themes
-   */
-  BasePathType_Themes = "Themes",
-  /**
-   * Zhi 主题目录
-   */
-  BasePathType_ZhiTheme = "ZhiTheme",
-  /**
-   * 当前插件目录
-   */
-  BasePathType_ThisPlugin = "ThisPlugin",
-  /**
-   * 未设置
-   */
-  BasePathType_None = "None",
+// 定义接口
+interface MainFunction {
+  (args: any[]): Promise<any>
 }
 
-export default BasePathTypeEnum
+export default MainFunction
