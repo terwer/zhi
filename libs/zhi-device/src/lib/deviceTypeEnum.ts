@@ -42,9 +42,9 @@ enum DeviceTypeEnum {
   DeviceType_Siyuan_Widget = "Siyuan_Widget",
 
   /**
-   * 思源笔记新窗口
+   * 思源笔记渲染窗口
    */
-  DeviceType_Siyuan_NewWin = "Siyuan_NewWindow",
+  DeviceType_Siyuan_RendererWin = "Siyuan_RendererWindow",
 
   /**
    * 思源笔记主窗口

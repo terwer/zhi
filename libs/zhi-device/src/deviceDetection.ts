@@ -51,8 +51,8 @@ class DeviceDetection {
     }
 
     // 思源新窗口
-    if (SiyuanDevice.isInSiyuanNewWin()) {
-      return DeviceTypeEnum.DeviceType_Siyuan_NewWin
+    if (SiyuanDevice.isInSiyuanRendererWin()) {
+      return DeviceTypeEnum.DeviceType_Siyuan_RendererWin
     }
 
     // 思源主窗口

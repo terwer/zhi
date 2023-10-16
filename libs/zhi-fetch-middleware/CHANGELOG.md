@@ -1,5 +1,16 @@
 # zhi-fetch-middleware
 
+## 0.7.0
+
+### Minor Changes
+
+- feat: change device type
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.5.0
+
 ## 0.6.6
 
 ### Patch Changes

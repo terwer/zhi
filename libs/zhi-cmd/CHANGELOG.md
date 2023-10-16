@@ -1,5 +1,12 @@
 # zhi-cmd
 
+## 0.2.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.5.0
+
 ## 0.2.1
 
 ### Patch Changes

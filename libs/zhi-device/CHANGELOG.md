@@ -1,5 +1,11 @@
 # zhi-device
 
+## 2.5.0
+
+### Minor Changes
+
+- feat: change device type
+
 ## 2.4.0
 
 ### Minor Changes
