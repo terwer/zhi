@@ -1,6 +1,6 @@
 {
   "name": "zhi-fetch-middleware",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "type": "module",
   "description": "an intermediate tier prepared for fetch requests",
   "main": "./dist/index.js",

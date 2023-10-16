@@ -1,5 +1,11 @@
 # zhi-device
 
+## 2.4.0
+
+### Minor Changes
+
+- feat: add path type
+
 ## 2.3.1
 
 ### Patch Changes

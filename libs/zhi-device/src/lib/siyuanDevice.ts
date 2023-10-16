@@ -43,6 +43,7 @@ class SiyuanDevice {
       return false
     }
     return (
+      typeof (window as any).siyuan === "undefined" &&
       typeof (window as any).parent.process !== "undefined" &&
       (window as any).parent.process.versions != null &&
       (window as any).parent.process.versions.electron != null

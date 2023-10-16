@@ -1,5 +1,11 @@
 # zhi-gitlab-middleware
 
+## 0.6.6
+
+### Patch Changes
+
+- zhi-fetch-middleware@0.6.6
+
 ## 0.6.5
 
 ### Patch Changes

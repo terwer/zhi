@@ -49,6 +49,10 @@ enum BasePathTypeEnum {
    */
   BasePathType_ZhiTheme = "ZhiTheme",
   /**
+   * 当前插件目录
+   */
+  BasePathType_ThisPlugin = "当前插件",
+  /**
    * 未设置
    */
   BasePathType_None = "None",

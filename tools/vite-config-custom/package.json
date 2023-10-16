@@ -18,7 +18,7 @@
     "typescript": "^5.0.4",
     "vite": "^4.3.5",
     "vite-plugin-dts": "^2.3.0",
-    "vite-plugin-node-polyfills": "^0.8.2",
+    "vite-plugin-node-polyfills": "^0.15.0",
     "vite-plugin-static-copy": "^0.15.0",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^0.31.0"

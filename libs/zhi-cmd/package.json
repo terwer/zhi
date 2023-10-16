@@ -1,6 +1,6 @@
 {
   "name": "zhi-cmd",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "description": "commond utils for siyuan-note",
   "main": "./dist/index.cjs",
@@ -16,8 +16,7 @@
   "scripts": {
     "dev": "zhi-build --watch",
     "build": "zhi-build --production",
-    "test": "vitest",
-    "lint": "eslint 'src/**/*.{ts,js}' --fix"
+    "test": "vitest"
   },
   "devDependencies": {
     "@terwer/esbuild-config-custom": "workspace:*",
