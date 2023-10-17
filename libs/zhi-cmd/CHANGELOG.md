@@ -1,5 +1,11 @@
 # zhi-cmd
 
+## 0.4.1
+
+### Patch Changes
+
+- feat: add zhi cmd
+
 ## 0.4.0
 
 ### Minor Changes

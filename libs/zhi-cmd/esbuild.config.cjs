@@ -62,10 +62,10 @@ module.exports = {
         resolveFrom: "cwd",
         assets: [
           // copy folder
-          // {
-          //   from: "./public/**/*",
-          //   to: [distDir],
-          // },
+          {
+            from: "./public/**/*",
+            to: [distDir],
+          },
           // copy one file
           {
             from: ["./README.md"],

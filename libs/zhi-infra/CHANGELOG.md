@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.5.1
+
+### Patch Changes
+
+- feat: add zhi cmd
+
 ## 0.5.0
 
 ### Minor Changes
