@@ -26,22 +26,24 @@
 import { SiyuanDevice } from "zhi-device"
 import { CustomCmd } from "zhi-cmd"
 import { simpleLogger } from "zhi-lib-base"
+import path from "path"
+import { updatePackageJson, updatePackageJsonHash } from "./packageHelper"
 
 /**
  * 封装一个用于执行 NPM 命令的工具类
  */
 class NpmPackageManager {
   private logger
-  private zhiAppNpmPath: string
+  private zhiCoreNpmPath: string
   private customCmd: CustomCmd
 
   /**
    * 构造函数，用于创建 NpmPackageManager 的实例。
-   * @param zhiAppNpmPath - Siyuan App 的 NPM 路径。
+   * @param zhiCoreNpmPath - Siyuan App 的 NPM 路径。
    */
-  constructor(zhiAppNpmPath: string) {
+  constructor(zhiCoreNpmPath: string) {
     this.logger = simpleLogger("npm-package-manager", "zhi", false)
-    this.zhiAppNpmPath = zhiAppNpmPath
+    this.zhiCoreNpmPath = zhiCoreNpmPath
     this.customCmd = new CustomCmd()
   }
 
@@ -52,19 +54,16 @@ class NpmPackageManager {
    * @returns 执行结果的 Promise
    */
   public async npmCmd(subCommand: string): Promise<any> {
-    // 检测Node，如果没有先下载
-    await this.checkNodeInstalled()
-
     const command = `npm`
-    const args = [subCommand, this.zhiAppNpmPath]
+    const args = [subCommand, this.zhiCoreNpmPath]
     const options = {
-      cwd: this.zhiAppNpmPath,
+      cwd: this.zhiCoreNpmPath,
       env: {
         PATH: SiyuanDevice.nodeFolder(),
       },
     }
     this.logger.info("npmCmd options =>", options)
-    return await this.customCmd.executeCommand("node", [`${command}`], options)
+    return await this.customCmd.executeCommand(command, args, options)
   }
 
   /**
@@ -99,10 +98,48 @@ class NpmPackageManager {
     return SiyuanDevice.requireNpm(moduleName)
   }
 
-  //==================
-  // private function
-  //==================
-  private async checkNodeInstalled(): Promise<void> {}
+  /**
+   * 检测并初始化 Node
+   */
+  public async checkAndInitNode(): Promise<boolean> {
+    let flag = false
+    const fs = SiyuanDevice.requireNpm("fs")
+    if (!fs.existsSync(SiyuanDevice.nodeFolder())) {
+      this.logger.info("Node环境不存在，准备安装Node...")
+      // 指向您要运行的.js文件
+      const command = `${this.zhiCoreNpmPath}/setup.js`
+      const args: string[] = []
+      const cwd = undefined
+      const result = await this.customCmd.executeCommandWithBundledNodeAsync(command, args, cwd)
+
+      if (result.status) {
+        this.logger.info("Node安装成功！😄")
+      } else {
+        throw new Error("Node安装失败，后续操作将出现异常😭: " + result.msg)
+      }
+      flag = true
+    } else {
+      this.logger.info("Node已安装过，忽略")
+      flag = true
+    }
+
+    // 更新最新定义的依赖
+    const pkgJsonFile = path.join(this.zhiCoreNpmPath, "package.json")
+    const depsJsonFile = path.join(this.zhiCoreNpmPath, "deps.json")
+    const depsJsonStatus = updatePackageJson(depsJsonFile, pkgJsonFile)
+
+    // 全量安装依赖
+    // 内容有更新才去重新安装
+    if (depsJsonStatus) {
+      this.logger.info("Will install node_module once if needed, please wait...")
+      await this.npmInstall()
+      this.logger.info("All node_module installed successfully")
+      updatePackageJsonHash(depsJsonFile, pkgJsonFile)
+      this.logger.info("Package hash updated successfully")
+    }
+
+    return flag
+  }
 }
 
 export { NpmPackageManager }

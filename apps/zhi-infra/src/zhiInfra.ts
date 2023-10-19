@@ -38,20 +38,17 @@ import pkg from "../package.json" assert { type: "json" }
 class ZhiInfra {
   private readonly logger
   private zhiAppNodeModulesPath
-  private zhiAppNpmPath
+  private zhiCoreNpmPath: string
   private zhiNodeModulesPath
-  private zhiNpmPath
   private npmManager
 
-  constructor(zhiNpmPath?: string) {
+  constructor(zhiCoreNpmPath?: string) {
     this.logger = simpleLogger("zhi-infra", "zhi", true)
-    this.zhiNpmPath = zhiNpmPath ?? SiyuanDevice.joinPath(SiyuanDevice.zhiThemePath(), "npm")
+    this.zhiCoreNpmPath = zhiCoreNpmPath ?? SiyuanDevice.joinPath(SiyuanDevice.zhiThemePath(), "npm")
+    this.zhiNodeModulesPath = SiyuanDevice.joinPath(this.zhiCoreNpmPath, "node_modules")
+    this.npmManager = new NpmPackageManager(this.zhiCoreNpmPath)
 
-    this.zhiNodeModulesPath = SiyuanDevice.joinPath(this.zhiNpmPath, "node_modules")
-    this.zhiAppNpmPath = SiyuanDevice.appNpmFolder()
-    this.zhiAppNodeModulesPath = SiyuanDevice.joinPath(this.zhiAppNpmPath, "node_modules")
-
-    this.npmManager = new NpmPackageManager(this.zhiAppNpmPath)
+    this.zhiAppNodeModulesPath = SiyuanDevice.joinPath(SiyuanDevice.appNpmFolder(), "node_modules")
   }
 
   /**
@@ -72,10 +69,9 @@ class ZhiInfra {
 
     // 初始化 APP 依赖安装的 package.json
     this.logger.info("Init zhi app node_modules from => ", this.zhiAppNodeModulesPath)
-    const pkgJsonFile = path.join(this.zhiAppNpmPath, "package.json")
+    const pkgJsonFile = path.join(this.zhiCoreNpmPath, "package.json")
     if (!fs.existsSync(pkgJsonFile)) {
-      await fs.mkdirs(this.zhiAppNpmPath)
-      // await FsHelper.copyFolder(zhiNpmPath, zhiAppNpmPath)
+      await fs.mkdirs(this.zhiCoreNpmPath)
 
       createPackageJson("zhi-app-package", pkg.version, {}, pkgJsonFile)
       // await npmCmd("init", zhiAppNpmPath)
@@ -88,20 +84,6 @@ class ZhiInfra {
     externalDepPathes.map((path: string, index: number) => {
       this.logger.info(`Available zhi node_modules path${index + 1} => ${path}`)
     })
-
-    // 更新最新定义的依赖
-    const depsJsonFile = path.join(this.zhiNpmPath, "deps.json")
-    const depsJsonStatus = updatePackageJson(depsJsonFile, pkgJsonFile)
-
-    // 全量安装依赖
-    // 内容有更新才去重新安装
-    if (depsJsonStatus) {
-      this.logger.info("Will install node_module once if needed, please wait...")
-      await this.npmManager.npmInstall()
-      this.logger.info("All node_module installed successfully")
-      await updatePackageJsonHash(depsJsonFile, pkgJsonFile)
-      this.logger.info("Package hash updated successfully")
-    }
   }
 
   public mountNpmManager() {

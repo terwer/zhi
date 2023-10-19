@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.6.1
+
+### Patch Changes
+
+- fix: fix node init
+
 ## 0.6.0
 
 ### Minor Changes
