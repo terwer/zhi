@@ -17,11 +17,13 @@ const main: MainFunction = async (args: any[]) => {
   // win
   const win = SiyuanDevice.siyuanWindow()
   win.zhi = win.zhi ?? {}
+  win.zhi.status = win.zhi.status ?? {}
 
   // mountCmd
-  if (!win.zhi.cmdInited) {
+  if (!win.zhi.status.cmdInited) {
     const cmd = new CustomCmd()
     win.zhi.cmd = cmd
+    win.zhi.status.cmdInited = true
     logger.info("zhi cmd inited")
   } else {
     logger.info("zhi cmd is already inited.skip")
@@ -30,14 +32,14 @@ const main: MainFunction = async (args: any[]) => {
   // mountNpmManager
   const zhiNpmPath: string = args.length > 0 ? args[0] : undefined
   const isFixPath: boolean = args.length > 1 ? args[1] : undefined
-  if (!win.zhi.infraInited) {
+  if (!win.zhi.status.infraInited) {
     const infra = new ZhiInfra(zhiNpmPath)
     if (isFixPath) {
       infra.fixPathEnv()
     }
     await infra.hackRequire()
-    infra.mountNpmManager()
-    win.zhi.infraInited = true
+    win.zhi.npm = infra.getNpmManager()
+    win.zhi.status.infraInited = true
     logger.info("zhi infra inited")
   } else {
     logger.info("zhi infra is already inited.skip")

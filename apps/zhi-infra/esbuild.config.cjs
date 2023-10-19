@@ -25,9 +25,8 @@
 
 const path = require("path")
 const minimist = require("minimist")
-// const { dtsPlugin } = require("esbuild-plugin-d.ts")
+const { dtsPlugin } = require("esbuild-plugin-d.ts")
 const { copy } = require("esbuild-plugin-copy")
-const getNormalizedEnvDefines = require("@terwer/esbuild-config-custom/utils.cjs")
 
 const args = minimist(process.argv.slice(2))
 const isProduction = args.production || args.prod
@@ -37,15 +36,6 @@ const outDir = args.outDir || args.o
 const baseDir = outDir ?? "./"
 const distDir = outDir ? baseDir : path.join(baseDir, "dist")
 
-const defineEnv = {
-  NODE_ENV: isProduction ? "production" : "development",
-  // ...getNormalizedEnvDefines(["NODE", "VITE_"]),
-  ...getNormalizedEnvDefines(["VITE_"]),
-}
-const coreDefine = {
-  "import.meta.env": JSON.stringify(defineEnv),
-}
-
 /**
  * 构建配置
  */
@@ -54,10 +44,9 @@ module.exports = {
     entryPoints: ["src/index.ts"],
     outfile: path.join(distDir, "index.cjs"),
     format: "cjs",
-    define: { ...coreDefine },
     platform: "node",
     plugins: [
-      // dtsPlugin(),
+      dtsPlugin(),
       copy({
         // this is equal to process.cwd(), which means we use cwd path as base path to resolve `to` path
         // if not specified, this plugin uses ESBuild.build outdir/outfile options as base path.

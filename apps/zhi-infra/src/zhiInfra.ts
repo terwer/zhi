@@ -29,8 +29,8 @@ import { SiyuanDevice } from "zhi-device"
 import { NpmPackageManager } from "./lib/npmHelper"
 import fs from "fs-extra"
 import path from "path"
-import { createPackageJson, updatePackageJson, updatePackageJsonHash } from "./lib/packageHelper"
-import pkg from "../package.json" assert { type: "json" }
+import { createPackageJson } from "./lib/packageHelper"
+import pkg from "../package.json"
 
 /**
  * 基础设施
@@ -86,9 +86,8 @@ class ZhiInfra {
     })
   }
 
-  public mountNpmManager() {
-    SiyuanDevice.siyuanWindow().npmManager = this.npmManager
-    this.logger.info("npmManager mounted")
+  public getNpmManager() {
+    return this.npmManager
   }
 }
 
