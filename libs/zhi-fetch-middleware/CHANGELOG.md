@@ -1,5 +1,20 @@
 # zhi-fetch-middleware
 
+## 0.7.5
+
+### Patch Changes
+
+- feat: add node cmd
+- Updated dependencies
+  - zhi-device@2.8.1
+
+## 0.7.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.8.0
+
 ## 0.7.3
 
 ### Patch Changes

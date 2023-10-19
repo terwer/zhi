@@ -432,7 +432,21 @@ class SiyuanDevice {
    * Node包安装目录
    */
   public static nodeFolder() {
-    return this.joinPath(this.appSiyuancommunityFolder(), "node", "current", "bin")
+    return this.joinPath(this.appSiyuancommunityFolder(), "node")
+  }
+
+  /**
+   * Node包当前目录
+   */
+  public static nodeCurrentFolder() {
+    return this.joinPath(this.nodeFolder(), "current")
+  }
+
+  /**
+   * Node包当前bin目录
+   */
+  public static nodeCurrentBinFolder() {
+    return this.joinPath(this.nodeCurrentFolder(), "bin")
   }
 
   /**

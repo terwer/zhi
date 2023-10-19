@@ -1,5 +1,19 @@
 # zhi-gitlab-middleware
 
+## 0.6.12
+
+### Patch Changes
+
+- feat: add node cmd
+- Updated dependencies
+  - zhi-fetch-middleware@0.7.5
+
+## 0.6.11
+
+### Patch Changes
+
+- zhi-fetch-middleware@0.7.4
+
 ## 0.6.10
 
 ### Patch Changes

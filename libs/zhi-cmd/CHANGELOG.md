@@ -1,5 +1,20 @@
 # zhi-cmd
 
+## 0.5.2
+
+### Patch Changes
+
+- feat: add node cmd
+- Updated dependencies
+  - zhi-device@2.8.1
+
+## 0.5.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.8.0
+
 ## 0.5.0
 
 ### Minor Changes

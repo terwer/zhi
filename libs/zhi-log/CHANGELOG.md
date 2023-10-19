@@ -1,5 +1,20 @@
 # zhi-log
 
+## 1.14.18
+
+### Patch Changes
+
+- feat: add node cmd
+- Updated dependencies
+  - zhi-device@2.8.1
+
+## 1.14.17
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.8.0
+
 ## 1.14.16
 
 ### Patch Changes

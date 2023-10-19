@@ -48,6 +48,25 @@ class NpmPackageManager {
   }
 
   /**
+   * 执行 Node 命令
+   *
+   * @param subCommand - 要执行的 NPM 命令
+   * @returns 执行结果的 Promise
+   */
+  public async nodeCmd(subCommand: string): Promise<any> {
+    const command = `node`
+    const args = [subCommand, this.zhiCoreNpmPath]
+    const options = {
+      cwd: this.zhiCoreNpmPath,
+      env: {
+        PATH: SiyuanDevice.nodeCurrentBinFolder(),
+      },
+    }
+    this.logger.info("nodeCmd options =>", options)
+    return await this.customCmd.executeCommand(command, args, options)
+  }
+
+  /**
    * 执行 NPM 命令
    *
    * @param subCommand - 要执行的 NPM 命令
@@ -59,7 +78,7 @@ class NpmPackageManager {
     const options = {
       cwd: this.zhiCoreNpmPath,
       env: {
-        PATH: SiyuanDevice.nodeFolder(),
+        PATH: SiyuanDevice.nodeCurrentBinFolder(),
       },
     }
     this.logger.info("npmCmd options =>", options)
@@ -67,8 +86,18 @@ class NpmPackageManager {
   }
 
   /**
-   * 获取 NPM 的版本号。
-   * @returns NPM 版本号的 Promise。
+   * 获取 Node 的版本号
+   *
+   * @returns Node 版本号的 Promise
+   */
+  public async nodeVersion(): Promise<string> {
+    return await this.nodeCmd(`-v`)
+  }
+
+  /**
+   * 获取 NPM 的版本号
+   *
+   * @returns NPM 版本号的 Promise
    */
   public async npmVersion(): Promise<string> {
     return await this.npmCmd(`-v`)
@@ -100,16 +129,23 @@ class NpmPackageManager {
 
   /**
    * 检测并初始化 Node
+   *
+   * @param nodeVersion node版本，例如：v18.18.2
+   * @param nodeInstallDir 安装路径
    */
-  public async checkAndInitNode(): Promise<boolean> {
+  public async checkAndInitNode(nodeVersion?: string, nodeInstallDir?: string): Promise<boolean> {
     let flag = false
     const fs = SiyuanDevice.requireNpm("fs")
-    if (!fs.existsSync(SiyuanDevice.nodeFolder())) {
+    const nodeFolder = SiyuanDevice.nodeFolder()
+    const nodeCurrentBinFolder = SiyuanDevice.nodeCurrentBinFolder()
+    if (!fs.existsSync(nodeCurrentBinFolder)) {
       this.logger.info("Node环境不存在，准备安装Node...")
       // 指向您要运行的.js文件
       const command = `${this.zhiCoreNpmPath}/setup.js`
       const args: string[] = []
-      const cwd = undefined
+      args.push(nodeVersion ?? "v18.18.2")
+      args.push(nodeInstallDir ?? nodeFolder)
+      const cwd = nodeFolder
       const result = await this.customCmd.executeCommandWithBundledNodeAsync(command, args, cwd)
 
       if (result.status) {

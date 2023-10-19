@@ -1,5 +1,19 @@
 # zhi-cli
 
+## 1.5.18
+
+### Patch Changes
+
+- feat: add node cmd
+- Updated dependencies
+  - zhi-log@1.14.18
+
+## 1.5.17
+
+### Patch Changes
+
+- zhi-log@1.14.17
+
 ## 1.5.16
 
 ### Patch Changes

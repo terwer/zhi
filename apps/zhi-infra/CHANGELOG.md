@@ -1,5 +1,26 @@
 # zhi-infra
 
+## 0.7.1
+
+### Patch Changes
+
+- feat: add node cmd
+- Updated dependencies
+  - zhi-device@2.8.1
+  - zhi-cmd@0.5.2
+
+## 0.7.0
+
+### Minor Changes
+
+- feat: add custom node install folder
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.8.0
+  - zhi-cmd@0.5.1
+
 ## 0.6.1
 
 ### Patch Changes

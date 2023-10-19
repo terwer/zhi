@@ -1,5 +1,17 @@
 # zhi-device
 
+## 2.8.1
+
+### Patch Changes
+
+- feat: add node cmd
+
+## 2.8.0
+
+### Minor Changes
+
+- feat: add custom node install folder
+
 ## 2.7.0
 
 ### Minor Changes

@@ -19,6 +19,15 @@ const main: MainFunction = async (args: any[]) => {
   win.zhi = win.zhi ?? {}
   win.zhi.status = win.zhi.status ?? {}
 
+  // mountDevice
+  if (!win.zhi.status.deviceInited) {
+    win.zhi.device = SiyuanDevice
+    win.zhi.status.deviceInited = true
+    logger.info("zhi device inited")
+  } else {
+    logger.info("zhi device is already inited.skip")
+  }
+
   // mountCmd
   if (!win.zhi.status.cmdInited) {
     const cmd = new CustomCmd()
