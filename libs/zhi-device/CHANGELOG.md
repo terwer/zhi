@@ -1,5 +1,11 @@
 # zhi-device
 
+## 2.7.0
+
+### Minor Changes
+
+- feat: rebuild zhi infra
+
 ## 2.6.0
 
 ### Minor Changes

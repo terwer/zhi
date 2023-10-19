@@ -21,7 +21,6 @@
     - [X] [zhi-common-json-validate](https://github.com/terwer/zhi/tree/main/libs/zhi-common-json-validate) ![zhi-common-json-validate](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-common-json-validate%2Fpackage.json&query=%24.version&label=release)
     - [X] [zhi-common-markdown](https://github.com/terwer/zhi/tree/main/libs/zhi-common-markdown) ![zhi-common-markdown](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-common-markdown%2Fpackage.json&query=%24.version&label=release)
     - [X] [zhi-common-version](https://github.com/terwer/zhi/tree/main/libs/zhi-common-version) ![zhi-common-version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-common-version%2Fpackage.json&query=%24.version&label=release)
-  - [X] [zhi-infra](https://github.com/terwer/zhi/tree/main/libs/zhi-infra) ![zhi-infra](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-infra%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-cmd](https://github.com/terwer/zhi/tree/main/libs/zhi-cmd) ![zhi-infra](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-cmd%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-blog-api](https://github.com/terwer/zhi/tree/main/libs/zhi-blog-api) ![zhi-blog-api](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-blog-api%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-notion-markdown](https://github.com/terwer/zhi/tree/main/libs/zhi-notion-markdown) ![zhi-notion-markdown](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-notion-markdown%2Fpackage.json&query=%24.version&label=release)
@@ -37,6 +36,7 @@
 ### scaffold && docs
 
 - [zhi-cli](https://github.com/terwer/zhi/tree/dev/apps/zhi-cli) ![zhi-cli](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Fapps%2Fzhi-cli%2Fpackage.json&query=%24.version&label=release)
+- [X] [zhi-infra](https://github.com/terwer/zhi/tree/main/libs/zhi-infra) ![zhi-infra](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-infra%2Fpackage.json&query=%24.version&label=release)
 - [zhi-docs](https://github.com/terwer/zhi/tree/dev/apps/zhi-docs) ![zhi-docs](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Fapps%2Fzhi-docs%2Fpackage.json&query=%24.version&label=release)
 
 ### tools

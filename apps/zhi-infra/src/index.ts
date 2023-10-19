@@ -1,7 +1,8 @@
 import ZhiInfra from "./zhiInfra"
 import "./lib/requireHacker"
 import { SiyuanDevice } from "zhi-device"
-import { simpleLogger, MainFunction } from "zhi-lib-base"
+import { MainFunction, simpleLogger } from "zhi-lib-base"
+import { CustomCmd } from "zhi-cmd"
 
 /**
  * 基础设施初始化入口
@@ -12,22 +13,35 @@ import { simpleLogger, MainFunction } from "zhi-lib-base"
  */
 const main: MainFunction = async (args: any[]) => {
   const logger = simpleLogger("init-infra", "zhi", false)
+
+  // win
   const win = SiyuanDevice.siyuanWindow()
+  win.zhi = win.zhi ?? {}
+
+  // mountCmd
+  if (!win.zhi.cmdInited) {
+    const cmd = new CustomCmd()
+    win.zhi.cmd = cmd
+    logger.info("zhi cmd inited")
+  } else {
+    logger.info("zhi cmd is already inited.skip")
+  }
+
+  // mountNpmManager
   const zhiNpmPath: string = args.length > 0 ? args[0] : undefined
   const isFixPath: boolean = args.length > 1 ? args[1] : undefined
-  if (!win.zhiInfraInited) {
-    const zhiInfra = new ZhiInfra(zhiNpmPath)
+  if (!win.zhi.infraInited) {
+    const infra = new ZhiInfra(zhiNpmPath)
     if (isFixPath) {
-      zhiInfra.fixPathEnv()
+      infra.fixPathEnv()
     }
-    await zhiInfra.hackRequire()
-    zhiInfra.mountNpmCmd()
-    win.zhiInfraInited = true
+    await infra.hackRequire()
+    infra.mountNpmManager()
+    win.zhi.infraInited = true
     logger.info("zhi infra inited")
   } else {
     logger.info("zhi infra is already inited.skip")
   }
-  return win.npmManager
 }
 
 export default main

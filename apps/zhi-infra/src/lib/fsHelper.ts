@@ -23,18 +23,22 @@
  * questions.
  */
 
-import path from "path"
+import fs from "fs-extra"
 
-export function getCrossPlatformAppDataFolder() {
-  let configFilePath
-  if (process.platform === "darwin") {
-    configFilePath = path.join(process.env.HOME ?? "/Users/terwer", "/Library/Application Support")
-  } else if (process.platform === "win32") {
-    // Roaming包含在APPDATA中了
-    configFilePath = process.env.APPDATA
-  } else if (process.platform === "linux") {
-    configFilePath = process.env.HOME
+class FsHelper {
+  // 调用示例
+  // copyFolder('/path/to/source', '/path/to/target');
+  public static async copyFolder(source: string, target: string): Promise<void> {
+    try {
+      fs.copySync(source, target, {
+        overwrite: false,
+        errorOnExist: false,
+      })
+      console.log(`Successfully copied ${source} to ${target}.`)
+    } catch (err) {
+      console.error(`Error copying ${source} to ${target}: ${err}`)
+    }
   }
-
-  return path.join(configFilePath ?? process.cwd())
 }
+
+export default FsHelper

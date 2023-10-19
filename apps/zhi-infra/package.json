@@ -1,6 +1,6 @@
 {
   "name": "zhi-infra",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "type": "module",
   "description": "basic issues for zhi",
   "main": "./dist/index.cjs",
@@ -15,8 +15,9 @@
     "infra"
   ],
   "scripts": {
-    "dev": "zhi-build --watch --outDir=/Users/terwer/Documents/mydocs/SiYuanWorkspace/public/conf/appearance/themes/zhi/server/infra",
+    "dev": "zhi-build --watch --outDir=/Users/terwer/Documents/mydocs/siyuan-plugins/siyuan-plugin-local-service/public/libs/zhi-infra",
     "build": "zhi-build --production",
+    "syncBuild": "cp -r ./dist/* /Users/terwer/Documents/mydocs/siyuan-plugins/siyuan-plugin-local-service/public/libs/zhi-infra/",
     "test": "jest --coverage=true --coverageDirectory=../../reports/test/zhi-server-infra"
   },
   "devDependencies": {
@@ -27,6 +28,7 @@
   },
   "dependencies": {
     "fix-path": "^4.0.0",
+    "zhi-cmd": "workspace:*",
     "zhi-common": "workspace:*",
     "zhi-device": "workspace:*",
     "zhi-lib-base": "workspace:*"

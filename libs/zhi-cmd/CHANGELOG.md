@@ -1,5 +1,16 @@
 # zhi-cmd
 
+## 0.5.0
+
+### Minor Changes
+
+- feat: rebuild zhi infra
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.7.0
+
 ## 0.4.1
 
 ### Patch Changes

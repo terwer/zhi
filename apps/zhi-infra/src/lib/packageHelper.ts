@@ -96,8 +96,6 @@ export function updatePackageJson(depsFilePath?: string, packageJsonFilePath?: s
     return false
   }
 
-  fs.writeFileSync(hashFilePath, hash)
-
   const packageJsonString = fs.readFileSync(packageJsonFilePath).toString()
   const packageJson: PackageJson = JSON.parse(packageJsonString)
 
@@ -111,5 +109,19 @@ export function updatePackageJson(depsFilePath?: string, packageJsonFilePath?: s
   fs.writeFileSync(packageJsonFilePath, JSON.stringify(packageJson, null, 2))
   logger.info(`dependencies updated successfully at ${packageJsonFilePath}`)
 
+  return true
+}
+
+export function updatePackageJsonHash(depsFilePath?: string, packageJsonFilePath?: string): boolean {
+  if (!depsFilePath) {
+    depsFilePath = path.join(process.cwd(), "deps.json")
+  }
+  if (!packageJsonFilePath) {
+    packageJsonFilePath = path.join(process.cwd(), "package.json")
+  }
+  const hashFilePath = path.join(path.dirname(packageJsonFilePath), ".deps-hash")
+  const depsString = fs.readFileSync(depsFilePath).toString()
+  const hash = crypto.createHash("sha256").update(depsString).digest("hex")
+  fs.writeFileSync(hashFilePath, hash)
   return true
 }

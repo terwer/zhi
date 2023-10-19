@@ -1,5 +1,12 @@
 # zhi-xmlrpc-middleware
 
+## 0.6.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.7.0
+
 ## 0.6.2
 
 ### Patch Changes

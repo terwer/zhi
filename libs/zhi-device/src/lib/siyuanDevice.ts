@@ -97,35 +97,59 @@ class SiyuanDevice {
   // =========================
 
   /**
+   * 依赖 npm
+   *
+   * @param libpath
+   */
+  public static requireNpm = (libpath: string) => {
+    return SiyuanDevice.requireLib(libpath, BasePathTypeEnum.BasePathType_Absolute)
+  }
+
+  /**
    * 引入依赖
    *
    * @param libpath - 依赖全路径
-   * @param abs - 可选，是否使用觉得路径，默认是 true ， 启用之后 type参数无效
    * @param type - 可选，以谁的基本路径为准
+   * @param pluginName - 可选，当前插件目录
    */
-  public static requireLib = (libpath: string, abs = true, type = BasePathTypeEnum.BasePathType_None) => {
+  public static requireLib = (libpath: string, type?: BasePathTypeEnum, pluginName?: string) => {
     if (!BrowserUtil.hasNodeEnv()) {
       throw new Error("require ony works on node env")
     }
 
     let absLibpath = libpath
-    if (!abs) {
-      switch (type) {
-        case BasePathTypeEnum.BasePathType_Appearance:
-          absLibpath = this.joinPath(this.siyuanAppearancePath(), libpath)
-          break
-        case BasePathTypeEnum.BasePathType_Data:
-          absLibpath = this.joinPath(this.siyuanDataPath(), libpath)
-          break
-        case BasePathTypeEnum.BasePathType_Themes:
-          absLibpath = this.joinPath(this.siyuanAppearancePath(), "themes", libpath)
-          break
-        case BasePathTypeEnum.BasePathType_ZhiTheme:
-          absLibpath = this.joinPath(this.siyuanAppearancePath(), "themes", "zhi", libpath)
-          break
-        default:
-          throw new Error("type must be provided when not use absolute path")
-      }
+    switch (type) {
+      case BasePathTypeEnum.BasePathType_Appearance:
+        absLibpath = this.joinPath(this.siyuanAppearancePath(), libpath)
+        break
+      case BasePathTypeEnum.BasePathType_Data:
+        absLibpath = this.joinPath(this.siyuanDataPath(), libpath)
+        break
+      case BasePathTypeEnum.BasePathType_Themes:
+        absLibpath = this.joinPath(this.siyuanAppearancePath(), "themes", libpath)
+        break
+      case BasePathTypeEnum.BasePathType_ZhiTheme:
+        absLibpath = this.joinPath(this.siyuanAppearancePath(), "themes", "zhi", libpath)
+        break
+      case BasePathTypeEnum.BasePathType_ThisPlugin:
+        if (!pluginName) {
+          throw new Error("pluginName must be provided when use plugin path")
+        }
+        absLibpath = this.joinPath(this.siyuanDataPath(), "plugins", pluginName)
+        break
+      case BasePathTypeEnum.BasePathType_AppData:
+        absLibpath = this.joinPath(this.appDataFolder(), libpath)
+        break
+      case BasePathTypeEnum.BasePathType_AppNpm:
+        absLibpath = this.joinPath(this.appNpmFolder(), libpath)
+        break
+      case BasePathTypeEnum.BasePathType_AppService:
+        absLibpath = this.joinPath(this.appServiceFolder(), libpath)
+        break
+      case BasePathTypeEnum.BasePathType_Absolute:
+        break
+      default:
+        break
     }
 
     const syWin = this.siyuanWindow()
@@ -145,7 +169,7 @@ class SiyuanDevice {
    * @param libpath - 相对于 appearance 的相对路径
    */
   public static requireAppearanceLib = (libpath: string) => {
-    return this.requireLib(libpath, false, BasePathTypeEnum.BasePathType_Appearance)
+    return this.requireLib(libpath, BasePathTypeEnum.BasePathType_Appearance)
   }
 
   /**
@@ -154,7 +178,7 @@ class SiyuanDevice {
    * @param libpath - 相对于 data 的相对路径
    */
   public static requireDataLib = (libpath: string) => {
-    return this.requireLib(libpath, false, BasePathTypeEnum.BasePathType_Data)
+    return this.requireLib(libpath, BasePathTypeEnum.BasePathType_Data)
   }
 
   /**
@@ -163,7 +187,7 @@ class SiyuanDevice {
    * @param libpath - 相对于 theme 的相对路径
    */
   public static requireThemesLib = (libpath: string) => {
-    return this.requireLib(libpath, false, BasePathTypeEnum.BasePathType_Themes)
+    return this.requireLib(libpath, BasePathTypeEnum.BasePathType_Themes)
   }
 
   /**
@@ -172,7 +196,16 @@ class SiyuanDevice {
    * @param libpath - 相对于 ZhiTheme 的相对路径
    */
   public static requireZhiThemeLib = (libpath: string) => {
-    return this.requireLib(libpath, false, BasePathTypeEnum.BasePathType_ZhiTheme)
+    return this.requireLib(libpath, BasePathTypeEnum.BasePathType_ZhiTheme)
+  }
+
+  /**
+   * 引入依赖，以 AppService 的基本路径为准
+   *
+   * @param libpath - 相对于 AppService 的相对路径
+   */
+  public static requireAppServiceLib = (libpath: string) => {
+    return this.requireLib(libpath, BasePathTypeEnum.BasePathType_AppService)
   }
 
   // =========================
@@ -187,8 +220,9 @@ class SiyuanDevice {
    *
    * @param jsPath - js相对路径全路径
    * @param type - 类型
+   * @param pluginName - 可选，当前插件目录
    */
-  public static async importJs(jsPath: string, type: BasePathTypeEnum) {
+  public static async importJs(jsPath: string, type: BasePathTypeEnum, pluginName?: string) {
     let fullJsonPath = jsPath
     switch (type) {
       case BasePathTypeEnum.BasePathType_Appearance:
@@ -203,78 +237,21 @@ class SiyuanDevice {
       case BasePathTypeEnum.BasePathType_ZhiTheme:
         fullJsonPath = this.browserJoinPath(this.zhiThemeRelativePath(), jsPath)
         break
+      case BasePathTypeEnum.BasePathType_ThisPlugin:
+        if (!pluginName) {
+          throw new Error("pluginName must be provided when use plugin path")
+        }
+        fullJsonPath = this.browserJoinPath(this.siyuanDataRelativePath(), "plugins", pluginName)
+        break
+      case BasePathTypeEnum.BasePathType_Absolute:
+        break
       default:
-        throw new Error("type must be provided")
+        throw new Error("type not provided or not supported")
     }
 
     const { default: data } = await import(/* @vite-ignore */ fullJsonPath)
     return data
   }
-
-  /**
-   * 引入json
-   *
-   * @param jsonPath - json相对路径全路径
-   * @param type - 类型
-   */
-  // public static async importJson(jsonPath: string, type: BasePathTypeEnum) {
-  //   let fullJsonPath = jsonPath
-  //   switch (type) {
-  //     case BasePathTypeEnum.BasePathType_Appearance:
-  //       fullJsonPath = this.browserJoinPath(this.siyuanAppearanceRelativePath(), jsonPath)
-  //       break
-  //     case BasePathTypeEnum.BasePathType_Data:
-  //       fullJsonPath = this.browserJoinPath(this.siyuanDataRelativePath(), jsonPath)
-  //       break
-  //     case BasePathTypeEnum.BasePathType_Themes:
-  //       fullJsonPath = this.browserJoinPath(this.siyuanThemeRelativePath(), jsonPath)
-  //       break
-  //     case BasePathTypeEnum.BasePathType_ZhiTheme:
-  //       fullJsonPath = this.browserJoinPath(this.zhiThemeRelativePath(), jsonPath)
-  //       break
-  //     default:
-  //       throw new Error("type must be provided")
-  //   }
-  //
-  //   const { default: data } = await import(/* @vite-ignore */ fullJsonPath, { assert: { type: "json" } })
-  //   return data
-  // }
-
-  /**
-   * 引入 json - 以 data 为基本路径
-   *
-   * @param jsonPath - 相对于 data 的相对路径
-   */
-  // public static async importDataJson(jsonPath: string) {
-  //   return await this.importJson(jsonPath, BasePathTypeEnum.BasePathType_Data)
-  // }
-
-  /**
-   * 引入 json - 以 appearance 为基本路径
-   *
-   * @param jsonPath - 相对于 appearance 的相对路径
-   */
-  // public static async importAppearanceJson(jsonPath: string) {
-  //   return await this.importJson(jsonPath, BasePathTypeEnum.BasePathType_Appearance)
-  // }
-
-  /**
-   * 引入 json - 以 themes 为基本路径
-   *
-   * @param jsonPath - 相对于 themes 的相对路径
-   */
-  // public static async importThemesJson(jsonPath: string) {
-  //   return await this.importJson(jsonPath, BasePathTypeEnum.BasePathType_Themes)
-  // }
-
-  /**
-   * 引入 zhi 主题的 json - 以 zhi 主题 的根路径为基本路径
-   *
-   * @param jsonPath - 相对于 zhi 主题根路径的相对路径
-   */
-  // public static async importZhiThemeJson(jsonPath: string) {
-  //   return await this.importJson(jsonPath, BasePathTypeEnum.BasePathType_ZhiTheme)
-  // }
 
   /**
    * 引入 zhi 主题的 js - 以 zhi 主题 的根路径为基本路径
@@ -296,7 +273,7 @@ class SiyuanDevice {
    */
   public static joinPath(...paths: string[]): string {
     if (BrowserUtil.hasNodeEnv()) {
-      const path = this.requireLib("path")
+      const path = this.requireNpm("path")
       if (path) {
         return path.join(...paths)
       }
@@ -310,8 +287,16 @@ class SiyuanDevice {
   }
 
   /**
-   * 思源笔记 conf 目录
+   * 思源笔记 workspace 目录
    */
+  public static siyuanWorkspacePath() {
+    const syWin = this.siyuanWindow()
+    if (!syWin) {
+      throw new Error("Not in siyuan env")
+    }
+    return syWin.siyuan.config.system.workspaceDir
+  }
+
   public static siyuanConfPath() {
     const syWin = this.siyuanWindow()
     if (!syWin) {
@@ -404,6 +389,71 @@ class SiyuanDevice {
    */
   public static zhiThemeRelativePath() {
     return this.browserJoinPath(this.siyuanThemeRelativePath(), "zhi")
+  }
+
+  /**
+   * 用户数据目录
+   */
+  public static appDataFolder() {
+    const process = SiyuanDevice.siyuanWindow().process
+    const path = SiyuanDevice.requireNpm("path")
+
+    let configFilePath
+    if (process.platform === "darwin") {
+      configFilePath = path.join(process.env.HOME ?? "/Users/terwer", "/Library/Application Support")
+    } else if (process.platform === "win32") {
+      // Roaming包含在APPDATA中了
+      configFilePath = process.env.APPDATA
+    } else if (process.platform === "linux") {
+      configFilePath = process.env.HOME
+    } else {
+      throw new Error("OS not supported")
+    }
+
+    return path.join(configFilePath ?? process.cwd())
+  }
+
+  /**
+   * 工作空间名称
+   */
+  public static siyuanWorkspaceName() {
+    const path = this.requireNpm("path")
+    return path.basename(this.siyuanWorkspacePath())
+  }
+
+  /**
+   * 思源社区目录
+   */
+  public static appSiyuancommunityFolder() {
+    return this.joinPath(this.appDataFolder(), "siyuancommunity")
+  }
+
+  /**
+   * Node包安装目录
+   */
+  public static nodeFolder() {
+    return this.joinPath(this.appSiyuancommunityFolder(), "node", "current", "bin")
+  }
+
+  /**
+   * 思源社区工作空间目录
+   */
+  public static appWorkspaceFolder() {
+    return this.joinPath(this.appSiyuancommunityFolder(), "workspace")
+  }
+
+  /**
+   * 当前用户NPM包目录
+   */
+  public static appNpmFolder() {
+    return this.joinPath(this.appWorkspaceFolder(), this.siyuanWorkspaceName())
+  }
+
+  /**
+   * 当前用户服务目录
+   */
+  public static appServiceFolder() {
+    return this.joinPath(this.appNpmFolder(), "apps")
   }
 }
 

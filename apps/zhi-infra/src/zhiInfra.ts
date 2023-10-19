@@ -29,9 +29,8 @@ import { SiyuanDevice } from "zhi-device"
 import { NpmPackageManager } from "./lib/npmHelper"
 import fs from "fs-extra"
 import path from "path"
-import { createPackageJson, updatePackageJson } from "./lib/packageHelper"
+import { createPackageJson, updatePackageJson, updatePackageJsonHash } from "./lib/packageHelper"
 import pkg from "../package.json" assert { type: "json" }
-import { getCrossPlatformAppDataFolder } from "./common"
 
 /**
  * 基础设施
@@ -49,7 +48,7 @@ class ZhiInfra {
     this.zhiNpmPath = zhiNpmPath ?? SiyuanDevice.joinPath(SiyuanDevice.zhiThemePath(), "npm")
 
     this.zhiNodeModulesPath = SiyuanDevice.joinPath(this.zhiNpmPath, "node_modules")
-    this.zhiAppNpmPath = SiyuanDevice.joinPath(getCrossPlatformAppDataFolder() ?? this.zhiNpmPath, "siyuancommunity")
+    this.zhiAppNpmPath = SiyuanDevice.appNpmFolder()
     this.zhiAppNodeModulesPath = SiyuanDevice.joinPath(this.zhiAppNpmPath, "node_modules")
 
     this.npmManager = new NpmPackageManager(this.zhiAppNpmPath)
@@ -100,10 +99,12 @@ class ZhiInfra {
       this.logger.info("Will install node_module once if needed, please wait...")
       await this.npmManager.npmInstall()
       this.logger.info("All node_module installed successfully")
+      await updatePackageJsonHash(depsJsonFile, pkgJsonFile)
+      this.logger.info("Package hash updated successfully")
     }
   }
 
-  public mountNpmCmd() {
+  public mountNpmManager() {
     SiyuanDevice.siyuanWindow().npmManager = this.npmManager
     this.logger.info("npmManager mounted")
   }

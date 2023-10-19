@@ -1,5 +1,12 @@
 # zhi-log
 
+## 1.14.16
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.7.0
+
 ## 1.14.15
 
 ### Patch Changes

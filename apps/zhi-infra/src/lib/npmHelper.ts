@@ -24,78 +24,55 @@
  */
 
 import { SiyuanDevice } from "zhi-device"
+import { CustomCmd } from "zhi-cmd"
+import { simpleLogger } from "zhi-lib-base"
 
 /**
  * 封装一个用于执行 NPM 命令的工具类
  */
 class NpmPackageManager {
-  private zhiAppNpmPath
+  private logger
+  private zhiAppNpmPath: string
+  private customCmd: CustomCmd
 
   /**
    * 构造函数，用于创建 NpmPackageManager 的实例。
    * @param zhiAppNpmPath - Siyuan App 的 NPM 路径。
    */
   constructor(zhiAppNpmPath: string) {
+    this.logger = simpleLogger("npm-package-manager", "zhi", false)
     this.zhiAppNpmPath = zhiAppNpmPath
-  }
-
-  /**
-   * 执行 Shell 命令
-   *
-   * @param target - 目标命令
-   * @param cmd - 要执行的命令
-   * @param path - 命令执行的路径
-   * @returns 执行结果的 Promise
-   */
-  shellCmd(target: string, cmd: string, path?: string): Promise<{ code: number; data: string }> {
-    const spawn = SiyuanDevice.siyuanWindow().require("cross-spawn")
-    const process = SiyuanDevice.siyuanWindow()?.process ?? global.process
-
-    return new Promise((resolve, reject) => {
-      const args = cmd.split(/\s+/)
-      const processer = spawn(target, args, {
-        cwd: path ?? process.cwd(),
-      })
-
-      let output = ""
-      processer.stdout
-        .on("data", (data: any) => {
-          output += data // 获取输出日志
-        })
-        .pipe(process.stdout)
-
-      processer.stderr
-        .on("data", (data: any) => {
-          output += data // 获取报错日志
-        })
-        .pipe(process.stderr)
-
-      processer.on("close", (code: any) => {
-        if (!code) {
-          resolve({ code: 0, data: output }) // 如果没有报错就输出正常日志
-        } else {
-          reject({ code: code, data: output }) // 如果报错就输出报错日志
-        }
-      })
-    })
+    this.customCmd = new CustomCmd()
   }
 
   /**
    * 执行 NPM 命令
    *
-   * @param cmd - 要执行的 NPM 命令
+   * @param subCommand - 要执行的 NPM 命令
    * @returns 执行结果的 Promise
    */
-  npmCmd(cmd: string): Promise<{ code: number; data: string }> {
-    return this.shellCmd("npm", cmd, this.zhiAppNpmPath)
+  public async npmCmd(subCommand: string): Promise<any> {
+    // 检测Node，如果没有先下载
+    await this.checkNodeInstalled()
+
+    const command = `npm`
+    const args = [subCommand, this.zhiAppNpmPath]
+    const options = {
+      cwd: this.zhiAppNpmPath,
+      env: {
+        PATH: SiyuanDevice.nodeFolder(),
+      },
+    }
+    this.logger.info("npmCmd options =>", options)
+    return await this.customCmd.executeCommand("node", [`${command}`], options)
   }
 
   /**
    * 获取 NPM 的版本号。
    * @returns NPM 版本号的 Promise。
    */
-  async npmVersion(): Promise<string> {
-    return (await this.npmCmd(`-v`)).data
+  public async npmVersion(): Promise<string> {
+    return await this.npmCmd(`-v`)
   }
 
   /**
@@ -103,7 +80,7 @@ class NpmPackageManager {
    *
    * @param moduleName - 可选的模块名，不传默认安装全量
    */
-  async npmInstall(moduleName?: string): Promise<void> {
+  public async npmInstall(moduleName?: string): Promise<void> {
     if (moduleName) {
       await this.npmCmd(`install ${moduleName}`)
     } else {
@@ -117,10 +94,15 @@ class NpmPackageManager {
    * @param moduleName - 依赖名称
    * @returns 导入的模块
    */
-  async requireInstall(moduleName: string): Promise<any> {
+  public async requireInstall(moduleName: string): Promise<any> {
     await this.npmCmd(`install ${moduleName}`)
-    return SiyuanDevice.siyuanWindow().require(moduleName)
+    return SiyuanDevice.requireNpm(moduleName)
   }
+
+  //==================
+  // private function
+  //==================
+  private async checkNodeInstalled(): Promise<void> {}
 }
 
 export { NpmPackageManager }
