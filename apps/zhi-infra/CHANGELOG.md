@@ -1,5 +1,16 @@
 # zhi-infra
 
+## 0.12.0
+
+### Minor Changes
+
+- feat: add more node version
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-cmd@0.6.0
+
 ## 0.11.1
 
 ### Patch Changes

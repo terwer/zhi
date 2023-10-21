@@ -92,7 +92,7 @@ export function updatePackageJson(depsFilePath?: string, packageJsonFilePath?: s
   }
 
   if (oldHash === hash) {
-    logger.info(`deps.json hasn't changed since last update, skipping...`)
+    logger.info(`deps.json hasn't changed since last update, skip`)
     return false
   }
 

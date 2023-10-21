@@ -196,6 +196,13 @@ class CustomCmd {
   public async getElectronNodeVersion() {
     return SiyuanDevice.siyuanWindow().process.versions.node
   }
+
+  /**
+   * 获取系统的 Node 版本
+   */
+  public async getSystemNodeVersion() {
+    return await this.executeCommand("node", ["-v"], { shell: true })
+  }
 }
 
 export { CustomCmd }

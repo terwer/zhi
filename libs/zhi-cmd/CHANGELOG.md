@@ -1,5 +1,11 @@
 # zhi-cmd
 
+## 0.6.0
+
+### Minor Changes
+
+- feat: add more node version
+
 ## 0.5.4
 
 ### Patch Changes

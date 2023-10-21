@@ -107,6 +107,24 @@ class NpmPackageManager {
   }
 
   /**
+   * 获取 Electron的 NPM 的版本号
+   *
+   * @returns NPM 版本号的 Promise
+   */
+  public async electronNpmVersion(): Promise<string> {
+    return await this.customCmd.getElectronNodeVersion()
+  }
+
+  /**
+   * 获取系统 NPM 的版本号
+   *
+   * @returns NPM 版本号的 Promise
+   */
+  public async systemNpmVersion() {
+    return await this.customCmd.getSystemNodeVersion()
+  }
+
+  /**
    * 安装 NPM 依赖
    *
    * @param moduleName - 可选的模块名，不传默认安装全量
@@ -161,7 +179,7 @@ class NpmPackageManager {
       }
       flag = true
     } else {
-      this.logger.info("Node已安装过，忽略")
+      this.logger.info("Node already installed, ignore")
       flag = true
     }
 
@@ -173,7 +191,7 @@ class NpmPackageManager {
     // 全量安装依赖
     // 内容有更新才去重新安装
     if (depsJsonStatus) {
-      this.logger.info("Will install node_module once if needed, please wait...")
+      this.logger.info("Detected deps.json change.Will install node_module once if needed, please wait...")
       await this.npmInstall()
       this.logger.info("All node_module installed successfully")
       updatePackageJsonHash(depsJsonFile, pkgJsonFile)
