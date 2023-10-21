@@ -54,11 +54,12 @@ class NpmPackageManager {
    * 执行 Node 命令
    *
    * @param subCommand - 要执行的 NPM 命令
+   * @param oargs - 其它参数
    * @returns 执行结果的 Promise
    */
-  public async nodeCmd(subCommand: string): Promise<any> {
+  public async nodeCmd(subCommand: string, oargs?: any[]): Promise<any> {
     const command = `node`
-    const args = [subCommand, this.zhiCoreNpmPath]
+    const args = [`"${subCommand}"`, `"${this.zhiCoreNpmPath}"`].concat(oargs ?? [])
     const options = {
       cwd: this.zhiCoreNpmPath,
       env: {
@@ -73,11 +74,12 @@ class NpmPackageManager {
    * 执行 NPM 命令
    *
    * @param subCommand - 要执行的 NPM 命令
+   * @param oargs - 其它参数
    * @returns 执行结果的 Promise
    */
-  public async npmCmd(subCommand: string): Promise<any> {
+  public async npmCmd(subCommand: string, oargs?: any[]): Promise<any> {
     const command = `npm`
-    const args = [subCommand, `"${this.zhiCoreNpmPath}"`]
+    const args = [`"${subCommand}"`, `"${this.zhiCoreNpmPath}"`].concat(oargs ?? [])
     const options = {
       cwd: this.zhiCoreNpmPath,
       env: {
@@ -150,9 +152,9 @@ class NpmPackageManager {
       return result
     } catch (e: any) {
       if (e && e.message && e.message.includes(`Cannot find module '${moduleName}'`)) {
-        this.logger.warn(`${moduleName} not found, will install once...`)
+        this.logger.info(`${moduleName} not found, will install once...`)
         await this.npmCmd(`install ${moduleName}`)
-        this.logger.warn(`${moduleName} installed`)
+        this.logger.info(`${moduleName} installed`)
         return SiyuanDevice.requireNpm(moduleName)
       }
       throw e

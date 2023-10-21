@@ -1,5 +1,17 @@
 # zhi-infra
 
+## 0.14.0
+
+### Minor Changes
+
+- feat: add more options for cmd
+
+## 0.13.0
+
+### Minor Changes
+
+- feat: support space in node cmd
+
 ## 0.12.1
 
 ### Patch Changes
