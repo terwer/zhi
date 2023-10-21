@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.12.1
+
+### Patch Changes
+
+- feat: add cache to require install
+
 ## 0.12.0
 
 ### Minor Changes

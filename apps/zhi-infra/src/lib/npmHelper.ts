@@ -144,8 +144,19 @@ class NpmPackageManager {
    * @returns 导入的模块
    */
   public async requireInstall(moduleName: string): Promise<any> {
-    await this.npmCmd(`install ${moduleName}`)
-    return SiyuanDevice.requireNpm(moduleName)
+    try {
+      const result = SiyuanDevice.requireNpm(moduleName)
+      this.logger.info(`${moduleName} already cached`)
+      return result
+    } catch (e: any) {
+      if (e && e.message && e.message.includes(`Cannot find module '${moduleName}'`)) {
+        this.logger.warn(`${moduleName} not found, will install once...`)
+        await this.npmCmd(`install ${moduleName}`)
+        this.logger.warn(`${moduleName} installed`)
+        return SiyuanDevice.requireNpm(moduleName)
+      }
+      throw e
+    }
   }
 
   /**
