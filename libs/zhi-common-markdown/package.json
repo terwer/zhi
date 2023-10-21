@@ -1,6 +1,6 @@
 {
   "name": "zhi-common-markdown",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "type": "module",
   "description": "a universal Markdown parsing tool",
   "main": "./dist/index.js",

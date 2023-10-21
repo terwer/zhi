@@ -23,20 +23,18 @@
  * questions.
  */
 
-/**
- * 安全地解析参数数组中的元素
- *
- * @param args - 参数数组
- * @param index - 要解析的元素索引
- * @returns 如果参数数组和索引有效，则返回指定索引处的元素，否则返回 undefined
- * @author terwer
- * @since 1.0.0
- */
-const safeParseArgs = (args?: any[], index?: number): any | undefined => {
-  if (args && index && args.length > index) {
-    return args[index]
-  }
-  return undefined
-}
+import { describe, it } from "vitest"
+import safeParseArgs from "./argParse"
 
-export default safeParseArgs
+describe("test argParse", () => {
+  it("test safeParseArgs", () => {
+    const args = [
+      "/Users/terwer/Documents/mydocs/SiYuanWorkspace/test/data/plugins/siyuan-plugin-local-service/libs/zhi-infra/deps",
+      false,
+    ]
+    const depsJsonPath: string = safeParseArgs(args, 0)
+    const isFixPath: boolean = safeParseArgs(args, 1)
+    console.log("depsJsonPath =>", depsJsonPath)
+    console.log("isFixPath =>", isFixPath)
+  })
+})

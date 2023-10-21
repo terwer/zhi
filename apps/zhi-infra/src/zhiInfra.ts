@@ -65,8 +65,7 @@ class ZhiInfra {
     this.logger.info("Init zhi core node_modules from => ", this.zhiCoreNodeModulesPath)
     SiyuanDevice.siyuanWindow().require.setExternalDeps(this.zhiCoreNodeModulesPath)
 
-    // 初始化 APP 依赖安装的 package.json
-    this.logger.info("Init zhi app node_modules from => ", this.zhiCoreNodeModulesPath)
+    // 初始化依赖安装的 package.json
     const pkgJsonFile = path.join(this.zhiCoreNpmPath, "package.json")
     if (!fs.existsSync(pkgJsonFile)) {
       await fs.mkdirs(this.zhiCoreNpmPath)

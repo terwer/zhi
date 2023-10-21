@@ -1,6 +1,6 @@
 {
   "name": "zhi-cmd",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "type": "module",
   "description": "commond utils for siyuan-note",
   "main": "./dist/index.cjs",

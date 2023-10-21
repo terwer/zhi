@@ -1,5 +1,24 @@
 # zhi-infra
 
+## 0.10.0
+
+### Minor Changes
+
+- feat； fix arg parse
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.8.0
+  - zhi-cmd@0.5.4
+  - zhi-common@1.24.3
+
+## 0.9.1
+
+### Patch Changes
+
+- fix: remove unused log
+
 ## 0.9.0
 
 ### Minor Changes

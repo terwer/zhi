@@ -1,9 +1,8 @@
 import ZhiInfra from "./zhiInfra"
 import "./lib/requireHacker"
 import { SiyuanDevice } from "zhi-device"
-import { MainFunction, ILogger, simpleLogger } from "zhi-lib-base"
+import { ILogger, MainFunction, safeParseArgs, simpleLogger } from "zhi-lib-base"
 import { CustomCmd } from "zhi-cmd"
-import { safeParseArgs } from "zhi-lib-base"
 
 /**
  * 基础设施初始化入口
