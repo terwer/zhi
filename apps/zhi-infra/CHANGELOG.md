@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.11.0
+
+### Minor Changes
+
+- feat: change bootstrap script
+
 ## 0.10.0
 
 ### Minor Changes

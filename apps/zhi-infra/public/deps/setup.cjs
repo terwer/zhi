@@ -114,4 +114,6 @@ const installNodeJS = async () => {
   }
 }
 
-installNodeJS()
+;(async () => {
+  await installNodeJS()
+})()

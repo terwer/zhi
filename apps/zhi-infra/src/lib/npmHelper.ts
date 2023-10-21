@@ -144,7 +144,7 @@ class NpmPackageManager {
     if (!fs.existsSync(nodeCurrentBinFolder)) {
       this.logger.info("Node环境不存在，准备安装Node...")
       // 指向您要运行的.js文件
-      const command = `${this.depsJsonPath}/setup.js`
+      const command = `${this.depsJsonPath}/setup.cjs`
       const args: string[] = []
       args.push(nodeVersion ?? "v18.18.2")
       args.push(nodeInstallDir ?? nodeFolder)
