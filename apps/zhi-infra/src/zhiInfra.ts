@@ -24,7 +24,7 @@
  */
 
 import fixPath from "fix-path"
-import { simpleLogger } from "zhi-lib-base"
+import { ILogger, simpleLogger } from "zhi-lib-base"
 import { SiyuanDevice } from "zhi-device"
 import { NpmPackageManager } from "./lib/npmHelper"
 import fs from "fs-extra"
@@ -36,7 +36,7 @@ import pkg from "../package.json"
  * 基础设施
  */
 class ZhiInfra {
-  private readonly logger
+  private readonly logger: ILogger
   private zhiCoreNpmPath: string
   private zhiCoreNodeModulesPath: string
   private npmManager: NpmPackageManager

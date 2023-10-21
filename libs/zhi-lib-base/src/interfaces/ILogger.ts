@@ -23,12 +23,44 @@
  * questions.
  */
 
-import NotImplementedException from "./exception/notImplementedException"
-import simpleLogger from "./logger/simpleLogger"
-import MainFunction from "./interfaces/mainFunction"
-import safeParseArgs from "./interfaces/argParse"
-import ILogger from "./interfaces/ILogger"
+/**
+ * 简单的日志接口
+ *
+ * @author terwer
+ * @since 1.0.0
+ */
+interface ILogger {
+  /**
+   * 输出调试信息
+   *
+   * @param msg - 调试信息
+   * @param obj - 附加对象 (可选)
+   */
+  debug: (msg: string, obj?: any) => void
 
-export { NotImplementedException, simpleLogger }
-export { safeParseArgs }
-export type { ILogger, MainFunction }
+  /**
+   * 输出信息
+   *
+   * @param msg - 信息内容
+   * @param obj - 附加对象 (可选)
+   */
+  info: (msg: string, obj?: any) => void
+
+  /**
+   * 输出警告信息
+   *
+   * @param msg - 警告信息
+   * @param obj - 附加对象 (可选)
+   */
+  warn: (msg: string, obj?: any) => void
+
+  /**
+   * 输出错误信息
+   *
+   * @param msg - 错误信息或错误对象
+   * @param obj - 附加对象 (可选)
+   */
+  error: (msg: string | Error, obj?: any) => void
+}
+
+export default ILogger

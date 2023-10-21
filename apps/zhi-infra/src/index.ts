@@ -1,8 +1,9 @@
 import ZhiInfra from "./zhiInfra"
 import "./lib/requireHacker"
 import { SiyuanDevice } from "zhi-device"
-import { MainFunction, simpleLogger } from "zhi-lib-base"
+import { MainFunction, ILogger, simpleLogger } from "zhi-lib-base"
 import { CustomCmd } from "zhi-cmd"
+import { safeParseArgs } from "zhi-lib-base"
 
 /**
  * 基础设施初始化入口
@@ -11,8 +12,8 @@ import { CustomCmd } from "zhi-cmd"
  *   zhiNpmPath - 内置的 NPM 目录
  *   isFixPath - 是否修复路径
  */
-const main: MainFunction = async (args: any[]) => {
-  const logger = simpleLogger("init-infra", "zhi", false)
+const main: MainFunction = async (args?: any[]): Promise<void> => {
+  const logger: ILogger = simpleLogger("init-infra", "zhi", false)
 
   // win
   const win = SiyuanDevice.siyuanWindow()
@@ -39,8 +40,8 @@ const main: MainFunction = async (args: any[]) => {
   }
 
   // mountNpmManager
-  const depsJsonPath: string = args.length > 0 ? args[0] : undefined
-  const isFixPath: boolean = args.length > 1 ? args[1] : undefined
+  const depsJsonPath: string = safeParseArgs(args, 0)
+  const isFixPath: boolean = safeParseArgs(args, 1)
   if (!win.zhi.status.infraInited) {
     const infra = new ZhiInfra(depsJsonPath)
     if (isFixPath) {

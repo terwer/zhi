@@ -1,5 +1,18 @@
 # zhi-infra
 
+## 0.9.0
+
+### Minor Changes
+
+- feat: add logger define
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.7.0
+  - zhi-cmd@0.5.3
+  - zhi-common@1.24.2
+
 ## 0.8.0
 
 ### Minor Changes

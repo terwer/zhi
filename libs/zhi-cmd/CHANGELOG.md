@@ -1,5 +1,12 @@
 # zhi-cmd
 
+## 0.5.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.7.0
+
 ## 0.5.2
 
 ### Patch Changes

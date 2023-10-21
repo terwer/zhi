@@ -23,15 +23,7 @@
  * questions.
  */
 
-/**
- * 简单的日志接口
- */
-interface ILogger {
-  debug: (msg: string, obj?: any) => void
-  info: (msg: string, obj?: any) => void
-  warn: (msg: string, obj?: any) => void
-  error: (msg: string | Error, obj?: any) => void
-}
+import ILogger from "../interfaces/ILogger"
 
 /**
  * 一个简单轻量级的日志记录器
