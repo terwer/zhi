@@ -39,9 +39,10 @@ class NpmPackageManager {
   private customCmd: CustomCmd
 
   /**
-   * 构造函数，用于创建 NpmPackageManager 的实例。
-   * @param zhiCoreNpmPath - Siyuan App 的 NPM 路径。
-   * @param depsJsonPath - 一来定义路径
+   * 构造函数，用于创建 NpmPackageManager 的实例
+   *
+   * @param zhiCoreNpmPath - Siyuan App 的 NPM 路径
+   * @param depsJsonPath - deps.json 路径
    */
   constructor(zhiCoreNpmPath: string, depsJsonPath: string) {
     this.logger = simpleLogger("npm-package-manager", "zhi", false)
@@ -58,16 +59,7 @@ class NpmPackageManager {
    * @returns 执行结果的 Promise
    */
   public async nodeCmd(subCommand: string, oargs?: any[]): Promise<any> {
-    const command = `node`
-    const args = [`"${subCommand}"`, `"${this.zhiCoreNpmPath}"`].concat(oargs ?? [])
-    const options = {
-      cwd: this.zhiCoreNpmPath,
-      env: {
-        PATH: SiyuanDevice.nodeCurrentBinFolder(),
-      },
-    }
-    this.logger.info("nodeCmd options =>", options)
-    return await this.customCmd.executeCommand(command, args, options)
+    return await this.localNodeCmd("node", subCommand, oargs)
   }
 
   /**
@@ -78,16 +70,7 @@ class NpmPackageManager {
    * @returns 执行结果的 Promise
    */
   public async npmCmd(subCommand: string, oargs?: any[]): Promise<any> {
-    const command = `npm`
-    const args = [`"${subCommand}"`, `"${this.zhiCoreNpmPath}"`].concat(oargs ?? [])
-    const options = {
-      cwd: this.zhiCoreNpmPath,
-      env: {
-        PATH: SiyuanDevice.nodeCurrentBinFolder(),
-      },
-    }
-    this.logger.info("npmCmd options =>", options)
-    return await this.customCmd.executeCommand(command, args, options)
+    return await this.localNodeCmd("npm", subCommand, oargs)
   }
 
   /**
@@ -212,6 +195,39 @@ class NpmPackageManager {
     }
 
     return flag
+  }
+
+  /**
+   * 本地服务的 Node 命令
+   *
+   * @param command 主命令
+   * @param subCommand 子命令
+   * @param oargs 其它参数
+   * @private
+   */
+  private async localNodeCmd(command: string, subCommand: string, oargs?: any[]): Promise<any> {
+    // 使用 exec
+    // const args = [`"${subCommand}"`, `"${this.zhiCoreNpmPath}"`].concat(oargs ?? [])
+    // const options = {
+    //   cwd: this.zhiCoreNpmPath,
+    //   env: {
+    //     PATH: SiyuanDevice.nodeCurrentBinFolder(),
+    //   },
+    // }
+    // this.logger.info("nodeCmd exec options =>", options)
+    // return await this.customCmd.executeCommand(command, args, options)
+
+    // 使用 spawn
+    // const args = [`"${subCommand}"`, `"${this.zhiCoreNpmPath}"`].concat(oargs ?? [])
+    const args = [subCommand, this.zhiCoreNpmPath].concat(oargs ?? [])
+    const options = {
+      cwd: this.zhiCoreNpmPath,
+      env: {
+        PATH: SiyuanDevice.nodeCurrentBinFolder(),
+      },
+    }
+    this.logger.info("nodeCmd spawn options =>", options)
+    return await this.customCmd.executeCommandWithSpawn(command, args, options)
   }
 }
 
