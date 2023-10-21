@@ -37,18 +37,16 @@ import pkg from "../package.json"
  */
 class ZhiInfra {
   private readonly logger
-  private zhiAppNodeModulesPath
   private zhiCoreNpmPath: string
-  private zhiNodeModulesPath
-  private npmManager
+  private zhiCoreNodeModulesPath: string
+  private npmManager: NpmPackageManager
 
-  constructor(zhiCoreNpmPath?: string) {
+  constructor(depsJsonPath: string) {
     this.logger = simpleLogger("zhi-infra", "zhi", true)
-    this.zhiCoreNpmPath = zhiCoreNpmPath ?? SiyuanDevice.joinPath(SiyuanDevice.zhiThemePath(), "npm")
-    this.zhiNodeModulesPath = SiyuanDevice.joinPath(this.zhiCoreNpmPath, "node_modules")
-    this.npmManager = new NpmPackageManager(this.zhiCoreNpmPath)
 
-    this.zhiAppNodeModulesPath = SiyuanDevice.joinPath(SiyuanDevice.appNpmFolder(), "node_modules")
+    this.zhiCoreNpmPath = SiyuanDevice.appNpmFolder()
+    this.zhiCoreNodeModulesPath = SiyuanDevice.joinPath(this.zhiCoreNpmPath, "node_modules")
+    this.npmManager = new NpmPackageManager(this.zhiCoreNpmPath, depsJsonPath)
   }
 
   /**
@@ -63,27 +61,18 @@ class ZhiInfra {
   }
 
   public async hackRequire() {
-    // 设置依赖路径，hack require保证require能使用自定义路径的node_modules
-    this.logger.info("Init zhi core node_modules from => ", this.zhiNodeModulesPath)
-    SiyuanDevice.siyuanWindow().require.setExternalDeps(this.zhiNodeModulesPath)
+    // 设置依赖路径，hack require 保 证require 能使用自定义路径的 node_modules
+    this.logger.info("Init zhi core node_modules from => ", this.zhiCoreNodeModulesPath)
+    SiyuanDevice.siyuanWindow().require.setExternalDeps(this.zhiCoreNodeModulesPath)
 
     // 初始化 APP 依赖安装的 package.json
-    this.logger.info("Init zhi app node_modules from => ", this.zhiAppNodeModulesPath)
+    this.logger.info("Init zhi app node_modules from => ", this.zhiCoreNodeModulesPath)
     const pkgJsonFile = path.join(this.zhiCoreNpmPath, "package.json")
     if (!fs.existsSync(pkgJsonFile)) {
       await fs.mkdirs(this.zhiCoreNpmPath)
-
       createPackageJson("zhi-app-package", pkg.version, {}, pkgJsonFile)
-      // await npmCmd("init", zhiAppNpmPath)
       this.logger.warn("app package.json not exist, inited")
     }
-
-    // 设置依赖路径
-    SiyuanDevice.siyuanWindow().require.setExternalDeps(this.zhiAppNodeModulesPath)
-    const externalDepPathes = SiyuanDevice.siyuanWindow().ExternalDepPathes
-    externalDepPathes.map((path: string, index: number) => {
-      this.logger.info(`Available zhi node_modules path${index + 1} => ${path}`)
-    })
   }
 
   public getNpmManager() {

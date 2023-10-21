@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.8.0
+
+### Minor Changes
+
+- feat: change deps store path
+
 ## 0.7.3
 
 ### Patch Changes

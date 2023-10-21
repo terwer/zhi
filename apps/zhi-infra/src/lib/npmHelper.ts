@@ -35,15 +35,18 @@ import { updatePackageJson, updatePackageJsonHash } from "./packageHelper"
 class NpmPackageManager {
   private logger
   private zhiCoreNpmPath: string
+  private depsJsonPath: string
   private customCmd: CustomCmd
 
   /**
    * 构造函数，用于创建 NpmPackageManager 的实例。
    * @param zhiCoreNpmPath - Siyuan App 的 NPM 路径。
+   * @param depsJsonPath - 一来定义路径
    */
-  constructor(zhiCoreNpmPath: string) {
+  constructor(zhiCoreNpmPath: string, depsJsonPath: string) {
     this.logger = simpleLogger("npm-package-manager", "zhi", false)
     this.zhiCoreNpmPath = zhiCoreNpmPath
+    this.depsJsonPath = depsJsonPath
     this.customCmd = new CustomCmd()
   }
 
@@ -141,7 +144,7 @@ class NpmPackageManager {
     if (!fs.existsSync(nodeCurrentBinFolder)) {
       this.logger.info("Node环境不存在，准备安装Node...")
       // 指向您要运行的.js文件
-      const command = `${this.zhiCoreNpmPath}/setup.js`
+      const command = `${this.depsJsonPath}/setup.js`
       const args: string[] = []
       args.push(nodeVersion ?? "v18.18.2")
       args.push(nodeInstallDir ?? nodeFolder)
@@ -164,7 +167,7 @@ class NpmPackageManager {
 
     // 更新最新定义的依赖
     const pkgJsonFile = path.join(this.zhiCoreNpmPath, "package.json")
-    const depsJsonFile = path.join(this.zhiCoreNpmPath, "deps.json")
+    const depsJsonFile = path.join(this.depsJsonPath, "deps.json")
     const depsJsonStatus = updatePackageJson(depsJsonFile, pkgJsonFile)
 
     // 全量安装依赖

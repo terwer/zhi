@@ -39,10 +39,10 @@ const main: MainFunction = async (args: any[]) => {
   }
 
   // mountNpmManager
-  const zhiNpmPath: string = args.length > 0 ? args[0] : undefined
+  const depsJsonPath: string = args.length > 0 ? args[0] : undefined
   const isFixPath: boolean = args.length > 1 ? args[1] : undefined
   if (!win.zhi.status.infraInited) {
-    const infra = new ZhiInfra(zhiNpmPath)
+    const infra = new ZhiInfra(depsJsonPath)
     if (isFixPath) {
       infra.fixPathEnv()
     }
