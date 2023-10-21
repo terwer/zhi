@@ -23,7 +23,14 @@
  * questions.
  */
 
-// 定义接口
+/**
+ * 入口函数
+ *
+ * @param args 参数数组
+ * @returns 返回一个 Promise 包含任何类型的结果
+ * @author terwer
+ * @since 1.0.0
+ */
 interface MainFunction {
   (args: any[]): Promise<any>
 }

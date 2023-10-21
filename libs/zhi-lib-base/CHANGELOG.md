@@ -1,5 +1,17 @@
 # zhi-lib-base
 
+## 0.8.0
+
+### Minor Changes
+
+- feat: fix arg parse
+
+## 0.7.0
+
+### Minor Changes
+
+- feat: add logger define
+
 ## 0.6.0
 
 ### Minor Changes

@@ -1,5 +1,43 @@
 # zhi-xmlrpc-middleware
 
+## 0.6.7
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.8.0
+  - zhi-common@1.24.3
+
+## 0.6.6
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.7.0
+  - zhi-common@1.24.2
+
+## 0.6.5
+
+### Patch Changes
+
+- feat: add node cmd
+- Updated dependencies
+  - zhi-device@2.8.1
+
+## 0.6.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.8.0
+
+## 0.6.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.7.0
+
 ## 0.6.2
 
 ### Patch Changes

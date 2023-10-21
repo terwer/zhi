@@ -25,3 +25,4 @@ Mac上 [zhiAppNpmPath]=/Users/[Mac用户名]/Library/Application Support/siyuanc
 Windows上 [zhiAppNpmPath]=[用户目录]/siyuancommunity
 Linux上 [zhiAppNpmPath]=[用户目录]/siyuancommunity
 ```
+

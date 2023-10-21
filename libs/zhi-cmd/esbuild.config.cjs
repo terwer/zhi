@@ -52,7 +52,7 @@ module.exports = {
   esbuildConfig: {
     entryPoints: ["src/index.ts"],
     outfile: path.join(distDir, "index.cjs"),
-    format: "cjs",
+    format: "esm",
     // define: { ...coreDefine },
     plugins: [
       dtsPlugin(),

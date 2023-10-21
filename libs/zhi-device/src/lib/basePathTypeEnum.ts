@@ -53,6 +53,22 @@ enum BasePathTypeEnum {
    */
   BasePathType_ThisPlugin = "ThisPlugin",
   /**
+   * 当前用户数据目录
+   */
+  BasePathType_AppData = "AppData",
+  /**
+   * 当前用户NPM包目录
+   */
+  BasePathType_AppNpm = "AppNpm",
+  /**
+   * 当前用户服务目录
+   */
+  BasePathType_AppService = "AppService",
+  /**
+   * 绝对路径，对于 require 的话是绝对路径，对于 import 则是 /
+   */
+  BasePathType_Absolute = "Absolute",
+  /**
    * 未设置
    */
   BasePathType_None = "None",

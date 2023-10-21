@@ -23,12 +23,22 @@
  * questions.
  */
 
-import { describe, expect, it } from "vitest"
-import { DeviceDetection } from "./index"
+import fs from "fs-extra"
 
-describe("zhi-device", () => {
-  it("index", () => {
-    // https://github.com/vitest-dev/vitest/issues/1610
-    expect(DeviceDetection).toBeTruthy()
-  })
-})
+class FsHelper {
+  // 调用示例
+  // copyFolder('/path/to/source', '/path/to/target');
+  public static async copyFolder(source: string, target: string): Promise<void> {
+    try {
+      fs.copySync(source, target, {
+        overwrite: false,
+        errorOnExist: false,
+      })
+      console.log(`Successfully copied ${source} to ${target}.`)
+    } catch (err) {
+      console.error(`Error copying ${source} to ${target}: ${err}`)
+    }
+  }
+}
+
+export default FsHelper

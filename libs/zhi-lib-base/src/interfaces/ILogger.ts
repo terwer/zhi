@@ -23,18 +23,44 @@
  * questions.
  */
 
-import path from "path"
+/**
+ * 简单的日志接口
+ *
+ * @author terwer
+ * @since 1.0.0
+ */
+interface ILogger {
+  /**
+   * 输出调试信息
+   *
+   * @param msg - 调试信息
+   * @param obj - 附加对象 (可选)
+   */
+  debug: (msg: string, obj?: any) => void
 
-export function getCrossPlatformAppDataFolder() {
-  let configFilePath
-  if (process.platform === "darwin") {
-    configFilePath = path.join(process.env.HOME ?? "/Users/terwer", "/Library/Application Support")
-  } else if (process.platform === "win32") {
-    // Roaming包含在APPDATA中了
-    configFilePath = process.env.APPDATA
-  } else if (process.platform === "linux") {
-    configFilePath = process.env.HOME
-  }
+  /**
+   * 输出信息
+   *
+   * @param msg - 信息内容
+   * @param obj - 附加对象 (可选)
+   */
+  info: (msg: string, obj?: any) => void
 
-  return path.join(configFilePath ?? process.cwd())
+  /**
+   * 输出警告信息
+   *
+   * @param msg - 警告信息
+   * @param obj - 附加对象 (可选)
+   */
+  warn: (msg: string, obj?: any) => void
+
+  /**
+   * 输出错误信息
+   *
+   * @param msg - 错误信息或错误对象
+   * @param obj - 附加对象 (可选)
+   */
+  error: (msg: string | Error, obj?: any) => void
 }
+
+export default ILogger
