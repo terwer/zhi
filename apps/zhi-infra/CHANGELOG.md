@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.11.1
+
+### Patch Changes
+
+- fix: adapt npm cwd path for space char
+
 ## 0.11.0
 
 ### Minor Changes

@@ -77,7 +77,7 @@ class NpmPackageManager {
    */
   public async npmCmd(subCommand: string): Promise<any> {
     const command = `npm`
-    const args = [subCommand, this.zhiCoreNpmPath]
+    const args = [subCommand, `"${this.zhiCoreNpmPath}"`]
     const options = {
       cwd: this.zhiCoreNpmPath,
       env: {
