@@ -146,6 +146,9 @@ class NpmPackageManager {
       args.push(nodeVersion ?? "v18.18.2")
       args.push(nodeInstallDir ?? nodeFolder)
       const cwd = nodeFolder
+      if (!fs.existsSync(cwd)) {
+        fs.mkdirSync(cwd, { recursive: true })
+      }
       const result = await this.customCmd.executeCommandWithBundledNodeAsync(command, args, cwd)
 
       if (result.status) {

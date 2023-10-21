@@ -1,5 +1,17 @@
 # zhi-infra
 
+## 0.7.3
+
+### Patch Changes
+
+- feat: ensure cwd dir
+
+## 0.7.2
+
+### Patch Changes
+
+- feat: ensure cwd dir
+
 ## 0.7.1
 
 ### Patch Changes
