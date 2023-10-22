@@ -97,22 +97,13 @@ class SiyuanDevice {
   // =========================
 
   /**
-   * 依赖 npm
-   *
-   * @param libpath
-   */
-  public static requireNpm = (libpath: string) => {
-    return SiyuanDevice.requireLib(libpath, BasePathTypeEnum.BasePathType_Absolute)
-  }
-
-  /**
-   * 引入依赖
+   * 获取 require 路径
    *
    * @param libpath - 依赖全路径
    * @param type - 可选，以谁的基本路径为准
    * @param pluginName - 可选，当前插件目录
    */
-  public static requireLib = (libpath: string, type?: BasePathTypeEnum, pluginName?: string) => {
+  public static getRequirePath(libpath: string, type?: BasePathTypeEnum, pluginName?: string) {
     if (!BrowserUtil.hasNodeEnv()) {
       throw new Error("require ony works on node env")
     }
@@ -151,6 +142,28 @@ class SiyuanDevice {
       default:
         break
     }
+
+    return absLibpath
+  }
+
+  /**
+   * 依赖 npm
+   *
+   * @param libpath
+   */
+  public static requireNpm = (libpath: string) => {
+    return SiyuanDevice.requireLib(libpath, BasePathTypeEnum.BasePathType_Absolute)
+  }
+
+  /**
+   * 引入依赖
+   *
+   * @param libpath - 依赖全路径
+   * @param type - 可选，以谁的基本路径为准
+   * @param pluginName - 可选，当前插件目录
+   */
+  public static requireLib = (libpath: string, type?: BasePathTypeEnum, pluginName?: string) => {
+    const absLibpath = this.getRequirePath(libpath, type, pluginName)
 
     const syWin = this.siyuanWindow()
     if (!syWin) {
@@ -216,32 +229,32 @@ class SiyuanDevice {
   // import start
   // =========================
   /**
-   * 引入json
+   * 获取 import 路径
    *
    * @param jsPath - js相对路径全路径
    * @param type - 类型
    * @param pluginName - 可选，当前插件目录
    */
-  public static async importJs(jsPath: string, type: BasePathTypeEnum, pluginName?: string) {
-    let fullJsonPath = jsPath
+  public static getImportPath(jsPath: string, type: BasePathTypeEnum, pluginName?: string) {
+    let fullJsPath = jsPath
     switch (type) {
       case BasePathTypeEnum.BasePathType_Appearance:
-        fullJsonPath = this.browserJoinPath(this.siyuanAppearanceRelativePath(), jsPath)
+        fullJsPath = this.browserJoinPath(this.siyuanAppearanceRelativePath(), jsPath)
         break
       case BasePathTypeEnum.BasePathType_Data:
-        fullJsonPath = this.browserJoinPath(this.siyuanDataRelativePath(), jsPath)
+        fullJsPath = this.browserJoinPath(this.siyuanDataRelativePath(), jsPath)
         break
       case BasePathTypeEnum.BasePathType_Themes:
-        fullJsonPath = this.browserJoinPath(this.siyuanThemeRelativePath(), jsPath)
+        fullJsPath = this.browserJoinPath(this.siyuanThemeRelativePath(), jsPath)
         break
       case BasePathTypeEnum.BasePathType_ZhiTheme:
-        fullJsonPath = this.browserJoinPath(this.zhiThemeRelativePath(), jsPath)
+        fullJsPath = this.browserJoinPath(this.zhiThemeRelativePath(), jsPath)
         break
       case BasePathTypeEnum.BasePathType_ThisPlugin:
         if (!pluginName) {
           throw new Error("pluginName must be provided when use plugin path")
         }
-        fullJsonPath = this.browserJoinPath(this.siyuanDataRelativePath(), "plugins", pluginName)
+        fullJsPath = this.browserJoinPath(this.siyuanDataRelativePath(), "plugins", pluginName)
         break
       case BasePathTypeEnum.BasePathType_Absolute:
         break
@@ -249,7 +262,19 @@ class SiyuanDevice {
         throw new Error("type not provided or not supported")
     }
 
-    const { default: data } = await import(/* @vite-ignore */ fullJsonPath)
+    return fullJsPath
+  }
+
+  /**
+   * 引入json
+   *
+   * @param jsPath - js相对路径全路径
+   * @param type - 类型
+   * @param pluginName - 可选，当前插件目录
+   */
+  public static async importJs(jsPath: string, type: BasePathTypeEnum, pluginName?: string) {
+    const fullJsPath = this.getImportPath(jsPath, type, pluginName)
+    const { default: data } = await import(/* @vite-ignore */ fullJsPath)
     return data
   }
 

@@ -1,5 +1,11 @@
 # zhi-cli
 
+## 1.5.19
+
+### Patch Changes
+
+- zhi-log@1.14.19
+
 ## 1.5.18
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # zhi-device
 
+## 2.9.0
+
+### Minor Changes
+
+- feat: add getRequirePath
+
 ## 2.8.1
 
 ### Patch Changes
