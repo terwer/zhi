@@ -70,7 +70,7 @@ class NpmPackageManager {
    * @returns 执行结果的 Promise
    */
   public async npmCmd(subCommand: string, oargs?: any[]): Promise<any> {
-    return await this.localNodeCmd("npm", subCommand, oargs)
+    return await this.localNodeExecCmd("npm", subCommand, oargs)
   }
 
   /**
@@ -206,19 +206,7 @@ class NpmPackageManager {
    * @private
    */
   private async localNodeCmd(command: string, subCommand: string, oargs?: any[]): Promise<any> {
-    // 使用 exec
-    // const args = [`"${subCommand}"`, `"${this.zhiCoreNpmPath}"`].concat(oargs ?? [])
-    // const options = {
-    //   cwd: this.zhiCoreNpmPath,
-    //   env: {
-    //     PATH: SiyuanDevice.nodeCurrentBinFolder(),
-    //   },
-    // }
-    // this.logger.info("nodeCmd exec options =>", options)
-    // return await this.customCmd.executeCommand(command, args, options)
-
     // 使用 spawn
-    // const args = [`"${subCommand}"`, `"${this.zhiCoreNpmPath}"`].concat(oargs ?? [])
     const args = [subCommand, this.zhiCoreNpmPath].concat(oargs ?? [])
     const options = {
       cwd: this.zhiCoreNpmPath,
@@ -228,6 +216,27 @@ class NpmPackageManager {
     }
     this.logger.info("nodeCmd spawn options =>", options)
     return await this.customCmd.executeCommandWithSpawn(command, args, options)
+  }
+
+  /**
+   * 本地服务的 Node exec 命令
+   *
+   * @param command 主命令
+   * @param subCommand 子命令
+   * @param oargs 其它参数
+   * @private
+   */
+  private async localNodeExecCmd(command: string, subCommand: string, oargs?: any[]): Promise<any> {
+    // 使用 exec
+    const args = [`"${subCommand}"`, `"${this.zhiCoreNpmPath}"`].concat(oargs ?? [])
+    const options = {
+      cwd: this.zhiCoreNpmPath,
+      env: {
+        PATH: SiyuanDevice.nodeCurrentBinFolder(),
+      },
+    }
+    this.logger.info("nodeCmd exec options =>", options)
+    return await this.customCmd.executeCommand(command, args, options)
   }
 }
 
