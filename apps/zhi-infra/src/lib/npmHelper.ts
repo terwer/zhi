@@ -214,7 +214,7 @@ class NpmPackageManager {
         PATH: SiyuanDevice.nodeCurrentBinFolder(),
       },
     }
-    this.logger.info("nodeCmd spawn options =>", options)
+    this.logger.info("localNodeCmd spawn options =>", options)
     return await this.customCmd.executeCommandWithSpawn(command, args, options)
   }
 
@@ -228,14 +228,14 @@ class NpmPackageManager {
    */
   private async localNodeExecCmd(command: string, subCommand: string, oargs?: any[]): Promise<any> {
     // 使用 exec
-    const args = [`"${subCommand}"`, `"${this.zhiCoreNpmPath}"`].concat(oargs ?? [])
+    const args = [subCommand, `"${this.zhiCoreNpmPath}"`].concat(oargs ?? [])
     const options = {
       cwd: this.zhiCoreNpmPath,
       env: {
         PATH: SiyuanDevice.nodeCurrentBinFolder(),
       },
     }
-    this.logger.info("nodeCmd exec options =>", options)
+    this.logger.info("localNodeExecCmd exec options =>", options)
     return await this.customCmd.executeCommand(command, args, options)
   }
 }
