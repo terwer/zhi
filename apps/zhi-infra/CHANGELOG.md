@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.16.1
+
+### Patch Changes
+
+- fix: add invoke log
+
 ## 0.16.0
 
 ### Minor Changes

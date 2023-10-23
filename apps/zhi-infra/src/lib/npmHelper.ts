@@ -218,6 +218,8 @@ class NpmPackageManager {
         PATH: SiyuanDevice.nodeCurrentBinFolder(),
       },
     }
+    this.logger.info("localNodeCmd spawn command =>", command)
+    this.logger.info("localNodeCmd spawn args =>", args)
     this.logger.info("localNodeCmd spawn options =>", options)
     return await this.customCmd.executeCommandWithSpawn(command, args, options)
   }
@@ -243,6 +245,8 @@ class NpmPackageManager {
       },
     }
 
+    this.logger.info("localNodeExecCmd exec command =>", command)
+    this.logger.info("localNodeExecCmd exec args =>", args)
     this.logger.info("localNodeExecCmd exec options =>", options)
 
     return await this.customCmd.executeCommand(command, args, options)
