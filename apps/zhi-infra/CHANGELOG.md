@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.16.0
+
+### Minor Changes
+
+- feat: add custom path to npmInstall
+
 ## 0.15.3
 
 ### Patch Changes

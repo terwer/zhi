@@ -28,6 +28,7 @@ import { CustomCmd } from "zhi-cmd"
 import { simpleLogger } from "zhi-lib-base"
 import path from "path"
 import { updatePackageJson, updatePackageJsonHash } from "./packageHelper"
+import { StrUtil } from "zhi-common"
 
 /**
  * 封装一个用于执行 NPM 命令的工具类
@@ -66,11 +67,12 @@ class NpmPackageManager {
    * 执行 NPM 命令
    *
    * @param subCommand - 要执行的 NPM 命令
+   * @param path 命令路径
    * @param oargs - 其它参数
    * @returns 执行结果的 Promise
    */
-  public async npmCmd(subCommand: string, oargs?: any[]): Promise<any> {
-    return await this.localNodeExecCmd("npm", subCommand, oargs)
+  public async npmCmd(subCommand: string, path?: string, oargs?: any[]): Promise<any> {
+    return await this.localNodeExecCmd("npm", subCommand, path, oargs)
   }
 
   /**
@@ -113,12 +115,13 @@ class NpmPackageManager {
    * 安装 NPM 依赖
    *
    * @param moduleName - 可选的模块名，不传默认安装全量
+   * @param path 命令路径
    */
-  public async npmInstall(moduleName?: string): Promise<void> {
-    if (moduleName) {
-      await this.npmCmd(`install ${moduleName}`)
+  public async npmInstall(moduleName?: string, path?: string): Promise<void> {
+    if (!StrUtil.isEmptyString(moduleName)) {
+      await this.npmCmd(`install ${moduleName}`, path)
     } else {
-      await this.npmCmd(`install`)
+      await this.npmCmd(`install`, path)
     }
   }
 
@@ -126,9 +129,10 @@ class NpmPackageManager {
    * 安装依赖并马上导入
    *
    * @param moduleName - 依赖名称
+   * @param path 命令路径
    * @returns 导入的模块
    */
-  public async requireInstall(moduleName: string): Promise<any> {
+  public async requireInstall(moduleName: string, path?: string): Promise<any> {
     try {
       const result = SiyuanDevice.requireNpm(moduleName)
       this.logger.info(`${moduleName} already cached`)
@@ -136,7 +140,7 @@ class NpmPackageManager {
     } catch (e: any) {
       if (e && e.message && e.message.includes(`Cannot find module '${moduleName}'`)) {
         this.logger.info(`${moduleName} not found, will install once...`)
-        await this.npmCmd(`install ${moduleName}`)
+        await this.npmCmd(`install ${moduleName}`, path)
         this.logger.info(`${moduleName} installed`)
         return SiyuanDevice.requireNpm(moduleName)
       }
@@ -223,19 +227,24 @@ class NpmPackageManager {
    *
    * @param command 主命令
    * @param subCommand 子命令
+   * @param path 命令路径
    * @param oargs 其它参数
    * @private
    */
-  private async localNodeExecCmd(command: string, subCommand: string, oargs?: any[]): Promise<any> {
-    // 使用 exec
-    const args = [subCommand, `"${this.zhiCoreNpmPath}"`].concat(oargs ?? [])
+  private async localNodeExecCmd(command: string, subCommand: string, path?: string, oargs?: any[]): Promise<any> {
+    const args: any[] = path
+      ? [subCommand, `"${this.zhiCoreNpmPath}"`, ...(oargs ?? [])]
+      : [subCommand, `"${path}"`, ...(oargs ?? [])]
+
     const options = {
       cwd: this.zhiCoreNpmPath,
       env: {
         PATH: SiyuanDevice.nodeCurrentBinFolder(),
       },
     }
+
     this.logger.info("localNodeExecCmd exec options =>", options)
+
     return await this.customCmd.executeCommand(command, args, options)
   }
 }
