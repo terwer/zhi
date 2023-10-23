@@ -213,10 +213,17 @@ class NpmPackageManager {
   // private async localNodeCmd(command: string, subCommand: string, oargs?: any[]): Promise<any> {
   //   // 使用 spawn
   //   const args = [subCommand, this.zhiCoreNpmPath].concat(oargs ?? [])
+  //   // 设置全局环境变量
+  //   const process = SiyuanDevice.siyuanWindow().process
+  //   const NODE_PATH = SiyuanDevice.nodeCurrentBinFolder()
+  //   let ENV_PATH = process.env.PATH
+  //   if (NODE_PATH !== "") {
+  //     ENV_PATH = NODE_PATH + ":" + process.env.PATH
+  //   }
   //   const options = {
   //     cwd: this.zhiCoreNpmPath,
   //     env: {
-  //       PATH: SiyuanDevice.nodeCurrentBinFolder(),
+  //       PATH: ENV_PATH,
   //     },
   //   }
   //   this.logger.info("localNodeCmd spawn command =>", command)
@@ -239,10 +246,17 @@ class NpmPackageManager {
       ? [`"${subCommand}"`, `"${path}"`, ...(oargs ?? [])]
       : [`"${subCommand}"`, ...(oargs ?? [])]
 
+    // 设置全局环境变量
+    const process = SiyuanDevice.siyuanWindow().process
+    const NODE_PATH = SiyuanDevice.nodeCurrentBinFolder()
+    let ENV_PATH = process.env.PATH
+    if (NODE_PATH !== "") {
+      ENV_PATH = NODE_PATH + ":" + process.env.PATH
+    }
     const options = {
       cwd: this.zhiCoreNpmPath,
       env: {
-        PATH: SiyuanDevice.nodeCurrentBinFolder(),
+        PATH: ENV_PATH,
       },
     }
 

@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.17.0
+
+### Minor Changes
+
+- feat: add env to path
+
 ## 0.16.4
 
 ### Patch Changes
