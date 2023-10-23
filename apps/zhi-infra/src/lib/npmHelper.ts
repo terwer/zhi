@@ -60,7 +60,8 @@ class NpmPackageManager {
    * @returns 执行结果的 Promise
    */
   public async nodeCmd(subCommand: string, oargs?: any[]): Promise<any> {
-    return await this.localNodeCmd("node", subCommand, oargs)
+    // return await this.localNodeCmd("node", subCommand, oargs)
+    return await this.localNodeExecCmd("node", subCommand, undefined, oargs)
   }
 
   /**
@@ -209,20 +210,20 @@ class NpmPackageManager {
    * @param oargs 其它参数
    * @private
    */
-  private async localNodeCmd(command: string, subCommand: string, oargs?: any[]): Promise<any> {
-    // 使用 spawn
-    const args = [subCommand, this.zhiCoreNpmPath].concat(oargs ?? [])
-    const options = {
-      cwd: this.zhiCoreNpmPath,
-      env: {
-        PATH: SiyuanDevice.nodeCurrentBinFolder(),
-      },
-    }
-    this.logger.info("localNodeCmd spawn command =>", command)
-    this.logger.info("localNodeCmd spawn args =>", args)
-    this.logger.info("localNodeCmd spawn options =>", options)
-    return await this.customCmd.executeCommandWithSpawn(command, args, options)
-  }
+  // private async localNodeCmd(command: string, subCommand: string, oargs?: any[]): Promise<any> {
+  //   // 使用 spawn
+  //   const args = [subCommand, this.zhiCoreNpmPath].concat(oargs ?? [])
+  //   const options = {
+  //     cwd: this.zhiCoreNpmPath,
+  //     env: {
+  //       PATH: SiyuanDevice.nodeCurrentBinFolder(),
+  //     },
+  //   }
+  //   this.logger.info("localNodeCmd spawn command =>", command)
+  //   this.logger.info("localNodeCmd spawn args =>", args)
+  //   this.logger.info("localNodeCmd spawn options =>", options)
+  //   return await this.customCmd.executeCommandWithSpawn(command, args, options)
+  // }
 
   /**
    * 本地服务的 Node exec 命令

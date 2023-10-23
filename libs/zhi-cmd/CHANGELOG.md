@@ -1,5 +1,11 @@
 # zhi-cmd
 
+## 0.6.3
+
+### Patch Changes
+
+- feat: add exec log
+
 ## 0.6.2
 
 ### Patch Changes

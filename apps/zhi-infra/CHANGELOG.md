@@ -1,5 +1,13 @@
 # zhi-infra
 
+## 0.16.2
+
+### Patch Changes
+
+- feat: add exec log
+- Updated dependencies
+  - zhi-cmd@0.6.3
+
 ## 0.16.1
 
 ### Patch Changes

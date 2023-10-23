@@ -139,6 +139,9 @@ class CustomCmd {
   public async executeCommand(command: string, args: string[], options = {}) {
     const { exec } = SiyuanDevice.requireLib("child_process")
     const fullCommand = `${command} ${args.join(" ")}`
+    console.log("==========================================>")
+    console.log("executeCommand fullCommand =>", fullCommand)
+    console.log("<==========================================")
     return new Promise((resolve, reject) => {
       exec(fullCommand, options, (err: any, stdout: any) => {
         if (err) {
