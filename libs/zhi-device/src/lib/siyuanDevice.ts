@@ -126,7 +126,7 @@ class SiyuanDevice {
         if (!pluginName) {
           throw new Error("pluginName must be provided when use plugin path")
         }
-        absLibpath = this.joinPath(this.siyuanDataPath(), "plugins", pluginName)
+        absLibpath = this.joinPath(this.siyuanDataPath(), "plugins", pluginName, libpath)
         break
       case BasePathTypeEnum.BasePathType_AppData:
         absLibpath = this.joinPath(this.appDataFolder(), libpath)
@@ -254,7 +254,7 @@ class SiyuanDevice {
         if (!pluginName) {
           throw new Error("pluginName must be provided when use plugin path")
         }
-        fullJsPath = this.browserJoinPath(this.siyuanDataRelativePath(), "plugins", pluginName)
+        fullJsPath = this.browserJoinPath(this.siyuanDataRelativePath(), "plugins", pluginName, jsPath)
         break
       case BasePathTypeEnum.BasePathType_Absolute:
         break
