@@ -73,7 +73,7 @@ class NpmPackageManager {
    * @returns 执行结果的 Promise
    */
   public async npmCmd(subCommand: string, path?: string, oargs?: any[]): Promise<any> {
-    return await this.localNodeExecCmd("npm", subCommand, path, oargs)
+    return await this.localNodeExecCmd("npm", subCommand, path ?? this.zhiCoreNpmPath, oargs)
   }
 
   /**
@@ -235,9 +235,7 @@ class NpmPackageManager {
    * @private
    */
   private async localNodeExecCmd(command: string, subCommand: string, path?: string, oargs?: any[]): Promise<any> {
-    const args: any[] = path
-      ? [subCommand, `"${this.zhiCoreNpmPath}"`, ...(oargs ?? [])]
-      : [subCommand, `"${path}"`, ...(oargs ?? [])]
+    const args: any[] = path ? [subCommand, `"${path}"`, ...(oargs ?? [])] : [subCommand, ...(oargs ?? [])]
 
     const options = {
       cwd: this.zhiCoreNpmPath,

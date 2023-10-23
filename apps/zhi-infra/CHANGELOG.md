@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.16.3
+
+### Patch Changes
+
+- fix: remove path for node cmd
+
 ## 0.16.2
 
 ### Patch Changes
