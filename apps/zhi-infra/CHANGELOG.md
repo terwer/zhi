@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.16.4
+
+### Patch Changes
+
+- fix: add qoute to cmd
+
 ## 0.16.3
 
 ### Patch Changes

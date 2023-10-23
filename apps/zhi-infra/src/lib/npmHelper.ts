@@ -235,7 +235,9 @@ class NpmPackageManager {
    * @private
    */
   private async localNodeExecCmd(command: string, subCommand: string, path?: string, oargs?: any[]): Promise<any> {
-    const args: any[] = path ? [subCommand, `"${path}"`, ...(oargs ?? [])] : [subCommand, ...(oargs ?? [])]
+    const args: any[] = path
+      ? [`"${subCommand}"`, `"${path}"`, ...(oargs ?? [])]
+      : [`"${subCommand}"`, ...(oargs ?? [])]
 
     const options = {
       cwd: this.zhiCoreNpmPath,
