@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.18.0
+
+### Minor Changes
+
+- feat: add cwd and env to cmd
+
 ## 0.17.0
 
 ### Minor Changes

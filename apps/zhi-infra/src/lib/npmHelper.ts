@@ -57,11 +57,13 @@ class NpmPackageManager {
    *
    * @param subCommand - 要执行的 NPM 命令
    * @param oargs - 其它参数
+   * @param cwd 当前路径
+   * @param env 环境变量
    * @returns 执行结果的 Promise
    */
-  public async nodeCmd(subCommand: string, oargs?: any[]): Promise<any> {
-    // return await this.localNodeCmd("node", subCommand, oargs)
-    return await this.localNodeExecCmd("node", subCommand, undefined, oargs)
+  public async nodeCmd(subCommand: string, oargs?: any[], cwd?: string, env?: Record<string, any>): Promise<any> {
+    // return await this.localNodeCmd("node", subCommand, oargs, cwd, env)
+    return await this.localNodeExecCmd("node", subCommand, undefined, oargs, cwd, env)
   }
 
   /**
@@ -70,10 +72,18 @@ class NpmPackageManager {
    * @param subCommand - 要执行的 NPM 命令
    * @param path 命令路径
    * @param oargs - 其它参数
+   * @param cwd 当前路径
+   * @param env 环境变量
    * @returns 执行结果的 Promise
    */
-  public async npmCmd(subCommand: string, path?: string, oargs?: any[]): Promise<any> {
-    return await this.localNodeExecCmd("npm", subCommand, path ?? this.zhiCoreNpmPath, oargs)
+  public async npmCmd(
+    subCommand: string,
+    path?: string,
+    oargs?: any[],
+    cwd?: string,
+    env?: Record<string, any>
+  ): Promise<any> {
+    return await this.localNodeExecCmd("npm", subCommand, path ?? this.zhiCoreNpmPath, oargs, cwd, env)
   }
 
   /**
@@ -208,29 +218,38 @@ class NpmPackageManager {
    * @param command 主命令
    * @param subCommand 子命令
    * @param oargs 其它参数
+   * @param cwd 当前路径
+   * @param env 环境变量
    * @private
    */
-  // private async localNodeCmd(command: string, subCommand: string, oargs?: any[]): Promise<any> {
-  //   // 使用 spawn
-  //   const args = [subCommand, this.zhiCoreNpmPath].concat(oargs ?? [])
-  //   // 设置全局环境变量
-  //   const process = SiyuanDevice.siyuanWindow().process
-  //   const NODE_PATH = SiyuanDevice.nodeCurrentBinFolder()
-  //   let ENV_PATH = process.env.PATH
-  //   if (NODE_PATH !== "") {
-  //     ENV_PATH = NODE_PATH + ":" + process.env.PATH
-  //   }
-  //   const options = {
-  //     cwd: this.zhiCoreNpmPath,
-  //     env: {
-  //       PATH: ENV_PATH,
-  //     },
-  //   }
-  //   this.logger.info("localNodeCmd spawn command =>", command)
-  //   this.logger.info("localNodeCmd spawn args =>", args)
-  //   this.logger.info("localNodeCmd spawn options =>", options)
-  //   return await this.customCmd.executeCommandWithSpawn(command, args, options)
-  // }
+  public async localNodeCmd(
+    command: string,
+    subCommand: string,
+    oargs?: any[],
+    cwd?: string,
+    env?: Record<string, any>
+  ): Promise<any> {
+    // 使用 spawn
+    const args = [subCommand, this.zhiCoreNpmPath].concat(oargs ?? [])
+    // 设置全局环境变量
+    const process = SiyuanDevice.siyuanWindow().process
+    const NODE_PATH = SiyuanDevice.nodeCurrentBinFolder()
+    let ENV_PATH = process.env.PATH
+    if (NODE_PATH !== "") {
+      ENV_PATH = NODE_PATH + ":" + process.env.PATH
+    }
+    const options = {
+      cwd: cwd ?? this.zhiCoreNpmPath,
+      env: {
+        PATH: ENV_PATH,
+        ...{ env },
+      },
+    }
+    this.logger.info("localNodeCmd spawn command =>", command)
+    this.logger.info("localNodeCmd spawn args =>", args)
+    this.logger.info("localNodeCmd spawn options =>", options)
+    return await this.customCmd.executeCommandWithSpawn(command, args, options)
+  }
 
   /**
    * 本地服务的 Node exec 命令
@@ -239,9 +258,18 @@ class NpmPackageManager {
    * @param subCommand 子命令
    * @param path 命令路径
    * @param oargs 其它参数
+   * @param cwd 当前路径
+   * @param env 环境变量
    * @private
    */
-  private async localNodeExecCmd(command: string, subCommand: string, path?: string, oargs?: any[]): Promise<any> {
+  public async localNodeExecCmd(
+    command: string,
+    subCommand: string,
+    path?: string,
+    oargs?: any[],
+    cwd?: string,
+    env?: Record<string, any>
+  ): Promise<any> {
     const args: any[] = path
       ? [`"${subCommand}"`, `"${path}"`, ...(oargs ?? [])]
       : [`"${subCommand}"`, ...(oargs ?? [])]
@@ -254,9 +282,10 @@ class NpmPackageManager {
       ENV_PATH = NODE_PATH + ":" + process.env.PATH
     }
     const options = {
-      cwd: this.zhiCoreNpmPath,
+      cwd: cwd ?? this.zhiCoreNpmPath,
       env: {
         PATH: ENV_PATH,
+        ...{ env },
       },
     }
 
