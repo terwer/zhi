@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.19.0
+
+### Minor Changes
+
+- feat: add custom env
+
 ## 0.18.0
 
 ### Minor Changes

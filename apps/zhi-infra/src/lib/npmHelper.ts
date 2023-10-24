@@ -242,7 +242,7 @@ class NpmPackageManager {
       cwd: cwd ?? this.zhiCoreNpmPath,
       env: {
         PATH: ENV_PATH,
-        ...{ env },
+        ...env,
       },
     }
     this.logger.info("localNodeCmd spawn command =>", command)
@@ -285,7 +285,7 @@ class NpmPackageManager {
       cwd: cwd ?? this.zhiCoreNpmPath,
       env: {
         PATH: ENV_PATH,
-        ...{ env },
+        ...env,
       },
     }
 
