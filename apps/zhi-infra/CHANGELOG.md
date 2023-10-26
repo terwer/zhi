@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.19.1
+
+### Patch Changes
+
+- fix: change log level
+
 ## 0.19.0
 
 ### Minor Changes

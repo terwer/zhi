@@ -12,7 +12,7 @@
 
 ### libraries
 
-- zhi-framework - Core Framework
+- [X] zhi-framework - Core Framework
   - [X] [zhi-lib-base](https://github.com/terwer/zhi/tree/main/libs/zhi-lib-base) ![zhi-lib-base](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-lib-base%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-device](https://github.com/terwer/zhi/tree/main/libs/zhi-device) ![zhi-device](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-device%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-env](https://github.com/terwer/zhi/tree/main/libs/zhi-env) ![zhi-env](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-env%2Fpackage.json&query=%24.version&label=release)
