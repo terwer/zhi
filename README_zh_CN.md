@@ -32,6 +32,7 @@
   - [X] [zhi-picgo-core](https://github.com/terwer/zhi/tree/main/libs/zhi-picgo-core) ![zhi-picgo-core](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-picgo-core%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-siyuan-picgo](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-picgo) ![zhi-siyuan-picgo](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-siyuan-picgo%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-chatgpt](https://github.com/terwer/zhi/tree/main/libs/zhi-chatgpt) ![zhi-chatgpt](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-chatgpt%2Fpackage.json&query=%24.version&label=release)
+  - [X] [zhi-rubick-core](https://github.com/terwer/zhi/tree/main/libs/zhi-rubick-core) ![zhi-rubick-core](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-rubick-core%2Fpackage.json&query=%24.version&label=release)
 
 ### 脚手架 && 文档
 

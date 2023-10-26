@@ -1,5 +1,107 @@
 # zhi-infra
 
+## 0.19.0
+
+### Minor Changes
+
+- feat: add custom env
+
+## 0.18.0
+
+### Minor Changes
+
+- feat: add cwd and env to cmd
+
+## 0.17.0
+
+### Minor Changes
+
+- feat: add env to path
+
+## 0.16.4
+
+### Patch Changes
+
+- fix: add qoute to cmd
+
+## 0.16.3
+
+### Patch Changes
+
+- fix: remove path for node cmd
+
+## 0.16.2
+
+### Patch Changes
+
+- feat: add exec log
+- Updated dependencies
+  - zhi-cmd@0.6.3
+
+## 0.16.1
+
+### Patch Changes
+
+- fix: add invoke log
+
+## 0.16.0
+
+### Minor Changes
+
+- feat: add custom path to npmInstall
+
+## 0.15.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.10.0
+  - zhi-cmd@0.6.2
+
+## 0.15.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.9.0
+  - zhi-cmd@0.6.1
+
+## 0.15.1
+
+### Patch Changes
+
+- fix: change npm cmd
+
+## 0.15.0
+
+### Minor Changes
+
+- feat: npm use exec
+
+## 0.14.1
+
+### Patch Changes
+
+- fix: switch npm to local with spawn
+
+## 0.14.0
+
+### Minor Changes
+
+- feat: add more options for cmd
+
+## 0.13.0
+
+### Minor Changes
+
+- feat: support space in node cmd
+
+## 0.12.1
+
+### Patch Changes
+
+- feat: add cache to require install
+
 ## 0.12.0
 
 ### Minor Changes

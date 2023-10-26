@@ -1,22 +1,24 @@
 {
-  "name": "zhi-cmd",
-  "version": "0.6.3",
+  "name": "zhi-rubick-core",
+  "version": "0.1.1",
   "type": "module",
-  "description": "commond utils for siyuan-note",
+  "description": "plugin container core",
   "main": "./dist/index.cjs",
   "typings": "./dist/index.d.ts",
   "repository": "terwer/zhi",
-  "homepage": "https://github.com/terwer/zhi/tree/main/apps/zhi-cmd",
+  "homepage": "https://github.com/terwer/zhi/tree/main/apps/zhi-rubick-core",
   "author": "terwer",
   "license": "MIT",
   "keywords": [
     "zhi",
-    "cmd"
+    "rubick",
+    "plugin"
   ],
   "scripts": {
     "dev": "zhi-build --watch",
     "build": "zhi-build --production",
-    "test": "vitest"
+    "test": "vitest",
+    "lint": "eslint 'src/**/*.{ts,js}' --fix"
   },
   "devDependencies": {
     "@terwer/esbuild-config-custom": "workspace:*",
@@ -25,7 +27,6 @@
     "@terwer/tsconfig": "workspace:*"
   },
   "dependencies": {
-    "zhi-device": "workspace:*",
     "zhi-lib-base": "workspace:*"
   },
   "publishConfig": {

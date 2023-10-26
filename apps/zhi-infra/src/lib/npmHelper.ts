@@ -28,6 +28,7 @@ import { CustomCmd } from "zhi-cmd"
 import { simpleLogger } from "zhi-lib-base"
 import path from "path"
 import { updatePackageJson, updatePackageJsonHash } from "./packageHelper"
+import { StrUtil } from "zhi-common"
 
 /**
  * 封装一个用于执行 NPM 命令的工具类
@@ -39,9 +40,10 @@ class NpmPackageManager {
   private customCmd: CustomCmd
 
   /**
-   * 构造函数，用于创建 NpmPackageManager 的实例。
-   * @param zhiCoreNpmPath - Siyuan App 的 NPM 路径。
-   * @param depsJsonPath - 一来定义路径
+   * 构造函数，用于创建 NpmPackageManager 的实例
+   *
+   * @param zhiCoreNpmPath - Siyuan App 的 NPM 路径
+   * @param depsJsonPath - deps.json 路径
    */
   constructor(zhiCoreNpmPath: string, depsJsonPath: string) {
     this.logger = simpleLogger("npm-package-manager", "zhi", false)
@@ -54,38 +56,34 @@ class NpmPackageManager {
    * 执行 Node 命令
    *
    * @param subCommand - 要执行的 NPM 命令
+   * @param oargs - 其它参数
+   * @param cwd 当前路径
+   * @param env 环境变量
    * @returns 执行结果的 Promise
    */
-  public async nodeCmd(subCommand: string): Promise<any> {
-    const command = `node`
-    const args = [subCommand, this.zhiCoreNpmPath]
-    const options = {
-      cwd: this.zhiCoreNpmPath,
-      env: {
-        PATH: SiyuanDevice.nodeCurrentBinFolder(),
-      },
-    }
-    this.logger.info("nodeCmd options =>", options)
-    return await this.customCmd.executeCommand(command, args, options)
+  public async nodeCmd(subCommand: string, oargs?: any[], cwd?: string, env?: Record<string, any>): Promise<any> {
+    // return await this.localNodeCmd("node", subCommand, oargs, cwd, env)
+    return await this.localNodeExecCmd("node", subCommand, undefined, oargs, cwd, env)
   }
 
   /**
    * 执行 NPM 命令
    *
    * @param subCommand - 要执行的 NPM 命令
+   * @param path 命令路径
+   * @param oargs - 其它参数
+   * @param cwd 当前路径
+   * @param env 环境变量
    * @returns 执行结果的 Promise
    */
-  public async npmCmd(subCommand: string): Promise<any> {
-    const command = `npm`
-    const args = [subCommand, `"${this.zhiCoreNpmPath}"`]
-    const options = {
-      cwd: this.zhiCoreNpmPath,
-      env: {
-        PATH: SiyuanDevice.nodeCurrentBinFolder(),
-      },
-    }
-    this.logger.info("npmCmd options =>", options)
-    return await this.customCmd.executeCommand(command, args, options)
+  public async npmCmd(
+    subCommand: string,
+    path?: string,
+    oargs?: any[],
+    cwd?: string,
+    env?: Record<string, any>
+  ): Promise<any> {
+    return await this.localNodeExecCmd("npm", subCommand, path ?? this.zhiCoreNpmPath, oargs, cwd, env)
   }
 
   /**
@@ -128,12 +126,13 @@ class NpmPackageManager {
    * 安装 NPM 依赖
    *
    * @param moduleName - 可选的模块名，不传默认安装全量
+   * @param path 命令路径
    */
-  public async npmInstall(moduleName?: string): Promise<void> {
-    if (moduleName) {
-      await this.npmCmd(`install ${moduleName}`)
+  public async npmInstall(moduleName?: string, path?: string): Promise<void> {
+    if (!StrUtil.isEmptyString(moduleName)) {
+      await this.npmCmd(`install ${moduleName}`, path)
     } else {
-      await this.npmCmd(`install`)
+      await this.npmCmd(`install`, path)
     }
   }
 
@@ -141,11 +140,23 @@ class NpmPackageManager {
    * 安装依赖并马上导入
    *
    * @param moduleName - 依赖名称
+   * @param path 命令路径
    * @returns 导入的模块
    */
-  public async requireInstall(moduleName: string): Promise<any> {
-    await this.npmCmd(`install ${moduleName}`)
-    return SiyuanDevice.requireNpm(moduleName)
+  public async requireInstall(moduleName: string, path?: string): Promise<any> {
+    try {
+      const result = SiyuanDevice.requireNpm(moduleName)
+      this.logger.info(`${moduleName} already cached`)
+      return result
+    } catch (e: any) {
+      if (e && e.message && e.message.includes(`Cannot find module '${moduleName}'`)) {
+        this.logger.info(`${moduleName} not found, will install once...`)
+        await this.npmCmd(`install ${moduleName}`, path)
+        this.logger.info(`${moduleName} installed`)
+        return SiyuanDevice.requireNpm(moduleName)
+      }
+      throw e
+    }
   }
 
   /**
@@ -199,6 +210,90 @@ class NpmPackageManager {
     }
 
     return flag
+  }
+
+  /**
+   * 本地服务的 Node 命令
+   *
+   * @param command 主命令
+   * @param subCommand 子命令
+   * @param oargs 其它参数
+   * @param cwd 当前路径
+   * @param env 环境变量
+   * @private
+   */
+  public async localNodeCmd(
+    command: string,
+    subCommand: string,
+    oargs?: any[],
+    cwd?: string,
+    env?: Record<string, any>
+  ): Promise<any> {
+    // 使用 spawn
+    const args = [subCommand, this.zhiCoreNpmPath].concat(oargs ?? [])
+    // 设置全局环境变量
+    const process = SiyuanDevice.siyuanWindow().process
+    const NODE_PATH = SiyuanDevice.nodeCurrentBinFolder()
+    let ENV_PATH = process.env.PATH
+    if (NODE_PATH !== "") {
+      ENV_PATH = NODE_PATH + ":" + process.env.PATH
+    }
+    const options = {
+      cwd: cwd ?? this.zhiCoreNpmPath,
+      env: {
+        PATH: ENV_PATH,
+        ...env,
+      },
+    }
+    this.logger.info("localNodeCmd spawn command =>", command)
+    this.logger.info("localNodeCmd spawn args =>", args)
+    this.logger.info("localNodeCmd spawn options =>", options)
+    return await this.customCmd.executeCommandWithSpawn(command, args, options)
+  }
+
+  /**
+   * 本地服务的 Node exec 命令
+   *
+   * @param command 主命令
+   * @param subCommand 子命令
+   * @param path 命令路径
+   * @param oargs 其它参数
+   * @param cwd 当前路径
+   * @param env 环境变量
+   * @private
+   */
+  public async localNodeExecCmd(
+    command: string,
+    subCommand: string,
+    path?: string,
+    oargs?: any[],
+    cwd?: string,
+    env?: Record<string, any>
+  ): Promise<any> {
+    const args: any[] = path
+      ? [`"${subCommand}"`, `"${path}"`, ...(oargs ?? [])]
+      : [`"${subCommand}"`, ...(oargs ?? [])]
+
+    // 设置全局环境变量
+    const process = SiyuanDevice.siyuanWindow().process
+    const NODE_PATH = SiyuanDevice.nodeCurrentBinFolder()
+    let ENV_PATH = process.env.PATH
+    if (NODE_PATH !== "") {
+      ENV_PATH = NODE_PATH + ":" + process.env.PATH
+    }
+    const options = {
+      cwd: cwd ?? this.zhiCoreNpmPath,
+      env: {
+        PATH: ENV_PATH,
+        ...env,
+      },
+    }
+
+    this.logger.info("localNodeExecCmd exec command =>", command)
+    this.logger.info("localNodeExecCmd exec args =>", args)
+    this.logger.info("localNodeExecCmd exec options =>", options)
+
+    return await this.customCmd.executeCommand(command, args, options)
   }
 }
 

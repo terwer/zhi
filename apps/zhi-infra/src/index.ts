@@ -20,28 +20,30 @@ const main: MainFunction = async (args?: any[]): Promise<void> => {
   win.zhi.status = win.zhi.status ?? {}
 
   // mountDevice
-  if (!win.zhi.status.deviceInited) {
+  if (win.zhi.status.deviceInited) {
+    logger.info("zhi device is already inited.skip")
+  } else {
     win.zhi.device = SiyuanDevice
     win.zhi.status.deviceInited = true
     logger.info("zhi device inited")
-  } else {
-    logger.info("zhi device is already inited.skip")
   }
 
   // mountCmd
-  if (!win.zhi.status.cmdInited) {
+  if (win.zhi.status.cmdInited) {
+    logger.info("zhi cmd is already inited.skip")
+  } else {
     const cmd = new CustomCmd()
     win.zhi.cmd = cmd
     win.zhi.status.cmdInited = true
     logger.info("zhi cmd inited")
-  } else {
-    logger.info("zhi cmd is already inited.skip")
   }
 
   // mountNpmManager
   const depsJsonPath: string = safeParseArgs(args, 0)
   const isFixPath: boolean = safeParseArgs(args, 1)
-  if (!win.zhi.status.infraInited) {
+  if (win.zhi.status.infraInited) {
+    logger.info("zhi infra is already inited.skip")
+  } else {
     const infra = new ZhiInfra(depsJsonPath)
     if (isFixPath) {
       infra.fixPathEnv()
@@ -50,8 +52,6 @@ const main: MainFunction = async (args?: any[]): Promise<void> => {
     win.zhi.npm = infra.getNpmManager()
     win.zhi.status.infraInited = true
     logger.info("zhi infra inited")
-  } else {
-    logger.info("zhi infra is already inited.skip")
   }
 }
 
