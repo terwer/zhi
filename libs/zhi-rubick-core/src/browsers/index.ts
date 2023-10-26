@@ -22,7 +22,8 @@
  * or visit www.terwer.space if you need additional information or have any
  * questions.
  */
-
-interface ImportMeta {
-  readonly env: ImportMetaEnv
-}
+import main from "./main"
+import runner from "./runner"
+import detach from "./detach"
+import guide from "./guide"
+export { main, runner, detach, guide }

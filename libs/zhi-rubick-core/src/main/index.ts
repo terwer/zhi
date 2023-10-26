@@ -22,7 +22,17 @@
  * or visit www.terwer.space if you need additional information or have any
  * questions.
  */
+import { BrowserWindow } from "electron"
+import { main } from "../browsers"
+import { simpleLogger } from "zhi-lib-base"
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv
+class App {
+  public windowCreator: { init: () => void; getWindow: () => BrowserWindow }
+  private readonly logger = simpleLogger("zi-rubick-core", "zhi", false)
+
+  constructor() {
+    this.windowCreator = main()
+  }
 }
+
+export default new App()

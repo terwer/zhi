@@ -150,9 +150,10 @@ class SiyuanDevice {
    * 依赖 npm
    *
    * @param libpath
+   * @param win - 可选，执行窗口
    */
-  public static requireNpm = (libpath: string) => {
-    return SiyuanDevice.requireLib(libpath, BasePathTypeEnum.BasePathType_Absolute)
+  public static requireNpm = (libpath: string, win?: any) => {
+    return SiyuanDevice.requireLib(libpath, BasePathTypeEnum.BasePathType_Absolute, "", win)
   }
 
   /**
@@ -161,11 +162,12 @@ class SiyuanDevice {
    * @param libpath - 依赖全路径
    * @param type - 可选，以谁的基本路径为准
    * @param pluginName - 可选，当前插件目录
+   * @param win - 可选，执行窗口
    */
-  public static requireLib = (libpath: string, type?: BasePathTypeEnum, pluginName?: string) => {
+  public static requireLib = (libpath: string, type?: BasePathTypeEnum, pluginName?: string, win?: any) => {
     const absLibpath = this.getRequirePath(libpath, type, pluginName)
 
-    const syWin = this.siyuanWindow()
+    const syWin = win ?? this.siyuanWindow()
     if (!syWin) {
       return require(absLibpath)
     }

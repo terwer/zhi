@@ -23,6 +23,6 @@
  * questions.
  */
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv
+export default () => {
+  let view;
 }

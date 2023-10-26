@@ -1,17 +1,8 @@
-import { simpleLogger, MainFunction } from "zhi-lib-base"
+import app from "./main/index"
 
-const logger = simpleLogger("zi-rubick-core", "zhi", false)
+app.windowCreator.init()
 
 /**
- * 初始化入口
- *
- * @param args
+ * rubick 实例入口
  */
-const main: MainFunction = async (args: any[]) => {
-  return "ok"
-}
-
-;(async () => {
-  const result = await main([])
-  console.log(result)
-})()
+export { app as rubick }

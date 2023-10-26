@@ -44,6 +44,7 @@ module.exports = {
     outfile: path.join(distDir, "index.cjs"),
     format: "cjs",
     platform: "node",
+    external: ["electron", "@electron/remote", "@electron/remote/main"],
     plugins: [
       dtsPlugin(),
       copy({

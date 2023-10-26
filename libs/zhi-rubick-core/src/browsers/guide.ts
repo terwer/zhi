@@ -23,6 +23,6 @@
  * questions.
  */
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv
-}
+let win: any
+
+export default () => {}

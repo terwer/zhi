@@ -23,6 +23,40 @@
  * questions.
  */
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv
+import { BasePathTypeEnum, SiyuanDevice } from "zhi-device"
+
+/**
+ * 思源笔记相关的一些工具类
+ *
+ * @author terwer
+ * @since 0.1.0
+ */
+class SiyuanUtils {
+  public static appBase(): any {
+    return this.mainWindow().location.origin + "/plugins/siyuan-plugin-local-service/libs/zhi-rubick-core"
+  }
+
+  public static mainWindow(): any {
+    return SiyuanDevice.siyuanWindow()
+  }
+
+  public static mainRequireNpm(name: string): any {
+    return SiyuanDevice.requireNpm(name)
+  }
+
+  public static mainRequireStaticScript(name: string) {
+    return SiyuanDevice.requireDataLib(`/plugins/siyuan-plugin-local-service/libs/zhi-rubick-core/${name}`)
+  }
+
+  // ==========================================
+  // public static requireStaticScript(name: string) {
+  //   return SiyuanDevice.requireLib(
+  //     `libs/zhi-rubick-core/${name}`,
+  //     BasePathTypeEnum.BasePathType_ThisPlugin,
+  //     "siyuan-plugin-local-service",
+  //     window
+  //   )
+  // }
 }
+
+export default SiyuanUtils

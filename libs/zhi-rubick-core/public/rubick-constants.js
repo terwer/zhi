@@ -23,6 +23,18 @@
  * questions.
  */
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv
+RUBICK_MSG_TRIGGER = "rubick-msg-trigger"
+GET_FOLDER = "getFolder"
+FOLDER_APP_SERVICE = "AppService"
+RUBICK_PLUGIN_FOLDER = "./rubick-plugins"
+
+const rubickConstants = {
+  RUBICK_MSG_TRIGGER,
+  GET_FOLDER,
+  FOLDER_APP_SERVICE,
+  RUBICK_PLUGIN_FOLDER,
+}
+
+module.exports = {
+  rubickConstants,
 }

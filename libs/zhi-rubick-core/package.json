@@ -25,9 +25,12 @@
     "@terwer/esbuild-config-custom": "workspace:*",
     "@terwer/eslint-config-custom": "workspace:*",
     "@terwer/vitest-config-custom": "workspace:*",
-    "@terwer/tsconfig": "workspace:*"
+    "@terwer/tsconfig": "workspace:*",
+    "electron": "26.0.0",
+    "@electron/remote": "2.0.12"
   },
   "dependencies": {
+    "zhi-device": "workspace:*",
     "zhi-lib-base": "workspace:*"
   },
   "publishConfig": {
