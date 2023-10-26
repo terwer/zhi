@@ -48,15 +48,9 @@ class SiyuanUtils {
     return SiyuanDevice.requireDataLib(`/plugins/siyuan-plugin-local-service/libs/zhi-rubick-core/${name}`)
   }
 
-  // ==========================================
-  // public static requireStaticScript(name: string) {
-  //   return SiyuanDevice.requireLib(
-  //     `libs/zhi-rubick-core/${name}`,
-  //     BasePathTypeEnum.BasePathType_ThisPlugin,
-  //     "siyuan-plugin-local-service",
-  //     window
-  //   )
-  // }
+  public static appServiceFolder(): any {
+    return SiyuanDevice.appServiceFolder()
+  }
 }
 
 export default SiyuanUtils

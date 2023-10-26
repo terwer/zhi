@@ -1,5 +1,11 @@
 # zhi-rubick-core
 
+## 0.3.0
+
+### Minor Changes
+
+- feat: support event and path def for rubick
+
 ## 0.2.1
 
 ### Patch Changes

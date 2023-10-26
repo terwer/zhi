@@ -24,5 +24,5 @@
  */
 
 export default () => {
-  let view;
+  let view
 }

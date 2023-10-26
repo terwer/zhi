@@ -33,6 +33,7 @@ const remote = mainWin.require("@electron/remote")
 const remoteMain = remote.require("@electron/remote/main")
 // @electron/remote has already been initialized
 // remoteMain.initialize()
+const { constants } = mainWin.require(__dirname + "/constants.js")
 
 export default () => {
   let win: any
@@ -70,12 +71,19 @@ export default () => {
 
     remoteMain.enable(win.webContents)
     win.webContents.userAgent = `rubick/${app.getVersion()} https://github.com/rubickCenter/rubick Electron`
-    win.webContents.executeJavaScript(`window.rc={test:1111}`)
 
     const appUrl = `${SiyuanUtils.appBase()}/index.html`
     win.loadURL(appUrl)
 
+    // win.on("ready-to-show", () => {})
+
     win.on("show", () => {
+      win.webContents.executeJavaScript(`window.rc = {
+        cwd: "${__dirname}",
+        device: {
+          appServiceFolder: "${SiyuanUtils.appServiceFolder()}"
+        }
+      }`)
       win.webContents.executeJavaScript(
         `window.rubick && window.rubick.hooks && typeof window.rubick.hooks.onShow === "function" && window.rubick.hooks.onShow()`
       )
@@ -102,7 +110,7 @@ export default () => {
     })
 
     // ipc
-    ipcMain.on("rubick-msg-trigger", (event: any, arg: any) => {
+    ipcMain.on(constants.RUBICK_MSG_TRIGGER_KEY, (event: any, arg: any) => {
       // 渲染进程发送的消息
       console.log(`接收到渲染进程发送的消息, event:${event}, arg =>`, arg)
       // 在这里进行处理，并将处理结果发送回渲染进程

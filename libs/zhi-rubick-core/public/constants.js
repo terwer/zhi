@@ -23,18 +23,27 @@
  * questions.
  */
 
-RUBICK_MSG_TRIGGER = "rubick-msg-trigger"
-GET_FOLDER = "getFolder"
-FOLDER_APP_SERVICE = "AppService"
-RUBICK_PLUGIN_FOLDER = "./rubick-plugins"
+/**
+ * Rubick消息触发器的键值
+ */
+const RUBICK_MSG_TRIGGER_KEY = "rubick-msg-trigger"
 
-const rubickConstants = {
-  RUBICK_MSG_TRIGGER,
-  GET_FOLDER,
-  FOLDER_APP_SERVICE,
-  RUBICK_PLUGIN_FOLDER,
+/**
+ * 常量对象，包含Rubick消息触发器键值的常量
+ *
+ * @author terwer
+ * @since 0.1.0
+ */
+const constants = {
+  /**
+   * Rubick消息触发器的键值常量
+   */
+  RUBICK_MSG_TRIGGER_KEY,
 }
 
+/**
+ * 导出常量对象
+ */
 module.exports = {
-  rubickConstants,
+  constants,
 }

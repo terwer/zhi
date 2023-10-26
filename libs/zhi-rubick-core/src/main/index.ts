@@ -26,10 +26,30 @@ import { BrowserWindow } from "electron"
 import { main } from "../browsers"
 import { simpleLogger } from "zhi-lib-base"
 
+/**
+ * 应用程序类，用于管理窗口创建和日志记录
+ *
+ * @author terwer
+ * @since 0.1.0
+ */
 class App {
-  public windowCreator: { init: () => void; getWindow: () => BrowserWindow }
+  /**
+   * 窗口创建器对象，包含初始化和获取窗口的方法
+   */
+  public windowCreator: {
+    init: () => void
+
+    getWindow: () => BrowserWindow
+  }
+
+  /**
+   * 日志记录器对象
+   */
   private readonly logger = simpleLogger("zi-rubick-core", "zhi", false)
 
+  /**
+   * 创建一个新的应用程序实例
+   */
   constructor() {
     this.windowCreator = main()
   }

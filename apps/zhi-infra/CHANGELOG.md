@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.20.0
+
+### Minor Changes
+
+- feat: support event and path def for rubick
+
 ## 0.19.3
 
 ### Patch Changes

@@ -25,4 +25,6 @@
 
 let win: any
 
-export default () => {}
+export default () => {
+  console.log("guide")
+}
