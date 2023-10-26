@@ -1,6 +1,6 @@
 {
   "name": "zhi-rubick-core",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "type": "module",
   "description": "plugin container core",
   "main": "./dist/index.cjs",
@@ -15,8 +15,9 @@
     "plugin"
   ],
   "scripts": {
-    "dev": "zhi-build --watch",
+    "dev": "zhi-build --watch --outDir=/Users/terwer/Documents/mydocs/SiYuanWorkspace/test/data/plugins/siyuan-plugin-local-service/libs/zhi-rubick-core",
     "build": "zhi-build --production",
+    "localBuild": "zhi-build --production --outDir=/Users/terwer/Documents/mydocs/siyuan-plugins/siyuan-plugin-local-service/public/libs/zhi-rubick-core",
     "test": "vitest",
     "lint": "eslint 'src/**/*.{ts,js}' --fix"
   },

@@ -1,5 +1,20 @@
 # zhi-infra
 
+## 0.19.3
+
+### Patch Changes
+
+- fix: auto invoke
+- Updated dependencies
+  - zhi-cmd@0.7.1
+
+## 0.19.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-cmd@0.7.0
+
 ## 0.19.1
 
 ### Patch Changes

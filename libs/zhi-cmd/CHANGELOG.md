@@ -1,5 +1,17 @@
 # zhi-cmd
 
+## 0.7.1
+
+### Patch Changes
+
+- fix: auto invoke
+
+## 0.7.0
+
+### Minor Changes
+
+- feat: add cmd log
+
 ## 0.6.3
 
 ### Patch Changes
