@@ -38,6 +38,8 @@ window.cfg = window.cfg ?? {}
  * Rubick应用的全局对象
  *
  * @namespace window.rubick
+ * @author terwer
+ * sin
  */
 window.rubick = {
   /**

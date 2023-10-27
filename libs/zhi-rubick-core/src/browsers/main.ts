@@ -52,7 +52,7 @@ export default () => {
       useContentSize: true,
       resizable: true,
       width: WINDOW_WIDTH,
-      frame: false,
+      frame: constants.DEBUG_MODE,
       title: "拉比克",
       show: true,
       modal: false,

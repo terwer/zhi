@@ -36,7 +36,7 @@ class App {
   /**
    * 窗口创建器对象，包含初始化和获取窗口的方法
    */
-  public windowCreator: {
+  private readonly windowCreator: {
     init: () => void
 
     getWindow: () => BrowserWindow
@@ -52,6 +52,20 @@ class App {
    */
   constructor() {
     this.windowCreator = main()
+  }
+
+  /**
+   * 启动 rubick
+   */
+  public bootstrap() {
+    this.windowCreator.init()
+  }
+
+  /**
+   * 获取商店的 window
+   */
+  public getWindow(): BrowserWindow {
+    return this.windowCreator.getWindow()
   }
 }
 

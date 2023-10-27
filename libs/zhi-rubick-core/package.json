@@ -15,9 +15,9 @@
     "plugin"
   ],
   "scripts": {
-    "dev": "zhi-build --watch --outDir=/Users/terwer/Documents/mydocs/SiYuanWorkspace/test/data/plugins/siyuan-plugin-local-service/libs/zhi-rubick-core",
+    "dev": "zhi-build --watch --outDir=/Users/terwer/Documents/mydocs/SiYuanWorkspace/test/data/plugins/siyuan-plugin-local-service/libs/zhi-rubick-ui",
     "build": "zhi-build --production",
-    "localBuild": "zhi-build --production --outDir=/Users/terwer/Documents/mydocs/siyuan-plugins/siyuan-plugin-local-service/public/libs/zhi-rubick-core",
+    "localBuild": "zhi-build --production --outDir=/Users/terwer/Documents/mydocs/zhi-framework/zhi/libs/zhi-rubick-ui/public",
     "test": "vitest",
     "lint": "eslint 'src/**/*.{ts,js}' --fix"
   },

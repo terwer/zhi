@@ -23,7 +23,7 @@
  * questions.
  */
 
-import { BasePathTypeEnum, SiyuanDevice } from "zhi-device"
+import { SiyuanDevice } from "zhi-device"
 
 /**
  * 思源笔记相关的一些工具类
@@ -33,19 +33,11 @@ import { BasePathTypeEnum, SiyuanDevice } from "zhi-device"
  */
 class SiyuanUtils {
   public static appBase(): any {
-    return this.mainWindow().location.origin + "/plugins/siyuan-plugin-local-service/libs/zhi-rubick-core"
+    return this.mainWindow().location.origin + "/plugins/siyuan-plugin-local-service/libs/zhi-rubick-ui"
   }
 
   public static mainWindow(): any {
     return SiyuanDevice.siyuanWindow()
-  }
-
-  public static mainRequireNpm(name: string): any {
-    return SiyuanDevice.requireNpm(name)
-  }
-
-  public static mainRequireStaticScript(name: string) {
-    return SiyuanDevice.requireDataLib(`/plugins/siyuan-plugin-local-service/libs/zhi-rubick-core/${name}`)
   }
 
   public static appServiceFolder(): any {

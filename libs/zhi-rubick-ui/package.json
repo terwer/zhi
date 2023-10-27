@@ -1,0 +1,22 @@
+{
+  "name": "zhi-rubick-ui",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "serve": "vite",
+    "dev": "vue-tsc && vite build --watch --outDir=/Users/terwer/Documents/mydocs/SiYuanWorkspace/test/data/plugins/siyuan-plugin-local-service/libs/zhi-rubick-ui",
+    "build": "vue-tsc && vite build",
+    "localBuild": "vue-tsc && vite build --outDir=/Users/terwer/Documents/mydocs/siyuan-plugins/siyuan-plugin-local-service/public/libs/zhi-rubick-ui",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vue-tsc": "^1.8.5"
+  }
+}

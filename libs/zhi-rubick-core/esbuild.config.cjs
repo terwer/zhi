@@ -25,7 +25,7 @@
 
 const path = require("path")
 const minimist = require("minimist")
-const { dtsPlugin } = require("esbuild-plugin-d.ts")
+// const { dtsPlugin } = require("esbuild-plugin-d.ts")
 const { copy } = require("esbuild-plugin-copy")
 
 const args = minimist(process.argv.slice(2))
@@ -46,7 +46,7 @@ module.exports = {
     platform: "node",
     external: ["electron", "@electron/remote", "@electron/remote/main"],
     plugins: [
-      dtsPlugin(),
+      // dtsPlugin(),
       copy({
         // this is equal to process.cwd(), which means we use cwd path as base path to resolve `to` path
         // if not specified, this plugin uses ESBuild.build outdir/outfile options as base path.

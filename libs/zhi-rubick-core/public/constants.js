@@ -24,6 +24,12 @@
  */
 
 /**
+ * 调试模式
+ *
+ * @type {boolean}
+ */
+const DEBUG_MODE = true
+/**
  * Rubick消息触发器的键值
  */
 const RUBICK_MSG_TRIGGER_KEY = "rubick-msg-trigger"
@@ -35,9 +41,7 @@ const RUBICK_MSG_TRIGGER_KEY = "rubick-msg-trigger"
  * @since 0.1.0
  */
 const constants = {
-  /**
-   * Rubick消息触发器的键值常量
-   */
+  DEBUG_MODE,
   RUBICK_MSG_TRIGGER_KEY,
 }
 
