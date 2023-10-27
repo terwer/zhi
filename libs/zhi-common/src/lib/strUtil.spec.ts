@@ -77,4 +77,11 @@ describe("StrUtil", () => {
     const url = StrUtil.pathJoin(StrUtil.pathJoin(home, username), repo)
     console.log(url)
   })
+
+  it("test decodeUnicodeToChinese", () => {
+    const str =
+      '这是可能有unicode字符串的字符{"code":400,"msg":"\\\u8bf7\\\u8bbe\\\u7f6e\\\u6587\\\u7ae0\\\u6807\\\u7b7e"}'
+    const result = StrUtil.decodeUnicodeToChinese(str)
+    console.log(result)
+  })
 })

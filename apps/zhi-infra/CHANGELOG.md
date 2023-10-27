@@ -1,5 +1,12 @@
 # zhi-infra
 
+## 0.20.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.24.4
+
 ## 0.20.0
 
 ### Minor Changes

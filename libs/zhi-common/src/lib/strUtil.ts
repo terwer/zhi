@@ -186,6 +186,18 @@ class StrUtil {
     })
     return firstLetters
   }
+
+  /**
+   * 将包含Unicode编码的字符转换为中文
+   *
+   * @param {string} str - 要处理的字符串
+   * @returns {string} - 转换后的字符串
+   */
+  public static decodeUnicodeToChinese(str: string): string {
+    return str.replace(/\\[uU][\dA-Fa-f]{4}/g, (match) => {
+      return String.fromCharCode(parseInt(match.substring(2), 16))
+    })
+  }
 }
 
 export default StrUtil

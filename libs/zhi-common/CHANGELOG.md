@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.24.4
+
+### Patch Changes
+
+- feat: add decodeUnicodeToChinese
+
 ## 1.24.3
 
 ### Patch Changes
