@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.47.0
+
+### Minor Changes
+
+- feat: add checkAuth for blog api
+
 ## 1.46.5
 
 ### Patch Changes

@@ -42,6 +42,11 @@ import TagInfo from "./models/tagInfo"
  */
 interface IBlogApi {
   /**
+   * 检测平台是否可用
+   */
+  checkAuth(): Promise<boolean>
+
+  /**
    * 博客配置列表
    *
    * @param keyword - 搜索关键字，部分平台不支持

@@ -37,6 +37,9 @@ import TagInfo from "./models/tagInfo"
  * 博客基类
  */
 class BlogApi implements IBlogApi {
+  public async checkAuth(): Promise<boolean> {
+    throw new NotImplementedException("You must implement checkAuth in sub class")
+  }
   public async getUsersBlogs(keyword?: string): Promise<Array<UserBlog>> {
     throw new NotImplementedException("You must implement getUsersBlogs in sub class")
   }

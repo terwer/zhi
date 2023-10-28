@@ -28,7 +28,7 @@ import Post from "./models/post"
 import CategoryInfo from "./models/categoryInfo"
 import MediaObject from "./models/mediaObject"
 import { IBlogApi } from "./IBlogApi"
-import { simpleLogger } from "zhi-lib-base"
+import { NotImplementedException, simpleLogger } from "zhi-lib-base"
 import Attachment from "./models/attachmentInfo"
 import BlogApi from "./blogApi"
 import YamlConvertAdaptor from "./yamlConvertAdaptor"
@@ -59,6 +59,13 @@ class BlogAdaptor implements IBlogApi {
     this.logger = simpleLogger("blog-adaptor", "zhi-blog-api", false)
     this.VERSION = "1.0.0"
     this.apiAdaptor = apiAdaptor
+  }
+
+  /**
+   * 检测平台是否可用
+   */
+  public async checkAuth(): Promise<boolean> {
+    throw await this.apiAdaptor.checkAuth()
   }
 
   /**
