@@ -103,13 +103,11 @@ class StrUtil {
    * @param str - 待检测的字符串
    */
   public static isEmptyString(str: any): boolean {
-    if (!str) {
+    if (typeof str === "undefined" || str === "") {
       return true
     }
-    if (!(typeof str === "string")) {
-      return true
-    }
-    return str.trim().length === 0
+
+    return typeof str === "string" && str.trim().length === 0
   }
 
   /**

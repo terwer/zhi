@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.25.0
+
+### Minor Changes
+
+- feat: change isEmptyString
+
 ## 1.24.4
 
 ### Patch Changes

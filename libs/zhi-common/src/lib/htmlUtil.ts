@@ -23,6 +23,8 @@
  * questions.
  */
 
+import StrUtil from "./strUtil"
+
 /**
  * HTML 处理工具类
  */
@@ -33,6 +35,10 @@ class HtmlUtil {
    * @param str - 字符串
    */
   public static removeTitleNumber(str: string): string {
+    if (StrUtil.isEmptyString(str)) {
+      return ""
+    }
+
     let newstr = str
 
     // 移除序号
@@ -48,6 +54,10 @@ class HtmlUtil {
    * @param str - 原字符
    */
   public static removeWidgetTag(str: string): string {
+    if (StrUtil.isEmptyString(str)) {
+      return ""
+    }
+
     let newstr = str.toString()
 
     // 旧版发布挂件
@@ -71,6 +81,10 @@ class HtmlUtil {
    * @param str - 原字符
    */
   public static removeMdWidgetTag(str: string): string {
+    if (StrUtil.isEmptyString(str)) {
+      return ""
+    }
+
     let newstr = str.toString()
 
     // 删除挂件的iframe
@@ -85,6 +99,10 @@ class HtmlUtil {
    * @param str - 字符串
    */
   public static filterHtml(str: string): string {
+    if (StrUtil.isEmptyString(str)) {
+      return ""
+    }
+
     /*
      * <.*?>为正则表达式，其中的.表示任意字符，*?表示出现0次或0次以上，此方法可以去掉双头标签(双头针对于残缺的标签)
      * "<.*?"表示<尖括号后的所有字符，此方法可以去掉残缺的标签，及后面的内容
@@ -136,6 +154,10 @@ class HtmlUtil {
    * @param ignoreSign - 不要结尾省略号
    */
   public static parseHtml(html: string, length: number, ignoreSign?: boolean): string {
+    if (StrUtil.isEmptyString(html)) {
+      return ""
+    }
+
     const allText = this.filterHtml(html)
     const ellipsis = ignoreSign ? "" : "..."
 
@@ -167,6 +189,10 @@ class HtmlUtil {
    * @param html - html
    */
   public static removeH1(html: string): string {
+    if (StrUtil.isEmptyString(html)) {
+      return ""
+    }
+
     let newstr = html
 
     // 在正则表达式中使用非贪婪模式
@@ -200,6 +226,10 @@ class HtmlUtil {
    * 在 JavaScript 中，^ 匹配行首，# 匹配 # 字符，.* 匹配任意字符，$ 匹配行尾，m 标记表示多行模式。
    */
   public static removeMdH1(md: string) {
+    if (StrUtil.isEmptyString(md)) {
+      return ""
+    }
+
     let newstr = md
     const mdH1Regex = /^# .*$/m // 移除 'g' 标志以仅匹配第一个 H1 标题
     newstr = newstr.replace(mdH1Regex, "")
