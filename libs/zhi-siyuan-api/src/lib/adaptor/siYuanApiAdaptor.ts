@@ -117,6 +117,7 @@ class SiYuanApiAdaptor extends BlogApi {
 
   public override async getPost(postid: string, useSlug?: boolean, skipBody?: boolean): Promise<Post> {
     let pid = postid
+    let originalId: string
     if (useSlug) {
       const pidObj = await this.siyuanKernelApi.getRootBlockBySlug(postid)
       if (pidObj) {
@@ -202,7 +203,8 @@ class SiYuanApiAdaptor extends BlogApi {
 
     // 适配公共属性
     const commonPost = new Post()
-    commonPost.postid = siyuanPost.root_id ?? ""
+    commonPost.postid = siyuanPost.root_id
+    commonPost.originalId = siyuanPost.root_id
     commonPost.dateCreated = DateUtil.convertStringToDate(DateUtil.formatNumToZhDate(siyuanPost.created))
     commonPost.dateUpdated = new Date()
     commonPost.title = title

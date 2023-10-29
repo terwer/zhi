@@ -38,6 +38,11 @@ class Post {
   postid: string
 
   /**
+   * 原始来源ID
+   */
+  originalId: string
+
+  /**
    * 标题
    */
   title: string
@@ -159,6 +164,7 @@ class Post {
 
   constructor() {
     this.postid = ""
+    this.originalId = ""
     this.title = ""
     this.originalTitle = this.title
     this.permalink = ""

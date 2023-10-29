@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.50.0
+
+### Minor Changes
+
+- add originalId for post
+
 ## 1.49.0
 
 ### Minor Changes

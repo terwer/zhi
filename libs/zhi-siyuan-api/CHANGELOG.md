@@ -1,5 +1,16 @@
 # zhi-siyuan-api
 
+## 2.12.0
+
+### Minor Changes
+
+- add originalId for post
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.50.0
+
 ## 2.11.8
 
 ### Patch Changes
