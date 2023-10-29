@@ -88,6 +88,10 @@ class BlogApi implements IBlogApi {
     throw new NotImplementedException("You must implement getPreviewUrl in sub class")
   }
 
+  public async getPostPreviewUrl(postid: string): Promise<string> {
+    throw new NotImplementedException("You must implement getPostPreviewUrl in sub class")
+  }
+
   public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<Attachment> {
     throw new NotImplementedException("You must implement newMediaObject in sub class")
   }

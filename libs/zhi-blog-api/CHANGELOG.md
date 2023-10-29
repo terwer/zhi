@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.48.0
+
+### Minor Changes
+
+- feat: add getPostPreviewUrl
+
 ## 1.47.0
 
 ### Minor Changes

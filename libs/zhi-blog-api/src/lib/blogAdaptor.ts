@@ -188,6 +188,15 @@ class BlogAdaptor implements IBlogApi {
   }
 
   /**
+   * 获取文章预览链接
+   *
+   * @param postid - 文章ID
+   */
+  public async getPostPreviewUrl(postid: string): Promise<string> {
+    return await this.apiAdaptor.getPostPreviewUrl(postid)
+  }
+
+  /**
    * 上传附件
    *
    * @param mediaObject - 资源

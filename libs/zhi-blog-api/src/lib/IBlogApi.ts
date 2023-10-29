@@ -196,6 +196,14 @@ interface IBlogApi {
   getPreviewUrl(postid: string): Promise<string>
 
   /**
+   * 获取文章预览链接
+   *
+   * @param postid - 文章ID
+   * @returns {Promise<string>}
+   */
+  getPostPreviewUrl(postid: string): Promise<string>
+
+  /**
    * 上传附件
    *
    * @param mediaObject - 资源
