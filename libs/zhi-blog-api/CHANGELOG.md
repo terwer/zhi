@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.49.0
+
+### Minor Changes
+
+- feat: add previewPostUrl
+
 ## 1.48.0
 
 ### Minor Changes
