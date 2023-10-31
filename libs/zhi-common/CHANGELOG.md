@@ -1,5 +1,17 @@
 # zhi-common
 
+## 1.26.1
+
+### Patch Changes
+
+- fix: change str format type
+
+## 1.26.0
+
+### Minor Changes
+
+- feat: change getByLength
+
 ## 1.25.0
 
 ### Minor Changes

@@ -39,7 +39,7 @@ class StrUtil {
    * @author terwer
    * @since 0.0.1
    */
-  public static f(str: string, ...args: (string | number | boolean | object)[]): string {
+  public static f(str: string, ...args: (string | number | boolean | Record<string, unknown>)[]): string {
     let ret = str
     for (let i = 0; i < args.length; i++) {
       const arg = args[i]
@@ -84,17 +84,31 @@ class StrUtil {
    *
    * @param str - str
    * @param length - 长度
-   * @param ignore - 不要结尾省略号
+   * @param ignoreSign - 不要结尾省略号
    */
-  public static getByLength(str: string, length: number, ignore?: boolean): string {
-    const allText = str
-    if (allText.length < length) {
-      return allText
+  public static getByLength(str: string, length: number, ignoreSign?: boolean): string {
+    const ellipsis = ignoreSign ? "" : "..."
+
+    // 使用正则表达式匹配中文字符
+    const chineseCharReg = /[\u4e00-\u9fa5]/
+    let textLength = 0
+    let result = ""
+
+    for (let i = 0; i < str.length; i++) {
+      const char = str[i]
+      if (chineseCharReg.test(char)) {
+        textLength += 2 // 中文字符长度为2
+      } else {
+        textLength += 1 // 英文字符长度为1
+      }
+
+      if (textLength > length) {
+        result = str.slice(0, i) + ellipsis
+        break
+      }
     }
-    if (ignore) {
-      return allText.substring(0, length)
-    }
-    return allText.substring(0, length) + "..."
+
+    return result || str
   }
 
   /**

@@ -1,5 +1,19 @@
 # zhi-blog-api
 
+## 1.50.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.26.1
+
+## 1.50.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.26.0
+
 ## 1.50.0
 
 ### Minor Changes

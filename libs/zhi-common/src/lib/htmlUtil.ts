@@ -159,28 +159,7 @@ class HtmlUtil {
     }
 
     const allText = this.filterHtml(html)
-    const ellipsis = ignoreSign ? "" : "..."
-
-    // 使用正则表达式匹配中文字符
-    const chineseCharReg = /[\u4e00-\u9fa5]/
-    let textLength = 0
-    let result = ""
-
-    for (let i = 0; i < allText.length; i++) {
-      const char = allText[i]
-      if (chineseCharReg.test(char)) {
-        textLength += 2 // 中文字符长度为2
-      } else {
-        textLength += 1 // 英文字符长度为1
-      }
-
-      if (textLength > length) {
-        result = allText.slice(0, i) + ellipsis
-        break
-      }
-    }
-
-    return result || allText
+    return StrUtil.getByLength(allText, length, ignoreSign)
   }
 
   /**
