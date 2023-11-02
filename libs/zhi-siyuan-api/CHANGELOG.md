@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.12.3
+
+### Patch Changes
+
+- fix: add no-empty-function
+
 ## 2.12.2
 
 ### Patch Changes
