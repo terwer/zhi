@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.27.0
+
+### Minor Changes
+
+- fix: isEmptyString error for null
+
 ## 1.26.1
 
 ### Patch Changes
