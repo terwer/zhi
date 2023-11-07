@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.28.0
+
+### Minor Changes
+
+- fix: change isEmptyString
+
 ## 1.27.0
 
 ### Minor Changes
