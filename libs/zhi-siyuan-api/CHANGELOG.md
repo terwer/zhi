@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.13.1
+
+### Patch Changes
+
+- fix: change params
+
 ## 2.13.0
 
 ### Minor Changes
