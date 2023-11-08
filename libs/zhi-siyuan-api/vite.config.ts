@@ -6,13 +6,10 @@ import { viteStaticCopy } from "vite-plugin-static-copy"
 import dts from "vite-plugin-dts"
 import minimist from "minimist"
 import livereload from "rollup-plugin-livereload"
-import { nodePolyfills } from "vite-plugin-node-polyfills"
 
 const args = minimist(process.argv.slice(2))
 const isWatch = args.watch || args.w || false
-const devDistDir = "/Users/terwer/Documents/mydocs/siyuan-plugins/siyuan-plugin-publisher/public/libs/zhi-siyuan-api"
-const distDir = isWatch ? devDistDir : "./dist"
-// const distDir = devDistDir
+const distDir = "./dist"
 
 console.log("isWatch=>", isWatch)
 console.log("distDir=>", distDir)
@@ -39,10 +36,10 @@ export default defineConfig({
       ],
     }),
 
-    nodePolyfills({
-      exclude: ["fs"],
-      protocolImports: true,
-    }),
+    // nodePolyfills({
+    //   exclude: ["fs"],
+    //   protocolImports: true,
+    // }),
   ],
 
   // Configuration for building your library.
@@ -64,7 +61,7 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
-      plugins: [...(isWatch ? [livereload(devDistDir)] : [])],
+      plugins: [...(isWatch ? [livereload(distDir)] : [])],
       // External packages that should not be bundled into your library.
       external: [],
     },

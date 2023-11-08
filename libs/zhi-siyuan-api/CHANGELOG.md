@@ -1,5 +1,17 @@
 # zhi-siyuan-api
 
+## 2.13.0
+
+### Minor Changes
+
+- fix: change deps
+
+## 2.12.6
+
+### Patch Changes
+
+- fix: remove polyfill
+
 ## 2.12.5
 
 ### Patch Changes
