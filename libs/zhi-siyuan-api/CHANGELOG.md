@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.14.0
+
+### Minor Changes
+
+- fix: add token auth
+
 ## 2.13.1
 
 ### Patch Changes

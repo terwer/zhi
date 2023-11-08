@@ -267,20 +267,16 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       body: JSON.stringify(data),
       method: "POST",
     }
-    if (!StrUtil.isEmptyString(this.siyuanConfig.password)) {
-      Object.assign(fetchOps, {
-        headers: {
+    Object.assign(fetchOps, {
+      headers: {
+        ...(!StrUtil.isEmptyString(this.siyuanConfig.password) && {
           Authorization: `Token ${this.siyuanConfig.password}`,
-        },
-      })
-    }
-    if (!StrUtil.isEmptyString(this.siyuanConfig.cookie)) {
-      Object.assign(fetchOps, {
-        headers: {
+        }),
+        ...(!StrUtil.isEmptyString(this.siyuanConfig.cookie) && {
           Cookie: this.siyuanConfig.cookie,
-        },
-      })
-    }
+        }),
+      },
+    })
 
     this.logger.debug("开始向思源请求数据，reqUrl=>", reqUrl)
     this.logger.debug("开始向思源请求数据，fetchOps=>", fetchOps)
