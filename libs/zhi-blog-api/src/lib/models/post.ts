@@ -24,7 +24,7 @@
  */
 
 import PostStatusEnum from "../enums/postStatusEnum"
-import { DateUtil } from "zhi-common"
+import PageEditMode from "./pageEditMode"
 
 /**
  * 通用文章模型定义
@@ -162,6 +162,11 @@ class Post {
    */
   attrs?: string
 
+  /**
+   * 编辑模式
+   */
+  editMode?: PageEditMode.EditMode_simple
+
   constructor() {
     this.postid = ""
     this.originalId = ""
@@ -184,6 +189,7 @@ class Post {
     this.post_status = PostStatusEnum.PostStatusEnum_Publish
     this.wp_password = ""
     this.attrs = "{}"
+    this.editMode = PageEditMode.EditMode_simple
   }
 }
 

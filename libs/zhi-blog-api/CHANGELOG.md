@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.51.0
+
+### Minor Changes
+
+- feat: add editMode for post
+
 ## 1.50.4
 
 ### Patch Changes
