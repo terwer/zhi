@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.51.2
+
+### Patch Changes
+
+- fix: change editMode type
+
 ## 1.51.1
 
 ### Patch Changes

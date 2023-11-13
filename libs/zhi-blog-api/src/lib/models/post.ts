@@ -165,7 +165,7 @@ class Post {
   /**
    * 编辑模式
    */
-  editMode?: PageEditMode.EditMode_simple
+  editMode?: PageEditMode
 
   constructor() {
     this.postid = ""
