@@ -31,7 +31,7 @@ import YamlFormatObj from "./models/yamlFormatObj"
  * YAML 适配器接口
  */
 interface IYamlConvertAdaptor {
-  convertToYaml(post: Post, cfg?: BlogConfig): YamlFormatObj
+  convertToYaml(post: Post, yamlFormatObj?: YamlFormatObj, cfg?: BlogConfig): YamlFormatObj
 
   convertToAttr(post: Post, yamlObj: YamlFormatObj, cfg?: BlogConfig): Post
 }
@@ -40,11 +40,11 @@ interface IYamlConvertAdaptor {
  * YAML转换适配器
  */
 class YamlConvertAdaptor implements IYamlConvertAdaptor {
-  convertToYaml(post: Post, cfg?: BlogConfig): YamlFormatObj {
+  public convertToYaml(post: Post, yamlFormatObj?: YamlFormatObj, cfg?: BlogConfig): YamlFormatObj {
     throw new Error("YamlConvertAdaptor.convertToYaml: 该功能未实现，请在子类重写该方法")
   }
 
-  convertToAttr(post: Post, yamlFormatObj: YamlFormatObj, cfg?: BlogConfig): Post {
+  public convertToAttr(post: Post, yamlFormatObj: YamlFormatObj, cfg?: BlogConfig): Post {
     throw new Error("YamlConvertAdaptor.convertToAttr: 该功能未实现，请在子类重写该方法")
   }
 }

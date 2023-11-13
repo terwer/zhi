@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.53.0
+
+### Minor Changes
+
+- convertToYaml add parameter
+
 ## 1.52.0
 
 ### Minor Changes
