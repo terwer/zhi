@@ -23,8 +23,9 @@
  * questions.
  */
 
-import PostStatusEnum from "../enums/postStatusEnum"
-import PageEditMode from "./pageEditMode"
+import PostStatusEnum from "../enums/postStatusEnum";
+import PageEditMode from "./pageEditMode";
+import YamlStrategy from "./yamlStrategy";
 
 /**
  * 通用文章模型定义
@@ -167,6 +168,11 @@ class Post {
    */
   editMode?: PageEditMode
 
+  /**
+   * YAML 处理策略
+   */
+  yamlType?: YamlStrategy
+
   constructor() {
     this.postid = ""
     this.originalId = ""
@@ -190,6 +196,7 @@ class Post {
     this.wp_password = ""
     this.attrs = "{}"
     this.editMode = PageEditMode.EditMode_simple
+    this.yamlType = YamlStrategy.YAML_default
   }
 }
 

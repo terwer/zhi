@@ -24,6 +24,7 @@ import PreferenceConfig from "./lib/PreferenceConfig"
 import PostUtil from "./lib/PostUtil"
 import TagInfo from "./lib/models/tagInfo"
 import PageEditMode from "./lib/models/pageEditMode"
+import YamlStrategy from "./lib/models/yamlStrategy"
 
 export { BlogApi, BlogAdaptor }
 export { WebApi, WebAdaptor }
@@ -35,4 +36,4 @@ export { YamlFormatObj, YamlConvertAdaptor }
 export { PostUtil }
 export { PreferenceConfig }
 export { type ElectronCookie }
-export { PageEditMode }
+export { PageEditMode, YamlStrategy }

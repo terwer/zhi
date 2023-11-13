@@ -29,19 +29,21 @@
  * @author terwer
  * @since 0.6.0
  */
-enum PageEditMode {
+enum YamlStrategy {
   /**
-   * 简洁模式
+   * 无 YAML 适配器
    */
-  EditMode_simple,
+  YAML_default,
+
   /**
-   * 详细模式
+   * 固定的 YAML 适配器
    */
-  EditMode_complex,
+  Yaml_custom_auto,
+
   /**
-   * 源码模式
+   * 自定义编辑的 YAML
    */
-  EditMode_source,
+  Yaml_custom_hand,
 }
 
-export default PageEditMode
+export default YamlStrategy

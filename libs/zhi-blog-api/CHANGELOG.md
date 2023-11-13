@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.52.0
+
+### Minor Changes
+
+- feat: add yamlType
+
 ## 1.51.2
 
 ### Patch Changes
