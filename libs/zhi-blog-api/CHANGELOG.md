@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.51.1
+
+### Patch Changes
+
+- fix: export PageEditMode
+
 ## 1.51.0
 
 ### Minor Changes
