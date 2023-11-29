@@ -1,5 +1,11 @@
 # zhi-cli
 
+## 1.6.0
+
+### Minor Changes
+
+- feat: add ts-vite-obsidian-plugin template
+
 ## 1.5.20
 
 ### Patch Changes
