@@ -1,5 +1,11 @@
 # @terwer/esbuild-config-custom
 
+## 2.1.3
+
+### Patch Changes
+
+- add hotReload option for esbuild
+
 ## 2.1.2
 
 ### Patch Changes

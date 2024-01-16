@@ -1,6 +1,6 @@
 {
   "name": "@terwer/esbuild-config-custom",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "type": "module",
   "description": "universal esbuild tool for library",
   "bin": {
