@@ -216,7 +216,7 @@ export class ZhiBuild {
     console.log("ZhiBuild is starting...")
     await ZhiBuild.processBuild()
   } catch (e) {
-    console.error(`ZhiBuild process failed: ${e}`)
+    console.error(`ZhiBuild process failed`, e)
     process.exit(1)
   }
 })()
