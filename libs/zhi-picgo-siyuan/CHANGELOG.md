@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.0
+
+### Minor Changes
+
+- uodate esbuild to 0.19.11
+
 ## 1.3.0
 
 ### Minor Changes

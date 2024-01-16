@@ -1,5 +1,12 @@
 # @terwer/esbuild-config-custom
 
+## 2.1.0
+
+### Minor Changes
+
+- update esbuild to 0.19.11
+- uodate esbuild to 0.19.11
+
 ## 2.0.0
 
 ### Major Changes

@@ -23,53 +23,19 @@
  * questions.
  */
 
-const path = require("path")
-const minimist = require("minimist")
-const { dtsPlugin } = require("esbuild-plugin-d.ts")
-const { copy } = require("esbuild-plugin-copy")
-
-const args = minimist(process.argv.slice(2))
-const isProduction = args.production || args.prod
-const outDir = args.outDir || args.o
-
-// for outer custom output for dev
-const baseDir = outDir ?? "./"
-const distDir = outDir ? baseDir : path.join(baseDir, "dist")
+import { dtsPlugin } from "esbuild-plugin-d.ts"
 
 /**
  * 构建配置
  */
-module.exports = {
+export default {
   esbuildConfig: {
     entryPoints: ["src/index.ts"],
-    outfile: path.join(distDir, "index.cjs"),
+    outfile: "dist/index.cjs",
+    bundle: true,
     format: "cjs",
     platform: "node",
-    plugins: [
-      dtsPlugin(),
-      copy({
-        // this is equal to process.cwd(), which means we use cwd path as base path to resolve `to` path
-        // if not specified, this plugin uses ESBuild.build outdir/outfile options as base path.
-        resolveFrom: "cwd",
-        assets: [
-          // copy folder
-          // {
-          //   from: "./public/**/*",
-          //   to: [distDir],
-          // },
-          // copy one file
-          {
-            from: ["./package.json"],
-            to: [path.join(distDir, "/package.json")],
-          },
-          {
-            from: ["./README.md"],
-            to: [path.join(distDir, "/README.md")],
-          },
-        ],
-        watch: true,
-      }),
-    ],
+    external: ["electron", "@electron/remote", "proxy-agent"],
+    plugins: [dtsPlugin()],
   },
-  customConfig: {},
 }

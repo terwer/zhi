@@ -1,5 +1,11 @@
 # zhi-cli
 
+## 1.7.0
+
+### Minor Changes
+
+- uodate esbuild to 0.19.11
+
 ## 1.6.0
 
 ### Minor Changes

@@ -23,12 +23,12 @@
  * questions.
  */
 
-const { dtsPlugin } = require("esbuild-plugin-d.ts")
+import { dtsPlugin } from "esbuild-plugin-d.ts"
 
 /**
  * 构建配置
  */
-module.exports = {
+export default {
   esbuildConfig: {
     entryPoints: ["src/index.ts"],
     outfile: "dist/index.cjs",

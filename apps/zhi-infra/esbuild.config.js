@@ -23,19 +23,53 @@
  * questions.
  */
 
-const { dtsPlugin } = require("esbuild-plugin-d.ts")
+import path from "path"
+import minimist from "minimist"
+import { dtsPlugin } from "esbuild-plugin-d.ts"
+import { copy } from "esbuild-plugin-copy"
+
+const args = minimist(process.argv.slice(2))
+const isProduction = args.production || args.prod
+const outDir = args.outDir || args.o
+
+// for outer custom output for dev
+const baseDir = outDir ?? "./"
+const distDir = outDir ? baseDir : path.join(baseDir, "dist")
 
 /**
  * 构建配置
  */
-module.exports = {
+export default {
   esbuildConfig: {
     entryPoints: ["src/index.ts"],
-    outfile: "dist/index.cjs",
-    bundle: true,
+    outfile: path.join(distDir, "index.cjs"),
     format: "cjs",
     platform: "node",
-    external: ["electron", "@electron/remote", "proxy-agent"],
-    plugins: [dtsPlugin()],
+    plugins: [
+      dtsPlugin(),
+      copy({
+        // this is equal to process.cwd(), which means we use cwd path as base path to resolve `to` path
+        // if not specified, this plugin uses ESBuild.build outdir/outfile options as base path.
+        resolveFrom: "cwd",
+        assets: [
+          // copy folder
+          // {
+          //   from: "./public/**/*",
+          //   to: [distDir],
+          // },
+          // copy one file
+          {
+            from: ["./package.json"],
+            to: [path.join(distDir, "/package.json")],
+          },
+          {
+            from: ["./README.md"],
+            to: [path.join(distDir, "/README.md")],
+          },
+        ],
+        watch: true,
+      }),
+    ],
   },
+  customConfig: {},
 }

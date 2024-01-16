@@ -1,25 +1,22 @@
 #!/usr/bin/env node
 
-const os = require("os")
-const path = require("path")
-const esbuild = require("esbuild")
-const minimist = require("minimist")
-const { existsSync } = require("fs")
-const getNormalizedEnvDefines = require("./utils.cjs")
-const { ServeOnRequestArgs } = require("esbuild")
-const { createServer } = require("http")
+import os from "os"
+import path from "path"
+import esbuild from "esbuild"
+import minimist from "minimist"
+import { existsSync } from "fs"
 
 /**
- *  zhi 主题构建
+ *  zhi 构建工具
  */
-class ZhiBuild {
+export class ZhiBuild {
   /**
    * 构建过程
    */
   static async processBuild() {
     // 处理参数
     const args = minimist(process.argv.slice(2))
-    const cfg = args.c ?? "esbuild.config.cjs"
+    const cfg = args.c ?? "esbuild.config.js"
     const isWatch = args.watch ?? false
     const isProduction = !isWatch
 
@@ -41,7 +38,7 @@ class ZhiBuild {
           console.log(`try import esbuildConfigFile => ${esbuildConfigFile}`)
           // 兼容 mjs 和 cjs
           const pkg = await import(esbuildConfigFile)
-          console.log("pkg=>", pkg)
+          // console.log("pkg=>", pkg)
           customCfg = pkg
           if (pkg.default) {
             customCfg = pkg.default
@@ -223,5 +220,3 @@ class ZhiBuild {
     process.exit(1)
   }
 })()
-
-module.exports = ZhiBuild

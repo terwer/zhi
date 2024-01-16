@@ -1,5 +1,16 @@
 # zhi-infra
 
+## 0.21.0
+
+### Minor Changes
+
+- uodate esbuild to 0.19.11
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-cmd@0.8.0
+
 ## 0.20.6
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # zhi-cmd
 
+## 0.8.0
+
+### Minor Changes
+
+- update esbuild to 0.19.11
+
 ## 0.7.1
 
 ### Patch Changes
