@@ -1,5 +1,11 @@
 # @terwer/esbuild-config-custom
 
+## 2.1.2
+
+### Patch Changes
+
+- feat: update esbuild to 0.19.11
+
 ## 2.1.1
 
 ### Patch Changes
