@@ -97,7 +97,7 @@ export class ZhiBuild {
       // 默认端口 6666
       if (customConfig.isServe) {
         if (!customConfig.servePort) {
-          customConfig.servePort = "6666"
+          customConfig.servePort = 6666
         }
       }
       // 是否开启热重载

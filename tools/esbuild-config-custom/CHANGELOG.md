@@ -1,5 +1,11 @@
 # @terwer/esbuild-config-custom
 
+## 2.1.4
+
+### Patch Changes
+
+- fix port type
+
 ## 2.1.3
 
 ### Patch Changes
