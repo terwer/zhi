@@ -1,5 +1,11 @@
 # @terwer/esbuild-config-custom
 
+## 2.2.0
+
+### Minor Changes
+
+- fix config import error
+
 ## 2.1.4
 
 ### Patch Changes

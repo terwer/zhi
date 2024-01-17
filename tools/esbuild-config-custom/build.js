@@ -32,27 +32,24 @@ export class ZhiBuild {
     if (!existsSync(esbuildConfigFile)) {
       console.warn(`userEsbuildConfig not found, using default`)
     } else {
+      let customCfg
       try {
-        let customCfg
-        try {
-          console.log(`try import esbuildConfigFile => ${esbuildConfigFile}`)
-          // 兼容 mjs 和 cjs
-          const pkg = await import(esbuildConfigFile)
-          // console.log("pkg=>", pkg)
-          customCfg = pkg
-          if (pkg.default) {
-            customCfg = pkg.default
-          }
-        } catch (e) {
-          console.log(`import error, using require instead.esbuildConfigFile => ${esbuildConfigFile}`)
-          customCfg = require(esbuildConfigFile)
+        console.log(`try import esbuildConfigFile => ${esbuildConfigFile}`)
+        // 兼容 mjs 和 cjs
+        const pkg = await import(esbuildConfigFile)
+        // console.log("pkg=>", pkg)
+        customCfg = pkg
+        if (pkg.default) {
+          customCfg = pkg.default
         }
-        userEsbuildConfig = customCfg.esbuildConfig ?? {}
-        customConfig = customCfg.customConfig ?? {}
-      } catch (e2) {
-        console.error(`Failed to load esbuild config: ${e2}`)
+      } catch (e) {
+        console.error(`Failed to load esbuild config: `, e)
         process.exit(1)
+        console.log(`import error, using require instead.esbuildConfigFile => ${esbuildConfigFile}`)
+        customCfg = require(esbuildConfigFile)
       }
+      userEsbuildConfig = customCfg.esbuildConfig ?? {}
+      customConfig = customCfg.customConfig ?? {}
     }
     console.log("parsed user defined esbuild config", userEsbuildConfig)
 
