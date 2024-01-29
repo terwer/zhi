@@ -1,5 +1,11 @@
 # zhi-cli
 
+## 1.8.0
+
+### Minor Changes
+
+- feat: add publisher-pro plugin template
+
 ## 1.7.0
 
 ### Minor Changes

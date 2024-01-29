@@ -1,1 +1,8 @@
-["turbo-workspace-simple", "ts-esbuild-lib", "ts-vite-lib", "ts-vite-siyuan-plugin", "ts-vite-obsidian-plugin"]
+[
+  "turbo-workspace-simple",
+  "ts-esbuild-lib",
+  "ts-vite-lib",
+  "ts-vite-siyuan-plugin",
+  "ts-vite-obsidian-plugin",
+  "ts-vite-publisher-pro-plugin"
+]
