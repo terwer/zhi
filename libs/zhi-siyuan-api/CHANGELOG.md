@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.16.0
+
+### Minor Changes
+
+- fix keyword search error
+
 ## 2.15.2
 
 ### Patch Changes

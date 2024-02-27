@@ -84,8 +84,7 @@ class SiYuanApiAdaptor extends BlogApi {
     const k = keyword ?? ""
     const siyuanPosts = await this.siyuanKernelApi.getRootBlocks(pg, numOfPosts, k)
 
-    this.logger.debug("getRecentPosts from siyuan, get counts =>", siyuanPosts.length)
-    if (siyuanPosts && siyuanPosts.length && siyuanPosts.length > 0) {
+    if (siyuanPosts?.length > 0) {
       for (let i = 0; i < siyuanPosts.length; i++) {
         const siyuanPost = siyuanPosts[i]
         const post = await this.getPost(siyuanPost.root_id, false, true)
