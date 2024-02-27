@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.15.0
+
+### Minor Changes
+
+- fix post list info
+
 ## 2.14.5
 
 ### Patch Changes

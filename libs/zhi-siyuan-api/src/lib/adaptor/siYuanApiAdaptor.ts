@@ -83,23 +83,14 @@ class SiYuanApiAdaptor extends BlogApi {
     }
     const k = keyword ?? ""
     const siyuanPosts = await this.siyuanKernelApi.getRootBlocks(pg, numOfPosts, k)
-    // logUtil.logInfo(siyuanPosts)
 
     this.logger.debug("getRecentPosts from siyuan, get counts =>", siyuanPosts.length)
-    for (let i = 0; i < siyuanPosts.length; i++) {
-      const siyuanPost = siyuanPosts[i]
-      const post = await this.getPost(siyuanPost.root_id, false, true)
-
-      // 适配公共属性
-      const commonPost = new Post()
-      commonPost.postid = siyuanPost.root_id
-      commonPost.title = post.title
-      commonPost.description = post.description
-      commonPost.permalink = post.permalink
-      commonPost.isPublished = post.isPublished
-      commonPost.mt_keywords = post.mt_keywords
-      commonPost.categories = post.categories
-      result.push(commonPost)
+    if (siyuanPosts && siyuanPosts.length && siyuanPosts.length > 0) {
+      for (let i = 0; i < siyuanPosts.length; i++) {
+        const siyuanPost = siyuanPosts[i]
+        const post = await this.getPost(siyuanPost.root_id, false, true)
+        result.push(post)
+      }
     }
 
     return result
