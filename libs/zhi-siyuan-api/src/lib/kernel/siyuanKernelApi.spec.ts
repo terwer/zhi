@@ -216,4 +216,22 @@ describe("test SiyuanKernelApi", async () => {
     })
     console.log("result=>", result)
   })
+
+  // it("test siyuanRequestForm", async () => {
+  //   const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+  //   const kernelApi = new SiyuanKernelApi(siyuanConfig)
+  //
+  //   const text = "test"
+  //   const path = "/test.txt"
+  //   const file = new File([new Blob([text])], path.split("/").pop())
+  //
+  //   const FormData = require("form-data")
+  //   const formData = new FormData()
+  //   formData.append("path", path)
+  //   formData.append("isDir", "false")
+  //   formData.append("modTime", Math.floor(Date.now() / 1000).toString())
+  //   formData.append("file", file)
+  //   const result = await kernelApi.siyuanRequestForm("/api/file/putFile", formData)
+  //   console.log("result=>", result)
+  // })
 })

@@ -1,25 +1,22 @@
 #!/usr/bin/env node
 
-const os = require("os")
-const path = require("path")
-const esbuild = require("esbuild")
-const minimist = require("minimist")
-const { existsSync } = require("fs")
-const getNormalizedEnvDefines = require("./utils.cjs")
-const { ServeOnRequestArgs } = require("esbuild")
-const { createServer } = require("http")
+import os from "os"
+import path from "path"
+import esbuild from "esbuild"
+import minimist from "minimist"
+import { existsSync } from "fs"
 
 /**
- *  zhi 主题构建
+ *  zhi 构建工具
  */
-class ZhiBuild {
+export class ZhiBuild {
   /**
    * 构建过程
    */
   static async processBuild() {
     // 处理参数
     const args = minimist(process.argv.slice(2))
-    const cfg = args.c ?? "esbuild.config.cjs"
+    const cfg = args.c ?? "esbuild.config.js"
     const isWatch = args.watch ?? false
     const isProduction = !isWatch
 
@@ -35,27 +32,24 @@ class ZhiBuild {
     if (!existsSync(esbuildConfigFile)) {
       console.warn(`userEsbuildConfig not found, using default`)
     } else {
+      let customCfg
       try {
-        let customCfg
-        try {
-          console.log(`try import esbuildConfigFile => ${esbuildConfigFile}`)
-          // 兼容 mjs 和 cjs
-          const pkg = await import(esbuildConfigFile)
-          console.log("pkg=>", pkg)
-          customCfg = pkg
-          if (pkg.default) {
-            customCfg = pkg.default
-          }
-        } catch (e) {
-          console.log(`import error, using require instead.esbuildConfigFile => ${esbuildConfigFile}`)
-          customCfg = require(esbuildConfigFile)
+        console.log(`try import esbuildConfigFile => ${esbuildConfigFile}`)
+        // 兼容 mjs 和 cjs
+        const pkg = await import(esbuildConfigFile)
+        // console.log("pkg=>", pkg)
+        customCfg = pkg
+        if (pkg.default) {
+          customCfg = pkg.default
         }
-        userEsbuildConfig = customCfg.esbuildConfig ?? {}
-        customConfig = customCfg.customConfig ?? {}
-      } catch (e2) {
-        console.error(`Failed to load esbuild config: ${e2}`)
+      } catch (e) {
+        console.error(`Failed to load esbuild config: `, e)
         process.exit(1)
+        console.log(`import error, using require instead.esbuildConfigFile => ${esbuildConfigFile}`)
+        customCfg = require(esbuildConfigFile)
       }
+      userEsbuildConfig = customCfg.esbuildConfig ?? {}
+      customConfig = customCfg.customConfig ?? {}
     }
     console.log("parsed user defined esbuild config", userEsbuildConfig)
 
@@ -97,7 +91,14 @@ class ZhiBuild {
           })
         },
       })
+      // 默认端口 6666
       if (customConfig.isServe) {
+        if (!customConfig.servePort) {
+          customConfig.servePort = 6666
+        }
+      }
+      // 是否开启热重载
+      if (customConfig.hotReload) {
         bundledEsbuildConfig.banner = {
           js: `(() => new EventSource("http://localhost:${customConfig.servePort}/esbuild").addEventListener("change", e => { location.reload() }))();`,
         }
@@ -219,9 +220,7 @@ class ZhiBuild {
     console.log("ZhiBuild is starting...")
     await ZhiBuild.processBuild()
   } catch (e) {
-    console.error(`ZhiBuild process failed: ${e}`)
+    console.error(`ZhiBuild process failed`, e)
     process.exit(1)
   }
 })()
-
-module.exports = ZhiBuild

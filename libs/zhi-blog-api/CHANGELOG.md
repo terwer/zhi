@@ -1,5 +1,101 @@
 # zhi-blog-api
 
+## 1.53.0
+
+### Minor Changes
+
+- convertToYaml add parameter
+
+## 1.52.0
+
+### Minor Changes
+
+- feat: add yamlType
+
+## 1.51.2
+
+### Patch Changes
+
+- fix: change editMode type
+
+## 1.51.1
+
+### Patch Changes
+
+- fix: export PageEditMode
+
+## 1.51.0
+
+### Minor Changes
+
+- feat: add editMode for post
+
+## 1.50.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.28.0
+
+## 1.50.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.27.0
+
+## 1.50.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.26.1
+
+## 1.50.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.26.0
+
+## 1.50.0
+
+### Minor Changes
+
+- add originalId for post
+
+## 1.49.0
+
+### Minor Changes
+
+- feat: add previewPostUrl
+
+## 1.48.0
+
+### Minor Changes
+
+- feat: add getPostPreviewUrl
+
+## 1.47.0
+
+### Minor Changes
+
+- feat: add checkAuth for blog api
+
+## 1.46.5
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.25.0
+
+## 1.46.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.24.4
+
 ## 1.46.3
 
 ### Patch Changes

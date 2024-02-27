@@ -1,5 +1,42 @@
 # @terwer/esbuild-config-custom
 
+## 2.2.0
+
+### Minor Changes
+
+- fix config import error
+
+## 2.1.4
+
+### Patch Changes
+
+- fix port type
+
+## 2.1.3
+
+### Patch Changes
+
+- add hotReload option for esbuild
+
+## 2.1.2
+
+### Patch Changes
+
+- feat: update esbuild to 0.19.11
+
+## 2.1.1
+
+### Patch Changes
+
+- fix esbuild error
+
+## 2.1.0
+
+### Minor Changes
+
+- update esbuild to 0.19.11
+- uodate esbuild to 0.19.11
+
 ## 2.0.0
 
 ### Major Changes

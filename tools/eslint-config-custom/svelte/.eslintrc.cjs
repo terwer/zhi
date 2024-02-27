@@ -34,5 +34,7 @@ module.exports = {
     "@typescript-eslint/no-explicit-any": "off",
     "turbo/no-undeclared-env-vars": "off",
     "prettier/prettier": "error",
+    "svelte/valid-compile": ["error", { ignoreWarnings: true }],
+    "@typescript-eslint/no-empty-function": "off",
   },
 }

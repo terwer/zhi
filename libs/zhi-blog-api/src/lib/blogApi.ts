@@ -37,6 +37,9 @@ import TagInfo from "./models/tagInfo"
  * 博客基类
  */
 class BlogApi implements IBlogApi {
+  public async checkAuth(): Promise<boolean> {
+    throw new NotImplementedException("You must implement checkAuth in sub class")
+  }
   public async getUsersBlogs(keyword?: string): Promise<Array<UserBlog>> {
     throw new NotImplementedException("You must implement getUsersBlogs in sub class")
   }
@@ -83,6 +86,10 @@ class BlogApi implements IBlogApi {
 
   public async getPreviewUrl(postid: string): Promise<string> {
     throw new NotImplementedException("You must implement getPreviewUrl in sub class")
+  }
+
+  public async getPostPreviewUrl(postid: string): Promise<string> {
+    throw new NotImplementedException("You must implement getPostPreviewUrl in sub class")
   }
 
   public async newMediaObject(mediaObject: MediaObject, customHandler?: any): Promise<Attachment> {

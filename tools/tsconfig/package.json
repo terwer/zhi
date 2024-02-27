@@ -1,7 +1,7 @@
 {
   "name": "@terwer/tsconfig",
-  "version": "0.0.7",
-  "private": true,
+  "version": "0.1.0",
+  "description": "a common typescript config define",
   "license": "MIT",
   "publishConfig": {
     "access": "public"

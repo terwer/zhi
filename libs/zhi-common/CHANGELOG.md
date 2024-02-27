@@ -1,5 +1,41 @@
 # zhi-common
 
+## 1.28.0
+
+### Minor Changes
+
+- fix: change isEmptyString
+
+## 1.27.0
+
+### Minor Changes
+
+- fix: isEmptyString error for null
+
+## 1.26.1
+
+### Patch Changes
+
+- fix: change str format type
+
+## 1.26.0
+
+### Minor Changes
+
+- feat: change getByLength
+
+## 1.25.0
+
+### Minor Changes
+
+- feat: change isEmptyString
+
+## 1.24.4
+
+### Patch Changes
+
+- feat: add decodeUnicodeToChinese
+
 ## 1.24.3
 
 ### Patch Changes

@@ -23,30 +23,29 @@
  * questions.
  */
 
-const dotenv = require("dotenv")
-const { join } = require("path")
-const minimist = require("minimist")
-const { existsSync } = require("fs")
+import dotenv from "dotenv"
+import { join } from "path"
+import minimist from "minimist"
 
 const getEnvFilePath = () => {
-  const args = minimist(process.argv.slice(2));
-  const isWatch = args.watch ?? false;
-  const isProduction = args.production ?? false;
+  const args = minimist(process.argv.slice(2))
+  const isWatch = args.watch ?? false
+  const isProduction = args.production ?? false
 
   if (isWatch) {
-    return '.env.development';
+    return ".env.development"
   } else if (isProduction) {
-    return '.env.production';
+    return ".env.production"
   } else {
-    return '.env.test';
+    return ".env.test"
   }
-};
+}
 
 const loadDotenv = () => {
-  const envFilePath = getEnvFilePath();
-  console.log(`loading env variables from ${envFilePath}`);
-  dotenv.config({ path: join(process.cwd(), envFilePath) });
-};
+  const envFilePath = getEnvFilePath()
+  console.log(`loading env variables from ${envFilePath}`)
+  dotenv.config({ path: join(process.cwd(), envFilePath) })
+}
 
 /**
  * 获取环境变量，仅构建工具使用
@@ -85,4 +84,4 @@ const getNormalizedEnvDefines = (prefixes = []) => {
   return envs
 }
 
-module.exports = getNormalizedEnvDefines
+export { getNormalizedEnvDefines }

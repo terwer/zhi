@@ -12,7 +12,7 @@
 
 ### libraries
 
-- zhi-framework - Core Framework
+- [X] zhi-framework - Core Framework
   - [X] [zhi-lib-base](https://github.com/terwer/zhi/tree/main/libs/zhi-lib-base) ![zhi-lib-base](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-lib-base%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-device](https://github.com/terwer/zhi/tree/main/libs/zhi-device) ![zhi-device](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-device%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-env](https://github.com/terwer/zhi/tree/main/libs/zhi-env) ![zhi-env](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-env%2Fpackage.json&query=%24.version&label=release)
@@ -30,9 +30,10 @@
   - [X] [zhi-gitlab-middleware](https://github.com/terwer/zhi/tree/main/libs/zhi-gitlab-middleware) ![zhi-github-middleware](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-github-middleware%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-siyuan-api](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-api) ![zhi-siyuan-api](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-siyuan-api%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-picgo-core](https://github.com/terwer/zhi/tree/main/libs/zhi-picgo-core) ![zhi-picgo-core](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-picgo-core%2Fpackage.json&query=%24.version&label=release)
-  - [X] [zhi-siyuan-picgo](https://github.com/terwer/zhi/tree/main/libs/zhi-siyuan-picgo) ![zhi-siyuan-picgo](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-siyuan-picgo%2Fpackage.json&query=%24.version&label=release)
+  - [X] [zhi-picgo-siyuan](https://github.com/terwer/zhi/tree/main/libs/zhi-picgo-siyuan) ![zhi-picgo-siyuan](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-siyuan-picgo%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-chatgpt](https://github.com/terwer/zhi/tree/main/libs/zhi-chatgpt) ![zhi-chatgpt](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-chatgpt%2Fpackage.json&query=%24.version&label=release)
   - [X] [zhi-rubick-core](https://github.com/terwer/zhi/tree/main/libs/zhi-rubick-core) ![zhi-rubick-core](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fterwer%2Fzhi%2Fmain%2Flibs%2Fzhi-rubick-core%2Fpackage.json&query=%24.version&label=release)
+  - [X] [zhi-rubick-ui](https://github.com/terwer/zhi/tree/main/libs/zhi-picgo-ui)
 
 ### scaffold && docs
 

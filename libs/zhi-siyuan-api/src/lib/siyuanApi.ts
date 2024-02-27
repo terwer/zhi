@@ -25,7 +25,6 @@
 
 import SiyuanConfig from "./config/siyuanConfig"
 import SiyuanKernelApi from "./kernel/siyuanKernelApi"
-import SiyuanClientApi from "./client/siyuanClientApi"
 
 /**
  * 思源笔记API
@@ -37,12 +36,7 @@ class SiyuanApi {
   /**
    * 思源笔记内核API
    */
-  public readonly kernelApi
-
-  /**
-   * 思源笔记客户端API
-   */
-  public readonly clientApi
+  public readonly kernelApi: SiyuanKernelApi
 
   /**
    * 构造思源 API对象
@@ -51,7 +45,6 @@ class SiyuanApi {
    */
   constructor(cfg: SiyuanConfig) {
     this.kernelApi = new SiyuanKernelApi(cfg)
-    this.clientApi = new SiyuanClientApi()
   }
 }
 

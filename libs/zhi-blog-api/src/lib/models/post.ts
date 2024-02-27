@@ -23,8 +23,9 @@
  * questions.
  */
 
-import PostStatusEnum from "../enums/postStatusEnum"
-import { DateUtil } from "zhi-common"
+import PostStatusEnum from "../enums/postStatusEnum";
+import PageEditMode from "./pageEditMode";
+import YamlStrategy from "./yamlStrategy";
 
 /**
  * 通用文章模型定义
@@ -36,6 +37,11 @@ class Post {
    * 文章ID
    */
   postid: string
+
+  /**
+   * 原始来源ID
+   */
+  originalId: string
 
   /**
    * 标题
@@ -157,8 +163,19 @@ class Post {
    */
   attrs?: string
 
+  /**
+   * 编辑模式
+   */
+  editMode?: PageEditMode
+
+  /**
+   * YAML 处理策略
+   */
+  yamlType?: YamlStrategy
+
   constructor() {
     this.postid = ""
+    this.originalId = ""
     this.title = ""
     this.originalTitle = this.title
     this.permalink = ""
@@ -178,6 +195,8 @@ class Post {
     this.post_status = PostStatusEnum.PostStatusEnum_Publish
     this.wp_password = ""
     this.attrs = "{}"
+    this.editMode = PageEditMode.EditMode_simple
+    this.yamlType = YamlStrategy.YAML_default
   }
 }
 

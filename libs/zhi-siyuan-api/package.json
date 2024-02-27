@@ -1,6 +1,6 @@
 {
   "name": "zhi-siyuan-api",
-  "version": "2.11.3",
+  "version": "2.15.0",
   "type": "module",
   "description": "a siyuan-note api including both kernel and client",
   "main": "./dist/index.js",
@@ -27,6 +27,10 @@
     "start": "vite preview",
     "test": "vitest --watch"
   },
+  "runAs": [
+    "node",
+    "browser"
+  ],
   "devDependencies": {
     "@terwer/eslint-config-custom": "workspace:*",
     "@terwer/tsconfig": "workspace:*",

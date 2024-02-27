@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023, Terwer . All rights reserved.
+ * Copyright (c) 2022-2023, Terwer . All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -23,19 +23,27 @@
  * questions.
  */
 
-const { dtsPlugin } = require("esbuild-plugin-d.ts")
-
 /**
- * 构建配置
+ * 编辑模式
+ *
+ * @author terwer
+ * @since 0.6.0
  */
-module.exports = {
-  esbuildConfig: {
-    entryPoints: ["src/index.ts"],
-    outfile: "dist/index.cjs",
-    bundle: true,
-    format: "cjs",
-    platform: "node",
-    external: ["electron", "@electron/remote", "proxy-agent"],
-    plugins: [dtsPlugin()],
-  },
+enum YamlStrategy {
+  /**
+   * 无 YAML 适配器
+   */
+  YAML_default,
+
+  /**
+   * 固定的 YAML 适配器
+   */
+  Yaml_custom_auto,
+
+  /**
+   * 自定义编辑的 YAML
+   */
+  Yaml_custom_hand,
 }
+
+export default YamlStrategy

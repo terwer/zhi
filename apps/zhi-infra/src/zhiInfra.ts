@@ -42,7 +42,7 @@ class ZhiInfra {
   private npmManager: NpmPackageManager
 
   constructor(depsJsonPath: string) {
-    this.logger = simpleLogger("zhi-infra", "zhi", true)
+    this.logger = simpleLogger("zhi-infra", "zhi", false)
 
     this.zhiCoreNpmPath = SiyuanDevice.appNpmFolder()
     this.zhiCoreNodeModulesPath = SiyuanDevice.joinPath(this.zhiCoreNpmPath, "node_modules")

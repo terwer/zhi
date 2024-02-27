@@ -72,7 +72,7 @@ class CustomCmd {
         cwd: cwd ?? process.cwd(),
         silent: true,
       }
-      console.log(`正在执行命令：${command},args=>${args}, options=>`, options)
+      console.log(`正在使用 Electron 自带的 Node 执行命令：${command},args=>${args}, options=>`, options)
 
       const child = fork(command, args, options)
       // 用户目录的 Download/log.txt
@@ -145,9 +145,11 @@ class CustomCmd {
     return new Promise((resolve, reject) => {
       exec(fullCommand, options, (err: any, stdout: any) => {
         if (err) {
+          console.error("executeCommand error =>", err)
           reject(err)
         } else {
-          resolve(stdout.trim())
+          console.info("executeCommand success =>", stdout)
+          resolve(stdout)
         }
       })
     })
@@ -168,26 +170,44 @@ class CustomCmd {
    */
   public async executeCommandWithSpawn(command: string, args?: string[], options = {}) {
     const { spawn } = SiyuanDevice.requireLib("child_process")
+    const siyuanRequire = SiyuanDevice.siyuanWindow()?.require ?? require
+    const process = SiyuanDevice.siyuanWindow()?.process ?? global.process
+
+    const fs = siyuanRequire("fs")
+    const path = siyuanRequire("path")
     return new Promise((resolve, reject) => {
       const child = spawn(command, args, options)
-      let output = "" // 保存输出结果的变量
-      let error = "" // 保存错误信息的变量
+
+      // 用户目录的 Download/log.txt
+      const logFilePath = path.join(
+        process.env?.HOME ?? process.env?.USERPROFILE ?? process.env?.Temp ?? process.cwd,
+        "local-service-command-log.txt"
+      )
+      console.log(`命令执行日志已保存到文件 => ${logFilePath}`)
+      const logStream = fs.createWriteStream(logFilePath, { flags: "a" })
+
+      child.stdout.pipe(logStream)
+      child.stderr.pipe(logStream)
 
       // 监听子进程的 stdout、stderr 输出
+      let output = "" // 保存输出结果的变量
+      let error = "" // 保存错误信息的变量
       child.stdout.on("data", (data: any) => {
         output += data.toString()
       })
-      child.stderr.on("data", (data: any) => {
+      child.stderr.on("error", (data: any) => {
         error += data.toString()
       })
 
-      // 监听子进程的退出事件
-      child.on("close", (code: number) => {
+      child.on("error", (err: any) => {
+        resolve(err.message)
+      })
+
+      child.on("exit", (code: any) => {
         if (code === 0) {
           resolve(output)
         } else {
-          const errorMsg = `Command "${command}" failed with exit code ${code}. ${error}`
-          reject(new Error(errorMsg))
+          resolve(error)
         }
       })
     })

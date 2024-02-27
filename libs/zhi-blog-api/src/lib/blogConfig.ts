@@ -135,9 +135,14 @@ abstract class BlogConfig {
   public posidKey: string
 
   /**
-   * 文章预览链接
+   * 预览链接
    */
   public previewUrl?: string
+
+  /**
+   * 文章预览链接
+   */
+  public previewPostUrl?: string
 
   /**
    * 文章类型
@@ -259,6 +264,7 @@ abstract class BlogConfig {
     this.blogName = ""
     this.posidKey = ""
     this.previewUrl = ""
+    this.previewPostUrl = this.previewUrl
     this.pageType = PageTypeEnum.Markdown
     this.placeholder = undefined
     this.preferenceConfig = new PreferenceConfig()

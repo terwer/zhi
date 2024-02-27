@@ -42,6 +42,11 @@ import TagInfo from "./models/tagInfo"
  */
 interface IBlogApi {
   /**
+   * 检测平台是否可用
+   */
+  checkAuth(): Promise<boolean>
+
+  /**
    * 博客配置列表
    *
    * @param keyword - 搜索关键字，部分平台不支持
@@ -189,6 +194,14 @@ interface IBlogApi {
    * @returns {Promise<string>}
    */
   getPreviewUrl(postid: string): Promise<string>
+
+  /**
+   * 获取文章预览链接
+   *
+   * @param postid - 文章ID
+   * @returns {Promise<string>}
+   */
+  getPostPreviewUrl(postid: string): Promise<string>
 
   /**
    * 上传附件

@@ -1,5 +1,85 @@
 # zhi-infra
 
+## 0.21.0
+
+### Minor Changes
+
+- uodate esbuild to 0.19.11
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-cmd@0.8.0
+
+## 0.20.6
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.28.0
+
+## 0.20.5
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.27.0
+
+## 0.20.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.26.1
+
+## 0.20.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.26.0
+
+## 0.20.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.25.0
+
+## 0.20.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.24.4
+
+## 0.20.0
+
+### Minor Changes
+
+- feat: support event and path def for rubick
+
+## 0.19.3
+
+### Patch Changes
+
+- fix: auto invoke
+- Updated dependencies
+  - zhi-cmd@0.7.1
+
+## 0.19.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-cmd@0.7.0
+
+## 0.19.1
+
+### Patch Changes
+
+- fix: change log level
+
 ## 0.19.0
 
 ### Minor Changes

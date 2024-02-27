@@ -1,5 +1,156 @@
 # zhi-siyuan-api
 
+## 2.15.0
+
+### Minor Changes
+
+- fix post list info
+
+## 2.14.5
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.53.0
+
+## 2.14.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.52.0
+
+## 2.14.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.51.2
+
+## 2.14.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.51.1
+
+## 2.14.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.51.0
+
+## 2.14.0
+
+### Minor Changes
+
+- fix: add token auth
+
+## 2.13.1
+
+### Patch Changes
+
+- fix: change params
+
+## 2.13.0
+
+### Minor Changes
+
+- fix: change deps
+
+## 2.12.6
+
+### Patch Changes
+
+- fix: remove polyfill
+
+## 2.12.5
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.28.0
+  - zhi-blog-api@1.50.4
+
+## 2.12.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.27.0
+  - zhi-blog-api@1.50.3
+
+## 2.12.3
+
+### Patch Changes
+
+- fix: add no-empty-function
+
+## 2.12.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.26.1
+  - zhi-blog-api@1.50.2
+
+## 2.12.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.26.0
+  - zhi-blog-api@1.50.1
+
+## 2.12.0
+
+### Minor Changes
+
+- add originalId for post
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.50.0
+
+## 2.11.8
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.49.0
+
+## 2.11.7
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.48.0
+
+## 2.11.6
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.47.0
+
+## 2.11.5
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.25.0
+  - zhi-blog-api@1.46.5
+
+## 2.11.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.24.4
+  - zhi-blog-api@1.46.4
+
 ## 2.11.3
 
 ### Patch Changes

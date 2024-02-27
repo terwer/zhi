@@ -10,30 +10,30 @@ universal esbuild tool for library
 pnpm add @terwer/esbuild-config-custom@latest -D
 ```
 
-2 add `esbuild.config.cjs` to project root
+2 add `esbuild.config.js` to project root
 
 for lib
 
 ```js
-const { dtsPlugin } = require("esbuild-plugin-d.ts")
+import { dtsPlugin } from "esbuild-plugin-d.ts"
 
-module.exports = {
+export default {
   esbuildConfig: {
     entryPoints: ["src/index.ts"],
     outfile: "dist/index.cjs",
     bundle: true,
     format: "cjs",
     plugins: [dtsPlugin()],
-  },
+  }
 }
 ```
 
 for node
 
 ```js
-const { dtsPlugin } = require("esbuild-plugin-d.ts")
+import { dtsPlugin } from "esbuild-plugin-d.ts"
 
-module.exports = {
+export default {
   esbuildConfig: {
     entryPoints: ["src/index.ts"],
     outfile: "dist/index.cjs",
@@ -44,7 +44,7 @@ module.exports = {
       js: "#!/usr/bin/env node",
     },
     plugins: [dtsPlugin()],
-  },
+  }
 }
 ```
 

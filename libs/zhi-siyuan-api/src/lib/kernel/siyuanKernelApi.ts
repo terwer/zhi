@@ -267,20 +267,16 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       body: JSON.stringify(data),
       method: "POST",
     }
-    if (!StrUtil.isEmptyString(this.siyuanConfig.password)) {
-      Object.assign(fetchOps, {
-        headers: {
+    Object.assign(fetchOps, {
+      headers: {
+        ...(!StrUtil.isEmptyString(this.siyuanConfig.password) && {
           Authorization: `Token ${this.siyuanConfig.password}`,
-        },
-      })
-    }
-    if (!StrUtil.isEmptyString(this.siyuanConfig.cookie)) {
-      Object.assign(fetchOps, {
-        headers: {
+        }),
+        ...(!StrUtil.isEmptyString(this.siyuanConfig.cookie) && {
           Cookie: this.siyuanConfig.cookie,
-        },
-      })
-    }
+        }),
+      },
+    })
 
     this.logger.debug("开始向思源请求数据，reqUrl=>", reqUrl)
     this.logger.debug("开始向思源请求数据，fetchOps=>", fetchOps)
@@ -302,20 +298,16 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       method: "POST",
       body: formData,
     }
-    if (!StrUtil.isEmptyString(this.siyuanConfig.password)) {
-      Object.assign(fetchOps, {
-        headers: {
+    Object.assign(fetchOps, {
+      headers: {
+        ...(!StrUtil.isEmptyString(this.siyuanConfig.password) && {
           Authorization: `Token ${this.siyuanConfig.password}`,
-        },
-      })
-    }
-    if (!StrUtil.isEmptyString(this.siyuanConfig.cookie)) {
-      Object.assign(fetchOps, {
-        headers: {
+        }),
+        ...(!StrUtil.isEmptyString(this.siyuanConfig.cookie) && {
           Cookie: this.siyuanConfig.cookie,
-        },
-      })
-    }
+        }),
+      },
+    })
 
     const response = await fetch(reqUrl, fetchOps)
 
@@ -631,7 +623,6 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    * @param file - 上传的文件
    */
   public async putFile(path: string, file: any): Promise<SiyuanData> {
-    // import FormData from "form-data"
     const formData = new FormData()
     formData.append("path", path)
     formData.append("isDir", "false")

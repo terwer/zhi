@@ -1,6 +1,6 @@
 {
   "name": "zhi-rubick-core",
-  "version": "0.1.1",
+  "version": "0.3.0",
   "type": "module",
   "description": "plugin container core",
   "main": "./dist/index.cjs",
@@ -15,8 +15,9 @@
     "plugin"
   ],
   "scripts": {
-    "dev": "zhi-build --watch",
+    "dev": "zhi-build --watch --outDir=/Users/terwer/Documents/mydocs/SiYuanWorkspace/test/data/plugins/siyuan-plugin-local-service/libs/zhi-rubick-ui",
     "build": "zhi-build --production",
+    "localBuild": "zhi-build --production --outDir=/Users/terwer/Documents/mydocs/zhi-framework/zhi/libs/zhi-rubick-ui/public",
     "test": "vitest",
     "lint": "eslint 'src/**/*.{ts,js}' --fix"
   },
@@ -24,9 +25,12 @@
     "@terwer/esbuild-config-custom": "workspace:*",
     "@terwer/eslint-config-custom": "workspace:*",
     "@terwer/vitest-config-custom": "workspace:*",
-    "@terwer/tsconfig": "workspace:*"
+    "@terwer/tsconfig": "workspace:*",
+    "electron": "26.0.0",
+    "@electron/remote": "2.0.12"
   },
   "dependencies": {
+    "zhi-device": "workspace:*",
     "zhi-lib-base": "workspace:*"
   },
   "publishConfig": {

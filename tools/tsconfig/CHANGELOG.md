@@ -1,5 +1,11 @@
 # @terwer/tsconfig
 
+## 0.1.0
+
+### Minor Changes
+
+- publish @terwer/tsconfig
+
 ## 0.0.7
 
 ### Patch Changes

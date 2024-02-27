@@ -4,9 +4,10 @@
   "version": "1.0.0",
   "packageManager": "pnpm@7.15.0",
   "scripts": {
+    "lint": "turbo run lint",
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "lint": "turbo run lint",
+    "localBuild": "turbo run localBuild",
     "cz": "git-cz",
     "add-changeset": "changeset",
     "publish-packages": "turbo run build lint && changeset version && changeset publish"
@@ -17,9 +18,9 @@
     }
   },
   "devDependencies": {
-    "@changesets/cli": "^2.26.2",
+    "@changesets/cli": "^2.27.1",
     "@terwer/commit-config-custom": "workspace:*",
     "@terwer/eslint-config-custom": "workspace:*",
-    "turbo": "^1.10.16"
+    "turbo": "^1.11.3"
   }
 }

@@ -1,10 +1,10 @@
 {
   "name": "@terwer/esbuild-config-custom",
-  "version": "2.0.0",
+  "version": "2.2.0",
   "type": "module",
   "description": "universal esbuild tool for library",
   "bin": {
-    "zhi-build": "./build.cjs"
+    "zhi-build": "./build.js"
   },
   "keywords": [
     "esbuild",
@@ -18,16 +18,16 @@
   "peerDependencies": {
     "@types/minimist": "^1.2.2",
     "dotenv": "^16.0.3",
-    "esbuild": "^0.17.17",
+    "esbuild": "^0.19.11",
     "esbuild-plugin-copy": "^2.1.1",
     "esbuild-plugin-d.ts": "^1.1.0",
     "esbuild-plugin-ifdef": "^1.0.1",
     "esbuild-plugin-inline-image": "^0.0.9",
-    "esbuild-plugin-vue3": "0.3.2",
+    "esbuild-plugin-vue3": "0.4.0",
     "esbuild-style-plugin": "^1.6.2",
     "minimist": "^1.2.8",
-    "rimraf": "^4.4.1",
-    "stylus": "^0.59.0"
+    "rimraf": "^5.0.5",
+    "stylus": "^0.62.0"
   },
   "publishConfig": {
     "access": "public"
