@@ -42,7 +42,7 @@ class HtmlUtil {
     let newstr = str
 
     // 移除序号
-    const publisherRegex = /([0-9]*)\.?/
+    const publisherRegex = /^\d+\.\s*(.*)$/
     newstr = newstr.replace(publisherRegex, "")
 
     return newstr
@@ -60,17 +60,8 @@ class HtmlUtil {
 
     let newstr = str.toString()
 
-    // 旧版发布挂件
-    const publisherRegex = /<iframe.*src="\/widgets\/publisher.*<\/iframe>/g
-    newstr = newstr.replace(publisherRegex, "")
-
-    // 新版发布挂件
-    const syPublisherRegex = /<iframe.*src="\/widgets\/sy-post-publisher.*<\/iframe>/g
-    newstr = newstr.replace(syPublisherRegex, "")
-
-    // 文章属性挂件
-    const noteAttrRegex = /<iframe.*\/widgets\/Note*\sAttrs.*\/iframe>/g
-    newstr = newstr.replace(noteAttrRegex, "")
+    const widgetRegex = /<iframe.*?src="\/widgets\/.*?<\/iframe>/g
+    newstr = newstr.replace(widgetRegex, "")
 
     return newstr
   }

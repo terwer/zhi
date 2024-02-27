@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.29.0
+
+### Minor Changes
+
+- fix title handle
+
 ## 1.28.0
 
 ### Minor Changes
