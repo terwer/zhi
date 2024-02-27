@@ -39,13 +39,16 @@ class HtmlUtil {
       return ""
     }
 
-    let newstr = str
+    const trimmedStr = str.trim()
+    const re = /^\d+\.\s*(.*)$/
+    const match = trimmedStr.match(re)
 
-    // 移除序号
-    const publisherRegex = /^\d+\.\s*(.*)$/
-    newstr = newstr.replace(publisherRegex, "")
+    if (!match) {
+      return trimmedStr.trimStart()
+    }
 
-    return newstr
+    const newStr = match[1]
+    return newStr.trimStart()
   }
 
   /**
@@ -58,12 +61,12 @@ class HtmlUtil {
       return ""
     }
 
-    let newstr = str.toString()
+    let newStr = str
 
-    const widgetRegex = /<iframe.*?src="\/widgets\/.*?<\/iframe>/g
-    newstr = newstr.replace(widgetRegex, "")
+    const re = /<iframe.*?src="\/widgets\/.*?<\/iframe>/g
+    newStr = newStr.replace(re, "")
 
-    return newstr
+    return newStr
   }
 
   /**
