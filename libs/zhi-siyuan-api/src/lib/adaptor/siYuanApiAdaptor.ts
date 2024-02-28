@@ -74,7 +74,12 @@ class SiYuanApiAdaptor extends BlogApi {
     return await this.siyuanKernelApi.getRootBlocksCount(keyword ?? "")
   }
 
-  public override async getRecentPosts(numOfPosts: number, page?: number, keyword?: string): Promise<Array<Post>> {
+  public override async getRecentPosts(
+    numOfPosts: number,
+    page?: number,
+    keyword?: string,
+    isPublished?: boolean
+  ): Promise<Array<Post>> {
     const result: Post[] = []
 
     let pg = 0
@@ -82,7 +87,7 @@ class SiYuanApiAdaptor extends BlogApi {
       pg = page
     }
     const k = keyword ?? ""
-    const siyuanPosts = await this.siyuanKernelApi.getRootBlocks(pg, numOfPosts, k)
+    const siyuanPosts = await this.siyuanKernelApi.getRootBlocks(pg, numOfPosts, k, isPublished)
 
     if (siyuanPosts?.length > 0) {
       for (let i = 0; i < siyuanPosts.length; i++) {

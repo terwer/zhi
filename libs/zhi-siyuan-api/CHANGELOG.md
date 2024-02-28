@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.17.0
+
+### Minor Changes
+
+- feat: add isPublished filter
+
 ## 2.16.2
 
 ### Patch Changes
