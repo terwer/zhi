@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.54.0
+
+### Minor Changes
+
+- feat: add metadataMap
+
 ## 1.53.2
 
 ### Patch Changes
