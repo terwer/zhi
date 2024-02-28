@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.31.0
+
+### Minor Changes
+
+- feat: add hasKey
+
 ## 1.30.0
 
 ### Minor Changes
