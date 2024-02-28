@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.18.0
+
+### Minor Changes
+
+- feat: add count filter
+
 ## 2.17.0
 
 ### Minor Changes
