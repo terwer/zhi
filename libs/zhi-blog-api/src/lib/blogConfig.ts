@@ -165,6 +165,11 @@ abstract class BlogConfig {
   public middlewareUrl?: string
 
   /**
+   * 新跨域代理地址
+   */
+  public corsAnywhereUrl?: string
+
+  /**
    * 是否启用用户名
    */
   public usernameEnabled = false
@@ -269,6 +274,7 @@ abstract class BlogConfig {
     this.placeholder = undefined
     this.preferenceConfig = new PreferenceConfig()
     this.middlewareUrl = ""
+    this.corsAnywhereUrl = ""
     this.usernameEnabled = false
     this.showTokenTip = false
     this.allowPreviewUrlChange = true
