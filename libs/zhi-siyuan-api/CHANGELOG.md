@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.18.1
+
+### Patch Changes
+
+- fix: add getRecentPostsCount isPublished filter
+
 ## 2.18.0
 
 ### Minor Changes

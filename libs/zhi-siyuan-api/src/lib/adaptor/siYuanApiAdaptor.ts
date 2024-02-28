@@ -70,8 +70,8 @@ class SiYuanApiAdaptor extends BlogApi {
     return usersBlogs
   }
 
-  public override async getRecentPostsCount(keyword?: string): Promise<number> {
-    return await this.siyuanKernelApi.getRootBlocksCount(keyword ?? "")
+  public override async getRecentPostsCount(keyword?: string, isPublished?: boolean): Promise<number> {
+    return await this.siyuanKernelApi.getRootBlocksCount(keyword ?? "", isPublished)
   }
 
   public override async getRecentPosts(
