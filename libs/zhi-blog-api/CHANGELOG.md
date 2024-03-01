@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.56.0
+
+### Minor Changes
+
+- feat: add cors cookie support
+
 ## 1.55.0
 
 ### Minor Changes
