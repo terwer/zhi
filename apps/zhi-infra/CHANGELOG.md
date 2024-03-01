@@ -1,5 +1,13 @@
 # zhi-infra
 
+## 0.21.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.11.0
+  - zhi-cmd@0.8.1
+
 ## 0.21.3
 
 ### Patch Changes

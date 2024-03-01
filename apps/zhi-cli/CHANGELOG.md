@@ -1,5 +1,11 @@
 # zhi-cli
 
+## 1.8.1
+
+### Patch Changes
+
+- zhi-log@1.14.21
+
 ## 1.8.0
 
 ### Minor Changes

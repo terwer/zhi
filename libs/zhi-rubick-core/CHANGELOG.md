@@ -1,5 +1,12 @@
 # zhi-rubick-core
 
+## 0.3.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.11.0
+
 ## 0.3.0
 
 ### Minor Changes

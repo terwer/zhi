@@ -1,5 +1,16 @@
 # zhi-fetch-middleware
 
+## 0.8.0
+
+### Minor Changes
+
+- feat: allow force proxy for fetch
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.11.0
+
 ## 0.7.18
 
 ### Patch Changes

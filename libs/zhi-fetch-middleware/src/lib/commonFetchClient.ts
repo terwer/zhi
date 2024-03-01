@@ -49,10 +49,11 @@ class CommonFetchClient {
    *
    * @param endpointUrl - 请求地址
    * @param fetchOptions - 请求参数
+   * @param forceProxy - 是否强制使用代理
    */
-  public async fetchCall(endpointUrl: string, fetchOptions: RequestInit): Promise<any> {
+  public async fetchCall(endpointUrl: string, fetchOptions: RequestInit, forceProxy?: boolean): Promise<any> {
     const apiUrl = this.requestUrl ? this.requestUrl + endpointUrl : endpointUrl
-    return await this.fetchRequest(apiUrl, fetchOptions, this.middlewareUrl)
+    return await this.fetchRequest(apiUrl, fetchOptions, this.middlewareUrl, forceProxy)
   }
 
   /**
@@ -75,9 +76,15 @@ class CommonFetchClient {
    * @param apiUrl - 端点
    * @param fetchOptions - 请求参数
    * @param middlewareUrl - 可选，当环境不支持时候，必传
+   * @param forceProxy - 可选，是否强制使用代理
    */
-  private async fetchRequest(apiUrl: string, fetchOptions: RequestInit, middlewareUrl?: string): Promise<any> {
-    return await this.doFetch(apiUrl, fetchOptions, middlewareUrl)
+  private async fetchRequest(
+    apiUrl: string,
+    fetchOptions: RequestInit,
+    middlewareUrl?: string,
+    forceProxy?: boolean
+  ): Promise<any> {
+    return await this.doFetch(apiUrl, fetchOptions, middlewareUrl, forceProxy)
   }
 
   /**
@@ -85,9 +92,15 @@ class CommonFetchClient {
    * @param apiUrl 请求地址
    * @param fetchOptions 请求参数
    * @param middlewareUrl - 可选，当环境不支持时候，必传
+   * @param forceProxy - 可选，是否强制使用代理
    */
-  private async doFetch(apiUrl: string, fetchOptions: RequestInit, middlewareUrl?: string): Promise<any> {
-    const response: any = await this.fetchEntry(apiUrl, fetchOptions, middlewareUrl)
+  private async doFetch(
+    apiUrl: string,
+    fetchOptions: RequestInit,
+    middlewareUrl?: string,
+    forceProxy?: boolean
+  ): Promise<any> {
+    const response: any = await this.fetchEntry(apiUrl, fetchOptions, middlewareUrl, forceProxy)
     if (!response) {
       throw new Error("请求异常，response is undefined")
     }
@@ -159,14 +172,25 @@ class CommonFetchClient {
    * @param apiUrl - 请求地址
    * @param fetchOptions - 请求参数
    * @param middlewareUrl - 可选，当环境不支持时候，必传
+   * @param forceProxy - 可选，强制使用代理
    */
-  private async fetchEntry(apiUrl: string, fetchOptions: RequestInit, middlewareUrl?: string): Promise<any> {
+  private async fetchEntry(
+    apiUrl: string,
+    fetchOptions: RequestInit,
+    middlewareUrl?: string,
+    forceProxy?: boolean
+  ): Promise<any> {
     let result: any
 
-    const deviceType = DeviceDetection.getDevice()
+    const deviceType = forceProxy ? DeviceTypeEnum.DeviceType_ForceProxy : DeviceDetection.getDevice()
     this.logger.info("deviceType =>", deviceType)
 
     switch (deviceType) {
+      case DeviceTypeEnum.DeviceType_ForceProxy: {
+        this.logger.info("当前API需要强制使用代理，，已开启请求代理解决CORS跨域问题")
+        result = await fetchMiddleware(this.appInstance, apiUrl, fetchOptions, middlewareUrl)
+        break
+      }
       case DeviceTypeEnum.DeviceType_Node: {
         this.logger.info("当前处于Node环境，使用node的fetch获取数据")
         result = await fetchNode(this.appInstance, apiUrl, fetchOptions)
