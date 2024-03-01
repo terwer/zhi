@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.55.0
+
+### Minor Changes
+
+- feat: add corsAnywhereUrl
+
 ## 1.54.1
 
 ### Patch Changes
