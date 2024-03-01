@@ -175,11 +175,6 @@ abstract class BlogConfig {
   public corsCookieArray: string[]
 
   /**
-   * cookie对象数组
-   */
-  public corsCookieObjectArray: Record<string, any>[]
-
-  /**
    * 是否启用用户名
    */
   public usernameEnabled = false
@@ -286,7 +281,6 @@ abstract class BlogConfig {
     this.middlewareUrl = ""
     this.corsAnywhereUrl = ""
     this.corsCookieArray = []
-    this.corsCookieObjectArray = []
     this.usernameEnabled = false
     this.showTokenTip = false
     this.allowPreviewUrlChange = true
