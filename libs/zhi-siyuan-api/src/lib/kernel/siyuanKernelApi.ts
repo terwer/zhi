@@ -221,7 +221,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
           ORDER BY b1.updated DESC, b1.created DESC
           LIMIT ${page * pagesize}, ${pagesize}
       )
-      ORDER BY b2.content, b2.updated DESC, b2.created DESC, b2.id`
+      ORDER BY b2.updated DESC, b2.created DESC, b2.id`
 
     this.logger.debug("siyuanApi getSubdocs sql=>", stmt)
     return await this.sql(stmt)
