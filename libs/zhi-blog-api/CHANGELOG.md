@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.56.2
+
+### Patch Changes
+
+- fix: empty cate error
+
 ## 1.56.1
 
 ### Patch Changes
