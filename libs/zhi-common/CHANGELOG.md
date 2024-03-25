@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.33.0
+
+### Minor Changes
+
+- feat: add time zone support
+
 ## 1.32.0
 
 ### Minor Changes
