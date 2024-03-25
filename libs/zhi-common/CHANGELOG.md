@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.32.0
+
+### Minor Changes
+
+- feat: add asset api
+
 ## 1.31.0
 
 ### Minor Changes

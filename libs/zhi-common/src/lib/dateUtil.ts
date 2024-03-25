@@ -170,6 +170,18 @@ class DateUtil {
   }
 
   /**
+   * 时间戳转完整时间
+   *
+   * @param timestamp - 时间戳
+   */
+  public static formatTimestampToZh(timestamp: any) {
+    if (typeof timestamp == "string") {
+      timestamp = parseInt(timestamp)
+    }
+    return this.formatIsoToZh(new Date(timestamp).toISOString())
+  }
+
+  /**
    * 转换数字日期为中文日期
    *
    * @param str '20220718142548'

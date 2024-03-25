@@ -1,5 +1,28 @@
 # zhi-fetch-middleware
 
+## 0.9.0
+
+### Minor Changes
+
+- feat: add asset api
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.32.0
+
+## 0.8.2
+
+### Patch Changes
+
+- fix: revert resp parse
+
+## 0.8.1
+
+### Patch Changes
+
+- feat: add force proxy options
+
 ## 0.8.0
 
 ### Minor Changes

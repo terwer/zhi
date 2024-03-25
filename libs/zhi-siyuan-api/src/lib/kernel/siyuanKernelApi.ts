@@ -817,6 +817,13 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     }
     return await this.siyuanRequest("/api/block/updateBlock", params)
   }
+
+  public async netAssets2LocalAssets(id: string): Promise<SiyuanData["data"]> {
+    const params = {
+      id: id,
+    }
+    return await this.siyuanRequest("/api/format/netAssets2LocalAssets", params)
+  }
 }
 
 export default SiyuanKernelApi

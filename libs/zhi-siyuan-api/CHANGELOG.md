@@ -1,5 +1,17 @@
 # zhi-siyuan-api
 
+## 2.19.0
+
+### Minor Changes
+
+- feat: add asset api
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.32.0
+  - zhi-blog-api@1.56.3
+
 ## 2.18.6
 
 ### Patch Changes
