@@ -69,6 +69,11 @@ class SiyuanConfig extends BlogConfig {
    */
   public notebook: string
 
+  /**
+   * PicGo 上传超时时间
+   */
+  public picgoUploadTimeout = 10000
+
   constructor(apiUrl?: string, password?: string) {
     super()
     this.home = "http://127.0.0.1:6806"

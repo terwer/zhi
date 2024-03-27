@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.20.0
+
+### Minor Changes
+
+- feat: add picgo timeout field
+
 ## 2.19.1
 
 ### Patch Changes
