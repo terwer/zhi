@@ -285,6 +285,11 @@ abstract class BlogConfig {
    */
   public picbedService?: PicbedServiceTypeEnum
 
+  /**
+   * 强制使用代理
+   */
+  public forceProxy?: boolean
+
   protected constructor() {
     this.home = ""
     this.apiUrl = ""
@@ -324,6 +329,7 @@ abstract class BlogConfig {
     this.bundledPicbedSupported = false
     this.picbedService = PicbedServiceTypeEnum.None
     this.imageStorePath = "images"
+    this.forceProxy = false
   }
 }
 

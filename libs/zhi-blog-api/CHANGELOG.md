@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.61.0
+
+### Minor Changes
+
+- feat: add forceProxy for telegra.ph like platforms
+
 ## 1.60.0
 
 ### Minor Changes
