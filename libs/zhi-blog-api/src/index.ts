@@ -25,13 +25,14 @@ import PostUtil from "./lib/PostUtil"
 import TagInfo from "./lib/models/tagInfo"
 import PageEditMode from "./lib/models/pageEditMode"
 import YamlStrategy from "./lib/models/yamlStrategy"
+import PicbedServiceTypeEnum from "./lib/enums/picbedServiceTypeEnum"
 
 export { BlogApi, BlogAdaptor }
 export { WebApi, WebAdaptor }
 export { BlogConfig, BlogPlaceholder, PasswordType, PageType, PostStatusEnum }
 export { WebConfig, WebPlaceholder }
 export { Post, UserBlog, SiteConfig, CategoryInfo, TagInfo, MediaObject, Attachment }
-export { BlogConstants, BlogTypeEnum, PageTypeEnum, CategoryTypeEnum }
+export { BlogConstants, BlogTypeEnum, PageTypeEnum, CategoryTypeEnum, PicbedServiceTypeEnum }
 export { YamlFormatObj, YamlConvertAdaptor }
 export { PostUtil }
 export { PreferenceConfig }

@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.58.0
+
+### Minor Changes
+
+- feat: add picbed service type support
+
 ## 1.57.0
 
 ### Minor Changes

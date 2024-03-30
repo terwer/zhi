@@ -27,6 +27,7 @@ import BlogPlaceholder from "./blogPlaceholder"
 import PageTypeEnum from "./enums/pageTypeEnum"
 import CategoryTypeEnum from "./enums/categoryTypeEnum"
 import PreferenceConfig from "./PreferenceConfig"
+import PicbedServiceTypeEnum from "./enums/picbedServiceTypeEnum"
 
 /**
  * 页面类型
@@ -270,9 +271,9 @@ abstract class BlogConfig {
   public bundledPicbedSupported?: boolean
 
   /**
-   * 是否启用图片上传
+   * 图床服务类型
    */
-  public bundledPicbedEnabled?: boolean
+  public picbedService?: PicbedServiceTypeEnum
 
   protected constructor() {
     this.home = ""
@@ -310,7 +311,7 @@ abstract class BlogConfig {
     this.usePathCategory = false
     this.cateSearchEnabled = false
     this.bundledPicbedSupported = false
-    this.bundledPicbedEnabled = false
+    this.picbedService = PicbedServiceTypeEnum.None
   }
 }
 
