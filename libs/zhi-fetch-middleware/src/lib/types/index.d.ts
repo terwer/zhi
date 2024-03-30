@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023, Terwer . All rights reserved.
+ * Copyright (c) 2024, Terwer . All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -23,19 +23,11 @@
  * questions.
  */
 
-import { dtsPlugin } from "esbuild-plugin-d.ts"
-
 /**
- * 构建配置
+ * 通用的 Fetch 接口
  */
-export default {
-  esbuildConfig: {
-    entryPoints: ["src/index.ts"],
-    outfile: "dist/index.cjs",
-    bundle: true,
-    format: "cjs",
-    platform: "node",
-    external: ["electron", "@electron/remote", "proxy-agent"],
-    plugins: [dtsPlugin()],
-  },
+interface ICommonFetchClient {
+  fetchCall(endpointUrl: string, fetchOptions: RequestInit, forceProxy?: boolean): Promise<any>
 }
+
+export {ICommonFetchClient}

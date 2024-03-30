@@ -1,5 +1,48 @@
 # zhi-infra
 
+## 0.21.6
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.33.0
+
+## 0.21.5
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.32.0
+
+## 0.21.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.11.0
+  - zhi-cmd@0.8.1
+
+## 0.21.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.31.0
+
+## 0.21.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.30.0
+
+## 0.21.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.29.0
+
 ## 0.21.0
 
 ### Minor Changes

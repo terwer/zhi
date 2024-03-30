@@ -1,5 +1,73 @@
 # zhi-fetch-middleware
 
+## 0.10.0
+
+### Minor Changes
+
+- feat: support custom fetch client for gitlab
+
+## 0.9.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.33.0
+
+## 0.9.0
+
+### Minor Changes
+
+- feat: add asset api
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.32.0
+
+## 0.8.2
+
+### Patch Changes
+
+- fix: revert resp parse
+
+## 0.8.1
+
+### Patch Changes
+
+- feat: add force proxy options
+
+## 0.8.0
+
+### Minor Changes
+
+- feat: allow force proxy for fetch
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.11.0
+
+## 0.7.18
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.31.0
+
+## 0.7.17
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.30.0
+
+## 0.7.16
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.29.0
+
 ## 0.7.15
 
 ### Patch Changes

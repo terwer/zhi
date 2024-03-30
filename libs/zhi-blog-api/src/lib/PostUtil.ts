@@ -95,7 +95,10 @@ class PostUtil {
     // 分类合并
     if (yamlObj?.categories && yamlObj.categories.length > 0) {
       const combinedCategories = [
-        ...new Set([...post.categories.map((cate) => cate.trim()), ...yamlObj.categories.map((cate) => cate.trim())]),
+        ...new Set([
+          ...(post?.categories ?? []).map((cate) => cate.trim()),
+          ...yamlObj.categories.map((cate) => cate.trim()),
+        ]),
       ].filter((cate) => cate.trim() !== "")
 
       post.categories = combinedCategories.length > 0 ? combinedCategories : []

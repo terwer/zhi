@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023, Terwer . All rights reserved.
+ * Copyright (c) 2024, Terwer . All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -23,16 +23,22 @@
  * questions.
  */
 
-import { SiyuanDevice } from "zhi-device"
-
 /**
- * 加载 Electron 内部的依赖
- *
- * @param module
+ * 图片床服务类型枚举
  */
-const electronRequire = (module: string) => {
-  const win = SiyuanDevice.siyuanWindow()
-  return win.require(module)
+enum PicbedServiceTypeEnum {
+  /**
+   * PicGo 插件
+   */
+  PicGo = "picgo",
+  /**
+   * 内置
+   */
+  Bundled = "bundled",
+  /**
+   * 无
+   */
+  None = "none",
 }
 
-export { electronRequire }
+export default PicbedServiceTypeEnum

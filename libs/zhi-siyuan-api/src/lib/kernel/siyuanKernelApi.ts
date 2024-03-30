@@ -66,14 +66,27 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
   /**
    * 分页获取根文档
    *
+   * ```sql
+   * SELECT COUNT(DISTINCT b1.root_id) as count
+   *     FROM blocks b1, attributes a
+   *     WHERE b1.root_id = a.root_id
+   *     AND (b1.root_id ='' OR (b1.content LIKE '%%') OR (b1.tag LIKE '%%'))
+   *     AND a.name LIKE '%%';
+   * ```
+   *
    * @param keyword - 关键字
+   * @param isPublished - 是否发布
    */
-  public async getRootBlocksCount(keyword: string): Promise<number> {
+  public async getRootBlocksCount(keyword: string, isPublished?: boolean): Promise<number> {
+    let isPublishedFilter = "%%"
+    if (isPublished) {
+      isPublishedFilter = "custom-%-yaml"
+    }
     const stmt = `SELECT COUNT(DISTINCT b1.root_id) as count
-        FROM blocks b1
-        WHERE 1 = 1
-        AND (b1.root_id ='${keyword}' OR (b1.content LIKE '%${keyword}%') OR (b1.tag LIKE '%${keyword}%')
-    )`
+      FROM blocks b1, attributes a
+      WHERE b1.root_id = a.root_id
+      AND (b1.root_id ='${keyword}' OR (b1.content LIKE '%${keyword}%') OR (b1.tag LIKE '%${keyword}%'))
+      AND a.name LIKE '${isPublishedFilter}'`
     const data = (await this.sql(stmt)) as any[]
     this.logger.debug("getRootBlocksCount data=>", data[0].count)
     return data[0].count
@@ -83,33 +96,55 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    * 分页获取根文档
 
    * ```sql
-   * select DISTINCT b2.root_id,b2.parent_id,b2.content from blocks b2
-   *        WHERE 1==1
-   * AND b2.id IN (
-   *     SELECT DISTINCT b1.root_id
-   *        FROM blocks b1
-   *        WHERE 1 = 1
-   *        AND ((b1.content LIKE '%github%') OR (b1.tag LIKE '%github%'))
-   *        ORDER BY b1.updated DESC,b1.created DESC LIMIT 0,10
-   * )
-   * ORDER BY b2.updated DESC,b2.created DESC
+   * SELECT DISTINCT b2.root_id,b2.parent_id,b2.content from blocks b2
+   *     WHERE 1==1
+   *     AND b2.id IN (
+   *          SELECT DISTINCT b1.root_id
+   *             FROM blocks b1, attributes a
+   *             WHERE 1 = 1
+   *             AND  b1.root_id = a.root_id
+   *             AND (b1.root_id ='' OR (b1.content LIKE '%%') OR (b1.tag LIKE '%%'))
+   *             AND a.name LIKE 'custom-%-yaml'
+   *             ORDER BY b1.updated DESC,b1.created DESC
+   *             LIMIT 0,10
+   *     )
+   *     ORDER BY b2.updated DESC,b2.created DESC
    * ```
    *
    * @param page 页码
    * @param pagesize 数目
    * @param keyword 可选，搜索关键字
+   * @param isPublished 是否已发布
    */
-  public async getRootBlocks(page: number, pagesize: number, keyword: string): Promise<any> {
-    const stmt = `select DISTINCT b2.root_id,b2.parent_id,b2.content from blocks b2
-        WHERE 1==1
-        AND b2.id IN (
-             SELECT DISTINCT b1.root_id
-                FROM blocks b1
-                WHERE 1 = 1
-                AND (b1.root_id ='${keyword}' OR (b1.content LIKE '%${keyword}%') OR (b1.tag LIKE '%${keyword}%'))
-                ORDER BY b1.updated DESC,b1.created DESC LIMIT ${page * pagesize},${pagesize}
-        )
-        ORDER BY b2.updated DESC,b2.created DESC`
+  public async getRootBlocks(page: number, pagesize: number, keyword: string, isPublished?: boolean): Promise<any> {
+    let isPublishedFilter = "%%"
+    if (isPublished) {
+      isPublishedFilter = "custom-%-yaml"
+    }
+    const stmt = `SELECT DISTINCT b2.root_id,b2.parent_id,b2.content from blocks b2
+      WHERE 1==1
+      AND b2.id IN (
+           SELECT DISTINCT b1.root_id
+              FROM blocks b1, attributes a
+              WHERE 1 = 1
+              AND  b1.root_id = a.root_id
+              AND (b1.root_id ='${keyword}' OR (b1.content LIKE '%${keyword}%') OR (b1.tag LIKE '%${keyword}%'))
+              AND a.name LIKE '${isPublishedFilter}'
+              ORDER BY b1.updated DESC,b1.created DESC
+              LIMIT ${page * pagesize},${pagesize}
+      )
+      ORDER BY b2.updated DESC,b2.created DESC`
+
+    // `select DISTINCT b2.root_id,b2.parent_id,b2.content from blocks b2
+    //   WHERE 1==1
+    //   AND b2.id IN (
+    //        SELECT DISTINCT b1.root_id
+    //           FROM blocks b1
+    //           WHERE 1 = 1
+    //           AND (b1.root_id ='${keyword}' OR (b1.content LIKE '%${keyword}%') OR (b1.tag LIKE '%${keyword}%'))
+    //           ORDER BY b1.updated DESC,b1.created DESC LIMIT ${page * pagesize},${pagesize}
+    //   )
+    //   ORDER BY b2.updated DESC,b2.created DESC`
     return await this.sql(stmt)
   }
 
@@ -118,16 +153,25 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    *
    * ```sql
    * SELECT COUNT(DISTINCT b1.root_id) AS count
-   * FROM blocks b1
-   * WHERE b1.path LIKE '%/20220927094918-1d85uyp%';
+   *     FROM blocks b1, attributes a
+   *     WHERE b1.root_id = a.root_id
+   *       AND b1.root_id='20230815225853-a2ybito' OR b1.path LIKE '%/20230815225853-a2ybito%'
+   *       AND a.name LIKE '%%'
    * ```
    *
    * @param docId 文档ID
+   * @param isPublished 是否已发布
    */
-  public async getSubdocCount(docId: string): Promise<number> {
+  public async getSubdocCount(docId: string, isPublished?: boolean): Promise<number> {
+    let isPublishedFilter = "%%"
+    if (isPublished) {
+      isPublishedFilter = "custom-%-yaml"
+    }
     const stmt = `SELECT COUNT(DISTINCT b1.root_id) AS count
-        FROM blocks b1
-        WHERE b1.root_id='${docId}' OR b1.path LIKE '%/${docId}%'`
+      FROM blocks b1, attributes a
+      WHERE b1.root_id = a.root_id
+          AND b1.root_id='${docId}' OR b1.path LIKE '%/${docId}%'
+          AND a.name LIKE '${isPublishedFilter}'`
     const data = (await this.sql(stmt)) as any[]
     return data[0].count
   }
@@ -151,17 +195,33 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    * @param page 页码
    * @param pagesize 数目
    * @param keyword 关键字
+   * @param isPublished 是否已发布
    */
-  public async getSubdocs(docId: string, page: number, pagesize: number, keyword: string): Promise<any> {
-    const stmt = `SELECT DISTINCT b2.root_id,b2.content,b2.path FROM blocks b2
-        WHERE b2.id IN (
+  public async getSubdocs(
+    docId: string,
+    page: number,
+    pagesize: number,
+    keyword: string,
+    isPublished?: boolean
+  ): Promise<any> {
+    let isPublishedFilter = "%%"
+    if (isPublished) {
+      isPublishedFilter = "custom-%-yaml"
+    }
+    const stmt = `
+      SELECT DISTINCT b2.root_id, b2.content, b2.path 
+      FROM blocks b2
+      WHERE b2.id IN (
           SELECT DISTINCT b1.root_id
-             FROM blocks b1
-             WHERE b1.root_id='${docId}' OR b1.path like '%/${docId}%'
-             AND ((b1.content LIKE '%${keyword}%') OR (b1.tag LIKE '%${keyword}%'))
-             ORDER BY b1.updated DESC,b1.created DESC LIMIT ${page * pagesize},${pagesize}
-        )
-        ORDER BY b2.content,b2.updated DESC,b2.created DESC,id`
+          FROM blocks b1
+          JOIN attributes a ON b1.root_id = a.root_id
+          WHERE (b1.root_id = '${docId}' OR b1.path LIKE '%/${docId}%')
+          AND ((b1.content LIKE '%${keyword}%' OR b1.tag LIKE '%${keyword}%'))
+          AND a.name LIKE '${isPublishedFilter}'
+          ORDER BY b1.updated DESC, b1.created DESC
+          LIMIT ${page * pagesize}, ${pagesize}
+      )
+      ORDER BY b2.updated DESC, b2.created DESC, b2.id`
 
     this.logger.debug("siyuanApi getSubdocs sql=>", stmt)
     return await this.sql(stmt)
@@ -756,6 +816,13 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       id: id,
     }
     return await this.siyuanRequest("/api/block/updateBlock", params)
+  }
+
+  public async netAssets2LocalAssets(id: string): Promise<SiyuanData["data"]> {
+    const params = {
+      id: id,
+    }
+    return await this.siyuanRequest("/api/format/netAssets2LocalAssets", params)
   }
 }
 

@@ -27,6 +27,7 @@ import BlogPlaceholder from "./blogPlaceholder"
 import PageTypeEnum from "./enums/pageTypeEnum"
 import CategoryTypeEnum from "./enums/categoryTypeEnum"
 import PreferenceConfig from "./PreferenceConfig"
+import PicbedServiceTypeEnum from "./enums/picbedServiceTypeEnum"
 
 /**
  * 页面类型
@@ -165,6 +166,16 @@ abstract class BlogConfig {
   public middlewareUrl?: string
 
   /**
+   * 新跨域代理地址
+   */
+  public corsAnywhereUrl?: string
+
+  /**
+   * cookie数组
+   */
+  public corsCookieArray: string[]
+
+  /**
    * 是否启用用户名
    */
   public usernameEnabled = false
@@ -254,6 +265,16 @@ abstract class BlogConfig {
    */
   public cateSearchEnabled?: boolean
 
+  /**
+   * 是否支持图片上传
+   */
+  public bundledPicbedSupported?: boolean
+
+  /**
+   * 图床服务类型
+   */
+  public picbedService?: PicbedServiceTypeEnum
+
   protected constructor() {
     this.home = ""
     this.apiUrl = ""
@@ -269,6 +290,8 @@ abstract class BlogConfig {
     this.placeholder = undefined
     this.preferenceConfig = new PreferenceConfig()
     this.middlewareUrl = ""
+    this.corsAnywhereUrl = ""
+    this.corsCookieArray = []
     this.usernameEnabled = false
     this.showTokenTip = false
     this.allowPreviewUrlChange = true
@@ -287,6 +310,8 @@ abstract class BlogConfig {
     this.useMdFilename = false
     this.usePathCategory = false
     this.cateSearchEnabled = false
+    this.bundledPicbedSupported = false
+    this.picbedService = PicbedServiceTypeEnum.None
   }
 }
 

@@ -1,5 +1,35 @@
 # zhi-common
 
+## 1.33.0
+
+### Minor Changes
+
+- feat: add time zone support
+
+## 1.32.0
+
+### Minor Changes
+
+- feat: add asset api
+
+## 1.31.0
+
+### Minor Changes
+
+- feat: add hasKey
+
+## 1.30.0
+
+### Minor Changes
+
+- fix title handle error
+
+## 1.29.0
+
+### Minor Changes
+
+- fix title handle
+
 ## 1.28.0
 
 ### Minor Changes

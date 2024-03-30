@@ -21,6 +21,6 @@
     "@changesets/cli": "^2.27.1",
     "@terwer/commit-config-custom": "workspace:*",
     "@terwer/eslint-config-custom": "workspace:*",
-    "turbo": "^1.11.3"
+    "turbo": "^1.13.0"
   }
 }

@@ -70,6 +70,11 @@ enum DeviceTypeEnum {
    * Node环境
    */
   DeviceType_Node = "Node",
+
+  /**
+   * 强制使用代理，例如某些 API 在 Electron 环境下也无法使用
+   */
+  DeviceType_ForceProxy = "ForceProxy",
 }
 
 export default DeviceTypeEnum

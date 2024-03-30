@@ -70,11 +70,16 @@ class SiYuanApiAdaptor extends BlogApi {
     return usersBlogs
   }
 
-  public override async getRecentPostsCount(keyword?: string): Promise<number> {
-    return await this.siyuanKernelApi.getRootBlocksCount(keyword ?? "")
+  public override async getRecentPostsCount(keyword?: string, isPublished?: boolean): Promise<number> {
+    return await this.siyuanKernelApi.getRootBlocksCount(keyword ?? "", isPublished)
   }
 
-  public override async getRecentPosts(numOfPosts: number, page?: number, keyword?: string): Promise<Array<Post>> {
+  public override async getRecentPosts(
+    numOfPosts: number,
+    page?: number,
+    keyword?: string,
+    isPublished?: boolean
+  ): Promise<Array<Post>> {
     const result: Post[] = []
 
     let pg = 0
@@ -82,10 +87,9 @@ class SiYuanApiAdaptor extends BlogApi {
       pg = page
     }
     const k = keyword ?? ""
-    const siyuanPosts = await this.siyuanKernelApi.getRootBlocks(pg, numOfPosts, k)
+    const siyuanPosts = await this.siyuanKernelApi.getRootBlocks(pg, numOfPosts, k, isPublished)
 
-    this.logger.debug("getRecentPosts from siyuan, get counts =>", siyuanPosts.length)
-    if (siyuanPosts && siyuanPosts.length && siyuanPosts.length > 0) {
+    if (siyuanPosts?.length > 0) {
       for (let i = 0; i < siyuanPosts.length; i++) {
         const siyuanPost = siyuanPosts[i]
         const post = await this.getPost(siyuanPost.root_id, false, true)

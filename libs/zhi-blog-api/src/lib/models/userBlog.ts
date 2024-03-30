@@ -49,11 +49,18 @@ class UserBlog {
    * xmlrpc地址
    */
   xmlrpc?: string
+  /**
+   * 元数据映射，用于存储其他的元数据。可能不在上面的字段之内的
+   *
+   * 存储之后会字段映射到 BlogConfig 的字段里面去
+   */
+  metadataMap: Record<string, any>
 
   constructor() {
     this.blogid = ""
     this.url = ""
     this.blogName = ""
+    this.metadataMap = {}
   }
 }
 

@@ -25,7 +25,7 @@
 
 import { simpleLogger } from "zhi-lib-base"
 import StrUtil from "./strUtil"
-import { isRef, isReactive, toRaw } from "vue"
+import { isReactive, isRef, toRaw } from "vue"
 
 /**
  * Object 工具类
@@ -87,6 +87,18 @@ class ObjectUtil {
       this.logger.warn(`getProperty ${key} Error:`, error)
       return defaultValue
     }
+  }
+
+  /**
+   * 检查对象是否包含指定键
+   *
+   * @param {any} obj - 目标对象
+   * @param {string} key - 键值
+   * @returns {boolean} - 是否包含指定键
+   */
+  public static hasKey(obj: any, key: string): boolean {
+    // eslint-disable-next-line no-prototype-builtins
+    return obj.hasOwnProperty(key)
   }
 }
 

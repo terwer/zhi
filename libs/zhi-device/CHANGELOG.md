@@ -1,5 +1,11 @@
 # zhi-device
 
+## 2.11.0
+
+### Minor Changes
+
+- feat: allow force proxy for fetch
+
 ## 2.10.0
 
 ### Minor Changes

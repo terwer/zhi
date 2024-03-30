@@ -161,12 +161,26 @@ class DateUtil {
    * 时间戳转时间
    *
    * @param timestamp - 时间戳
+   * @param isAddTimeZone
    */
-  public static formatTimestampToZhDate(timestamp: any) {
+  public static formatTimestampToZhDate(timestamp: any, isAddTimeZone?: boolean) {
     if (typeof timestamp == "string") {
       timestamp = parseInt(timestamp)
     }
-    return this.formatIsoToZhDate(new Date(timestamp).toISOString())
+    return this.formatIsoToZhDate(new Date(timestamp).toISOString(), isAddTimeZone)
+  }
+
+  /**
+   * 时间戳转完整时间
+   *
+   * @param timestamp - 时间戳
+   * @param isAddTimeZone
+   */
+  public static formatTimestampToZh(timestamp: any, isAddTimeZone?: boolean) {
+    if (typeof timestamp == "string") {
+      timestamp = parseInt(timestamp)
+    }
+    return this.formatIsoToZh(new Date(timestamp).toISOString(), isAddTimeZone)
   }
 
   /**

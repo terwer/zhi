@@ -1,5 +1,82 @@
 # zhi-blog-api
 
+## 1.58.0
+
+### Minor Changes
+
+- feat: add picbed service type support
+
+## 1.57.0
+
+### Minor Changes
+
+- feat: add picbed flags support
+
+## 1.56.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.33.0
+
+## 1.56.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.32.0
+
+## 1.56.2
+
+### Patch Changes
+
+- fix: empty cate error
+
+## 1.56.1
+
+### Patch Changes
+
+- feat: add cors cookie support
+
+## 1.56.0
+
+### Minor Changes
+
+- feat: add cors cookie support
+
+## 1.55.0
+
+### Minor Changes
+
+- feat: add corsAnywhereUrl
+
+## 1.54.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.31.0
+
+## 1.54.0
+
+### Minor Changes
+
+- feat: add metadataMap
+
+## 1.53.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.30.0
+
+## 1.53.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.29.0
+
 ## 1.53.0
 
 ### Minor Changes

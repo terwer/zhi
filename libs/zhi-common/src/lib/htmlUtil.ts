@@ -39,13 +39,16 @@ class HtmlUtil {
       return ""
     }
 
-    let newstr = str
+    const trimmedStr = str.trim()
+    const re = /^\d+\.\s*(.*)$/
+    const match = trimmedStr.match(re)
 
-    // 移除序号
-    const publisherRegex = /([0-9]*)\.?/
-    newstr = newstr.replace(publisherRegex, "")
+    if (!match) {
+      return trimmedStr.trimStart()
+    }
 
-    return newstr
+    const newStr = match[1]
+    return newStr.trimStart()
   }
 
   /**
@@ -58,21 +61,12 @@ class HtmlUtil {
       return ""
     }
 
-    let newstr = str.toString()
+    let newStr = str
 
-    // 旧版发布挂件
-    const publisherRegex = /<iframe.*src="\/widgets\/publisher.*<\/iframe>/g
-    newstr = newstr.replace(publisherRegex, "")
+    const re = /<iframe.*?src="\/widgets\/.*?<\/iframe>/g
+    newStr = newStr.replace(re, "")
 
-    // 新版发布挂件
-    const syPublisherRegex = /<iframe.*src="\/widgets\/sy-post-publisher.*<\/iframe>/g
-    newstr = newstr.replace(syPublisherRegex, "")
-
-    // 文章属性挂件
-    const noteAttrRegex = /<iframe.*\/widgets\/Note*\sAttrs.*\/iframe>/g
-    newstr = newstr.replace(noteAttrRegex, "")
-
-    return newstr
+    return newStr
   }
 
   /**

@@ -1,5 +1,40 @@
 # zhi-github-middleware
 
+## 0.4.17
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.33.0
+
+## 0.4.16
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.32.0
+
+## 0.4.15
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.31.0
+
+## 0.4.14
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.30.0
+
+## 0.4.13
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.29.0
+
 ## 0.4.12
 
 ### Patch Changes

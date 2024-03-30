@@ -1,5 +1,134 @@
 # zhi-siyuan-api
 
+## 2.20.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.58.0
+
+## 2.20.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.57.0
+
+## 2.20.0
+
+### Minor Changes
+
+- feat: add picgo timeout field
+
+## 2.19.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.33.0
+  - zhi-blog-api@1.56.4
+
+## 2.19.0
+
+### Minor Changes
+
+- feat: add asset api
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.32.0
+  - zhi-blog-api@1.56.3
+
+## 2.18.6
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.56.2
+
+## 2.18.5
+
+### Patch Changes
+
+- fix； change data order
+
+## 2.18.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.56.1
+
+## 2.18.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.56.0
+
+## 2.18.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.55.0
+
+## 2.18.1
+
+### Patch Changes
+
+- fix: add getRecentPostsCount isPublished filter
+
+## 2.18.0
+
+### Minor Changes
+
+- feat: add count filter
+
+## 2.17.0
+
+### Minor Changes
+
+- feat: add isPublished filter
+
+## 2.16.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.31.0
+  - zhi-blog-api@1.54.1
+
+## 2.16.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.54.0
+
+## 2.16.0
+
+### Minor Changes
+
+- fix keyword search error
+
+## 2.15.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.30.0
+  - zhi-blog-api@1.53.2
+
+## 2.15.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.29.0
+  - zhi-blog-api@1.53.1
+
 ## 2.15.0
 
 ### Minor Changes

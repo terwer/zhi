@@ -1,5 +1,73 @@
 # zhi-gitlab-middleware
 
+## 0.8.0
+
+### Minor Changes
+
+- feat: support custom fetch client for gitlab
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.10.0
+
+## 0.7.1
+
+### Patch Changes
+
+- zhi-fetch-middleware@0.9.1
+
+## 0.7.0
+
+### Minor Changes
+
+- feat: add asset api
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.9.0
+
+## 0.6.28
+
+### Patch Changes
+
+- fix: revert resp parse
+- Updated dependencies
+  - zhi-fetch-middleware@0.8.2
+
+## 0.6.27
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.8.1
+
+## 0.6.26
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.8.0
+
+## 0.6.25
+
+### Patch Changes
+
+- zhi-fetch-middleware@0.7.18
+
+## 0.6.24
+
+### Patch Changes
+
+- zhi-fetch-middleware@0.7.17
+
+## 0.6.23
+
+### Patch Changes
+
+- zhi-fetch-middleware@0.7.16
+
 ## 0.6.22
 
 ### Patch Changes
