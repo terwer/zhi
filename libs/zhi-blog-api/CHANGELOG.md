@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.57.0
+
+### Minor Changes
+
+- feat: add picbed flags support
+
 ## 1.56.4
 
 ### Patch Changes

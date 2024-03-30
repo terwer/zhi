@@ -264,6 +264,16 @@ abstract class BlogConfig {
    */
   public cateSearchEnabled?: boolean
 
+  /**
+   * 是否支持图片上传
+   */
+  public bundledPicbedSupported?: boolean
+
+  /**
+   * 是否启用图片上传
+   */
+  public bundledPicbedEnabled?: boolean
+
   protected constructor() {
     this.home = ""
     this.apiUrl = ""
@@ -299,6 +309,8 @@ abstract class BlogConfig {
     this.useMdFilename = false
     this.usePathCategory = false
     this.cateSearchEnabled = false
+    this.bundledPicbedSupported = false
+    this.bundledPicbedEnabled = false
   }
 }
 
