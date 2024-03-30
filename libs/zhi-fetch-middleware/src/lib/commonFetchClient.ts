@@ -29,8 +29,9 @@ import { JsonUtil, StrUtil } from "zhi-common"
 import { fetchNode } from "./impl/nodeFetch"
 import { fetchChrome } from "./impl/chromeFetch"
 import { fetchMiddleware } from "./impl/middlewareFetch"
+import { ICommonFetchClient } from "./types"
 
-class CommonFetchClient {
+class CommonFetchClient implements ICommonFetchClient {
   private readonly appInstance: any
 
   private readonly logger: any

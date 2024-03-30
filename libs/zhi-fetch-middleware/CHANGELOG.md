@@ -1,5 +1,11 @@
 # zhi-fetch-middleware
 
+## 0.10.0
+
+### Minor Changes
+
+- feat: support custom fetch client for gitlab
+
 ## 0.9.1
 
 ### Patch Changes
