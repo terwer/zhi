@@ -266,7 +266,12 @@ abstract class BlogConfig {
   public cateSearchEnabled?: boolean
 
   /**
-   * 是否支持图片上传
+   * 是否支持 PicGo 图片上传
+   */
+  public picgoPicbedSupported?: boolean
+
+  /**
+   * 是否支持平台图片上传
    */
   public bundledPicbedSupported?: boolean
 
@@ -310,6 +315,7 @@ abstract class BlogConfig {
     this.useMdFilename = false
     this.usePathCategory = false
     this.cateSearchEnabled = false
+    this.picgoPicbedSupported = false
     this.bundledPicbedSupported = false
     this.picbedService = PicbedServiceTypeEnum.None
   }

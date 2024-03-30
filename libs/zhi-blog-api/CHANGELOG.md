@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.59.0
+
+### Minor Changes
+
+- feat: add option for picgo
+
 ## 1.58.0
 
 ### Minor Changes
