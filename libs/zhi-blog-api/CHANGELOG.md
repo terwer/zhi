@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.60.0
+
+### Minor Changes
+
+- feat: add image store path support for github and gitlab
+
 ## 1.59.0
 
 ### Minor Changes

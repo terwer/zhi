@@ -276,6 +276,11 @@ abstract class BlogConfig {
   public bundledPicbedSupported?: boolean
 
   /**
+   * 图片存储目录，部分平台会用到，相对于文章存储目录，默认为 images
+   */
+  public imageStorePath?: string
+
+  /**
    * 图床服务类型
    */
   public picbedService?: PicbedServiceTypeEnum
@@ -318,6 +323,7 @@ abstract class BlogConfig {
     this.picgoPicbedSupported = false
     this.bundledPicbedSupported = false
     this.picbedService = PicbedServiceTypeEnum.None
+    this.imageStorePath = "images"
   }
 }
 
