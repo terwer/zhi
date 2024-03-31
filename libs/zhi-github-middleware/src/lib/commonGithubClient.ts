@@ -104,14 +104,17 @@ class CommonGithubClient {
    * 子类API使用，应用层面不建议直接调用
    *
    * @param docPath 页面路径，相对于根仓库的完整路径
-   * @param mdContent Markdown文本
+   * @param content 文本
    * @param sha 文件的sha，undefined表示新建，更新需要传sha字符串
+   * @param encoding  base64 或者 text
    */
-  protected async createOrUpdatePage(docPath: string, mdContent: string, sha: any): Promise<any> {
+  protected async createOrUpdatePage(docPath: string, content: string, sha: any, encoding = "text"): Promise<any> {
     let data
 
-    // const base64 = Buffer.from(mdContent).toString('base64');
-    const base64 = Base64.toBase64(mdContent)
+    let base64 = content
+    if (encoding === "text") {
+      base64 = Base64.toBase64(content)
+    }
     const route =
       "PUT /repos/" + this.githubConfig.githubUser + "/" + this.githubConfig.githubRepo + "/contents/" + docPath
     const options = {
@@ -182,12 +185,13 @@ class CommonGithubClient {
    * 发布文章到Github
    *
    * @param docPath 相对于根仓库的完整路径，包括文件名和扩展名
-   * @param mdContent Markdown文本
+   * @param content Markdown文本
+   * @param encoding
    */
-  public async publishGithubPage(docPath: string, mdContent: string): Promise<any> {
+  public async publishGithubPage(docPath: string, content: string, encoding = "text"): Promise<any> {
     // https://github.com/terwer/src-sy-post-publisher/issues/21
     const sha = undefined
-    const res = await this.createOrUpdatePage(docPath, mdContent, sha)
+    const res = await this.createOrUpdatePage(docPath, content, sha, encoding)
     this.logger.debug("Github publishPage,res=>", res)
     return res
   }
@@ -196,13 +200,14 @@ class CommonGithubClient {
    * 更新文章到Github
    *
    * @param docPath
-   * @param mdContent
+   * @param content
+   * @param encoding
    */
-  public async updateGithubPage(docPath: string, mdContent: string): Promise<any> {
+  public async updateGithubPage(docPath: string, content: string, encoding = "text"): Promise<any> {
     // https://github.com/terwer/src-sy-post-publisher/issues/21
     const sha = await this.getPageSha(docPath)
 
-    const res = await this.createOrUpdatePage(docPath, mdContent, sha)
+    const res = await this.createOrUpdatePage(docPath, content, sha, encoding)
     this.logger.debug("Github updatePage,res=>", res)
     return res
   }

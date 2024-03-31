@@ -1,5 +1,11 @@
 # zhi-github-middleware
 
+## 0.5.0
+
+### Minor Changes
+
+- feat: add encoding support for github and gitlab
+
 ## 0.4.17
 
 ### Patch Changes
