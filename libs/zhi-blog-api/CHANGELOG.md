@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.62.0
+
+### Minor Changes
+
+- feat: add post status enum
+
 ## 1.61.0
 
 ### Minor Changes
