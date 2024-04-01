@@ -34,9 +34,17 @@ enum PostStatusEnum {
    */
   PostStatusEnum_New = "new",
   /**
+   * 发布
+   */
+  PostStatusEnum_Publish = "publish",
+  /**
    * 待审核
    */
   PostStatusEnum_Pending = "pending",
+  /**
+   * 草稿
+   */
+  PostStatusEnum_Draft = "draft",
   /**
    * 自动草稿
    */

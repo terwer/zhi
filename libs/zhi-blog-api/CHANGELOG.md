@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.63.0
+
+### Minor Changes
+
+- feat: fix post status
+
 ## 1.62.0
 
 ### Minor Changes
