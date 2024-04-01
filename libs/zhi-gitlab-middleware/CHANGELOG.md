@@ -1,5 +1,23 @@
 # zhi-gitlab-middleware
 
+## 0.10.0
+
+### Minor Changes
+
+- feat: check is resp is text
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.12.0
+
+## 0.9.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.11.0
+
 ## 0.9.0
 
 ### Minor Changes

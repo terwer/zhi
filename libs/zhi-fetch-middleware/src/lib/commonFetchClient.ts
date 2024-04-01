@@ -106,7 +106,7 @@ class CommonFetchClient implements ICommonFetchClient {
       throw new Error("请求异常，response is undefined")
     }
 
-    let resJson: any
+    let resp: any
 
     const isResponse = response?.status !== undefined && response?.headers !== undefined && response?.url !== undefined
     const isStream = !isResponse && response?.body instanceof ReadableStream
@@ -115,7 +115,7 @@ class CommonFetchClient implements ICommonFetchClient {
 
     if (isStream) {
       this.logger.info("检测到response不是Response的实例", typeof response)
-      resJson = response
+      resp = response
     } else {
       // 解析响应体并返回响应结果
       const statusCode = response.status
@@ -148,24 +148,28 @@ class CommonFetchClient implements ICommonFetchClient {
         }
       }
 
+      const contentType = fetchOptions.headers["Content-Type"]
+      const isText = contentType === "text/xml" || contentType === "text/html" || contentType === "text/plain"
+
+      this.logger.info("isText=>", isText)
       this.logger.info("isNode=>", BrowserUtil.isNode)
       this.logger.info("isElectron=>", BrowserUtil.isElectron())
       this.logger.info("isInSiyuanWidget=>", SiyuanDevice.isInSiyuanWidget())
-      if (BrowserUtil.isNode) {
-        resJson = await this.safeParseBodyJson(response)
-      } else if (BrowserUtil.isElectron()) {
-        resJson = await this.safeParseBodyJson(response)
-      } else if (SiyuanDevice.isInSiyuanWidget()) {
-        resJson = await this.safeParseBodyJson(response)
+      if (BrowserUtil.isNode || BrowserUtil.isElectron() || SiyuanDevice.isInSiyuanWidget()) {
+        if (isText) {
+          resp = await response.text()
+        } else {
+          resp = await this.safeParseBodyJson(response)
+        }
       } else {
         this.logger.debug("开始解析CORSBody")
         const corsJson = await this.safeParseBodyJson(response)
-        resJson = this.parseCORSBody(corsJson)
+        resp = this.parseCORSBody(corsJson)
       }
     }
 
-    this.logger.debug("全部处理完毕，resJson=>", resJson)
-    return resJson
+    this.logger.debug("全部处理完毕，resJson=>", resp)
+    return resp
   }
 
   /**
