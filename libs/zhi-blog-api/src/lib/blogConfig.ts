@@ -101,7 +101,7 @@ abstract class BlogConfig {
   public username?: string
 
   /**
-   * 用户名标题
+   * 用户名标题，不设置自动选择，默认 undefined
    */
   public usernameLabel?: string
 
@@ -116,7 +116,7 @@ abstract class BlogConfig {
   public password: string
 
   /**
-   * 密码标题
+   * 密码标题，不设置自动选择，默认 undefined
    */
   public passwordLabel?: string
 

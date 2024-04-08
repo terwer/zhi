@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.65.0
+
+### Minor Changes
+
+- feat: passwordLabel default as undefined
+
 ## 1.64.0
 
 ### Minor Changes
