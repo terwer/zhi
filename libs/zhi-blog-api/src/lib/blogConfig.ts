@@ -101,6 +101,11 @@ abstract class BlogConfig {
   public username?: string
 
   /**
+   * 用户名标题
+   */
+  public usernameLabel?: string
+
+  /**
    * 密码类型
    */
   public passwordType: PasswordType
@@ -109,6 +114,11 @@ abstract class BlogConfig {
    * 密码
    */
   public password: string
+
+  /**
+   * 密码标题
+   */
+  public passwordLabel?: string
 
   /**
    * 密码/token设置地址
@@ -294,8 +304,10 @@ abstract class BlogConfig {
     this.home = ""
     this.apiUrl = ""
     this.username = ""
+    this.usernameLabel = "用户名"
     this.passwordType = PasswordType.PasswordType_Password
     this.password = ""
+    this.passwordLabel = "密码"
     this.blogid = ""
     this.blogName = ""
     this.posidKey = ""

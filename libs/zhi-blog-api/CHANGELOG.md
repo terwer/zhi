@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.64.0
+
+### Minor Changes
+
+- feat: add usernameLabel and passwordLabel option
+
 ## 1.63.0
 
 ### Minor Changes
