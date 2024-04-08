@@ -304,10 +304,8 @@ abstract class BlogConfig {
     this.home = ""
     this.apiUrl = ""
     this.username = ""
-    this.usernameLabel = "用户名"
     this.passwordType = PasswordType.PasswordType_Password
     this.password = ""
-    this.passwordLabel = "密码"
     this.blogid = ""
     this.blogName = ""
     this.posidKey = ""
