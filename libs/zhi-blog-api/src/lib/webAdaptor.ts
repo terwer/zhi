@@ -29,6 +29,7 @@ import { simpleLogger } from "zhi-lib-base"
 import ElectronCookie from "./models/ElectronCookie"
 import WebConfig from "./WebConfig"
 import WebApi from "./webApi"
+import MediaObject from "./models/mediaObject";
 
 /**
  * 网页授权核心基类
@@ -81,8 +82,8 @@ class WebAdaptor extends BlogAdaptor {
     return await this.webAdaptor.addPost(post)
   }
 
-  public async uploadFile(file: File, filename?: string): Promise<any> {
-    return await this.webAdaptor.uploadFile(file, filename)
+  public async uploadFile(mediaObject: MediaObject): Promise<any> {
+    return await this.webAdaptor.uploadFile(mediaObject)
   }
 
   public async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {

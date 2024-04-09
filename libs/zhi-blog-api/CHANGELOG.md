@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.66.0
+
+### Minor Changes
+
+- feat: change uploadFile
+
 ## 1.65.0
 
 ### Minor Changes
