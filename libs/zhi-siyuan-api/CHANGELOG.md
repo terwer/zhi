@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.21.0
+
+### Minor Changes
+
+- fix: cfg file mod time error
+
 ## 2.20.10
 
 ### Patch Changes
