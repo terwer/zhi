@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.22.0
+
+### Minor Changes
+
+- add doc limit from 128 to 20480
+
 ## 2.21.0
 
 ### Minor Changes

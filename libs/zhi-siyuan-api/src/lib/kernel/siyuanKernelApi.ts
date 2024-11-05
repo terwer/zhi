@@ -294,7 +294,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       id: docId,
       isBacklink: false,
       mode: 0,
-      size: 128,
+      size: 20480,
     }
     const url = "/api/filetree/getDoc"
     return await this.siyuanRequest(url, params)
