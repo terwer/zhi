@@ -1,5 +1,12 @@
 # zhi-blog-api
 
+## 1.67.0
+
+### Minor Changes
+
+- feat: support outline and docTree
+- feat: add outline and docTree
+
 ## 1.66.0
 
 ### Minor Changes

@@ -824,6 +824,50 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     }
     return await this.siyuanRequest("/api/format/netAssets2LocalAssets", params)
   }
+
+  public async getDocTree(notebook: string, path: string, level?: number, parentPathArray?: any[]): Promise<any[]> {
+    const params = {
+      notebook: notebook,
+      path: path,
+    }
+    const childrenPathArray = await this.getChildrenPathArray(params, level)
+    return parentPathArray?.concat(childrenPathArray) ?? childrenPathArray
+  }
+
+  private async getChildrenPathArray(params: any, depth: number = 1, currentDepth: number = 1): Promise<any[]> {
+    if (depth < currentDepth) {
+      return []
+    }
+
+    const data = await this.siyuanRequest("/api/filetree/listDocsByPath", params)
+    let paths: any[] = []
+
+    for (const item of data["files"]) {
+      const curPaths = item.path.replace(".sy", "").split("/")
+      paths.push({
+        id: curPaths[curPaths.length - 1],
+        parentId: curPaths[curPaths.length - 2],
+        name: item.name.replace(".sy", ""),
+      })
+
+      const childParams = {
+        notebook: data.box,
+        path: item.path,
+      }
+      const childPaths = await this.getChildrenPathArray(childParams, depth, currentDepth + 1)
+      paths = paths.concat(childPaths)
+    }
+
+    return paths
+  }
+
+  public async getOutline(blockId: string, level?: number): Promise<any[]> {
+    const params = {
+      id: blockId,
+      preview: false,
+    }
+    return await this.siyuanRequest("/api/outline/getDocOutline", params)
+  }
 }
 
 export default SiyuanKernelApi

@@ -93,9 +93,13 @@ describe("SiYuanApiAdaptor", async () => {
 
   it("test siyuan getPost", async () => {
     const siyuanConfig = new SiyuanConfig("http://127.0.0.1:6806", "")
+    siyuanConfig.preferenceConfig.outlineEnable = true
+    siyuanConfig.preferenceConfig.outlineLevel = 2
+    siyuanConfig.preferenceConfig.docTreeEnable = true
+    siyuanConfig.preferenceConfig.docTreeLevel = 6
     const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
-    const postid = "20230722212237-oc9s0y8"
+    const postid = "20241111132349-y6pic5l"
     const post = await apiAdaptor.getPost(postid)
     console.log(post)
   })

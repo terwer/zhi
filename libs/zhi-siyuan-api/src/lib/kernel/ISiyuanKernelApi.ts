@@ -111,6 +111,11 @@ interface ISiyuanKernelApi {
   getBlockKramdown(id: string): Promise<SiyuanData["data"]>
   // /api/block/updateBlock
   updateBlock(id: string, data: string, dataType?: "markdown" | "dom"): Promise<SiyuanData["data"]>
+
+  // /api/outline/getDocOutline
+  getOutline(blockId: string, level?: number): Promise<any[]>
+  // 先直接解析 path 读取父级向上 level 级，再使用 /api/filetree/listDocsByPath 获取子级向下 level 级
+  getDocTree(notebook: string, path: string, level?: number, parentPathArray?: any[]): Promise<any[]>
 }
 
 export default ISiyuanKernelApi

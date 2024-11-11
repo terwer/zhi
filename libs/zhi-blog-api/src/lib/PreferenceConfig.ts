@@ -47,11 +47,35 @@ class PreferenceConfig {
    */
   public removeMdWidgetTag: boolean
 
+  /**
+   * 是否启用目录
+   */
+  public outlineEnable: boolean
+
+  /**
+   * 目录层级
+   */
+  public outlineLevel: number
+
+  /**
+   * 是否启用文档树
+   */
+  public docTreeEnable: boolean
+
+  /**
+   * 文档树层级
+   */
+  public docTreeLevel: number
+
   constructor() {
     this.fixTitle = false
     this.keepTitle = false
     this.removeFirstH1 = false
     this.removeMdWidgetTag = false
+    this.outlineEnable = false
+    this.outlineLevel = 3
+    this.docTreeEnable = false
+    this.docTreeLevel = 3
   }
 }
 

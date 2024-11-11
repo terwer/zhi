@@ -1,5 +1,18 @@
 # zhi-siyuan-api
 
+## 2.23.0
+
+### Minor Changes
+
+- feat: support outline and docTree
+- feat: add outline and docTree
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-blog-api@1.67.0
+
 ## 2.22.0
 
 ### Minor Changes

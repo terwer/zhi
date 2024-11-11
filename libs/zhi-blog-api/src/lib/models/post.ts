@@ -23,9 +23,9 @@
  * questions.
  */
 
-import PostStatusEnum from "../enums/postStatusEnum";
-import PageEditMode from "./pageEditMode";
-import YamlStrategy from "./yamlStrategy";
+import PostStatusEnum from "../enums/postStatusEnum"
+import PageEditMode from "./pageEditMode"
+import YamlStrategy from "./yamlStrategy"
 
 /**
  * 通用文章模型定义
@@ -173,6 +173,24 @@ class Post {
    */
   yamlType?: YamlStrategy
 
+  /**
+   * 目录
+   */
+  outline?: any[]
+  /**
+   * 目录层级
+   */
+  outlineLevel?: number
+
+  /**
+   * 文档树
+   */
+  docTree?: any[]
+  /**
+   * 文档树层级
+   */
+  docTreeLevel?: number
+
   constructor() {
     this.postid = ""
     this.originalId = ""
@@ -197,6 +215,10 @@ class Post {
     this.attrs = "{}"
     this.editMode = PageEditMode.EditMode_simple
     this.yamlType = YamlStrategy.YAML_default
+    this.outline = []
+    this.outlineLevel = 3
+    this.docTree = []
+    this.docTreeLevel = 3
   }
 }
 
