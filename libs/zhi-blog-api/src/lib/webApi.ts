@@ -29,6 +29,7 @@ import { NotImplementedException } from "zhi-lib-base"
 import ElectronCookie from "./models/ElectronCookie"
 import WebConfig from "./WebConfig"
 import BlogApi from "./blogApi"
+import MediaObject from "./models/mediaObject";
 
 /**
  * 网页授权基类
@@ -54,7 +55,7 @@ class WebApi extends BlogApi implements IWebApi {
     throw new NotImplementedException("You must implement addPost in sub class")
   }
 
-  public async uploadFile(file: File, filename?: string): Promise<any> {
+  public async uploadFile(mediaObject: MediaObject): Promise<any> {
     throw new NotImplementedException("You must implement uploadFile in sub class")
   }
 

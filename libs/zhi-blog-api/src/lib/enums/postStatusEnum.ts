@@ -25,20 +25,42 @@
 
 /**
  * 文章状态枚举
+ *
+ * @link https://codex.wordpress.org/Post_Status_Transitions
  */
 enum PostStatusEnum {
   /**
-   * 已发布
+   * 无先前状态
+   */
+  PostStatusEnum_New = "new",
+  /**
+   * 发布
    */
   PostStatusEnum_Publish = "publish",
+  /**
+   * 待审核
+   */
+  PostStatusEnum_Pending = "pending",
   /**
    * 草稿
    */
   PostStatusEnum_Draft = "draft",
   /**
-   * 继承
+   * 自动草稿
    */
-  PostStatusEnum_Inherit = "inherit",
+  PostStatusEnum_AutoDraft = "auto-draft",
+  /**
+   * 定时发布
+   */
+  PostStatusEnum_Future = "future",
+  /**
+   * 私密
+   */
+  PostStatusEnum_Private = "private",
+  /**
+   * 垃圾箱
+   */
+  PostStatusEnum_Trash = "trash",
 }
 
 export default PostStatusEnum

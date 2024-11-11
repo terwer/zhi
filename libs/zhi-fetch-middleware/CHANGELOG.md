@@ -1,5 +1,17 @@
 # zhi-fetch-middleware
 
+## 0.12.0
+
+### Minor Changes
+
+- feat: check is resp is text
+
+## 0.11.0
+
+### Minor Changes
+
+- feat: handle fetch for text/xml
+
 ## 0.10.0
 
 ### Minor Changes

@@ -101,6 +101,11 @@ abstract class BlogConfig {
   public username?: string
 
   /**
+   * 用户名标题，不设置自动选择，默认 undefined
+   */
+  public usernameLabel?: string
+
+  /**
    * 密码类型
    */
   public passwordType: PasswordType
@@ -109,6 +114,11 @@ abstract class BlogConfig {
    * 密码
    */
   public password: string
+
+  /**
+   * 密码标题，不设置自动选择，默认 undefined
+   */
+  public passwordLabel?: string
 
   /**
    * 密码/token设置地址
@@ -276,9 +286,19 @@ abstract class BlogConfig {
   public bundledPicbedSupported?: boolean
 
   /**
+   * 图片存储目录，部分平台会用到，相对于文章存储目录，默认为 images
+   */
+  public imageStorePath?: string
+
+  /**
    * 图床服务类型
    */
   public picbedService?: PicbedServiceTypeEnum
+
+  /**
+   * 强制使用代理
+   */
+  public forceProxy?: boolean
 
   protected constructor() {
     this.home = ""
@@ -318,6 +338,8 @@ abstract class BlogConfig {
     this.picgoPicbedSupported = false
     this.bundledPicbedSupported = false
     this.picbedService = PicbedServiceTypeEnum.None
+    this.imageStorePath = "images"
+    this.forceProxy = false
   }
 }
 

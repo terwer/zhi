@@ -170,6 +170,66 @@ class SiYuanApiAdaptor extends BlogApi {
       }
     }
 
+    // 处理目录
+    let outline = []
+    let outlineLevel = 3
+    if (this.cfg?.preferenceConfig.outlineEnable) {
+      outlineLevel = this.cfg?.preferenceConfig.outlineLevel ?? 3
+      outline = await this.siyuanKernelApi.getOutline(pid, outlineLevel)
+      this.logger.info("检测到配置，目录已获取")
+    }
+
+    // 处理文档树
+    let docTree = []
+    let docTreeLevel = 3
+    if (this.cfg?.preferenceConfig.docTreeEnable) {
+      docTreeLevel = this.cfg?.preferenceConfig.docTreeLevel ?? 3
+      const hpaths = siyuanPost.hpath.replace(".sy", "").split("/")
+      const paths = siyuanPost.path.replace(".sy", "").split("/")
+      const parentPathArray = []
+
+      // let parentId = ""
+      // for (let i = 0; i < hpaths.length; i++) {
+      //   const hpath = hpaths[i]
+      //   const path = paths[i]
+      //   if (StrUtil.isEmptyString(hpath)) {
+      //     continue
+      //   }
+      //   parentPathArray.push({
+      //     id: path,
+      //     parentId: parentId,
+      //     name: hpath,
+      //   })
+      //   parentId = path
+      // }
+
+      let currentLevel = 0
+      for (let i = hpaths.length - 1; i >= 0; i--) {
+        const hpath = hpaths[i]
+        const path = paths[i]
+        if (StrUtil.isEmptyString(hpath)) {
+          continue
+        }
+        if (currentLevel < docTreeLevel) {
+          parentPathArray.push({
+            id: path,
+            // 确保第一个节点的 parentId 为空
+            parentId: i > 0 ? paths[i - 1] : "",
+            name: hpath,
+          })
+          currentLevel++
+        } else {
+          break // 达到最大层级，退出循环
+        }
+      }
+
+      // 如果需要保持原来的顺序，可以在最后反转数组
+      parentPathArray.reverse()
+
+      docTree = await this.siyuanKernelApi.getDocTree(siyuanPost.box, siyuanPost.path, docTreeLevel, parentPathArray)
+      this.logger.info("检测到配置，文档树已获取")
+    }
+
     // 别名(Custom_Slug优先，没有默认获取Sys_alias)
     const alias = ObjectUtil.getProperty(attrs, SiyuanAttr.Sys_alias, "")
     const slug = ObjectUtil.getProperty(attrs, SiyuanAttr.Custom_slug, alias)
@@ -223,6 +283,10 @@ class SiYuanApiAdaptor extends BlogApi {
     // 为了安全，密码需要在页面实时设置
     commonPost.wp_password = ""
     commonPost.attrs = JSON.stringify(publicAttrs)
+    commonPost.outline = outline
+    commonPost.outlineLevel = outlineLevel
+    commonPost.docTree = docTree
+    commonPost.docTreeLevel = docTreeLevel
 
     // yaml 适配
     const yamlObj = PostUtil.toYamlObj(commonPost)

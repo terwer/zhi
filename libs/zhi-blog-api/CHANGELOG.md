@@ -1,5 +1,54 @@
 # zhi-blog-api
 
+## 1.67.0
+
+### Minor Changes
+
+- feat: support outline and docTree
+- feat: add outline and docTree
+
+## 1.66.0
+
+### Minor Changes
+
+- feat: change uploadFile
+
+## 1.65.0
+
+### Minor Changes
+
+- feat: passwordLabel default as undefined
+
+## 1.64.0
+
+### Minor Changes
+
+- feat: add usernameLabel and passwordLabel option
+
+## 1.63.0
+
+### Minor Changes
+
+- feat: fix post status
+
+## 1.62.0
+
+### Minor Changes
+
+- feat: add post status enum
+
+## 1.61.0
+
+### Minor Changes
+
+- feat: add forceProxy for telegra.ph like platforms
+
+## 1.60.0
+
+### Minor Changes
+
+- feat: add image store path support for github and gitlab
+
 ## 1.59.0
 
 ### Minor Changes

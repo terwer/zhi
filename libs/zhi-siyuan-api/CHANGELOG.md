@@ -1,5 +1,79 @@
 # zhi-siyuan-api
 
+## 2.23.0
+
+### Minor Changes
+
+- feat: support outline and docTree
+- feat: add outline and docTree
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-blog-api@1.67.0
+
+## 2.22.0
+
+### Minor Changes
+
+- add doc limit from 128 to 20480
+
+## 2.21.0
+
+### Minor Changes
+
+- fix: cfg file mod time error
+
+## 2.20.10
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.66.0
+
+## 2.20.9
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.65.0
+
+## 2.20.8
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.64.0
+
+## 2.20.7
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.63.0
+
+## 2.20.6
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.62.0
+
+## 2.20.5
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.61.0
+
+## 2.20.4
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.60.0
+
 ## 2.20.3
 
 ### Patch Changes
