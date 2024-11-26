@@ -300,6 +300,11 @@ abstract class BlogConfig {
    */
   public forceProxy?: boolean
 
+  /**
+   * JSON 字符串存储动态的 YAML 预设
+   */
+  public dynYamlCfg?: string
+
   protected constructor() {
     this.home = ""
     this.apiUrl = ""
@@ -340,6 +345,7 @@ abstract class BlogConfig {
     this.picbedService = PicbedServiceTypeEnum.None
     this.imageStorePath = "images"
     this.forceProxy = false
+    this.dynYamlCfg = "{}"
   }
 }
 
