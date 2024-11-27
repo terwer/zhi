@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.24.0
+
+### Minor Changes
+
+- feat: slug not use alias as default
+
 ## 2.23.1
 
 ### Patch Changes
