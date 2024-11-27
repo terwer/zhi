@@ -231,8 +231,9 @@ class SiYuanApiAdaptor extends BlogApi {
     }
 
     // 别名(Custom_Slug优先，没有默认获取Sys_alias)
-    const alias = ObjectUtil.getProperty(attrs, SiyuanAttr.Sys_alias, "")
-    const slug = ObjectUtil.getProperty(attrs, SiyuanAttr.Custom_slug, alias)
+    // const alias = ObjectUtil.getProperty(attrs, SiyuanAttr.Sys_alias, "")
+    // const slug = ObjectUtil.getProperty(attrs, SiyuanAttr.Custom_slug, alias)
+    const slug = ObjectUtil.getProperty(attrs, SiyuanAttr.Custom_slug, "")
 
     // 永久链接
     const plink = `siyuan://blocks/${siyuanPost.root_id}`

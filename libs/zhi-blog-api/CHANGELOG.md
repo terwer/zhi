@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.67.1
+
+### Patch Changes
+
+- feat: support dynamic yaml cfg as default
+
 ## 1.67.0
 
 ### Minor Changes
