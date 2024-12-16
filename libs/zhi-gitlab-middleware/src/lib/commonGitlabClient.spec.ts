@@ -37,7 +37,7 @@ describe("test CommonGitlabClient", () => {
   const commonGithubClient = new CommonGitlabClient(
     appInstance,
     "http://localhost:8002",
-    "xxxxxx",
+    "glpat-weLx6W8KaSqGZjWRRY2R",
     "terwer",
     "terwer-github-io",
     "main",
