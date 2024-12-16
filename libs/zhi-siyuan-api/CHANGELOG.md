@@ -1,5 +1,17 @@
 # zhi-siyuan-api
 
+## 2.25.0
+
+### Minor Changes
+
+- fix http code
+
+## 2.24.1
+
+### Patch Changes
+
+- feat: fix undfuned
+
 ## 2.24.0
 
 ### Minor Changes

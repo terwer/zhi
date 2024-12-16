@@ -1,5 +1,11 @@
 # zhi-fetch-middleware
 
+## 0.13.0
+
+### Minor Changes
+
+- fix http code
+
 ## 0.12.0
 
 ### Minor Changes

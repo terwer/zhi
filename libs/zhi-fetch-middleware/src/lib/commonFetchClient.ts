@@ -129,7 +129,7 @@ class CommonFetchClient implements ICommonFetchClient {
         this.logger.error(`fetch请求错误，code ${statusCode}, body =>`, resBody)
         if (statusCode === 400) {
           throw new Error("错误请求，服务器不理解请求的语法")
-        } else if (statusCode === 401) {
+        } else if (statusCode === 401 || statusCode === 403) {
           throw new Error("因权限不足操作已被禁止")
         } else if (statusCode > 401) {
           if (statusCode === 413) {
