@@ -156,14 +156,14 @@ class SiYuanApiAdaptor extends BlogApi {
       html = (await this.siyuanKernelApi.exportPreview(pid)).html
 
       // 移除挂件html
-      if (this.cfg?.preferenceConfig.removeMdWidgetTag) {
+      if (this.cfg?.preferenceConfig?.removeMdWidgetTag) {
         md = HtmlUtil.removeMdWidgetTag(md)
         html = HtmlUtil.removeWidgetTag(html)
         this.logger.info("检测到配置，挂件的HTML已移除")
       }
 
       // 删除H1
-      if (this.cfg?.preferenceConfig.removeFirstH1) {
+      if (this.cfg?.preferenceConfig?.removeFirstH1) {
         md = HtmlUtil.removeMdH1(md)
         html = HtmlUtil.removeH1(html)
         this.logger.info("检测到配置，第一个H1已移除")
@@ -173,8 +173,8 @@ class SiYuanApiAdaptor extends BlogApi {
     // 处理目录
     let outline = []
     let outlineLevel = 3
-    if (this.cfg?.preferenceConfig.outlineEnable) {
-      outlineLevel = this.cfg?.preferenceConfig.outlineLevel ?? 3
+    if (this.cfg?.preferenceConfig?.outlineEnable) {
+      outlineLevel = this.cfg?.preferenceConfig?.outlineLevel ?? 3
       outline = await this.siyuanKernelApi.getOutline(pid, outlineLevel)
       this.logger.info("检测到配置，目录已获取")
     }
@@ -182,8 +182,8 @@ class SiYuanApiAdaptor extends BlogApi {
     // 处理文档树
     let docTree = []
     let docTreeLevel = 3
-    if (this.cfg?.preferenceConfig.docTreeEnable) {
-      docTreeLevel = this.cfg?.preferenceConfig.docTreeLevel ?? 3
+    if (this.cfg?.preferenceConfig?.docTreeEnable) {
+      docTreeLevel = this.cfg?.preferenceConfig?.docTreeLevel ?? 3
       const hpaths = siyuanPost.hpath.replace(".sy", "").split("/")
       const paths = siyuanPost.path.replace(".sy", "").split("/")
       const parentPathArray = []
