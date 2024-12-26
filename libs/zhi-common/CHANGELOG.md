@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.33.1
+
+### Patch Changes
+
+- fix: ignore json parse error
+
 ## 1.33.0
 
 ### Minor Changes
