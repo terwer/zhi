@@ -61,7 +61,7 @@ class JsonUtil {
       ret = JSON.parse(str) || def
     } catch (e) {
       ret = def
-      this.logger.warn("json parse error", e)
+      this.logger.debug("json parse error", e)
     }
 
     // 如果json被二次转义，在尝试解析一次
