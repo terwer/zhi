@@ -205,7 +205,10 @@ class SiYuanApiAdaptor extends BlogApi {
 
       let currentLevel = 0
       for (let i = hpaths.length - 1; i >= 0; i--) {
-        const hpath = hpaths[i]
+        let hpath = hpaths[i]
+        if (this.cfg?.preferenceConfig.fixTitle) {
+          hpath = HtmlUtil.removeTitleNumber(hpath)
+        }
         const path = paths[i]
         if (StrUtil.isEmptyString(hpath)) {
           continue

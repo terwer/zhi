@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.26.0
+
+### Minor Changes
+
+- fix title cfg
+
 ## 2.25.1
 
 ### Patch Changes
