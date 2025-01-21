@@ -191,6 +191,11 @@ class Post {
    */
   docTreeLevel?: number
 
+  /**
+   * 数据库
+   */
+  dataViews: Record<string, any>
+
   constructor() {
     this.postid = ""
     this.originalId = ""
@@ -219,6 +224,7 @@ class Post {
     this.outlineLevel = 3
     this.docTree = []
     this.docTreeLevel = 3
+    this.dataViews = {}
   }
 }
 

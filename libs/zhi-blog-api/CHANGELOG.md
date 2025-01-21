@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.68.0
+
+### Minor Changes
+
+- add dataviews
+
 ## 1.67.2
 
 ### Patch Changes
