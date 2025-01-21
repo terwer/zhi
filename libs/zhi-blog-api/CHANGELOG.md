@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.69.0
+
+### Minor Changes
+
+- add embed block support
+
 ## 1.68.0
 
 ### Minor Changes

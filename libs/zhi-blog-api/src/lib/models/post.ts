@@ -192,6 +192,10 @@ class Post {
   docTreeLevel?: number
 
   /**
+   * 嵌入块
+   */
+  embedBlocks: Record<string, any>
+  /**
    * 数据库
    */
   dataViews: Record<string, any>
@@ -224,6 +228,7 @@ class Post {
     this.outlineLevel = 3
     this.docTree = []
     this.docTreeLevel = 3
+    this.embedBlocks = {}
     this.dataViews = {}
   }
 }
