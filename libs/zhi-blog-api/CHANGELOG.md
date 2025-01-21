@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.70.0
+
+### Minor Changes
+
+- support fold blocks for heading
+
 ## 1.69.0
 
 ### Minor Changes

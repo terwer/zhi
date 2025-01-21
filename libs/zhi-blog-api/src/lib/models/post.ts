@@ -199,6 +199,10 @@ class Post {
    * 数据库
    */
   dataViews: Record<string, any>
+  /**
+   * 折叠块
+   */
+  foldBlocks: Record<string, any>
 
   constructor() {
     this.postid = ""
@@ -230,6 +234,7 @@ class Post {
     this.docTreeLevel = 3
     this.embedBlocks = {}
     this.dataViews = {}
+    this.foldBlocks = {}
   }
 }
 
