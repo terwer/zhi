@@ -111,7 +111,7 @@ class CommonGitlabClient {
    * @param encoding - base64 或者 text
    * @returns 创建文件的响应
    */
-  public async createRepositoryFile(filePath: string, content: string, encoding = "text"): Promise<any> {
+  public async createRepositoryFile(filePath: string, content: string, encoding?: string): Promise<any> {
     const id = `${this.user}/${this.repo}`
     const endpointUrl =
       `/api/v4/projects/${encodeURIComponent(id)}/repository/files/` + `${encodeURIComponent(filePath)}`
@@ -119,9 +119,11 @@ class CommonGitlabClient {
       branch: this.branch,
       author_email: this.authorEmail,
       author_name: this.authorName,
-      encoding: encoding,
       content: content,
       commit_message: this.commitMessage,
+    } as any
+    if (encoding) {
+      requestData.encoding = encoding
     }
     const fetchOptions: RequestInit = {
       method: "POST",
