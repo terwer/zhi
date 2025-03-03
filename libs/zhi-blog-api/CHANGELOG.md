@@ -1,5 +1,23 @@
 # zhi-blog-api
 
+## 1.70.0
+
+### Minor Changes
+
+- support fold blocks for heading
+
+## 1.69.0
+
+### Minor Changes
+
+- add embed block support
+
+## 1.68.0
+
+### Minor Changes
+
+- add dataviews
+
 ## 1.67.2
 
 ### Patch Changes

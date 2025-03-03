@@ -1,5 +1,17 @@
 # zhi-gitlab-middleware
 
+## 0.12.1
+
+### Patch Changes
+
+- zhi-fetch-middleware@0.13.2
+
+## 0.12.0
+
+### Minor Changes
+
+- fix gitlab v14
+
 ## 0.11.1
 
 ### Patch Changes

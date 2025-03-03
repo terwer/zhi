@@ -1,6 +1,6 @@
 {
   "name": "zhi-cli",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "a tool for generating zhi framework related projects",
   "type": "module",
   "bin": {
@@ -22,8 +22,8 @@
   ],
   "scripts": {
     "dev": "zhi-build --watch",
-    "build": "zhi-build --production && npm link",
-    "test": "zhi-cli -h"
+    "build": "zhi-build --production",
+    "test": "npm link && zhi-cli -h"
   },
   "devDependencies": {
     "@terwer/esbuild-config-custom": "workspace:*",

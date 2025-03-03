@@ -1,6 +1,6 @@
 {
   "name": "zhi-device",
-  "version": "2.11.0",
+  "version": "2.12.0",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

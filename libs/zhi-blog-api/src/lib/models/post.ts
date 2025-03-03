@@ -191,6 +191,19 @@ class Post {
    */
   docTreeLevel?: number
 
+  /**
+   * 嵌入块
+   */
+  embedBlocks: Record<string, any>
+  /**
+   * 数据库
+   */
+  dataViews: Record<string, any>
+  /**
+   * 折叠块
+   */
+  foldBlocks: Record<string, any>
+
   constructor() {
     this.postid = ""
     this.originalId = ""
@@ -219,6 +232,9 @@ class Post {
     this.outlineLevel = 3
     this.docTree = []
     this.docTreeLevel = 3
+    this.embedBlocks = {}
+    this.dataViews = {}
+    this.foldBlocks = {}
   }
 }
 
