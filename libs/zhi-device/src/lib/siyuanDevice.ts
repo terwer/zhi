@@ -419,6 +419,16 @@ class SiyuanDevice {
   }
 
   /**
+   * 用户目录
+   */
+  public static homeFolder() {
+    const process = SiyuanDevice.siyuanWindow().process
+    const path = SiyuanDevice.requireNpm("path")
+    const configFilePath = process.env.HOME
+    return path.join(configFilePath ?? process.cwd())
+  }
+
+  /**
    * 用户数据目录
    */
   public static appDataFolder() {
