@@ -23,6 +23,8 @@
  * questions.
  */
 
+import Post from "./post"
+
 /**
  * 媒体文件
  *
@@ -62,12 +64,15 @@ class MediaObject {
   type: string
   bits: Buffer
   overwrite: boolean
+  // v1.34.0 新增，个别场景可作为参数传递
+  post: Post
 
   constructor(name: string, type: string, bits: Buffer) {
     this.name = name
     this.type = type
     this.bits = bits
     this.overwrite = true
+    this.post = null
 
     if (!bits) {
       throw new Error("Bits cannot be empty")
