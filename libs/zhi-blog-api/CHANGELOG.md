@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.71.0
+
+### Minor Changes
+
+- image path mapping
+
 ## 1.70.0
 
 ### Minor Changes

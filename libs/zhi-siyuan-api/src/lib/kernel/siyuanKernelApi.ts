@@ -106,7 +106,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    *             AND (b1.root_id ='' OR (b1.content LIKE '%%') OR (b1.tag LIKE '%%'))
    *             AND a.name LIKE 'custom-%-yaml'
    *             ORDER BY b1.updated DESC,b1.created DESC
-   *             LIMIT 0,10
+   *             LIMIT 10 OFFSET 0
    *     )
    *     ORDER BY b2.updated DESC,b2.created DESC
    * ```
@@ -131,20 +131,9 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
               AND (b1.root_id ='${keyword}' OR (b1.content LIKE '%${keyword}%') OR (b1.tag LIKE '%${keyword}%'))
               AND a.name LIKE '${isPublishedFilter}'
               ORDER BY b1.updated DESC,b1.created DESC
-              LIMIT ${page * pagesize},${pagesize}
+              LIMIT ${pagesize} OFFSET ${page * pagesize}
       )
       ORDER BY b2.updated DESC,b2.created DESC`
-
-    // `select DISTINCT b2.root_id,b2.parent_id,b2.content from blocks b2
-    //   WHERE 1==1
-    //   AND b2.id IN (
-    //        SELECT DISTINCT b1.root_id
-    //           FROM blocks b1
-    //           WHERE 1 = 1
-    //           AND (b1.root_id ='${keyword}' OR (b1.content LIKE '%${keyword}%') OR (b1.tag LIKE '%${keyword}%'))
-    //           ORDER BY b1.updated DESC,b1.created DESC LIMIT ${page * pagesize},${pagesize}
-    //   )
-    //   ORDER BY b2.updated DESC,b2.created DESC`
     return await this.sql(stmt)
   }
 
@@ -186,7 +175,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    *      FROM blocks b1
    *      WHERE b1.path like '%/20220927094918-1d85uyp%'
    *      AND ((b1.content LIKE '%文档%') OR (b1.tag LIKE '%文档%'))
-   *      ORDER BY b1.updated DESC,b1.created DESC LIMIT 0,10
+   *      ORDER BY b1.updated DESC,b1.created DESC LIMIT 10 OFFSET 0
    * )
    * ORDER BY b2.updated DESC,b2.created DESC
    * ```
@@ -219,7 +208,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
           AND ((b1.content LIKE '%${keyword}%' OR b1.tag LIKE '%${keyword}%'))
           AND a.name LIKE '${isPublishedFilter}'
           ORDER BY b1.updated DESC, b1.created DESC
-          LIMIT ${page * pagesize}, ${pagesize}
+          LIMIT ${pagesize} OFFSET ${page * pagesize}
       )
       ORDER BY b2.updated DESC, b2.created DESC, b2.id`
 

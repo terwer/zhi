@@ -1,5 +1,22 @@
 # zhi-siyuan-api
 
+## 2.28.0
+
+### Minor Changes
+
+- image path mapping
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.71.0
+
+## 2.27.0
+
+### Minor Changes
+
+- fix: get docs
+
 ## 2.26.3
 
 ### Patch Changes

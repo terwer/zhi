@@ -286,9 +286,13 @@ abstract class BlogConfig {
   public bundledPicbedSupported?: boolean
 
   /**
-   * 图片存储目录，部分平台会用到，相对于文章存储目录，默认为 images
+   * 图片存储目录，部分平台会用到，从仓库根目录开始算，默认为 images
    */
   public imageStorePath?: string
+  /**
+   * 图片链接目录，部分平台会用到，不同平台规则不一致，默认为 images
+   */
+  public imageLinkPath?: string
 
   /**
    * 图床服务类型
@@ -344,6 +348,7 @@ abstract class BlogConfig {
     this.bundledPicbedSupported = false
     this.picbedService = PicbedServiceTypeEnum.None
     this.imageStorePath = "images"
+    this.imageLinkPath = "images"
     this.forceProxy = false
     this.dynYamlCfg = "{}"
   }
