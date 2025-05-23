@@ -1,5 +1,16 @@
 # zhi-blog-api
 
+## 1.73.0
+
+### Minor Changes
+
+- feat: support array util
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.34.0
+
 ## 1.72.0
 
 ### Minor Changes
