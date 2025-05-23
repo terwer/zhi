@@ -28,11 +28,12 @@ import DateUtil from "./lib/dateUtil"
 import HtmlUtil from "./lib/htmlUtil"
 import JsonUtil from "./lib/jsonUtil"
 import StrUtil from "./lib/strUtil"
+import ArrayUtil from "./lib/arrayUtil"
 import ObjectUtil from "./lib/objectUtil"
 import YamlUtil from "./lib/yamlUtil"
 import AliasTranslator from "./lib/slugUtil"
 import SmartUtil from "./lib/smartUtil"
 
 export { ZhiCommon }
-export { DateUtil, HtmlUtil, JsonUtil, StrUtil, ObjectUtil, YamlUtil, AliasTranslator }
+export { DateUtil, HtmlUtil, JsonUtil, StrUtil, ArrayUtil, ObjectUtil, YamlUtil, AliasTranslator }
 export { SmartUtil }
