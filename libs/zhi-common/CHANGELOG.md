@@ -1,5 +1,17 @@
 # zhi-common
 
+## 1.34.1
+
+### Patch Changes
+
+- fix: expose array util
+
+## 1.34.0
+
+### Minor Changes
+
+- feat: support array util
+
 ## 1.33.1
 
 ### Patch Changes

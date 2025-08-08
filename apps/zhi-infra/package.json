@@ -1,6 +1,6 @@
 {
   "name": "zhi-infra",
-  "version": "0.21.8",
+  "version": "0.21.10",
   "type": "module",
   "description": "basic issues for zhi",
   "main": "./dist/index.cjs",

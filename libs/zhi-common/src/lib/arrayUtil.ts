@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023, Terwer . All rights reserved.
+ * Copyright (c) 2025, Terwer . All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -23,17 +23,20 @@
  * questions.
  */
 
-import ZhiCommon from "./lib/zhi-common"
-import DateUtil from "./lib/dateUtil"
-import HtmlUtil from "./lib/htmlUtil"
-import JsonUtil from "./lib/jsonUtil"
-import StrUtil from "./lib/strUtil"
-import ArrayUtil from "./lib/arrayUtil"
-import ObjectUtil from "./lib/objectUtil"
-import YamlUtil from "./lib/yamlUtil"
-import AliasTranslator from "./lib/slugUtil"
-import SmartUtil from "./lib/smartUtil"
+/**
+ * 数组工具类
+ *
+ * @author terwer
+ */
+class ArrayUtil {
+  /**
+   * 判断数组是否为空
+   *
+   * @param arr - 数组
+   */
+  public static isEmptyArray<T>(arr: T[] | null | undefined): boolean {
+    return !arr || !Array.isArray(arr) || arr.length === 0
+  }
+}
 
-export { ZhiCommon }
-export { DateUtil, HtmlUtil, JsonUtil, StrUtil, ArrayUtil, ObjectUtil, YamlUtil, AliasTranslator }
-export { SmartUtil }
+export default ArrayUtil

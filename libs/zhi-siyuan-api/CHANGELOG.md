@@ -1,5 +1,51 @@
 # zhi-siyuan-api
 
+## 2.29.0
+
+### Minor Changes
+
+- add share pro setting
+
+## 2.28.3
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.34.1
+  - zhi-blog-api@1.73.1
+
+## 2.28.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.73.0
+  - zhi-common@1.34.0
+
+## 2.28.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.72.0
+
+## 2.28.0
+
+### Minor Changes
+
+- image path mapping
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.71.0
+
+## 2.27.0
+
+### Minor Changes
+
+- fix: get docs
+
 ## 2.26.3
 
 ### Patch Changes

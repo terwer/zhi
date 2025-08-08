@@ -64,7 +64,9 @@ class Post {
   permalink: string
 
   /**
+   *
    * 摘要
+   * @deprecated 2023-05-09 已废弃，请使用 mt_excerpt 代替
    */
   shortDesc?: string
 

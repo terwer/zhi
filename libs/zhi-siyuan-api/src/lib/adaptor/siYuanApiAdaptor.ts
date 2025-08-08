@@ -257,6 +257,11 @@ class SiYuanApiAdaptor extends BlogApi {
       "custom-publish-time": ObjectUtil.getProperty(attrs, "custom-publish-time", ""),
       "custom-expires": ObjectUtil.getProperty(attrs, "custom-expires", ""),
       "custom-slug": slug,
+      // 文档级别的文档树、大纲选项，区别于上面的全局设置，专业版专属
+      "custom-doc-tree-enable": ObjectUtil.getProperty(attrs, "custom-doc-tree-enable", ""),
+      "custom-doc-tree-level": ObjectUtil.getProperty(attrs, "custom-doc-tree-level", ""),
+      "custom-outline-enable": ObjectUtil.getProperty(attrs, "custom-outline-enable", ""),
+      "custom-outline-level": ObjectUtil.getProperty(attrs, "custom-outline-level", ""),
     }
     // this.logger.info("get publicAttrs from siyuan getPost=>", publicAttrs)
 

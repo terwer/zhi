@@ -1,5 +1,35 @@
 # zhi-blog-api
 
+## 1.73.1
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.34.1
+
+## 1.73.0
+
+### Minor Changes
+
+- feat: support array util
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.34.0
+
+## 1.72.0
+
+### Minor Changes
+
+- add post param for media object
+
+## 1.71.0
+
+### Minor Changes
+
+- image path mapping
+
 ## 1.70.0
 
 ### Minor Changes
