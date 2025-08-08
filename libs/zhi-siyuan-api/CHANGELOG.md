@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.29.0
+
+### Minor Changes
+
+- add share pro setting
+
 ## 2.28.3
 
 ### Patch Changes
