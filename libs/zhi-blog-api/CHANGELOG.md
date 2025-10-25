@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.74.0
+
+### Minor Changes
+
+- add blog config options
+
 ## 1.73.1
 
 ### Patch Changes
