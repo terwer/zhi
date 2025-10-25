@@ -79,6 +79,11 @@ export enum PasswordType {
    * cookie
    */
   PasswordType_Cookie,
+
+  /**
+   * none
+   */
+  PasswordType_None,
 }
 
 /**
@@ -151,6 +156,11 @@ abstract class BlogConfig {
   public previewUrl?: string
 
   /**
+   * 预览链接是否可用，true 和 undefined 都选择
+   */
+  public previewUrlEnabled = true
+
+  /**
    * 文章预览链接
    */
   public previewPostUrl?: string
@@ -189,6 +199,16 @@ abstract class BlogConfig {
    * 是否启用用户名
    */
   public usernameEnabled = false
+
+  /**
+   * 是否启用首页，true 和 undefined 都选择
+   */
+  public homeEnabled = true
+
+  /**
+   * 是否启用API地址，true 和 undefined 都选择
+   */
+  public apiUrlEnabled = true
 
   /**
    * 是否允许修改预览地址
@@ -327,6 +347,8 @@ abstract class BlogConfig {
     this.corsAnywhereUrl = ""
     this.corsCookieArray = []
     this.usernameEnabled = false
+    this.homeEnabled = true
+    this.apiUrlEnabled = true
     this.showTokenTip = false
     this.allowPreviewUrlChange = true
     this.knowledgeSpaceEnabled = false
@@ -339,6 +361,7 @@ abstract class BlogConfig {
     this.cateTitle = "文章分类"
     this.allowCateChange = false
     this.categoryType = CategoryTypeEnum.CategoryType_None
+    this.previewUrlEnabled = true
     this.yamlLinkEnabled = true
     this.tagSlugEnabled = false
     this.useMdFilename = false
