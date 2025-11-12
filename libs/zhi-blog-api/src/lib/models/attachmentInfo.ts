@@ -23,25 +23,32 @@
  * questions.
  */
 class Attachment {
-  attachment_id: string
-  caption: string
-  date_created_gmt: Date
-  description: string
-  file: string
-  id: string
-  link: string
-  metadata: {
+  attachment_id?: string
+  caption?: string
+  date_created_gmt?: Date
+  description?: string
+  file?: string
+  id?: string
+  link?: string
+  metadata?: {
     width: number
     height: number
     file: string
     filesize: number
     sizes: Array<any>
   }
-  parent: number
-  thumbnail: string
-  title: string
-  type: string
-  url: string
+  parent?: number
+  thumbnail?: string
+  title?: string
+  type?: string
+  /**
+   * 图片链接，优先级低于链接
+   */
+  url?: string
+  /**
+   * 图片宏，优先级高于链接
+   */
+  macro?: string
 
   constructor(data: any) {
     this.attachment_id = data.attachment_id
@@ -63,6 +70,7 @@ class Attachment {
     this.title = data.title
     this.type = data.type
     this.url = data.url
+    this.macro = data.macro
   }
 }
 
