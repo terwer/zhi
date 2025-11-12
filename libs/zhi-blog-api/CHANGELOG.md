@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.74.1
+
+### Patch Changes
+
+- add macro
+
 ## 1.74.0
 
 ### Minor Changes
