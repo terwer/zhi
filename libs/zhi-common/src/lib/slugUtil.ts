@@ -38,13 +38,68 @@ class AliasTranslator {
   private static logger = simpleLogger("slug-util")
 
   /**
+   * 获取页面slug
+   *
+   * @param q - 输入的标题字符串
+   * @param isFixTitle - 是否修复标题，默认为true
+   * @param options - 配置项
+   * @returns 页面的slug
+   */
+  public static async getPageSlug(q: string, isFixTitle?: boolean, options: any = {}): Promise<string> {
+    // 合并配置与默认值
+    const { maxLength = 100, enableHash = true } = options
+
+    const title = this.fixTitle(q, isFixTitle)
+    let slug = await this.getPageOriginSlug(q, isFixTitle)
+
+    if (!enableHash) {
+      // 如果不启用哈希，直接截断slug
+      if (slug.length > maxLength) {
+        slug = slug.substring(0, maxLength)
+        // 确保不以连字符结尾
+        slug = slug.replace(/-+$/, "")
+      }
+      return slug
+    }
+
+    // 启用哈希的情况
+    const hash = this.hashstr(title) // 返回类似"-1xn7c"的6位字符串
+
+    // 计算可用长度（总长度减去哈希长度）
+    const availableLength = maxLength - hash.length
+
+    if (slug.length > availableLength) {
+      // 截断slug部分
+      slug = slug.substring(0, availableLength)
+
+      // 确保最后一个单词完整：找到最后一个连字符并截断到那里
+      const lastHyphenIndex = slug.lastIndexOf("-")
+      if (lastHyphenIndex > 0) {
+        slug = slug.substring(0, lastHyphenIndex)
+      }
+
+      // 确保不以连字符结尾
+      slug = slug.replace(/-+$/, "")
+    }
+
+    const finalSlug = slug + hash
+
+    this.logger.debug(`Generated slug for "${q}": ${finalSlug}, length: ${finalSlug.length}`)
+    return finalSlug
+  }
+
+  //================================================================
+  // private function
+  //================================================================
+
+  /**
    * 修复标题
    *
    * @param q - 输入的标题字符串
    * @param isFixTitle - 是否修复标题，默认为true
    * @returns 修复后的标题字符串
    */
-  public static fixTitle(q: string, isFixTitle?: boolean): string {
+  private static fixTitle(q: string, isFixTitle?: boolean): string {
     q = q ?? "无标题"
     if (isFixTitle) {
       q = StrUtil.removeTitleNumber(q).trim()
@@ -58,7 +113,7 @@ class AliasTranslator {
    * @param q 中文名
    * @returns Promise<string> 英文别名
    */
-  public static async wordSlugify(q: string): Promise<string> {
+  private static async wordSlugify(q: string): Promise<string> {
     const v = await fetch("https://api.terwer.space/api/translate?q=" + q)
     const json = await v.json()
     let res = json[0][0]
@@ -81,11 +136,11 @@ class AliasTranslator {
    * @param q 拼音
    * @returns string 别名
    */
-  public static pinyinSlugify(q: string): string {
+  private static pinyinSlugify(q: string): string {
     return slugify(q)
   }
 
-  public static hashstr(title: string) {
+  private static hashstr(title: string) {
     const newstr = title + new Date().toISOString()
     return ["-", shortHash(newstr).toLowerCase()].join("")
   }
@@ -97,7 +152,7 @@ class AliasTranslator {
    * @param isFixTitle - 是否修复标题，默认为true
    * @returns 页面的原始slug
    */
-  public static async getPageOriginSlug(q: string, isFixTitle?: boolean): Promise<string> {
+  private static async getPageOriginSlug(q: string, isFixTitle?: boolean): Promise<string> {
     const title = this.fixTitle(q, isFixTitle)
     let slug = title
     try {
@@ -108,22 +163,6 @@ class AliasTranslator {
       slug = this.pinyinSlugify(q)
     }
     return slug
-  }
-
-  /**
-   * 获取页面slug
-   *
-   * @param q - 输入的标题字符串
-   * @param isFixTitle - 是否修复标题，默认为true
-   * @returns 页面的slug
-   */
-  public static async getPageSlug(q: string, isFixTitle?: boolean): Promise<string> {
-    const title = this.fixTitle(q, isFixTitle)
-    const slug = await this.getPageOriginSlug(q, isFixTitle)
-    const hash = this.hashstr(title)
-
-    this.logger.debug(`Generated slug for "${q}": ${slug}`)
-    return [slug, hash].join("")
   }
 }
 

@@ -24,6 +24,7 @@
  */
 
 import SmartUtil from "./smartUtil"
+import AliasTranslator from "./slugUtil"
 import { describe, it } from "vitest"
 
 describe("test smartUtil", () => {
@@ -31,7 +32,6 @@ describe("test smartUtil", () => {
     const q = "测试查询参数"
     const summary = await SmartUtil.autoSummary(q)
 
-    // 断言摘要不为空
     console.log("summary result =>", { summary })
   })
 
@@ -39,7 +39,20 @@ describe("test smartUtil", () => {
     const q = "测试的一些可用文本，看看有没有可用的关键词啊"
     const tags = await SmartUtil.autoTags(q, 5)
 
-    // 断言摘要不为空
     console.log("tags result =>", { tags })
+  })
+
+  it("test getPageSlug", async () => {
+    const q = "OpenAI Responses API 的战略意图与技术架构：AI 智能体时代的技术范式变革"
+    const slug = await AliasTranslator.getPageSlug(q)
+    // const slug = await AliasTranslator.getPageSlug(q, true, {
+    //   maxLength: 100,
+    // })
+    // 150
+    // the-strategic-intent-and-technical-architecture-of-openai-responses-api-technological-paradigm-changes-in-the-era-of-ai-agents--1jg
+    //
+    // 100
+    // the-strategic-intent-and-technical-architecture-of-openai-responses-api-technological-zv3dlg
+    console.log("slug result =>", { slug })
   })
 })

@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.35.0
+
+### Minor Changes
+
+- add getPageSlug method with configurable hash and length
+
 ## 1.34.1
 
 ### Patch Changes
