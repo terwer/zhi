@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.30.0
+
+### Minor Changes
+
+- optimize SQL queries for document retrieval and counting
+
 ## 2.29.3
 
 ### Patch Changes
