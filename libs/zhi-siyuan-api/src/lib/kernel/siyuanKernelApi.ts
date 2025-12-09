@@ -281,7 +281,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       isPublishedFilter = "custom-%-yaml"
     }
 
-    let stmt
+    let stmt: string
     if (isPublished) {
       // For published blocks, we need to join with attributes table
       stmt = `
