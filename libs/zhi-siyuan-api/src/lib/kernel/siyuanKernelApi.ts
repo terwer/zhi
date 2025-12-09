@@ -64,14 +64,24 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
   }
 
   /**
-   * 分页获取根文档
+   * 获取根文档数量
    *
    * ```sql
-   * SELECT COUNT(DISTINCT b1.root_id) as count
-   *     FROM blocks b1, attributes a
-   *     WHERE b1.root_id = a.root_id
-   *     AND (b1.root_id ='' OR (b1.content LIKE '%%') OR (b1.tag LIKE '%%'))
-   *     AND a.name LIKE '%%';
+   * -- For published blocks:
+   * SELECT COUNT(DISTINCT b.root_id) as count
+   * FROM blocks b
+   * LEFT JOIN attributes a ON b.root_id = a.root_id
+   * WHERE b.id = b.root_id
+   *   AND b.type = 'd'
+   *   AND (b.content LIKE '%%' OR b.tag LIKE '%%')
+   *   AND a.name LIKE 'custom-%-yaml'
+   *
+   * -- For all blocks:
+   * SELECT COUNT(DISTINCT b.root_id) as count
+   * FROM blocks b
+   * WHERE b.id = b.root_id
+   *   AND b.type = 'd'
+   *   AND (b.content LIKE '%%' OR b.tag LIKE '%%')
    * ```
    *
    * @param keyword - 关键字
@@ -82,11 +92,26 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     if (isPublished) {
       isPublishedFilter = "custom-%-yaml"
     }
-    const stmt = `SELECT COUNT(DISTINCT b1.root_id) as count
-      FROM blocks b1, attributes a
-      WHERE b1.root_id = a.root_id
-      AND (b1.root_id ='${keyword}' OR (b1.content LIKE '%${keyword}%') OR (b1.tag LIKE '%${keyword}%'))
-      AND a.name LIKE '${isPublishedFilter}'`
+
+    let stmt: string
+    if (isPublished) {
+      // For published blocks, we need to join with attributes table
+      stmt = `SELECT COUNT(DISTINCT b.root_id) as count
+        FROM blocks b
+        LEFT JOIN attributes a ON b.root_id = a.root_id
+        WHERE b.id = b.root_id
+          AND b.type = 'd'
+          AND (b.content LIKE '%${keyword}%' OR b.tag LIKE '%${keyword}%')
+          AND a.name LIKE '${isPublishedFilter}'`
+    } else {
+      // For all blocks, we don't need to filter by attributes
+      stmt = `SELECT COUNT(DISTINCT b.root_id) as count
+        FROM blocks b
+        WHERE b.id = b.root_id
+          AND b.type = 'd'
+          AND (b.content LIKE '%${keyword}%' OR b.tag LIKE '%${keyword}%')`
+    }
+
     const data = (await this.sql(stmt)) as any[]
     this.logger.debug("getRootBlocksCount data=>", data[0].count)
     return data[0].count
@@ -96,19 +121,33 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    * 分页获取根文档
 
    * ```sql
-   * SELECT DISTINCT b2.root_id,b2.parent_id,b2.content from blocks b2
-   *     WHERE 1==1
-   *     AND b2.id IN (
-   *          SELECT DISTINCT b1.root_id
-   *             FROM blocks b1, attributes a
-   *             WHERE 1 = 1
-   *             AND  b1.root_id = a.root_id
-   *             AND (b1.root_id ='' OR (b1.content LIKE '%%') OR (b1.tag LIKE '%%'))
-   *             AND a.name LIKE 'custom-%-yaml'
-   *             ORDER BY b1.updated DESC,b1.created DESC
-   *             LIMIT 10 OFFSET 0
-   *     )
-   *     ORDER BY b2.updated DESC,b2.created DESC
+   * -- For published blocks:
+   * SELECT DISTINCT
+   *   b.root_id as docId,
+   *   b.content as docTitle,
+   *   b.updated as modifiedTime,
+   *   b.box as notebookId
+   * FROM blocks b
+   * LEFT JOIN attributes a ON b.root_id = a.root_id
+   * WHERE b.id = b.root_id
+   *   AND b.type = 'd'
+   *   AND (b.content LIKE '%%' OR b.tag LIKE '%%')
+   *   AND a.name LIKE 'custom-%-yaml'
+   * ORDER BY b.updated DESC, b.created DESC
+   * LIMIT 10 OFFSET 0
+   * 
+   * -- For all blocks:
+   * SELECT DISTINCT
+   *   b.root_id as docId,
+   *   b.content as docTitle,
+   *   b.updated as modifiedTime,
+   *   b.box as notebookId
+   * FROM blocks b
+   * WHERE b.id = b.root_id
+   *   AND b.type = 'd'
+   *   AND (b.content LIKE '%%' OR b.tag LIKE '%%')
+   * ORDER BY b.updated DESC, b.created DESC
+   * LIMIT 10 OFFSET 0
    * ```
    *
    * @param page 页码
@@ -121,19 +160,38 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     if (isPublished) {
       isPublishedFilter = "custom-%-yaml"
     }
-    const stmt = `SELECT DISTINCT b2.root_id,b2.parent_id,b2.content from blocks b2
-      WHERE 1==1
-      AND b2.id IN (
-           SELECT DISTINCT b1.root_id
-              FROM blocks b1, attributes a
-              WHERE 1 = 1
-              AND  b1.root_id = a.root_id
-              AND (b1.root_id ='${keyword}' OR (b1.content LIKE '%${keyword}%') OR (b1.tag LIKE '%${keyword}%'))
-              AND a.name LIKE '${isPublishedFilter}'
-              ORDER BY b1.updated DESC,b1.created DESC
-              LIMIT ${pagesize} OFFSET ${page * pagesize}
-      )
-      ORDER BY b2.updated DESC,b2.created DESC`
+
+    let stmt: string
+    if (isPublished) {
+      // For published blocks, we need to join with attributes table
+      stmt = `SELECT DISTINCT
+        b.root_id as docId,
+        b.content as docTitle,
+        b.updated as modifiedTime,
+        b.box as notebookId
+      FROM blocks b
+      LEFT JOIN attributes a ON b.root_id = a.root_id
+      WHERE b.id = b.root_id
+        AND b.type = 'd'
+        AND (b.content LIKE '%${keyword}%' OR b.tag LIKE '%${keyword}%')
+        AND a.name LIKE '${isPublishedFilter}'
+      ORDER BY b.updated DESC, b.created DESC
+      LIMIT ${pagesize} OFFSET ${page * pagesize}`
+    } else {
+      // For all blocks, we don't need to filter by attributes
+      stmt = `SELECT DISTINCT
+        b.root_id as docId,
+        b.content as docTitle,
+        b.updated as modifiedTime,
+        b.box as notebookId
+      FROM blocks b
+      WHERE b.id = b.root_id
+        AND b.type = 'd'
+        AND (b.content LIKE '%${keyword}%' OR b.tag LIKE '%${keyword}%')
+      ORDER BY b.updated DESC, b.created DESC
+      LIMIT ${pagesize} OFFSET ${page * pagesize}`
+    }
+
     return await this.sql(stmt)
   }
 
@@ -141,11 +199,17 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    * 获取该文档下面的子文档个数
    *
    * ```sql
+   * -- For published blocks:
    * SELECT COUNT(DISTINCT b1.root_id) AS count
-   *     FROM blocks b1, attributes a
-   *     WHERE b1.root_id = a.root_id
-   *       AND b1.root_id='20230815225853-a2ybito' OR b1.path LIKE '%/20230815225853-a2ybito%'
-   *       AND a.name LIKE '%%'
+   *   FROM blocks b1
+   *   LEFT JOIN attributes a ON b1.root_id = a.root_id
+   *   WHERE b1.root_id='20230815225853-a2ybito' OR b1.path LIKE '%/20230815225853-a2ybito%'
+   *   AND a.name LIKE 'custom-%-yaml'
+   *
+   * -- For all blocks:
+   * SELECT COUNT(DISTINCT b1.root_id) AS count
+   *   FROM blocks b1
+   *   WHERE b1.root_id='20230815225853-a2ybito' OR b1.path LIKE '%/20230815225853-a2ybito%'
    * ```
    *
    * @param docId 文档ID
@@ -156,11 +220,22 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     if (isPublished) {
       isPublishedFilter = "custom-%-yaml"
     }
-    const stmt = `SELECT COUNT(DISTINCT b1.root_id) AS count
-      FROM blocks b1, attributes a
-      WHERE b1.root_id = a.root_id
-          AND b1.root_id='${docId}' OR b1.path LIKE '%/${docId}%'
-          AND a.name LIKE '${isPublishedFilter}'`
+
+    let stmt: string
+    if (isPublished) {
+      // For published blocks, we need to join with attributes table
+      stmt = `SELECT COUNT(DISTINCT b1.root_id) AS count
+        FROM blocks b1
+        LEFT JOIN attributes a ON b1.root_id = a.root_id
+        WHERE b1.root_id='${docId}' OR b1.path LIKE '%/${docId}%'
+        AND a.name LIKE '${isPublishedFilter}'`
+    } else {
+      // For all blocks, we don't need to filter by attributes
+      stmt = `SELECT COUNT(DISTINCT b1.root_id) AS count
+        FROM blocks b1
+        WHERE b1.root_id='${docId}' OR b1.path LIKE '%/${docId}%'`
+    }
+
     const data = (await this.sql(stmt)) as any[]
     return data[0].count
   }
@@ -169,15 +244,23 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    * 分页获取子文档
    *
    * ```sql
-   * SELECT DISTINCT b2.root_id,b2.content,b2.path FROM blocks b2
-   * WHERE b2.id IN (
-   *   SELECT DISTINCT b1.root_id
-   *      FROM blocks b1
-   *      WHERE b1.path like '%/20220927094918-1d85uyp%'
-   *      AND ((b1.content LIKE '%文档%') OR (b1.tag LIKE '%文档%'))
-   *      ORDER BY b1.updated DESC,b1.created DESC LIMIT 10 OFFSET 0
-   * )
-   * ORDER BY b2.updated DESC,b2.created DESC
+   * -- For published blocks:
+   * SELECT DISTINCT b2.root_id, b2.content, b2.path
+   * FROM blocks b2
+   * LEFT JOIN attributes a ON b2.root_id = a.root_id
+   * WHERE (b2.root_id = '20220927094918-1d85uyp' OR b2.path LIKE '%/20220927094918-1d85uyp%')
+   * AND ((b2.content LIKE '%文档%' OR b2.tag LIKE '%文档%'))
+   * AND a.name LIKE 'custom-%-yaml'
+   * ORDER BY b2.updated DESC, b2.created DESC
+   * LIMIT 10 OFFSET 0
+   *
+   * -- For all blocks:
+   * SELECT DISTINCT b2.root_id, b2.content, b2.path
+   * FROM blocks b2
+   * WHERE (b2.root_id = '20220927094918-1d85uyp' OR b2.path LIKE '%/20220927094918-1d85uyp%')
+   * AND ((b2.content LIKE '%文档%' OR b2.tag LIKE '%文档%'))
+   * ORDER BY b2.updated DESC, b2.created DESC
+   * LIMIT 10 OFFSET 0
    * ```
    *
    * @param docId 文档ID
@@ -197,20 +280,29 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     if (isPublished) {
       isPublishedFilter = "custom-%-yaml"
     }
-    const stmt = `
-      SELECT DISTINCT b2.root_id, b2.content, b2.path 
-      FROM blocks b2
-      WHERE b2.id IN (
-          SELECT DISTINCT b1.root_id
-          FROM blocks b1
-          JOIN attributes a ON b1.root_id = a.root_id
-          WHERE (b1.root_id = '${docId}' OR b1.path LIKE '%/${docId}%')
-          AND ((b1.content LIKE '%${keyword}%' OR b1.tag LIKE '%${keyword}%'))
-          AND a.name LIKE '${isPublishedFilter}'
-          ORDER BY b1.updated DESC, b1.created DESC
-          LIMIT ${pagesize} OFFSET ${page * pagesize}
-      )
-      ORDER BY b2.updated DESC, b2.created DESC, b2.id`
+
+    let stmt
+    if (isPublished) {
+      // For published blocks, we need to join with attributes table
+      stmt = `
+        SELECT DISTINCT b2.root_id, b2.content, b2.path 
+        FROM blocks b2
+        LEFT JOIN attributes a ON b2.root_id = a.root_id
+        WHERE (b2.root_id = '${docId}' OR b2.path LIKE '%/${docId}%')
+        AND ((b2.content LIKE '%${keyword}%' OR b2.tag LIKE '%${keyword}%'))
+        AND a.name LIKE '${isPublishedFilter}'
+        ORDER BY b2.updated DESC, b2.created DESC, b2.id
+        LIMIT ${pagesize} OFFSET ${page * pagesize}`
+    } else {
+      // For all blocks, we don't need to filter by attributes
+      stmt = `
+        SELECT DISTINCT b2.root_id, b2.content, b2.path 
+        FROM blocks b2
+        WHERE (b2.root_id = '${docId}' OR b2.path LIKE '%/${docId}%')
+        AND ((b2.content LIKE '%${keyword}%' OR b2.tag LIKE '%${keyword}%'))
+        ORDER BY b2.updated DESC, b2.created DESC, b2.id
+        LIMIT ${pagesize} OFFSET ${page * pagesize}`
+    }
 
     this.logger.debug("siyuanApi getSubdocs sql=>", stmt)
     return await this.sql(stmt)
