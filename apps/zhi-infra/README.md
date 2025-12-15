@@ -98,9 +98,14 @@ class YourPlugin extends Plugin {
 4. add init code to your proper place
 
 ```
-showMessage("node is init, please wait...", 3000, "info")
 const win = window as any
 const zhi = win.zhi || {}
-await zhi.npm.checkAndInitNode()
-showMessage("node is ready", 3000, "info")
+const v = await zhi.npm.nodeVersion()
+if (v && v.startsWith("v")) {
+  this.pluginInstance.logger.info(`node is ready, version: ${v}`, 300, "info")
+} else {
+  showMessage("node is init, please wait...", 3000, "info")
+  await zhi.npm.checkAndInitNode()
+  showMessage(`node is ready`, 3000, "info")
+}
 ```
