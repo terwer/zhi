@@ -13,11 +13,16 @@ const downloadAndInstallNodeJS = async (version, installDir) => {
   const downloadUrl = (() => {
     switch (os.platform()) {
       case "win32":
-        return `https://npmmirror.com/mirrors/node/${version}/node-${version}-win-x64.zip`
+        // 2015/12/15已经换地址，例如：
+        // https://registry.npmmirror.com/-/binary/node/v22.21.1/node-v22.21.1-win-x64.7z
+        return `https://registry.npmmirror.com/-/binary/node/v${version}/node-v${version}-win-x64.7z`
+        // return `https://npmmirror.com/mirrors/node/${version}/node-${version}-win-x64.zip`
       case "darwin":
-        return `https://npmmirror.com/mirrors/node/${version}/node-${version}-darwin-x64.tar.gz`
+        return `https://registry.npmmirror.com/-/binary/node/v${version}/node-v${version}-darwin-x64.tar.gz`
+        // return `https://npmmirror.com/mirrors/node/${version}/node-${version}-darwin-x64.tar.gz`
       case "linux":
-        return `https://npmmirror.com/mirrors/node/${version}/node-${version}-linux-x64.tar.xz`
+        return `https://registry.npmmirror.com/-/binary/node/v${version}/node-v${version}-linux-x64.tar.xz`
+        // return `https://npmmirror.com/mirrors/node/${version}/node-${version}-linux-x64.tar.xz`
       default:
         throw new Error("不支持的操作系统")
     }

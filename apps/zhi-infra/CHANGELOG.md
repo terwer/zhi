@@ -1,5 +1,11 @@
 # zhi-infra
 
+## 0.22.0
+
+### Minor Changes
+
+- feat: support --templateOnly mode and enhance template handling
+
 ## 0.21.11
 
 ### Patch Changes

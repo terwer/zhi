@@ -1,5 +1,11 @@
 # zhi-cli
 
+## 1.9.0
+
+### Minor Changes
+
+- feat: support --templateOnly mode and enhance template handling
+
 ## 1.8.2
 
 ### Patch Changes
