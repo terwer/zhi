@@ -41,7 +41,7 @@ export const initCommand = () => {
   const command = new Command("init")
 
   command
-    .description("create a project based on zhi framework")
+    // .description("create a project based on zhi framework")
     // .argument("<name>", "the name for your new project")
     .argument("[name]", "the name for your new project (required unless --templateOnly is used)")
     .argument("[branch]", "the branch for template repo, current support ts-cli")
@@ -118,6 +118,8 @@ export const initCommand = () => {
       try {
         const downloadPath = path.join(workDir, name)
         const templateConfigPath = path.join(workDir, "templateConfig.json")
+        const defaultTemplateConfigPath = path.join(workDir, "templateConfig.json")
+
 
         // 如果存在需要先删除，否则无法检出
         if (fs.existsSync(downloadPath)) {
@@ -135,8 +137,14 @@ export const initCommand = () => {
           logger.info("Using templateConfig.json for file replacement")
           const templateConfig = JSON.parse(fs.readFileSync(templateConfigPath, "utf-8"))
           const { vars, templateFiles } = templateConfig
-
+          if (verbose) {
+            logger.info("Before processing file:", templateFiles)
+          }
           for (const [file, config] of Object.entries(templateFiles || {})) {
+            logger.info("Processing file:", file)
+            if (verbose) {
+              logger.info("Template config:", templateConfig)
+            }
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             const args = config.args || []
@@ -155,6 +163,8 @@ export const initCommand = () => {
           modifyFiles(downloadPath, ["package.json", "README.md"], { name, ...projectOptions })
         }
 
+        // 删除默认的 templateConfig.json
+        fs.removeSync(defaultTemplateConfigPath)
         // 删除git信息
         fs.removeSync(path.join(downloadPath, ".git"))
         logger.info(".git cleaned.")

@@ -1,5 +1,11 @@
 # zhi-cli
 
+## 1.10.0
+
+### Minor Changes
+
+- feat: clean up templateConfig.json after project initialization
+
 ## 1.9.0
 
 ### Minor Changes
