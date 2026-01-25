@@ -41,13 +41,23 @@ export const initCommand = () => {
   const command = new Command("init")
 
   command
-    .description("create a project based on zhi framework")
-    .argument("<name>", "the name for your new project")
+    // .description("create a project based on zhi framework")
+    // .argument("<name>", "the name for your new project")
+    .argument("[name]", "the name for your new project (required unless --templateOnly is used)")
     .argument("[branch]", "the branch for template repo, current support ts-cli")
+    .option("--templateOnly", "only download template", false)
     .option("--verbose", "output debug logs", false)
     .option("--target <name>", "the target name", "node")
     .hook("preAction", printVerboseHook)
     .action(async (name, branch, options) => {
+      const { templateOnly, verbose, target } = options
+
+      // 如果非 templateOnly 模式，必须提供 name
+      if (!templateOnly && !name) {
+        logger.error("Project name is required!")
+        process.exit(1)
+      }
+
       // 没有指定仓库才去选择
       if (!branch) {
         const templatePrompt = new Select({
@@ -58,9 +68,35 @@ export const initCommand = () => {
         branch = await templatePrompt.run()
       }
 
-      logger.info(`zhi-cli is running at ${options.target}`)
-      logger.info("start init zhi project:", name)
+      if (verbose) {
+        logger.info(`zhi-cli is running at ${target}`)
+        logger.info("start init zhi project:", name)
+      }
       logger.info("using template:", branch)
+
+      const workDir = "./"
+
+      if (templateOnly) {
+        logger.info("Mode: template only — will not install dependencies or initialize git")
+        // 只下载模板，不执行后续步骤
+        try {
+          const tempName = "temp-zhi-template"
+          const tempDownloadPath = path.join(workDir, tempName)
+          const tempTemplateConfigPath = path.join(tempDownloadPath, "templateConfig.json")
+          await downloadTemplate(templateGitUrl, tempDownloadPath, branch)
+          if (!fs.existsSync(tempTemplateConfigPath)) {
+            throw new Error("template config does not exist")
+          }
+          // 把 templateConfig.json 提取到临时目录外
+          fs.copySync(tempTemplateConfigPath, path.join(workDir, "templateConfig.json"))
+          // 删除临时目录
+          fs.removeSync(tempDownloadPath)
+          logger.info("templateConfig.json extracted to project root.Please check it and modify if necessary😄")
+        } catch (e) {
+          logger.error(e)
+        }
+        return
+      }
 
       const description = "please input project description"
       const author = "please input author"
@@ -80,7 +116,10 @@ export const initCommand = () => {
       logger.info("projectOptions=>", projectOptions)
 
       try {
-        const downloadPath = `./${name}`
+        const downloadPath = path.join(workDir, name)
+        const templateConfigPath = path.join(workDir, "templateConfig.json")
+        const defaultTemplateConfigPath = path.join(workDir, "templateConfig.json")
+
 
         // 如果存在需要先删除，否则无法检出
         if (fs.existsSync(downloadPath)) {
@@ -88,9 +127,44 @@ export const initCommand = () => {
         }
 
         // 下载仓库并替换参数
-        await downloadTemplate(templateGitUrl, downloadPath, branch)
-        modifyFiles(downloadPath, ["package.json", "README.md", "src/index.spec.ts"], { name, ...projectOptions })
+        if (!fs.existsSync(downloadPath)) {
+          logger.info("Template does not exist, start downloading template...")
+          await downloadTemplate(templateGitUrl, downloadPath, branch)
+          logger.info("Template downloaded success.")
+        }
 
+        if (fs.existsSync(templateConfigPath)) {
+          logger.info("Using templateConfig.json for file replacement")
+          const templateConfig = JSON.parse(fs.readFileSync(templateConfigPath, "utf-8"))
+          const { vars, templateFiles } = templateConfig
+          if (verbose) {
+            logger.info("Before processing file:", templateFiles)
+          }
+          for (const [file, config] of Object.entries(templateFiles || {})) {
+            logger.info("Processing file:", file)
+            if (verbose) {
+              logger.info("Template config:", templateConfig)
+            }
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            const args = config.args || []
+            const fileArgsMap: Record<string, string> = {}
+            for (const arg of args) {
+              // eslint-disable-next-line no-prototype-builtins
+              if (vars.hasOwnProperty(arg)) {
+                fileArgsMap[arg] = vars[arg]
+              }
+            }
+            logger.info("Replacing file:", file, "with args:", args)
+            modifyFiles(downloadPath, [file], fileArgsMap)
+          }
+        } else {
+          logger.warn("templateConfig.json not exists, using default. Will only change package.json and README.md")
+          modifyFiles(downloadPath, ["package.json", "README.md"], { name, ...projectOptions })
+        }
+
+        // 删除默认的 templateConfig.json
+        fs.removeSync(defaultTemplateConfigPath)
         // 删除git信息
         fs.removeSync(path.join(downloadPath, ".git"))
         logger.info(".git cleaned.")
@@ -100,7 +174,7 @@ export const initCommand = () => {
         const installText = crossChalk.green(`pnpm install`)
         logger.info(`Now you can do ${cdText} and run ${installText}`)
       } catch (error) {
-        console.error(error)
+        logger.error("Failed to create project:", error)
       }
 
       logger.info("done")

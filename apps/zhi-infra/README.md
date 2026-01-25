@@ -26,3 +26,86 @@ Windows上 [zhiAppNpmPath]=[用户目录]/siyuancommunity
 Linux上 [zhiAppNpmPath]=[用户目录]/siyuancommunity
 ```
 
+## How to integrate with siyuan plugin
+
+1. add `public` folder at `[thisPluginPath]/public`
+
+2. copy `dist` to it and rename to `zhi-infra`
+
+```
+[thisPluginPath]
+├── public
+│ └── zhi-infra
+│   └── libs
+│       └── zhi-infra
+│          ├── README.md
+│          ├── index.cjs
+│ └── deps.json
+│ └── hello.json
+│ └── setup.cjs
+```
+
+config `vite-static-copy-plugin`
+
+```
+{
+  src: "./public/**",
+  dest: "./public/"
+}
+```
+
+3. bootstrap zhi-infra
+
+add the code to your plugin entry file, like `index.ts`
+
+```ts
+import pkg from "../package.json"
+
+export const dataDir = `${(window as any).siyuan.config.system.dataDir}`
+
+// add init logic to your plugin
+class YourPlugin extends Plugin {
+  async onload() {
+    // other logic
+
+    // init zhi-infra async
+    void initZhiInfra()
+  }
+
+  //================================================================
+  // private function
+  //================================================================
+
+  public async initZhiInfra() {
+    this.logger.info("start init Zhi Infra...");
+    try {
+      const pluginDir = `${dataDir}/plugins/${pkg.name}`;
+      const win = window as any;
+      const zhiInfraActivator = win.require(`${pluginDir}/libs/zhi-infra/index.cjs`).default;
+      const path = win.require("path");
+      const zhiNpmPath = `${pluginDir}/libs/deps/npm`;
+      await zhiInfraActivator(zhiNpmPath, true);
+      const zhi = win.zhi
+      zhi.npm.depsJsonPath = `${pluginDir}`
+      this.logger.info("Zhi Infra init success");
+    } catch (e) {
+      this.logger.error("Zhi Infra init error", e);
+    }
+  }
+}
+```
+
+4. add init code to your proper place
+
+```
+const win = window as any
+const zhi = win.zhi || {}
+const v = await zhi.npm.nodeVersion()
+if (v && v.startsWith("v")) {
+  this.pluginInstance.logger.info(`node is ready, version: ${v}`, 300, "info")
+} else {
+  showMessage("node is init, please wait...", 3000, "info")
+  await zhi.npm.checkAndInitNode()
+  showMessage(`node is ready`, 3000, "info")
+}
+```
