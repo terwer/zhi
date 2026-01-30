@@ -113,6 +113,25 @@ importers:
         specifier: workspace:*
         version: link:../../tools/vitest-config-custom
 
+  apps/zhi-path:
+    dependencies:
+      zhi-lib-base:
+        specifier: workspace:*
+        version: link:../../libs/zhi-lib-base
+    devDependencies:
+      '@terwer/esbuild-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/esbuild-config-custom
+      '@terwer/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config-custom
+      '@terwer/tsconfig':
+        specifier: workspace:*
+        version: link:../../tools/tsconfig
+      '@terwer/vitest-config-custom':
+        specifier: workspace:*
+        version: link:../../tools/vitest-config-custom
+
   libs/zhi-blog-api:
     dependencies:
       zhi-common:
