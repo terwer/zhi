@@ -1,4 +1,11 @@
 packages:
-  - "tools/*"    # tools
-  - "libs/*"     # libraries
-  - "apps/*"     # apps
+  - tools/*
+  - libs/*
+  - apps/*
+
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - core-js
+  - electron
+  - esbuild
+  - vue-demi

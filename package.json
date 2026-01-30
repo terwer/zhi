@@ -2,7 +2,6 @@
   "name": "zhi-framework",
   "private": true,
   "version": "1.0.0",
-  "packageManager": "pnpm@7.15.0",
   "scripts": {
     "lint": "turbo run lint",
     "dev": "turbo run dev",
@@ -22,5 +21,6 @@
     "@terwer/commit-config-custom": "workspace:*",
     "@terwer/eslint-config-custom": "workspace:*",
     "turbo": "^1.13.2"
-  }
+  },
+  "packageManager": "pnpm@10.28.2"
 }
