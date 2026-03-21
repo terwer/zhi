@@ -910,12 +910,34 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    * 获取同级文档（父目录下的其他文档）
    *
    * @param notebook 笔记本ID
-   * @param parentPath 父路径
+   * @param parentPath 父路径（使用文档ID组成的路径）
    * @returns 同级文档列表
    */
   public async getSiblingDocs(notebook: string, parentPath: string): Promise<any[]> {
-    if (!parentPath || parentPath === "/") {
-      return [] // 根目录没有同级文档
+    // 对于根目录，parentPath 为空字符串
+    if (parentPath === "") {
+      // 获取根目录下的所有文档
+      try {
+        const response = await this.siyuanRequest("/api/filetree/listDocsByPath", {
+          notebook: notebook,
+          path: ""
+        })
+
+        if (!response || !Array.isArray(response.files)) {
+          return []
+        }
+
+        return response.files.map(file => ({
+          id: file.id,
+          parentId: "", // 根目录文档的 parentId 为空
+          name: file.name.replace(".sy", ""),
+          depth: 0,
+          type: "sibling"
+        }))
+      } catch (error) {
+        this.logger.error("获取根目录同级文档失败:", error)
+        return []
+      }
     }
 
     try {
@@ -928,11 +950,13 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
         return []
       }
 
+      // 注意：parentId 需要在调用方根据上下文修正，因为这里无法知道父文档的真实ID
+      // 这里返回空 parentId，由调用方设置正确的 parentId
       return response.files.map(file => ({
         id: file.id,
-        parentId: parentPath.split("/").pop() || "",
+        parentId: "", // 由调用方修正
         name: file.name.replace(".sy", ""),
-        depth: 0, // 同级文档深度为0
+        depth: 0,
         type: "sibling"
       }))
     } catch (error) {

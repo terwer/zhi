@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.32.0
+
+### Minor Changes
+
+- feat: new doctree
+
 ## 2.31.0
 
 ### Minor Changes
