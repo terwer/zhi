@@ -96,7 +96,7 @@ describe("SiYuanApiAdaptor", async () => {
     siyuanConfig.preferenceConfig.outlineEnable = true
     siyuanConfig.preferenceConfig.outlineLevel = 2
     siyuanConfig.preferenceConfig.docTreeEnable = true
-    siyuanConfig.preferenceConfig.docTreeLevel = 6
+    siyuanConfig.preferenceConfig.docTreeLevel = 3
     const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
     // const postid = "20260303141037-maw0qfs"

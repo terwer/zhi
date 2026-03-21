@@ -193,43 +193,35 @@ class SiYuanApiAdaptor extends BlogApi {
 
       // 正确的文档树构建逻辑：使用现有的 kernel 方法，处理所有节点情况
 
-      // 1. 向上遍历：获取从根目录到当前文档每个层级的同级文档
-      let currentPath = ""
-      for (let i = 0; i < pathParts.length && i <= docTreeLevel; i++) {
-        if (i === 0) {
-          currentPath = pathParts[i]
-        } else {
-          currentPath = `${currentPath}/${pathParts[i]}`
-        }
+      // 1. 向上获取：以当前文档为中心，向上最多 docTreeLevel 层级
+      const currentDocIndex = pathParts.length - 1
+      const startLevel = Math.max(0, currentDocIndex - docTreeLevel)
 
+      for (let i = startLevel; i <= currentDocIndex; i++) {
         try {
-          // 使用现有的 getSiblingDocs 方法获取同级文档
-          // 对于根目录，parentPath 为空字符串
           const parentPath = i === 0 ? "" : pathParts.slice(0, i).join("/")
           const siblings = await this.siyuanKernelApi.getSiblingDocs(notebookId, parentPath)
 
-          // 修正同级文档的 parentId 为正确的父文档ID
-          // 根据路径结构，parentId 应该是 pathParts[i-1]（当 i > 0 时）
           const correctedSiblings = siblings.map((sibling) => ({
             ...sibling,
             parentId: i > 0 ? pathParts[i - 1] : "",
-            depth: i,
+            depth: i - currentDocIndex, // 当前文档 depth = 0
           }))
 
           docTree = [...docTree, ...correctedSiblings]
         } catch (error) {
-          this.logger.warn(`获取层级 ${i} 的同级文档失败 (path: ${currentPath}):`, error)
+          this.logger.warn(`获取向上层级 ${i} 的同级文档失败:`, error)
         }
       }
 
-      // 2. 向下遍历：获取当前文档的子文档（如果存在）
+      // 2. 向下获取：以当前文档为中心，向下最多 docTreeLevel 层级
       if (docTreeLevel > 0) {
         try {
-          // 使用现有的 getChildDocs 方法获取子文档
           const children = await this.siyuanKernelApi.getChildDocs(notebookId, docPath, docTreeLevel)
+          // getChildDocs 返回的 depth 已经是相对于当前文档的深度
           docTree = [...docTree, ...children]
         } catch (error) {
-          this.logger.warn(`获取当前文档子文档失败 (path: ${docPath}):`, error)
+          this.logger.warn(`获取向下层级子文档失败 (path: ${docPath}):`, error)
         }
       }
 
