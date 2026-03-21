@@ -1,5 +1,11 @@
 # zhi-cli
 
+## 1.11.0
+
+### Minor Changes
+
+- feat: add new doctree
+
 ## 1.10.0
 
 ### Minor Changes

@@ -5,6 +5,7 @@ import path from "path"
 import esbuild from "esbuild"
 import minimist from "minimist"
 import { existsSync } from "fs"
+import { createRequire } from "module"
 
 /**
  *  zhi 构建工具
@@ -16,37 +17,38 @@ export class ZhiBuild {
   static async processBuild() {
     // 处理参数
     const args = minimist(process.argv.slice(2))
-    const cfg = args.c ?? "esbuild.config.js"
+    const cfgName = args.c
     const isWatch = args.watch ?? false
     const isProduction = !isWatch
 
     // 读取用户定义的配置文件
     let userEsbuildConfig = {}
     let customConfig = {}
-    // 兼容 windows
-    const isWindows = os.platform() === "win32"
-    const esbuildConfigFile = isWindows
-      ? `${path.join(process.cwd(), cfg)}`.replace(/\\/g, "/")
-      : path.join(process.cwd(), cfg)
+    const { isEsm, esbuildConfigFile } = ZhiBuild.getEsBuildConfigFile(cfgName)
     console.log("reading user defined esbuild config from =>", esbuildConfigFile)
     if (!existsSync(esbuildConfigFile)) {
       console.warn(`userEsbuildConfig not found, using default`)
     } else {
       let customCfg
       try {
-        console.log(`try import esbuildConfigFile => ${esbuildConfigFile}`)
-        // 兼容 mjs 和 cjs
-        const pkg = await import(esbuildConfigFile)
-        // console.log("pkg=>", pkg)
-        customCfg = pkg
-        if (pkg.default) {
-          customCfg = pkg.default
+        if (isEsm) {
+          console.log(`use import esbuildConfigFile => ${esbuildConfigFile}`)
+          // 兼容 mjs 和 cjs
+           const pkg = await import(esbuildConfigFile)
+          // console.log("pkg=>", pkg)
+          customCfg = pkg
+          if (pkg.default) {
+            customCfg = pkg.default
+          }
+        } else {
+          console.log(`use require esbuildConfigFile => ${esbuildConfigFile}`)
+          const require = createRequire(import.meta.url)
+          customCfg = require(esbuildConfigFile)
         }
       } catch (e) {
         console.error(`Failed to load esbuild config: `, e)
+        console.log(`import error for esbuildConfigFile => ${esbuildConfigFile}`)
         process.exit(1)
-        console.log(`import error, using require instead.esbuildConfigFile => ${esbuildConfigFile}`)
-        customCfg = require(esbuildConfigFile)
       }
       userEsbuildConfig = customCfg.esbuildConfig ?? {}
       customConfig = customCfg.customConfig ?? {}
@@ -209,6 +211,56 @@ export class ZhiBuild {
       console.log("ZhiBuild detected success callback")
       customConfig.onZhiBuildSuccess()
     }
+  }
+
+  static getEsBuildConfigFile(cfg) {
+    // 处理 cfg 为 undefined 或空值的情况
+    if (!cfg) {
+      cfg = "esbuild.config.js"
+    }
+
+    const result = {
+      isEsm: true,
+      esbuildConfigFile: cfg,
+    }
+
+    // get ext
+    const cfgName = path.basename(cfg)
+    const ext = path.extname(cfgName)
+    // 根据文件扩展名正确判断模块类型
+    if (ext === ".cjs") {
+      result.isEsm = false // .cjs 是 CommonJS
+    } else if (ext === ".mjs" || ext === ".js") {
+      result.isEsm = true // .mjs 和 .js 是 ESM
+    } else {
+      result.isEsm = true // 默认 ESM
+    }
+
+    // 兼容 esbuild.config.cjs
+    if (!existsSync(ZhiBuild.getAbsPath(cfg))) {
+      // 默认是 isEsm=true, esbuildConfigFile=esbuild.config.js
+      result.isEsm = false
+      cfg = "esbuild.config.cjs"
+    }
+
+    // 兼容 esbuild.config.mjs
+    if (!existsSync(ZhiBuild.getAbsPath(cfg))) {
+      // 默认是 isEsm=true, esbuildConfigFile=esbuild.config.js
+      result.isEsm = true
+      cfg = "esbuild.config.mjs"
+    }
+
+    result.esbuildConfigFile = ZhiBuild.getAbsPath(cfg)
+    return result
+  }
+
+  static getAbsPath(f) {
+    // 兼容 windows
+    const isWindows = os.platform() === "win32"
+    const esbuildConfigFile = isWindows
+      ? `${path.join(process.cwd(), f)}`.replace(/\\/g, "/")
+      : path.join(process.cwd(), f)
+    return esbuildConfigFile
   }
 }
 
