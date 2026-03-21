@@ -1,6 +1,6 @@
 {
   "name": "zhi-path",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "fix path for mac on electron",
   "main": "./dist/index.js",
@@ -19,10 +19,11 @@
   "devDependencies": {
     "@terwer/esbuild-config-custom": "workspace:*",
     "@terwer/eslint-config-custom": "workspace:*",
+    "@terwer/tsconfig": "workspace:*",
     "@terwer/vitest-config-custom": "workspace:*",
-    "@terwer/tsconfig": "workspace:*"
+    "fix-path": "^5.0.0"
   },
-   "dependencies": {
+  "dependencies": {
     "zhi-lib-base": "workspace:*"
   },
   "publishConfig": {

@@ -23,7 +23,7 @@
  * questions.
  */
 
-import { dtsPlugin } from "esbuild-plugin-d.ts"
+// import { dtsPlugin } from "esbuild-plugin-d.ts"
 
 /**
  * 构建配置
@@ -35,9 +35,10 @@ export default {
     bundle: true,
     format: "cjs",
     platform: "node",
+    minify: true,
     banner: {
       js: "#!/usr/bin/env node",
     },
-    plugins: [dtsPlugin()],
+    // plugins: [dtsPlugin()],
   },
 }

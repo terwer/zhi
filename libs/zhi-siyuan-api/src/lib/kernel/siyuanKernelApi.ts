@@ -906,6 +906,115 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     return await this.siyuanRequest("/api/format/netAssets2LocalAssets", params)
   }
 
+  /**
+   * 获取同级文档（父目录下的其他文档）
+   *
+   * @param notebook 笔记本ID
+   * @param parentPath 父路径
+   * @returns 同级文档列表
+   */
+  public async getSiblingDocs(notebook: string, parentPath: string): Promise<any[]> {
+    if (!parentPath || parentPath === "/") {
+      return [] // 根目录没有同级文档
+    }
+
+    try {
+      const response = await this.siyuanRequest("/api/filetree/listDocsByPath", {
+        notebook: notebook,
+        path: parentPath
+      })
+
+      if (!response || !Array.isArray(response.files)) {
+        return []
+      }
+
+      return response.files.map(file => ({
+        id: file.id,
+        parentId: parentPath.split("/").pop() || "",
+        name: file.name.replace(".sy", ""),
+        depth: 0, // 同级文档深度为0
+        type: "sibling"
+      }))
+    } catch (error) {
+      this.logger.error("获取同级文档失败:", error)
+      return []
+    }
+  }
+
+  /**
+   * 获取子级文档（递归到指定深度）
+   *
+   * @param notebook 笔记本ID
+   * @param docPath 文档路径
+   * @param maxDepth 最大深度（默认3）
+   * @returns 子级文档列表
+   */
+  public async getChildDocs(notebook: string, docPath: string, maxDepth: number = 3): Promise<any[]> {
+    const children: any[] = []
+    await this._recursiveGetChildren(notebook, docPath, children, 1, maxDepth)
+    return children
+  }
+
+  /**
+   * 递归获取子文档
+   *
+   * @private
+   */
+  private async _recursiveGetChildren(
+    notebook: string,
+    currentPath: string,
+    result: any[],
+    currentDepth: number,
+    maxDepth: number
+  ): Promise<void> {
+    if (currentDepth > maxDepth) {
+      return
+    }
+
+    try {
+      const response = await this.siyuanRequest("/api/filetree/listDocsByPath", {
+        notebook: notebook,
+        path: currentPath
+      })
+
+      if (!response || !Array.isArray(response.files)) {
+        return
+      }
+
+      for (const file of response.files) {
+        const filePath = file.path
+        const fileName = file.name.replace(".sy", "")
+        const pathParts = filePath.replace(".sy", "").split("/").filter(part => part.trim() !== "")
+        const parentId = pathParts[pathParts.length - 2] || ""
+
+        result.push({
+          id: file.id,
+          parentId: parentId,
+          name: fileName,
+          depth: currentDepth,
+          type: "child",
+          hasChildren: (file.subFileCount || 0) > 0
+        })
+
+        // 递归获取子文档
+        if ((file.subFileCount || 0) > 0) {
+          await this._recursiveGetChildren(notebook, filePath, result, currentDepth + 1, maxDepth)
+        }
+      }
+    } catch (error) {
+      this.logger.error(`递归获取子文档失败 (path: ${currentPath}, depth: ${currentDepth}):`, error)
+    }
+  }
+
+  /**
+   * 构建完整的文档树结构（向后兼容）
+   *
+   * @param notebook 笔记本ID
+   * @param path 文档路径
+   * @param level 深度级别
+   * @param parentPathArray 父路径数组
+   * @returns 文档树节点列表
+   */
   public async getDocTree(notebook: string, path: string, level?: number, parentPathArray?: any[]): Promise<any[]> {
     const params = {
       notebook: notebook,

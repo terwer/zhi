@@ -184,53 +184,43 @@ class SiYuanApiAdaptor extends BlogApi {
     let docTreeLevel = 3
     if (this.cfg?.preferenceConfig?.docTreeEnable) {
       docTreeLevel = this.cfg?.preferenceConfig?.docTreeLevel ?? 3
-      const hpaths = siyuanPost.hpath.replace(".sy", "").split("/")
-      const paths = siyuanPost.path.replace(".sy", "").split("/")
-      const parentPathArray = []
 
-      // let parentId = ""
-      // for (let i = 0; i < hpaths.length; i++) {
-      //   const hpath = hpaths[i]
-      //   const path = paths[i]
-      //   if (StrUtil.isEmptyString(hpath)) {
-      //     continue
-      //   }
-      //   parentPathArray.push({
-      //     id: path,
-      //     parentId: parentId,
-      //     name: hpath,
-      //   })
-      //   parentId = path
-      // }
+      // 获取文档的基本信息
+      const notebookId = siyuanPost.box || ""
+      const docPath = siyuanPost.path || `/${siyuanPost.root_id}.sy`
 
-      let currentLevel = 0
-      for (let i = hpaths.length - 1; i >= 0; i--) {
-        let hpath = hpaths[i]
-        if (this.cfg?.preferenceConfig.fixTitle) {
-          hpath = HtmlUtil.removeTitleNumber(hpath)
-        }
-        const path = paths[i]
-        if (StrUtil.isEmptyString(hpath)) {
-          continue
-        }
-        if (currentLevel < docTreeLevel) {
-          parentPathArray.push({
-            id: path,
-            // 确保第一个节点的 parentId 为空
-            parentId: i > 0 ? paths[i - 1] : "",
-            name: hpath,
+      // 构建完整的文档树结构
+      // 1. 获取父级路径信息
+      const cleanPath = docPath.replace(".sy", "")
+      const pathParts = cleanPath.split("/").filter((part: string) => part.trim() !== "")
+      const parentPaths = []
+
+      // 只处理非根文档的情况
+      if (pathParts.length > 1) {
+        for (let i = 0; i < pathParts.length - 1 && i < docTreeLevel; i++) {
+          parentPaths.push({
+            id: pathParts[i],
+            parentId: i > 0 ? pathParts[i - 1] : "",
+            name: pathParts[i],
+            depth: i,
+            type: "parent",
           })
-          currentLevel++
-        } else {
-          break // 达到最大层级，退出循环
         }
       }
 
-      // 如果需要保持原来的顺序，可以在最后反转数组
-      parentPathArray.reverse()
+      // 2. 获取同级文档（父目录下的其他文档）
+      let siblings = []
+      if (pathParts.length > 1) {
+        const parentPath = pathParts.slice(0, -1).join("/")
+        siblings = await this.siyuanKernelApi.getSiblingDocs(notebookId, parentPath)
+      }
 
-      docTree = await this.siyuanKernelApi.getDocTree(siyuanPost.box, siyuanPost.path, docTreeLevel, parentPathArray)
-      this.logger.info("检测到配置，文档树已获取")
+      // 3. 获取子级文档（当前文档下的所有子文档）
+      const children = await this.siyuanKernelApi.getChildDocs(notebookId, docPath, docTreeLevel)
+
+      // 4. 合并所有文档树节点
+      docTree = [...parentPaths, ...siblings, ...children]
+      this.logger.info("检测到配置，真实的文档树已获取")
     }
 
     // 别名(Custom_Slug优先，没有默认获取Sys_alias)

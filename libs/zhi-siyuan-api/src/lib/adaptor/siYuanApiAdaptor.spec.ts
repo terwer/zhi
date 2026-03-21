@@ -99,7 +99,8 @@ describe("SiYuanApiAdaptor", async () => {
     siyuanConfig.preferenceConfig.docTreeLevel = 6
     const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
-    const postid = "20241111132349-y6pic5l"
+    // const postid = "20260303141037-maw0qfs"
+    const postid = "20231012000442-6iyly7m"
     const post = await apiAdaptor.getPost(postid)
     console.log(post)
   })

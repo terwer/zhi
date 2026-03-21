@@ -120,7 +120,6 @@ export const initCommand = () => {
         const templateConfigPath = path.join(workDir, "templateConfig.json")
         const defaultTemplateConfigPath = path.join(workDir, "templateConfig.json")
 
-
         // 如果存在需要先删除，否则无法检出
         if (fs.existsSync(downloadPath)) {
           fs.removeSync(downloadPath)

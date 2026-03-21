@@ -1,5 +1,15 @@
 # @terwer/esbuild-config-custom
 
+## 3.0.0
+
+### Major Changes
+
+- feat: support CJS format
+
+### Minor Changes
+
+- feat: add new doctree
+
 ## 2.2.0
 
 ### Minor Changes
