@@ -265,7 +265,7 @@ class SiYuanApiAdaptor extends BlogApi {
     commonPost.postid = siyuanPost.root_id
     commonPost.originalId = siyuanPost.root_id
     commonPost.dateCreated = DateUtil.convertStringToDate(DateUtil.formatNumToZhDate(siyuanPost.created))
-    commonPost.dateUpdated = new Date()
+    commonPost.dateUpdated = DateUtil.convertStringToDate(DateUtil.formatNumToZhDate(siyuanPost.updated))
     commonPost.title = title
     commonPost.originalTitle = originalTitle
     commonPost.markdown = md ?? ""

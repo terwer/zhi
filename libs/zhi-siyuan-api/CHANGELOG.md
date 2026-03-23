@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.34.0
+
+### Minor Changes
+
+- fix: update time error
+
 ## 2.33.0
 
 ### Minor Changes
