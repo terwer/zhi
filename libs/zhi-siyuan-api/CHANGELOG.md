@@ -1,5 +1,16 @@
 # zhi-siyuan-api
 
+## 2.35.0
+
+### Minor Changes
+
+- feat: add docTreeHierarchy
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.75.0
+
 ## 2.34.0
 
 ### Minor Changes

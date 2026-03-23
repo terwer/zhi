@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.75.0
+
+### Minor Changes
+
+- feat: add docTreeHierarchy
+
 ## 1.74.2
 
 ### Patch Changes

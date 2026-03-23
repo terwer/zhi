@@ -24,10 +24,10 @@
  */
 
 import { Attachment, BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, PostUtil, UserBlog } from "zhi-blog-api"
-import SiyuanKernelApi from "../kernel/siyuanKernelApi"
-import SiyuanConfig from "../config/siyuanConfig"
-import { NotImplementedException } from "zhi-lib-base"
 import { DateUtil, HtmlUtil, ObjectUtil, StrUtil, YamlUtil } from "zhi-common"
+import { NotImplementedException } from "zhi-lib-base"
+import SiyuanConfig from "../config/siyuanConfig"
+import SiyuanKernelApi from "../kernel/siyuanKernelApi"
 import { createSiyuanAppLogger } from "../utils"
 import SiyuanAttr from "./siyuanAttr"
 
@@ -182,14 +182,22 @@ class SiYuanApiAdaptor extends BlogApi {
     // 处理文档树
     let docTree = []
     let docTreeLevel = 3
+    let docTreeHierarchy: { id: string; name: string; order: number }[] = []
     if (this.cfg?.preferenceConfig?.docTreeEnable) {
       docTreeLevel = this.cfg?.preferenceConfig?.docTreeLevel ?? 3
 
       // 获取文档的基本信息
       const notebookId = siyuanPost.box || ""
-      const docPath = siyuanPost.path || `/${siyuanPost.root_id}.sy`
-      const cleanPath = docPath.replace(".sy", "")
-      const pathParts = cleanPath.split("/").filter((part: string) => part.trim() !== "")
+      // path 是机器可读的路径，如 /project-document/financial-report/year-end-summary.sy
+      const pathParts = this.parsePathParts(siyuanPost.path || "")
+      // hpath 是人类可读的中文路径，如 /项目文档/财务报表/年终总结.sy
+      // 构建文档层级路径（从根到当前文档）
+      const hpathParts = this.parsePathParts(siyuanPost.hpath || "")
+      docTreeHierarchy = pathParts.map((part: string, index: number) => ({
+        id: part,
+        name: hpathParts[index] || part, // 使用 hpath 中的中文名称
+        order: index + 1,
+      }))
 
       // 正确的文档树构建逻辑：使用现有的 kernel 方法，处理所有节点情况
 
@@ -291,6 +299,7 @@ class SiYuanApiAdaptor extends BlogApi {
     commonPost.outlineLevel = outlineLevel
     commonPost.docTree = docTree
     commonPost.docTreeLevel = docTreeLevel
+    commonPost.docTreeHierarchy = docTreeHierarchy
 
     // yaml 适配
     const yamlObj = PostUtil.toYamlObj(commonPost)
@@ -386,6 +395,18 @@ class SiYuanApiAdaptor extends BlogApi {
     }
 
     return attachmentInfo
+  }
+
+  /**
+   * 解析路径为部分数组
+   *
+   * @param path 路径字符串
+   * @returns 路径部分数组
+   * @private
+   */
+  private parsePathParts(path: string): string[] {
+    const cleanPath = path.replace(".sy", "")
+    return cleanPath.split("/").filter((part: string) => part.trim() !== "")
   }
 
   private extractFileName(filePath: string): string {

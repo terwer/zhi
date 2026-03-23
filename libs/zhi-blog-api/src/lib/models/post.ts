@@ -194,6 +194,11 @@ class Post {
   docTreeLevel?: number
 
   /**
+   * 文档层级路径（从根到当前文档的层级结构）
+   */
+  docTreeHierarchy?: { id: string; name: string; order: number }[]
+
+  /**
    * 嵌入块
    */
   embedBlocks: Record<string, any>
