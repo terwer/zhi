@@ -224,6 +224,7 @@ class SiYuanApiAdaptor extends BlogApi {
 
       // 2. 向下获取：以当前文档为中心，向下最多 docTreeLevel 层级
       if (docTreeLevel > 0) {
+        const docPath = siyuanPost.path
         try {
           const children = await this.siyuanKernelApi.getChildDocs(notebookId, docPath, docTreeLevel)
           // getChildDocs 返回的 depth 已经是相对于当前文档的深度

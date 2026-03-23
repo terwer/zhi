@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.35.1
+
+### Patch Changes
+
+- fix: doc path error
+
 ## 2.35.0
 
 ### Minor Changes
