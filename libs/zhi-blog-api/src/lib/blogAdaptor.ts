@@ -150,9 +150,11 @@ class BlogAdaptor implements IBlogApi {
    * 删除文章
    *
    * @param postid - 文章ID
+   * @param id - 思源笔记文档ID（可选）
+   * @param publishCfg - 发布配置（可选）
    */
-  public async deletePost(postid: string): Promise<boolean> {
-    return await this.apiAdaptor.deletePost(postid)
+  public async deletePost(postid: string, id?: string, publishCfg?: any): Promise<boolean> {
+    return await this.apiAdaptor.deletePost(postid, id, publishCfg)
   }
 
   /**

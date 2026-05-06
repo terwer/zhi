@@ -161,10 +161,12 @@ interface IBlogApi {
    * 删除文章
    *
    * @param postid - 文章ID
+   * @param id - 思源笔记文档ID（可选）
+   * @param publishCfg - 发布配置（可选）
    * @see {@link https://codex.wordpress.org/XML-RPC_MetaWeblog_API#metaWeblog.deletePost deletePost}
    * @returns {Promise<boolean>}
    */
-  deletePost(postid: string): Promise<boolean>
+  deletePost(postid: string, id?: string, publishCfg?: any): Promise<boolean>
 
   /**
    * 获取分类列表

@@ -68,7 +68,7 @@ class BlogApi implements IBlogApi {
     throw new NotImplementedException("You must implement editPost in sub class")
   }
 
-  public async deletePost(postid: string): Promise<boolean> {
+  public async deletePost(postid: string, id?: string, publishCfg?: any): Promise<boolean> {
     throw new NotImplementedException("You must implement deletePost in sub class")
   }
 

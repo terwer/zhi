@@ -62,6 +62,10 @@ class WebApi extends BlogApi implements IWebApi {
   public async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {
     throw new NotImplementedException("You must implement editPost in sub class")
   }
+
+  public async deletePost(postid: string, id?: string, publishCfg?: any): Promise<boolean> {
+    throw new NotImplementedException("You must implement deletePost in sub class")
+  }
 }
 
 export default WebApi

@@ -1,5 +1,11 @@
 # zhi-blog-api
 
+## 1.76.0
+
+### Minor Changes
+
+- feat: extend deletePost method with optional id and publishCfg parameters
+
 ## 1.75.0
 
 ### Minor Changes
