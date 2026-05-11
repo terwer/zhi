@@ -23,7 +23,7 @@
  * questions.
  */
 
-import { IBlogApi } from "./IBlogApi"
+import { IBlogApi, PublishValidationResult } from "./IBlogApi"
 import Post from "./models/post"
 import CategoryInfo from "./models/categoryInfo"
 import UserBlog from "./models/userBlog"
@@ -40,6 +40,11 @@ class BlogApi implements IBlogApi {
   public async checkAuth(): Promise<boolean> {
     throw new NotImplementedException("You must implement checkAuth in sub class")
   }
+
+  public async validatePublish(): Promise<PublishValidationResult> {
+    return { canPublish: true }
+  }
+
   public async getUsersBlogs(keyword?: string): Promise<Array<UserBlog>> {
     throw new NotImplementedException("You must implement getUsersBlogs in sub class")
   }

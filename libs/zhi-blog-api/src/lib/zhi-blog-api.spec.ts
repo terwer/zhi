@@ -23,10 +23,44 @@
  * questions.
  */
 
-import { describe, it } from "vitest"
+import { describe, expect, it } from "vitest"
+import BlogAdaptor from "./blogAdaptor"
+import BlogApi from "./blogApi"
+import WebAdaptor from "./webAdaptor"
+import WebApi from "./webApi"
 
 describe("zhiBlogApi", () => {
   it("blogApi", () => {
     console.log("blogApi should be implemented as a specific BlogApi, it cannot be used directly")
+  })
+
+  it("validatePublish defaults to allowing publish", async () => {
+    const api = new BlogApi()
+
+    await expect(api.validatePublish()).resolves.toEqual({ canPublish: true })
+  })
+
+  it("BlogAdaptor forwards validatePublish result", async () => {
+    class BlockingBlogApi extends BlogApi {
+      public async validatePublish() {
+        return { canPublish: false, reason: "missing category" }
+      }
+    }
+
+    const adaptor = new BlogAdaptor(new BlockingBlogApi())
+
+    await expect(adaptor.validatePublish()).resolves.toEqual({ canPublish: false, reason: "missing category" })
+  })
+
+  it("WebAdaptor forwards validatePublish through the shared blog contract", async () => {
+    class BlockingWebApi extends WebApi {
+      public async validatePublish() {
+        return { canPublish: false, reason: "missing web publish config" }
+      }
+    }
+
+    const adaptor = new WebAdaptor(new BlockingWebApi())
+
+    await expect(adaptor.validatePublish()).resolves.toEqual({ canPublish: false, reason: "missing web publish config" })
   })
 })

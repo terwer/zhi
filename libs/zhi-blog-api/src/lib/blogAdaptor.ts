@@ -27,7 +27,7 @@ import UserBlog from "./models/userBlog"
 import Post from "./models/post"
 import CategoryInfo from "./models/categoryInfo"
 import MediaObject from "./models/mediaObject"
-import { IBlogApi } from "./IBlogApi"
+import { IBlogApi, PublishValidationResult } from "./IBlogApi"
 import { NotImplementedException, simpleLogger } from "zhi-lib-base"
 import Attachment from "./models/attachmentInfo"
 import BlogApi from "./blogApi"
@@ -66,6 +66,13 @@ class BlogAdaptor implements IBlogApi {
    */
   public async checkAuth(): Promise<boolean> {
     throw await this.apiAdaptor.checkAuth()
+  }
+
+  /**
+   * 校验当前平台配置是否满足发布前置条件
+   */
+  public async validatePublish(): Promise<PublishValidationResult> {
+    return await this.apiAdaptor.validatePublish()
   }
 
   /**
