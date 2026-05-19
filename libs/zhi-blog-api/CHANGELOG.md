@@ -1,5 +1,12 @@
 # zhi-blog-api
 
+## 1.78.0
+
+### Minor Changes
+
+- feat: add logoutWebAuth SPI for unified web auth logout
+- feat: add Web auth logout SPI with fail-fast base implementation and WebAdaptor forwarding.
+
 ## 1.77.0
 
 ### Minor Changes

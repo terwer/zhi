@@ -63,4 +63,27 @@ describe("zhiBlogApi", () => {
 
     await expect(adaptor.validatePublish()).resolves.toEqual({ canPublish: false, reason: "missing web publish config" })
   })
+
+  it("WebApi defaults logoutWebAuth to a fail-fast not implemented error", async () => {
+    const api = new WebApi()
+
+    await expect(api.logoutWebAuth()).rejects.toThrow("You must implement logoutWebAuth in sub class")
+  })
+
+  it("WebAdaptor forwards logoutWebAuth through the shared web contract", async () => {
+    class LogoutTrackingWebApi extends WebApi {
+      public called = false
+
+      public async logoutWebAuth() {
+        this.called = true
+        return true
+      }
+    }
+
+    const api = new LogoutTrackingWebApi()
+    const adaptor = new WebAdaptor(api)
+
+    await expect(adaptor.logoutWebAuth()).resolves.toBe(true)
+    expect(api.called).toBe(true)
+  })
 })
