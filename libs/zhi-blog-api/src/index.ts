@@ -39,3 +39,5 @@ export { PostUtil }
 export { PreferenceConfig }
 export { type ElectronCookie }
 export { PageEditMode, YamlStrategy }
+export type { IWebApi } from "./lib/IWebApi"
+export type { PublishValidationResult } from "./lib/IBlogApi"

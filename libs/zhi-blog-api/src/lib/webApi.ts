@@ -47,6 +47,10 @@ class WebApi extends BlogApi implements IWebApi {
     throw new NotImplementedException("You must implement getMetaData in sub class")
   }
 
+  public async logoutWebAuth(): Promise<boolean> {
+    throw new NotImplementedException("You must implement logoutWebAuth in sub class")
+  }
+
   public async preEditPost(post: Post, id?: string, publishCfg?: any): Promise<Post> {
     throw new NotImplementedException("You must implement preEditPost in sub class")
   }

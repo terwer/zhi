@@ -75,6 +75,10 @@ class WebAdaptor extends BlogAdaptor {
     return await this.webAdaptor.getMetaData()
   }
 
+  public async logoutWebAuth(): Promise<boolean> {
+    return await this.webAdaptor.logoutWebAuth()
+  }
+
   /**
    * 内容预处理：预处理平台无法兼容的文本内容
    *

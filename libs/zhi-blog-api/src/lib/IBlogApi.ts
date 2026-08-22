@@ -33,6 +33,23 @@ import TagInfo from "./models/tagInfo"
 import PreviewOpenModeEnum from "./enums/previewOpenModeEnum"
 
 /**
+ * 发布前置条件校验结果
+ *
+ * @public
+ */
+interface PublishValidationResult {
+  /**
+   * 当前平台配置是否允许进入发布流程
+   */
+  canPublish: boolean
+
+  /**
+   * 不允许发布时面向用户展示的原因
+   */
+  reason?: string
+}
+
+/**
  * 通用博客接口
  *
  * @public
@@ -52,6 +69,13 @@ interface IBlogApi {
    * 检测平台是否可用
    */
   checkAuth(): Promise<boolean>
+
+  /**
+   * 校验当前平台配置是否满足发布前置条件。
+   *
+   * 该方法只负责发布前置条件校验，不替代 {@link checkAuth} 授权/登录校验。
+   */
+  validatePublish(): Promise<PublishValidationResult>
 
   /**
    * 博客配置列表
@@ -228,4 +252,4 @@ interface IBlogApi {
   getYamlAdaptor(): YamlConvertAdaptor
 }
 
-export type { IBlogApi }
+export type { IBlogApi, PublishValidationResult }
