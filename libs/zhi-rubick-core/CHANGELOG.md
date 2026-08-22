@@ -1,5 +1,11 @@
 # zhi-rubick-core
 
+## 0.4.0
+
+### Minor Changes
+
+- feat: new build
+
 ## 0.3.2
 
 ### Patch Changes

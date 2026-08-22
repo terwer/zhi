@@ -1,5 +1,11 @@
 # zhi-path
 
+## 0.3.0
+
+### Minor Changes
+
+- feat: new build
+
 ## 0.2.0
 
 ### Minor Changes

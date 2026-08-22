@@ -1,6 +1,6 @@
 {
   "name": "zhi-path",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "description": "fix path for mac on electron",
   "main": "./dist/index.js",
@@ -14,7 +14,7 @@
     "dev": "zhi-build --watch",
     "build": "zhi-build --production",
     "test": "vitest",
-    "lint": "eslint 'src/**/*.{ts,js}' --fix"
+    "lint": "eslint \"src/**/*.{ts,js}\" --fix"
   },
   "devDependencies": {
     "@terwer/esbuild-config-custom": "workspace:*",

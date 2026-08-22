@@ -1,5 +1,17 @@
 # zhi-blog-api
 
+## 1.80.0
+
+### Minor Changes
+
+- feat: new build
+
+## 1.79.0
+
+### Minor Changes
+
+- 887c24d: feat: add preview link open mode
+
 ## 1.78.0
 
 ### Minor Changes
