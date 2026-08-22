@@ -32,11 +32,17 @@ import { NotImplementedException } from "zhi-lib-base"
 import Attachment from "./models/attachmentInfo"
 import YamlConvertAdaptor from "./yamlConvertAdaptor"
 import TagInfo from "./models/tagInfo"
+import PreviewOpenModeEnum from "./enums/previewOpenModeEnum"
 
 /**
  * 博客基类
  */
 class BlogApi implements IBlogApi {
+  /**
+   * 文章预览/查看链接的打开方式，默认外部打开（兼容历史行为），平台按需声明
+   */
+  public previewOpenMode: PreviewOpenModeEnum = PreviewOpenModeEnum.ExternalUrl
+
   public async checkAuth(): Promise<boolean> {
     throw new NotImplementedException("You must implement checkAuth in sub class")
   }

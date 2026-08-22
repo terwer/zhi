@@ -30,6 +30,7 @@ import ElectronCookie from "./models/ElectronCookie"
 import WebConfig from "./WebConfig"
 import WebApi from "./webApi"
 import MediaObject from "./models/mediaObject";
+import PreviewOpenModeEnum from "./enums/previewOpenModeEnum";
 
 /**
  * 网页授权核心基类
@@ -42,6 +43,13 @@ import MediaObject from "./models/mediaObject";
  */
 class WebAdaptor extends BlogAdaptor {
   private readonly webAdaptor: WebApi
+
+  /**
+   * 文章预览/查看链接的打开方式，透传实际适配器的声明
+   */
+  public get previewOpenMode(): PreviewOpenModeEnum {
+    return this.webAdaptor.previewOpenMode
+  }
 
   /**
    * 初始化网页授权的 API

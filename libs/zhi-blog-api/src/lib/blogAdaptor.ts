@@ -33,6 +33,7 @@ import Attachment from "./models/attachmentInfo"
 import BlogApi from "./blogApi"
 import YamlConvertAdaptor from "./yamlConvertAdaptor"
 import TagInfo from "./models/tagInfo"
+import PreviewOpenModeEnum from "./enums/previewOpenModeEnum"
 
 /**
  * 博客API
@@ -44,6 +45,13 @@ import TagInfo from "./models/tagInfo"
 class BlogAdaptor implements IBlogApi {
   protected logger: any
   private readonly apiAdaptor: BlogApi
+
+  /**
+   * 文章预览/查看链接的打开方式，透传实际适配器的声明
+   */
+  public get previewOpenMode(): PreviewOpenModeEnum {
+    return this.apiAdaptor.previewOpenMode
+  }
 
   /**
    * 博客API版本号

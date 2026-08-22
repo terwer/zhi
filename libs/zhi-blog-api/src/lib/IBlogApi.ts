@@ -30,6 +30,7 @@ import CategoryInfo from "./models/categoryInfo"
 import Attachment from "./models/attachmentInfo"
 import YamlConvertAdaptor from "./yamlConvertAdaptor"
 import TagInfo from "./models/tagInfo"
+import PreviewOpenModeEnum from "./enums/previewOpenModeEnum"
 
 /**
  * 通用博客接口
@@ -41,6 +42,12 @@ import TagInfo from "./models/tagInfo"
  * @since 1.0.0
  */
 interface IBlogApi {
+  /**
+   * 文章预览/查看链接的打开方式。默认 {@link PreviewOpenModeEnum.ExternalUrl}（外部打开），
+   * 平台按需声明（如公众号草稿编辑页绑定授权会话，需在授权会话窗口内打开）。
+   */
+  previewOpenMode: PreviewOpenModeEnum
+
   /**
    * 检测平台是否可用
    */
