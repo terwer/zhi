@@ -1,5 +1,23 @@
 # zhi-siyuan-api
 
+## 2.37.0
+
+### Minor Changes
+
+- feat(siyuan): support optional notebook scope filtering for document-list APIs
+
+  Add an optional trailing `notebookIds` parameter to `getRootBlocks`, `getRootBlocksCount`,
+  `getSubdocs` and `getSubdocCount`, and thread it through `getRecentPosts` / `getRecentPostsCount`.
+
+  While a non-empty `notebookIds` is provided, the SQL adds `AND <alias>.box IN (...)` so only root
+  documents (or subdocuments) that belong to those notebooks are returned. Ids are whitelist-sanitized
+  against `[A-Za-z0-9_-]` to avoid compounding existing interpolation risk.
+
+  Backward compatible: when `notebookIds` is empty/undefined no WHERE condition is added and existing
+  behavior (LIMIT/OFFSET/aliases/ordering) is preserved unchanged.
+
+- feat: add notebook filter
+
 ## 2.36.0
 
 ### Minor Changes

@@ -29,6 +29,31 @@ import { JsonUtil, StrUtil } from "zhi-common"
 import { createSiyuanAppLogger } from "../utils"
 
 /**
+ * 生成按笔记本过滤的 WHERE 片段（`{alias}.box IN (...)`）。
+ *
+ * 用途：按「发布源笔记本」范围约束文章管理/发布（issue #2044）。
+ *
+ * 安全设计：仅放行 `[A-Za-z0-9_-]` 白名单字符（思源笔记本 id 均为该字符集，如
+ * `20220718062546-2nbmy21`），避免在既有 keyword/published 插值之上叠加新的注入面。
+ * 白名单之外或非字符串的 id 会被静默丢弃；若过滤后为空则不加条件。
+ *
+ * @param alias - blocks 表别名（`b` / `b1` / `b2`）
+ * @param notebookIds - 笔记本 id 集合；空/缺省返回空串，不追加条件（向后兼容）
+ * @returns 过滤片段（含前导空格）；无条件时为空串
+ * @public
+ */
+export function buildNotebookIdsWhere(alias: string, notebookIds?: string[]): string {
+  if (!alias || !notebookIds || notebookIds.length === 0) {
+    return ""
+  }
+  const safe = notebookIds.filter((id) => typeof id === "string" && /^[A-Za-z0-9_-]+$/.test(id))
+  if (safe.length === 0) {
+    return ""
+  }
+  return ` AND ${alias}.box IN (${safe.map((id) => `'${id}'`).join(",")})`
+}
+
+/**
  * 思源笔记服务端API v2.8.2
  *
  * 1. 均是 POST 方法
@@ -86,12 +111,15 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    *
    * @param keyword - 关键字
    * @param isPublished - 是否发布
+   * @param notebookIds - 可选，发布源笔记本 id 集合；为空/缺省不过滤（与现状一致）
    */
-  public async getRootBlocksCount(keyword: string, isPublished?: boolean): Promise<number> {
+  public async getRootBlocksCount(keyword: string, isPublished?: boolean, notebookIds?: string[]): Promise<number> {
     let isPublishedFilter = "%%"
     if (isPublished) {
       isPublishedFilter = "custom-%-yaml"
     }
+
+    const noteBookFilter = buildNotebookIdsWhere("b", notebookIds)
 
     let stmt: string
     if (isPublished) {
@@ -102,14 +130,16 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
         WHERE b.id = b.root_id
           AND b.type = 'd'
           AND (b.content LIKE '%${keyword}%' OR b.tag LIKE '%${keyword}%')
-          AND a.name LIKE '${isPublishedFilter}'`
+          AND a.name LIKE '${isPublishedFilter}'
+          ${noteBookFilter}`
     } else {
       // For all blocks, we don't need to filter by attributes
       stmt = `SELECT COUNT(DISTINCT b.root_id) as count
         FROM blocks b
         WHERE b.id = b.root_id
           AND b.type = 'd'
-          AND (b.content LIKE '%${keyword}%' OR b.tag LIKE '%${keyword}%')`
+          AND (b.content LIKE '%${keyword}%' OR b.tag LIKE '%${keyword}%')
+          ${noteBookFilter}`
     }
 
     const data = (await this.sql(stmt)) as any[]
@@ -154,12 +184,21 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    * @param pagesize 数目
    * @param keyword 可选，搜索关键字
    * @param isPublished 是否已发布
+   * @param notebookIds 可选，发布源笔记本 id 集合；为空/缺省不过滤（与现状一致）
    */
-  public async getRootBlocks(page: number, pagesize: number, keyword: string, isPublished?: boolean): Promise<any> {
+  public async getRootBlocks(
+    page: number,
+    pagesize: number,
+    keyword: string,
+    isPublished?: boolean,
+    notebookIds?: string[]
+  ): Promise<any> {
     let isPublishedFilter = "%%"
     if (isPublished) {
       isPublishedFilter = "custom-%-yaml"
     }
+
+    const noteBookFilter = buildNotebookIdsWhere("b", notebookIds)
 
     let stmt: string
     if (isPublished) {
@@ -175,6 +214,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
         AND b.type = 'd'
         AND (b.content LIKE '%${keyword}%' OR b.tag LIKE '%${keyword}%')
         AND a.name LIKE '${isPublishedFilter}'
+        ${noteBookFilter}
       ORDER BY b.updated DESC, b.created DESC
       LIMIT ${pagesize} OFFSET ${page * pagesize}`
     } else {
@@ -188,6 +228,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       WHERE b.id = b.root_id
         AND b.type = 'd'
         AND (b.content LIKE '%${keyword}%' OR b.tag LIKE '%${keyword}%')
+        ${noteBookFilter}
       ORDER BY b.updated DESC, b.created DESC
       LIMIT ${pagesize} OFFSET ${page * pagesize}`
     }
@@ -214,12 +255,15 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    *
    * @param docId 文档ID
    * @param isPublished 是否已发布
+   * @param notebookIds 可选，发布源笔记本 id 集合；为空/缺省不过滤（与现状一致）
    */
-  public async getSubdocCount(docId: string, isPublished?: boolean): Promise<number> {
+  public async getSubdocCount(docId: string, isPublished?: boolean, notebookIds?: string[]): Promise<number> {
     let isPublishedFilter = "%%"
     if (isPublished) {
       isPublishedFilter = "custom-%-yaml"
     }
+
+    const noteBookFilter = buildNotebookIdsWhere("b1", notebookIds)
 
     let stmt: string
     if (isPublished) {
@@ -228,12 +272,14 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
         FROM blocks b1
         LEFT JOIN attributes a ON b1.root_id = a.root_id
         WHERE b1.root_id='${docId}' OR b1.path LIKE '%/${docId}%'
-        AND a.name LIKE '${isPublishedFilter}'`
+        AND a.name LIKE '${isPublishedFilter}'
+        ${noteBookFilter}`
     } else {
       // For all blocks, we don't need to filter by attributes
       stmt = `SELECT COUNT(DISTINCT b1.root_id) AS count
         FROM blocks b1
-        WHERE b1.root_id='${docId}' OR b1.path LIKE '%/${docId}%'`
+        WHERE b1.root_id='${docId}' OR b1.path LIKE '%/${docId}%'
+        ${noteBookFilter}`
     }
 
     const data = (await this.sql(stmt)) as any[]
@@ -268,18 +314,22 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
    * @param pagesize 数目
    * @param keyword 关键字
    * @param isPublished 是否已发布
+   * @param notebookIds 可选，发布源笔记本 id 集合；为空/缺省不过滤（与现状一致）
    */
   public async getSubdocs(
     docId: string,
     page: number,
     pagesize: number,
     keyword: string,
-    isPublished?: boolean
+    isPublished?: boolean,
+    notebookIds?: string[]
   ): Promise<any> {
     let isPublishedFilter = "%%"
     if (isPublished) {
       isPublishedFilter = "custom-%-yaml"
     }
+
+    const noteBookFilter = buildNotebookIdsWhere("b2", notebookIds)
 
     let stmt: string
     if (isPublished) {
@@ -291,6 +341,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
         WHERE (b2.root_id = '${docId}' OR b2.path LIKE '%/${docId}%')
         AND ((b2.content LIKE '%${keyword}%' OR b2.tag LIKE '%${keyword}%'))
         AND a.name LIKE '${isPublishedFilter}'
+        ${noteBookFilter}
         ORDER BY b2.updated DESC, b2.created DESC, b2.id
         LIMIT ${pagesize} OFFSET ${page * pagesize}`
     } else {
@@ -300,6 +351,7 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
         FROM blocks b2
         WHERE (b2.root_id = '${docId}' OR b2.path LIKE '%/${docId}%')
         AND ((b2.content LIKE '%${keyword}%' OR b2.tag LIKE '%${keyword}%'))
+        ${noteBookFilter}
         ORDER BY b2.updated DESC, b2.created DESC, b2.id
         LIMIT ${pagesize} OFFSET ${page * pagesize}`
     }
