@@ -97,7 +97,9 @@ class SiYuanApiAdaptor extends BlogApi {
     if (siyuanPosts?.length > 0) {
       for (let i = 0; i < siyuanPosts.length; i++) {
         const siyuanPost = siyuanPosts[i]
-        const post = await this.getPost(siyuanPost.root_id, false, true)
+        // getRootBlocks 返回的字段是 docId 别名（b.root_id as docId），而非 root_id，
+        // 此前读 root_id 会取到 undefined 导致 getPost 抛错、列表为空。
+        const post = await this.getPost(siyuanPost.docId, false, true)
         result.push(post)
       }
     }

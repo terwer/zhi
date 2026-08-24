@@ -1,5 +1,11 @@
 # zhi-siyuan-api
 
+## 2.37.1
+
+### Patch Changes
+
+- fix: post id error
+
 ## 2.37.0
 
 ### Minor Changes
