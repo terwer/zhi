@@ -1,5 +1,23 @@
 # zhi-siyuan-api
 
+## 2.38.0
+
+### Minor Changes
+
+- feat: add cors option
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.82.0
+
+## 2.37.2
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.81.0
+
 ## 2.37.1
 
 ### Patch Changes

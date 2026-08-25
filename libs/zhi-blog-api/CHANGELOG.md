@@ -1,5 +1,17 @@
 # zhi-blog-api
 
+## 1.82.0
+
+### Minor Changes
+
+- feat: add cors option
+
+## 1.81.0
+
+### Minor Changes
+
+- feat: add isCorsProxy option to BlogConfig for CORS-restricted platforms (e.g. Telegra.ph)
+
 ## 1.80.0
 
 ### Minor Changes
