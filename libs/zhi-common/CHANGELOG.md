@@ -1,5 +1,11 @@
 # zhi-common
 
+## 1.35.1
+
+### Patch Changes
+
+- fix: remove redundant console logging on the publish path; errors are unchanged
+
 ## 1.35.0
 
 ### Minor Changes

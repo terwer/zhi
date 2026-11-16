@@ -25,7 +25,6 @@
 
 import jsYaml from "js-yaml"
 import StrUtil from "./strUtil"
-import { simpleLogger } from "zhi-lib-base"
 
 /**
  * YAML工具类
@@ -34,7 +33,6 @@ import { simpleLogger } from "zhi-lib-base"
  * @since 0.8.1
  */
 class YamlUtil {
-  private static logger = simpleLogger("yaml-util")
   private static YAML_REGEX = /^-{3}\n([\s\S]*?\n)-{3}/
 
   /**
@@ -117,7 +115,6 @@ class YamlUtil {
     let markdown = content
     if (this.YAML_REGEX.test(content)) {
       markdown = content.replace(this.YAML_REGEX, "")
-      this.logger.info("发现原有的YAML，已移除")
     }
 
     return markdown

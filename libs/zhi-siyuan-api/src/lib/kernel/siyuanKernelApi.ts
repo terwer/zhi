@@ -143,7 +143,6 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
     }
 
     const data = (await this.sql(stmt)) as any[]
-    this.logger.debug("getRootBlocksCount data=>", data[0].count)
     return data[0].count
   }
 
@@ -356,7 +355,6 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
         LIMIT ${pagesize} OFFSET ${page * pagesize}`
     }
 
-    this.logger.debug("siyuanApi getSubdocs sql=>", stmt)
     return await this.sql(stmt)
   }
 
@@ -443,7 +441,6 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       stmt: sql,
     }
     const url = "/api/query/sql"
-    this.logger.debug("sql=>", sql)
     return await this.siyuanRequest(url, sqldata)
   }
 
@@ -471,13 +468,8 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
       },
     })
 
-    this.logger.debug("开始向思源请求数据，reqUrl=>", reqUrl)
-    this.logger.debug("开始向思源请求数据，fetchOps=>", fetchOps)
-
     const response = await fetch(reqUrl, fetchOps)
-    this.logger.debug("思源请求数据返回，response=>", response)
     const resJson = await response.json()
-    this.logger.debug("思源请求数据返回，resJson=>", resJson)
 
     if (resJson.code === -1) {
       throw new Error(resJson.msg)

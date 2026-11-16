@@ -108,7 +108,6 @@ class SiYuanApiAdaptor extends BlogApi {
   }
 
   public async preEditPost(post: Post, dynCfg: any): Promise<Post> {
-    this.logger.info("思源笔记内部，忽略预处理")
     return post
   }
 
@@ -130,11 +129,8 @@ class SiYuanApiAdaptor extends BlogApi {
     if (!siyuanPost) {
       throw new Error("文章不存存在，postid=>" + pid)
     }
-    this.logger.debug(`siyuanPost =>`, siyuanPost)
 
-    this.logger.info(`Ready to get block properties, block ID is => ${pid}`)
     const attrs = await this.siyuanKernelApi.getBlockAttrs(pid)
-    this.logger.debug(`getBlockAttrs attrs =>`, attrs)
 
     // 发布状态
     let isPublished = true
@@ -149,7 +145,6 @@ class SiYuanApiAdaptor extends BlogApi {
     const originalTitle = title
     if (this.cfg?.preferenceConfig.fixTitle) {
       title = HtmlUtil.removeTitleNumber(title)
-      this.logger.info("检测到配置，标题序号已移除")
     }
 
     // 渲染Markdown
@@ -166,14 +161,12 @@ class SiYuanApiAdaptor extends BlogApi {
       if (this.cfg?.preferenceConfig?.removeMdWidgetTag) {
         md = HtmlUtil.removeMdWidgetTag(md)
         html = HtmlUtil.removeWidgetTag(html)
-        this.logger.info("检测到配置，挂件的HTML已移除")
       }
 
       // 删除H1
       if (this.cfg?.preferenceConfig?.removeFirstH1) {
         md = HtmlUtil.removeMdH1(md)
         html = HtmlUtil.removeH1(html)
-        this.logger.info("检测到配置，第一个H1已移除")
       }
     }
 
@@ -183,7 +176,6 @@ class SiYuanApiAdaptor extends BlogApi {
     if (this.cfg?.preferenceConfig?.outlineEnable) {
       outlineLevel = this.cfg?.preferenceConfig?.outlineLevel ?? 3
       outline = await this.siyuanKernelApi.getOutline(pid, outlineLevel)
-      this.logger.info("检测到配置，目录已获取")
     }
 
     // 处理文档树
@@ -240,8 +232,6 @@ class SiYuanApiAdaptor extends BlogApi {
           this.logger.warn(`获取向下层级子文档失败 (path: ${docPath}):`, error)
         }
       }
-
-      this.logger.info("检测到配置，真实的文档树已获取")
     }
 
     // 别名(Custom_Slug优先，没有默认获取Sys_alias)
@@ -274,7 +264,6 @@ class SiYuanApiAdaptor extends BlogApi {
       "custom-outline-enable": ObjectUtil.getProperty(attrs, "custom-outline-enable", ""),
       "custom-outline-level": ObjectUtil.getProperty(attrs, "custom-outline-level", ""),
     }
-    // this.logger.info("get publicAttrs from siyuan getPost=>", publicAttrs)
 
     // 适配公共属性
     const commonPost = new Post()
@@ -325,7 +314,6 @@ class SiYuanApiAdaptor extends BlogApi {
         await this.siyuanKernelApi.setBlockAttrs(postid, {
           title: title,
         })
-        this.logger.info("检测到配置，已修改思源笔记文档标题")
       }
 
       flag = true
@@ -349,7 +337,6 @@ class SiYuanApiAdaptor extends BlogApi {
     //用户指南不应该作为可以写入的笔记本
     const hiddenNotebook: Set<string> = new Set(["思源笔记用户指南", "SiYuan User Guide"])
     notebooks = notebooks.filter((notebook) => !notebook.closed && !hiddenNotebook.has(notebook.name))
-    this.logger.debug("siyuan notebooks=>", notebooks)
     if (notebooks && notebooks.length > 0) {
       notebooks.forEach((notebook) => {
         const cat = new CategoryInfo()
@@ -383,9 +370,7 @@ class SiYuanApiAdaptor extends BlogApi {
       throw new NotImplementedException("You must implement custom handler for siyuan assets")
     }
 
-    this.logger.info("Using custom handler for mediaObject")
     const data = await customHandler(mediaObject)
-    this.logger.info("newMediaObject finished, data=>", data)
     const attachmentInfo = new Attachment({})
     if (data && data.succMap) {
       const link = data.succMap[mediaObject.name]

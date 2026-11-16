@@ -1,5 +1,14 @@
 # zhi-siyuan-api
 
+## 2.38.1
+
+### Patch Changes
+
+- fix: remove redundant console logging on the publish path; errors are unchanged
+- Updated dependencies
+  - zhi-common@1.35.1
+  - zhi-blog-api@1.82.1
+
 ## 2.38.0
 
 ### Minor Changes
