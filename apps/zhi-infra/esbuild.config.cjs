@@ -23,10 +23,10 @@
  * questions.
  */
 
-import path from "path"
-import minimist from "minimist"
-import { dtsPlugin } from "esbuild-plugin-d.ts"
-import { copy } from "esbuild-plugin-copy"
+const path = require("path")
+const minimist = require("minimist")
+const { dtsPlugin } = require("esbuild-plugin-d.ts")
+const { copy } = require("esbuild-plugin-copy")
 
 const args = minimist(process.argv.slice(2))
 const isProduction = args.production || args.prod
@@ -39,7 +39,7 @@ const distDir = outDir ? baseDir : path.join(baseDir, "dist")
 /**
  * 构建配置
  */
-export default {
+module.exports = {
   esbuildConfig: {
     entryPoints: ["src/index.ts"],
     outfile: path.join(distDir, "index.cjs"),

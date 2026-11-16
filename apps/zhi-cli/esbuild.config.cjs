@@ -28,7 +28,7 @@
 /**
  * 构建配置
  */
-export default {
+module.exports = {
   esbuildConfig: {
     entryPoints: ["src/index.ts"],
     outfile: "dist/index.cjs",
