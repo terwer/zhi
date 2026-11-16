@@ -25,7 +25,6 @@
 
 import JsonUtil from "./jsonUtil"
 import HtmlUtil from "./htmlUtil"
-import { simpleLogger } from "zhi-lib-base"
 
 /**
  * 这是一个智能实用工具类
@@ -34,7 +33,6 @@ import { simpleLogger } from "zhi-lib-base"
  * @since 1.19.0
  */
 class SmartUtil {
-  private static logger = simpleLogger("smart-util", "zhi-common", false)
 
   /**
    * 根据给定的查询参数自动生成摘要
@@ -85,10 +83,8 @@ class SmartUtil {
    */
   public static async autoTags(q: string, len?: number): Promise<any[]> {
     const genTags = await this.cutWords(q)
-    this.logger.debug("genTags=>", genTags)
 
     const hotTags = this.jiebaToHotWords(genTags, len ?? 5)
-    this.logger.debug("hotTags=>", hotTags)
     return hotTags
   }
 
@@ -100,7 +96,6 @@ class SmartUtil {
   private static async cutWords(words: string): Promise<any> {
     // https://github.com/yanyiwu/nodejieba
     words = HtmlUtil.filterHtml(words)
-    this.logger.debug("准备开始分词，原文=>", words)
     // https://github.com/ddsol/speedtest.net/issues/112
     // 浏览器和webpack不支持，只有node能用
     // const result = nodejieba.cut(words);
@@ -111,7 +106,6 @@ class SmartUtil {
     // const result = "浏览器和webpack不支持，只有node能用，
     // 作者仓库： https://github.com/yanyiwu/nodejieba
     // 在线版本：http://cppjieba-webdemo.herokuapp.com 。"
-    this.logger.debug("分词完毕，结果=>", json.result)
     return json.result
   }
 
@@ -124,7 +118,6 @@ class SmartUtil {
    */
   private static countWords(words: any, len: number): string[] {
     const unUseWords = ["页面"]
-    this.logger.debug("文本清洗，统计，排序，去除无意义的单词unUseWords=>", unUseWords)
 
     // 统计
     const wordobj = words.reduce(function (count: any, word: any) {
@@ -144,7 +137,6 @@ class SmartUtil {
     const wordarr = Object.keys(wordobj).sort(function (a, b) {
       return wordobj[b] - wordobj[a]
     })
-    this.logger.debug("文本清洗结束wordarr=>", wordarr)
 
     if (!len || len === 0) {
       return wordarr
@@ -165,7 +157,6 @@ class SmartUtil {
       res = this.countWords(words, deflen)
     }
 
-    this.logger.debug("jiebaToHotWords=>", res)
     return res
   }
 }

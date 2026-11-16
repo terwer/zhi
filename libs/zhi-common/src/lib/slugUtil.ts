@@ -84,7 +84,6 @@ class AliasTranslator {
 
     const finalSlug = slug + hash
 
-    this.logger.debug(`Generated slug for "${q}": ${finalSlug}, length: ${finalSlug.length}`)
     return finalSlug
   }
 
@@ -157,7 +156,6 @@ class AliasTranslator {
     let slug = title
     try {
       slug = await this.wordSlugify(q)
-      this.logger.debug(`Successfully generated slug for "${q}": ${slug}`)
     } catch (e) {
       this.logger.warn(`Failed to generate slug for "${q}". Using pinyin slug: ${slug}`)
       slug = this.pinyinSlugify(q)
