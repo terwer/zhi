@@ -1,5 +1,11 @@
 # zhi-lib-base
 
+## 0.9.0
+
+### Minor Changes
+
+- feat: remove log noise
+
 ## 0.8.0
 
 ### Minor Changes

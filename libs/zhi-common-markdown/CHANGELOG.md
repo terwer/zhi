@@ -1,5 +1,16 @@
 # zhi-common-markdown
 
+## 0.2.0
+
+### Minor Changes
+
+- feat: remove log noise
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.9.0
+
 ## 0.1.9
 
 ### Patch Changes

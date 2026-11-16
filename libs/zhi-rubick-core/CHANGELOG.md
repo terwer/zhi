@@ -1,5 +1,17 @@
 # zhi-rubick-core
 
+## 0.4.0
+
+### Minor Changes
+
+- feat: remove log noise
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.13.0
+  - zhi-lib-base@0.9.0
+
 ## 0.3.2
 
 ### Patch Changes

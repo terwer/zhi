@@ -1,5 +1,17 @@
 # zhi-cmd
 
+## 0.9.0
+
+### Minor Changes
+
+- feat: remove log noise
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.13.0
+  - zhi-lib-base@0.9.0
+
 ## 0.8.2
 
 ### Patch Changes

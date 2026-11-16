@@ -1,5 +1,18 @@
 # zhi-fetch-middleware
 
+## 0.14.0
+
+### Minor Changes
+
+- feat: remove log noise
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.36.0
+  - zhi-device@2.13.0
+  - zhi-lib-base@0.9.0
+
 ## 0.13.5
 
 ### Patch Changes

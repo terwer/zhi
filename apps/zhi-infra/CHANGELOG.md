@@ -1,5 +1,19 @@
 # zhi-infra
 
+## 0.23.0
+
+### Minor Changes
+
+- feat: remove log noise
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-cmd@0.9.0
+  - zhi-common@1.36.0
+  - zhi-device@2.13.0
+  - zhi-lib-base@0.9.0
+
 ## 0.22.0
 
 ### Minor Changes

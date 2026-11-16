@@ -1,5 +1,17 @@
 # zhi-github-middleware
 
+## 0.6.0
+
+### Minor Changes
+
+- feat: remove log noise
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.36.0
+  - zhi-lib-base@0.9.0
+
 ## 0.5.4
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @terwer/eslint-config-custom
 
+## 1.4.0
+
+### Minor Changes
+
+- feat: remove log noise
+
 ## 1.3.6
 
 ### Patch Changes

@@ -1,5 +1,16 @@
 # zhi-common
 
+## 1.36.0
+
+### Minor Changes
+
+- feat: remove log noise
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.9.0
+
 ## 1.35.0
 
 ### Minor Changes

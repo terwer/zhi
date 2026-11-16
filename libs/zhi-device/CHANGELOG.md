@@ -1,5 +1,11 @@
 # zhi-device
 
+## 2.13.0
+
+### Minor Changes
+
+- feat: remove log noise
+
 ## 2.12.0
 
 ### Minor Changes

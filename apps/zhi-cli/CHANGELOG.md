@@ -1,5 +1,16 @@
 # zhi-cli
 
+## 1.12.0
+
+### Minor Changes
+
+- feat: remove log noise
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-log@1.15.0
+
 ## 1.11.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # zhi-env
 
+## 1.19.0
+
+### Minor Changes
+
+- feat: remove log noise
+
 ## 1.18.6
 
 ### Patch Changes

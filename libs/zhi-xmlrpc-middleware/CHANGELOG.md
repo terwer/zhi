@@ -1,5 +1,18 @@
 # zhi-xmlrpc-middleware
 
+## 0.7.0
+
+### Minor Changes
+
+- feat: remove log noise
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-common@1.36.0
+  - zhi-device@2.13.0
+  - zhi-lib-base@0.9.0
+
 ## 0.6.26
 
 ### Patch Changes

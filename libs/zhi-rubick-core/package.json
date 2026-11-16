@@ -1,6 +1,6 @@
 {
   "name": "zhi-rubick-core",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "type": "module",
   "description": "plugin container core",
   "main": "./dist/index.cjs",
@@ -19,7 +19,7 @@
     "build": "zhi-build --production",
     "localBuild": "zhi-build --production --outDir=/Users/terwer/Documents/mydocs/zhi-framework/zhi/libs/zhi-rubick-ui/public",
     "test": "vitest",
-    "lint": "eslint 'src/**/*.{ts,js}' --fix"
+    "lint": "eslint \"src/**/*.{ts,js}\" --fix"
   },
   "devDependencies": {
     "@terwer/esbuild-config-custom": "workspace:*",

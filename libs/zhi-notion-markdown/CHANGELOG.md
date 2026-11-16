@@ -1,5 +1,11 @@
 # zhi-notion-markdown
 
+## 0.2.0
+
+### Minor Changes
+
+- feat: remove log noise
+
 ## 0.1.4
 
 ### Patch Changes

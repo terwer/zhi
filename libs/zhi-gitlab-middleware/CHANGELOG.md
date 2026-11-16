@@ -1,5 +1,17 @@
 # zhi-gitlab-middleware
 
+## 0.13.0
+
+### Minor Changes
+
+- feat: remove log noise
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.14.0
+  - zhi-lib-base@0.9.0
+
 ## 0.12.4
 
 ### Patch Changes

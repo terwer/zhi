@@ -1,5 +1,11 @@
 # @terwer/vite-config-custom
 
+## 0.8.0
+
+### Minor Changes
+
+- feat: remove log noise
+
 ## 0.7.6
 
 ### Patch Changes

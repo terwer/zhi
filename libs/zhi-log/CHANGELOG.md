@@ -1,5 +1,17 @@
 # zhi-log
 
+## 1.15.0
+
+### Minor Changes
+
+- feat: remove log noise
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-device@2.13.0
+  - zhi-env@1.19.0
+
 ## 1.14.22
 
 ### Patch Changes

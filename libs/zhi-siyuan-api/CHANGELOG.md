@@ -1,5 +1,18 @@
 # zhi-siyuan-api
 
+## 2.32.0
+
+### Minor Changes
+
+- feat: remove log noise
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.75.0
+  - zhi-common@1.36.0
+  - zhi-lib-base@0.9.0
+
 ## 2.31.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @terwer/commit-config-custom
 
+## 1.1.0
+
+### Minor Changes
+
+- feat: remove log noise
+
 ## 1.0.9
 
 ### Patch Changes
