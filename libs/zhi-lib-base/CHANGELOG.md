@@ -1,5 +1,11 @@
 # zhi-lib-base
 
+## 0.11.0
+
+### Minor Changes
+
+- feat: runtime-configurable logger levels (global level, per-sign overrides, env fallback, cross-bundle global contract)
+
 ## 0.10.0
 
 ### Minor Changes

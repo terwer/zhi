@@ -1,5 +1,11 @@
 # zhi-log
 
+## 1.17.0
+
+### Minor Changes
+
+- feat: honor the shared runtime logger configuration from zhi-lib-base
+
 ## 1.16.0
 
 ### Minor Changes

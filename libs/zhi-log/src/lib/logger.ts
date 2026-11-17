@@ -31,6 +31,8 @@ import EnvHelper from "./envHelper"
 import { Env } from "zhi-env"
 import DefaultLogger from "./defaultLogger"
 import crossChalk from "./crossChalk"
+import { getLogLevel, getRuntimeLoggerConfig, normalizeLogLevel } from "zhi-lib-base"
+import type { ZhiLogLevel } from "zhi-lib-base"
 
 /**
  * 日志工具类
@@ -41,6 +43,9 @@ import crossChalk from "./crossChalk"
 class Logger {
   private consoleLogger = "console"
   private stackSize = 1
+  private explicitLevel?: ZhiLogLevel
+  private env?: Env
+  private sign?: string
 
   /**
    * 设置输出栈的深度，默认1
@@ -51,24 +56,61 @@ class Logger {
     this.stackSize = stackSize ?? 1
   }
 
+  /**
+   * 设置日志级别。
+   *
+   * 不传时回退到运行时配置、环境变量或历史默认级别。
+   *
+   * @param level - 级别
+   */
+  public setLevel(level?: LogLevelEnum): void {
+    this.explicitLevel = level ? normalizeLogLevel(level) : undefined
+    this.applyLevel()
+  }
+
+  /**
+   * 解析当前应使用的级别。
+   *
+   * 优先级：显式设置 > 运行时配置 > 环境变量 > 历史默认 info。
+   */
+  private resolveLevel(): ZhiLogLevel {
+    if (this.explicitLevel) {
+      return this.explicitLevel
+    }
+
+    const runtime = getRuntimeLoggerConfig()
+    if (runtime) {
+      return (this.sign && runtime.overrides[this.sign]) || runtime.level
+    }
+
+    const envLevel = this.env ? normalizeLogLevel(EnvHelper.getEnvLevel(this.env)) : undefined
+    return envLevel ?? getLogLevel()
+  }
+
+  /**
+   * 将解析后的级别应用到 loglevel。
+   */
+  private applyLevel(): void {
+    loglevel.setLevel(this.resolveLevel() as any)
+    // loglevel keeps the inherited level of already-created child loggers
+    // until they are rebuilt, so a runtime level change must rebuild them.
+    ;(loglevel as any).rebuild?.()
+  }
+
   constructor(level?: LogLevelEnum, sign?: string, env?: Env) {
     this.stackSize = 1
+    this.env = env
+    this.sign = sign ?? EnvHelper.getEnvLogger(env) ?? "zhi"
+    this.explicitLevel = level ? normalizeLogLevel(level) : undefined
 
-    // 级别
-    let customLevel = undefined
-    if (level) {
-      customLevel = level
-    } else {
-      customLevel = EnvHelper.getEnvLevel(env)
-    }
-    customLevel = customLevel ?? LogLevelEnum.LOG_LEVEL_INFO
-    loglevel.setLevel(customLevel)
+    // 级别：显式构造级别 > 运行时配置 > 环境变量 > 历史默认 info
+    this.applyLevel()
 
     const fmtLog = (level: LogLevelEnum, name: string, timestamp: Date, colorFn: any) => {
       const strarr = []
 
       // sign
-      const logSign = sign ?? EnvHelper.getEnvLogger(env) ?? "zhi"
+      const logSign = this.sign ?? "zhi"
       strarr.push(crossChalk.gray("[") + colorFn(logSign) + crossChalk.gray("]"))
       // timestamp
       strarr.push(crossChalk.gray("[") + crossChalk.gray(timestamp.toString()) + crossChalk.gray("]"))
@@ -136,6 +178,9 @@ class Logger {
    * @since 1.0.0
    */
   public getLogger = (loggerName?: string): DefaultLogger => {
+    // 运行时配置可能在构造之后变化，取日志器时重新应用级别
+    this.applyLevel()
+
     let loggerFrom
     // 显示优先
     if (loggerName) {

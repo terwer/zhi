@@ -28,7 +28,34 @@ import simpleLogger from "./logger/simpleLogger"
 import MainFunction from "./interfaces/mainFunction"
 import safeParseArgs from "./utils/argParse"
 import ILogger from "./interfaces/ILogger"
+import {
+  DEFAULT_LOG_LEVEL,
+  configureLogger,
+  getEffectiveLogLevel,
+  getLogLevel,
+  getLoggerConfig,
+  getRuntimeLoggerConfig,
+  isLevelEnabled,
+  normalizeLogLevel,
+  resetLoggerConfig,
+  setLogLevel,
+  setLogLevelOverride,
+} from "./logger/loggerConfig"
 
 export { NotImplementedException, simpleLogger }
 export { safeParseArgs }
+export {
+  DEFAULT_LOG_LEVEL,
+  configureLogger,
+  getEffectiveLogLevel,
+  getLogLevel,
+  getLoggerConfig,
+  getRuntimeLoggerConfig,
+  isLevelEnabled,
+  normalizeLogLevel,
+  resetLoggerConfig,
+  setLogLevel,
+  setLogLevelOverride,
+}
 export type { ILogger, MainFunction }
+export type { ZhiLogLevel, ZhiLoggerConfig } from "./logger/loggerConfig"

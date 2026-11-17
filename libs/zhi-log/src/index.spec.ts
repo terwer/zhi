@@ -23,9 +23,10 @@
  * questions.
  */
 
-import { describe, it } from "vitest"
+import { afterEach, describe, expect, it, vitest } from "vitest"
 import { Env } from "zhi-env"
 import { LogFactory, LogLevelEnum } from "./index"
+import { resetLoggerConfig, setLogLevel } from "zhi-lib-base"
 
 describe("zhiLog", () => {
   it("test default log", function () {
@@ -76,5 +77,34 @@ describe("zhiLog", () => {
     logger.debug("This is debug log")
     logger.info("This is info log")
     logger.error("This is error log")
+  })
+})
+
+describe("zhiLog runtime configuration", () => {
+  afterEach(() => {
+    resetLoggerConfig()
+  })
+
+  it("applies the shared runtime level to the logger", () => {
+    setLogLevel("error")
+    const logger = LogFactory.defaultLogger()
+
+    // loglevel levels: 2 = info, 4 = error
+    expect(logger.getLevel()).toBe(4)
+  })
+
+  it("keeps an explicitly constructed level above the runtime level", () => {
+    setLogLevel("error")
+    const logger = LogFactory.customLogFactory(LogLevelEnum.LOG_LEVEL_INFO).getLogger("test")
+
+    expect(logger.getLevel()).toBe(2)
+  })
+
+  it("returns to the historical info default after a reset", () => {
+    setLogLevel("silent")
+    expect(LogFactory.defaultLogger().getLevel()).toBe(5)
+
+    resetLoggerConfig()
+    expect(LogFactory.defaultLogger().getLevel()).toBe(2)
   })
 })

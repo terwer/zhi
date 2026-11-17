@@ -24,6 +24,7 @@
  */
 
 import ILogger from "../interfaces/ILogger"
+import { isLevelEnabled } from "./loggerConfig"
 
 /**
  * 一个简单轻量级的日志记录器
@@ -90,7 +91,7 @@ const simpleLogger = (name: string, customSign?: string, isDev?: boolean): ILogg
 
   return {
     debug: (msg: string, obj?: any) => {
-      if (isDev) {
+      if (isLevelEnabled("debug", sign, isDev)) {
         if (obj) {
           log(msg, obj)
         } else {
@@ -99,24 +100,30 @@ const simpleLogger = (name: string, customSign?: string, isDev?: boolean): ILogg
       }
     },
     info: (msg: string, obj?: any) => {
-      if (obj) {
-        infoLog(msg, obj)
-      } else {
-        infoLog(msg)
+      if (isLevelEnabled("info", sign, isDev)) {
+        if (obj) {
+          infoLog(msg, obj)
+        } else {
+          infoLog(msg)
+        }
       }
     },
     warn: (msg: string, obj?: any) => {
-      if (obj) {
-        warnLog(msg, obj)
-      } else {
-        warnLog(msg)
+      if (isLevelEnabled("warn", sign, isDev)) {
+        if (obj) {
+          warnLog(msg, obj)
+        } else {
+          warnLog(msg)
+        }
       }
     },
     error: (msg: string | Error, obj?: any) => {
-      if (obj) {
-        errorLog(msg, obj)
-      } else {
-        errorLog(msg)
+      if (isLevelEnabled("error", sign, isDev)) {
+        if (obj) {
+          errorLog(msg, obj)
+        } else {
+          errorLog(msg)
+        }
       }
     },
   }

@@ -23,8 +23,17 @@
  * questions.
  */
 
-import { describe, expect, it, vitest } from "vitest"
+import { afterEach, describe, expect, it, vitest } from "vitest"
 import simpleLogger from "./simpleLogger"
+import {
+  configureLogger,
+  getEffectiveLogLevel,
+  getLogLevel,
+  normalizeLogLevel,
+  resetLoggerConfig,
+  setLogLevel,
+  setLogLevelOverride,
+} from "./loggerConfig"
 
 describe("test simpleLogger", () => {
   it("should log debug message when isSiyuanApiDev is true", () => {
@@ -92,9 +101,122 @@ describe("test simpleLogger", () => {
 
     const logger = simpleLogger("test", "sign")
     const error = new Error("test error")
-    logger.error(error)
+    logger.error("an error occurred", error)
 
     expect(spy).toHaveBeenCalledWith(expect.stringContaining("an error occurred"), expect.objectContaining(error))
     spy.mockRestore()
+  })
+})
+
+describe("runtime logger configuration", () => {
+  afterEach(() => {
+    resetLoggerConfig()
+    vitest.restoreAllMocks()
+  })
+
+  it("keeps the historical info default when nothing is configured", () => {
+    expect(getLogLevel()).toBe("info")
+    expect(getEffectiveLogLevel("sign")).toBe("info")
+
+    const info = vitest.spyOn(console, "info")
+    simpleLogger("test", "sign").info("info")
+    expect(info).toHaveBeenCalled()
+  })
+
+  it("silences info and warn but keeps errors at error level", () => {
+    setLogLevel("error")
+
+    const info = vitest.spyOn(console, "info")
+    const warn = vitest.spyOn(console, "warn")
+    const error = vitest.spyOn(console, "error")
+
+    const logger = simpleLogger("test", "sign")
+    logger.info("info")
+    logger.warn("warn")
+    logger.error("error")
+
+    expect(info).not.toHaveBeenCalled()
+    expect(warn).not.toHaveBeenCalled()
+    expect(error).toHaveBeenCalled()
+  })
+
+  it("supports a per-sign override without enabling other signs", () => {
+    setLogLevel("error")
+    setLogLevelOverride("verbose", "debug")
+
+    expect(getEffectiveLogLevel("verbose")).toBe("debug")
+    expect(getEffectiveLogLevel("quiet")).toBe("error")
+
+    const log = vitest.spyOn(console, "log")
+    const info = vitest.spyOn(console, "info")
+
+    simpleLogger("test", "verbose").debug("verbose debug")
+    simpleLogger("test", "quiet").info("quiet info")
+
+    expect(log).toHaveBeenCalledTimes(1)
+    expect(info).not.toHaveBeenCalled()
+  })
+
+  it("removes a per-sign override", () => {
+    setLogLevel("error")
+    setLogLevelOverride("verbose", "debug")
+    expect(getEffectiveLogLevel("verbose")).toBe("debug")
+
+    setLogLevelOverride("verbose")
+    expect(getEffectiveLogLevel("verbose")).toBe("error")
+  })
+
+  it("lets runtime configuration silence an isDev logger", () => {
+    setLogLevel("error")
+    const log = vitest.spyOn(console, "log")
+
+    simpleLogger("test", "sign", true).debug("debug")
+
+    expect(log).not.toHaveBeenCalled()
+  })
+
+  it("enables debug for every logger at debug level", () => {
+    setLogLevel("debug")
+    const log = vitest.spyOn(console, "log")
+
+    simpleLogger("test", "sign", false).debug("debug")
+
+    expect(log).toHaveBeenCalledTimes(1)
+  })
+
+  it("stores the configuration on the documented global symbol", () => {
+    setLogLevel("error")
+
+    const raw = (globalThis as any)[Symbol.for("zhi.logger.config")]
+    expect(raw?.level).toBe("error")
+  })
+
+  it("shares the configuration with a second copy of the module", async () => {
+    setLogLevel("silent")
+
+    // @ts-ignore - the query suffix creates a separate module instance on purpose
+    const secondCopy = await import("./loggerConfig?bundle=second")
+    expect(secondCopy.getRuntimeLoggerConfig()?.level).toBe("silent")
+  })
+
+  it("normalizes upper-case, legacy and alias level names", () => {
+    expect(normalizeLogLevel("DEBUG")).toBe("debug")
+    expect(normalizeLogLevel("off")).toBe("silent")
+    expect(normalizeLogLevel("none")).toBe("silent")
+    expect(normalizeLogLevel("nope")).toBeUndefined()
+  })
+
+  it("merges configureLogger overrides and can reset to defaults", () => {
+    configureLogger({ level: "warn", overrides: { "zhi-siyuan-api": "debug" } })
+    expect(getLogLevel()).toBe("warn")
+    expect(getEffectiveLogLevel("zhi-siyuan-api")).toBe("debug")
+
+    configureLogger({ overrides: { "zhi-common": "error" } })
+    expect(getEffectiveLogLevel("zhi-siyuan-api")).toBe("debug")
+    expect(getEffectiveLogLevel("zhi-common")).toBe("error")
+
+    resetLoggerConfig()
+    expect(getLogLevel()).toBe("info")
+    expect(getEffectiveLogLevel("zhi-siyuan-api")).toBe("info")
   })
 })
