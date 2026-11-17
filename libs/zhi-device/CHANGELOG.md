@@ -1,5 +1,11 @@
 # zhi-device
 
+## 2.15.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
 ## 2.14.0
 
 ### Minor Changes

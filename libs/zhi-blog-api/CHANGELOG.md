@@ -1,5 +1,17 @@
 # zhi-blog-api
 
+## 1.84.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.12.0
+  - zhi-common@1.38.0
+
 ## 1.83.0
 
 ### Minor Changes

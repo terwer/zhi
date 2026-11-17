@@ -1,5 +1,17 @@
 # zhi-github-middleware
 
+## 0.8.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.12.0
+  - zhi-common@1.38.0
+
 ## 0.7.0
 
 ### Minor Changes

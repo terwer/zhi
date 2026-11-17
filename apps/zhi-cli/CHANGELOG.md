@@ -1,5 +1,16 @@
 # zhi-cli
 
+## 1.14.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-log@1.18.0
+
 ## 1.13.0
 
 ### Minor Changes

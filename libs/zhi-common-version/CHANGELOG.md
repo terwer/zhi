@@ -1,5 +1,11 @@
 # zhi-common-version
 
+## 0.4.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
 ## 0.3.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @terwer/vite-config-custom
 
+## 0.10.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
 ## 0.9.0
 
 ### Minor Changes

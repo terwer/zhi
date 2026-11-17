@@ -1,6 +1,6 @@
 {
   "name": "zhi-env",
-  "version": "1.20.0",
+  "version": "1.21.0",
   "type": "module",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",

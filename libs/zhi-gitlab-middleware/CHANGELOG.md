@@ -1,5 +1,17 @@
 # zhi-gitlab-middleware
 
+## 0.15.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.16.0
+  - zhi-lib-base@0.12.0
+
 ## 0.14.0
 
 ### Minor Changes

@@ -1,5 +1,16 @@
 # zhi-path
 
+## 0.5.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.12.0
+
 ## 0.4.0
 
 ### Minor Changes

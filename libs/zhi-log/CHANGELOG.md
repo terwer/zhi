@@ -1,5 +1,18 @@
 # zhi-log
 
+## 1.18.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.12.0
+  - zhi-device@2.15.0
+  - zhi-env@1.21.0
+
 ## 1.17.0
 
 ### Minor Changes

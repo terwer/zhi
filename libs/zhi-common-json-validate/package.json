@@ -1,6 +1,6 @@
 {
   "name": "zhi-common-json-validate",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "type": "module",
   "description": "utilized for the execution of json schema validation",
   "main": "./dist/index.cjs",

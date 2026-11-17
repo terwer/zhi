@@ -1,6 +1,6 @@
 {
   "name": "zhi-common-version",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "type": "module",
   "description": "comparison and computation pertaining to version related aspects",
   "main": "./dist/index.cjs",

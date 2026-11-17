@@ -1,5 +1,11 @@
 # zhi-lib-base
 
+## 0.12.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
 ## 0.11.0
 
 ### Minor Changes

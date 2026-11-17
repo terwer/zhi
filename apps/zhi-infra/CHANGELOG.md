@@ -1,5 +1,19 @@
 # zhi-infra
 
+## 0.25.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.12.0
+  - zhi-common@1.38.0
+  - zhi-device@2.15.0
+  - zhi-cmd@0.11.0
+
 ## 0.24.0
 
 ### Minor Changes

@@ -1,5 +1,24 @@
 # zhi-siyuan-api
 
+## 2.39.0
+
+### Minor Changes
+
+- fix: version mismatch
+
+## 2.34.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.84.0
+  - zhi-lib-base@0.12.0
+  - zhi-common@1.38.0
+
 ## 2.33.0
 
 ### Minor Changes

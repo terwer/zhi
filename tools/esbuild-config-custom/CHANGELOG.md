@@ -1,5 +1,11 @@
 # @terwer/esbuild-config-custom
 
+## 3.3.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
 ## 3.2.0
 
 ### Minor Changes

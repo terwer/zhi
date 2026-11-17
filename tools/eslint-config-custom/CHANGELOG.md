@@ -1,5 +1,11 @@
 # @terwer/eslint-config-custom
 
+## 1.6.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
 ## 1.5.0
 
 ### Minor Changes

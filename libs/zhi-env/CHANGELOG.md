@@ -1,5 +1,11 @@
 # zhi-env
 
+## 1.21.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
 ## 1.20.0
 
 ### Minor Changes

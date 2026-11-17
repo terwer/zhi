@@ -9,7 +9,7 @@
     "localBuild": "turbo run localBuild",
     "cz": "git-cz",
     "add-changeset": "changeset",
-    "publish-packages": "turbo run build lint && changeset version && changeset publish"
+    "publish-packages": "pnpm install && turbo run build lint && changeset version && pnpm install && changeset publish"
   },
   "config": {
     "commitizen": {

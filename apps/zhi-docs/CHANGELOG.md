@@ -1,5 +1,11 @@
 # zhi-docs
 
+## 1.3.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
 ## 1.2.0
 
 ### Minor Changes

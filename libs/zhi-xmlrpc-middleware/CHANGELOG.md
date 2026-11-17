@@ -1,5 +1,18 @@
 # zhi-xmlrpc-middleware
 
+## 0.9.0
+
+### Minor Changes
+
+- feat: add runtime log config
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.12.0
+  - zhi-common@1.38.0
+  - zhi-device@2.15.0
+
 ## 0.8.0
 
 ### Minor Changes
