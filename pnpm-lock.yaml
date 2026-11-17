@@ -384,6 +384,9 @@ importers:
       zhi-env:
         specifier: workspace:*
         version: link:../zhi-env
+      zhi-lib-base:
+        specifier: workspace:*
+        version: link:../zhi-lib-base
     devDependencies:
       '@terwer/eslint-config-custom':
         specifier: workspace:*

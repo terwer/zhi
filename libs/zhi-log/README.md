@@ -14,6 +14,23 @@ logger.info("info msg")
 logger.error("error msg")
 ```
 
+### Runtime log level
+
+The level can be changed while the application is running:
+
+```ts
+import { LogFactory, setLogLevel } from "zhi-log"
+
+setLogLevel("error")
+const logger = LogFactory.defaultLogger()
+logger.info("hidden")
+logger.error("shown")
+```
+
+Explicitly constructed levels still win over the runtime level, and the shared
+configuration is re-exported from `zhi-lib-base`, so host applications can use
+one import. See [docs/logging.md](../../docs/logging.md) for the full contract.
+
 ## Deps
 
 ```

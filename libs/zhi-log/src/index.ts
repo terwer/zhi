@@ -55,3 +55,18 @@ export { LogLevelEnum, AbstractLogFactory, CustomLogFactory }
 export { LogConstants, EnvHelper }
 export { crossChalk }
 export type { DefaultLogger }
+
+// Runtime configuration shared with zhi-lib-base and the other zhi packages.
+export {
+  configureLogger,
+  getEffectiveLogLevel,
+  getLogLevel,
+  getLoggerConfig,
+  getRuntimeLoggerConfig,
+  isLevelEnabled,
+  normalizeLogLevel,
+  resetLoggerConfig,
+  setLogLevel,
+  setLogLevelOverride,
+} from "zhi-lib-base"
+export type { ZhiLogLevel, ZhiLoggerConfig } from "zhi-lib-base"
