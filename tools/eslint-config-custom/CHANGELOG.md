@@ -1,5 +1,12 @@
 # @terwer/eslint-config-custom
 
+## 1.5.0
+
+### Minor Changes
+
+- fix: add missing pkg
+- feat: add deps
+
 ## 1.4.0
 
 ### Minor Changes

@@ -1,5 +1,19 @@
 # zhi-rubick-core
 
+## 0.5.0
+
+### Minor Changes
+
+- fix: add missing pkg
+- feat: add deps
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-lib-base@0.10.0
+  - zhi-device@2.14.0
+
 ## 0.4.0
 
 ### Minor Changes

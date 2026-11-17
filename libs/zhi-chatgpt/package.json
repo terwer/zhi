@@ -1,6 +1,6 @@
 {
   "name": "zhi-chatgpt",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "chatgpt api for siyuan-note",
   "main": "./dist/index.js",

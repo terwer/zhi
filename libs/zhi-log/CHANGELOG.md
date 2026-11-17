@@ -1,5 +1,19 @@
 # zhi-log
 
+## 1.16.0
+
+### Minor Changes
+
+- fix: add missing pkg
+- feat: add deps
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-device@2.14.0
+  - zhi-env@1.20.0
+
 ## 1.15.0
 
 ### Minor Changes

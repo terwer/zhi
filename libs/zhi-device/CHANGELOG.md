@@ -1,5 +1,12 @@
 # zhi-device
 
+## 2.14.0
+
+### Minor Changes
+
+- fix: add missing pkg
+- feat: add deps
+
 ## 2.13.0
 
 ### Minor Changes

@@ -1,5 +1,12 @@
 # zhi-lib-base
 
+## 0.10.0
+
+### Minor Changes
+
+- fix: add missing pkg
+- feat: add deps
+
 ## 0.9.0
 
 ### Minor Changes

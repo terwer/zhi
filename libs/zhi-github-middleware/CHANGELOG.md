@@ -1,5 +1,19 @@
 # zhi-github-middleware
 
+## 0.7.0
+
+### Minor Changes
+
+- fix: add missing pkg
+- feat: add deps
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-lib-base@0.10.0
+  - zhi-common@1.37.0
+
 ## 0.6.0
 
 ### Minor Changes

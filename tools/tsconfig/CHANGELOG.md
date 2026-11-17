@@ -1,5 +1,12 @@
 # @terwer/tsconfig
 
+## 0.3.0
+
+### Minor Changes
+
+- fix: add missing pkg
+- feat: add deps
+
 ## 0.2.0
 
 ### Minor Changes

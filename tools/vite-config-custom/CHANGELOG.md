@@ -1,5 +1,12 @@
 # @terwer/vite-config-custom
 
+## 0.9.0
+
+### Minor Changes
+
+- fix: add missing pkg
+- feat: add deps
+
 ## 0.8.0
 
 ### Minor Changes

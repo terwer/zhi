@@ -1,5 +1,19 @@
 # zhi-gitlab-middleware
 
+## 0.14.0
+
+### Minor Changes
+
+- fix: add missing pkg
+- feat: add deps
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-fetch-middleware@0.15.0
+  - zhi-lib-base@0.10.0
+
 ## 0.13.0
 
 ### Minor Changes

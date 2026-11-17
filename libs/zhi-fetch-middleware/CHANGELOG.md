@@ -1,5 +1,20 @@
 # zhi-fetch-middleware
 
+## 0.15.0
+
+### Minor Changes
+
+- fix: add missing pkg
+- feat: add deps
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-lib-base@0.10.0
+  - zhi-device@2.14.0
+  - zhi-common@1.37.0
+
 ## 0.14.0
 
 ### Minor Changes

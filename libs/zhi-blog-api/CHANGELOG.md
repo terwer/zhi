@@ -1,16 +1,60 @@
 # zhi-blog-api
 
-## 1.75.0
-
-### Minor Changes
-
-- feat: remove log noise
+## 1.82.1
 
 ### Patch Changes
 
 - Updated dependencies
-  - zhi-common@1.36.0
-  - zhi-lib-base@0.9.0
+  - zhi-common@1.35.1
+
+## 1.82.0
+
+### Minor Changes
+
+- feat: add cors option
+
+## 1.81.0
+
+### Minor Changes
+
+- feat: add isCorsProxy option to BlogConfig for CORS-restricted platforms (e.g. Telegra.ph)
+
+## 1.80.0
+
+### Minor Changes
+
+- feat: new build
+
+## 1.79.0
+
+### Minor Changes
+
+- 887c24d: feat: add preview link open mode
+
+## 1.78.0
+
+### Minor Changes
+
+- feat: add logoutWebAuth SPI for unified web auth logout
+- feat: add Web auth logout SPI with fail-fast base implementation and WebAdaptor forwarding.
+
+## 1.77.0
+
+### Minor Changes
+
+- feat: Add publish validation SPI with default allow result and adaptor forwarding.
+
+## 1.76.0
+
+### Minor Changes
+
+- feat: extend deletePost method with optional id and publishCfg parameters
+
+## 1.75.0
+
+### Minor Changes
+
+- feat: add docTreeHierarchy
 
 ## 1.74.2
 

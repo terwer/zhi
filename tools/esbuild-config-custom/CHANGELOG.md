@@ -1,5 +1,12 @@
 # @terwer/esbuild-config-custom
 
+## 3.2.0
+
+### Minor Changes
+
+- fix: add missing pkg
+- feat: add deps
+
 ## 3.1.0
 
 ### Minor Changes

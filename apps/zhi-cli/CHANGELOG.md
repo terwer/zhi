@@ -1,5 +1,18 @@
 # zhi-cli
 
+## 1.13.0
+
+### Minor Changes
+
+- fix: add missing pkg
+- feat: add deps
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-log@1.16.0
+
 ## 1.12.0
 
 ### Minor Changes
