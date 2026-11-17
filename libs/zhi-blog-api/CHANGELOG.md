@@ -1,5 +1,18 @@
 # zhi-blog-api
 
+## 1.83.0
+
+### Minor Changes
+
+- feat: add deps
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - zhi-lib-base@0.10.0
+  - zhi-common@1.37.0
+
 ## 1.82.1
 
 ### Patch Changes
