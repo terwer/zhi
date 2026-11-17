@@ -191,6 +191,12 @@ abstract class BlogConfig {
   public corsAnywhereUrl?: string
 
   /**
+   * 是否启用新跨域代理模式（针对 CORS 受限平台，如 Telegra.ph）
+   * true 时优先级高于 forceProxy，强制走 middleware-fetch
+   */
+  public isCorsProxy?: boolean
+
+  /**
    * cookie数组
    */
   public corsCookieArray: string[]
@@ -345,6 +351,7 @@ abstract class BlogConfig {
     this.preferenceConfig = new PreferenceConfig()
     this.middlewareUrl = ""
     this.corsAnywhereUrl = ""
+    this.isCorsProxy = false
     this.corsCookieArray = []
     this.usernameEnabled = false
     this.homeEnabled = true

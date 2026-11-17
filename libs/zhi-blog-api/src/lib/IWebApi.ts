@@ -62,6 +62,13 @@ interface IWebApi extends IBlogApi {
   getMetaData(): Promise<any>
 
   /**
+   * 退出 Web 认证会话
+   *
+   * @returns Promise<boolean> 退出结果
+   */
+  logoutWebAuth(): Promise<boolean>
+
+  /**
    * 内容预处理：预处理平台无法兼容的文本内容
    *
    * @param post 文章对象
@@ -94,6 +101,16 @@ interface IWebApi extends IBlogApi {
    * @returns Promise<boolean> 更新结果
    */
   editPost(postid: string, post: Post, publish?: boolean): Promise<boolean>
+
+  /**
+   * 删除文章
+   *
+   * @param postid - 文章ID
+   * @param id - 思源笔记文档ID（可选）
+   * @param publishCfg - 发布配置（可选）
+   * @returns Promise<boolean> 删除结果
+   */
+  deletePost(postid: string, id?: string, publishCfg?: any): Promise<boolean>
 }
 
 export type { IWebApi }

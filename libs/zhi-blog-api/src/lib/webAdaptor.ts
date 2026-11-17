@@ -30,6 +30,7 @@ import ElectronCookie from "./models/ElectronCookie"
 import WebConfig from "./WebConfig"
 import WebApi from "./webApi"
 import MediaObject from "./models/mediaObject";
+import PreviewOpenModeEnum from "./enums/previewOpenModeEnum";
 
 /**
  * 网页授权核心基类
@@ -42,6 +43,13 @@ import MediaObject from "./models/mediaObject";
  */
 class WebAdaptor extends BlogAdaptor {
   private readonly webAdaptor: WebApi
+
+  /**
+   * 文章预览/查看链接的打开方式，透传实际适配器的声明
+   */
+  public get previewOpenMode(): PreviewOpenModeEnum {
+    return this.webAdaptor.previewOpenMode
+  }
 
   /**
    * 初始化网页授权的 API
@@ -67,6 +75,10 @@ class WebAdaptor extends BlogAdaptor {
     return await this.webAdaptor.getMetaData()
   }
 
+  public async logoutWebAuth(): Promise<boolean> {
+    return await this.webAdaptor.logoutWebAuth()
+  }
+
   /**
    * 内容预处理：预处理平台无法兼容的文本内容
    *
@@ -88,6 +100,17 @@ class WebAdaptor extends BlogAdaptor {
 
   public async editPost(postid: string, post: Post, publish?: boolean): Promise<boolean> {
     return this.webAdaptor.editPost(postid, post, publish)
+  }
+
+  /**
+   * 删除文章
+   *
+   * @param postid - 文章ID
+   * @param id - 思源笔记文档ID（可选）
+   * @param publishCfg - 发布配置（可选）
+   */
+  public async deletePost(postid: string, id?: string, publishCfg?: any): Promise<boolean> {
+    return await this.webAdaptor.deletePost(postid, id, publishCfg)
   }
 }
 

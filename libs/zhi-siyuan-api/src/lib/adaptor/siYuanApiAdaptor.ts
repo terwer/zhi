@@ -24,10 +24,10 @@
  */
 
 import { Attachment, BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, PostUtil, UserBlog } from "zhi-blog-api"
-import SiyuanKernelApi from "../kernel/siyuanKernelApi"
-import SiyuanConfig from "../config/siyuanConfig"
-import { NotImplementedException } from "zhi-lib-base"
 import { DateUtil, HtmlUtil, ObjectUtil, StrUtil, YamlUtil } from "zhi-common"
+import { NotImplementedException } from "zhi-lib-base"
+import SiyuanConfig from "../config/siyuanConfig"
+import SiyuanKernelApi from "../kernel/siyuanKernelApi"
 import { createSiyuanAppLogger } from "../utils"
 import SiyuanAttr from "./siyuanAttr"
 
@@ -70,15 +70,20 @@ class SiYuanApiAdaptor extends BlogApi {
     return usersBlogs
   }
 
-  public override async getRecentPostsCount(keyword?: string, isPublished?: boolean): Promise<number> {
-    return await this.siyuanKernelApi.getRootBlocksCount(keyword ?? "", isPublished)
+  public override async getRecentPostsCount(
+    keyword?: string,
+    isPublished?: boolean,
+    notebookIds?: string[]
+  ): Promise<number> {
+    return await this.siyuanKernelApi.getRootBlocksCount(keyword ?? "", isPublished, notebookIds)
   }
 
   public override async getRecentPosts(
     numOfPosts: number,
     page?: number,
     keyword?: string,
-    isPublished?: boolean
+    isPublished?: boolean,
+    notebookIds?: string[]
   ): Promise<Array<Post>> {
     const result: Post[] = []
 
@@ -87,12 +92,14 @@ class SiYuanApiAdaptor extends BlogApi {
       pg = page
     }
     const k = keyword ?? ""
-    const siyuanPosts = await this.siyuanKernelApi.getRootBlocks(pg, numOfPosts, k, isPublished)
+    const siyuanPosts = await this.siyuanKernelApi.getRootBlocks(pg, numOfPosts, k, isPublished, notebookIds)
 
     if (siyuanPosts?.length > 0) {
       for (let i = 0; i < siyuanPosts.length; i++) {
         const siyuanPost = siyuanPosts[i]
-        const post = await this.getPost(siyuanPost.root_id, false, true)
+        // getRootBlocks 返回的字段是 docId 别名（b.root_id as docId），而非 root_id，
+        // 此前读 root_id 会取到 undefined 导致 getPost 抛错、列表为空。
+        const post = await this.getPost(siyuanPost.docId, false, true)
         result.push(post)
       }
     }
@@ -101,7 +108,6 @@ class SiYuanApiAdaptor extends BlogApi {
   }
 
   public async preEditPost(post: Post, dynCfg: any): Promise<Post> {
-    this.logger.info("思源笔记内部，忽略预处理")
     return post
   }
 
@@ -123,11 +129,8 @@ class SiYuanApiAdaptor extends BlogApi {
     if (!siyuanPost) {
       throw new Error("文章不存存在，postid=>" + pid)
     }
-    this.logger.debug(`siyuanPost =>`, siyuanPost)
 
-    this.logger.info(`Ready to get block properties, block ID is => ${pid}`)
     const attrs = await this.siyuanKernelApi.getBlockAttrs(pid)
-    this.logger.debug(`getBlockAttrs attrs =>`, attrs)
 
     // 发布状态
     let isPublished = true
@@ -142,7 +145,6 @@ class SiYuanApiAdaptor extends BlogApi {
     const originalTitle = title
     if (this.cfg?.preferenceConfig.fixTitle) {
       title = HtmlUtil.removeTitleNumber(title)
-      this.logger.info("检测到配置，标题序号已移除")
     }
 
     // 渲染Markdown
@@ -159,14 +161,12 @@ class SiYuanApiAdaptor extends BlogApi {
       if (this.cfg?.preferenceConfig?.removeMdWidgetTag) {
         md = HtmlUtil.removeMdWidgetTag(md)
         html = HtmlUtil.removeWidgetTag(html)
-        this.logger.info("检测到配置，挂件的HTML已移除")
       }
 
       // 删除H1
       if (this.cfg?.preferenceConfig?.removeFirstH1) {
         md = HtmlUtil.removeMdH1(md)
         html = HtmlUtil.removeH1(html)
-        this.logger.info("检测到配置，第一个H1已移除")
       }
     }
 
@@ -176,51 +176,62 @@ class SiYuanApiAdaptor extends BlogApi {
     if (this.cfg?.preferenceConfig?.outlineEnable) {
       outlineLevel = this.cfg?.preferenceConfig?.outlineLevel ?? 3
       outline = await this.siyuanKernelApi.getOutline(pid, outlineLevel)
-      this.logger.info("检测到配置，目录已获取")
     }
 
     // 处理文档树
     let docTree = []
     let docTreeLevel = 3
+    let docTreeHierarchy: { id: string; name: string; order: number }[] = []
     if (this.cfg?.preferenceConfig?.docTreeEnable) {
       docTreeLevel = this.cfg?.preferenceConfig?.docTreeLevel ?? 3
 
       // 获取文档的基本信息
       const notebookId = siyuanPost.box || ""
-      const docPath = siyuanPost.path || `/${siyuanPost.root_id}.sy`
+      // path 是机器可读的路径，如 /project-document/financial-report/year-end-summary.sy
+      const pathParts = this.parsePathParts(siyuanPost.path || "")
+      // hpath 是人类可读的中文路径，如 /项目文档/财务报表/年终总结.sy
+      // 构建文档层级路径（从根到当前文档）
+      const hpathParts = this.parsePathParts(siyuanPost.hpath || "")
+      docTreeHierarchy = pathParts.map((part: string, index: number) => ({
+        id: part,
+        name: hpathParts[index] || part, // 使用 hpath 中的中文名称
+        order: index + 1,
+      }))
 
-      // 构建完整的文档树结构
-      // 1. 获取父级路径信息
-      const cleanPath = docPath.replace(".sy", "")
-      const pathParts = cleanPath.split("/").filter((part: string) => part.trim() !== "")
-      const parentPaths = []
+      // 正确的文档树构建逻辑：使用现有的 kernel 方法，处理所有节点情况
 
-      // 只处理非根文档的情况
-      if (pathParts.length > 1) {
-        for (let i = 0; i < pathParts.length - 1 && i < docTreeLevel; i++) {
-          parentPaths.push({
-            id: pathParts[i],
+      // 1. 向上获取：以当前文档为中心，向上最多 docTreeLevel 层级
+      const currentDocIndex = pathParts.length - 1
+      const startLevel = Math.max(0, currentDocIndex - docTreeLevel)
+
+      for (let i = startLevel; i <= currentDocIndex; i++) {
+        try {
+          const parentPath = i === 0 ? "" : pathParts.slice(0, i).join("/")
+          const siblings = await this.siyuanKernelApi.getSiblingDocs(notebookId, parentPath)
+
+          const correctedSiblings = siblings.map((sibling) => ({
+            ...sibling,
             parentId: i > 0 ? pathParts[i - 1] : "",
-            name: pathParts[i],
-            depth: i,
-            type: "parent",
-          })
+            depth: i - currentDocIndex, // 当前文档 depth = 0
+          }))
+
+          docTree = [...docTree, ...correctedSiblings]
+        } catch (error) {
+          this.logger.warn(`获取向上层级 ${i} 的同级文档失败:`, error)
         }
       }
 
-      // 2. 获取同级文档（父目录下的其他文档）
-      let siblings = []
-      if (pathParts.length > 1) {
-        const parentPath = pathParts.slice(0, -1).join("/")
-        siblings = await this.siyuanKernelApi.getSiblingDocs(notebookId, parentPath)
+      // 2. 向下获取：以当前文档为中心，向下最多 docTreeLevel 层级
+      if (docTreeLevel > 0) {
+        const docPath = siyuanPost.path
+        try {
+          const children = await this.siyuanKernelApi.getChildDocs(notebookId, docPath, docTreeLevel)
+          // getChildDocs 返回的 depth 已经是相对于当前文档的深度
+          docTree = [...docTree, ...children]
+        } catch (error) {
+          this.logger.warn(`获取向下层级子文档失败 (path: ${docPath}):`, error)
+        }
       }
-
-      // 3. 获取子级文档（当前文档下的所有子文档）
-      const children = await this.siyuanKernelApi.getChildDocs(notebookId, docPath, docTreeLevel)
-
-      // 4. 合并所有文档树节点
-      docTree = [...parentPaths, ...siblings, ...children]
-      this.logger.info("检测到配置，真实的文档树已获取")
     }
 
     // 别名(Custom_Slug优先，没有默认获取Sys_alias)
@@ -253,14 +264,13 @@ class SiYuanApiAdaptor extends BlogApi {
       "custom-outline-enable": ObjectUtil.getProperty(attrs, "custom-outline-enable", ""),
       "custom-outline-level": ObjectUtil.getProperty(attrs, "custom-outline-level", ""),
     }
-    // this.logger.info("get publicAttrs from siyuan getPost=>", publicAttrs)
 
     // 适配公共属性
     const commonPost = new Post()
     commonPost.postid = siyuanPost.root_id
     commonPost.originalId = siyuanPost.root_id
     commonPost.dateCreated = DateUtil.convertStringToDate(DateUtil.formatNumToZhDate(siyuanPost.created))
-    commonPost.dateUpdated = new Date()
+    commonPost.dateUpdated = DateUtil.convertStringToDate(DateUtil.formatNumToZhDate(siyuanPost.updated))
     commonPost.title = title
     commonPost.originalTitle = originalTitle
     commonPost.markdown = md ?? ""
@@ -286,6 +296,7 @@ class SiYuanApiAdaptor extends BlogApi {
     commonPost.outlineLevel = outlineLevel
     commonPost.docTree = docTree
     commonPost.docTreeLevel = docTreeLevel
+    commonPost.docTreeHierarchy = docTreeHierarchy
 
     // yaml 适配
     const yamlObj = PostUtil.toYamlObj(commonPost)
@@ -303,7 +314,6 @@ class SiYuanApiAdaptor extends BlogApi {
         await this.siyuanKernelApi.setBlockAttrs(postid, {
           title: title,
         })
-        this.logger.info("检测到配置，已修改思源笔记文档标题")
       }
 
       flag = true
@@ -327,7 +337,6 @@ class SiYuanApiAdaptor extends BlogApi {
     //用户指南不应该作为可以写入的笔记本
     const hiddenNotebook: Set<string> = new Set(["思源笔记用户指南", "SiYuan User Guide"])
     notebooks = notebooks.filter((notebook) => !notebook.closed && !hiddenNotebook.has(notebook.name))
-    this.logger.debug("siyuan notebooks=>", notebooks)
     if (notebooks && notebooks.length > 0) {
       notebooks.forEach((notebook) => {
         const cat = new CategoryInfo()
@@ -361,9 +370,7 @@ class SiYuanApiAdaptor extends BlogApi {
       throw new NotImplementedException("You must implement custom handler for siyuan assets")
     }
 
-    this.logger.info("Using custom handler for mediaObject")
     const data = await customHandler(mediaObject)
-    this.logger.info("newMediaObject finished, data=>", data)
     const attachmentInfo = new Attachment({})
     if (data && data.succMap) {
       const link = data.succMap[mediaObject.name]
@@ -381,6 +388,18 @@ class SiYuanApiAdaptor extends BlogApi {
     }
 
     return attachmentInfo
+  }
+
+  /**
+   * 解析路径为部分数组
+   *
+   * @param path 路径字符串
+   * @returns 路径部分数组
+   * @private
+   */
+  private parsePathParts(path: string): string[] {
+    const cleanPath = path.replace(".sy", "")
+    return cleanPath.split("/").filter((part: string) => part.trim() !== "")
   }
 
   private extractFileName(filePath: string): string {

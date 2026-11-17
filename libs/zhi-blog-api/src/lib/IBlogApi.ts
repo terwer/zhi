@@ -30,6 +30,24 @@ import CategoryInfo from "./models/categoryInfo"
 import Attachment from "./models/attachmentInfo"
 import YamlConvertAdaptor from "./yamlConvertAdaptor"
 import TagInfo from "./models/tagInfo"
+import PreviewOpenModeEnum from "./enums/previewOpenModeEnum"
+
+/**
+ * 发布前置条件校验结果
+ *
+ * @public
+ */
+interface PublishValidationResult {
+  /**
+   * 当前平台配置是否允许进入发布流程
+   */
+  canPublish: boolean
+
+  /**
+   * 不允许发布时面向用户展示的原因
+   */
+  reason?: string
+}
 
 /**
  * 通用博客接口
@@ -42,9 +60,22 @@ import TagInfo from "./models/tagInfo"
  */
 interface IBlogApi {
   /**
+   * 文章预览/查看链接的打开方式。默认 {@link PreviewOpenModeEnum.ExternalUrl}（外部打开），
+   * 平台按需声明（如公众号草稿编辑页绑定授权会话，需在授权会话窗口内打开）。
+   */
+  previewOpenMode: PreviewOpenModeEnum
+
+  /**
    * 检测平台是否可用
    */
   checkAuth(): Promise<boolean>
+
+  /**
+   * 校验当前平台配置是否满足发布前置条件。
+   *
+   * 该方法只负责发布前置条件校验，不替代 {@link checkAuth} 授权/登录校验。
+   */
+  validatePublish(): Promise<PublishValidationResult>
 
   /**
    * 博客配置列表
@@ -161,10 +192,12 @@ interface IBlogApi {
    * 删除文章
    *
    * @param postid - 文章ID
+   * @param id - 思源笔记文档ID（可选）
+   * @param publishCfg - 发布配置（可选）
    * @see {@link https://codex.wordpress.org/XML-RPC_MetaWeblog_API#metaWeblog.deletePost deletePost}
    * @returns {Promise<boolean>}
    */
-  deletePost(postid: string): Promise<boolean>
+  deletePost(postid: string, id?: string, publishCfg?: any): Promise<boolean>
 
   /**
    * 获取分类列表
@@ -219,4 +252,4 @@ interface IBlogApi {
   getYamlAdaptor(): YamlConvertAdaptor
 }
 
-export type { IBlogApi }
+export type { IBlogApi, PublishValidationResult }

@@ -96,13 +96,14 @@ describe("SiYuanApiAdaptor", async () => {
     siyuanConfig.preferenceConfig.outlineEnable = true
     siyuanConfig.preferenceConfig.outlineLevel = 2
     siyuanConfig.preferenceConfig.docTreeEnable = true
-    siyuanConfig.preferenceConfig.docTreeLevel = 6
+    siyuanConfig.preferenceConfig.docTreeLevel = 3
     const apiAdaptor = new SiYuanApiAdaptor(siyuanConfig)
 
     // const postid = "20260303141037-maw0qfs"
-    const postid = "20231012000442-6iyly7m"
+    // const postid = "20231012000442-6iyly7m"
+    const postid = "20260303165411-288xs61"
     const post = await apiAdaptor.getPost(postid)
-    console.log(post)
+    console.log(JSON.stringify(post.docTree))
   })
 
   it("test siyuan editPost", async () => {

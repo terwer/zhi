@@ -6,6 +6,7 @@ import esbuild from "esbuild"
 import minimist from "minimist"
 import { existsSync } from "fs"
 import { createRequire } from "module"
+import { pathToFileURL } from "url"
 
 /**
  *  zhi 构建工具
@@ -34,7 +35,9 @@ export class ZhiBuild {
         if (isEsm) {
           console.log(`use import esbuildConfigFile => ${esbuildConfigFile}`)
           // 兼容 mjs 和 cjs
-           const pkg = await import(esbuildConfigFile)
+          // Windows 上需要将绝对路径转换为 file:// URL
+          const fileUrl = os.platform() === "win32" ? pathToFileURL(esbuildConfigFile).href : esbuildConfigFile
+           const pkg = await import(fileUrl)
           // console.log("pkg=>", pkg)
           customCfg = pkg
           if (pkg.default) {

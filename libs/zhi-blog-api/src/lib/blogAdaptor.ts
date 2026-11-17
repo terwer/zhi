@@ -27,12 +27,13 @@ import UserBlog from "./models/userBlog"
 import Post from "./models/post"
 import CategoryInfo from "./models/categoryInfo"
 import MediaObject from "./models/mediaObject"
-import { IBlogApi } from "./IBlogApi"
+import { IBlogApi, PublishValidationResult } from "./IBlogApi"
 import { NotImplementedException, simpleLogger } from "zhi-lib-base"
 import Attachment from "./models/attachmentInfo"
 import BlogApi from "./blogApi"
 import YamlConvertAdaptor from "./yamlConvertAdaptor"
 import TagInfo from "./models/tagInfo"
+import PreviewOpenModeEnum from "./enums/previewOpenModeEnum"
 
 /**
  * 博客API
@@ -44,6 +45,13 @@ import TagInfo from "./models/tagInfo"
 class BlogAdaptor implements IBlogApi {
   protected logger: any
   private readonly apiAdaptor: BlogApi
+
+  /**
+   * 文章预览/查看链接的打开方式，透传实际适配器的声明
+   */
+  public get previewOpenMode(): PreviewOpenModeEnum {
+    return this.apiAdaptor.previewOpenMode
+  }
 
   /**
    * 博客API版本号
@@ -66,6 +74,13 @@ class BlogAdaptor implements IBlogApi {
    */
   public async checkAuth(): Promise<boolean> {
     throw await this.apiAdaptor.checkAuth()
+  }
+
+  /**
+   * 校验当前平台配置是否满足发布前置条件
+   */
+  public async validatePublish(): Promise<PublishValidationResult> {
+    return await this.apiAdaptor.validatePublish()
   }
 
   /**
@@ -150,9 +165,11 @@ class BlogAdaptor implements IBlogApi {
    * 删除文章
    *
    * @param postid - 文章ID
+   * @param id - 思源笔记文档ID（可选）
+   * @param publishCfg - 发布配置（可选）
    */
-  public async deletePost(postid: string): Promise<boolean> {
-    return await this.apiAdaptor.deletePost(postid)
+  public async deletePost(postid: string, id?: string, publishCfg?: any): Promise<boolean> {
+    return await this.apiAdaptor.deletePost(postid, id, publishCfg)
   }
 
   /**

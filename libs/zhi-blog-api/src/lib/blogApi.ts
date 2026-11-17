@@ -23,7 +23,7 @@
  * questions.
  */
 
-import { IBlogApi } from "./IBlogApi"
+import { IBlogApi, PublishValidationResult } from "./IBlogApi"
 import Post from "./models/post"
 import CategoryInfo from "./models/categoryInfo"
 import UserBlog from "./models/userBlog"
@@ -32,14 +32,25 @@ import { NotImplementedException } from "zhi-lib-base"
 import Attachment from "./models/attachmentInfo"
 import YamlConvertAdaptor from "./yamlConvertAdaptor"
 import TagInfo from "./models/tagInfo"
+import PreviewOpenModeEnum from "./enums/previewOpenModeEnum"
 
 /**
  * 博客基类
  */
 class BlogApi implements IBlogApi {
+  /**
+   * 文章预览/查看链接的打开方式，默认外部打开（兼容历史行为），平台按需声明
+   */
+  public previewOpenMode: PreviewOpenModeEnum = PreviewOpenModeEnum.ExternalUrl
+
   public async checkAuth(): Promise<boolean> {
     throw new NotImplementedException("You must implement checkAuth in sub class")
   }
+
+  public async validatePublish(): Promise<PublishValidationResult> {
+    return { canPublish: true }
+  }
+
   public async getUsersBlogs(keyword?: string): Promise<Array<UserBlog>> {
     throw new NotImplementedException("You must implement getUsersBlogs in sub class")
   }
@@ -68,7 +79,7 @@ class BlogApi implements IBlogApi {
     throw new NotImplementedException("You must implement editPost in sub class")
   }
 
-  public async deletePost(postid: string): Promise<boolean> {
+  public async deletePost(postid: string, id?: string, publishCfg?: any): Promise<boolean> {
     throw new NotImplementedException("You must implement deletePost in sub class")
   }
 
