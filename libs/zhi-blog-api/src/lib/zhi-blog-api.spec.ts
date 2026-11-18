@@ -64,6 +64,36 @@ describe("zhiBlogApi", () => {
     await expect(adaptor.validatePublish()).resolves.toEqual({ canPublish: false, reason: "missing web publish config" })
   })
 
+  it("getDefaultSlug defaults to undefined when the platform has no slug policy", async () => {
+    const api = new BlogApi()
+
+    await expect(api.getDefaultSlug("标题")).resolves.toBeUndefined()
+  })
+
+  it("BlogAdaptor forwards getDefaultSlug to the platform adaptor", async () => {
+    class PolicyBlogApi extends BlogApi {
+      public async getDefaultSlug(title: string) {
+        return `site-${title}`
+      }
+    }
+
+    const adaptor = new BlogAdaptor(new PolicyBlogApi())
+
+    await expect(adaptor.getDefaultSlug("标题")).resolves.toBe("site-标题")
+  })
+
+  it("WebAdaptor forwards getDefaultSlug through the shared blog contract", async () => {
+    class PolicyWebApi extends WebApi {
+      public async getDefaultSlug(title: string) {
+        return `web-${title}`
+      }
+    }
+
+    const adaptor = new WebAdaptor(new PolicyWebApi())
+
+    await expect(adaptor.getDefaultSlug("标题")).resolves.toBe("web-标题")
+  })
+
   it("WebApi defaults logoutWebAuth to a fail-fast not implemented error", async () => {
     const api = new WebApi()
 

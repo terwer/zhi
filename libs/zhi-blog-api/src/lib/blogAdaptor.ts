@@ -127,6 +127,13 @@ class BlogAdaptor implements IBlogApi {
   }
 
   /**
+   * 获取平台默认别名，透传平台适配器；平台未实现时返回 undefined。
+   */
+  public async getDefaultSlug(title: string): Promise<string | undefined> {
+    return await this.apiAdaptor.getDefaultSlug(title)
+  }
+
+  /**
    * 发布文章
    *
    * @param post - 文章

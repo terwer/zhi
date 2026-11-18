@@ -115,6 +115,16 @@ interface IBlogApi {
   preEditPost(post: Post, id?: string, publishCfg?: any): Promise<Post>
 
   /**
+   * 获取平台为新建文章生成的默认别名。
+   *
+   * 平台有站点级别名策略时（如 Halo 的「别名生成策略」）返回生成结果；
+   * 没有该能力时返回 undefined，由调用方按标题生成等默认规则回退。
+   *
+   * @param title - 文章标题
+   */
+  getDefaultSlug(title: string): Promise<string | undefined>
+
+  /**
    * 发布文章
    *
    * @param post - 文章
