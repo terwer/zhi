@@ -876,6 +876,64 @@ class SiyuanKernelApi implements ISiyuanKernelApi {
   }
 
   /**
+   * 从文档属性中解析题头图地址。
+   *
+   * 兼容 `background-image:url("...")`、`background-image: url('...')`
+   * 以及带 HTML 实体转义的历史值；解析失败返回空字符串。
+   *
+   * @param attrs - 文档属性
+   */
+  public static parseDocTitleImage(attrs?: Record<string, any> | null): string {
+    const raw = attrs?.["title-img"]
+    if (typeof raw !== "string") {
+      return ""
+    }
+
+    const value = raw
+      .replace(/&quot;/gi, '"')
+      .replace(/&#39;/gi, "'")
+      .replace(/&apos;/gi, "'")
+      .replace(/&lt;/gi, "<")
+      .replace(/&gt;/gi, ">")
+      .replace(/&amp;/gi, "&")
+      .trim()
+    if (StrUtil.isEmptyString(value)) {
+      return ""
+    }
+
+    const match = value.match(/background-image\s*:\s*url\(\s*(['"]?)(.*?)\1\s*\)/i)
+    return match?.[2]?.trim() ?? ""
+  }
+
+  /**
+   * 把题头图地址解析为可直接用于平台封面字段的链接。
+   *
+   * @param path - 题头图路径（相对路径或完整 URL）
+   */
+  public resolveDocTitleImageUrl(path?: string): string {
+    const trimmed = (path ?? "").trim()
+    if (StrUtil.isEmptyString(trimmed)) {
+      return ""
+    }
+    if (/^(?:[a-z][a-z\d+\-.]*:)?\/\//i.test(trimmed) || /^data:/i.test(trimmed)) {
+      return trimmed
+    }
+
+    const base = (this.siyuanConfig.apiUrl ?? "").replace(/\/+$/, "")
+    return StrUtil.pathJoin(base, trimmed.replace(/^\.?\//, ""))
+  }
+
+  /**
+   * 获取文档题头图的可用地址。
+   *
+   * @param blockId - 文档块 ID
+   */
+  public async getDocTitleImage(blockId: string): Promise<string> {
+    const attrs = await this.getBlockAttrs(blockId)
+    return this.resolveDocTitleImageUrl(SiyuanKernelApi.parseDocTitleImage(attrs))
+  }
+
+  /**
    * 获取单个块属性
    *
    * @param blockId - 块ID

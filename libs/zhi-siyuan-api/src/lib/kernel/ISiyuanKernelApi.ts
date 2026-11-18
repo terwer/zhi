@@ -103,6 +103,13 @@ interface ISiyuanKernelApi {
 
   // /api/attr/getBlockAttrs
   getBlockAttrs(blockId: string): Promise<any>
+  /**
+   * 获取文档题头图（文档封面）的可用地址。
+   *
+   * 解析文档级 IAL `title-img`（形如 `background-image:url("assets/cover.png")`），
+   * 并把相对资源按内核 API 地址补全；没有题头图时返回空字符串。
+   */
+  getDocTitleImage(blockId: string): Promise<string>
   getSingleBlockAttr(blockId: string, key: string): Promise<string>
   // setBlockAttrs
   setBlockAttrs(blockId: string, attrs: any): Promise<any>

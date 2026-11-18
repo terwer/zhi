@@ -23,10 +23,29 @@
  * questions.
  */
 
-import { describe, it } from "vitest"
+import { describe, expect, it } from "vitest"
+import Post from "./models/post"
+import PostUtil from "./PostUtil"
 
 describe("test PostUtil", () => {
-  it("test fromYaml", () => {
+  it("test fromYaml", () => {})
 
+  it("extracts the first markdown image", () => {
+    const post = new Post()
+    post.markdown = "正文\n\n![cover](assets/cover.png)\n\n![second](assets/second.png)"
+
+    expect(PostUtil.extractFirstImage(post)).toBe("assets/cover.png")
+  })
+
+  it("falls back to the first html image", () => {
+    const post = new Post()
+    post.html = '<p><img src="https://img.example.com/cover.png" alt="cover" /></p>'
+
+    expect(PostUtil.extractFirstImage(post)).toBe("https://img.example.com/cover.png")
+  })
+
+  it("returns an empty string when the post has no image", () => {
+    expect(PostUtil.extractFirstImage(undefined)).toBe("")
+    expect(PostUtil.extractFirstImage(new Post())).toBe("")
   })
 })
