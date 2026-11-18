@@ -1,5 +1,17 @@
 # zhi-cmd
 
+## 0.12.0
+
+### Minor Changes
+
+- feat: add slug api
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.13.0
+  - zhi-device@2.16.0
+
 ## 0.11.0
 
 ### Minor Changes

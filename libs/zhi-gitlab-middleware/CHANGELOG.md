@@ -1,5 +1,17 @@
 # zhi-gitlab-middleware
 
+## 0.16.0
+
+### Minor Changes
+
+- feat: add slug api
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.17.0
+  - zhi-lib-base@0.13.0
+
 ## 0.15.0
 
 ### Minor Changes

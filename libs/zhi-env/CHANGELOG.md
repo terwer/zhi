@@ -1,5 +1,11 @@
 # zhi-env
 
+## 1.22.0
+
+### Minor Changes
+
+- feat: add slug api
+
 ## 1.21.0
 
 ### Minor Changes

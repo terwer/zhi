@@ -1,5 +1,16 @@
 # zhi-cli
 
+## 1.15.0
+
+### Minor Changes
+
+- feat: add slug api
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-log@1.19.0
+
 ## 1.14.0
 
 ### Minor Changes

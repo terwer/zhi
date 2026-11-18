@@ -1,5 +1,18 @@
 # zhi-siyuan-api
 
+## 2.40.0
+
+### Minor Changes
+
+- feat: add slug api
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.85.0
+  - zhi-lib-base@0.13.0
+  - zhi-common@1.39.0
+
 ## 2.39.0
 
 ### Minor Changes

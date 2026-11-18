@@ -1,5 +1,11 @@
 # zhi-device
 
+## 2.16.0
+
+### Minor Changes
+
+- feat: add slug api
+
 ## 2.15.0
 
 ### Minor Changes

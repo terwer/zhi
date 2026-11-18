@@ -1,5 +1,11 @@
 # zhi-chatgpt
 
+## 0.4.0
+
+### Minor Changes
+
+- feat: add slug api
+
 ## 0.3.0
 
 ### Minor Changes

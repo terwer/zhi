@@ -1,5 +1,19 @@
 # zhi-infra
 
+## 0.26.0
+
+### Minor Changes
+
+- feat: add slug api
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.13.0
+  - zhi-common@1.39.0
+  - zhi-device@2.16.0
+  - zhi-cmd@0.12.0
+
 ## 0.25.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @terwer/esbuild-config-custom
 
+## 3.4.0
+
+### Minor Changes
+
+- feat: add slug api
+
 ## 3.3.0
 
 ### Minor Changes

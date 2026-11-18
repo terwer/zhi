@@ -1,5 +1,11 @@
 # @terwer/vite-config-custom
 
+## 0.11.0
+
+### Minor Changes
+
+- feat: add slug api
+
 ## 0.10.0
 
 ### Minor Changes

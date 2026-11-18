@@ -1,5 +1,17 @@
 # zhi-github-middleware
 
+## 0.9.0
+
+### Minor Changes
+
+- feat: add slug api
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.13.0
+  - zhi-common@1.39.0
+
 ## 0.8.0
 
 ### Minor Changes

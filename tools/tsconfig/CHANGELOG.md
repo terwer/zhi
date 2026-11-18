@@ -1,5 +1,11 @@
 # @terwer/tsconfig
 
+## 0.5.0
+
+### Minor Changes
+
+- feat: add slug api
+
 ## 0.4.0
 
 ### Minor Changes

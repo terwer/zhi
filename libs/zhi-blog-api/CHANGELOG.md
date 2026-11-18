@@ -1,5 +1,17 @@
 # zhi-blog-api
 
+## 1.85.0
+
+### Minor Changes
+
+- feat: add slug api
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.13.0
+  - zhi-common@1.39.0
+
 ## 1.84.0
 
 ### Minor Changes

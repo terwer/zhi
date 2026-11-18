@@ -1,5 +1,11 @@
 # zhi-lib-base
 
+## 0.13.0
+
+### Minor Changes
+
+- feat: add slug api
+
 ## 0.12.0
 
 ### Minor Changes

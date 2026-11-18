@@ -1,5 +1,18 @@
 # zhi-log
 
+## 1.19.0
+
+### Minor Changes
+
+- feat: add slug api
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.13.0
+  - zhi-device@2.16.0
+  - zhi-env@1.22.0
+
 ## 1.18.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @terwer/eslint-config-custom
 
+## 1.7.0
+
+### Minor Changes
+
+- feat: add slug api
+
 ## 1.6.0
 
 ### Minor Changes

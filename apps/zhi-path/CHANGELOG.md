@@ -1,5 +1,16 @@
 # zhi-path
 
+## 0.6.0
+
+### Minor Changes
+
+- feat: add slug api
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.13.0
+
 ## 0.5.0
 
 ### Minor Changes
