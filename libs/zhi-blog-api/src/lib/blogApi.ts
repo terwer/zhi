@@ -67,6 +67,13 @@ class BlogApi implements IBlogApi {
     throw new NotImplementedException("You must implement preEditPost in sub class")
   }
 
+  /**
+   * 获取平台默认别名；默认不提供，由调用方回退到按标题生成等规则。
+   */
+  public async getDefaultSlug(_title: string): Promise<string | undefined> {
+    return undefined
+  }
+
   public async newPost(post: Post, publish?: boolean): Promise<string> {
     throw new NotImplementedException("You must implement newPost in sub class")
   }
