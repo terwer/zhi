@@ -26,6 +26,7 @@
 import PostStatusEnum from "../enums/postStatusEnum"
 import PageEditMode from "./pageEditMode"
 import YamlStrategy from "./yamlStrategy"
+import CoverSource from "../enums/coverSourceEnum"
 
 /**
  * 通用文章模型定义
@@ -197,6 +198,19 @@ class Post {
    * 文档层级路径（从根到当前文档的层级结构）
    */
   docTreeHierarchy?: { id: string; name: string; order: number }[]
+
+  /**
+   * 通用封面图地址。
+   *
+   * 由发布层按「文档题头图 → 正文首图 → 自定义」解析后写入；
+   * 平台适配器负责把它映射到平台原生封面字段。
+   */
+  cover?: string
+
+  /**
+   * 封面图来源，用于界面提示与排障。
+   */
+  coverSource?: CoverSource
 
   /**
    * 嵌入块

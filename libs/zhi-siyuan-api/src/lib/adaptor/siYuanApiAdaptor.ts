@@ -23,7 +23,17 @@
  * questions.
  */
 
-import { Attachment, BlogApi, CategoryInfo, MediaObject, Post, PostStatusEnum, PostUtil, UserBlog } from "zhi-blog-api"
+import {
+  Attachment,
+  BlogApi,
+  CategoryInfo,
+  CoverSource,
+  MediaObject,
+  Post,
+  PostStatusEnum,
+  PostUtil,
+  UserBlog,
+} from "zhi-blog-api"
 import { DateUtil, HtmlUtil, ObjectUtil, StrUtil, YamlUtil } from "zhi-common"
 import { NotImplementedException } from "zhi-lib-base"
 import SiyuanConfig from "../config/siyuanConfig"
@@ -297,6 +307,13 @@ class SiYuanApiAdaptor extends BlogApi {
     commonPost.docTree = docTree
     commonPost.docTreeLevel = docTreeLevel
     commonPost.docTreeHierarchy = docTreeHierarchy
+
+    // 通用封面能力：把文档题头图作为首个候选写入 Post.cover
+    const titleImage = SiyuanKernelApi.parseDocTitleImage(attrs)
+    if (!StrUtil.isEmptyString(titleImage)) {
+      commonPost.cover = this.siyuanKernelApi.resolveDocTitleImageUrl(titleImage)
+      commonPost.coverSource = CoverSource.TitleImage
+    }
 
     // yaml 适配
     const yamlObj = PostUtil.toYamlObj(commonPost)

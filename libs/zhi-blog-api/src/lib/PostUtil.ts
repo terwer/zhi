@@ -53,6 +53,30 @@ class PostUtil {
   }
 
   /**
+   * 提取正文中的第一张图片地址。
+   *
+   * 供通用封面能力在「文档题头图」之后取「正文首图」使用；优先 Markdown，
+   * 与平台无关，不关心图片最终是否已被上传或替换。
+   *
+   * @param post - 文章对象
+   */
+  public static extractFirstImage(post?: Post): string {
+    if (!post) {
+      return ""
+    }
+
+    const markdown = post.markdown ?? ""
+    const mdMatch = markdown.match(/!\[[^\]]*]\(\s*(?:<([^>]+)>|([^)\s]+))\s*(?:"[^"]*"|'[^']*')?\s*\)/i)
+    if (mdMatch?.[1] || mdMatch?.[2]) {
+      return (mdMatch[1] ?? mdMatch[2] ?? "").trim()
+    }
+
+    const html = post.html ?? ""
+    const htmlMatch = html.match(/<img\b[^>]*\bsrc\s*=\s*["']?([^"'\s>]+)["']?[^>]*>/i)
+    return htmlMatch?.[1]?.trim() ?? ""
+  }
+
+  /**
    * 使用来自适用于 YAML 的对象的数据填充当前对象的属性
    *
    * @param post - 文章对象

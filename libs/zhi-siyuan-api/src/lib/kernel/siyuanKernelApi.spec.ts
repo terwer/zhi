@@ -23,9 +23,29 @@
  * questions.
  */
 
-import { describe, it } from "vitest"
+import { describe, expect, it } from "vitest"
 import SiyuanKernelApi from "./siyuanKernelApi"
 import SiyuanConfig from "../config/siyuanConfig"
+
+describe("SiyuanKernelApi title image helpers", () => {
+  it("parses the document title image from attrs", () => {
+    expect(SiyuanKernelApi.parseDocTitleImage({ "title-img": 'background-image:url("assets/cover.png")' })).toBe(
+      "assets/cover.png"
+    )
+    expect(SiyuanKernelApi.parseDocTitleImage({ "title-img": "background-image: url('assets/a b.png')" })).toBe(
+      "assets/a b.png"
+    )
+    expect(SiyuanKernelApi.parseDocTitleImage({})).toBe("")
+  })
+
+  it("resolves relative title images against the kernel api url", () => {
+    const kernelApi = new SiyuanKernelApi(new SiyuanConfig("http://127.0.0.1:6806/", ""))
+    expect(kernelApi.resolveDocTitleImageUrl("assets/cover.png")).toBe("http://127.0.0.1:6806/assets/cover.png")
+    expect(kernelApi.resolveDocTitleImageUrl("https://img.example.com/cover.png")).toBe(
+      "https://img.example.com/cover.png"
+    )
+  })
+})
 
 describe("test SiyuanKernelApi", async () => {
   // lute

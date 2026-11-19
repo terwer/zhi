@@ -28,6 +28,7 @@ import PageTypeEnum from "./enums/pageTypeEnum"
 import CategoryTypeEnum from "./enums/categoryTypeEnum"
 import PreferenceConfig from "./PreferenceConfig"
 import PicbedServiceTypeEnum from "./enums/picbedServiceTypeEnum"
+import CoverMode from "./enums/coverModeEnum"
 
 /**
  * 页面类型
@@ -302,6 +303,19 @@ abstract class BlogConfig {
   public cateSearchEnabled?: boolean
 
   /**
+   * 平台是否支持原生封面字段。
+   *
+   * 支持时发布层会按「文档题头图 → 正文首图 → 自定义」解析封面；
+   * 不支持的平台保持原有正文行为，不做封面映射。
+   */
+  public coverEnabled?: boolean
+
+  /**
+   * 平台封面字段的接收方式：直接使用 URL 或先上传再设置附件。
+   */
+  public coverMode?: CoverMode
+
+  /**
    * 是否支持 PicGo 图片上传
    */
   public picgoPicbedSupported?: boolean
@@ -374,6 +388,8 @@ abstract class BlogConfig {
     this.useMdFilename = false
     this.usePathCategory = false
     this.cateSearchEnabled = false
+    this.coverEnabled = false
+    this.coverMode = CoverMode.Url
     this.picgoPicbedSupported = false
     this.bundledPicbedSupported = false
     this.picbedService = PicbedServiceTypeEnum.None
