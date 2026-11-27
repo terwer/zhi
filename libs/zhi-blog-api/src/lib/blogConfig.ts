@@ -29,6 +29,7 @@ import CategoryTypeEnum from "./enums/categoryTypeEnum"
 import PreferenceConfig from "./PreferenceConfig"
 import PicbedServiceTypeEnum from "./enums/picbedServiceTypeEnum"
 import CoverMode from "./enums/coverModeEnum"
+import MathRenderModeEnum from "./enums/mathRenderModeEnum"
 
 /**
  * 页面类型
@@ -340,6 +341,21 @@ abstract class BlogConfig {
   public picbedService?: PicbedServiceTypeEnum
 
   /**
+   * 平台公式渲染模式。
+   *
+   * 默认保留公式原文，由平台自身渲染；平台不支持公式时再显式切换渲染方式。
+   */
+  public mathRenderMode?: MathRenderModeEnum
+
+  /**
+   * `mathRenderMode = RemoteImage` 时使用的公式图片地址模板。
+   *
+   * 使用 `{tex}` 作为 URL 编码后的公式占位符，例如：
+   * `https://www.zhihu.com/equation?tex={tex}`。
+   */
+  public mathImageUrlTemplate?: string
+
+  /**
    * 强制使用代理
    */
   public forceProxy?: boolean
@@ -393,6 +409,8 @@ abstract class BlogConfig {
     this.picgoPicbedSupported = false
     this.bundledPicbedSupported = false
     this.picbedService = PicbedServiceTypeEnum.None
+    this.mathRenderMode = MathRenderModeEnum.Native
+    this.mathImageUrlTemplate = ""
     this.imageStorePath = "images"
     this.imageLinkPath = "images"
     this.forceProxy = false
