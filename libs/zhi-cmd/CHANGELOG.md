@@ -1,5 +1,17 @@
 # zhi-cmd
 
+## 0.13.0
+
+### Minor Changes
+
+- feat: add math contract
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.14.0
+  - zhi-device@2.17.0
+
 ## 0.12.0
 
 ### Minor Changes

@@ -1,5 +1,16 @@
 # zhi-common
 
+## 1.40.0
+
+### Minor Changes
+
+- feat: add math contract
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.14.0
+
 ## 1.39.0
 
 ### Minor Changes

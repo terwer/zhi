@@ -1,5 +1,17 @@
 # zhi-gitlab-middleware
 
+## 0.17.0
+
+### Minor Changes
+
+- feat: add math contract
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-fetch-middleware@0.18.0
+  - zhi-lib-base@0.14.0
+
 ## 0.16.0
 
 ### Minor Changes

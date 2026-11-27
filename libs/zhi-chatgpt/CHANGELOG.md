@@ -1,5 +1,11 @@
 # zhi-chatgpt
 
+## 0.5.0
+
+### Minor Changes
+
+- feat: add math contract
+
 ## 0.4.0
 
 ### Minor Changes

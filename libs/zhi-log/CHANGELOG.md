@@ -1,5 +1,18 @@
 # zhi-log
 
+## 1.20.0
+
+### Minor Changes
+
+- feat: add math contract
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.14.0
+  - zhi-device@2.17.0
+  - zhi-env@1.23.0
+
 ## 1.19.0
 
 ### Minor Changes

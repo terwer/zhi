@@ -1,5 +1,16 @@
 # zhi-common-markdown
 
+## 0.6.0
+
+### Minor Changes
+
+- feat: add math contract
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.14.0
+
 ## 0.5.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # zhi-docs
 
+## 1.5.0
+
+### Minor Changes
+
+- feat: add math contract
+
 ## 1.4.0
 
 ### Minor Changes

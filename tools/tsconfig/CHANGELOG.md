@@ -1,5 +1,11 @@
 # @terwer/tsconfig
 
+## 0.6.0
+
+### Minor Changes
+
+- feat: add math contract
+
 ## 0.5.0
 
 ### Minor Changes

@@ -1,5 +1,16 @@
 # zhi-cli
 
+## 1.16.0
+
+### Minor Changes
+
+- feat: add math contract
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-log@1.20.0
+
 ## 1.15.0
 
 ### Minor Changes

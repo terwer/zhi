@@ -1,5 +1,21 @@
 # zhi-siyuan-api
 
+## 2.42.0
+
+### Minor Changes
+
+- feat: add math contract
+- 6224266: feat: add a generic cover-image contract (`Post.cover`, `CoverSource`, `BlogConfig.coverEnabled`/`coverMode`, `PostUtil.extractFirstImage`) and expose the SiYuan document title image through `ISiyuanKernelApi.getDocTitleImage`.
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies [6224266]
+- Updated dependencies [4906683]
+  - zhi-blog-api@1.87.0
+  - zhi-lib-base@0.14.0
+  - zhi-common@1.40.0
+
 ## 2.41.0
 
 ### Minor Changes

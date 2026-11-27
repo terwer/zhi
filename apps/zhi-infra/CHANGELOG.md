@@ -1,5 +1,19 @@
 # zhi-infra
 
+## 0.27.0
+
+### Minor Changes
+
+- feat: add math contract
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.14.0
+  - zhi-common@1.40.0
+  - zhi-device@2.17.0
+  - zhi-cmd@0.13.0
+
 ## 0.26.0
 
 ### Minor Changes

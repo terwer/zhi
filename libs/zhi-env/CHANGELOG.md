@@ -1,5 +1,11 @@
 # zhi-env
 
+## 1.23.0
+
+### Minor Changes
+
+- feat: add math contract
+
 ## 1.22.0
 
 ### Minor Changes

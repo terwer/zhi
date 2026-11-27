@@ -1,5 +1,17 @@
 # zhi-github-middleware
 
+## 0.10.0
+
+### Minor Changes
+
+- feat: add math contract
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.14.0
+  - zhi-common@1.40.0
+
 ## 0.9.0
 
 ### Minor Changes

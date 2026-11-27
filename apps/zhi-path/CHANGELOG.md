@@ -1,5 +1,16 @@
 # zhi-path
 
+## 0.7.0
+
+### Minor Changes
+
+- feat: add math contract
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.14.0
+
 ## 0.6.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # zhi-device
 
+## 2.17.0
+
+### Minor Changes
+
+- feat: add math contract
+
 ## 2.16.0
 
 ### Minor Changes

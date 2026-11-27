@@ -1,5 +1,11 @@
 # @terwer/vite-config-custom
 
+## 0.12.0
+
+### Minor Changes
+
+- feat: add math contract
+
 ## 0.11.0
 
 ### Minor Changes

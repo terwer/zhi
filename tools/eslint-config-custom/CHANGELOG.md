@@ -1,5 +1,11 @@
 # @terwer/eslint-config-custom
 
+## 1.8.0
+
+### Minor Changes
+
+- feat: add math contract
+
 ## 1.7.0
 
 ### Minor Changes

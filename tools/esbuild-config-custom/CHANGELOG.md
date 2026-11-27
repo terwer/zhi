@@ -1,5 +1,11 @@
 # @terwer/esbuild-config-custom
 
+## 3.5.0
+
+### Minor Changes
+
+- feat: add math contract
+
 ## 3.4.0
 
 ### Minor Changes

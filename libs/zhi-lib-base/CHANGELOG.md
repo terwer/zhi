@@ -1,5 +1,11 @@
 # zhi-lib-base
 
+## 0.14.0
+
+### Minor Changes
+
+- feat: add math contract
+
 ## 0.13.0
 
 ### Minor Changes
