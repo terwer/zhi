@@ -29,6 +29,7 @@ import PicbedServiceTypeEnum from "./lib/enums/picbedServiceTypeEnum"
 import PreviewOpenModeEnum from "./lib/enums/previewOpenModeEnum"
 import CoverSource from "./lib/enums/coverSourceEnum"
 import CoverMode from "./lib/enums/coverModeEnum"
+import MathRenderModeEnum from "./lib/enums/mathRenderModeEnum"
 
 export { BlogApi, BlogAdaptor }
 export { WebApi, WebAdaptor }
@@ -44,6 +45,7 @@ export {
   PreviewOpenModeEnum,
   CoverMode,
   CoverSource,
+  MathRenderModeEnum,
 }
 export { YamlFormatObj, YamlConvertAdaptor }
 export { PostUtil }

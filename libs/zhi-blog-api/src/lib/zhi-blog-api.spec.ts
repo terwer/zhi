@@ -28,6 +28,8 @@ import BlogAdaptor from "./blogAdaptor"
 import BlogApi from "./blogApi"
 import WebAdaptor from "./webAdaptor"
 import WebApi from "./webApi"
+import WebConfig from "./WebConfig"
+import MathRenderModeEnum from "./enums/mathRenderModeEnum"
 
 describe("zhiBlogApi", () => {
   it("blogApi", () => {
@@ -115,5 +117,26 @@ describe("zhiBlogApi", () => {
 
     await expect(adaptor.logoutWebAuth()).resolves.toBe(true)
     expect(api.called).toBe(true)
+  })
+
+  it("defaults math rendering to native and supports remote image templates", () => {
+    const cfg = new WebConfig("")
+
+    expect(cfg.mathRenderMode).toBe(MathRenderModeEnum.Native)
+    expect(cfg.mathImageUrlTemplate).toBe("")
+
+    cfg.mathRenderMode = MathRenderModeEnum.RemoteImage
+    cfg.mathImageUrlTemplate = "https://www.zhihu.com/equation?tex={tex}"
+
+    expect(cfg.mathRenderMode).toBe(MathRenderModeEnum.RemoteImage)
+    expect(cfg.mathImageUrlTemplate).toContain("{tex}")
+  })
+
+  it("exposes every math render mode through the shared contract", () => {
+    expect(MathRenderModeEnum.Native).toBe("native")
+    expect(MathRenderModeEnum.KaTeX).toBe("katex")
+    expect(MathRenderModeEnum.Svg).toBe("svg")
+    expect(MathRenderModeEnum.RemoteImage).toBe("remote-image")
+    expect(MathRenderModeEnum.Image).toBe("image")
   })
 })
