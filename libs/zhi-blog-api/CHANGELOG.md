@@ -1,5 +1,22 @@
 # zhi-blog-api
 
+## 1.86.0
+
+### Minor Changes
+
+- feat: add generic cover-image contract
+  - 新增 `CoverMode` 枚举（`url` / `upload`），用于描述平台封面字段的接收方式
+  - 新增 `CoverSource` 枚举（`titleImage` / `firstBodyImage` / `custom`），用于标识封面来源
+  - `Post` 新增 `cover`、`coverSource` 字段
+  - `BlogConfig` 新增 `coverEnabled`、`coverMode` 字段
+  - `PostUtil` 新增 `extractFirstImage(post?)`，用于提取正文首图
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-lib-base@0.13.0
+  - zhi-common@1.39.0
+
 ## 1.85.0
 
 ### Minor Changes

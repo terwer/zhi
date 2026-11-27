@@ -1,5 +1,21 @@
 # zhi-siyuan-api
 
+## 2.41.0
+
+### Minor Changes
+
+- feat: add doc title image support
+  - `ISiyuanKernelApi` 新增 `getDocTitleImage(blockId)`，返回文档题头图可用地址
+  - `SiyuanKernelApi` 新增静态方法 `parseDocTitleImage(attrs?)`，解析 `title-img` 中的背景图地址
+  - `SiyuanKernelApi` 新增 `resolveDocTitleImageUrl(path?)`，把题头图路径补全为可用链接
+
+### Patch Changes
+
+- Updated dependencies
+  - zhi-blog-api@1.86.0
+  - zhi-lib-base@0.13.0
+  - zhi-common@1.39.0
+
 ## 2.40.0
 
 ### Minor Changes
